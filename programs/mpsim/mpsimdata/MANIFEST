@@ -1,0 +1,17 @@
+pbf.prm:
+	template parameter file for the PB Solver.  function
+	pbf_writeprm copies this file to $cwd, and makes job-specific
+	modifications.
+
+pbf_low_grid.prm
+pbf_medium_grid.prm
+pbf_high_grid.prm
+	parameter files for the PB Solver using different densities.  
+	low_grid is recommended for MD simulations.  
+
+AMBER95.par:
+	Amber 95 forcefield, formatted by Ken, Vaidehi, and Joyce to
+	work with MPSim.
+
+atomdat330new.atm:
+	QEQ parameter set from Biograf.

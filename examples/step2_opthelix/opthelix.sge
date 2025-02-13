@@ -1,0 +1,5 @@
+#!/bin/csh
+#$ -N OptHelix
+#$ -j y
+cd /home/ravi/GEnsemble/examples/step2_opthelix2
+/home/ravi/GEnsemble/programs/OptHelix.pl -f Q9NYW5.mfta --raw pred --cap pred --dynsteps 1000000 --dyntimestep 2 --dynsnapint 5000 --dyntemp 300 --dynresidues PST --ff FF/dreiding-0.3.par --caplength 8 --backboneminrms 0.5 --backboneminsteps 1000 --warmupstart 50 --warmupinterval 50 --warmupsteps 5000 --warmuptimestep 2 --ignorepct 25 --finalminrms 0.5 --finalminsteps 100 --queuetype sge --host davinci.wag.caltech.edu --alaninecap 1 --nostaticcaps --warmup 1 --finalminimize 1 --runlocal 1 --runparallel 1 --onqueue

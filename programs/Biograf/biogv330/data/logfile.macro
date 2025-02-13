@@ -1,0 +1,76 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 14:55:02 6/1/93
+% link date    : 15:38:59 7/13/93
+%
+% Macro created on  3/19/94   16:05:23
+%
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "/biograf/biogv321/data/crambin.bgf"
+%    /biograf/biogv321/data/crambin.bgf
+   In-Out/return
+Top menu/build
+   Build/periodic
+      Periodic/pbc off
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/fast setup
+   EEX options/return
+   Simulate/setup eex
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/one energy
+      Mechanics/return
+   Simulate/return
+Top menu/build
+   Build/periodic
+      Periodic/pbc on
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/setup eex
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/return
+   Simulate/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     crambin
+     return
+     "cramb321.bgf"
+     " "
+   In-Out/return
+Top menu/simulate
+   Simulate/dynamics
+      Dynamics/return
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/return
+   Simulate/return
+Top menu/build
+   Build/periodic
+      Periodic/pbc off
+      Periodic/mechanics
+         Mechanics/one energy
+         Mechanics/return
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/defaults
+      Defaults/ewald var
+         Ewald var/time ratio
+           "1"
+         Ewald var/opt Ewald now
+         Ewald var/opt Ewald now
+         Ewald var/opt Ewald now
+         Ewald var/time ratio
+           ".1"
+         Ewald var/time ratio
+           "100"
+         Ewald var/opt Ewald now

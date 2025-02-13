@@ -1,0 +1,306 @@
+beginmacro
+%
+% version      : 3.00
+% link date    : 08:43:46 2/20/92
+%
+celrms = 0.020
+intrms = 0.005
+edif = 0.010
+finlp = 1.00
+pinc = 0.20
+nsteps = 100
+INFIL = temp
+OUTFIL = v3peth
+strsaxis = ZZ
+bkgnd = 0
+%
+%  All the input variables above may be edited
+%  and bkgnd set equal to 1 for running a batch
+%  job in background
+%
+snap = 0
+TENSOR = XX,YY,ZZ,YZ,XZ,XY
+if( ${bkgnd} = 1 )then
+  goto JUMP
+endif
+%
+%  Get input file name
+%
+FILRED:
+echo "Enter the input file name of stress-free model"
+INFIL = ${prompt}
+if( ${INFIL} = NULL )goto FILRED
+FILOUT:
+echo "Enter the output file name for this simulation"
+OUTFIL = ${prompt}
+if( ${OUTFIL} = NULL )goto FILOUT
+%
+%  Get applied stress info
+%
+echo "Enter the final applied stress in GPa"
+finlp = ${prompt}
+if( ${finlp} = NULL )then
+  finlp = 10.0
+endif
+echo "Enter the applied stress increment in GPa"
+pinc = ${prompt}
+if( ${pinc} = NULL )then
+  pinc = 1.0
+endif
+%
+%  Get minimization convergence info
+%
+echo "Enter internal stress convergence value"
+intrms = ${prompt}
+if( ${intrms} = NULL )then
+  intrms = 0.1
+endif
+echo "Enter cell stress convergence value"
+celrms = ${prompt}
+if( ${celrms} = NULL )then
+  celrms = 0.01
+endif
+echo "Enter total energy convergence value"
+edif = ${prompt}
+if( ${edif} = NULL )then
+  edif = 0.010
+endif
+echo "Enter the number of minimization steps per cycle (# steps)"
+nsteps = ${prompt}
+if( ${nsteps} = NULL )then
+  nsteps = 50
+endif
+%
+%  Get applied stress direction
+%
+STRSAXIS:
+echo "Enter the stress direction -- "${TENSOR}
+strsaxis = ${prompt}
+if( ${strsaxis} = NULL )goto STRSAXIS
+JUMP:
+do i = 1,6
+  if( ${strsaxis} ~ ${TENSOR}[${i}] )stridx = ${i}
+enddo
+%
+%  Setup loop variables
+%  The loop will run from  -finlp  to  +finlp  in  pinc  increments
+%
+pstep = ${finlp} / ${pinc}
+pstep = fix( ${pstep} )
+pstep = 2 * ${pstep}
+pstep = 1 + ${pstep}
+%
+%  Read in initial structure
+%
+Top menu/in-out
+	In-Out/read
+	  File types/BioDesign
+	  ${INFIL}.xtl
+	In-Out/return
+%
+%  Setup energy minimization
+%
+Top menu/simulate
+	Simulate/setup ee
+	  ${FIRSTGROUP}
+	  ${FIRSTGROUP+1}
+	  ${FIRSTGROUP+2}
+	  ${FIRSTGROUP+3}
+	  return
+	  return
+	  ${FIRSTGROUP}
+	  ${FIRSTGROUP+1}
+	  ${FIRSTGROUP+2}
+	  ${FIRSTGROUP+3}
+	  return
+	Simulate/defaults
+		Defaults/minimize var
+			Minimize var/rms force cvrg
+			  ${intrms}
+			Minimize var/pbc stress cvrg
+			  ${celrms}
+			Minimize var/# of steps
+			  ${nsteps}
+			Minimize var/maximum dist
+			  0.3
+			Minimize var/return
+		Defaults/return
+	Simulate/mechanics
+%
+%  Make sure initial structure is strain-free
+%
+		Mechanics/minimize
+		efirst = inq(energy_total)
+%
+%  Check for energy convergence
+%
+BACK:
+		Mechanics/minimize
+		enext = inq(energy_total)
+		dele = ${efirst} - ${enext}
+		dele = abs( ${dele} )
+echo First minimization energy is ${efirst}
+echo Next minimization energy is ${enext}
+echo Simulate difference is ${dele}
+		if( ${dele} > ${edif} )then
+		  efirst = ${enext}
+		  goto BACK
+		endif
+		Mechanics/return
+	Simulate/return
+%
+%  Save stress-free structure to temporary file
+%
+Top menu/in-out
+	In-Out/write
+	  File types/BioDesign
+%	  return
+	  ${FIRSTFILE}
+	  return
+	  temp
+	  " "
+	In-Out/return
+%
+%  Save stress-free parameters in strain user function
+%
+Top menu/utilities
+	Utilities/user
+		User/Geom utilities
+			Geometry utils/calc strain
+				Strain/setup
+				Strain/return
+			Geometry utils/return
+		User/return
+	Utilities/return
+%
+%  Setup energy minimization
+%
+Top menu/simulate
+	Simulate/setup ee
+	  ${FIRSTGROUP}
+	  ${FIRSTGROUP+1}
+	  ${FIRSTGROUP+2}
+	  ${FIRSTGROUP+3}
+	  return
+	  return
+	  ${FIRSTGROUP}
+	  ${FIRSTGROUP+1}
+	  ${FIRSTGROUP+2}
+	  ${FIRSTGROUP+3}
+	  return
+	Simulate/defaults
+		Defaults/minimize var
+			Minimize var/rms force cvrg
+			  ${intrms}
+			Minimize var/pbc stress cvrg
+			  ${celrms}
+			Minimize var/# of steps
+			  ${nsteps}
+			Minimize var/maximum dist
+			  0.3
+			Minimize var/return
+		Defaults/return
+	Simulate/return
+%
+%  Do stress simulation from -finlp to finlp
+%
+	opentw(${OUTFIL}${TENSOR}[${stridx}].trj,err=FILERR)
+	snap = 0
+	strs = 0.00 - ${finlp}
+%
+%  Convert stress in GPa to kbar
+%
+	strs = 10.0 * ${strs}
+	pinc = 10.0 * ${pinc}
+	do loopt = 1, ${pstep}
+	  Simulate
+%
+%  Increment stress after first time
+%
+	  if( ${loopt} <> 1 )then
+	    strs = ${strs} + ${pinc}
+	  endif
+	  Simulate/mechanics
+%
+%  Apply stress
+%
+		Mechanics/modify cell
+		  ${TENSOR}[${stridx}]
+		  ${strs}
+		  execute
+		Mechanics/minimize
+		efirst = inq(energy_total)
+%
+%  Check for energy convergence
+%
+BACK2:
+		Mechanics/minimize
+		enext = inq(energy_total)
+		dele = ${efirst} - ${enext}
+		dele = abs( ${dele} )
+echo First minimization energy is ${efirst}
+echo Next minimization energy is ${enext}
+echo Simulate difference is ${dele}
+		if( ${dele} > ${edif} )then
+		  efirst = ${enext}
+		  goto BACK2
+		endif
+		Mechanics/return
+%
+%  Save minimized structure to TRJ file for analysis
+%
+		snap = ${snap} + 1
+		writet(${OUTFIL}${TENSOR}[${stridx}].trj,err=FILERR)${snap}
+		^
+%
+%  Calculate strain tensor in user function
+%
+  Top menu/utilities
+	Utilities/user
+		User/Geom utilities
+			Geometry utils/calc strain
+				Strain/stress index
+				  ${loopt}
+				pout = ${strs} / 10.0
+				Strain/input stress
+				  ${pout}
+				Strain/calc strain
+%
+%  Last time through loop, write plot files
+%
+				if( ${loopt} = ${pstep} )then
+				  Strain/tensor
+				    ${TENSOR}[${stridx}]
+				  Strain/filename
+				    ${OUTFIL}
+				  Strain/write pltfil
+				endif
+				Strain/return
+			Geometry utils/return
+		User/return
+	Utilities/return
+	enddo
+%
+%  Reset stress to zero
+%
+Top menu/simulate
+	Simulate/mechanics
+		Mechanics/modify cell
+		  ${TENSOR}[${stridx}]
+		  0.00
+		  execute
+		Mechanics/return
+	Simulate/return
+	close(${OUTFIL}${TENSOR}[${stridx}].trj,err=FILERR)
+	goto end
+FILERR:
+	echo "Error in trj file"
+end:
+	if( ${bkgnd} = 1 )then
+	Top menu/exit
+	  yes
+	else
+	quit
+	endif
+%
+endmacro

@@ -1,0 +1,37 @@
+BIOGRF  110
+DESCRP PENTANE 
+HETATM    1 C1    PEN     1       0.305   0.851  -1.060 C_3     4  0  0.0000
+HETATM    2 H2C1  PEN     1      -0.022   0.295  -1.941 H_      1  0  0.0000
+HETATM    3 H1C1  PEN     1       1.397   0.883  -1.060 H_      1  0  0.0000
+HETATM    4 C2    PEN     1      -0.226   2.290  -1.164 C_3     4  0  0.0000
+HETATM    5 HC2   PEN     1       0.103   2.878  -0.307 H_      1  0  0.0000
+HETATM    6 H2C2  PEN     1       0.155   2.755  -2.075 H_      1  0  0.0000
+HETATM    7 H1C2  PEN     1      -1.317   2.290  -1.201 H_      1  0  0.0000
+HETATM    8 C3    PEN     1      -0.131  -2.034   1.580 C_3     4  0  0.0000
+HETATM    9 HC3   PEN     1      -1.220  -2.084   1.602 H_      1  0  0.0000
+HETATM   10 H2C3  PEN     1       0.221  -1.505   2.467 H_      1  0  0.0000
+HETATM   11 H1C3  PEN     1       0.267  -3.049   1.597 H_      1  0  0.0000
+HETATM   12 C4    PEN     1       0.345  -1.315   0.306 C_3     4  0  0.0000
+HETATM   13 H2C4  PEN     1       1.437  -1.302   0.303 H_      1  0  0.0000
+HETATM   14 H1C4  PEN     1       0.005  -1.884  -0.561 H_      1  0  0.0000
+HETATM   15 C5    PEN     1      -0.187   0.131   0.213 C_3     4  0  0.0000
+HETATM   16 H2C5  PEN     1      -1.279   0.109   0.211 H_      1  0  0.0000
+HETATM   17 H1C5  PEN     1       0.146   0.691   1.089 H_      1  0  0.0000
+CONECT    1    4   15    3    2    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    7    6    5    0    0
+CONECT    5    4    0    0    0    0    0
+CONECT    6    4    0    0    0    0    0
+CONECT    7    4    0    0    0    0    0
+CONECT    8   12   11   10    9    0    0
+CONECT    9    8    0    0    0    0    0
+CONECT   10    8    0    0    0    0    0
+CONECT   11    8    0    0    0    0    0
+CONECT   12    8   15   14   13    0    0
+CONECT   13   12    0    0    0    0    0
+CONECT   14   12    0    0    0    0    0
+CONECT   15   12    1   17   16    0    0
+CONECT   16   15    0    0    0    0    0
+CONECT   17   15    0    0    0    0    0
+END

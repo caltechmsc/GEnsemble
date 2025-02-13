@@ -1,0 +1,27 @@
+beginmacro
+%
+% version      : 3.23
+% compile date    : Dec 15 2006 16:26
+%
+% Macro created on  9/27/16   12:56:04
+%
+% program started with an initialization file
+%
+% @beta1_tm45interfaceOPM.lingraf.macro
+% beta1_tm45interfaceOPM.lingraf.macro
+Top menu/in-out
+   In-Out/read
+   File types/Brookhaven
+     "/project/Biogroup/Software/GEnsemble/programs/dimersbh/beta1_example/beta1_tm45interfaceOPM.temp/beta1_tm45interfaceOPM.addH.pdb"
+   Selections/no
+   In-Out/write
+   File types/BioDesign
+   Files/beta1_tm
+   Files/return
+     "beta1_tm45interfaceOPM.addH.bgf"
+     " "
+   In-Out/return
+Top menu/exit
+  "OK"
+%
+endmacro

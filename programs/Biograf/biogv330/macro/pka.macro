@@ -1,0 +1,43 @@
+beginmacro
+%  Macro to compute a shift in dissociation constants (Delta pKa)
+%  Files needed:
+%                  
+%               File  				In this example:
+%                  
+%      First Form of dissociating molecule:   "/usr/msi/biogv320/data/his_1.bgf"
+%      Second Form of dissociating molecule:  "/usr/msi/biogv320/data/his_2.bgf"
+%      pKa shift inducing molecules(s)     :  "/usr/msi/biogv320/data/pep.bgf"
+%
+% version      : 3.00
+% version date : 16:03:58 3/3/92
+% link date    : 11:30:59 3/16/92
+%
+% Macro created on  3/16/92   11:51:03
+%
+progstat = set(program,POLARIS)
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "his_1.bgf"
+	In-Out/read
+	File types/BioDesign
+	  "his_2.bgf"
+	In-Out/read
+	File types/BioDesign
+	  "pep.bgf"
+	In-Out/return
+Top menu/simulate
+	Simulate/delta pKa
+	his_1
+	return
+	peptide
+	return
+	his_2
+	return
+	peptide
+	return
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

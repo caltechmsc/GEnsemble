@@ -1,0 +1,40 @@
+#!/bin/csh
+#$ -N helix1
+#$ -j y
+
+setenv MPSIM_DATA /home/ravi/GEnsemble/programs/mpsim/mpsimdata
+/home/ravi/GEnsemble/programs/mpsim/mpsim helix1.3.50_K.ctl > helix1.3.50_K.out
+/home/ravi/GEnsemble/programs/mpsim/mpsim helix1.3.100_K.ctl > helix1.3.100_K.out
+/home/ravi/GEnsemble/programs/mpsim/mpsim helix1.3.150_K.ctl > helix1.3.150_K.out
+/home/ravi/GEnsemble/programs/mpsim/mpsim helix1.3.200_K.ctl > helix1.3.200_K.out
+/home/ravi/GEnsemble/programs/mpsim/mpsim helix1.3.250_K.ctl > helix1.3.250_K.out
+
+cp helix1.3.250_K.fin.bgf helix1.4.pre_dynamics.bgf
+
+/home/ravi/GEnsemble/programs/mpsim/mpsim -s5000 helix1.5.dynamics.ctl  > helix1.5.dynamics.out
+/home/ravi/GEnsemble/programs/utilities/snapgz2bgf.pl -s 'helix1.5.dynamics.snap*' -t helix1.4.pre_dynamics.bgf --skip 254999 >& helix1.5.dynamics.eng
+/home/ravi/GEnsemble/programs/utilities/bgf_snap_rmsd -m -v -t helix1.4.pre_dynamics.bgf helix1.5.dynamics.snap254999 5000 150 > helix1.5.dynamics.rmsd
+/home/ravi/GEnsemble/programs/utilities/bgf_match.pl -p helix1.5.dynamics.snap -f 254999 -i 5000 -n 150
+
+mkdir helix1.3.warmup
+mv helix1.3.*.* helix1.3.warmup
+gzip -r helix1.3.warmup
+
+mkdir helix1.5.dynamics.bgfs
+/home/ravi/GEnsemble/programs/utilities/multi_bgf2pdb.pl helix1.5.dynamics.snap*.bgf
+mv *.bgf helix1.5.dynamics.bgfs
+
+mkdir helix1.5.dynamics.pdbs
+mv *.pdb helix1.5.dynamics.pdbs
+gzip -r helix1.5.dynamics.pdbs
+
+mkdir helix1.5.dynamics.snaps
+mv *.snap* helix1.5.dynamics.snaps
+gzip -r helix1.5.dynamics.snaps
+
+gzip helix1.5.dynamics.ctl
+gzip helix1.5.dynamics.traj1
+gzip helix1.5.dynamics.rst
+gzip helix1.5.dynamics.out
+touch _dyn_finished_
+

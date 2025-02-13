@@ -1,0 +1,49 @@
+BIOGRF  160
+DESCRP p_xylene
+REMARK Created by srl @ iris on 12/11/89   11:56:36                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    PXY A    1   -2.75200  -0.70000   0.53900 C_3    4 0  0.00000
+HETATM     2 C1    PXY A    1    0.48500  -0.02000  -1.32100 C_R    3 0  0.00000
+HETATM     3 HC1   PXY A    1    0.80700  -0.04400  -2.29300 H_     1 0  0.00000
+HETATM     4 C2    PXY A    1    1.35200   0.34400  -0.26500 C_R    3 0  0.00000
+HETATM     5 TT    PXY A    1    2.75200   0.70000  -0.53900 C_3    4 0  0.00000
+HETATM     6 H2C3  PXY A    1    3.25300   0.94900   0.39600 H_     1 0  0.00000
+HETATM     7 H1C3  PXY A    1    2.78400   1.55900  -1.20900 H_     1 0  0.00000
+HETATM     8 C4    PXY A    1    0.85500   0.36100   1.05900 C_R    3 0  0.00000
+HETATM     9 HC4   PXY A    1    1.45000   0.61800   1.85100 H_     1 0  0.00000
+HETATM    10 C5    PXY A    1   -0.48500   0.02000   1.32100 C_R    3 0  0.00000
+HETATM    11 HC5   PXY A    1   -0.80700   0.04400   2.29300 H_     1 0  0.00000
+HETATM    12 C6    PXY A    1   -1.35200  -0.34400   0.26500 C_R    3 0  0.00000
+HETATM    13 HX    PXY A    1   -2.78400  -1.56000   1.20700 H_     1 0  0.00000
+HETATM    14 H2C7  PXY A    1   -3.25400  -0.94700  -0.39600 H_     1 0  0.00000
+HETATM    15 H1C7  PXY A    1   -3.25600   0.14400   1.00900 H_     1 0  0.00000
+HETATM    16 C8    PXY A    1   -0.85400  -0.36100  -1.05900 C_R    3 0  0.00000
+HETATM    17 HC8   PXY A    1   -1.45000  -0.61800  -1.85100 H_     1 0  0.00000
+HETATM    18 TX    PXY A    1    3.25700  -0.14600  -1.00800 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1    12    15    14    13
+CONECT     2     4    16     3
+ORDER      2     1     2     1
+CONECT     3     2
+CONECT     4     2     8     5
+ORDER      4     1     2     1
+CONECT     5     4     7     6    18
+CONECT     6     5
+CONECT     7     5
+CONECT     8    10     4     9
+ORDER      8     1     2     1
+CONECT     9     8
+CONECT    10     8    12    11
+ORDER     10     1     2     1
+CONECT    11    10
+CONECT    12    10    16     1
+ORDER     12     2     1     1
+CONECT    13     1
+CONECT    14     1
+CONECT    15     1
+CONECT    16    12     2    17
+ORDER     16     1     2     1
+CONECT    17    16
+CONECT    18     5
+END

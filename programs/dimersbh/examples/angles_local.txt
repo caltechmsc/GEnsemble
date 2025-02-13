@@ -1,0 +1,21 @@
+TM1 theta_grid 15 1
+TM1 phi_grid 60
+TM1 eta -30 -15 0 15 30
+TM2 theta_grid 15 1
+TM2 phi_grid 60
+TM2 eta -30 -15 0 15 30
+TM3 theta_grid 15 1
+TM3 phi_grid 60
+TM3 eta -30 -15 0 15 30
+TM4 theta_grid 15 1
+TM4 phi_grid 60
+TM4 eta -30 -15 0 15 30
+TM5 theta_grid 15 1
+TM5 phi_grid 60
+TM5 eta -30 -15 0 15 30
+TM6 theta_grid 15 1
+TM6 phi_grid 60
+TM6 eta -30 -15 0 15 30
+TM7 theta_grid 15 1
+TM7 phi_grid 60
+TM7 eta -30 -15 0 15 30

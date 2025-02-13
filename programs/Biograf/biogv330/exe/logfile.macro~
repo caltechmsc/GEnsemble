@@ -1,0 +1,89 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 21:49:53 4/30/93
+% link date    : 17:52:34 8/16/98
+%
+% Macro created on  8/16/98   17:59:25
+%
+Top menu/build
+   Build/periodic
+   Build/crystal
+        "percec"
+      Crystal/input coord
+        "F43m"
+      Crystal/input coord
+        "Pm3n"
+        "30"
+        "Te 0 0 0"
+        "Te 0 .25 .50"
+        " "
+      Display
+         unit cel
+         unit cel
+         return
+      Crystal/return
+   Build/return
+Top menu/visualize
+   Visualize/change colors
+   percec
+   Visualize/render groups
+   percec
+   return
+      Render groups/spheres
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/fast setup
+   EEX options/return
+   Simulate/setup eex
+   Simulate/modify params
+      Modify params/modify
+      Modify params/van der Waals
+        .
+      Modify params/offdiag nonbnd
+        .
+      Modify params/offdiag nonbnd
+        anum/2
+        anum/6
+        " "
+        " "
+        " "
+      Modify params/offdiag nonbnd
+        anum/2
+        anum/6
+        "1"
+      Modify params/van der Waals
+        anum/2
+      Parameters/FF type
+        "13"
+      Parameters/equil distance
+        "15"
+      Parameters/equil energy
+        "20"
+      Parameters/execute
+      Parameters/reset/return
+      Modify params/return
+   Simulate/mechanics
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     percec
+     return
+     "Percec.xtl"
+     "wag aug 98"
+     " "
+   In-Out/return
+Top menu/build
+   Build/organic
+   Build/program reset
+     "OK"
+   Build/organic
+        new file
+        "Te2"
+      Organic/draw

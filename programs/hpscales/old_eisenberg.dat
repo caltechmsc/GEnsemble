@@ -1,0 +1,24 @@
+REMARK Eisenberg 1982 Scale
+REMARK Faraday Symp. Chem. Soc. 17:109-120.
+REMARK Convention: Old TMPred
+ALA A    0.25
+CYS C    0.04
+ASP D   -0.72
+GLU E   -0.62
+PHE F    0.61
+GLY G    0.16
+HIS H   -0.40
+ILE I    0.73
+LYS K   -1.10
+LEU L    0.53
+MET M    0.26
+ASN N   -0.64
+PRO P   -0.07
+GLN Q   -0.69
+ARG R   -1.76
+SER S   -0.26
+THR T   -0.18
+VAL V    0.54
+TRP W    0.37
+TYR Y    0.02
+END

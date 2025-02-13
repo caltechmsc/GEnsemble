@@ -1,0 +1,57 @@
+#!/bin/csh
+#
+# 	RUNtime setup for BioDesign BIOGRAF
+#
+# 	File:   /biograf/bio_run.csh
+#
+# 	Usage:  csh /biograf/bio_run.csh (display) (forcefield) [(init.file)]
+#	
+#		display 	= 240, 330, 390  (i.e. wag240, ps300, ps390)
+#		forcefield 	= amber, amberb, dreid, mm2, mmp2
+#		init.file 	= initialization file or macro file
+#
+# 	Do not allow coredump on crash -- program is neither compiled nor linked
+#  	debug, so there is no reason to save coredump.
+#
+#limit coredumpsize 0
+#
+# 4 jan 92 nk added
+setenv BG_CURDIR `pwd`
+#
+setenv FOR020 ${BG_EXE}/bkvconnect.res
+#
+# 	Force field parameters and conversion table
+#
+setenv FOR021 ${BG_EXE}/${2}${BIOVER}.par
+setenv FOR022 ${BG_EXE}/${2}${BIOVER}.cnv
+if ( -r ${cwd}/${2}.par ) setenv FOR021 ${cwd}/${2}${BIOVER}.par
+if ( -r ${cwd}/${2}.cnv ) setenv FOR022 ${cwd}/${2}${BIOVER}.cnv
+#
+if ( $BIOVER < 320 ) then
+	setenv FOR024 ${BG_EXE}/atomdat${BIOVER}.atm
+else
+	setenv FOR024 ${BG_EXE}/atom${BIOVER}.atm
+endif
+#
+# 	Startup defaults file
+#
+setenv FOR027 ${membstruk}/Biograf/${1}.def
+#
+#	Synonyms file
+#
+setenv FOR029 ${BG_EXE}/atressyn.dat
+setenv FOR066 ${BG_EXE}/atressyn.dat
+#
+# 	Scratch files for surface calculations
+#
+setenv FOR030 ${memtmp1}/${USER}_surface.tmp
+setenv FOR033 ${memtmp1}/${USER}_before.tmp
+#
+# 	Simulation initialization file or macro file
+#
+if ( $#argv >= 3 ) setenv FOR098 $3
+#
+# 	Execute BIOGRAF...
+#
+${BG_EXE}/biogv300_titan_dore_linux_BDO_sept04
+

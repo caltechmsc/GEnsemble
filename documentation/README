@@ -1,0 +1,213 @@
+#####################################################################
+# GEnsemble                                                         #
+# Copyright (c) 2008                                                #
+# Ravinder Abrol, Adam Griffith, and William A. Goddard III         #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#####################################################################
+
+                        INSTRUCTIONS
+
+Make sure that you have the following in your .cshrc file:
+(Replace "yourpath" with the path of your GEnsemble Installation)
+
+set ge_path = /project/Biogroup/Software/GEnsemble
+alias ge_blast           "$ge_path/programs/Blast.pl"
+alias ge_predictm        "$ge_path/programs/PredicTM.pl"
+alias ge_opthelix        "$ge_path/programs/OptHelix.pl"
+alias ge_template        "$ge_path/programs/Align2Template.pl"
+alias ge_bihelix         "$ge_path/programs/bihelixrot2/all_bihelix_pairs.pl"
+alias ge_bihelixanal     "$ge_path/programs/bihelixrot2/bihelix_anal.pl"
+alias ge_combihelix      "$ge_path/programs/bihelixrot2/combi_frombihelixsum.pl"
+
+
+######################################
+##### Step 1: Blast and PredicTM #####
+######################################
+
+Blast can be run in one of two ways.  Blast by itself can be run using
+Blast.pl, or it can be run as a precursor to PredicTM using PredicTM.pl.
+To see how to run Blast through PredicTM,read the PredicTM section below.
+
+Blast.pl Usage ::
+Blast.pl -a {accession number}
+Blast.pl --fasta {single-sequence FASTA file}
+Blast.pl -r {raw amino acid sequence}
+Blast.pl -h
+
+The main output file will be {filename}.fta.  There are numerous options for
+the program, so look at the help information to see what is available.
+
+PredicTM, the program for predicting transmembrane regions, can be run using
+PredicTM.pl.  It is possible to run Blast through PredicTM.pl, or the output
+file ({filename}.fta) or a PIR alignment file can be used.
+
+PredicTM.pl Usage ::
+PredicTM.pl -f {multiple-sequence FASTA file}
+PredicTM.pl -p {PIR alignment file}
+PredicTM.pl -a {accession number} (for running BLAST)
+PredicTM.pl --fasta {single-sequence FASTA file} (for running BLAST)
+PredicTM.pl -r {raw amino acid sequence} (for running BLAST)
+PredicTM.pl -h
+
+The main output file will be {filename}.mfta.  There are numerous options for
+the program, so look at the help information to see what is available.
+
+############################
+##### Step 2: OptHelix #####
+############################
+
+OptHelix optimizes the proline kinks of the helices predicted by PredicTM using
+molecular dynamics.  The main input file for OptHelix is the Modified FASTA
+(MFTA) file produced by PredicTM.
+
+OptHelix.pl Usage ::
+OptHelix.pl -f {modified FASTA file} --cap {pred/man} --raw {pred/man/none}
+
+The MFTA produced by PredicTM contains placeholders for manual start/stop
+residues for both the raw and capped helices.  See the OptHelix help for more
+information on the MFTA format.
+
+OptHelix will perform its dynamics on either the predicted or manual capped
+helices, as specified by the user with the "--cap pred" or "--cap man" option.
+
+The raw helices produced by OptHelix are taken from the capped helix results
+as specified with the "--raw pred", "--raw man", or "--raw none" options.
+
+Currently there is an issue where terminal hydrogens may be missing from
+the ends of the helices.  Currently the only way to ensure that this does not
+happen is by specifying the "--noalaninecap --raw none" option.  A fix for
+this issue is expected soon.
+
+
+##################################
+##### Step 3: ALign2Template #####
+##################################
+In this step, the optimized helices from previous step are put
+together into a bundle based on an input template (currently
+bovine rhodopsin and human beta2 available). 
+
+Usage:
+Align2Template.pl -t {humbeta2_2rh1 or bovrhod_1gzm} -d {opthelix directory} -m {modified fasta file} -oc {minrmsd.cap or minrmsd.raw or minrmsd.cap.min or minrmsd.raw.min or mineng.cap or mineng.raw or mineng.cap.min or mineng.raw.min} -c {area or peak or rawmid or capmid or manual1 or manual2 hydrophobic centers} -p {protein tag optional}
+
+
+###########################
+##### Step 4: BiHelix #####
+###########################
+In this step, the protein bundle from previous step is used
+in a BiHelix rotational procedure which samples all rotational
+combinations for every pair of interacting helices and the resulting
+BiHelix results are put together in a mean-field energy summation
+scheme to list the top few combinations for use in the next step.
+For a rotation angle grid of 30 degrees (12 choices for each helix
+to cover full 360 degrees), the mean-field energy summation samples all 
+12^7 = ~ 35 million structures.
+
+Usage:
+all_bihelix_pairs.pl -p {protein_bgf_file} -pairs {helixpairfile} -a {combinatorial_rotation_angle_data_file} -an {number of output combinations} -r -s -mach {machine}
+
+
+##############################
+##### Step 5: CombiHelix #####
+##############################
+This wrapper script sets up the combinatorial helix rotational
+MembSCREAM step, where each helix is rotated simultaneously
+by angles corresponding to those identified by bihelix.
+This is followed by a full side-chain
+optimization using SCREAM and an implicit membrane solvation
+calculation using MembSOLV.
+
+Usage:
+combi_frombihelixsum.pl -p {protein_bgf_file} -e {Energy Criteria} -n {number of combinations for combi_scream} -r -s -m -mach {machine}
+
+
+###########################
+##### Important Notes #####
+###########################
+
+1) It is important to look at your alignment when running PredicTM to make sure
+that the alignment makes snese.
+
+2) It is also important to look at your raw TM predictions versus your capped
+TM predictions. The capping rules make sense in most cases, but not all!  It is
+often important to compare the predictions in one protein to the others in its
+family or subfamily (for example compare D1 to D2, D3, D4, and D5).
+
+3) Look to see if any helices were eliminated for being too short.  If such a
+helix is very close to the end of another helix, then perhaps it should really
+be a continuation and was cut off from the main helix due to a set of highly
+conserved polar residues.
+
+4) The eta angle residue calculation should be taken with a very large grain of
+salt, especially if your protein is missing some of the main conserved
+residues, such as the Asp in the middle of TM3.  In cases like that, it's
+important to verify the automated predictions by hand.
+
+5) It is important to view the dynamics from OptHelix.  This is facilitated by
+the VMD source files in the vmd subdirectory of the OptHelix output.  Viewing
+of the dynamics will identify whether any irregularities occurred during the
+dyanmics, such as long-term excessive kinking or unraveling of the helices.
+
+####################
+##### Defaults #####
+####################
+
+The default parameters for Blast, PredicTM, and OptHelix are suited for both
+GPCRs and other helical membrane proteins, so significant alterations should not
+be needed.  However, in addition to the command line options, permanent changes
+to the default can be made on both a group and an individual user basis.  In the
+same directory as the Blast.pl, PredicTM.pl, and OptHelix.pl  files, there is a
+.gensemble directory containing .blast, .predictm, and .opthelix files.  Editing
+these .blast, .predictm, and .opthelix files will change the defaults for every
+user.  However, if the .gensemble directory is copied into the user's home
+directory, then Blast.pl, PredicTM.pl, and OptHelix.pl will default to the
+individual user's.blast, .predictm, and .opthelix files, allowing the user to
+set up defaults that are different from all other users'.
+
+Replacement copies of the .blast, .predictm, and .opthelix files can be found
+at the end of the Blast.pl, PredicTM.pl, and OptHelix.pl programs.
+
+#####################################################################
+#                                                                   #
+# GEnsemble ::                                                      #
+# PredicTM.pl/PredicTM.pm/BLAST.pl/BLAST.pm/Clustal.pm/Mafft.pm     #
+# OptHelix.pl/OptHelix.pm                                           #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+# Uses BLAST:                                                       #
+# Altschul S.F., Madden T.L., Schaffer A.A., Zhang J., Zhang Z.,    #
+# Miller W., Lipman D.J.  Gapped BLAST and PSI-BLAST: a new         #
+# generation of protein database search programs. (1997)            #
+# _Nucleic Acids Res_ 25:3389-3402.                                 #
+#                                                                   #
+# BLAST is performed at the SIB using the BLAST network service.    #
+# The SIB BLAST network service uses a server developed at SIB and  #
+# the NCBI BLAST 2 software.                                        #
+#                                                                   #
+# Uses the GPCRDB when flagging of cutting potential non-GPCR       #
+# sequences: http://www.gpcr.org/7tm/htmls/entries.html             #
+#                                                                   #
+# Uses libwww-perl-5.808 from the Comprehensive Perl Archive        #
+# Network (CPAN).                                                   #
+# libwww-perl (c) 1995-2005 Gisle Aas. All rights reserved.         #
+# libwww-perl (c) 1995 Martijn Koster. All rights reserved.         #
+#                                                                   #
+# Uses ClustalW 1.83:                                               #
+# Chenna, et al. "Multiple sequence alignment with the Clustal      #
+# series of programs." (2003)                                       #
+# _Nucleic Acids Res_ 31 (13):3497-500 PubMedID: 12824352           #
+#                                                                   #
+# Uses MAFFT 6.240:                                                 #
+# MAFFT v6.240 (2007/04/04)  Copyright (c) 2006 Kazutaka Katoh      #
+# http://align.bmr.kyushu-u.ac.jp/mafft/software/                   #
+# NAR 30:3059-3066, NAR 33:511-518                                  #
+#                                                                   #
+#####################################################################

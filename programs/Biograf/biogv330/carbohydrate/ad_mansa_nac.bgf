@@ -1,0 +1,70 @@
+BIOGRF  160
+DESCRP AD_MANNN
+REMARK Created by slm @ tms2r on  1/26/90   13:10:46               
+REMARK alpha-N-Acetyl-D-mannosamine
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  MAN      1    1.13340   0.34559  -1.01436 O_3    2 2  0.00000
+HETATM     2  C1*  MAN      1    1.77863  -0.22528   0.13618 C_3    4 0  0.00000
+HETATM     3 HC1*  MAN      1    2.75725   0.25406   0.21662 H_     1 0  0.00000
+HETATM     4  O1*  MAN      1    2.07223  -1.60386  -0.09718 O_3    2 2  0.00000
+HETATM     5 HO1*  MAN      1    1.23553  -2.10702  -0.18116 H___A  1 0  0.00000
+HETATM     6  C2*  MAN      1    0.97013   0.00712   1.44606 C_3    4 0  0.00000
+HETATM     7 HC2*  MAN      1    1.39784  -0.64270   2.21546 H_     1 0  0.00000
+HETATM     8  C3*  MAN      1   -0.51374  -0.43084   1.24730 C_3    4 0  0.00000
+HETATM     9 HC3*  MAN      1   -0.50646  -1.51157   1.08320 H_     1 0  0.00000
+HETATM    10  O3*  MAN      1   -1.29427  -0.25147   2.43742 O_3    2 2  0.00000
+HETATM    11 HO3*  MAN      1   -2.19238  -0.61742   2.29632 H___A  1 0  0.00000
+HETATM    12  C4*  MAN      1   -1.14900   0.22978  -0.01270 C_3    4 0  0.00000
+HETATM    13 HC4*  MAN      1   -1.25094   1.30078   0.17589 H_     1 0  0.00000
+HETATM    14  O4*  MAN      1   -2.46663  -0.27046  -0.26589 O_3    2 2  0.00000
+HETATM    15 HO4*  MAN      1   -2.84140   0.19126  -1.04469 H___A  1 0  0.00000
+HETATM    16  C5*  MAN      1   -0.24802   0.02295  -1.26844 C_3    4 0  0.00000
+HETATM    17 HC5*  MAN      1   -0.27704  -1.03752  -1.53485 H_     1 0  0.00000
+HETATM    18  C6*  MAN      1   -0.70938   0.79377  -2.53261 C_3    4 0  0.00000
+HETATM    19 HC6*  MAN      1   -1.71119   0.46862  -2.81615 H_     1 0  0.00000
+HETATM    20 HC6*  MAN      1   -0.04349   0.55677  -3.36437 H_     1 0  0.00000
+HETATM    21  O6*  MAN      1   -0.73560   2.21161  -2.38486 O_3    2 2  0.00000
+HETATM    22 HO6*  MAN      1    0.16553   2.53557  -2.17649 H___A  1 0  0.00000
+HETATM    23  N2*  MAN      1    1.09736   1.35674   1.83790 N_R    3 0  0.00000
+HETATM    24 HN2*  MAN      1    0.78457   1.99096   1.21868 H___A  1 0  0.00000
+HETATM    25  C1   MAN      1    1.59973   1.85266   2.96582 C_R    3 0  0.00000
+HETATM    26  O1   MAN      1    2.05420   1.13032   3.89065 O_2    1 2  0.00000
+HETATM    27  C2   MAN      1    1.63806   3.31154   3.16627 C_3    4 0  0.00000
+HETATM    28 HC2   MAN      1    1.08992   3.57507   4.07266 H_     1 0  0.00000
+HETATM    29 HC2   MAN      1    1.19442   3.86141   2.33297 H_     1 0  0.00000
+HETATM    30 HC2   MAN      1    2.67296   3.64066   3.27513 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    16
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8     7    23
+CONECT     7     6
+CONECT     8     6    10    12     9
+CONECT     9     8
+CONECT    10     8    11
+CONECT    11    10
+CONECT    12     8    14    16    13
+CONECT    13    12
+CONECT    14    12    15
+CONECT    15    14
+CONECT    16     1    12    18    17
+CONECT    17    16
+CONECT    18    16    21    19    20
+CONECT    19    18
+CONECT    20    18
+CONECT    21    18    22
+CONECT    22    21
+CONECT    23     6    24    25
+CONECT    24    23
+CONECT    25    26    27    23
+ORDER     25     2     1     1
+CONECT    26    25
+ORDER     26     2
+CONECT    27    25    30    29    28
+CONECT    28    27
+CONECT    29    27
+CONECT    30    27
+END

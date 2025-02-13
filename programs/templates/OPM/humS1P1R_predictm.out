@@ -1,0 +1,420 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Loading PredicTM Defaults @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Default Values Loaded From :: /project/Biogroup/Software/GEnsemble/programs/.gensemble/.predictm
+ :: scale         :: octanol
+ :: avgwins       :: 7-21
+ :: minhelix      :: 10
+ :: maxhelix      :: 35
+ :: minloop       :: 6
+ :: maxcap        :: 6
+ :: maxext        :: 4
+ :: ntermbreakers :: G,P,D,E,R,K,H
+ :: ctermbreakers :: G,P,D,E,R,K,H
+ :: baseline      :: 0.0
+ :: clustal       :: 0
+ :: etares        :: 1
+ :: protdb        :: Complete
+ :: ethreshold    :: 0.1
+ :: sequences     :: 1000
+ :: compiter      :: 1000
+ :: maxseqs       :: 2000
+ :: complete      :: 1
+ :: flagnongpcr   :: 0
+ :: cutnongpcr    :: 0
+ :: filter        :: 0
+ :: trembl        :: 0
+ :: qsub          :: 1
+ :: queuetype     :: pbs
+Defaults Changed By User
+ :: qsub         :: 1 ==> 0
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Running Blast v1.25 @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Blast :: Running With the Following Parameters ::
+ :: Protein Database                 :: Complete
+ :: E-Threshold                      :: 0.1
+ :: Sequences                        :: 1000
+ :: Completeness Step                :: 1000
+ :: Maximum Sequences                :: 2000
+ :: Find Completeness                :: Yes
+ :: Flag Possible Non-GPCRs          :: No
+ :: Cut Possible Non-GPCRs           :: No
+ :: Use Low-Complexity Region Filter :: No
+ :: Include TrEMBL Sequences         :: No
+
+Performing BLAST Search ::
+ :: Date                   :: Sat Apr  7 23:09:14 2012
+ :: Database               :: Complete
+ :: Include TrEMBL         :: No
+ :: E-Threshold            :: 0.1
+ :: Filter Low Complexity  :: No
+ :: Accession Number Input :: P21453
+ :: MGPTSVPLVKAHRSSVSDYVNYDIIVRHYNYTGKLNISADKENSIKLTSVVFILICCFII
+ :: LENIFVLLTIWKTKKFHRPMYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTPAQWFLR
+ :: EGSMFVALSASVFSLLAIAIERYITMLKMKLHNGSNNFRLFLLISACWVISLILGGLPIM
+ :: GWNCISALSSCSTVLPLYHKHYILFCTTVFTLLLLSIVILYCRIYSLVRTRSRRLTFRKN
+ :: ISKASRSSEKSLALLKTVIIVLSVFIACWAPLFILLLLDVGCKVKTCDILFRAEYFLVLA
+ :: VLNSGTNPIIYTLTNKEMRRAFIRIMSCCKCPSGDSAGKFKRPIIAGMEFSRSKSDNSSH
+ :: PQKDEGDNPETIMSSGNVNSSS
+
+Round 1 Results ::
+ :: Number of Sequences Requested  :: 1000
+ :: Number of Sequences Returned   :: 1000
+ :: Number of Normal Sequences     :: 884
+ :: Number of Splice Sequences     :: 116
+ :: Largest E-Value                :: 2.1654e-06
+ :: Completeness Not Obtained
+ :: Increase Target By 1000
+
+Round 2 Results ::
+ :: Number of Sequences Requested  :: 2000
+ :: Number of Sequences Returned   :: 1880
+ :: Number of Normal Sequences     :: 1694
+ :: Number of Splice Sequences     :: 186
+ :: Largest E-Value                :: 0.0941464
+ :: Completeness Obtained
+
+Output Files ::
+ :: BLAST Results FASTA File      :: P21453.fta
+ :: E-Value/% Identity File (CSV) :: P21453.csv
+ :: E-Value/% Identity File (TXT) :: P21453.txt
+ :: BLAST HTML Output             :: P21453.html
+ :: BLAST XML Output              :: P21453.xml
+ :: Blast.pl Log File             :: P21453.log
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Running PredicTM v1.25 @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PredicTM :: Running With the Following Parameters ::
+ :: Running From BLAST Output ::
+ :: Hydrophobicity Scale      :: octanol
+ :: Windows to Average        :: 7-21
+ :: Minimum Acceptable Helix  :: 10
+ :: Maximum Cappable Helix    :: 35
+ :: Minimum Loop Length       :: 6
+ :: Maximum Capping Length    :: 6
+ :: Maximum Extension Length  :: 4
+ :: Baseline                  :: 0.0
+ :: Use Clustal               :: No
+
+Running MAFFT :: P21453.fta
+ :: Sequences  :: 1694
+ :: Start Time :: Sat Apr  7 23:15:01 2012
+ :: Stop Time  :: Sun Apr  8 02:52:29 2012
+
+Loading Hydrophobicity Scale :: octanol :: Sun Apr  8 02:52:31 2012
+ :: A / ALA / Alanine       :: -0.500
+ :: C / CYS / Cysteine      ::  0.020
+ :: D / ASP / Aspartic Acid :: -3.640
+ :: E / GLU / Glutamic Acid :: -3.630
+ :: F / PHE / Phenylalanine ::  1.710
+ :: G / GLY / Glycine       :: -1.150
+ :: H / HIS / Histidine     :: -0.110
+ :: I / ILE / Isoleucine    ::  1.120
+ :: K / LYS / Lysine        :: -2.800
+ :: L / LEU / Leucine       ::  1.250
+ :: M / MET / Methionine    ::  0.670
+ :: N / ASN / Asparagine    :: -0.850
+ :: P / PRO / Proline       :: -0.140
+ :: Q / GLN / Glutamine     :: -0.770
+ :: R / ARG / Arginine      :: -1.810
+ :: S / SER / Serine        :: -0.460
+ :: T / THR / Threonine     :: -0.250
+ :: V / VAL / Valine        ::  0.460
+ :: W / TRP / Tryptophan    ::  2.090
+ :: Y / TYR / Tyrosine      ::  0.710
+
+Loading the PIR File :: P21453.pir ::
+ :: Sequences Loaded       :: 1694
+ :: Target Sequence Length :: 382
+ :: Alignment Length       :: 2906
+
+Assigning & Averaging Hydrophobicities ::
+ :: Sequence 185, Align Position 890, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864F9|MSHR_GALSE Melanocyte-stimulating hormone receptor OS=Galago senegalensis GN=MC1R PE=3 SV=1
+ :: Sequence 148, Align Position 1125, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864H8|MSHR_CALGE Melanocyte-stimulating hormone receptor OS=Callithrix geoffroyi GN=MC1R PE=3 SV=1
+ :: Sequence 1109, Align Position 1167, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q95N03|CLTR2_PIG Cysteinyl leukotriene receptor 2 OS=Sus scrofa GN=CYSLTR2 PE=2 SV=1
+ :: Sequence 945, Align Position 1211, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|P30544|ACM4_XENLA Muscarinic acetylcholine receptor M4 OS=Xenopus laevis GN=chrm4 PE=3 SV=1
+ :: Sequence 1133, Align Position 1214, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|P23268|O1082_RAT Olfactory receptor 1082 OS=Rattus norvegicus GN=Olr1082 PE=2 SV=1
+ :: Sequence 184, Align Position 1270, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864H1|MSHR_SAGMI Melanocyte-stimulating hormone receptor OS=Saguinus midas GN=MC1R PE=3 SV=1
+ :: Sequence 194, Align Position 1499, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864G7|MSHR_ATEPA Melanocyte-stimulating hormone receptor OS=Ateles paniscus GN=MC1R PE=3 SV=1
+ :: Sequence 728, Align Position 1501, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q9TU84|OR1D2_PONPY Olfactory receptor 1D2 OS=Pongo pygmaeus GN=OR1D2 PE=3 SV=1
+ :: Sequence 169, Align Position 1514, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864K7|MSHR_HYLME Melanocyte-stimulating hormone receptor OS=Hylobates muelleri GN=MC1R PE=3 SV=1
+ :: Sequence 728, Align Position 1517, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q9TU84|OR1D2_PONPY Olfactory receptor 1D2 OS=Pongo pygmaeus GN=OR1D2 PE=3 SV=1
+ :: Sequence 1371, Align Position 2389, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q9TU99|OR1G1_PANTR Olfactory receptor 1G1 OS=Pan troglodytes GN=OR1G1 PE=3 SV=1
+ :: Sequence 178, Align Position 2452, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q864G0|MSHR_LORTA Melanocyte-stimulating hormone receptor OS=Loris tardigradus GN=MC1R PE=3 SV=1
+ :: Sequence 1268, Align Position 2507, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;sp|Q9TUA1|OR1E5_PANTR Olfactory receptor 1E5 OS=Pan troglodytes GN=OR1E5 PE=3 SV=1
+ :: Sequence 765, Align Position 2599, Nonstandard Amino Acid (Z) Replaced With Gap
+    >P1;sp|Q9N2A4|ACM3_PANTR Muscarinic acetylcholine receptor M3 OS=Pan troglodytes GN=CHRM3 PE=3 SV=1
+ :: 14 Nonstandard Amino Acids Replaced With Gaps
+
+Windowing Hydrophobicities ::
+ :: Windows Calculated :: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31
+
+Averaging Windows :: 7-21
+ :: Windows Used in Average    :: 7 9 11 13 15 17 19 21
+ :: Number of Windows Averaged :: 8
+
+Raw Predictions ::
+ :: TM  1 (raw) ::  48 :: TSVVFILICCFIILENIFVLLTI             ::  70 :: Length 23
+ :: TM  2 (raw) ::  80 :: MYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTP :: 114 :: Length 35
+ :: TM  3 (raw) :: 118 :: FLREGSMFVALSASVFSLLA                :: 137 :: Length 20
+ :: TM  4 (raw) :: 163 :: LISACWVISLILGGLPIM                  :: 180 :: Length 18
+ :: TM  5 (raw) :: 200 :: KHYILFCTTVFTLLLLSIVILYCRIY          :: 225 :: Length 26
+ :: TM  6 (raw) :: 259 :: IIVLSVFIACWAPLFILLLLD               :: 279 :: Length 21
+ :: TM  7 (raw) :: 294 :: EYFLVLAVLNSGTNPIIY                  :: 311 :: Length 18
+
+Helices That Don't Meet Minimum Helix Length ::
+ :: All helices greater than or equal to minimum helix length
+
+Finding Possible Caps and Extensions ::
+ :: TM  1 :: Possible N-Term Cap :: K46
+ :: TM  1 :: Possible N-Term Ext :: S44
+ :: TM  1 :: Possible C-Term Cap :: K72
+ :: TM  1 :: Possible C-Term Ext :: K74
+
+ :: TM  2 :: Possible N-Term Cap :: P79
+ :: TM  2 :: Possible N-Term Ext :: F76
+ :: TM  2 :: Possible C-Term Cap :: R120
+ :: TM  2 :: Possible C-Term Ext :: F118
+
+ :: TM  3 :: Possible N-Term Cap :: P114
+ :: TM  3 :: Possible N-Term Ext :: P114
+ :: TM  3 :: Possible C-Term Cap :: E141
+ :: TM  3 :: Possible C-Term Ext :: E141
+
+ :: TM  4 :: Possible N-Term Cap :: R159
+ :: TM  4 :: Possible N-Term Ext :: R159
+ :: TM  4 :: Possible C-Term Cap :: G181
+ :: TM  4 :: Possible C-Term Ext :: C184
+
+ :: TM  5 :: Possible N-Term Cap :: H199
+ :: TM  5 :: Possible N-Term Ext :: P196
+ :: TM  5 :: Possible C-Term Cap :: R229
+ :: TM  5 :: Possible C-Term Ext :: R229
+
+ :: TM  6 :: Possible N-Term Cap :: K256
+ :: TM  6 :: Possible N-Term Ext :: L255
+ :: TM  6 :: Possible C-Term Cap :: G281
+ :: TM  6 :: Possible C-Term Ext :: K283
+
+ :: TM  7 :: Possible N-Term Cap :: R292
+ :: TM  7 :: Possible N-Term Ext :: L290
+ :: TM  7 :: Possible C-Term Cap :: K316
+ :: TM  7 :: Possible C-Term Ext :: N315
+
+Applying Capping Rules ::
+ :: Reminder :: Minimum Loop Length :: 6 :: Working on N-Term of TM 1
+    :: TM  1 :: N-Term capped from T48 to K46
+
+ :: Working on C-Term of TM 1 and N-Term of TM 2
+    :: TM  1 :: C-Term capped from I70 to K72
+    :: TM  2 :: N-Term capped from M80 to P79
+
+ :: Working on C-Term of TM 2 and N-Term of TM 3
+    :: Could not cap TM 2 C-Term to R120 and cap TM 3 N-Term to P114
+    :: Could not extend TM 2 C-Term to F118 and extend TM 3 N-Term to P114
+    :: TM  2 :: C-Term left at P114
+    :: TM  3 :: N-Term left at F118
+
+ :: Working on C-Term of TM 3 and N-Term of TM 4
+    :: TM  3 :: C-Term capped from A137 to E141
+    :: TM  4 :: N-Term capped from L163 to R159
+
+ :: Working on C-Term of TM 4 and N-Term of TM 5
+    :: TM  4 :: C-Term capped from M180 to G181
+    :: TM  5 :: N-Term capped from K200 to H199
+
+ :: Working on C-Term of TM 5 and N-Term of TM 6
+    :: TM  5 :: C-Term capped from Y225 to R229
+    :: TM  6 :: N-Term capped from I259 to K256
+
+ :: Working on C-Term of TM 6 and N-Term of TM 7
+    :: TM  6 :: C-Term capped from D279 to G281
+    :: TM  7 :: N-Term capped from E294 to R292
+
+ :: Working on C-Term of TM 7
+    :: TM  7 :: C-Term capped from Y311 to K316
+
+Finding Residue to Define Eta Angle Rotation ::
+ :: TM 1 :: Consensus Seq ::     :: SPWQAVLLAALYSLVFLLGLLGNVLVILVILRNK ::
+ :: TM 1 :: Target TM     ::  46 :: K-----LTSVVFILICCFIILENIFVLLTIW--K ::  72
+ :: Eta Residue           ::  63 ::                       e
+
+ :: TM 2 :: Consensus Seq ::     :: TVTNYFLLNLAVADLLVALT-----LPPWAAYYALGG ::
+ :: TM 2 :: Target TM     ::  79 :: PMY-YFIGNLALSDLLAGVAYTANLLLSGATTYKLTP :: 114
+ :: Eta Residue           ::  91 ::              e
+
+ :: TM 3 :: Consensus Seq ::     :: GRVGCKLWLALDVLNCTASILSLTAISVDRYLAIVH ::
+ :: TM 3 :: Target TM     :: 118 ::      FLREGSMFVALSASVFSLLAIAIE------- :: 141
+ :: Eta Residue           :: 124 ::            e
+
+ :: TM 4 :: Consensus Seq ::     :: TPRRAKVVIAAVWVLSLLISLPPLLF ::
+ :: TM 4 :: Target TM     :: 159 :: ---RLFLLISACWVISLILGGLPIMG :: 181
+ :: Eta Residue           :: 168 ::             e
+
+ :: TM 5 :: Consensus Seq ::     :: WNVAYVIYSFILGFYLPLLIMLVCYGRIYRT ::
+ :: TM 5 :: Target TM     :: 199 ::   HKHYILFCTTVFTLLLLSIVILYCRIYSLVR :: 229
+ :: Eta Residue           :: 213 ::                 e
+
+ :: TM 6 :: Consensus Seq ::     :: RKATKMLVIVVGVFVLCWLPFFIVNLLNAFCPGSII ::
+ :: TM 6 :: Target TM     :: 256 :: ----KTVIIVLSVFIACWAPLFILLLLDVG------ :: 281
+ :: Eta Residue           :: 271 ::                    e
+
+ :: TM 7 :: Consensus Seq ::     :: -FQVTIWLGYANSCLNPIIYAFLNK ::
+ :: TM 7 :: Target TM     :: 292 :: RAEYFLVLAVLNSGTNPIIYTLTNK :: 316
+ :: Eta Residue           :: 308 ::                 e
+
+Final Results ::
+ :: TM  1 (raw) ::   48 ::   TSVVFILICCFIILENIFVLLTI            ::   70 :: Length 23
+ :: TM  1 (cap) ::   46 :: KLTSVVFILICCFIILENIFVLLTIWK          ::   72 :: Length 27
+ :: Centers ::                     p  a *
+    :: Area          ::   56.94 :: C57 :: a
+    :: Peak          ::   54.00 :: L54 :: p
+    :: Geom. (Raw)   ::   59.00 :: I59 :: *
+    :: Geom. (Cap)   ::   59.00 :: I59 :: *
+    :: Eta Angle Res ::   63.00 :: N63
+
+ :: TM  2 (raw) ::   80 ::  MYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTP ::  114 :: Length 35
+ :: TM  2 (cap) ::   79 :: PMYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTP ::  114 :: Length 36
+ :: Centers ::                               *    p
+    :: Area          ::   97.47 :: A97 :: *
+    :: Peak          ::  102.00 :: L102 :: p
+    :: Geom. (Raw)   ::   97.00 :: A97 :: *
+    :: Geom. (Cap)   ::   96.50 :: A97 :: *
+    :: Eta Angle Res ::   91.00 :: D91
+
+ :: TM  3 (raw) ::  118 :: FLREGSMFVALSASVFSLLA                 ::  137 :: Length 20
+ :: TM  3 (cap) ::  118 :: FLREGSMFVALSASVFSLLAIAIE             ::  141 :: Length 24
+ :: Centers ::                       . *
+    :: Area          ::  129.65 :: A130 :: *
+    :: Peak          ::  130.00 :: A130 :: *
+    :: Geom. (Raw)   ::  127.50 :: L128 :: .
+    :: Geom. (Cap)   ::  129.50 :: A130 :: *
+    :: Eta Angle Res ::  128.00 :: L128
+
+ :: TM  4 (raw) ::  163 ::     LISACWVISLILGGLPIM               ::  180 :: Length 18
+ :: TM  4 (cap) ::  159 :: RLFLLISACWVISLILGGLPIMG              ::  181 :: Length 23
+ :: Centers ::                        g*.
+    :: Area          ::  171.06 :: S171 :: *
+    :: Peak          ::  171.00 :: S171 :: *
+    :: Geom. (Raw)   ::  171.50 :: L172 :: .
+    :: Geom. (Cap)   ::  170.00 :: I170 :: g
+    :: Eta Angle Res ::  168.00 :: W168
+
+ :: TM  5 (raw) ::  200 ::  KHYILFCTTVFTLLLLSIVILYCRIY          ::  225 :: Length 26
+ :: TM  5 (cap) ::  199 :: HKHYILFCTTVFTLLLLSIVILYCRIYSLVR      ::  229 :: Length 31
+ :: Centers ::                           *g
+    :: Area          ::  213.10 :: L213 :: *
+    :: Peak          ::  213.00 :: L213 :: *
+    :: Geom. (Raw)   ::  212.50 :: L213 :: *
+    :: Geom. (Cap)   ::  214.00 :: L214 :: g
+    :: Eta Angle Res ::  215.00 :: L215
+
+ :: TM  6 (raw) ::  259 ::    IIVLSVFIACWAPLFILLLLD             ::  279 :: Length 21
+ :: TM  6 (cap) ::  256 :: KTVIIVLSVFIACWAPLFILLLLDVG           ::  281 :: Length 26
+ :: Centers ::                         *@
+    :: Area          ::  268.41 :: C268 :: *
+    :: Peak          ::  268.00 :: C268 :: *
+    :: Geom. (Raw)   ::  269.00 :: W269 :: @
+    :: Geom. (Cap)   ::  268.50 :: W269 :: @
+    :: Eta Angle Res ::  271.00 :: P271
+
+ :: TM  7 (raw) ::  294 ::   EYFLVLAVLNSGTNPIIY                 ::  311 :: Length 18
+ :: TM  7 (cap) ::  292 :: RAEYFLVLAVLNSGTNPIIYTLTNK            ::  316 :: Length 25
+ :: Centers ::                      pa.g
+    :: Area          ::  301.97 :: L302 :: a
+    :: Peak          ::  301.00 :: V301 :: p
+    :: Geom. (Raw)   ::  302.50 :: N303 :: .
+    :: Geom. (Cap)   ::  304.00 :: S304 :: g
+    :: Eta Angle Res ::  308.00 :: P308
+
+Capped TMs ::
+ :: TM  1  ::   46 :: KLTSVVFILICCFIILENIFVLLTIWK          ::   72 :: Length 27
+ :: TM  2  ::   79 :: PMYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTP ::  114 :: Length 36
+ :: TM  3  ::  118 :: FLREGSMFVALSASVFSLLAIAIE             ::  141 :: Length 24
+ :: TM  4  ::  159 :: RLFLLISACWVISLILGGLPIMG              ::  181 :: Length 23
+ :: TM  5  ::  199 :: HKHYILFCTTVFTLLLLSIVILYCRIYSLVR      ::  229 :: Length 31
+ :: TM  6  ::  256 :: KTVIIVLSVFIACWAPLFILLLLDVG           ::  281 :: Length 26
+ :: TM  7  ::  292 :: RAEYFLVLAVLNSGTNPIIYTLTNK            ::  316 :: Length 25
+
+TMs Flipped and Aligned By Area Centers ::
+ :: TM  1  ::   46 ::       KLTSVVFILICCFIILENIFVLLTIWK    ::   72 :: Length 27
+ :: TM  2f ::  114 :: PTLKYTTAGSLLLNATYAVGALLDSLALNGIFYYMP ::   79 :: Length 36
+ :: TM  3  ::  118 ::      FLREGSMFVALSASVFSLLAIAIE        ::  141 :: Length 24
+ :: TM  4f ::  181 ::        GMIPLGGLILSIVWCASILLFLR       ::  159 :: Length 23
+ :: TM  5  ::  199 ::    HKHYILFCTTVFTLLLLSIVILYCRIYSLVR   ::  229 :: Length 31
+ :: TM  6f ::  281 ::     GVDLLLLIFLPAWCAIFVSLVIIVTK       ::  256 :: Length 26
+ :: TM  7  ::  292 ::        RAEYFLVLAVLNSGTNPIIYTLTNK     ::  316 :: Length 25
+ :: Center         ::                  a
+
+TMs Flipped and Aligned By Peak Centers ::
+ :: TM  1  ::   46 ::       KLTSVVFILICCFIILENIFVLLTIWK      ::   72 :: Length 27
+ :: TM  2f ::  114 ::   PTLKYTTAGSLLLNATYAVGALLDSLALNGIFYYMP ::   79 :: Length 36
+ :: TM  3  ::  118 ::   FLREGSMFVALSASVFSLLAIAIE             ::  141 :: Length 24
+ :: TM  4f ::  181 ::     GMIPLGGLILSIVWCASILLFLR            ::  159 :: Length 23
+ :: TM  5  ::  199 :: HKHYILFCTTVFTLLLLSIVILYCRIYSLVR        ::  229 :: Length 31
+ :: TM  6f ::  281 ::  GVDLLLLIFLPAWCAIFVSLVIIVTK            ::  256 :: Length 26
+ :: TM  7  ::  292 ::      RAEYFLVLAVLNSGTNPIIYTLTNK         ::  316 :: Length 25
+ :: Center         ::               p
+
+TMs Flipped and Aligned By Raw Geometric Centers ::
+ :: TM  1  ::   46 ::     KLTSVVFILICCFIILENIFVLLTIWK      ::   72 :: Length 27
+ :: TM  2f ::  114 :: PTLKYTTAGSLLLNATYAVGALLDSLALNGIFYYMP ::   79 :: Length 36
+ :: TM  3  ::  118 ::        FLREGSMFVALSASVFSLLAIAIE      ::  141 :: Length 24
+ :: TM  4f ::  181 ::         GMIPLGGLILSIVWCASILLFLR      ::  159 :: Length 23
+ :: TM  5  ::  199 ::    HKHYILFCTTVFTLLLLSIVILYCRIYSLVR   ::  229 :: Length 31
+ :: TM  6f ::  281 ::      GVDLLLLIFLPAWCAIFVSLVIIVTK      ::  256 :: Length 26
+ :: TM  7  ::  292 ::       RAEYFLVLAVLNSGTNPIIYTLTNK      ::  316 :: Length 25
+ :: Center         ::                  .
+
+TMs Flipped and Aligned By Capped Geometric Centers ::
+ :: TM  1  ::   46 ::     KLTSVVFILICCFIILENIFVLLTIWK      ::   72 :: Length 27
+ :: TM  2f ::  114 :: PTLKYTTAGSLLLNATYAVGALLDSLALNGIFYYMP ::   79 :: Length 36
+ :: TM  3  ::  118 ::      FLREGSMFVALSASVFSLLAIAIE        ::  141 :: Length 24
+ :: TM  4f ::  181 ::       GMIPLGGLILSIVWCASILLFLR        ::  159 :: Length 23
+ :: TM  5  ::  199 ::   HKHYILFCTTVFTLLLLSIVILYCRIYSLVR    ::  229 :: Length 31
+ :: TM  6f ::  281 ::      GVDLLLLIFLPAWCAIFVSLVIIVTK      ::  256 :: Length 26
+ :: TM  7  ::  292 ::      RAEYFLVLAVLNSGTNPIIYTLTNK       ::  316 :: Length 25
+ :: Center         ::                  g
+
+Modified FASTA Output ::
+>P1;sp|P21453|S1PR1_HUMAN Sphingosine 1-phosphate receptor 1 OS=Homo sapiens GN=S1PR1 PE=1 SV=2
+MGPTSVPLVKAHRSSVSDYVNYDIIVRHYNYTGKLNISADKENSIKLTSVVFILICCFII
+LENIFVLLTIWKTKKFHRPMYYFIGNLALSDLLAGVAYTANLLLSGATTYKLTPAQWFLR
+EGSMFVALSASVFSLLAIAIERYITMLKMKLHNGSNNFRLFLLISACWVISLILGGLPIM
+GWNCISALSSCSTVLPLYHKHYILFCTTVFTLLLLSIVILYCRIYSLVRTRSRRLTFRKN
+ISKASRSSEKSLALLKTVIIVLSVFIACWAPLFILLLLDVGCKVKTCDILFRAEYFLVLA
+VLNSGTNPIIYTLTNKEMRRAFIRIMSCCKCPSGDSAGKFKRPIIAGMEFSRSKSDNSSH
+PQKDEGDNPETIMSSGNVNSSS
+*  1tm   48   70   46   72    X    X    X    X    N   63    A
+*  2tm   80  114   79  114    X    X    X    X    D   91    A
+*  3tm  118  137  118  141    X    X    X    X    M  124    A
+*  4tm  163  180  159  181    X    X    X    X    W  168    A
+*  5tm  200  225  199  229    X    X    X    X    L  213    A
+*  6tm  259  279  256  281    X    X    X    X    P  271    A
+*  7tm  294  311  292  316    X    X    X    X    P  308    A
+*  1hpc    59.00    59.00    54.00    56.94     X.00     X.00
+*  2hpc    97.00    96.50   102.00    97.47     X.00     X.00
+*  3hpc   127.50   129.50   130.00   129.65     X.00     X.00
+*  4hpc   171.50   170.00   171.00   171.06     X.00     X.00
+*  5hpc   212.50   214.00   213.00   213.10     X.00     X.00
+*  6hpc   269.00   268.50   268.00   268.41     X.00     X.00
+*  7hpc   302.50   304.00   301.00   301.97     X.00     X.00

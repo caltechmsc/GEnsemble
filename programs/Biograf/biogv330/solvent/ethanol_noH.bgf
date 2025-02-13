@@ -1,0 +1,13 @@
+BIOGRF  321
+DESCRP ETHANOL 
+REMARK Created by tc @ tahir on  4/30/93   23:42:50                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 C1    ETH      1    0.38800   0.25400   0.25700 C_32   4 0  0.00000
+HETATM     2 O1    ETH      1    1.35439  -0.18663  -0.68770 O_31   2 2  0.00000
+HETATM     3 C2    ETH      1   -0.99486  -0.29528  -0.10468 C_33   4 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3
+CONECT     2     1
+CONECT     3     1
+END

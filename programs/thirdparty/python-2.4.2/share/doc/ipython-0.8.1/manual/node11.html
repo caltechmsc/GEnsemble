@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Extensions for syntax processing</TITLE>
+<META NAME="description" CONTENT="Extensions for syntax processing">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node12.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html293"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html291"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html285"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html294"
+  HREF="node12.html">IPython as a system</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="node10.html">Using the Python debugger</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html295"
+  HREF="node11.html#SECTION000111000000000000000">Pasting of code starting with <TT>`&gt;&gt;&gt;</TT>
+' or <TT>`...</TT> '</A>
+<LI><A NAME="tex2html296"
+  HREF="node11.html#SECTION000112000000000000000">Input of physical quantities with units</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION000110000000000000000"></A><A NAME="sec:syntax-extensions"></A>
+<BR>
+Extensions for syntax processing
+</H1>
+
+<P>
+This isn't for the faint of heart, because the potential for breaking
+things is quite high. But it can be a very powerful and useful feature.
+In a nutshell, you can redefine the way IPython processes the user
+input line to accept new, special extensions to the syntax without
+needing to change any of IPython's own code.
+
+<P>
+In the <TT>IPython/Extensions</TT> directory you will find some examples
+supplied, which we will briefly describe now. These can be used `as
+is' (and both provide very useful functionality), or you can use them
+as a starting point for writing your own extensions.
+
+<P>
+
+<H2><A NAME="SECTION000111000000000000000">
+Pasting of code starting with <TT>`&#187;&gt;</TT>
+' or <TT>`...</TT> '</A>
+</H2>
+
+<P>
+In the python tutorial it is common to find code examples which have
+been taken from real python sessions. The problem with those is that
+all the lines begin with either <TT>`&gt;&gt;&gt;</TT>
+' or <TT>`...</TT> ', which makes it impossible to paste them all
+at once. One must instead do a line by line manual copying, carefully
+removing the leading extraneous characters.
+
+<P>
+This extension identifies those starting characters and removes them
+from the input automatically, so that one can paste multi-line examples
+directly into IPython, saving a lot of time. Please look at the file
+<TT>InterpreterPasteInput.py</TT> in the <TT>IPython/Extensions</TT>
+directory for details on how this is done.
+
+<P>
+IPython comes with a special profile enabling this feature, called
+<TT>tutorial</TT><SPAN  CLASS="textit">.</SPAN> Simply start IPython via <TT>`ipython&nbsp;-p&nbsp;tutorial'</TT>
+and the feature will be available. In a normal IPython session you
+can activate the feature by importing the corresponding module with:
+<BR><TT>In [1]: import IPython.Extensions.InterpreterPasteInput</TT>
+
+<P>
+The following is a 'screenshot' of how things work when this extension
+is on, copying an example from the standard tutorial:
+
+<P>
+<TT>IPython profile: tutorial</TT>&nbsp;
+<BR><TT>&nbsp;</TT>&nbsp;
+<BR><TT>*** Pasting of code with &#34;&gt;&gt;&gt;&#34;
+or &#34;...&#34; has been enabled.</TT>&nbsp;
+<BR><TT>&nbsp;</TT>&nbsp;
+<BR><TT>In [1]: &gt;&gt;&gt; def fib2(n): #
+return Fibonacci series up to n</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp; &#34;&#34;&#34;Return
+a list containing the Fibonacci series up to n.&#34;&#34;&#34;</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp; result = []</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp; a, b = 0, 1</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp; while b &lt; n:</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; result.append(b)&nbsp;&nbsp;&nbsp;
+# see below</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a, b = b, a+b</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...: ...&nbsp;&nbsp;&nbsp;&nbsp; return result</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp; ...:</TT>&nbsp;
+<BR><TT>&nbsp;</TT>&nbsp;
+<BR><TT>In [2]: fib2(10)</TT>&nbsp;
+<BR><TT>Out[2]: [1, 1, 2, 3, 5, 8]</TT>
+
+<P>
+Note that as currently written, this extension does <SPAN  CLASS="textit">not</SPAN> recognize
+IPython's prompts for pasting. Those are more complicated, since the
+user can change them very easily, they involve numbers and can vary
+in length. One could however extract all the relevant information
+from the IPython instance and build an appropriate regular expression.
+This is left as an exercise for the reader.
+
+<P>
+
+<H2><A NAME="SECTION000112000000000000000">
+Input of physical quantities with units</A>
+</H2>
+
+<P>
+The module <TT>PhysicalQInput</TT> allows a simplified form of input
+for physical quantities with units. This file is meant to be used
+in conjunction with the <TT>PhysicalQInteractive</TT> module (in the
+same directory) and <TT>Physics.PhysicalQuantities</TT> from Konrad
+Hinsen's ScientificPython (<TT><A NAME="tex2html19"
+  HREF="http://dirac.cnrs-orleans.fr/ScientificPython/">http://dirac.cnrs-orleans.fr/ScientificPython/</A></TT>).
+
+<P>
+The <TT>Physics.PhysicalQuantities</TT> module defines <TT>PhysicalQuantity</TT>
+objects, but these must be declared as instances of a class. For example,
+to define <TT>v</TT> as a velocity of 3&nbsp;m/s, normally you would write:&nbsp;
+<BR><TT>In [1]: v = PhysicalQuantity(3,'m/s')</TT>
+
+<P>
+Using the <TT>PhysicalQ_Input</TT> extension this can be input instead
+as:&nbsp;
+<BR><TT>In [1]: v = 3 m/s</TT>
+<BR>
+which is much more convenient for interactive use (even though it
+is blatantly invalid Python syntax).
+
+<P>
+The <TT>physics</TT> profile supplied with IPython (enabled via <TT>'ipython
+-p physics'</TT>) uses these extensions, which you can also activate with:
+
+<P>
+<TT>from math import * # math MUST be imported BEFORE PhysicalQInteractive</TT>&nbsp;
+<BR><TT>from IPython.Extensions.PhysicalQInteractive import *</TT>&nbsp;
+<BR><TT>import IPython.Extensions.PhysicalQInput</TT>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html293"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html291"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html285"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html294"
+  HREF="node12.html">IPython as a system</A>
+<B> Up:</B> <A NAME="tex2html292"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html286"
+  HREF="node10.html">Using the Python debugger</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

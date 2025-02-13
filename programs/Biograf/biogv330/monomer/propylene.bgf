@@ -1,0 +1,29 @@
+BIOGRF  160
+DESCRP propylen
+REMARK Created by srl @ iris on 12/11/89   11:56:47                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    PRO A    1    0.94500   0.86500   0.22600 C_3    4 0  0.00000
+HETATM     2 HX    PRO A    1    1.65700   0.50500  -0.51900 H_     1 0  0.00000
+HETATM     3 H2C1  PRO A    1    1.24400   0.50400   1.21100 H_     1 0  0.00000
+HETATM     4 H1C1  PRO A    1    0.96500   1.95600   0.23100 H_     1 0  0.00000
+HETATM     5 TT00  PRO A    1   -0.47300   0.37700  -0.11300 C_3    4 0  0.00000
+HETATM     6 C3    PRO A    1   -0.57900  -1.15700  -0.13800 C_3    4 0  0.00000
+HETATM     7 H3C3  PRO A    1   -0.32300  -1.56900   0.83900 H_     1 0  0.00000
+HETATM     8 H2C3  PRO A    1    0.09500  -1.57100  -0.88900 H_     1 0  0.00000
+HETATM     9 H1C3  PRO A    1   -1.60100  -1.44900  -0.38500 H_     1 0  0.00000
+HETATM    10 H2C2  PRO A    1   -0.75900   0.76900  -1.09100 H_     1 0  0.00000
+HETATM    11 TX    PRO A    1   -1.17000   0.76900   0.63000 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     3     2     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5    11    10     1     6
+CONECT     6     5     9     8     7
+CONECT     7     6
+CONECT     8     6
+CONECT     9     6
+CONECT    10     5
+CONECT    11     5
+END

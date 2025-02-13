@@ -1,0 +1,93 @@
+1  0  Unknown error number
+2  0  Can't find error message file:
+3  0  A group is not currently open
+4  0  A group is currently open
+5  0  Unable to find first label
+6  0  Unable to find second label
+7  0  Invalid or deleted object
+9  0  Bad flag value
+10  0  Bad position type value
+11  0  Negative list size
+12  0  Bad mode value
+13  0  Bad start and/or count values
+14  0  Non-positive index or list size
+15  0  Invalid device handle
+16  0  Invalid frame handle
+17  0  Invalid view handle
+18  0  Invalid group handle
+19  0  Invalid slot handle
+20  0  Invalid callback object
+21  0  Invalid pick path order
+22  0  Invalid color type
+23  1  Unable to allocate device
+24  1  Unable to allocate memory
+24  1  Unable to allocate memory of size
+25  0  Value out of range
+26  0  Invalid camera handle
+27  0  No traversal in progress
+28  0  Object name already in use
+29  0  Invalid dataobject handle
+30  0  Unable to recursively execute
+31  0  Traversal already in progress
+32  1  Bad curve interval
+33  1  Bad curve order
+34  1  Bad option specified to device
+35  1  Bad option value specified to
+36  0  Bad vertex type
+37  1  Ray intersect box not empty
+38  1  Cannot reduce number of object types
+39  0  Cannot initialize remote server
+40  1  Singular matrix - cannot invert
+41  2  Cannot load default font
+42  0  Cannot pop matrix
+43  0  Cannot pop stack
+44  0  Degenerate lookatfrom specification
+45  0  Device system access error
+46  2  Internal error
+47  2  I/O error
+48  0  Function disabled due to compile options.
+49  0  Invalid class handle
+50  0  Invalid matrix object handle
+51  2  Invalid method
+52  2  Invalid object type
+53  1  Invalid operation
+54  0  Invalid return status from pick callback
+55  2  Invalid set operation
+56  1  Invalid visual type
+57  0  I/O error
+58  0  Negative light intensity
+59  1  Non-NULL lcstowcsmat
+60  0  Non-square matrix
+61  0  No current value of attribute
+62  0  Device does not support output module for
+63  1  NULL local-to-world transformation matrix
+64  1  Internal error
+65  0  Slot queue overflow; event lost
+66  0  Socket failure
+67  0  Undefined method
+68  1  Unimplemented function
+69  0  Unimplemented function
+70  0  Unknown host
+71  0  Unknown service
+72  0  Unable to allocate memory of size
+73  0  Zero length normal vector
+74  0  Subdivision spec equals zero
+75  0  Triangle normals sum to 0 at vertex; check for back to back triangles
+76  0  Old function; replaced by
+77  0  Cannot create alternate object
+78  0  Invalid raster handle
+79  1  Function not supported anymore; instead use
+80  0  Quad normals sum to 0 at vertex, check for back to back quads
+81  1  Radiosity not initialized
+82  0  Bad DvInqFormFactorCompType value
+83  1  DdInqPixelData can't return pixel
+84  1  Can't return additional data index
+85  1  Can't initialize radiosity renderer
+86  1  Too many patches
+87  0  Bad additional-data set
+88  1  Bad pixel value
+89  1  Area of patch is zero
+90  1  Too few vertices
+91  0  Attempt to execute null object
+92  0  Can't initialize Dore' more than once
+93  2  Dore' library & application disagree on DtReal precision

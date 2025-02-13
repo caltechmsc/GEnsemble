@@ -1,0 +1,59 @@
+BIOGRF  110
+DESCRP DECALN_C
+HETATM    1 C1    ORG     1       0.502   0.824  -0.426 C_3     4  0  0.0000
+HETATM    2 HC1   ORG     1       0.397   1.640  -1.147 H_      1  0  0.0000
+HETATM    3 C2    ORG     1       1.125  -0.368  -1.196 C_3     4  0  0.0000
+HETATM    4 H2C2  ORG     1       1.345  -1.190  -0.512 H_      1  0  0.0000
+HETATM    5 H1C2  ORG     1       2.066  -0.053  -1.653 H_      1  0  0.0000
+HETATM    6 C3    ORG     1       1.431   1.356   0.694 C_3     4  0  0.0000
+HETATM    7 H2C3  ORG     1       2.450   1.456   0.315 H_      1  0  0.0000
+HETATM    8 H1C3  ORG     1       1.094   2.354   0.984 H_      1  0  0.0000
+HETATM    9 C4    ORG     1       1.451   0.464   1.954 C_3     4  0  0.0000
+HETATM   10 H2C4  ORG     1       2.021   0.968   2.737 H_      1  0  0.0000
+HETATM   11 H1C4  ORG     1       1.954  -0.478   1.729 H_      1  0  0.0000
+HETATM   12 C5    ORG     1       0.029   0.177   2.477 C_3     4  0  0.0000
+HETATM   13 H2C5  ORG     1       0.090  -0.535   3.301 H_      1  0  0.0000
+HETATM   14 H1C5  ORG     1      -0.408   1.101   2.861 H_      1  0  0.0000
+HETATM   15 C6    ORG     1      -0.883  -0.402   1.376 C_3     4  0  0.0000
+HETATM   16 H2C6  ORG     1      -0.530  -1.401   1.116 H_      1  0  0.0000
+HETATM   17 H1C6  ORG     1      -1.892  -0.499   1.781 H_      1  0  0.0000
+HETATM   18 C7    ORG     1      -0.920   0.503   0.117 C_3     4  0  0.0000
+HETATM   19 HC7   ORG     1      -1.369   1.451   0.428 H_      1  0  0.0000
+HETATM   20 C8    ORG     1      -1.837  -0.066  -0.995 C_3     4  0  0.0000
+HETATM   21 H2C8  ORG     1      -2.784  -0.395  -0.562 H_      1  0  0.0000
+HETATM   22 H1C8  ORG     1      -2.066   0.734  -1.703 H_      1  0  0.0000
+HETATM   23 C9    ORG     1       0.194  -0.886  -2.312 C_3     4  0  0.0000
+HETATM   24 H2C9  ORG     1       0.101  -0.124  -3.088 H_      1  0  0.0000
+HETATM   25 H1C9  ORG     1       0.637  -1.775  -2.763 H_      1  0  0.0000
+HETATM   26 C10   ORG     1      -1.207  -1.240  -1.773 C_3     4  0  0.0000
+HETATM   27 H2C10 ORG     1      -1.854  -1.498  -2.613 H_      1  0  0.0000
+HETATM   28 H1C10 ORG     1      -1.137  -2.116  -1.125 H_      1  0  0.0000
+CONECT    1    6   18    3    2    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3   23    1    5    4    0    0
+CONECT    4    3    0    0    0    0    0
+CONECT    5    3    0    0    0    0    0
+CONECT    6    1    9    8    7    0    0
+CONECT    7    6    0    0    0    0    0
+CONECT    8    6    0    0    0    0    0
+CONECT    9   12    6   11   10    0    0
+CONECT   10    9    0    0    0    0    0
+CONECT   11    9    0    0    0    0    0
+CONECT   12    9   15   14   13    0    0
+CONECT   13   12    0    0    0    0    0
+CONECT   14   12    0    0    0    0    0
+CONECT   15   12   18   17   16    0    0
+CONECT   16   15    0    0    0    0    0
+CONECT   17   15    0    0    0    0    0
+CONECT   18   15    1   20   19    0    0
+CONECT   19   18    0    0    0    0    0
+CONECT   20   18   26   22   21    0    0
+CONECT   21   20    0    0    0    0    0
+CONECT   22   20    0    0    0    0    0
+CONECT   23    3   26   25   24    0    0
+CONECT   24   23    0    0    0    0    0
+CONECT   25   23    0    0    0    0    0
+CONECT   26   23   20   28   27    0    0
+CONECT   27   26    0    0    0    0    0
+CONECT   28   26    0    0    0    0    0
+END

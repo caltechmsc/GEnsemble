@@ -1,0 +1,6 @@
+SCREAM setup took 0.432832 seconds.
+SCREAM singles took 0.00173 seconds.
+SCREAM clash resolution (clustering) took 0.000769 seconds.
+SCREAM doublet excitation (after clustering) took 0.000369 seconds.
+SCREAM deterministicClashEliminationWithSnapshotField round 1 took 0.004834 seconds.
+SCREAM setup for Opportunity stage took 0.000209 seconds.

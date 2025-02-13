@@ -1,0 +1,29 @@
+2i37  Rhodopsin, a photobleached state
+
+Topology in Eukaryotic plasma membrane
+Topology	extracellular side
+cytoplasmic side
+
+    * Type: 1. Transmembrane (2 classes)
+    * Class: 1.1. Alpha-helical transmembrane (47 superfamilies)
+    * Superfamily: 1.1.01. Rhodopsin-like proteins (2 families)
+    * Family: 1.1.01.02. G-protein coupled receptors (10 proteins)
+    * Species: Bos taurus (37 proteins)
+    * Localization: Eukaryotic plasma membrane (166 proteins)
+
+2i37  Rhodopsin, a photobleached state
+Hydrophobic Thickness 	31.9 ± 1.4 Å
+Tilt Angle 	5 ± 4°
+?Gtransfer 	-88.6 kcal/mol
+Links to 2i37 	PDB Sum, SCOP, MSD, OCA, MMDB, Dali
+Topology 	subunit A (N-terminus extracellular)
+Resolution 	4.15 Å
+Related PDB Sum entries 	1f88, 1gzm, 1hzx, 1l9h, 1u19, 2g87, 2hpy, 2i35, 2i36
+Number of TM Secondary Structures 	7
+1 transmembrane subunit
+
+A - Tilt: 4 - Segments: 1( 38- 63), 2( 74- 96), 3( 110- 133),
+4( 153- 173), 5( 202- 224), 6( 253- 274), 7( 286- 308),
+
+Comments on 2i37  Rhodopsin, a photobleached state
+This is probably a photobleached state, not metarhodopsin II.

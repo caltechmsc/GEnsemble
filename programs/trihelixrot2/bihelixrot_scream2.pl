@@ -1,0 +1,323 @@
+#!/usr/bin/perl -w
+
+#####################################################################
+#                                                                   #
+# BiHelix (GEnsemble)                                               #
+# all_bihelix_pairs.pl                                              #
+# bihelixrot_scream2.pl                                             #
+# combi_frombihelixsum.pl                                           #
+# combihelixrot_membscream.pl                                       #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Ravinder Abrol and William A. Goddard III                         #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#####################################################################
+
+BEGIN {
+    # add these modules to @INC
+    use FindBin ();
+    use lib "$FindBin::Bin";
+}
+
+use Cwd;
+use File::Copy;
+use File::Basename;
+use Getopt::Long;
+use POSIX qw(ceil);
+use Sys::Hostname;
+use Time::Local;
+
+$sbin = $FindBin::Bin;
+$USER = getlogin || getpwuid($<);
+#$HOME = $ENV{HOME};
+$tmpdir = "/temp1/$USER/ge_temp1";
+system("mkdir -m 0755 $tmpdir >& /dev/null");
+$curdir = cwd();
+
+GetOptions ('h|help'                 => \$help,
+        'p|protfile=s'               => \$protfile,
+        'i|helix_i=i'                => \$helix_i,
+        'j|helix_j=i'                => \$helix_j,
+        'rdiv|rotadiv=s'             => \$rotadiv,
+        'a|anglefile=s'              => \$anglefile,
+        'k|keep=i'                   => \$keep,
+        'r|rotate'                   => \$rotate,
+        's|scream'                   => \$scream,
+        'mp|mpsim:i'                 => \$mpsim);
+
+$action = "no";
+if ($rotate || $scream) { $action = "yes";}
+
+if ($help)       { &help; }
+if (!$protfile || !$helix_i || !$helix_j)  { &help; }
+if ($helix_i && $action eq "no") { die "specify action to rotate or scream\n"; }
+if ($helix_j && $action eq "no") { die "specify action to rotate or scream\n"; }
+
+if (not defined $rotadiv) { $rotadiv = 10; }
+if (not defined $keep) { $keep = 0; }
+
+$mpsimstr = "";
+if (defined $mpsim) {
+    $mpsimstr = " -mp ";
+    if ($mpsim > 0) {
+        $mpsimstr = " -mp $mpsim ";
+    }
+}
+
+( $protprefix, $path, $suffix ) = fileparse( $protfile, qr/\.[^.]*/ );
+ if ($path || $suffix) {}; # Avoid warning
+
+if ($helix_i > $helix_j) {
+    $temp1 = $helix_j;
+    $helix_j = $helix_i;
+    $helix_i = $temp1;
+}
+$unique = `date +%Y%m%d.%H%M%S`;
+chomp $unique;
+$projdir = $protprefix."_H".$helix_i."-H".$helix_j."_bihelixrot_".$unique;
+
+mkdir("$tmpdir/$projdir", 0755);
+
+$workdir = "$tmpdir" . "\/" . "$projdir";
+print "$projdir\n";
+print "$workdir\n";
+print "$protfile\n";
+print "$curdir\n";
+
+system("cp -f $protfile $workdir/protein.bgf");
+if ($anglefile) {
+    system("cp -f $anglefile $workdir/bicombiangles.dat");
+} else {
+    system("cp -f $sbin/annex/default_combiangles.dat $workdir/bicombiangles.dat");
+}
+system("cp -f $sbin/annex/zero.dat $workdir");
+chdir("$workdir") || die "Cannot chdir to ($!)";
+
+# setup my_combiangles.dat file and helix chains
+system("rm -f my_combiangles.dat");
+system("touch my_combiangles.dat");
+for ($i=1; $i<8; $i++) {
+    if ($i == $helix_i) {
+        system("head -1 bicombiangles.dat >> my_combiangles.dat");
+    } elsif ($i == $helix_j) {
+        system("tail -1 bicombiangles.dat >> my_combiangles.dat");
+    } else {
+        system("cat zero.dat >> my_combiangles.dat");
+    }
+}
+if ($helix_i == 1) { $helch_i = "A" }
+if ($helix_i == 2) { $helch_i = "B" }
+if ($helix_i == 3) { $helch_i = "C" }
+if ($helix_i == 4) { $helch_i = "D" }
+if ($helix_i == 5) { $helch_i = "E" }
+if ($helix_i == 6) { $helch_i = "F" }
+if ($helix_i == 7) { $helch_i = "G" }
+#
+if ($helix_j == 1) { $helch_j = "A" }
+if ($helix_j == 2) { $helch_j = "B" }
+if ($helix_j == 3) { $helch_j = "C" }
+if ($helix_j == 4) { $helch_j = "D" }
+if ($helix_j == 5) { $helch_j = "E" }
+if ($helix_j == 6) { $helch_j = "F" }
+if ($helix_j == 7) { $helch_j = "G" }
+
+
+#ROTATE
+    if ($rotate || $scream) {
+    # ROTATE each helix by the angles specified in my_combiangles.dat
+        print "Generating the combinatorial set of helix rotations now ...\n";
+        $rotdir = "rotate_combi";
+        mkdir("$rotdir", 0755);
+        system("cp -f protein.bgf my_combiangles.dat $rotdir");
+        chdir("$rotdir") || die "Cannot chdir to ($!)";
+        print "I am here in $rotdir\n";
+        system("$sbin/gen_combirotations.csh protein.bgf $protprefix my_combiangles.dat $sbin");
+        mkdir("full_combi", 0755);
+        system("mv -f *.combirot.bgf full_combi");
+        @bgfl = `ls full_combi/\*.combirot.bgf`;
+        chomp @bgfl;
+        foreach $bgfl (@bgfl) {
+            system("$sbin/annex/split-chains.pl $bgfl $bgfl");
+            ( $bgfp, $path, $suffix ) = fileparse( $bgfl, qr/\.[^.]*/ );
+            if ($path || $suffix) {}; # Avoid warning
+            system("$sbin/annex/pwb $bgfl -c \"$helch_i $helch_j\" -n -o $bgfp.bgf");
+#	    print "ADAM $sbin/annex/pwb $bgfl -c \"$helch_i $helch_j\" -n -o $bgfp.bgf";   # ADAM
+        }
+        system("$sbin/annex/rename_bihel.pl $protprefix $helix_i $helix_j");
+        system("rm -f protein.bgf my_combiangles.dat hel*.deg");
+        system("rm -f ini.*");
+        chdir("..");  
+    }
+
+#SCREAM
+    if ($scream) {
+    # SCREAM each structure generated from previous step
+        print "Running scream now ...\n";
+        $screamdir = "scream_combi";
+        mkdir("$screamdir", 0755);
+        system("cp -f $rotdir/*combirot.bgf $screamdir");
+        chdir("$screamdir") || die "Cannot chdir to ($!)";
+        print "I am here in $screamdir\n";
+        if (defined $mpsim) {
+        system("$sbin/screambihel_all_bgfs.pl -rdiv $rotadiv $mpsimstr");
+        } else {
+        system("$sbin/screambihel_all_bgfs.pl -rdiv $rotadiv");
+        }
+        system("rm -f *combirot.bgf");
+        if (-e "core.*") {
+            system("rm -f core.*");
+            print "WARNING: Deleted core files from SCREAM directory.\n";
+            print "WARNING: Check results to make sure they exist.\n";
+        }
+        chdir("..");
+    }
+
+if (defined $scream) {system("$sbin/annex/get_bihelscream_output.pl $protprefix $helix_i $helix_j");}
+if (defined $mpsim) {system("$sbin/annex/get_bihelmpsim_output.pl $protprefix $helix_i $helix_j");}
+
+#zip mostly everything
+if ($rotate || $scream) { system("gzip -r $rotdir/*"); }
+if ($scream) { system("gzip -r $screamdir/*"); }
+system("rm -f $workdir/protein.bgf $workdir/zero.dat");
+if ($keep==0) {
+    system("rm -rf $workdir/*combi");
+}
+
+chdir("$curdir");
+system("cp -r -p -f $workdir .");
+system("rm -rf $workdir");
+system("touch $projdir/_ij_bihelix_done_");
+
+
+sub help {
+    $help_message = "
+                      Adam-style Script Info
+Program:
+ :: bihelixrot_scream2.pl
+
+Location:
+ :: \$ge_path/programs/bihelixrot2/bihelixrot_scream2.pl
+
+Release:
+ :: Version 1.2 (25 April 2008)
+
+Authors:
+ :: Ravi Abrol (abrol\@wag.caltech.edu)
+ :: Jenelle Bray and Amy Guili (Final Analysis Scripts)
+
+Usage:
+ :: bihelixrot_scream2.pl -p {protein_bgf_file} -rdiv {rotamer diversity} -i {first helix id} -j {second helix id} -a {combinatorial_rotation_angle_data_file} -r -s -k {0 or 1}
+
+GetOptions ('h|help'                 => \$help,
+        'p|protfile=s'               => \$protfile,
+        'i|helix_i=i'                => \$helix_i,
+        'j|helix_j=i'                => \$helix_j,
+        'rdiv|rotadiv=s'             => \$rotadiv,
+        'a|anglefile=s'              => \$anglefile,
+        'k|keep=i'                   => \$keep,
+        'r|rotate'                   => \$rotate,
+        's|scream'                   => \$scream,
+        'mp|mpsim:i'                 => \$mpsim);
+
+Options:
+ :: -h | --help             :: Optional    :: No Input
+ :: Prints this help message.
+
+ :: -p | --protfile         :: Required    :: Filename
+ :: This is the protein BGF file
+
+ :: -i | --helix_i          :: Required    :: Integer
+ ::  Helix ID for first helix to be specified as an integer 1 through 7
+ ::  for helices 1 through 7.
+
+ :: -j | --helix_j          :: Required    :: Integer
+ ::  Helix ID for second helix to be specified as an integer 1 through 7
+ ::  for helices 1 through 7.
+
+ :: -a | --anglefile        :: Optional    :: Filename
+ :: This is the file containing the angles for each of the two helices
+ :: to generate the combinatorial set of structures.
+ :: An example anglefile that will generate 36 combinations:
+ :: (First line corresponds to helix_i choices, second line
+ :: corresponds to helix_j choices and so on. Also we have
+ :: retired negative angles as they cause confusion in
+ :: file names)
+    0 60 120 180 240 300
+    0 60 120 180 240 300
+ ::
+ :: If this flag is not provided then the default action is to take
+ :: 144 combinations for two helix rotations corresponding to an angle file:
+    0 30 60 90 120 150 180 210 240 270 300 330
+    0 30 60 90 120 150 180 210 240 270 300 330
+
+ :: -rdiv | --rotadiv       :: Optional    :: String
+ :: Scream rotamer library diversity to use.
+ :: To use 0.5A library, set this flag to 05
+ :: To use 2.0A library, set this flag to 20
+ :: Default value is 10 (corresponding to 1.0A library)
+ :: Allowed range 01 ... 50
+
+ :: -r | --rotate           :: Conditional-Optional    :: No Input
+ :: Specify this option, if you only want to generate
+ :: structure files corresponding to angles specified
+ :: in the file given as an input to the -a option above.
+
+ :: -s | --scream           :: Conditional-Optional    :: No Input
+ :: Using this option will enable the -r option and
+ :: then perform SCREAM on each of the rotated structures.
+
+ :: You need to specify at least one of the two options: -r or -s
+ :: Specifying both (-r -s) is equivalent to -s.
+
+ :: -mp | --mpsim            :: Optional    :: No Input
+ :: Use this option to evaluate MPSim energies for SCREAMed structures.
+ :: Provide an interger number as input to perform that many minimization
+ :: steps using MPSim.
+
+ :: -k | --keep             :: Optional    :: Integer
+ :: Allowed values: 0 (Only keep minimal files necessary: Default)
+ ::                 1 (Keep everything)
+
+Description:
+ :: This wrapper script sets up the bihelical combinatorial rotational
+ :: scan (other helices are not present at all), where each of the two
+ :: helices is rotated simultaneously by angles provided as an input by
+ :: the user to generate a combinatorial set. This is followed by a full
+ :: side-chain optimization using SCREAM. Possible interacting pairs of 
+ :: helices are: 1-2, 1-7, 2-3, 2-4, 2-7, 3-4, 3-5, 3-6, 3-7, 4-5,
+ :: 5-6, 6-7.
+
+Output:
+ :: ALL ENERGIES in kcal/mol.
+ ::
+ :: Bihelical SCREAM output (protprefix_Hi-Hj_bihelixrot_scream.out):
+   Hi   Hj  Tot_ii_Intra  Tot_jj_Intra  Tot_ij_Inter  Tot_ij_Inter_H  Total_HiHj
+    0    0          19.6          52.9         -63.9         -17.5           8.6
+    0  120          30.8          64.9         148.1           0.0         243.7
+    0  240          30.8          64.9         148.1           0.0         243.7
+  120    0          19.9          45.5       18235.2          -7.5       18300.7
+  120  120          50.3          36.1         549.7           0.0         636.0
+  120  240          41.7         155.0          56.1           0.0         252.9
+  240    0          26.6          56.1         -65.2         -17.6          17.5
+  240  120          11.2          41.0          27.1          -6.8          79.3
+  240  240          21.0          53.0         -28.4          -0.3          45.6
+ :: Tot_ii_Intra = Total intrahelical energy of Helix i in i-j pair.
+ :: Tot_jj_Intra = Total intrahelical energy of Helix j in i-j pair.
+ :: Tot_ij_Inter = Total interhelical energy between helices i and j.
+ :: Tot_ij_Inter_H = Interhelical hydrogen-bond energy between helices i and j.
+ :: Total_HiHj = Tot_ii_Intra + Tot_jj_Intra + Tot_ij_Inter = TotalScreamEnergy
+ ::
+
+Timing:
+ :: Allow about 45 seconds per angle combination on borg or matrix
+ :: for SCREAM.
+
+Usage (repeated):
+ :: bihelixrot_scream2.pl -p {protein_bgf_file} -rdiv {rotamer diversity} -i {first helix id} -j {second helix id} -a {combinatorial_rotation_angle_data_file} -r -s
+
+";
+    die $help_message;
+}

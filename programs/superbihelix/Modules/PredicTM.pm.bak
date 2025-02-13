@@ -1,0 +1,2555 @@
+package Modules::PredicTM;
+
+my $copyright = "
+#####################################################################
+#                                                                   #
+# PredicTM.pl/PredicTM.pm/BLAST.pl/BLAST.pm/Clustal.pm/Mafft.pm     #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+# Uses BLAST:                                                       #
+# Altschul S.F., Madden T.L., Schaffer A.A., Zhang J., Zhang Z.,    #
+# Miller W., Lipman D.J.  Gapped BLAST and PSI-BLAST: a new         #
+# generation of protein database search programs. (1997)            #
+# _Nucleic Acids Res_ 25:3389-3402.                                 #
+#                                                                   #
+# BLAST is performed at the SIB using the BLAST network service.    #
+# The SIB BLAST network service uses a server developed at SIB and  #
+# the NCBI BLAST 2 software.                                        #
+#                                                                   #
+# Uses the GPCRDB when flagging of cutting potential non-GPCR       #
+# sequences: http://www.gpcr.org/7tm/htmls/entries.html             #
+#                                                                   #
+# Uses libwww-perl-5.808 from the Comprehensive Perl Archive        #
+# Network (CPAN).                                                   #
+# libwww-perl (c) 1995-2005 Gisle Aas. All rights reserved.         #
+# libwww-perl (c) 1995 Martijn Koster. All rights reserved.         #
+#                                                                   #
+# Uses ClustalW 1.83:                                               #
+# Chenna, et al. \"Multiple sequence alignment with the Clustal      #
+# series of programs.\" (2003)                                       #
+# _Nucleic Acids Res_ 31 (13):3497-500 PubMedID: 12824352           #
+#                                                                   #
+# Uses MAFFT 6.240:                                                 #
+# MAFFT v6.240 (2007/04/04)  Copyright (c) 2006 Kazutaka Katoh      #
+# http://align.bmr.kyushu-u.ac.jp/mafft/software/                   #
+# NAR 30:3059-3066, NAR 33:511-518                                  #
+#                                                                   #
+#####################################################################
+
+";
+
+BEGIN {
+    use FindBin qw($Bin);
+    use lib $FindBin::Bin;
+    push @INC, "$Bin/thirdparty/libwww/";
+}
+
+use strict;
+use warnings;
+use base 'Exporter';
+
+use Cwd;
+use File::Copy;
+use File::Path;
+use LWP::Simple;
+use POSIX qw(ceil floor);
+use Sys::Hostname;
+use Time::Local;
+
+use Modules::Blast ();
+use Modules::Clustal ();
+use Modules::Mafft ();
+
+our $VERSION = 1.25;
+our @EXPORT  = qw(predictm
+		  help
+		  checkVersion);
+
+# Global Input Variables
+our ($fta, $pir, $accession, $blastfasta, $raw, $scale, $avgwins, $minhelix, $maxhelix,
+     $minloop, $maxcap, $maxext, $ntermbreakers, $ctermbreakers, $baseline, $clustal, $protdb,
+     $ethreshold, $sequences, $compiter, $maxseqs, $name, $prefix, $qsub, $complete,
+     $flagnongpcr, $cutnongpcr, $filter, $trembl, $help, $clustal_executable,
+     $mafft_executable, $mafft_binaries, $hpscales_dir, $hpcenter_executable, $quiet,
+     $print_copyright1, $print_copyright2, $queuetype, $etares);
+
+# Global Internal Variables
+our ($fnpfx, $fastainputfile, $pirinputfile, $alninputfile, %hpscale,
+     @seqs_pir, @seqs_aln, @seqs_hdr, $seqs_num, $target_aln, $aln_length, $tgt_length,
+     @aln_ng, @aln_wg, @hp_ng, @hp_wg, @win, @avg, @wins_to_avg, @winavg, %raw, $num_raw,
+     $tmctr, %tms, $target, $profilesprefix, %pct_ident, %pct_sim);
+
+################################################################################
+##### Version Check                                                        #####
+################################################################################
+sub checkVersion { return $VERSION; }
+
+################################################################################
+##### Main Routine                                                         #####
+################################################################################
+sub predictm {
+    # Load Input
+    (my $printstring,
+     $fta,
+     $pir,
+     $accession,
+     $blastfasta,
+     $raw,
+     $scale,
+     $avgwins,
+     $minhelix,
+     $maxhelix,
+     $minloop,
+     $maxcap,
+     $maxext,
+     $ntermbreakers,
+     $ctermbreakers,
+     $baseline,
+     $clustal,
+     $protdb,
+     $ethreshold,
+     $sequences,
+     $compiter,
+     $maxseqs,
+     $name,
+     $prefix,
+     $complete,
+     $flagnongpcr,
+     $cutnongpcr,
+     $filter,
+     $trembl,
+     $etares,
+     $help,
+     $qsub,
+     $queuetype,
+     $quiet,
+     $print_copyright1,
+     $print_copyright2,
+     $clustal_executable,
+     $mafft_executable,
+     $mafft_binaries,
+     $hpscales_dir,
+     $hpcenter_executable) = @_;
+
+    # Check Help Conditions
+    if ($help) { help(); }
+
+    # Check Input
+    checkInput();
+
+    # Resubmit to Queue
+    if ($qsub) { qsub(); }
+
+    # Run BLAST if Requested
+    if ($accession || $blastfasta || $raw) {
+	$fnpfx = Modules::Blast::blast($printstring,
+				       $accession,
+				       $blastfasta,
+				       $raw,
+				       $protdb,
+				       $ethreshold,
+				       $sequences,
+				       $compiter,
+				       $maxseqs,
+				       $name,
+				       $prefix,
+				       $complete,
+				       $flagnongpcr,
+				       $cutnongpcr,
+				       $filter,
+				       $trembl,
+				       $help,
+				       $quiet,
+				       $print_copyright1,
+				       0,
+				       $clustal_executable,
+				       $mafft_executable,
+				       $mafft_binaries);
+
+	if (! -e "${fnpfx}.fta") {
+	    die "PredicTM :: Could not find multi-sequence FASTA input file ".
+		"from BLAST :: ${fnpfx}.fta\n\n";
+	}
+
+	$fastainputfile = "${fnpfx}.fta";
+    } elsif ($fta) {
+	if ($fta =~ /\.fta$/) {
+	    ($fnpfx = $fta) =~ s/\.fta$//;
+	} elsif ($fta =~ /\.txt$/) {
+	    ($fnpfx = $fta) =~ s/\.txt$//;
+	} else {
+	    die "PredicTM :: Multi-sequence FASTA input file type not recognized :: $fta\n\n";
+	}
+	if ($name) {
+	    $fnpfx = $name;
+	    copy($fta,$fnpfx . ".fta");
+	} elsif ($prefix) {
+	    $fnpfx = $prefix . "." . $fnpfx;
+	    copy($fta,$fnpfx . ".fta");
+	}
+	$fastainputfile = $fnpfx . ".fta";
+    } elsif ($pir) {
+	($fnpfx = $pir) =~ s/\.pir$//;
+	if ($name) {
+	    $fnpfx = $name;
+	    copy($pir,$fnpfx . ".pir");
+	} elsif ($prefix) {
+	    $fnpfx = $prefix . "." . $fnpfx;
+	    copy($pir,$fnpfx . ".pir");
+	}
+	$pirinputfile = $fnpfx . ".pir";
+    }
+
+    # Open Output File
+    open LOG, ">>${fnpfx}.log";
+    if ((!$accession) && (!$blastfasta) && (!$raw)) {
+	if ($print_copyright1) { printDuo($copyright, 0); }
+	printDuo($printstring, $quiet);
+    }
+
+    # Print Program Parameters
+    $printstring =
+	"\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\n".
+	"\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@ Running PredicTM v$VERSION \@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\n".
+	"\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\@\n\n";
+    printDuo($printstring, 0);
+
+    $printstring = 
+	"PredicTM :: Running With the Following Parameters ::\n";
+    if ($fta) {
+	$printstring .= " :: Running From FASTA File   :: $fta\n";
+    } elsif ($pir) {
+	$printstring .= " :: Running From PIR File     :: $pir\n";
+    } elsif ($accession || $blastfasta || $raw) {
+	$printstring .= 
+	" :: Running From BLAST Output ::\n";
+    }
+    $printstring .=
+	" :: Hydrophobicity Scale      :: $scale\n".
+	" :: Windows to Average        :: $avgwins\n".
+	" :: Minimum Acceptable Helix  :: $minhelix\n".
+	" :: Maximum Cappable Helix    :: $maxhelix\n".
+	" :: Minimum Loop Length       :: $minloop\n".
+	" :: Maximum Capping Length    :: $maxcap\n".
+	" :: Maximum Extension Length  :: $maxext\n".
+	" :: Baseline                  :: $baseline\n";
+
+    if ($clustal) {
+	$printstring .=
+	    " :: Use Culstal               :: Yes\n\n";
+    } else {
+	$printstring .=
+	    " :: Use Clustal               :: No\n\n";
+    }
+    printDuo($printstring, 0);
+
+    # Run MAFFT/Clustal if Needed
+    if ($fastainputfile && (!$pirinputfile || !$alninputfile)) {
+	open FTA, "$fastainputfile";
+	my $seqctr = 0;
+	my @ftalines = <FTA>;
+	close FTA;
+	for (my $i = 0; $i < @ftalines; $i++) {
+	    if ($i > 0) {
+		if (($ftalines[$i]   =~ /^>/) &&
+		    ($ftalines[$i-1] =~ /^>/)) {
+		    die "PredicTM :: Error found in FASTA file.  Two line header or empty\n".
+			"         :: sequence found on or about line $i.\n";
+		}
+	    }
+
+	    if ($ftalines[$i] =~ /\>/) {
+		$seqctr++;
+	    }
+	}
+
+	if ($clustal && ($seqctr > 1)) {
+	    $printstring = 
+		"Running Clustal :: $fastainputfile\n".
+		" :: Sequences  :: $seqctr\n".
+		" :: Start Time :: " . localtime() . "\n";
+	    printDuo($printstring, 0);
+	    Modules::Clustal::clustal("$fastainputfile",
+				      $clustal_executable);
+	    $printstring = 
+		" :: Stop Time  :: " . localtime() . "\n\n";
+	} elsif ($seqctr > 1) {
+	    $printstring = 
+		"Running MAFFT :: $fastainputfile\n".
+		" :: Sequences  :: $seqctr\n".
+		" :: Start Time :: " . localtime() . "\n";
+	    printDuo($printstring, 0);
+	    Modules::Mafft::mafft("$fastainputfile",
+				  $mafft_executable,
+				  $mafft_binaries,
+				  $clustal_executable);
+	    $printstring = 
+		" :: Stop Time  :: " . localtime() . "\n\n";
+	} elsif ($seqctr == 1) {
+	    $printstring =
+		"Skipping Alignment :: Only one sequence\n\n";
+	    open FTA, "$fastainputfile";
+	    open PIR, ">${fnpfx}.pir";
+	    while (<FTA>) {
+		print PIR "$_";
+		if (/\>/) { print PIR "\n"; }
+	    }
+	    print PIR "*\n";
+	    close PIR;
+
+	} elsif ($seqctr == 0) {
+	    printDuo("ERROR :: No sequences to align!  Stopping\n\n");
+	    exit;
+	}
+	$pirinputfile = "${fnpfx}.pir";
+	$alninputfile = "${fnpfx}.aln";
+	printDuo($printstring, 0);
+    }
+
+    # Load Hydrophobicity Scale
+    loadHydrophobicity();
+
+    # Load PIR Alignment
+    loadPIR();
+
+    # Assign & Average Hydrophobicities
+    assignAndAverageHydrophobicities();
+
+    # Calculate Moving Window Averages
+    windowHydrophobicities();
+
+    # Calculate Average of Moving Window Averages
+    averageWindows();
+
+    # Make Raw Predictions
+    rawPredictions();
+
+    # Check to Make Sure that we have Some Helices
+    if ($tmctr == 0) {
+	printDuo("Warning ::\n".
+		 " :: Either no helices have been found or none\n".
+		 " :: passed the minimum helix length cutoff.\n".
+		 " :: No further calculations are possible.\n".
+		 " :: Exiting.\n", 0);
+
+	if ($print_copyright2) { printDuo($copyright, 0); }
+
+	close LOG;
+	return "$fnpfx";
+    }
+
+    # Apply Capping/Extensions
+    helixCapping();
+
+    # Write Profiles
+    writeProfiles();
+
+    # Calculate Hydrophobic Centers
+    hydrophobicCenters();
+
+    # Find Eta-Angle Residues
+    if ($etares) { findEta(); }
+
+    # Final Results
+    finalResults();
+
+    # Flip/Align
+    flipAlign();
+
+    # Percent Identities
+    percentIdentities();
+
+    # Print Output Files
+    finalOutput();
+
+    # Print Copyright
+    if ($print_copyright2) { printDuo($copyright, 0); }
+
+    close LOG;
+    return "$fnpfx";
+}
+
+################################################################################
+##### Check Input                                                          #####
+################################################################################
+sub checkInput {
+    if (!($fta || $pir || $accession || $blastfasta || $raw)) {
+	die "PredicTM :: Sequence input not provided.  Must specify either a\n".
+	    "         :: multiple-sequence FASTA file, a multiple-sequence PIR\n".
+	    "         :: file, or (for BLAST) an accession number, a single-\n".
+	    "         :: sequence FASTA file, or a raw amino acid sequence.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (($fta && $pir) ||
+	($fta && $accession) ||
+	($fta && $blastfasta) ||
+	($fta && $raw) ||
+	($pir && $accession) ||
+	($pir && $blastfasta) ||
+	($pir && $raw) ||
+	($accession && $blastfasta) ||
+	($accession && $raw) ||
+	($blastfasta && $raw)) {
+	die "PredicTM :: Can only use one input source: multiple-sequence FASTA\n".
+	    "         :: file, multiple-sequence PIR file, or (for BLAST) an\n".
+	    "         :: accession number, a single-sequence FASTA file, or a\n".
+	    "         :: raw amino acid sequence.  Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (($avgwins =~ /-/) && ($avgwins =~ /,/)) {
+	die "PredicTM :: Windows to average over must either be a range or a set of\n".
+	    "         :: individual windows, but not both.  You provided :: $avgwins\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if ($avgwins =~ /(\d+)\-(\d+)/) {
+	if (($1 % 2 == 0) || ($2 % 2 == 0)) {
+	    die "PredicTM :: Windows to average over must be odd.  You provided ::\n".
+		"         :: $avgwins.  Use \"PredicTM -h\" for help.\n\n";
+	}
+    } elsif ($avgwins =~ /\s/) {
+	die "PredicTM :: Windows to average over cannot contain spaces.  You\n".
+	    "         :: provided $avgwins.  Use \"PredicTM -h\" for help.\n\n";
+    } elsif ($avgwins =~ /\,/) {
+	my @tmpsplit = split(/\,/,$avgwins);
+	foreach (@tmpsplit) {
+	    /^(\d+)$/;
+	    if ($1 % 2 == 0) {
+		die "PredicTM :: Windows to average over must be odd.  You provided ::\n".
+		    "         :: $avgwins.  Use \"PredicTM -h\" for help.\n\n";
+	    }
+	}
+    } elsif ($avgwins =~ /^(\d+)$/) {
+	if ($1 % 2 == 0) {
+	    die "PredicTM :: Windows to average over must be odd.  You provided ::\n".
+		"         :: $avgwins.  Use \"PredicTM -h\" for help.\n\n";
+	}
+    } else {
+	die "PredicTM :: Windows to average over do not seem to be valid.\n".
+	    "         :: You provided :: $avgwins.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($minhelix !~ /^(\d+)$/) || ($minhelix < 1)){
+	die "PredicTM :: Minimum helix length must be a positive integer.\n".
+	    "         :: You provided :: $minhelix.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($maxhelix !~ /^(\d+)$/) || ($maxhelix < 1) || ($maxhelix < $minhelix)){
+	die "PredicTM :: Maximum helix length must be a positive integer and be\n".
+	    "         :: greater than the minimum helix length ($minhelix).\n".
+	    "         :: You provided :: $minhelix.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($minloop !~ /^(\d+)$/) || ($minloop < 1)){
+	die "PredicTM :: Minimum loop length must be a positive integer.\n".
+	    "         :: You provided :: $minloop.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($maxcap !~ /^(\d+)$/) || ($maxcap < 1)){
+	die "PredicTM :: Maximum cap length must be a positive integer.\n".
+	    "         :: You provided :: $maxcap.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($maxext !~ /^(\d+)$/) || ($maxext < 1)){
+	die "PredicTM :: Maximum extension length must be a positive integer.\n".
+	    "         :: You provided :: $maxext.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if ($ntermbreakers =~ /\s/) {
+	die "PredicTM :: N-Term breakers input cannot contain spaces.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    } elsif ($ntermbreakers =~ /[ABCDEFGHIJKLMNOPQRSTUVWXYZ][ABCDEFGHIJKLMNOPQRSTUVWXYZ]/) {
+	die "PredicTM :: N-Term breakers must be separated by commas.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    } elsif ($ntermbreakers =~ /[abcdefghijklmnopqrstuvwxyz]/) {
+	die "PredicTM :: N-Term breakers input must be capitalized.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if ($ctermbreakers =~ /\s/) {
+	die "PredicTM :: C-Term breakers input cannot contain spaces.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    } elsif ($ctermbreakers =~ /[ABCDEFGHIJKLMNOPQRSTUVWXYZ][ABCDEFGHIJKLMNOPQRSTUVWXYZ]/) {
+	die "PredicTM :: C-Term breakers must be separated by commas.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    } elsif ($ctermbreakers =~ /[abcdefghijklmnopqrstuvwxyz]/) {
+	die "PredicTM :: C-Term breakers input must be capitalized.\n".
+	    "         :: You provided :: $ntermbreakers.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($baseline !~ /^\d+$/) && ($baseline !~ /^(\d+)\.(\d+)$/)) {
+	die "PredicTM :: Baseline must either be a float number or an integer.\n".
+	    "         :: You provided :: $baseline.  Use \"PredicTM -h\" for help.\n\n";
+    }
+
+    if (($blastfasta) && (! -e $blastfasta)) {
+	die "PredicTM :: Could not locate FASTA file :: $blastfasta\n".
+	    "          :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (($raw) && $raw =~ /[B,J,O,U,X,Z,\d]/) {
+	die "PredicTM :: Nonstandard amino acid found in RAW input.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if ($protdb !~ /[Bacteria_Archaea,Bacteria,Archaea,Viruses,Eukaryota,Viridiplantae,Fungi,Metazoa,Arthropoda,Vertebrata,Mammalia,Rodentia,Primates,Microbial_proteomes,Mitochondrion,ARATH,CAEEL,DROME,ECOLI,HUMAN,MOUSE,RAT,YEAST,SCHPO,PLAFA,Complete]/) {
+	die "PredicTM :: $protdb is not one of the recognized databases.\n".
+	    "         :: The following databases are available:\n".
+	    "         :: Bacteria_Archaea, Bacteria, Archaea,V iruses, Eukaryota,\n".
+	    "         :: Viridiplantae, Fungi, Metazoa, Arthropoda, Vertebrata,\n".
+	    "         :: Mammalia, Rodentia, Primates, Microbial_proteomes,\n".
+	    "         :: Mitochondrion, ARATH, CAEEL, DROME, ECOLI, HUMAN, MOUSE,\n".
+	    "         :: RAT, YEAST, SCHPO, PLAFA, and Complete.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (($ethreshold !~ /^10?$/) &&
+	($ethreshold !~ /0.0?1/)) {
+	die "PredicTM :: The E-Value Threshold given ($ethreshold) is not valid.\n".
+	    "         :: Must be a power of 10.  Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if ($compiter !~ /^\d+$/) {
+	die "PredicTM :: The given completeness step size ($compiter) is not valid.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if ($maxseqs !~ /^\d+$/) {
+	die "PredicTM :: The given maximum number of sequences ($maxseqs) is not valid.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if ($sequences !~ /^\d+$/) {
+	die "PredicTM :: The given number of target sequences ($sequences) is not valid.\n".
+	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (($queuetype !~ /^sge$/) && ($queuetype !~ /^pbs$/)) {
+	die "PredicTM :: Queue type must be either \"sge\" or \"pbs\".  You provided ::\n".
+	    "         :: $queuetype.  Use \"PredicTM.pl -h\" for help.\n\n";
+    }
+
+    if (! -e "${Bin}/$clustal_executable") {
+	die "PredicTM :: Could not locate ClustalW executable.  Was expected to be\n".
+	    "         :: found here :: ${Bin}/$clustal_executable\n\n";
+    }
+
+    if (! -e "${Bin}/$mafft_executable") {
+	die "PredicTM :: Could not locate MAFFT executable.  Was expected to be\n".
+	    "         :: found here :: ${Bin}/$mafft_executable\n\n";
+    }
+
+    if (! -e "${Bin}/$mafft_binaries") {
+	die "PredicTM :: Could not locate MAFFT binaries.  Was expected to be\n".
+	    "         :: found here :: ${Bin}/$mafft_binaries\n\n";
+    }
+
+    if (! -e "${Bin}/$hpscales_dir") {
+	die "PredicTM :: Could not locate hydrophobic scales directory.  Was expected to be\n".
+	    "         :: found here :: ${Bin}/$hpscales_dir\n\n";
+    }
+
+    if (! -e "${Bin}/$hpcenter_executable") {
+	die "PredicTM :: Could not locate hydrophobic center executable.  Was expected to be\n".
+	    "         :: found here :: ${Bin}/$hpcenter_executable\n\n";
+    }
+
+}
+
+################################################################################
+##### Submit to Queue                                                      #####
+################################################################################
+sub qsub {
+    my $cwd = cwd;
+    my $queuestring = "cd ${cwd}\n${Bin}/PredicTM.pl";
+    if ($fta) {
+	$queuestring .= " -f $fta";
+    } elsif ($pir) {
+	$queuestring .= " -p $pir";
+    } elsif ($accession) {
+	$queuestring .= " -a $accession";
+    } elsif ($blastfasta) {
+	$queuestring .= " --fasta $blastfasta";
+    } elsif ($raw) {
+	$queuestring .= " -r $raw";
+    }
+
+    $queuestring .=
+	" --scale $scale".
+	" --avgwins '$avgwins'".
+	" --minhelix $minhelix".
+	" --maxhelix $maxhelix".
+	" --minloop $minloop".
+	" --maxcap $maxcap".
+	" --maxext $maxext".
+	" --ntermbreakers '$ntermbreakers'".
+	" --ctermbreakers '$ctermbreakers'".
+	" --baseline $baseline".
+	" --protdb $protdb".
+	" --ethreshold $ethreshold".
+	" --sequences $sequences".
+	" --compiter $compiter".
+	" --maxseqs $maxseqs";
+
+    if ($name) {
+	$queuestring .= " --name $name";
+    } elsif ($prefix) {
+	$queuestring .= " --prefix $prefix";
+    }
+    
+    if ($complete) {
+	$queuestring .= " --complete";
+    } elsif (!$complete) {
+	$queuestring .= " --nocomplete";
+    }
+    if ($flagnongpcr) {
+	$queuestring .= " --flagnongpcr";
+    } elsif (!$flagnongpcr) {
+	$queuestring .= " --noflagnongpcr";
+    }
+    if ($filter) {
+	$queuestring .= " --filter";
+    } elsif (!$filter) {
+	$queuestring .= " --nofilter";
+    }
+    if ($trembl) {
+	$queuestring .= " --trembl";
+    } elsif (!$trembl) {
+	$queuestring .= " --notrembl";
+    }
+    if ($cutnongpcr) {
+	$queuestring .= " --cutnongpcr";
+    } elsif (!$cutnongpcr) {
+	$queuestring .= " --nocutnongpcr";
+    }
+    if ($clustal) {
+	$queuestring .= " --clustal";
+    } elsif (!$clustal) {
+	$queuestring .= " --noclustal";
+    }
+    if ($quiet) {
+	$queuestring .= " --quiet";
+    }
+
+    my $hostname = `hostname`; chomp $hostname;
+    print "PredicTM is re-submitting itself to the queue on $hostname.\n\n";
+
+    if ($queuetype eq "sge") {
+	my $sge = "\#!/bin/csh\n".
+	    "#\$ -N PredicTM\n".
+	    "#\$ -j y\n".
+	    "$queuestring --noqsub\n";
+	open SGE, ">predictm.sge";
+	print SGE "$sge";
+	close SGE;
+	system("qsub -cwd predictm.sge");
+
+    } elsif ($queuetype eq "pbs") {
+	my $pbs = "#PBS -l nodes=1,walltime=48:00:00\n".
+	    "#PBS -q workq\n".
+	    "#PBS -j oe\n".
+	    "#PBS -N PredicTM\n".
+	    "#PBS -m e\n".
+	    "#!/bin/csh\n".
+	    "$queuestring --noqsub\n";
+	open PBS, ">predictm.pbs";
+	print PBS "$pbs";
+	close PBS;
+	system("qsub predictm.pbs");
+    }
+
+    exit;
+}
+
+################################################################################
+##### Load Hydrophobicity Scales                                           #####
+################################################################################
+sub loadHydrophobicity {
+    my $printstring = "Loading Hydrophobicity Scale :: $scale :: " . localtime() . "\n";
+
+    # If $scale is a keyword, locate the correct scale for loading
+    if      ($scale =~ /^old_eisenberg$/i) {
+	$scale = "${Bin}/$hpscales_dir/old_eisenberg.dat";
+    } elsif ($scale =~ /^eisenberg$/i) {
+	$scale = "${Bin}/$hpscales_dir/eisenberg.dat";
+    } elsif ($scale =~ /^interface$/i) {
+	$scale = "${Bin}/$hpscales_dir/interface.dat";
+    } elsif ($scale =~ /^interfaceplus$/i) {
+	$scale = "${Bin}/$hpscales_dir/interfaceplus.dat";
+    } elsif ($scale =~ /^octanol$/i) {
+	$scale = "${Bin}/$hpscales_dir/octanol.dat";
+    } elsif ($scale =~ /^octanolplus$/i) {
+	$scale = "${Bin}/$hpscales_dir/octanolplus.dat";
+    } elsif ($scale =~ /^oct-inter$/i) {
+	$scale = "${Bin}/$hpscales_dir/oct-inter.dat";
+    } elsif ($scale =~ /^oct-interplus$/i) {
+	$scale = "${Bin}/$hpscales_dir/oct-interplus.dat";
+    } elsif ($scale =~ /^biological$/i) {
+	$scale = "${Bin}/$hpscales_dir/biological.dat";
+    } elsif ($scale =~ /^oct_bio_avg$/i) {
+	$scale = "${Bin}/$hpscales_dir/oct_bio_avg.dat";
+    } elsif ($scale =~ /^jen_penalty$/i) {
+	$scale = "${Bin}/$hpscales_dir/jen_penalty.dat";
+    } elsif ($scale =~ /^jen_penaltyplus$/i) {
+	$scale = "${Bin}/$hpscales_dir/jen_penaltyplus.dat";
+    } elsif (! -e $scale) {
+	die "PredicTM :: Hydrophobic scale not found: $scale\n\n";
+    }
+
+    # Load Scale
+    open SCALE, "$scale";
+    my $reslong; my $resshort; my $hp;
+    while (<SCALE>) {
+	if (/^(\S+)\s+(\S+)\s+(\S+)$/) {
+	    $reslong  = $1;
+	    $resshort = $2;
+	    $hp       = $3;
+
+	    if      ($reslong =~ /ALA/i) {
+		$hpscale{'A'} = $hp;
+		$printstring .= sprintf " :: A / ALA / Alanine       :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /CYS/i) {
+		$hpscale{'C'} = $hp;
+		$printstring .= sprintf " :: C / CYS / Cysteine      :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /ASP/i) {
+		$hpscale{'D'} = $hp;
+		$printstring .= sprintf " :: D / ASP / Aspartic Acid :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /GLU/i) {
+		$hpscale{'E'} = $hp;
+		$printstring .= sprintf " :: E / GLU / Glutamic Acid :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /PHE/i) {
+		$hpscale{'F'} = $hp;
+		$printstring .= sprintf " :: F / PHE / Phenylalanine :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /GLY/i) {
+		$hpscale{'G'} = $hp;
+		$printstring .= sprintf " :: G / GLY / Glycine       :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /HIS/i) {
+		$hpscale{'H'} = $hp;
+		$printstring .= sprintf " :: H / HIS / Histidine     :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /ILE/i) {
+		$hpscale{'I'} = $hp;
+		$printstring .= sprintf " :: I / ILE / Isoleucine    :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /LYS/i) {
+		$hpscale{'K'} = $hp;
+		$printstring .= sprintf " :: K / LYS / Lysine        :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /LEU/i) {
+		$hpscale{'L'} = $hp;
+		$printstring .= sprintf " :: L / LEU / Leucine       :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /MET/i) {
+		$hpscale{'M'} = $hp;
+		$printstring .= sprintf " :: M / MET / Methionine    :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /ASN/i) {
+		$hpscale{'N'} = $hp;
+		$printstring .= sprintf " :: N / ASN / Asparagine    :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /PRO/i) {
+		$hpscale{'P'} = $hp;
+		$printstring .= sprintf " :: P / PRO / Proline       :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /GLN/i) {
+		$hpscale{'Q'} = $hp;
+		$printstring .= sprintf " :: Q / GLN / Glutamine     :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /ARG/i) {
+		$hpscale{'R'} = $hp;
+		$printstring .= sprintf " :: R / ARG / Arginine      :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /SER/i) {
+		$hpscale{'S'} = $hp;
+		$printstring .= sprintf " :: S / SER / Serine        :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /THR/i) {
+		$hpscale{'T'} = $hp;
+		$printstring .= sprintf " :: T / THR / Threonine     :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /VAL/i) {
+		$hpscale{'V'} = $hp;
+		$printstring .= sprintf " :: V / VAL / Valine        :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /TRP/i) {
+		$hpscale{'W'} = $hp;
+		$printstring .= sprintf " :: W / TRP / Tryptophan    :: %6.3f\n", $hp;
+	    } elsif ($reslong =~ /TYR/i) {
+		$hpscale{'Y'} = $hp;
+		$printstring .= sprintf " :: Y / TYR / Tyrosine      :: %6.3f\n", $hp;
+	    }
+	}
+    }
+    close SCALE;
+
+    if ((keys %hpscale) != 20) {
+	die "PredicTM :: Hydrophobicity scale does not contain all 20 amino acids!\n\n";
+    }
+    $hpscale{'-'} = "_";
+
+    printDuo($printstring . "\n", $quiet);
+}
+
+################################################################################
+##### Load PIR File                                                        #####
+################################################################################
+sub loadPIR {
+    my $printstring .= "Loading the PIR File :: $pirinputfile ::\n";
+
+    my $pirindex = -1;
+    open PIR, "$pirinputfile";
+    while (<PIR>) {
+	# We've encountered a new sequence in the PIR file
+	if (/^\>/) {
+	    $pirindex++;                 # Increment the counter
+	    $seqs_hdr[$pirindex] = "$_"; # Copy the header
+
+	# We've encountered an alignment line in the PIR file
+	} elsif ((/\S+/) && (!/\*/)) {
+	    $seqs_pir[$pirindex] .= "$_"; # Copy the pir line (with newline)
+	    chomp;
+	    $seqs_aln[$pirindex] .= "$_"; # Copy the pir line (without newline)
+	}
+    }
+    close PIR;
+    $seqs_num = @seqs_aln;
+
+    if ($seqs_num == 0) {
+	printDuo($printstring, 0);
+	printDuo(" :: ERROR :: No sequences found in PIR File :: $pirinputfile\n\n",0);
+	exit;
+    }
+
+    $target_aln = $seqs_aln[0];
+
+    $aln_length = length($target_aln);
+    for (my $i = 0; $i < length($target_aln); $i++) {
+	if (substr($target_aln,$i,1) !~ /\-/) { $tgt_length++; }
+    }
+
+    # Print some info
+    $printstring .= 
+	" :: Sequences Loaded       :: " . $seqs_num   . "\n".
+	" :: Target Sequence Length :: " . $tgt_length . "\n".
+	" :: Alignment Length       :: " . $aln_length . "\n";
+    
+    printDuo($printstring . "\n", 0);
+}
+
+################################################################################
+##### Assing and Average Hydrophobicities                                  #####
+################################################################################
+sub assignAndAverageHydrophobicities {
+    my $printstring = "Assigning & Averaging Hydrophobicities ::\n";
+
+    my $resnum = 0;
+    my $nonstandard = 0;
+    my $nonstdaa;
+
+    open MAPTXT, ">${fnpfx}.map.txt";
+    print MAPTXT "seq  aln \#  res \#\n";
+    open MAPCSV, ">${fnpfx}.map.csv";
+    print MAPCSV "seq,aln \#,res \#\n";
+
+    # For Each Alignment Position
+    for (my $j = 0; $j < $aln_length; $j++) {
+
+	# If Position is Not A Gap
+	if (substr($target_aln,$j,1) !~ /-/) {
+	    $resnum++;
+
+	    # For Each Sequence, Add the Alignment Info
+	    for (my $i = 0; $i < $seqs_num; $i++) {
+
+		$aln_ng[$i+1][$resnum] = substr($seqs_aln[$i],$j,1);
+		$aln_wg[$i+1][$j+1]    = substr($seqs_aln[$i],$j,1);
+
+		# Add the Hydrophobicity Info
+		if (exists($hpscale{$aln_ng[$i+1][$resnum]})) {
+		    $hp_ng[$i+1][$resnum] = $hpscale{$aln_ng[$i+1][$resnum]};
+		    $hp_wg[$i+1][$j+1]    = $hpscale{$aln_ng[$i+1][$resnum]};
+		} else {
+		    $nonstdaa = substr($seqs_aln[$i],$j,1);
+		    $aln_ng[$i+1][$resnum] = '-';
+		    $aln_wg[$i+1][$j+1]    = '-';
+		    $hp_ng[$i+1][$resnum]  = $hpscale{'-'};
+		    $hp_wg[$i+1][$j+1]     = $hpscale{'-'};
+
+		    # Report nonstandard amino acid
+		    $printstring .= sprintf
+			" :: Sequence %d, Align Position %d, Nonstandard Amino Acid (%s) ".
+			"Replaced With Gap\n    %s", ($i+1), ($j+1), $nonstdaa,
+			$seqs_hdr[$i];
+		    $nonstandard++;
+
+		    if ($i == 0) {
+			die "PredicTM :: Nonstandard Amino Acid ($nonstdaa) found in target sequence\n".
+			    "         :: at residue $resnum.\n\n";
+		    }
+		}
+	    }
+
+	    printf MAPTXT "%3s  %5d  %5d\n", substr($target_aln,$j,1), $j+1, $resnum;
+	    printf MAPCSV "%s,%d,%d\n", substr($target_aln,$j,1), $j+1, $resnum;
+	    $target .= substr($target_aln,$j,1);
+
+	# If Position is A Gap
+	} else {
+
+	    # For Each Sequence, Add the Alignment/Hydrophobicity Info
+	    for (my $i = 0; $i < $seqs_num; $i++) {
+
+		$aln_wg[$i+1][$j+1] = substr($seqs_aln[$i],$j,1);
+		$hp_wg[$i+1][$j+1]  = $hpscale{'-'};
+	    }
+
+	    printf MAPTXT "%3s  %5d  %5s\n", substr($target_aln,$j,1), $j+1, ".";
+	    printf MAPCSV "%s,%d,%s\n", substr($target_aln,$j,1), $j+1, ".";
+	}
+    }
+
+    close MAPTXT;
+    close MAPCSV;
+
+    # Report total nonstandard amino acids
+    if ($nonstandard > 0) {
+	$printstring .= " :: $nonstandard Nonstandard Amino Acids Replaced With Gaps\n";
+    } else {
+	$printstring .= " :: No Nonstandard Amino Acids Found in Alignment\n";
+    }
+
+    # Average the Hydrophobicities
+    my $sum; my $num;
+    # For Each Target Sequence Position
+    for (my $j = 1; $j <= $tgt_length; $j++) {
+	$sum = 0; $num = 0;
+
+	# For Each Sequence
+	for (my $i = 1; $i <= $seqs_num; $i++) {
+	    if ($aln_ng[$i][$j] !~ /-/) {
+		$sum += $hp_ng[$i][$j];
+		$num++;
+	    }
+	}
+
+	# Place the Average Hydrophobicity into row 0 of the no-gap hydrophobicity table
+	$hp_ng[0][$j] = $sum / $num;
+    }
+
+    printDuo($printstring . "\n", $quiet);
+}
+
+################################################################################
+##### Window Hydrophobicities                                              #####
+################################################################################
+sub windowHydrophobicities {
+    my $printstring = 
+	"Windowing Hydrophobicities ::\n".
+	" :: Windows Calculated ::";
+
+    for (my $w = 0; $w <= 15; $w++) {
+	my $window = ($w * 2) + 1;
+	$printstring .= " $window";
+	# Calculate the window average
+	for (my $j = 1; $j <= $tgt_length; $j++) {
+	    my $start = $j - $w;
+	    my $stop  = $j + $w;
+	    my $sum   = 0;
+	    my $num   = 0;
+
+	    # Make sure that $k is a legal position
+	    for (my $k = $start; $k <= $stop; $k++) {
+		if (($k >0) && ($k <= $tgt_length)) {
+		    $sum += $hp_ng[0][$k];
+		    $num++;
+		}
+	    }
+
+	    # Average
+	    $win[$w][$j] = $sum / $num;
+	}
+    }
+
+    printDuo($printstring . "\n\n", $quiet);
+}
+
+################################################################################
+##### Average Windows                                                      #####
+################################################################################
+sub averageWindows {
+    my $printstring =
+	"Averaging Windows :: $avgwins\n".
+	" :: Windows Used in Average    ::";
+
+    # If a Single Window
+    if ($avgwins =~ /^(\d+)$/) {
+	@wins_to_avg = ($avgwins);
+
+    # If a Range of Windows
+    } elsif ($avgwins =~ /(\d+)\-(\d+)/) {
+	for (my $i = $1; $i <= $2; $i += 2) {
+	    push @wins_to_avg, $i;
+	}
+
+    # If a Specific List of Windows
+    } elsif ($avgwins =~ /\d+\,\d+/) {
+	@wins_to_avg = split(/\,/, $avgwins);
+    }
+
+    # Print the Windows Used
+    foreach (@wins_to_avg) { $printstring .= " $_"; }
+    my $num_of_wins = @wins_to_avg;
+
+    # Average the Windows
+    for (my $j = 1; $j <= $tgt_length; $j++) {
+	foreach my $window (@wins_to_avg) {
+	    my $w = ($window - 1) / 2;
+	    $winavg[$j] += $win[$w][$j];
+	}
+
+	$winavg[$j] = $winavg[$j] / $num_of_wins;
+    }
+    printDuo($printstring . "\n :: Number of Windows Averaged :: $num_of_wins\n\n", $quiet);
+}
+
+################################################################################
+##### Raw Predictions                                                      #####
+################################################################################
+sub rawPredictions {
+    my $printstring = "Raw Predictions ::\n";
+
+    my $state = 0;
+    $num_raw  = 0;
+
+    # In case the first residue is part of a TM
+    if ($winavg[1] >= $baseline) {
+	$num_raw++;
+	$state = 1;
+	$raw{$num_raw}{start}     = 1;
+	$raw{$num_raw}{sequence} .= "$aln_ng[1][1]";
+    }
+
+    # Find the residues above baseline 
+    for (my $j = 2; $j <= $tgt_length-1; $j++) {
+	if ($winavg[$j] >= $baseline) {
+	    if ($state == 0) {
+		$num_raw++;
+		$raw{$num_raw}{start}     = $j;
+	    }
+	    $raw{$num_raw}{sequence} .= "$aln_ng[1][$j]";
+	    $state = 1;
+	} elsif (($winavg[$j] < $baseline) && ($state == 1)) {
+	    $raw{$num_raw}{stop} = $j - 1;
+	    $state = 0;
+	}
+    }
+
+    # In case the last residue is part of a TM
+    if (($winavg[$tgt_length] >= $baseline) && ($state == 1)) {
+	$raw{$num_raw}{stop} = $tgt_length;
+	$state = 0;
+    }
+
+    # Print out Raw Predictions
+    my $maxrawlength = 0;
+    for (my $r = 1; $r <= $num_raw; $r++) {
+	$raw{$r}{length} = $raw{$r}{stop}-$raw{$r}{start}+1;
+	if ($raw{$r}{length} > $maxrawlength) {
+	    $maxrawlength = $raw{$r}{length};
+	}
+    }
+    for (my $r = 1; $r <= $num_raw; $r++) {
+	$printstring .= sprintf
+	    " :: TM %2d (raw) :: %3d :: %s%s :: %3d :: Length %d\n",
+	    $r,
+	    $raw{$r}{start},
+	    $raw{$r}{sequence},
+	    " " x ($maxrawlength - $raw{$r}{length}),
+	    $raw{$r}{stop},
+	    $raw{$r}{length};
+    }
+
+    # Flag Helices that are Too Short
+    $printstring .= "\nHelices That Don't Meet Minimum Helix Length ::\n";
+    my $rawlength;
+    $tmctr = 0;
+    for (my $r = 1; $r <= $num_raw; $r++) {
+	$rawlength = $raw{$r}{length};
+	if ($rawlength < $minhelix) {
+	    $printstring .= 
+		sprintf
+		" :: TM %2d :: Length ( %d ) is less than minimum helix length ( %d )\n",
+		$r, $rawlength, $minhelix;
+	} else {
+	    $tmctr++;
+	    $tms{$tmctr}{raw}{start}    = $raw{$r}{start};
+	    $tms{$tmctr}{raw}{stop}     = $raw{$r}{stop};
+	    $tms{$tmctr}{raw}{length}   = $rawlength;
+	    $tms{$tmctr}{raw}{sequence} = $raw{$r}{sequence};
+	    $tms{$tmctr}{raw}{geom} =
+		(($tms{$tmctr}{raw}{stop} - $tms{$tmctr}{raw}{start}) / 2) +
+		$tms{$tmctr}{raw}{start};
+	}
+    }
+
+    if ($tmctr == $num_raw) {
+	$printstring .= 
+	    sprintf " :: All helices greater than or equal to minimum helix length\n";
+    }
+
+    printDuo($printstring . "\n", $quiet);
+}
+
+################################################################################
+##### Helix Capping                                                        #####
+################################################################################
+sub helixCapping {
+    my $printstring = "Finding Possible Caps and Extensions ::\n";
+
+    # For each TM, find its possible caps and extensions
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	# If the TM is too long for capping/extensions, flag it
+	if ($tms{$i}{raw}{length} > $maxhelix) {
+	    $printstring .= 
+		sprintf 
+		" :: TM %2d :: Length ( %d ) is too long to apply capping (cutoff is %d)\n",
+		$i, $tms{$i}{raw}{length}, $maxhelix;
+	} else {
+	    # N-Term Cap
+	    for (my $j = $tms{$i}{raw}{start} - 1;
+		 $j >= $tms{$i}{raw}{start} - $maxcap; $j--) {
+		if ((0 < $j) && ($j <= $tgt_length)) {
+		    if ($aln_ng[1][$j] =~ /[$ntermbreakers]/) {
+			$printstring .= sprintf
+			    " :: TM %2d :: Possible N-Term Cap :: %s%d\n",
+			    $i, $aln_ng[1][$j], $j;
+			$tms{$i}{cap}{start} = $j;
+			last;
+		    }
+		}
+	    }
+
+	    # N-Term Ext
+	    if ($tms{$i}{raw}{start} - $maxext > 0) {
+		$tms{$i}{ext}{start} = $tms{$i}{raw}{start} - $maxext;
+		$printstring .= sprintf " :: TM %2d :: Possible N-Term Ext :: %s%d\n",
+		$i, $aln_ng[1][$tms{$i}{raw}{start} - $maxext], $tms{$i}{raw}{start} - $maxext;
+	    }
+
+	    # C-Term Cap
+	    for (my $j = $tms{$i}{raw}{stop} + 1;
+		 $j <= $tms{$i}{raw}{stop} + $maxcap; $j++) {
+		if ((0 < $j) && ($j <= $tgt_length)) {
+		    if ($aln_ng[1][$j] =~ /[$ctermbreakers]/) {
+			$printstring .= sprintf
+			    " :: TM %2d :: Possible C-Term Cap :: %s%d\n",
+			    $i, $aln_ng[1][$j], $j;
+			$tms{$i}{cap}{stop} = $j;
+			last;
+		    }
+		}
+	    }
+
+	    # C-Term Ext
+	    if ($tms{$i}{raw}{stop} + $maxext <= $tgt_length) {
+		$tms{$i}{ext}{stop} = $tms{$i}{raw}{stop} + $maxext;
+		$printstring .= sprintf " :: TM %2d :: Possible C-Term Ext :: %s%d\n",
+		$i, $aln_ng[1][$tms{$i}{raw}{stop} + $maxext], $tms{$i}{raw}{stop} + $maxext;
+	    }
+	}
+	$printstring .= "\n";
+    }
+
+    printDuo($printstring, $quiet);
+
+    # Applying Capping Rules
+    $printstring = 
+	"Applying Capping Rules ::\n".
+	" :: Reminder :: Minimum Loop Length :: $minloop";
+    
+    # Apply TM 1 N-Term Capping Rules
+    $printstring .= sprintf
+	" :: Working on N-Term of TM %d\n", 1;
+    if ($tms{1}{cap}{start}) {
+	$tms{1}{final}{start} = $tms{1}{cap}{start};
+	$printstring .= 
+	    sprintf "    :: TM %2d :: N-Term capped from %s%d to %s%d\n\n",
+	    1, $aln_ng[1][$tms{1}{raw}{start}], $tms{1}{raw}{start},
+	    $aln_ng[1][$tms{1}{final}{start}], $tms{1}{final}{start};
+    } elsif ($tms{1}{ext}{start}) {
+	$tms{1}{final}{start} = $tms{1}{ext}{start};
+	$printstring .= 
+	    sprintf "    :: TM %2d :: N-Term extended from %s%d to %s%d\n\n",
+	    1, $aln_ng[1][$tms{1}{raw}{start}], $tms{1}{raw}{start},
+	    $aln_ng[1][$tms{1}{final}{start}], $tms{1}{final}{start};
+    } else {
+	$tms{1}{final}{start} = $tms{1}{raw}{start};
+	$printstring .=
+	    sprintf "    :: TM %2d :: N-Term left at %s%d\n\n",
+	    1, $aln_ng[1][$tms{1}{raw}{start}], $tms{1}{raw}{start},
+    }
+
+    # Apply TM i/i+1 C-Term/N-Term Capping Rules for i = 1 .. N
+    for (my $i = 1; $i < $tmctr; $i++) {
+	$printstring .= sprintf 
+	    " :: Working on C-Term of TM %d and N-Term of TM %d\n", $i, $i+1;
+
+	# If both caps exist
+	if ((exists $tms{$i}{cap}{stop}) && (exists $tms{$i+1}{cap}{start})) {
+	    if (($tms{$i+1}{cap}{start} - $tms{$i}{cap}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{cap}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{cap}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term capped from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term capped from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not cap TM %d C-Term to %s%d and cap TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{cap}{stop}], $tms{$i}{cap}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{cap}{start}], $tms{$i+1}{cap}{start};
+	    }
+	}
+
+	# If both caps exist, but loop too short, and both extensions exist
+	if ((  exists $tms{$i}{cap}{stop}  ) && (  exists $tms{$i+1}{cap}{start}  ) &&
+	    (  exists $tms{$i}{ext}{stop}  ) && (  exists $tms{$i+1}{ext}{start}  ) &&
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{ext}{start} - $tms{$i}{ext}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{ext}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{ext}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term extended from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term extended from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not extend TM %d C-Term to %s%d and extend TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{ext}{stop}], $tms{$i}{ext}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{ext}{start}], $tms{$i+1}{ext}{start};
+	    }
+	}
+
+	# If cap i exists and ext i+1 exists
+	if ((  exists $tms{$i}{cap}{stop}  ) && (! exists $tms{$i+1}{cap}{start}  ) &&
+                                                (  exists $tms{$i+1}{ext}{start}  ) &&
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{ext}{start} - $tms{$i}{cap}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{cap}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{ext}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term capped from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term extended from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not cap TM %d C-Term to %s%d and extend TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{cap}{stop}], $tms{$i}{cap}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{ext}{start}], $tms{$i+1}{ext}{start};
+	    }
+	}
+
+	# If cap i exists, but loop too short with ext i+1 (or ext i+1 does not exist)
+	if ((  exists $tms{$i}{cap}{stop}  ) && (! exists $tms{$i+1}{cap}{start}  ) &&
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{raw}{start} - $tms{$i}{cap}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{cap}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{raw}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term capped from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term left at %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not cap TM %d C-Term to %s%d and use raw TM %d N-Term at %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{cap}{stop}], $tms{$i}{cap}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start};
+	    }
+	}
+
+	# If ext i exists and cap i+1 exists
+	if ((! exists $tms{$i}{cap}{stop}  ) && (  exists $tms{$i+1}{cap}{start}  ) &&
+	    (  exists $tms{$i}{ext}{stop}  )                                        && 
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{cap}{start} - $tms{$i}{ext}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{ext}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{cap}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term extended from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term capped from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not extend TM %d C-Term to %s%d and cap TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{ext}{stop}], $tms{$i}{ext}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{cap}{start}], $tms{$i+1}{cap}{start};
+	    }
+	}
+
+	# If cap i+1 exists, but loop too short with ext i (or ext i does not exist)
+	if ((! exists $tms{$i}{cap}{stop}  ) && (  exists $tms{$i+1}{cap}{start}  ) &&
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{cap}{start} - $tms{$i}{raw}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{raw}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{cap}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term left at %s%d\n".
+		    "    :: TM %2d :: N-Term capped from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not use raw TM %d C-Term to %s%d and cap TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{raw}{stop}], $tms{$i}{raw}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{cap}{start}], $tms{$i+1}{cap}{start};
+	    }
+	}
+
+	# If no caps exist, but both extensions exist
+	if ((! exists $tms{$i}{cap}{stop}  ) && (! exists $tms{$i+1}{cap}{start}  ) &&
+	    (  exists $tms{$i}{ext}{stop}  ) && (  exists $tms{$i+1}{ext}{start}  ) &&
+	    (! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+	    if (($tms{$i+1}{ext}{start} - $tms{$i}{ext}{stop}) > $minloop) {
+		$tms{$i}{final}{stop}    = $tms{$i}{ext}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{ext}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term extended from %s%d to %s%d\n".
+		    "    :: TM %2d :: N-Term extended from %s%d to %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},
+		    $aln_ng[1][$tms{$i}{final}{stop}],    $tms{$i}{final}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start},
+		    $aln_ng[1][$tms{$i+1}{final}{start}], $tms{$i+1}{final}{start};
+	    } else {
+		$printstring .= sprintf
+		    "    :: Could not extend TM %d C-Term to %s%d and extend TM %d N-Term to %s%d\n",
+		    $i, $aln_ng[1][$tms{$i}{ext}{stop}], $tms{$i}{ext}{stop},
+		    $i+1, $aln_ng[1][$tms{$i+1}{ext}{start}], $tms{$i+1}{ext}{start};
+	    }
+	}
+
+	# If no caps exist, but both extensions exist and loop is too short (or both
+	# extensions don't exist)
+	if ((! exists $tms{$i}{final}{stop}) && (! exists $tms{$i+1}{final}{start})) {
+		$tms{$i}{final}{stop}    = $tms{$i}{raw}{stop};
+		$tms{$i+1}{final}{start} = $tms{$i+1}{raw}{start};
+		$printstring .= sprintf
+		    "    :: TM %2d :: C-Term left at %s%d\n".
+		    "    :: TM %2d :: N-Term left at %s%d\n\n",
+		    $i,   $aln_ng[1][$tms{$i}{raw}{stop}],    $tms{$i}{raw}{stop},    
+		    $i+1, $aln_ng[1][$tms{$i+1}{raw}{start}], $tms{$i+1}{raw}{start};
+	}
+    }
+
+    # Apply TM N C-Term Capping Rules
+    $printstring .= sprintf
+	" :: Working on C-Term of TM %d\n", $tmctr;
+    if ($tms{$tmctr}{cap}{stop}) {
+	$tms{$tmctr}{final}{stop} = $tms{$tmctr}{cap}{stop};
+	$printstring .=
+	    sprintf "    :: TM %2d :: C-Term capped from %s%d to %s%d\n",
+	    $tmctr, $aln_ng[1][$tms{$tmctr}{raw}{stop}], $tms{$tmctr}{raw}{stop},
+	    $aln_ng[1][$tms{$tmctr}{final}{stop}], $tms{$tmctr}{final}{stop};
+    } elsif ($tms{$tmctr}{ext}{stop}) {
+	$tms{$tmctr}{final}{stop} = $tms{$tmctr}{ext}{stop};
+	$printstring .=
+	    sprintf "    :: TM %2d :: C-Term extended from %s%d to %s%d\n",
+	    $tmctr, $aln_ng[1][$tms{$tmctr}{raw}{stop}], $tms{$tmctr}{raw}{stop},
+	    $aln_ng[1][$tms{$tmctr}{final}{stop}], $tms{$tmctr}{final}{stop};
+    } else {
+	$tms{$tmctr}{final}{stop} = $tms{$tmctr}{raw}{stop};
+	$printstring .=
+	    sprintf "    :: TM %2d :: C-Term left at %s%d\n",
+	    $tmctr, $aln_ng[1][$tms{$tmctr}{raw}{stop}], $tms{$tmctr}{raw}{stop};
+    }
+    
+    # Grab Final Sequences
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	for (my $j = $tms{$i}{final}{start}; $j <= $tms{$i}{final}{stop}; $j++) {
+	    $tms{$i}{final}{sequence} .= "$aln_ng[1][$j]";
+	}
+	$tms{$i}{final}{length} = $tms{$i}{final}{stop} - $tms{$i}{final}{start} + 1;
+    }
+
+    printDuo($printstring . "\n", $quiet);
+}
+
+################################################################################
+##### Write Profiles                                                       #####
+################################################################################
+sub writeProfiles {
+    # Write out the main profile in CSV and TXT format, as well as one for use with the
+    # hpc_by_centroid.x program
+    $profilesprefix = $avgwins;
+    if ($profilesprefix =~ /\,/) { $profilesprefix =~ s/\,/\_/g; }
+    $profilesprefix .= ".";
+    if (! -e "${profilesprefix}profiles") { mkdir "${profilesprefix}profiles"; }
+    open PROCSV, ">${profilesprefix}profiles/${fnpfx}.profile.csv";
+    open PROTXT, ">${profilesprefix}profiles/${fnpfx}.profile.txt";
+    open HPCPRO, ">${profilesprefix}profiles/${fnpfx}.hpcenter.profile.txt";
+
+    printf PROCSV "%s,%s,%s\n", "res", "num", "profile";
+    printf PROTXT "%s %s %s\n", "res", "num", "profile";
+    for (my $i = 1; $i <= $tgt_length; $i++) {
+	printf PROCSV "%s,%d,%7.2f\n", $aln_ng[1][$i], $i, $winavg[$i];
+	printf PROTXT "%3s,%3d,%7.2f\n", $aln_ng[1][$i], $i, $winavg[$i];
+	printf HPCPRO "%f\n", $winavg[$i];
+    }
+
+    close PROCSV;
+    close PROTXT;
+    close HPCPRO;
+
+    # Write out profiles for each tm, beginning 10 residues before and ending 10 residues
+    # after final prediction
+    for (my $tm = 1; $tm <= $tmctr; $tm++) {
+	open PROCSV, ">${profilesprefix}profiles/${fnpfx}.tm${tm}.profile.csv";
+	open PROTXT, ">${profilesprefix}profiles/${fnpfx}.tm${tm}.profile.txt";
+	printf PROCSV "%s,%s,%s\n", "res", "num", "profile";
+	printf PROTXT "%s %s %s\n", "res", "num", "profile";
+	for (my $i = $tms{$tm}{final}{start} - 10; $i <= $tms{$tm}{final}{stop} + 10; $i++) {
+	    if ((0 < $i) && ($i <= $tgt_length)) {
+		printf PROCSV "%s,%d,%7.2f\n", $aln_ng[1][$i], $i, $winavg[$i];
+		printf PROTXT "%3s,%3d,%7.2f\n", $aln_ng[1][$i], $i, $winavg[$i];
+	    }
+	}
+	close PROCSV;
+	close PROTXT;
+    }
+}
+
+################################################################################
+##### Hydrophobic Centers                                                  #####
+################################################################################
+sub hydrophobicCenters {
+    my $printstring = "Calculating Hydrophobic Centers ::\n";
+    for (my $i = 1; $i <= $tmctr; $i++) { #">${fnpfx}.hpcenter.profile.txt";
+	my $string =
+	    "${Bin}/$hpcenter_executable ".
+	    "${profilesprefix}profiles/${fnpfx}.hpcenter.profile.txt ".
+	    "$baseline ".
+	    "$tms{$i}{raw}{start} ".
+	    "$tms{$i}{raw}{stop}";
+
+	my $line = `$string`;
+	$line =~ /Peak:\s+(\S+)\s+(\S+)\s+Area:\s+(\S+)\s+(\S+)/;
+	$tms{$i}{final}{peak} = $2;
+	$tms{$i}{final}{area} = $4;
+	$tms{$i}{final}{geomc} =
+	    (($tms{$i}{final}{stop} - $tms{$i}{final}{start}) / 2) +
+	    $tms{$i}{final}{start};
+	$tms{$i}{final}{geomr} = $tms{$i}{raw}{geom};
+
+	$printstring .= sprintf
+	    " :: TM %2d :: Area Center        :: %7.2f\n".
+	    "          :: Peak Center        :: %7.2f\n".
+	    "          :: Geom. Center (Raw) :: %7.2f\n".
+	    "          :: Geom. Center (Cap) :: %7.2f\n\n",
+	    $i, $tms{$i}{final}{area}, $tms{$i}{final}{peak},
+	    $tms{$i}{final}{geomr}, $tms{$i}{final}{geomc};
+    }
+
+    unlink "${profilesprefix}profiles/${fnpfx}.hpcenter.profile.txt";
+
+    #printDuo($printstring, $quiet);
+}
+
+################################################################################
+##### Find Eta Angles                                                      #####
+################################################################################
+sub findEta {
+    my $printstring = "Finding Residue to Define Eta Angle Rotation ::\n";
+    my @etaconsensus = ("",
+			"SPWQAVLLAALYSLVFLLGLLGNVLVILVILRNK",
+			"TVTNYFLLNLAVADLLVALTLPPWAAYYALGG",
+			"GRVGCKLWLALDVLNCTASILSLTAISVDRYLAIVH",
+			"TPRRAKVVIAAVWVLSLLISLPPLLF",
+			"WNVAYVIYSFILGFYLPLLIMLVCYGRIYRT",
+			"RKATKMLVIVVGVFVLCWLPFFIVNLLNAFCPGSII",
+			"FQVTIWLGYANSCLNPIIYAFLNK");
+
+    my @etaconsresnum = (0,
+			 23,
+			 14,
+			 12,
+			 13,
+			 17,
+			 20,
+			 16);
+    
+    my %eta;
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	open FTA, ">tmp${i}.fta";
+	print FTA 
+	    ">Consensus $i\n".
+	    "$etaconsensus[$i]\n".
+	    ">Target\n".
+	    "$tms{$i}{final}{sequence}\n";
+	close FTA;
+	
+	Modules::Mafft::mafft("tmp${i}.fta",
+			      $mafft_executable,
+			      $mafft_binaries,
+			      $clustal_executable);
+
+	open PIR, "tmp${i}.pir";
+	my $etapirseq = 0;
+	while (<PIR>) {
+	    if (/\*/) { $etapirseq++; }
+	    if (/^\S/ && (!/\>P1/) && (!/\*/)) {
+		chomp;
+		if ($etapirseq == 0) {
+		    $eta{$i}{consensus} .= $_;
+		} else {
+		    $eta{$i}{target} .= $_;
+		}
+	    }
+	}
+
+	my $consensus_resnum = 0;
+	my $target_resnum = $tms{$i}{final}{start} - 1;
+	my $offset;
+	for (my $j = 0; $j < length($eta{$i}{consensus}); $j++) {
+	    if (substr($eta{$i}{consensus},$j,1) !~ /\-/) {
+		$consensus_resnum++;
+	    }
+	    if (substr($eta{$i}{target},$j,1) !~ /\-/) {
+		$target_resnum++;
+	    }
+	    if ($consensus_resnum == $etaconsresnum[$i]) {
+		$tms{$i}{final}{eta} = $target_resnum;
+		$offset = $j;
+	    }
+	}
+
+
+	$printstring .= sprintf
+	    " :: TM $i :: Consensus Seq ::     :: $eta{$i}{consensus} ::\n";
+	$printstring .= sprintf 
+	    " :: TM $i :: Target TM     :: %3d :: $eta{$i}{target} :: %3d\n",
+	    $tms{$i}{final}{start}, $tms{$i}{final}{stop};
+	$printstring .= sprintf 
+	    " :: Eta Residue           :: %3d :: %se\n\n",
+	    $tms{$i}{final}{eta}, " " x $offset;
+
+	unlink "tmp${i}.fta";
+	unlink "tmp${i}.aln";
+	unlink "tmp${i}.pir";
+	unlink "tmp${i}.mafft.out";
+    }
+
+    printDuo($printstring,$quiet);
+}
+
+################################################################################
+##### Final Results                                                        #####
+################################################################################
+sub finalResults {
+    my $printstring = "Final Results ::\n";
+
+    my $max = -1;
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	if ($tms{$i}{final}{length} > $max) { $max = $tms{$i}{final}{length}; }
+    }
+
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	my %centers = ("area"  => int($tms{$i}{final}{area}  + 0.5),
+		       "peak"  => int($tms{$i}{final}{peak}  + 0.5),
+		       "geomc" => int($tms{$i}{final}{geomc} + 0.5),
+		       "geomr" => int($tms{$i}{final}{geomr} + 0.5));
+	
+	my @order = sort { $centers{$a} <=> $centers{$b} } keys %centers;
+	my @spacing = ( ($centers{$order[1]} - $centers{$order[0]}),
+			($centers{$order[2]} - $centers{$order[1]}),
+			($centers{$order[3]} - $centers{$order[2]}) );
+	
+	my %markers;
+	if ($centers{"area"} == $centers{"peak"}) {
+	    $markers{"area"} = "*";
+	    $markers{"peak"} = "*";
+	    if (($centers{"area"} == $centers{"geomc"}) &&
+		($centers{"area"} == $centers{"geomr"})) {
+		$markers{"geomc"} = "*";
+		$markers{"geomr"} = "*";
+	    } elsif ($centers{"area"} == $centers{"geomc"}) {
+		$markers{"geomc"} = "*";
+		$markers{"geomr"} = ".";
+	    } elsif ($centers{"area"} == $centers{"geomr"}) {
+		$markers{"geomr"} = "*";
+		$markers{"geomc"} = "g";
+	    } elsif ($centers{"geomc"} == $centers{"geomr"}) {
+		$markers{"geomc"} = "\@";
+		$markers{"geomr"} = "\@";
+	    } else {
+		$markers{"geomc"} = "g";
+		$markers{"geomr"} = ".";
+	    }
+
+	} elsif ($centers{"area"} == $centers{"geomc"}) {
+	    $markers{"area"}  = "*";
+	    $markers{"geomc"} = "*";
+	    if ($centers{"area"} == $centers{"geomr"}) {
+		$markers{"geomr"} = "*";
+		$markers{"peak"}  = "p";
+	    } elsif ($centers{"geomr"} == $centers{"peak"}) {
+		$markers{"geomr"} = "\@";
+		$markers{"peak"}  = "\@";
+	    } else {
+		$markers{"peak"}  = "p";
+		$markers{"geomr"} = ".";
+	    }
+	    
+	} elsif ($centers{"area"} == $centers{"geomr"}) {
+	    $markers{"area"}  = "*";
+	    $markers{"geomr"} = "*";
+	    if ($centers{"geomc"} == $centers{"peak"}) {
+		$markers{"geomc"} = "\@";
+		$markers{"peak"}  = "\@";
+	    } else {
+		$markers{"geomc"} = "g";
+		$markers{"peak"}  = "p";
+	    }
+	    
+	} elsif (($centers{"peak"} == $centers{"geomr"}) &&
+		 ($centers{"peak"} == $centers{"geomc"})) {
+	    $markers{"area"}  = "a";
+	    $markers{"peak"}  = "*";
+	    $markers{"geomr"} = "*";
+	    $markers{"geomc"} = "*";
+
+	} elsif ($centers{"peak"} == $centers{"geomc"}) {
+	    $markers{"peak"}  = "*";
+	    $markers{"geomc"} = "*";
+	    if ($centers{"area"} == $centers{"geomr"}) {
+		$markers{"area"}  = "\@";
+		$markers{"geomr"} = "\@";
+	    } else {
+		$markers{"area"}  = "a";
+		$markers{"geomr"} = ".";
+	    }
+
+	} elsif ($centers{"peak"} == $centers{"geomr"}) {
+	    $markers{"peak"}  = "*";
+	    $markers{"geomr"} = "*";
+	    if ($centers{"area"} == $centers{"geomc"}) {
+		$markers{"area"}  = "\@";
+		$markers{"geomc"} = "\@";
+	    } else {
+		$markers{"area"}  = "a";
+		$markers{"geomc"} = "g";
+	    }
+
+	} elsif ($centers{"geomr"} == $centers{"geomc"}) {
+	    $markers{"geomr"} = "*";
+	    $markers{"geomc"} = "*";
+	    if ($centers{"area"} == $centers{"peak"}) {
+		$markers{"area"}  = "\@";
+		$markers{"peak"}  = "\@";
+	    } else {
+		$markers{"area"}  = "a";
+		$markers{"peak"}  = "p";
+	    }
+
+	} else {
+	    $markers{"area"}  = "a";
+	    $markers{"peak"}  = "p";
+	    $markers{"geomc"} = "g";
+	    $markers{"geomr"} = ".";
+	}
+	
+	my $centerline = " " x ($centers{$order[0]} - $tms{$i}{final}{start});
+	# 1 = 2 = 3 = 4
+	if (($spacing[0] == 0) &&
+	    ($spacing[1] == 0) &&
+	    ($spacing[2] == 0)) {
+	    $centerline .= $markers{$order[0]};
+
+	# 1 = 2 = 3
+	} elsif (($spacing[0] == 0) &&
+		 ($spacing[1] == 0)) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[2] - 1);
+	    $centerline .= $markers{$order[3]};
+
+	# 1 = 2 & 3 = 4
+	} elsif (($spacing[0] == 0) &&
+		 ($spacing[2] == 0)) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[1] - 1);
+	    $centerline .= $markers{$order[2]};
+
+	# 2 = 3 = 4
+	} elsif (($spacing[1] == 0) &&
+		 ($spacing[2] == 0)) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[0] - 1);
+	    $centerline .= $markers{$order[1]};
+
+	# 1 = 2
+	} elsif ($spacing[0] == 0) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[1] - 1);
+	    $centerline .= $markers{$order[2]};
+	    $centerline .= " " x ($spacing[2] - 1);
+	    $centerline .= $markers{$order[3]};
+
+	# 2 = 3
+	} elsif ($spacing[1] == 0) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[0] - 1);
+	    $centerline .= $markers{$order[1]};
+	    $centerline .= " " x ($spacing[2] - 1);
+	    $centerline .= $markers{$order[3]};
+
+	# 3 = 4
+	} elsif ($spacing[2] == 0) {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[0] - 1);
+	    $centerline .= $markers{$order[1]};
+	    $centerline .= " " x ($spacing[1] - 1);
+	    $centerline .= $markers{$order[3]};
+
+        # All Different
+	} else {
+	    $centerline .= $markers{$order[0]};
+	    $centerline .= " " x ($spacing[0] - 1);
+	    $centerline .= $markers{$order[1]};
+	    $centerline .= " " x ($spacing[1] - 1);
+	    $centerline .= $markers{$order[2]};
+	    $centerline .= " " x ($spacing[2] - 1);
+	    $centerline .= $markers{$order[3]};
+
+	}
+
+	$printstring .= sprintf
+	    " :: TM %2d (raw) :: %4d :: %s%s%s%s :: %4d :: Length %d\n".
+	    " :: TM %2d (cap) :: %4d :: %s%s :: %4d :: Length %d\n".
+	    " :: Centers ::             %s\n".
+	    "    :: Area          :: %7.2f :: %s%d :: %s\n".
+	    "    :: Peak          :: %7.2f :: %s%d :: %s\n".
+	    "    :: Geom. (Raw)   :: %7.2f :: %s%d :: %s\n".
+	    "    :: Geom. (Cap)   :: %7.2f :: %s%d :: %s\n",
+	    $i,
+	    $tms{$i}{raw}{start},
+	    (" " x int($tms{$i}{raw}{start} - $tms{$i}{final}{start} + 0.5)),
+	    $tms{$i}{raw}{sequence},
+	    (" " x ($max - $tms{$i}{final}{length})),
+	    (" " x int($tms{$i}{final}{stop} - $tms{$i}{raw}{stop} + 0.5)),
+	    $tms{$i}{raw}{stop},
+	    $tms{$i}{raw}{length},
+
+	    $i,
+	    $tms{$i}{final}{start},
+	    $tms{$i}{final}{sequence},
+	    (" " x ($max - $tms{$i}{final}{length})),
+	    $tms{$i}{final}{stop},
+	    $tms{$i}{final}{length},
+
+	    $centerline,
+	    
+	    $tms{$i}{final}{area},
+	    $aln_ng[1][int($tms{$i}{final}{area} + 0.5)],
+	    int($tms{$i}{final}{area} + 0.5),
+	    $markers{"area"},
+	    
+	    $tms{$i}{final}{peak},
+	    $aln_ng[1][int($tms{$i}{final}{peak} + 0.5)],
+	    int($tms{$i}{final}{peak} + 0.5),
+	    $markers{"peak"},
+	    
+	    $tms{$i}{final}{geomr},
+	    $aln_ng[1][int($tms{$i}{final}{geomr} + 0.5)],
+	    int($tms{$i}{final}{geomr} + 0.5),
+	    $markers{"geomr"},
+	    
+	    $tms{$i}{final}{geomc},
+	    $aln_ng[1][int($tms{$i}{final}{geomc} + 0.5)],
+	    int($tms{$i}{final}{geomc} + 0.5),
+	    $markers{"geomc"};
+
+	if ($etares) {
+	    $printstring .= sprintf
+		"    :: Eta Angle Res :: %7.2f :: %s%d\n\n",
+		$tms{$i}{final}{eta},
+		$aln_ng[1][$tms{$i}{final}{eta}],
+		$tms{$i}{final}{eta};
+	} else {
+	    $printstring .= "\n";
+	}
+
+	$tms{$i}{final}{centerline} = $centerline;
+    
+    }
+    printDuo($printstring, 0);
+
+    # Condensed Version
+    $printstring = "Capped TMs ::\n";
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	$printstring .= sprintf
+	    " :: TM %2d :: %4d :: %s%s :: %4d :: Length %d\n",
+	    $i,
+	    $tms{$i}{final}{start},
+	    $tms{$i}{final}{sequence},
+	    (" " x ($max - $tms{$i}{final}{length})),
+	    $tms{$i}{final}{stop},
+	    $tms{$i}{final}{length},
+    }
+    $printstring .= "\n";
+    printDuo($printstring, 0);
+}
+
+################################################################################
+##### Print the results flipped and aligned                                #####
+################################################################################
+sub flipAlign {
+    my $printstring = "";
+    my $printstring2 = "";
+    my $printstring3 = "";
+    my @ctype = ("area", "peak", "geomr", "geomc");
+    my @ctype2 = ("Area", "Peak", "Geom-Raw", "Geom-Cap");
+    my @cshort = ("a", "p", ".", "g");
+    my @cprint = ("TMs Flipped and Aligned By Area Centers ::\n",
+		  "TMs Flipped and Aligned By Peak Centers ::\n",
+		  "TMs Flipped and Aligned By Raw Geometric Centers ::\n",
+		  "TMs Flipped and Aligned By Capped Geometric Centers ::\n");
+    for (my $i = 0; $i < 4; $i++) {
+	my @locals;
+	my @spacers;
+	my $maxctr = -1;
+	my $maxlength = -1;
+	for (my $j = 1; $j <= $tmctr; $j++) {
+	    if ($j % 2 == 1) {
+		push @locals, 
+		int($tms{$j}{final}{$ctype[$i]}+0.5) - $tms{$j}{final}{start} + 1;
+		if ($locals[$j-1] > $maxctr) { $maxctr = $locals[$j-1]; }
+ 	    } else {
+ 		push @locals,
+ 		$tms{$j}{final}{stop} - int($tms{$j}{final}{$ctype[$i]}+0.5) + 1;
+ 		if ($locals[$j-1] > $maxctr) { $maxctr = $locals[$j-1]; }
+ 	    }
+	}
+
+	for (my $j = 1; $j <= $tmctr; $j++) {
+	    if (($maxctr - ($locals[$j-1]) + $tms{$j}{final}{length}) > $maxlength) {
+		$maxlength = ($maxctr - ($locals[$j-1]) + $tms{$j}{final}{length});
+	    }
+	}
+
+	$printstring .= $cprint[$i];
+	$printstring2 .= $cprint[$i];
+	$printstring2 .= "TM,Cap,Start,Sequence,Stop,Length,$ctype2[$i],$ctype2[$i]\n";
+	for (my $j = 1; $j <= $tmctr; $j++) {
+	    if ($j % 2 == 1) {
+		$printstring .= sprintf
+		    " :: TM %2d  :: %4d :: %s%s%s :: %4d :: Length %d\n",
+		    $j,
+		    $tms{$j}{final}{start},
+		    " " x ($maxctr - ($locals[$j-1])),
+		    $tms{$j}{final}{sequence},
+		    " " x ($maxlength - ($maxctr - ($locals[$j-1]) + $tms{$j}{final}{length})),
+		    $tms{$j}{final}{stop},
+		    $tms{$j}{final}{length};
+		$tms{$j}{flipped}{$ctype[$i]}{start} = $tms{$j}{final}{start};
+		$tms{$j}{flipped}{$ctype[$i]}{sequence} = 
+		    " " x ($maxctr - ($locals[$j-1])) .
+		    $tms{$j}{final}{sequence};
+		$tms{$j}{flipped}{$ctype[$i]}{stop} = $tms{$j}{final}{stop};
+		$printstring2 .= sprintf
+		    "%d,,%d,%s,%d,%d,%d,%s%d\n",
+		    $j,
+		    $tms{$j}{flipped}{$ctype[$i]}{start},
+		    $tms{$j}{flipped}{$ctype[$i]}{sequence},
+		    $tms{$j}{flipped}{$ctype[$i]}{stop},
+		    $tms{$j}{final}{length},
+		    $tms{$j}{final}{$ctype[$i]}, $aln_ng[1][int($tms{$j}{final}{$ctype[$i]} + 0.5)],
+		    int($tms{$j}{final}{$ctype[$i]} + 0.5);
+
+ 	    } else {
+ 		my $tmp = reverse "$tms{$j}{final}{sequence}";
+ 		$printstring .= sprintf
+ 		    " :: TM %2df :: %4d :: %s%s%s :: %4d :: Length %d\n",
+ 		    $j,
+ 		    $tms{$j}{final}{stop},
+ 		    " " x ($maxctr - ($locals[$j-1])),
+ 		    $tmp,
+ 		    " " x ($maxlength - ($maxctr - ($locals[$j-1]) + $tms{$j}{final}{length})),
+ 		    $tms{$j}{final}{start},
+ 		    $tms{$j}{final}{length};
+		$tms{$j}{flipped}{$ctype[$i]}{start} = $tms{$j}{final}{stop};
+		$tms{$j}{flipped}{$ctype[$i]}{sequence} = 
+		    " " x ($maxctr - ($locals[$j-1])) .
+		    $tmp;
+		$tms{$j}{flipped}{$ctype[$i]}{stop} = $tms{$j}{final}{start};
+		$printstring2 .= sprintf
+		    "%d%s,,%d,%s,%d,%d,%d,%s%d\n",
+		    $j, "f",
+		    $tms{$j}{flipped}{$ctype[$i]}{start},
+		    $tms{$j}{flipped}{$ctype[$i]}{sequence},
+		    $tms{$j}{flipped}{$ctype[$i]}{stop},
+		    $tms{$j}{final}{length},
+		    $tms{$j}{final}{$ctype[$i]}, $aln_ng[1][int($tms{$j}{final}{$ctype[$i]} + 0.5)],
+		    int($tms{$j}{final}{$ctype[$i]} + 0.5);
+
+ 	    }
+
+	}
+	$printstring .= sprintf " :: Center         :: %s$cshort[$i]\n\n", " " x ($maxctr - 1);
+	$tms{0}{flipped}{$ctype[$i]}{centerline} = " " x ($maxctr -1) . $cshort[$i];
+	$printstring2 .= ",,,$tms{0}{flipped}{$ctype[$i]}{centerline}\n\n";
+    }
+
+    printDuo($printstring, 0);
+    # Print CSV Output
+    $printstring3 .= "Final Output\n";
+    $printstring3 .= "TM,Cap,Start,Sequence,Stop,Length,Area,Area,Peak,Peak,Geom-R,Geom-R,Geom-C,Geom-C";
+    if ($etares) {
+	$printstring3 .= ",Eta,Eta";
+    }
+    $printstring3 .= "\n";
+
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	$printstring3 .= sprintf 
+	    "%d,%s,%d,%s%s,%d,%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d",
+	    $i, "raw", $tms{$i}{raw}{start},
+ 	    (" " x int($tms{$i}{raw}{start} - $tms{$i}{final}{start} + 0.5)),
+ 	    $tms{$i}{raw}{sequence},
+ 	    $tms{$i}{raw}{stop}, $tms{$i}{raw}{length},
+	    $tms{$i}{final}{area}, $aln_ng[1][int($tms{$i}{final}{area} + 0.5)],
+	    int($tms{$i}{final}{area} + 0.5),
+	    $tms{$i}{final}{peak},  $aln_ng[1][int($tms{$i}{final}{peak} + 0.5)],
+ 	    int($tms{$i}{final}{peak} + 0.5),
+	    $tms{$i}{final}{geomr}, $aln_ng[1][int($tms{$i}{final}{geomr} + 0.5)],
+ 	    int($tms{$i}{final}{geomr} + 0.5),
+	    $tms{$i}{final}{geomc}, $aln_ng[1][int($tms{$i}{final}{geomc} + 0.5)],
+ 	    int($tms{$i}{final}{geomc} + 0.5);
+	if ($etares) {
+	    $printstring3 .= sprintf ",%d,%s%d",
+	    $tms{$i}{final}{eta}, $aln_ng[1][$tms{$i}{final}{eta}], $tms{$i}{final}{eta};
+	}
+	$printstring3 .= "\n";
+
+	$printstring3 .= sprintf
+	    "%d,%s,%d,%s,%d,%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d",
+	    $i, "cap", $tms{$i}{final}{start}, $tms{$i}{final}{sequence},
+	    $tms{$i}{final}{stop}, $tms{$i}{final}{length},
+	    $tms{$i}{final}{area}, $aln_ng[1][int($tms{$i}{final}{area} + 0.5)],
+	    int($tms{$i}{final}{area} + 0.5),
+	    $tms{$i}{final}{peak},  $aln_ng[1][int($tms{$i}{final}{peak} + 0.5)],
+ 	    int($tms{$i}{final}{peak} + 0.5),
+	    $tms{$i}{final}{geomr}, $aln_ng[1][int($tms{$i}{final}{geomr} + 0.5)],
+ 	    int($tms{$i}{final}{geomr} + 0.5),
+	    $tms{$i}{final}{geomc}, $aln_ng[1][int($tms{$i}{final}{geomc} + 0.5)],
+ 	    int($tms{$i}{final}{geomc} + 0.5);
+	if ($etares) {
+	    $printstring3 .= sprintf ",%d,%s%d",
+	    $tms{$i}{final}{eta}, $aln_ng[1][$tms{$i}{final}{eta}], $tms{$i}{final}{eta};
+	}
+	$printstring3 .= "\n";
+	$printstring3 .= ",,,$tms{$i}{final}{centerline}\n\n";
+    }
+
+    # Print More CSV Output
+    $printstring3 .= "Final Capped Output (Condensed)\n";
+    $printstring3 .= "TM,Cap,Start,Sequence,Stop,Length,Area,Area,Peak,Peak,Geom-R,Geom-R,Geom-C,Geom-C,Eta,Eta\n";
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	$printstring3 .= sprintf 
+	    "%d,%s,%d,%s,%d,%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d,%.2f,%s%d",
+	    $i, "cap", $tms{$i}{final}{start}, $tms{$i}{final}{sequence},
+	    $tms{$i}{final}{stop}, $tms{$i}{final}{length},
+	    $tms{$i}{final}{area}, $aln_ng[1][int($tms{$i}{final}{area} + 0.5)],
+	    int($tms{$i}{final}{area} + 0.5),
+	    $tms{$i}{final}{peak},  $aln_ng[1][int($tms{$i}{final}{peak} + 0.5)],
+ 	    int($tms{$i}{final}{peak} + 0.5),
+	    $tms{$i}{final}{geomr}, $aln_ng[1][int($tms{$i}{final}{geomr} + 0.5)],
+ 	    int($tms{$i}{final}{geomr} + 0.5),
+	    $tms{$i}{final}{geomc}, $aln_ng[1][int($tms{$i}{final}{geomc} + 0.5)],
+ 	    int($tms{$i}{final}{geomc} + 0.5);
+	if ($etares) {
+	    $printstring3 .= sprintf ",%d,%s%d",
+	    $tms{$i}{final}{eta}, $aln_ng[1][$tms{$i}{final}{eta}], $tms{$i}{final}{eta};
+	}
+	$printstring3 .= "\n";
+    }
+    $printstring3 .= "\n";
+    open CSV, ">${fnpfx}.predictions.csv";
+    print CSV "$printstring3";
+    print CSV "$printstring2";
+    close CSV;
+}
+
+################################################################################
+##### Print Modified Fasta File and Data Tables                            #####
+################################################################################
+sub finalOutput {
+    my $mftastring = "$seqs_hdr[0]";
+    while (length($target) > 0) {
+	if (length($target) > 60) {
+	    $mftastring .= substr($target,0,60) . "\n";
+	    substr($target,0,60) = "";
+	} else {
+	    $mftastring .= $target . "\n";
+	    $target = "";
+	}
+    }
+
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	if ($etares) {
+	    $mftastring .= sprintf
+		"* %2dtm %4d %4d %4d %4d %4s %4s %4s %4s %4s %4d %4s\n",
+		$i,                               # TM Number
+		$tms{$i}{raw}{start},             # Raw Start
+	        $tms{$i}{raw}{stop},              # Raw Stop
+		$tms{$i}{final}{start},           # Cap Start
+		$tms{$i}{final}{stop},            # Cap Stop
+		"X",                              # Manual Raw Start
+		"X",                              # Manual Raw Stop
+		"X",                              # Manual Cap Start
+		"X",                              # Manual Cap Stop
+		$aln_ng[1][$tms{$i}{final}{eta}], # Eta Residue Name
+		$tms{$i}{final}{eta},             # Eta Residue Number
+		"A";                              # Eta Residue Flag
+	} else {
+	    $mftastring .= sprintf
+		"* %2dtm %4d %4d %4d %4d %4s %4s %4s %4s %4s %4s %4s\n",
+		$i,                     # TM Number
+		$tms{$i}{raw}{start},   # Raw Start
+	        $tms{$i}{raw}{stop},    # Raw Stop
+		$tms{$i}{final}{start}, # Cap Start
+		$tms{$i}{final}{stop},  # Cap Stop
+		"X",                    # Manual Raw Start
+		"X",                    # Manual Raw Stop
+		"X",                    # Manual Cap Start
+		"X",                    # Manual Cap Stop
+		"X",                    # Eta Residue Name
+		"X",                    # Eta Residue Number
+		"X";                    # Eta Residue Flag
+	}
+    }
+
+    for (my $i = 1; $i <= $tmctr; $i++) {
+	$mftastring .= sprintf
+	    "* %2dhpc %8.2f %8.2f %8.2f %8.2f %8s %8s\n",
+	    $i,                     # TM Number
+	    $tms{$i}{final}{geomr}, # Raw Geom. Center
+	    $tms{$i}{final}{geomc}, # Cap Geom. Center
+	    $tms{$i}{final}{peak},  # Peak Center
+	    $tms{$i}{final}{area},  # Area Center
+	    "X.00",                 # Face Center Placeholder
+	    "X.00";                 # Manual Center Placeholder
+    }
+
+    open MFTA, ">${fnpfx}.mfta";
+    print MFTA "$mftastring";
+    close MFTA;
+    printDuo("Modified FASTA Output ::\n" . $mftastring, 0);
+
+    # Print out Data Table
+    open CSV, ">${fnpfx}.data.csv";
+    my $printstring = "Seq,Num,avg $avgwins";
+    for (my $w = 0; $w <= 15; $w++) {
+	my $window = ($w * 2) + 1;
+	$printstring .= ",win $window";
+    } $printstring .= "\n";
+
+    for (my $i = 1; $i <= $tgt_length; $i++) {
+	$printstring .= sprintf 
+	    "%s,%d,%.3f",
+	    $aln_ng[1][$i], $i, $winavg[$i];
+	for (my $w = 0; $w <= 15; $w++) {
+	    $printstring .= sprintf ",%.3f", $win[$w][$i];
+	} $printstring .= "\n";
+    }
+    print CSV "$printstring";
+    close CSV;
+}
+
+################################################################################
+##### Percent Identities                                                   #####
+################################################################################
+sub percentIdentities {
+    open CSV, ">${fnpfx}.ident.csv";
+    open TXT, ">${fnpfx}.ident.txt";
+    open HCSV, ">${fnpfx}.hist.csv";
+    open HTXT, ">${fnpfx}.hist.txt";
+
+    my $max_hdr_len = 0;
+    for (my $i = 1; $i <= $seqs_num; $i++) {
+	(my $header, my @tmp) = split(/\s/, $seqs_hdr[$i - 1]);
+	$header =~ s/^\>P1;//;
+	if (length($header) > $max_hdr_len) { $max_hdr_len = length($header); }
+    }
+    if ($max_hdr_len < 6) { $max_hdr_len = 6; }
+
+    print CSV "header,seq,all,tm avg";
+    print TXT sprintf "%-${max_hdr_len}s %5s %6s %6s", "header", "seq", "all", "tm avg";
+    print HCSV "bin,all,avg";
+    print HTXT "bin  all  avg";
+    for (my $j = 1; $j <= $tmctr; $j++) {
+	print CSV ",TM$j";
+	print TXT sprintf " %6s", "TM$j";
+	print HCSV ",TM$j";
+	print HTXT sprintf " %4s", "TM$j";
+    }
+    print CSV "\n";
+    print TXT "\n";
+    print HCSV "\n";
+    print HTXT "\n";
+
+    my %histogram;
+    for (my $j = 0; $j <= 100; $j +=5) {
+	$histogram{"all"}{$j}   = 0;
+	$histogram{"tmavg"}{$j} = 0;
+	for (my $k = 1; $k <= $tmctr; $k++) {
+	    $histogram{$k}{$j} = 0;
+	}
+    }
+
+    for (my $i = 1; $i <= $seqs_num; $i++) {
+	(my $header, my @tmp) = split(/\s/, $seqs_hdr[$i - 1]);
+	$header =~ s/^\>P1;//;
+	my $identical = 0;
+	my $residues  = 0;
+	for (my $r = 1; $r <= $tgt_length; $r++) {
+	    if ("$aln_ng[1][$r]" eq "$aln_ng[$i][$r]") { $identical++; }
+	    $residues++;
+	}
+	$pct_ident{$i}{"all"} = ($identical / $residues) * 100;
+
+	my $tms_avg = 0;
+	for (my $j = 1; $j <= $tmctr; $j++) {
+	    my $identical = 0;
+	    my $residues  = 0;
+	    
+	    for (my $r = $tms{$j}{raw}{start}; $r <= $tms{$j}{raw}{stop}; $r++) {
+		if ("$aln_ng[1][$r]" eq "$aln_ng[$i][$r]") { $identical++; }
+		$residues++;
+	    }
+	    $pct_ident{$i}{$j} = ($identical / $residues) * 100;
+	    $tms_avg += $pct_ident{$i}{$j};
+	}
+	$pct_ident{$i}{"tmavg"} = $tms_avg / $tmctr;
+
+	print CSV sprintf
+	    "%s,%d,%f,%f",
+	    $header, $i, $pct_ident{$i}{"all"}, $pct_ident{$i}{"tmavg"};
+	print TXT sprintf
+	    "%-${max_hdr_len}s %5d %6.2f %6.2f",
+	    $header, $i, $pct_ident{$i}{"all"}, $pct_ident{$i}{"tmavg"};
+	for (my $j = 1; $j <= $tmctr; $j++) {
+	    print CSV sprintf ",%6.2f", $pct_ident{$i}{$j};
+	    print TXT sprintf " %6.2f", $pct_ident{$i}{$j};
+	}
+	print CSV "\n";
+	print TXT "\n";
+
+	for (my $j = 0; $j <= 100; $j += 5) {
+	    if (($j - 5 < $pct_ident{$i}{"all"}) && ($pct_ident{$i}{"all"} <= $j)) {
+		$histogram{"all"}{$j} += 1;
+	    }
+	    if (($j - 5 < $pct_ident{$i}{"tmavg"}) && ($pct_ident{$i}{"tmavg"} <= $j)) {
+		$histogram{"tmavg"}{$j} += 1;
+	    }
+	    for (my $k = 1; $k <= $tmctr; $k++) {
+		if (($j - 5 < $pct_ident{$i}{$k}) && ($pct_ident{$i}{$k} <= $j)) {
+		    $histogram{$k}{$j} += 1;
+		}
+	    }
+	}
+    }
+
+    for (my $j = 100; $j >= 0; $j -= 5) {
+	printf HCSV "%d,%d,%d",    $j, $histogram{"all"}{$j}, $histogram{"tmavg"}{$j};
+	printf HTXT "%3d %4d %4d", $j, $histogram{"all"}{$j}, $histogram{"tmavg"}{$j};
+	for (my $k = 1; $k <= $tmctr; $k++) {
+	    printf HCSV ",%d", $histogram{$k}{$j};
+	    printf HTXT " %4d", $histogram{$k}{$j};
+	}
+	print HCSV "\n";
+	print HTXT "\n";
+    }
+    
+    close HCSV;
+    close HTXT;
+    close CSV;
+    close TXT;
+}
+
+################################################################################
+##### Print to screen and log file                                         #####
+################################################################################
+sub printDuo {
+    (my $message, my $quiet) = @_;
+    if (!$quiet) {
+	print LOG "$message";
+	print     "$message";
+    }
+}
+
+################################################################################
+##### Help Info                                                            #####
+################################################################################
+sub help {
+
+    my $help = "
+Program:
+ :: PredicTM.pl
+
+Author:
+ :: Adam R. Griffith (griffith\@wag.caltech.edu)
+
+Usage: (If using multiple sequence FASTA or PIR file)
+ :: PredicTM.pl -f {FASTA file}           {other options}
+ :: PredicTM.pl -p {PIR file}             {other options}
+
+Usage: (If BLAST needs to be run)
+ :: PredicTM.pl -a {accession number}     {other options}
+ :: PredicTM.pl --fasta {FASTA file}      {other options}
+ :: PredicTM.pl -r {RAW amino acid input} {other options}
+
+Required Input: (Use only one)
+ :: -f | --fta         :: Filename
+ :: This should be a multiple-sequence FASTA file.  This
+ :: file typically comes from using BLAST or some other
+ :: similar program.  If you need to perform a BLAST
+ :: search with a single-sequence FASTA file, use the
+ :: \"--fasta\" option instead.
+
+ :: -p | --pir         :: Filename
+ :: This should be a multiple-sequence PIR alignment file.
+
+ :: -a | --accession   :: String
+ :: This should be a valid Swiss-Prot accession number.  For
+ :: example, the human dopamine D5 receptor's accession
+ :: number is P21918, so the input would be \"-a P21918\".
+ :: The accession number will be used for a BLAST search,
+ :: the results of which will be used for PredicTM.
+
+ :: --fasta            :: Filename
+ :: This should be a valid FASTA file with one sequence for
+ :: which a BLAST search will be performed.  The amino acid
+ :: portion of the FASTA file will be used for the BLAST
+ :: search and the results from BLAST will be used for
+ :: PredicTM.
+
+ :: -r | --raw         :: String
+ :: This should be a protein sequence in single-letter
+ :: amino acid format.
+
+Optional PredicTM Input:
+ :: --scale                 :: Keyword or Filename
+ :: This is the hydrophobicity scale to be used.  There are
+ :: twelve eight default scales, or you can provide your own
+ :: scale file (follow the convention and format of the
+ :: default scales).  Default options:
+ ::    - octanol         (neutral histidine)
+ ::    - octanolplus     (charged histidine)
+ ::    - oct-inter       (neutral histidine)
+ ::    - oct-interplus   (charged histidine)
+ ::    - biological      (charged histidine)
+ ::    - oct_bio_avg     (charged histidine)
+ ::    - interface       (neutral histidine)
+ ::    - intefaceplus    (charged histidine)
+ ::    - old_eisenberg   (neutral histidine)
+ ::    - eisenberg       (neutral histidine)
+ ::    - jen_penalty     (neutral histidine)
+ ::    - jen_penaltyplus (charged histidine)
+
+ :: -w | --avgwins          :: String
+ :: This is a set of windows that should be averaged over for
+ :: use in TM predictions.  Windows may be specified as a
+ :: range or as a set of specific windows.  Only odd numbered
+ :: windows from 1 to 31 are allowed.
+ :: Examples:
+ :: 1) -w '7-31'
+ ::    This selects odd windows from 7 to 31 (7, 9, 11...31)
+ :: 2) -w '7,15,31'
+ ::    This selects windows 7, 15, and 31.  Note that there
+ ::    are only commas between the windows.  No spaces please.
+
+ :: --minhelix              :: Integer
+ :: Any predicted raw helices that are shorter than this
+ :: length will be ignored.
+
+ :: --maxhelix              :: Integer
+ :: Any predicted raw helices that are longer than this
+ :: length will not be capped or extended.
+
+ :: --minloop               :: Integer
+ :: Capping and extension will not be applied if it will
+ :: result in a loop shorter than this value.
+
+ :: --maxcap                :: Integer
+ :: This is the maximum distance that a cap will be applied
+ :: at.
+
+ :: --maxext                :: Integer
+ :: This is the distance that an extnesion will be applied
+ :: at.
+
+ :: --ntermbreakers         :: String
+ :: These are residues that are used for capping.  The first
+ :: of these residues found beyond the raw N-terminus of a
+ :: helix is considered as a possible cap.  The list of
+ :: residues should be in single-letter amino acid form,
+ :: separated by commas but no spaces.
+ :: Example:
+ :: --ntermbreakers 'G,P,D,E,R,K,H'
+
+ :: --ctermbreakers         :: String
+ :: These are residues that are used for capping.  The first
+ :: of these residues found beyond the raw C-terminus of a
+ :: helix is considered as a possible cap.  The list of
+ :: residues should be in single-letter amino acid form,
+ :: separated by commas but no spaces.
+ :: Example:
+ :: --ctermbreakers 'G,P,D,E,R,K,H'
+
+ :: -b | --baseline         :: Float
+ :: Segments of the final profile that are greater than
+ :: this value are considered to be part of a potential
+ :: helix.
+
+ :: --etares | --noetares   :: No Input
+ :: \"Eta residues\" are used during template building
+ :: to establish the initial helical (eta) rotations of
+ :: the TM bundle for GPCRs.  These residues correspond
+ :: to the most conserved residue in the TM region, with
+ :: the exception of TM 3.  Using this flag will tell
+ :: the program to attempt to find the correct residue
+ :: by aligning a \"consensus\" sequence to the target
+ :: sequence.  The consensus sequence consists of:
+ :: TM1 SPWQAVLLAALYSLVFLLGLLGNVLVILVILRNK
+ ::                           *
+ :: TM2 TVTNYFLLNLAVADLLVALTLPPWAAYYALGG
+ ::                  *
+ :: TM3 GRVGCKLWLALDVLNCTASILSLTAISVDRYLAIVH
+ ::                *
+ :: TM4 TPRRAKVVIAAVWVLSLLISLPPLLF
+ ::                 *
+ :: TM5 WNVAYVIYSFILGFYLPLLIMLVCYGRIYRT
+ ::                     *
+ :: TM6 RKATKMLVIVVGVFVLCWLPFFIVNLLNAFCPGSII
+ ::                        *
+ :: TM7 FQVTIWLGYANSCLNPIIYAFLNK
+ ::                    *
+ :: The \"*\" marks the \"eta residue\".  This method
+ :: is not foolproof and should be checked by the user.
+ :: As stated above, this is ONLY for Class-A GPCRs.
+ :: The \"--noetares\" turns off this option if it is
+ :: turned on by default.
+
+ :: --clustal | --noclustal :: No Input
+ :: This flag causes ClustalW to be used in place of
+ :: MAFFT for any multiple-sequence alignments that
+ :: are needed.  The \"--noclustal\" turns off this
+ :: option if it is turned on by default.
+
+ :: --qsub | --noqsub       :: No Input
+ :: This flag tells the program to run using a queue,
+ :: meaning that it will not run in the foreground.
+ :: The \"--noqsub\" flag turns off this option
+ :: if it is turned on by default.
+
+ :: --queuetype             :: sge or pbs
+ :: This tells the program what type of queuing system
+ :: to use when submitting the program to the queue
+ :: (if indicated with the \"--qsub\" flag).  Two options
+ :: are allowed: sge (for Sun Grid Engine) and pbs (for
+ :: the Portable Batch System).
+
+Optional Blast Input:
+ :: -d | --protdb      :: Keyword
+ :: This keyword allows the user to select the protein
+ :: database to be used in the BLAST search.  The valid
+ :: keywords are:
+ :: Bacteria_Archaea, Bacteria, Archaea, Viruses, Eukaryota,
+ :: Viridiplantae, Fungi, Metazoa, Arthropoda, Vertebrata,
+ :: Mammalia, Rodentia, Primates, Microbial_proteomes,
+ :: Mitochondrion, ARATH, CAEEL, DROME, ECOLI, HUMAN, MOUSE,
+ :: RAT, YEAST, SCHPO, PLAFA, Complete
+
+ :: -e | --ethreshold  :: Float
+ :: This value is a cutoff parameter for BLAST and is give
+ :: in powers of ten.  Smaller cutoffs give results that are
+ :: more closely related to the target.  This value should
+ :: only be changed by those that are familiar with its
+ :: usage.
+ :: Examples:
+ :: -e 100    (results will be loosely related to target)
+ :: -e 0.001  (results will be closely related to target)
+
+ :: -s | --sequences   :: Integer
+ :: This is the initial number of sequences that the program
+ :: searches for.  If completeness is turned on, then this
+ :: value will be increased until completeness is reached.
+
+ :: -c | --complete | --nocomplete :: No Input
+ :: This flag will tell the program to run until a complete
+ :: set of sequences is returned.  Completeness is defined
+ :: as the complete set of sequences that satisfies the
+ :: e-value threshold.  The \"--nocomplete\" option will turn
+ :: completeness off if it is turned on by default.
+
+ :: -i | --compiter    :: Integer
+ :: Every time that completeness is not achieved, the target
+ :: number of sequences will be increased by this amount.
+
+ :: -m | --maxseqs     :: Integer
+ :: This is the maximum number of sequences that the program
+ :: will search for.
+
+ :: -l | --filter | --nofilter :: No Input
+ :: This flag will turn on BLAST's low complexity region
+ :: filter.  This filter masks regions of low sequence
+ :: complexity during the BLAST search.  In some cases this
+ :: will mask features that give unrelated results, and in
+ :: others it will mask features that are important to the
+ :: function of the protein.  Thus, it is important to use
+ :: this feature with caution.  The \"--nofilter\" option
+ :: will turn off the filter if it is turned on by default.
+
+ :: -t | --trembl | --notrembl :: No Input
+ :: This flag will allow TrEMBL sequences to be included in
+ :: the BLAST results.  The TrEMBL database is not curated,
+ :: therefore there may be some repeated or unreliable
+ :: sequences in the results.  The \"--notrembl\" option will
+ :: turn off TrEMBL sequences if they are turned on by
+ :: default.
+
+ :: -g | --flagnongpcr | --noflagnongpcr :: No Input
+ :: This flag notifies the user that there are sequences
+ :: that may not be GPCRs.  The program checks with the
+ :: webpage at http://www.gpcr.org/7tm/htmls/entries.html.
+ :: It is likely that some GPCR sequences will be flagged
+ :: incorrectly.  The \"--noflagnongpcr\" option will turn
+ :: the flagging option off if it is turned on by default.
+
+ :: -x | --cutnongpcr | --nocutnongpcr :: No Input
+ :: This flag notifies the user that there are sequences
+ :: that may not be GPCRs.  The program checks with the
+ :: webpage at http://www.gpcr.org/7tm/htmls/entries.html.
+ :: It is likely that some GPCR sequences will be flagged
+ :: incorrectly.  Additionally, the flagged sequences will
+ :: be removed from the final output.  The \"--nocutnongpcr\"
+ :: option will turn the cutting option off if it is turned
+ :: on by default.
+
+Other Optional Input:
+ :: -n | --name        :: String
+ :: When this input is used, all output files will be given
+ :: this name. (e.g. {name}.fta, {name.csv}, etc.)
+
+ :: --prefix      :: String
+ :: When used with a Swiss-Prot accession number, this input
+ :: will be prepended to all of the output files.
+ :: (e.g. {prefix}.P14416.fta)
+ ::
+ :: When used with a FASTA file for Blast or for a raw
+ :: sequence for blast, then this functions just like the
+ :: \"-n\" option.
+ ::
+ :: When used with a multiple-sequence FASTA file or PIR file,
+ :: this input will be prepended to the input filename.
+
+ :: -q | --quiet       :: No Input
+ :: This flag will turn off some of the output to the screen.
+
+ :: -h | --help        :: No Input
+ :: Prints this help message.
+
+ :: --showdefaults     :: No Input
+ :: Prints out the current defaults based on the .predictm
+ :: file being used.
+
+Description:
+ :: PredicTM attempts to predict the helical transmembrane
+ :: regions of a protein.  The program uses an aligned set
+ :: of sequences and applies a hydrophobicity scale to the
+ :: alignment.  The average hydrophobicity is then
+ :: calculated, followed by calculation of moving window
+ :: averages of the average hydrophobicity profile.  The
+ :: final hydrophobicity profile is generated from an
+ :: average of several different windows.  Based on the
+ :: final profile, raw TMs are predicted.  Capping rules
+ :: are applied to the raw TMs, giving capped TMs.
+
+ :: In addition to the TM regions, hydrophobic centers are
+ :: calculated.  The centers calculated are the geometric
+ :: centers based on both the raw and capped predictions,
+ :: the peak hydrophobicity, and the centroid (point where
+ :: the area of the helix's profile is equal to both
+ :: sides).
+
+Modified FASTA Format:
+ :: The Modified FASTA Format is designed to contain both
+ :: information about the protein sequence and the TMs,
+ :: while the original FASTA format only contains sequence
+ :: information.  Two lines are added at the end of the file
+ :: for each TM.  The first line contains TM start/stop and
+ :: eta residue information.  The second line contains
+ :: hydrophobic center information.
+ ::
+ :: The first line:
+ ::  1) TM number followed by \"tm\" (no space)
+ ::  2) Raw TM start residue
+ ::  3) Raw TM stop residue
+ ::  4) Capped TM start residue
+ ::  5) Capped TM stop residue
+ ::  6) Holder for manual/consensus raw TM start residue
+ ::  7) Holder for manual/consensus raw TM stop residue
+ ::  8) Holder for manual/consensus capped TM start residue
+ ::  9) Holder for manual/consensus capped TM stop residue
+ :: 10) Residue (letter) for helix eta angle calculation
+ :: 11) Residue (number) for helix eta angle calculation
+ :: 12) Flag (A for automatic, M for manual) for helix eta
+ ::     angle calculation
+ ::
+ :: The second line:
+ :: 1) TM number followed by \"hpc\" (no space)
+ :: 2) PredicTM raw geometric hydrophobic center 
+ :: 3) PredicTM capped geometric hydrophobic center
+ :: 4) PredicTM peak hydrophobic center
+ :: 5) PredicTM area/centroid hydrophobic center
+ :: 6) Placeholder for future hydrophobic center
+ :: 7) Manually selected hydrophobic center
+ ::
+ :: Here is an example:
+>P1;P14416|DRD2_HUMAN D(2) dopamine receptor - Homo sapiens
+MDPLNLSWYDDDLERQNWSRPFNGSDGKADRPHYNYYATLLTLLIAVIVFGNVLVCMAVS
+REKALQTTTNYLIVSLAVADLLVATLVMPWVVYLEVVGEWKFSRIHCDIFVTLDVMMCTA
+SILNLCAISIDRYTAVAMPMLYNTRYSSKRRVTVMISIVWVLSFTISCPLLFGLNNADQN
+ECIIANPAFVVYSSIVSFYVPFIVTLLVYIKIYIVLRRRRKRVNTKRSSRAFRAHLRAPL
+KGNCTHPEDMKLCTVIMKSNGSFPVNRRRVEAARRAQELEMEMLSSTSPPERTRYSPIPP
+SHHQLTLPDPSHHGLHSTPDSPAKPEKNGHAKDHPKIAKIFEIQTMPNGKTRTSLKTMSR
+RKLSQQKEKKATQMLAIVLGVFIICWLPFFITHILNIHCDCNIPPVLYSAFTWLGYVNSA
+VNPIIYTTFNIEFRKAFLKILHC
+* 1tm   36   57   33   61    X    X    X    X    N   52   A
+* 2tm   70   94   70   95    X    X    X    X    D   80   A
+* 3tm  113  126  108  131    X    X    X    X    D  114   A
+* 4tm  155  171  151  173    X    X    X    X    W  160   A
+* 5tm  191  212  187  217    X    X    X    X    P  201   A
+* 6tm  376  398  370  398    X    X    X    X    P  388   A
+* 7tm  406  428  406  432    X    X    X    X    P  423   A
+* 1hpc    46.50    47.00    44.00    45.49   X.00   X.00
+* 2hpc    82.00    82.50    88.00    86.33   X.00   X.00
+* 3hpc   119.50   119.50   120.00   121.03   X.00   X.00
+* 4hpc   163.00   162.00   163.00   162.42   X.00   X.00
+* 5hpc   201.50   202.00   203.00   202.19   X.00   X.00
+* 6hpc   387.00   384.00   387.00   386.79   X.00   X.00
+* 7hpc   417.00   419.00   411.00   414.73   X.00   X.00
+
+";
+    die $help;
+}
+
+# v-- This line must be included --v 
+1;

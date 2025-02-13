@@ -1,0 +1,100 @@
+-----------------------------------------------------------------------
+  MAFFT: a multiple sequence alignment program
+  version 6.240, 2007/04/04
+
+  http://align.bmr.kyushu-u.ac.jp/mafft/software/
+  katoh@bioreg.kyushu-u.ac.jp
+
+  Copyright (c) 2006 Kazutaka Katoh
+  Version 6.233 is distributed under the BSD license.
+  See ./license/bsd.txt
+-----------------------------------------------------------------------
+
+1. COMPILE
+% cd src
+% make clean
+% make
+% cd ..
+
+
+2. INSTALL (using make)
+# cd src
+# make install
+(Programs are installed into /usr/local/bin/ and 
+ /usr/local/lib/mafft/.)
+
+
+2. INSTALL (manual)
+# mkdir -p /usr/local/lib/mafft/
+# cp ./binaries/* /usr/local/lib/mafft/
+# cp ./scripts/mafft /your/command/path/
+# cp ./scripts/mafft-homologs.rb /your/command/path/
+# cd /your/command/path/
+# ln -s mafft fftns
+# ln -s mafft fftnsi
+# ln -s mafft nwns
+# ln -s mafft nwnsi
+# ln -s mafft linsi
+# ln -s mafft ginsi
+# ln -s mafft mafft-fftns
+# ln -s mafft mafft-fftnsi
+# ln -s mafft mafft-nwns
+# ln -s mafft mafft-nwnsi
+# ln -s mafft mafft-linsi
+# ln -s mafft mafft-ginsi
+# ln -s ../lib/mafft/mafft-profile .
+(If you installed the binaries to a different directory than 
+ /usr/local/lib/mafft, you have to set the MAFFT_BINARIES environment
+ variable to the directory where the binaries are.)
+
+
+3. CHECK
+% cd test
+% rehash
+% setenv MAFFT_BINARIES /where/binaries/were/installed      # if necessary
+% mafft sample > test.fftns2                                # FFT-NS-2
+% mafft --maxiterate 100  sample > test.fftnsi              # FFT-NS-i
+% mafft --globalpair sample > test.gins1                    # G-INS-1 
+% mafft --globalpair --maxiterate 100  sample > test.ginsi  # G-INS-i 
+% mafft --localpair sample > test.lins1                     # L-INS-1 
+% mafft --localpair --maxiterate 100  sample > test.linsi   # L-INS-i 
+% diff test.fftns2 sample.fftns2
+% diff test.fftnsi sample.fftnsi
+% diff test.gins1 sample.gins1
+% diff test.ginsi sample.ginsi
+% diff test.lins1 sample.lins1
+% diff test.linsi sample.linsi
+
+
+4. INPUT FORMAT
+fasta format.
+
+The type of input sequences (nucleotide or amino acid) is 
+automatically recognized based on the frequency of A, T, G, C, U and N.
+
+Size limit: 3,000,000 sites for linsi, ginsi and einsi.
+
+
+5.  USAGE
+% /usr/local/bin/mafft
+
+-> http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/mafft/
+
+
+6. UNINSTALL
+# rm -r /usr/local/lib/mafft
+# rm /usr/local/bin/mafft
+# rm /usr/local/bin/fftns
+# rm /usr/local/bin/fftnsi
+# rm /usr/local/bin/nwns
+# rm /usr/local/bin/nwnsi
+# rm /usr/local/bin/linsi
+# rm /usr/local/bin/ginsi
+# rm /usr/local/bin/mafft-fftns
+# rm /usr/local/bin/mafft-fftnsi
+# rm /usr/local/bin/mafft-nwns
+# rm /usr/local/bin/mafft-nwnsi
+# rm /usr/local/bin/mafft-linsi
+# rm /usr/local/bin/mafft-ginsi
+# rm /usr/local/bin/mafft-profile
+# rm /usr/local/bin/mafft-homologs.rb

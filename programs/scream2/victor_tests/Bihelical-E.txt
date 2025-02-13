@@ -1,0 +1,2 @@
+Tot_AA_intra AA_Internal  AA_intra_V  AA_intra_C  AA_intra_H Tot_BB_intra BB_Internal  BB_intra_V  BB_intra_C  BB_intra_H Tot_AB_inter  AB_inter_V  AB_inter_C  AB_inter_H       Tot_E
+     50.674     216.088     -76.214     -80.588      -8.612     103.687     220.633     -48.784     -55.737     -12.425       0.004      29.243     -27.798      -1.441     154.365 

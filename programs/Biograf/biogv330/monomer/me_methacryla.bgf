@@ -1,0 +1,43 @@
+BIOGRF  321
+DESCRP pmma   
+REMARK Created by msi 
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 HH    MMA      1    1.99223   2.15087  -0.10278 C_3    4 0  0.00000
+HETATM     2 HX    MMA      1    1.89700   2.76300   0.79700 H_     1 0  0.00000
+HETATM     3 H2C1  MMA      1    2.15531   2.81264  -0.95625 H_     1 0  0.00000
+HETATM     4 H1C1  MMA      1    2.87050   1.50961   0.00187 H_     1 0  0.00000
+HETATM     5 TT00  MMA      1    0.71965   1.29018  -0.32731 C_3    4 0  0.00000
+HETATM     6 C2    MMA      1    0.52397   0.33356   0.75513 C_2    3 0  0.00000
+HETATM     7 C4    MMA      1   -0.53994   2.17232  -0.53993 C_3    4 0  0.00000
+HETATM     8 H3C4  MMA      1   -0.73395   2.79406   0.33695 H_     1 0  0.00000
+HETATM     9 H2C4  MMA      1   -1.41560   1.54610  -0.72571 H_     1 0  0.00000
+HETATM    10 H1C4  MMA      1   -0.40082   2.82568  -1.40394 H_     1 0  0.00000
+HETATM    11 O1    MMA      1    0.33792   0.75627   1.89236 O_2    1 2  0.00000
+HETATM    12 O2    MMA      1    0.55324  -0.98163   0.45107 O_3    2 2  0.00000
+HETATM    13 C5    MMA      1    0.36502  -1.92773   1.51969 C_3    4 0  0.00000
+HETATM    14 H3C5  MMA      1    1.14875  -1.82756   2.27400 H_     1 0  0.00000
+HETATM    15 H2C5  MMA      1    0.41808  -2.93280   1.10117 H_     1 0  0.00000
+HETATM    16 H1C5  MMA      1   -0.61425  -1.80124   1.98692 H_     1 0  0.00000
+HETATM    17 TX    MMA      1    0.87577   0.73532  -1.25907 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     5     4     3     2
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     1     6    17     7
+CONECT     6     5    11    12
+ORDER      6     1     2     1
+CONECT     7     5    10     9     8
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7
+CONECT    11     6
+ORDER     11     2
+CONECT    12     6    13
+CONECT    13    12    16    15    14
+CONECT    14    13
+CONECT    15    13
+CONECT    16    13
+CONECT    17     5
+END

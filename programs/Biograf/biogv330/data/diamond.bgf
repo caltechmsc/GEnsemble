@@ -1,0 +1,42 @@
+XTLGRF  160
+DESCRP Diamond
+REMARK                                                             
+FORCEFIELD DREIDING
+PERIOD 111
+AXES   ZYX
+SGNAME F23      T(2)      234    9
+CRYSTX     3.55600    3.55600    3.55600   90.00000   90.00000   90.00000
+CELLS    -1    1   -1    1   -1    1
+XTLUNQ    1 C_3   C_  _  0.000000 0.000000 0.000000 C_3     4  0  0.0000 2  0.25    0.0
+XTLUNQ    2 C_3   C_  _  0.250000 0.250000 0.250000 C_3     4  0  0.0000 2  0.25    0.0
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C_3     1    444    0.00000   0.00000   0.00000 C_3    4 0  0.00000
+HETATM     2 C_3     2    444    0.00000   1.77800   1.77800 C_3    4 0  0.00000
+HETATM     3 C_3     3    444    1.77800   0.00000   1.77800 C_3    4 0  0.00000
+HETATM     4 C_3     4    444    1.77800   1.77800   0.00000 C_3    4 0  0.00000
+HETATM     5 C_3     5    444    0.88900   0.88900   0.88900 C_3    4 0  0.00000
+HETATM     6 C_3     6    444    0.88900   2.66700   2.66700 C_3    4 0  0.00000
+HETATM     7 C_3     7    444    2.66700   0.88900   2.66700 C_3    4 0  0.00000
+HETATM     8 C_3     8    444    2.66700   2.66700   0.88900 C_3    4 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     5     8     7     6
+DISPX      1     0    -1    -1     0
+DISPY      1     0    -1     0    -1
+DISPZ      1     0     0    -1    -1
+CONECT     2     5     6     7     8
+DISPX      2     0     0    -1    -1
+CONECT     3     5     7     6     8
+DISPY      3     0     0    -1    -1
+CONECT     4     5     8     6     7
+DISPZ      4     0     0    -1    -1
+CONECT     5     1     2     3     4
+CONECT     6     2     4     3     1
+DISPY      6     0     0     1     1
+DISPZ      6     0     1     0     1
+CONECT     7     3     4     2     1
+DISPX      7     0     0     1     1
+DISPZ      7     0     1     0     1
+CONECT     8     4     3     2     1
+DISPX      8     0     0     1     1
+DISPY      8     0     1     0     1
+END

@@ -1,0 +1,32 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+protein_initial_bundle_combihelixrot_20080419.122342
+/home/ravi/ge_temp1/protein_initial_bundle_combihelixrot_20080419.122342
+../protein_initial_bundle.bgf
+../hpcenter.dat
+Generating the combinatorial set of helix rotations now ...
+I am here in rotate_combi
+compute-0-0.local
+Starting combinatorial rotations now...
+done with starting the loops
+degrees = 180_240_0_240_60_270_90  
+bgffile is protein_initial_bundle.bgf                        
+  bgffile is opened for reading
+ protein_initial_bundle.bgf                                                                                                                                                                                                                                                            
+total number of movable atoms =  3428
+bgffile is protein_initial_bundle.bgf                        
+  bgffile opened for reading
+ protein_initial_bundle.bgf                                                                                                                                                                                                                                                            
+  bgffile is opened for output
+ protein_initial_bundle.180_240_0_240_60_270_90.combirot.bgf                                                                                                                                                                                                                           
+done with rotations
+Running scream now ...
+I am here in scream_combi
+scream_dir scream2
+protein_initial_bundle.180_240_0_240_60_270_90.combirot.bgf
+
+===================================================================================
+Copyright Victor Wai Tak Kam and William A. Goddard III, Caltech, Pasadena, CA, USA, 
+All rights Reserved
+===================================================================================
+

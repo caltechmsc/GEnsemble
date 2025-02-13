@@ -1,0 +1,85 @@
+beginmacro
+%
+%  Poly_build.macro
+%
+%	This macro allows one to build a polymer by adding one monomer
+%	unit at a time and running dynamics after each addition to
+%	allow partial equilibration before the next one is added.
+%
+%	The monomer is specified by the first command line argument,
+%	using enough of the name given in the monomer library to be
+%	unambiguous.  The degree of polymerization is given by the second
+%	argument, and the time for each dynamics run is given by the third.
+%
+%	Thus, a 50mer of polypropylene could be built using 0.5 ps of
+%	equilibration at each addition by typing in command mode something
+%	similar to:  @poly_build.macro propylene 50 .5
+%
+%	Command line arguments:
+%
+monomer	= ${input1}
+dp	= ${input2}
+time	= ${input3}
+%
+%	Exit if arguments missing
+%
+if(${time} = NULL) then
+	echo ARGUMENTS MISSING
+	goto end
+endif
+%
+entry-level
+Build
+	Build/polymer
+		  ${NEXTFILE}
+		  "poly"
+		do count = 1, ${dp}
+		Polymer/monomer lib
+		Selections/${monomer}
+		Selection/return
+		Polymer/simulate
+			Simulate/setup eex
+                        ${LASTGROUP}
+                        return
+                        ${LASTGROUP}
+                        return
+                        ${LASTGROUP}
+                        return
+%	The structure must be minimized before dynamics.
+%
+			if(${count}=1) then
+			Simulate/mechanics
+				Mechanics/# of steps
+				  "20"
+				Mechanics/minimize
+				Mechanics/return
+			Simulate/dynamics
+				Dynamics/adiabatic
+					 Adiabatic(EVN)/time
+					  ${time}
+					  Adiabatic(EVN)/execute
+					  Adiabatic(EVN)/return
+				Dynamics/return
+			else
+			Simulate/mechanics
+				Mechanics/minimize
+				Mechanics/return
+			Simulate/dynamics
+				Dynamics/adiabatic
+					Adiabatic(EVN)/execute
+					Adiabatic(EVN)/return
+				Dynamics/return
+			endif
+			Simulate/return
+		enddo
+%
+		Polymer/repeat
+		  1
+		Polymer/return
+	Build/return
+%
+end:
+%
+quit
+%
+endmacro

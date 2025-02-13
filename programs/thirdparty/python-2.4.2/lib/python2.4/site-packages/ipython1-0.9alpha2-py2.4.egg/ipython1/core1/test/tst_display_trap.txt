@@ -1,0 +1,120 @@
+
+    >>> from ipython1.core1.display_trap import DisplayTrap
+
+Check the default settings.
+
+    >>> dt = DisplayTrap()
+    >>> dt.obj is None
+    True
+    >>> dt.old_hook is None
+    True
+    >>> dt.formatters
+    []
+    >>> dt.callbacks
+    []
+
+The hook() stores the object in .obj . clear() sets .obj to None.
+
+    >>> dt.hook(1)
+    >>> dt.obj
+    1
+    >>> dt.clear()
+    >>> dt.obj
+
+add_to_message() will put put all of the formatted results into a dictionary.
+Without anything passing through the hook(), nothing gets added. Without any
+formatters, an empty dictionary is added.
+
+    >>> msg = {}
+    >>> dt.add_to_message(msg)
+    >>> msg
+    {}
+    >>> dt.hook(1)
+    >>> dt.add_to_message(msg)
+    >>> msg
+    {'display': {}}
+    >>> dt.clear()
+
+Only the last object that passes through between clear() calls is recorded.
+
+    >>> dt.hook(1)
+    >>> dt.hook(2)
+    >>> dt.obj
+    2
+    >>> dt.clear()
+
+Now try adding a formatter.
+
+    >>> def form1(obj):
+    ...     print 'form1: %r' % obj
+    ... 
+    >>> dtf = DisplayTrap(formatters=[form1])
+
+The formatter does not get called until add_to_message() is called.
+
+    >>> dtf.hook(1)
+    >>> dtf.hook(2)
+    >>> msg = {}
+    >>> dt.add_to_message(msg)
+    >>> msg
+    {}
+    >>> dtf.add_to_message(msg)
+    form1: 2
+    >>> msg
+    {'display': {}}
+
+However, it returned None, so nothing got added. Let's return an actual string.
+
+    >>> dtf.clear()
+    >>> def form2(obj):
+    ...     return 'form2: %r' % obj
+    ... 
+    >>> dtf.formatters = [form2]
+    >>> dtf.hook(1)
+    >>> dtf.hook(2)
+    >>> msg = {}
+    >>> dtf.add_to_message(msg) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File ..., in add_to_message
+        display[formatter.identifier] = representation
+    AttributeError: 'function' object has no attribute 'identifier'
+
+Oops! We didn't satisfy the interface of a formatter. Each formatter needs
+a .identifier attribute.
+
+    >>> form2.identifier = 'form2'
+    >>> dtf.add_to_message(msg)
+    >>> msg
+    {'display': {'form2': 'form2: 2'}}
+
+Now let's try a list of callbacks. Callbacks do not do any formatting. Rather
+they are called every time something goes through the hook().
+
+    >>> dtc = DisplayTrap(callbacks=[form1])
+    >>> dtc.hook(1)
+    form1: 1
+    >>> dtc.hook(2)
+    form1: 2
+    >>> msg = {}
+    >>> dtc.add_to_message(msg)
+    >>> msg
+    {'display': {}}
+
+Setting the hook should replace sys.displayhook.
+
+    >>> from ipython1.core1.test.tcommon import Mock
+    >>> from ipython1.core1 import display_trap
+    >>> display_trap.sys = Mock('sys')
+    >>> dt = display_trap.DisplayTrap()
+    >>> dt.old_hook is None
+    True
+    >>> dt.set()
+    >>> dt.old_hook # doctest: +ELLIPSIS
+    <Mock 0x... sys.displayhook>
+    >>> display_trap.sys.displayhook # doctest: +ELLIPSIS
+    <bound method DisplayTrap.hook of <ipython1.core1.display_trap.DisplayTrap object at 0x...>>
+    >>> dt.unset()
+    >>> display_trap.sys.displayhook # doctest: +ELLIPSIS
+    <Mock 0x... sys.displayhook>
+

@@ -1,0 +1,50 @@
+
+    >>> from ipython1.core1.display_formatter import *
+
+IDisplayFormatter is the abstract interface. It's __call__ method should be
+unimplemented.
+
+    >>> idf = IDisplayFormatter()
+    >>> idf.kind
+    'display'
+    >>> idf.identifier
+    >>> idf(None)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/Users/rkern/hg/sprint1/ipython1/core1/display_formatter.py", line 24, in __call__
+        raise NotImplementedError
+    NotImplementedError
+
+The simplest (and the default) formatter just uses repr(), just like the regular
+interactive prompt.
+
+    >>> rdf = ReprDisplayFormatter()
+    >>> rdf.kind
+    'display'
+    >>> rdf.identifier
+    'repr'
+    >>> rdf(None)
+    'None'
+    >>> rdf(1)
+    '1'
+    >>> rdf('1')
+    "'1'"
+    >>> class Bar(object):
+    ...     def __repr__(self):
+    ...         return 'Bar()'
+    ... 
+    >>> rdf(Bar())
+    'Bar()'
+
+A (very) slightly more advanced formatter mimics the usual IPython output, which
+uses pprint.pprint().
+
+    >>> ppdf = PPrintDisplayFormatter()
+    >>> ppdf.kind
+    'display'
+    >>> ppdf.identifier
+    'pprint'
+    >>> ppdf(Bar())
+    'Bar()'
+    >>> ppdf(range(30))
+    '[0,\n 1,\n 2,\n 3,\n 4,\n 5,\n 6,\n 7,\n 8,\n 9,\n 10,\n 11,\n 12,\n 13,\n 14,\n 15,\n 16,\n 17,\n 18,\n 19,\n 20,\n 21,\n 22,\n 23,\n 24,\n 25,\n 26,\n 27,\n 28,\n 29]'

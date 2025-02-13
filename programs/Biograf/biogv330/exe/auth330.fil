@@ -1,0 +1,88 @@
+Contact           Dr. William A. Goddard III
+Site              3001
+Name              California Institute of Technology
+Address           Division of Chemistry and Chemical Eng.
+Address           Mail Code 139-74
+Address           Pasadena, CA  91125
+Start             1/1/00
+Stop              *
+CPU               69025565        sgi1
+CPU               69022731        degas
+CPU               69022709        monet
+CPU               6902270D        renoir
+CPU               6902277F        seurat
+CPU               690663E0        picasso
+CPU               6906338B        davinci
+CPU               690667AB        vangogh
+CPU               69062B63        dali
+CPU               690635D3        hokusai
+CPU               6906B2C4        eastie
+CPU		  69073405	  teijin
+CPU               690A6E9A        impact1
+CPU               690A6E5E        impact2
+CPU               690A70BB        impact3
+CPU               690A6DD0        impact4
+CPU               690A09f7        impact5
+CPU               690B711D        octane1
+CPU               690BC1A3        octane2
+CPU               691249EC        octane3
+CPU               690B370B        octane4
+CPU               690BE2E3        octane5
+CPU               690B55EE        octane6
+CPU               690B80D0        octane7
+CPU               690B06FF        octane8
+CPU               690BF1CD        octane9
+CPU               690BF1B9        octane10
+CPU               690B0510        octane11
+CPU               33380000        origin1
+CPU               35340000        origin2
+CPU               69062523        cezanne
+CPU               6902B9D6        otwo1
+CPU               6902DFBA        otwo2
+CPU               6902B718        otwo3
+CPU               6902B8BE        otwo4
+CPU               6902DF83        otwo5
+CPU               6902F6D5        otwo6
+CPU               6902E63E        otwo7
+CPU               6902B8E4        otwo8
+CPU               6902F7CF        otwo9
+CPU               6902BB59        otwo10
+CPU               6902F20B        otwo11
+CPU               6902B8B1        otwo12
+CPU               6902AA0E        otwo13
+CPU               6902E681        otwo14
+CPU               6905E81E        otwo15
+CPU               69088D4F        indy1
+CPU               69088CA8        indy2
+CPU               69088D62        indy3
+CPU               69088E16        indy4
+CPU               69088D50        indy5
+CPU               69087F37        indy6
+CPU               6908DB50        indy7
+CPU               69088D63        indy8
+CPU               00324335        escher
+CPU               69010F97
+CPU               69061E92
+CPU               000804B2
+CPU               1FE05580
+CPU               5300A036        sun?
+CPU               5400121D        sun?
+CPU               5400110E        sun?
+CPU               540008BF        sun?
+CPU               08000000
+CPU               0A000004
+Parallel 8        wagfx8
+Version      3.0
+BIOGRAF
+POLYGRAF
+NMRgraf
+Polaris
+DYNTHERM
+DYNVIB
+BLENDS
+ELASTICA
+STRESS
+THERMO
+VIBRATE
+XTERM
+ID           XM8W7 6NHE/ 82GPS S973V

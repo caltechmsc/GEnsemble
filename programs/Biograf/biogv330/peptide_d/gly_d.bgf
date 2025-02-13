@@ -1,0 +1,21 @@
+BIOGRF  160
+DESCRP GLY-D   
+REMARK Created by srl @ sun4 on  1/28/89   13:51:22                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  N    GLY      1   -0.70900  -0.41100   0.36100 N_R    3 0 -0.08000
+ATOM       2 HN    GLY      1   -1.62200  -0.32800   0.15300 H___A  1 0  0.00000
+ATOM       3  CA   GLY      1    0.25000   0.00500  -0.55100 C_32   4 0  0.09000
+ATOM       4  C    GLY      1    1.60200  -0.18500  -0.10100 C_R    3 0  0.34500
+ATOM       5  O    GLY      1    2.18900  -1.23600  -0.31800 O_2    1 2 -0.35500
+ATOM       6  OXT  GLY      1    2.18900   0.70500   0.49900 O_2    1 2 -0.56000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3
+CONECT     2     1
+CONECT     3     1     4
+CONECT     4     3     5     6
+ORDER      4     0     2     0
+CONECT     5     4
+ORDER      5     2
+CONECT     6     4
+END

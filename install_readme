@@ -1,0 +1,16 @@
+GEnsemble Install Instructions:
+
+1) Simply copy the GEnsemble folder to the install location.
+
+2) Make sure that users have the following in their .cshrc file:
+(Replace "yourpath" with the path of your GEnsemble Installation)
+
+set ge_path = /yourpath/GEnsemble
+alias ge_blast           "$ge_path/programs/Blast.pl"
+alias ge_predictm        "$ge_path/programs/PredicTM.pl"
+alias ge_opthelix        "$ge_path/programs/OptHelix.pl"
+alias ge_template        "$ge_path/programs/Align2Template.pl"
+alias ge_bihelix         "$ge_path/programs/bihelixrot2/all_bihelix_pairs.pl"
+alias ge_bihelixanal     "$ge_path/programs/bihelixrot2/bihelix_anal.pl"
+alias ge_combihelix      "$ge_path/programs/bihelixrot2/combi_frombihelixsum.pl"
+

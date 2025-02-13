@@ -1,0 +1,13 @@
+BIOGRF  110
+DESCRP HONO2    
+HETATM    1 N1    ORG     1       0.335   0.036   0.085 N_2     2  1  0.0000
+HETATM    2 O1    ORG     1       0.589  -0.515  -0.916 O_2     1  2  0.0000
+HETATM    3 O2    ORG     1       0.204  -0.628   1.159 O_3     2  2  0.0000
+HETATM    4 O3    ORG     1       0.192   1.298   0.096 O_3     2  2  0.0000
+HETATM    5 HO3   ORG     1      -0.653   1.535  -0.341 H___A   1  0  0.0000
+CONECT    1    4    3    2    0    0    0    0    0    2    0    0    0
+CONECT    2    1    0    0    0    0    0    2    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    5    0    0    0    0
+CONECT    5    4    0    0    0    0    0
+END

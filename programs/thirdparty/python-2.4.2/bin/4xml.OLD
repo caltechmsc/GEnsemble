@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+# Force Python to ignore the current directory when importing the
+# module(s) used in the script body.
+import sys, imp
+module_info = imp.find_module('Ft', filter(None, sys.path))
+imp.load_module('Ft', *module_info)
+
+### SCRIPT BODY ###
+# script generated in Ft.Lib.DistExt.BuildScripts
+from Ft.Xml._4xml import XmlCommandLineApp
+XmlCommandLineApp().run()

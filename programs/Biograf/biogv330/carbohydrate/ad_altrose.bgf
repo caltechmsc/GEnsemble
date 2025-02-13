@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_ALTR 
+REMARK Created by slm @ tms2r on  1/25/90   17:46:04               
+REMARK alpha-D-Altrose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  ALT      1    1.17301   0.29263  -0.93828 O_3    2 2  0.00000
+HETATM     2  C1*  ALT      1    1.80091  -0.27623   0.22202 C_3    4 0  0.00000
+HETATM     3 HC1*  ALT      1    2.74536   0.25494   0.35899 H_     1 0  0.00000
+HETATM     4  O1*  ALT      1    2.17676  -1.62773  -0.04198 O_3    2 2  0.00000
+HETATM     5  HO1* ALT      1    2.66430  -1.98762   0.72805 H___A  1 0  0.00000
+HETATM     6  C2*  ALT      1    0.93639  -0.12958   1.50773 C_3    4 0  0.00000
+HETATM     7 HC2*  ALT      1    1.35838  -0.75580   2.29879 H_     1 0  0.00000
+HETATM     8  O2*  ALT      1    1.03327   1.20465   2.01503 O_3    2 2  0.00000
+HETATM     9  HO2* ALT      1    0.51643   1.27736   2.84446 H___A  1 0  0.00000
+HETATM    10  C3*  ALT      1   -0.55469  -0.51321   1.27650 C_3    4 0  0.00000
+HETATM    11 HC3*  ALT      1   -1.14506  -0.17831   2.13389 H_     1 0  0.00000
+HETATM    12  O3*  ALT      1   -0.69973  -1.93860   1.25941 O_3    2 2  0.00000
+HETATM    13  HO3* ALT      1   -1.64734  -2.16931   1.16332 H___A  1 0  0.00000
+HETATM    14  C4*  ALT      1   -1.11431   0.18079  -0.00087 C_3    4 0  0.00000
+HETATM    15 HC4*  ALT      1   -1.13374   1.25341   0.20301 H_     1 0  0.00000
+HETATM    16  O4*  ALT      1   -2.47695  -0.17017  -0.26107 O_3    2 2  0.00000
+HETATM    17  HO4* ALT      1   -2.79095   0.32325  -1.04726 H___A  1 0  0.00000
+HETATM    18  C5*  ALT      1   -0.19451  -0.05201  -1.23600 C_3    4 0  0.00000
+HETATM    19 HC5*  ALT      1   -0.21742  -1.11699  -1.48148 H_     1 0  0.00000
+HETATM    20  C6*  ALT      1   -0.62328   0.69587  -2.52502 C_3    4 0  0.00000
+HETATM    21 HC6*  ALT      1   -1.60635   0.34537  -2.84184 H_     1 0  0.00000
+HETATM    22 HC6*  ALT      1    0.07877   0.46565  -3.32850 H_     1 0  0.00000
+HETATM    23  O6*  ALT      1   -0.68566   2.11391  -2.39332 O_3    2 2  0.00000
+HETATM    24  HO6* ALT      1    0.19175   2.45531  -2.12142 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

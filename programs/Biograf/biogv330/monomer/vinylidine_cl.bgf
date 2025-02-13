@@ -1,0 +1,23 @@
+BIOGRF  160
+DESCRP vinylidi
+REMARK Created by srl @ iris on 12/11/89   13:02:27                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    VYC A    1    0.67900   0.19700   0.09700 C_3    4 0  0.00000
+HETATM     2 HX    VYC A    1    1.38200  -0.19000  -0.64200 H_     1 0  0.00000
+HETATM     3 Cl1   VYC A    1    1.19100  -0.34100   1.69100 Cl     1 0  0.00000
+HETATM     4 Cl2   VYC A    1    0.72900   1.95500   0.05100 Cl     1 0  0.00000
+HETATM     5 TT    VYC A    1   -0.73300  -0.31900  -0.22500 C_3    4 0  0.00000
+HETATM     6 H2C2  VYC A    1   -1.03200   0.01800  -1.21900 H_     1 0  0.00000
+HETATM     7 H1C2  VYC A    1   -1.45100   0.05300   0.50800 H_     1 0  0.00000
+HETATM     8 TX    VYC A    1   -0.74200  -1.40900  -0.20900 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     3     2     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     7     6     8     1
+CONECT     6     5
+CONECT     7     5
+CONECT     8     5
+END

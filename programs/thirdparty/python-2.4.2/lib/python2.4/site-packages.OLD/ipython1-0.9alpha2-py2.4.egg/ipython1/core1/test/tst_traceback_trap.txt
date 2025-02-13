@@ -1,0 +1,86 @@
+    >>> from ipython1.core1.test.tcommon import Mock
+    >>> from ipython1.core1 import traceback_trap
+
+Check the default initialization.
+
+    >>> tt = traceback_trap.TracebackTrap()
+    >>> tt.formatters
+    []
+    >>> tt.args is None
+    True
+    >>> tt.old_hook is None
+    True
+
+Calling the hook just sets the argument tuple to .args .
+
+    >>> tt.hook(1, 2, 3)
+    >>> tt.args
+    (1, 2, 3)
+
+Calling .clear() sets .args back to None.
+
+    >>> tt.clear()
+    >>> tt.args is None
+    True
+
+Setting the strap replaces sys.excepthook() with the hook() method.
+
+    >>> traceback_trap.sys = Mock('sys')
+    >>> tt.set()
+    >>> tt.old_hook # doctest: +ELLIPSIS
+    <Mock 0x... sys.excepthook>
+    >>> traceback_trap.sys.excepthook # doctest: +ELLIPSIS
+    <bound method TracebackTrap.hook of <ipython1.core1.traceback_trap.TracebackTrap object at 0x...>>
+    >>> tt.unset()
+    >>> traceback_trap.sys.excepthook # doctest: +ELLIPSIS
+    <Mock 0x... sys.excepthook>
+
+add_to_message() adds a 'traceback' entry to a message dictionary. It is just
+another dictionary with keys that are the identifiers of the configured
+traceback formatters. If there is no traceback information gathered by the
+hook(), then no entry is added.
+
+    >>> msg = {}
+    >>> tt.add_to_message(msg)
+    >>> msg
+    {}
+
+If there is recorded traceback information but no formatters configured, then an
+empty dictionary is assigned to the 'traceback' key.
+
+    >>> tt.hook(1, 2, 3)
+    >>> msg = {}
+    >>> tt.add_to_message(msg)
+    >>> msg
+    {'traceback': {}}
+
+Otherwise, each configured formatter is called with the traceback information.
+(1,2,3) here is just used as a stub.
+
+    >>> def form1(*args):
+    ...     return 'form1: ' + str(args)
+    ... 
+    >>> tt.formatters = [form1]
+    >>> msg = {}
+    >>> tt.add_to_message(msg)
+    Traceback (most recent call last):
+      ...
+    AttributeError: 'function' object has no attribute 'identifier'
+
+The .identifier attribute is needed on the formatter object in order to label
+its results.
+
+    >>> form1.identifier = 'form1'
+    >>> tt.add_to_message(msg)
+    >>> msg
+    {'traceback': {'form1': 'form1: (1, 2, 3)'}}
+    >>> msg = {}
+    >>> def form2(*args):
+    ...     return 'form2: ' + str(args)
+    ... 
+    >>> form2.identifier = 'form2'
+    >>> tt.formatters = [form1, form2]
+    >>> tt.add_to_message(msg)
+    >>> msg
+    {'traceback': {'form2': 'form2: (1, 2, 3)', 'form1': 'form1: (1, 2, 3)'}}
+

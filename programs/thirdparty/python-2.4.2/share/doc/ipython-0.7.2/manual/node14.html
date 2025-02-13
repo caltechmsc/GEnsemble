@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Interactive demos with IPython</TITLE>
+<META NAME="description" CONTENT="Interactive demos with IPython">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html333"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html331"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html325"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html334"
+  HREF="node15.html">Plotting with matplotlib</A>
+<B> Up:</B> <A NAME="tex2html332"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html326"
+  HREF="node13.html">Threading support</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION000140000000000000000"></A><A NAME="sec:interactive-demos"></A>
+<BR>
+Interactive demos with IPython
+</H1>
+
+<P>
+IPython ships with a basic system for running scripts interactively in sections,
+useful when presenting code to audiences. A few tags embedded in comments (so that
+the script remains valid Python code) divide a file into separate blocks, and the
+demo can be run one block at a time, with IPython printing (with syntax highlighting)
+the block before executing it, and returning to the interactive prompt after each
+block. The interactive namespace is updated after each block is run with the contents
+of the demo's namespace.
+
+<P>
+This allows you to show a piece of code, run it and then execute interactively
+commands based on the variables just created. Once you want to continue, you simply
+execute the next block of the demo. The following listing shows the markup necessary
+for dividing a script into sections for execution as a demo.
+
+<P>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">"""A simple interactive demo to illustrate the use of IPython's Demo class.
+
+Any python script can be run as a demo, but that does little more than showing
+it on-screen, syntax-highlighted in one shot.  If you add a little simple
+markup, you can stop at specified intervals and return to the ipython prompt,
+resuming execution later.
+"""
+
+print 'Hello, welcome to an interactive IPython demo.'
+print 'Executing this block should require confirmation before proceeding,'
+print 'unless auto_all has been set to true in the demo object'
+
+# The mark below defines a block boundary, which is a point where IPython will
+# stop execution and return to the interactive prompt.
+# Note that in actual interactive execution, 
+# &lt;demo&gt; --- stop ---
+
+x = 1
+y = 2
+
+# &lt;demo&gt; --- stop ---
+
+# the mark below makes this block as silent
+# &lt;demo&gt; silent
+
+print 'This is a silent block, which gets executed but not printed.'
+
+# &lt;demo&gt; --- stop ---
+# &lt;demo&gt; auto
+print 'This is an automatic block.'
+print 'It is executed without asking for confirmation, but printed.'
+z = x+y
+
+print 'z=',x
+
+# &lt;demo&gt; --- stop ---
+# This is just another normal block.
+print 'z is now:', z
+
+print 'bye!'
+</PRE>
+
+<P>
+In order to run a file as a demo, you must first make a <TT>Demo</TT> object out
+of it. If the file is named <TT>myscript.py</TT>, the following code will make
+a demo:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>from&nbsp;IPython.demo&nbsp;import&nbsp;Demo
+
+<P>
+mydemo&nbsp;=&nbsp;Demo('myscript.py')
+</DD>
+</DL>This creates the <TT>mydemo</TT> object, whose blocks you run one at a time by
+simply calling the object with no arguments. If you have autocall active in IPython
+(the default), all you need to do is type
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>mydemo
+</DD>
+</DL>and IPython will call it, executing each block. Demo objects can be restarted,
+you can move forward or back skipping blocks, re-execute the last block, etc. Simply
+use the Tab key on a demo object to see its methods, and call <TT>`?'</TT> on them
+to see their docstrings for more usage details. In addition, the <TT>demo</TT>
+module itself contains a comprehensive docstring, which you can access via
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>from&nbsp;IPython&nbsp;import&nbsp;demo
+
+<P>
+demo?
+</DD>
+</DL><SPAN  CLASS="textbf">Limitations:</SPAN> It is important to note that these demos are limited to fairly
+simple uses. In particular, you can <SPAN  CLASS="textit">not</SPAN> put division marks in indented code
+(loops, if statements, function definitions, etc.) Supporting something like this
+would basically require tracking the internal execution state of the Python interpreter,
+so only top-level divisions are allowed. If you want to be able to open an IPython
+instance at an arbitrary point in a program, you can use IPython's embedding facilities,
+described in detail in Sec.&nbsp;<A HREF="node9.html#sec:embed">9</A>.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html333"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html331"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html325"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html334"
+  HREF="node15.html">Plotting with matplotlib</A>
+<B> Up:</B> <A NAME="tex2html332"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html326"
+  HREF="node13.html">Threading support</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2006-06-06
+</ADDRESS>
+</BODY>
+</HTML>

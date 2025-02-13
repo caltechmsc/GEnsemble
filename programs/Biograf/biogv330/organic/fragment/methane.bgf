@@ -1,0 +1,13 @@
+BIOGRF  110
+DESCRP METHANE 
+HETATM    1 C1    ORG     1       0.000   0.000   0.000 C_3     4  0  0.0000
+HETATM    2 H4C1  ORG     1       0.706  -0.363  -0.747 H_      1  0  0.0000
+HETATM    3 H3C1  ORG     1      -1.000  -0.363  -0.238 H_      1  0  0.0000
+HETATM    4 H2C1  ORG     1       0.294  -0.363   0.985 H_      1  0  0.0000
+HETATM    5 H1C1  ORG     1       0.000   1.090   0.000 H_      1  0  0.0000
+CONECT    1    5    4    3    2    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    0    0    0    0    0
+CONECT    5    1    0    0    0    0    0
+END

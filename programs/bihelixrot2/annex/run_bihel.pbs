@@ -1,0 +1,13 @@
+#PBS -l nodes=1,walltime=96:00:00
+#PBS -q workq
+#PBS -N jobname
+#PBS -m e
+#!/bin/csh
+
+cd $PBS_O_WORKDIR
+
+echo the job started at ::: `date`
+
+run_command
+
+echo the job ended at ::: `date`

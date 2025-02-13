@@ -1,0 +1,41 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 21:49:53 04/30/93
+% link date    : 00:41:06 06/26/03
+%
+% Macro created on  4/12/08    2:57:48
+%
+% program started with an initialization file
+%
+% @fixH.macro
+% fixH.macro
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "helix2.fin.mineng.raw.min.bgf"
+%    helix2.fin.mineng.raw.min.bgf
+   In-Out/return
+Top menu/build
+   Build/connect
+      Files/helix2.f
+      Files/return
+      Connect/execute
+      Connect/return
+   Build/modify H
+      Modify H/add all H
+      Files/helix2.f
+      Modify H/return
+   Build/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+   Files/helix2.f
+   Files/return
+     "helix2.fin.mineng.raw.min.bgfH"
+     " "
+   In-Out/return
+Top menu/exit
+  "OK"
+%
+endmacro

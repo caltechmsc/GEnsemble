@@ -1,0 +1,9 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: ${HOME}/biograf.def
+!
+PROGRAM    BIOGRAF
+L_GKS      YES
+TERMINAL   SUN
+L_COLOR    NO

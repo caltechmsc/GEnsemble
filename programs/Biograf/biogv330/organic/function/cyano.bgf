@@ -1,0 +1,15 @@
+BIOGRF  160
+DESCRP cyano   
+REMARK Created by ? @ sun4 on  1/24/89   19:58:56                  
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 N1    ORG      1    0.67400   0.22500   0.21800 N_1    1 1  0.00000
+HETATM     2 C1    ORG      1    0.41800   1.01100   0.74400 C_1    2 0  0.00000
+HETATM     3 XX    ORG      1    0.17600   1.75100   1.23900 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2
+ORDER      1     3
+CONECT     2     1     3
+ORDER      2     3     0
+CONECT     3     2
+END

@@ -1,0 +1,56 @@
+This is installation instructions for setting up
+Biograf on your linux system.  This has been tested
+only on RedHat 9.0, and may have issues with another
+version of Linux.
+
+These files should be installed in the ${membstruk} 
+directory. 
+
+Your .cshrc file should be modified to include:
+  if ( -f ${membstruk}/Biograf/.cshrc ) source ${membstruk}/Biograf/.cshrc
+after you have setup the following environmental variables:
+  membstruk  - Directory with no "/" on the end
+  memtmp1    - Temp directory for extira files, no "/" on
+               the end.
+This is all done for you, if MembStruk is already installed,
+and you have the membstruk.sh sourced in your .cshrc.
+
+You can now run this by typing:
+bgver 330
+${membstruk}/Biograf/bio_linux linux {FF filename}
+
+The FF files available are (by name):
+amber   - The amber forcefield: S.J.WEINER,P.A.KOLLMAN,
+          ETC,JACS 106,p765 (1984)
+amberb  - Augmented amber FF: S.J. Weiner, P.A. Kollman,
+          et. al, J. Amer. Chem. Soc. 106,765 (1984) and
+          J. Comput. Chem. 7, 230 (1986)
+Biograf - FF used in MembStruk, driedii FF with quanta
+          conversions.
+charmm  - CHARMM FF: Brooks et. al. J. Comp. Chem. 4
+          (1983) 187-217
+dreidi  - An implimentation of the dreidiing FF.
+dreidii - An updated version of the dreidiing FF.
+genff   - Generalized FF from AKR - 9-JAN-1990.
+mm2     - MM2 Force Field (Allinger, JACS 99 (1977) 8127)
+mmp2    - MMP2 (1985) Allinger -- Personal Communication
+uff     - Universal Force Field made from v400 april 3,1993
+
+Alias were created from the bgver 330 command to run the
+program. They are:
+bioamb  - Biograf with the amber ff
+biobio  - Biograf setup for MembStruk
+biodre  - Biograf with the dredi ff
+biodr2  - Biograf with the updated dredii ff
+biogen  - Biograf with the genff ff
+biomm2  - Biograf with the mm2 ff
+biomp2  - Biograf with the updated mmp2 ff
+biouff  - Biograf with the uff ff
+
+To set up symbolic links to the current ffs used in MembStruk,
+run the INSTALL.sh script.  This is only needed if you have 
+access to the MembStruk FF files and they are installed in:
+${membstruk}/FF/
+Otherwise, the installation comes with the ff files from the
+MembStruk 4.10 (2-24-2005) version.
+

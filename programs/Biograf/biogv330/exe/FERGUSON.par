@@ -1,0 +1,144 @@
+PARAMETER FORMAT (11-89)
+  400    1    0    0    0    0    0    0    0    0    0    0    0    0    0    0Flexible SPC Force Field
+D.M. Ferguson Potential for SPC flexible water
+J. Comp. Chem., 16, 501-511 (1995)
+NOTE: O_3 - H_ off diagonal from dreidii ignored
+No EPS shielding
+Use 8.5 A cuttoff with spline 
+*                                                                               
+*
+FORCEFIELD DREIDING
+DEFAULTS  xxxdataxxx plus comments
+LBOND      T         T >> use bond terms
+LANGLE     T         T >> use angle terms
+ANGX 2 K   F         T >> use true force constants for cosine ang-str cross terms
+ANGANGINV  F         T >> use angle-angle inversion terms
+LINVERSN   F         T >> use inversion terms
+ALL INVER  F         T >> use all possible inversion terms on each center
+BNDXANG    F         T >> use bond cross angle terms
+ANGXANG    F         T >> use angle cross angle terms
+LTORSION   F         T >> use torsion terms
+BNDBNDTOR  F         T >> allow coupling of the 1-2 and 3-4 bonds of torsions
+ANGANGTOR  F         T >> allow coupling of the 1-2-3 and 2-3-4 angles of torsions
+LPITWIST   F         T >> use pi twist terms
+TORS SCAL  T         T >> will renormalize torsions (not allow SNGTOR)
+ALL TORSN  F         T >> use all possible torsion terms per each central bond
+ETOR SCAL     0.4000 exocyclic scaling factor
+TORANGSW   F         T >> switch torsion barrier off as angle becomes linear
+TORANGR    135. 180. on and off angles for torsion angle switch
+UREYBRAD   F         T >> use urey-bradley terms
+LNONBOND   T         T >> use nonbond terms
+RNB GEOMN  T         T >> use geom mean for nonbond cross terms
+NBEXBND    T         T >> exclude 1-2 terms from nonbonds
+NBEXANG    T         T >> exclude 1-3 terms from nonbonds
+NBEXTOR    F         T >> exclude 1-4 terms from nonbonds
+DOALLCOUL  F         T >> do NOT exclude coulomb terms from nonbonds
+SCAL NB14     1.0000 factor scale 1-4 nonbonds (1.0 >> full value)
+SHRINK CH  F         T >>  allow shrunk CH bonds for 
+SHRINK FC     1.0000 shrink factor for CH bonds
+LCOULMB    T         T >> use Coulomb terms
+R*EPS      F         T >> use shielded Coulomb 1/(eps*R**2) instead of 1/(eps*R)
+DIELCTRIC     1.0000 Dielectric constant, eps
+LHBOND     F         T >> use hb interactions
+ATM DEFLT C_32       default atom for FF
+MASSZER    F         T >> use zero mass option
+POLYENE    F         T >> use polyene option
+USRENERGY  F         T >> use user energy expression
+*
+FFLABEL    ATNO MODIFD MS CHARG HYB BND CPK #IH #LP RES
+H_F           1            0.00   0   1   8   0   0   F
+O_3F          8            0.00   3   2   2   0   2   F
+*
+ADDED H   HYDROGEN  1IMPLCTH  2IMPLCTH  3IMPLCTH  4IMPLCTH
+H_F       H_F                                                                   
+O_3F      H_F
+*
+LONE PAIRS
+*
+VDW AT ITY       RNB      DENB     SCALE
+*LJ12-6  1        Re        De  not used      1/R12 fct       1/R6 fct
+*exp-6   2        Re        De  exp scal      pre-expon       dispersn  exponent
+*hcex-6 12        Re        De  exp scal
+*morse   3        Re        De  exp scal
+*hc mors13        Re        De  exp scal
+*1/R**6  4  not used        De  not used
+*pur exp 5        Re        De  exp scal      pre-expon       not used  exponent
+*nothing 6
+*LJ12-10 7        Re        De  not used      1/R12 fct      1/R10 fct
+*user  100 to 199
+H_F      6   3.19500   0.00000   0.00000
+O_3F     6   3.40460   0.00000   0.00000
+*
+NONBOND-OFF
+*IIII-JJJJJ
+*LJ12-6        1        Re        De  not used      1/R12 fct       1/R6 fct
+*exp-6         2        Re        De  exp scal      pre-expon       dispersn  exponent
+*hcex-6       12        Re        De  exp scal
+*morse         3        Re        De  exp scal
+*hc mors      13        Re        De  exp scal
+*1/R**6        4  not used        De  not used
+*pur exp       5        Re        De  exp scal      pre-expon       not used  exponent
+*nothing       6
+*LJ12-10       7        Re        De  not used      1/R12 fct      1/R10 fct
+*user  100 to 199
+*O_3  -H_       6   3.29800   0.03800  12.93250
+*O_3F -H_F      1   3.29800   0.03800  12.93250
+O_3F -O_3F     1   3.57237   0.15047   0.00000
+*
+BONDSTRTCH  TYPE
+*  morse       2 FORC CNST  BND DIST    BOND E
+*  mm2         3 FORC CNST  BND DIST       CUB    KSLOPE    TSLOPE  BOND DIP
+*  exp-6       4 forc cnst  BND DIST    BOND E     SCALE does not use forc cnst
+* pure exp     4 forc cnst  BND DIST    BOND E     SCALE R is reference distance, does not use forc cnst
+*  polyene     6       Ke2       Re2       Re1       Ke1
+*  uff         8       Ke0       Re0  elec dRe       Ren       Ken
+*  nothing     9
+*  shell      11 forc cnst  BND DIST    CHARGE   POLARIZ k=charge**2/polariz unless charge,polariz=0
+*simp harm     1 FORC CNST  BND DIST
+*
+O_3F -H_F      3 1095.0000  1.000000   -1.6500    0.0000    0.0000    0.0000
+*
+ANGLE-(L-C-R)     TYPE
+*  mm2           33-35 FORC CNST EQUIL ANG  A-STR-LC  A-STR-CR   STR-STR DLT-TH-1H DLT-TH-2H  NON-HARM
+* polyene           x6    Ke 1-2  Thet 1-2   A-STR-2   A-STR-1 DOUB-SING    Ke 1-1  Thet 1-1 SING-SING A-STR 1-1
+* period cosine     x4 FORC CNST EQUIL ANG  A-STR-LC  A-STR-CR   STR-STR LINEAR MN  NOT USED    PERIOD   BARRIER equil ang and barrier not used
+*simple costhet      1 FORC CNST EQUIL ANG
+*costhet with x     11 FORC CNST EQUIL ANG  A-STR-LC  A-STR-CR   STR-STR
+*simple harm thet   21 FORC CNST EQUIL ANG
+*harm thet with x   31 FORC CNST EQUIL ANG  A-STR-LC  A-STR-CR   STR-STR
+*
+X    -O_3F -X       21   99.8000  109.5000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+*
+TORSION                 CASE   BARRIER    PERIOD CISMIN(1)    ANGANG    BNDTOR MPHI  B-B POLY
+*must have angang etc on last one
+*
+TORSION FOURIER
+*LLLL-CCCCC-CCCCC-RRRRR CASE      v0      v1      v2      v3      v4      v5      v6      v7      v8      v9     v10     v11     v12
+TORSION CROSS TERMS
+*LLLL-CCCCC-CCCCC-RRRRR CASE    ANGANG MPHI    BNDTOR  B-B POLY
+*
+INVERSION (CENT AT 1ST) TYPE  FRC CNST  EQU ANGL         D         E         F
+*CCCC-JJJJJ-KKKKK-LLLLL  TYPE=1 FOR CHARMM,TYPE=2 FOR SPECTROSCOPIC, TYPE=3 FOR AMBER
+*
+ANGANGINV (1ST CENT I ) TYPE     KIJ-LIJ   LIK-JIK   JIL-KIL
+*IIII-JJJJJ-KKKKK-LLLLL
+*
+PITWIST     TYPE    BARR-2 INV-INV-2 ANG-ANG-2 BND-BND-2    BARR-1 INV-INV-1 ANG-ANG-1 BND-BND-1
+*LLLL-RRRRR    NORMAL DOUBLE BOND (TYPE=1) USES ONLY -2 CASES
+*             POLYENE BOND (TYPE=6) USES BOTH BOND -2 AND -1 CASES
+*
+CROSS-BND-ANG (CNT 1ST) TYPE    KIL-IJ    JIL-IK    JIK-IL
+*IIII-JJJJJ-KKKKK-LLLLL
+*
+CROSS-ANG-ANG (CNT 1ST)       TYPE   JIK-LIP   JIL-KIP   JIP-KIL
+*IIII-JJJJJ-KKKKK-LLLLL-PPPPP
+*
+HBOND       TYPE    -DE HB     RE HB
+*IIII-JJJJJ
+*
+UREY-BRADLEY              TYPE FORC CNST  BND DIST    LINEAR
+* normal type=1
+* special type=2: always use current bond length as Re
+*
+USER                      TYPE FORC CNST  BND DIST    LINEAR
+END OF DATA

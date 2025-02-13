@@ -1,0 +1,9 @@
+BIOGRF  110
+DESCRP HCN     
+HETATM    1 C1    ORG     1       0.018  -0.004   0.006 C_1     2  0  0.0000
+HETATM    2 HC1   ORG     1       0.873  -0.192   0.295 H_      1  0  0.0000
+HETATM    3 N1    ORG     1      -0.891   0.195  -0.301 N_1     1  1  0.0000
+CONECT    1    3    2    0    0    0    0    3    0    0    0    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0    3    0    0    0    0    0
+END

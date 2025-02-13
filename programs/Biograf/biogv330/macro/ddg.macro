@@ -1,0 +1,60 @@
+beginmacro
+%
+%  POLARIS macro to calculate shifts in free energy of solvation
+%
+%
+% version      : 3.00
+% version date : 16:03:58 3/3/92
+% link date    : 16:44:59 3/16/92
+%
+% Macro created on  3/16/92   17:00:42
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "his_1.bgf"
+% 	/usr/msi/biogv320/data/his_1.bgf
+	In-Out/read
+	File types/BioDesign
+	  "pep.bgf"
+% 	/usr/msi/biogv320/data/pep.bgf
+	In-Out/return
+Top menu/simulate
+	Simulate/region I
+	his_1
+	return
+	Simulate/region II
+	peptide
+	return
+	Simulate/dG solvation
+	Simulate/electrostatics
+		Electrostatics/potential
+			setup
+			add group
+			  "psurf"
+			region I view
+			region I view
+			region I view
+			region I view
+			parameters
+				Parameters/surface density
+				  "40"
+				Parameters/return
+			execute
+			region I view
+			region I view
+			region I view
+			execute
+			region I view
+			region I view
+			setup
+			add group
+			  "bsurf"
+			execute
+			return
+		Electrostatics/return
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

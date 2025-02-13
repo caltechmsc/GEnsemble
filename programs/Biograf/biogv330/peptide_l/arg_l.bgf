@@ -1,0 +1,47 @@
+BIOGRF  160
+DESCRP ARG-L   
+REMARK Created by srl @ sun4 on  1/28/89   13:11:37                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  N    ARG      1   -1.00700   1.82300  -0.80800 N_R    3 0 -0.08000
+ATOM       2 HN    ARG      1   -0.95900   1.62300   0.11000 H___A  1 0  0.00000
+ATOM       3  CA   ARG      1   -0.19200   1.14800  -1.70700 C_31   4 0  0.07500
+ATOM       4  C    ARG      1    1.23400   1.21600  -1.46100 C_R    3 0  0.35200
+ATOM       5  O    ARG      1    1.84300   0.17600  -1.26300 O_2    1 2 -0.36000
+ATOM       6  CB   ARG      1   -0.65900   1.32400  -3.17200 C_32   4 0  0.03900
+ATOM       7  CG   ARG      1   -0.20300   2.57600  -3.94900 C_32   4 0  0.04400
+ATOM       8  CD   ARG      1   -1.06900   3.81000  -3.66000 C_32   4 0  0.11500
+ATOM       9  NE   ARG      1   -1.90000   4.12100  -4.74400 N_R    3 0 -0.02900
+ATOM      10 HNE   ARG      1   -2.57000   3.48700  -4.92600 H___A  1 0  0.00000
+ATOM      11  CZ   ARG      1   -1.88200   5.16000  -5.54000 C_R    3 0  0.46000
+ATOM      12  NH1  ARG      1   -2.77800   5.18500  -6.45900 N_R    3 0  0.19200
+ATOM      13 HN11  ARG      1   -3.40100   4.48300  -6.52900 H___A  1 0  0.00000
+ATOM      14 HN12  ARG      1   -2.81700   5.90600  -7.06400 H___A  1 0  0.00000
+ATOM      15  NH2  ARG      1   -1.07700   6.17500  -5.52400 N_R    3 0  0.19200
+ATOM      16 HN21  ARG      1   -0.39900   6.22500  -4.87300 H___A  1 0  0.00000
+ATOM      17 HN22  ARG      1   -1.17200   6.86100  -6.16200 H___A  1 0  0.00000
+ATOM      18  OXT  ARG      1    1.86900   2.26800  -1.44300 O_2    1 2 -0.56000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     4     6
+CONECT     4     3     5    18
+ORDER      4     0     2     0
+CONECT     5     4
+ORDER      5     2
+CONECT     6     3     7
+CONECT     7     6     8
+CONECT     8     7     9
+CONECT     9     8    11    10
+CONECT    10     9
+CONECT    11     9    12    15
+ORDER     11     0     0     2
+CONECT    12    11    14    13
+CONECT    13    12
+CONECT    14    12
+CONECT    15    11    17    16
+ORDER     15     2     0     0
+CONECT    16    15
+CONECT    17    15
+CONECT    18     4
+END

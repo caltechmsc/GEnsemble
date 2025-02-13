@@ -1,0 +1,24 @@
+# run one-energy calculation in vacuum (no solvation)
+PROJECT            your-project                        
+*
+FF                 /ul/caglar/common/ff/dreidii322-mpsim.par
+*
+BBOX               -180 180 -180 180 -180 180
+*
+STRUCTURE          yourbgf file                             
+*
+NB_METHOD          CMM
+CMM_EXPANSION      CENTROID
+LEVEL              0
+*
+NB_UPDATE_FREQ     5
+CELL_REALLOC_FREQ  5
+VEL_RESCALE_FREQ   0
+LOAD_BAL_FREQ      10
+*
+ACTION             ONE_EF
+SETUP_EEX
+DO
+#FINAL_ENER
+INFO
+EXIT

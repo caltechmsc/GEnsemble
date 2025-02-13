@@ -1,0 +1,4 @@
+#!/bin/csh
+#$ -N protein_initial_bundle
+#$ -j y
+/home/ravi/GEnsemble/programs/bihelixrot2/combihelixrot_membscream.pl -p ../protein_initial_bundle.bgf -c ../hpcenter.dat -a myangles.dat -r -s

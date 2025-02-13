@@ -1,0 +1,1 @@
+libinterface_a-interface.o libinterface_a-interface.o: src/interface.c

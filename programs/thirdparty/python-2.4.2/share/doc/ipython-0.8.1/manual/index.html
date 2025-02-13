@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>IPython
+An enhanced Interactive Python
+User Manual, v. 0.8.1</TITLE>
+<META NAME="description" CONTENT="IPython
+An enhanced Interactive Python
+User Manual, v. 0.8.1">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html35"
+  HREF="node1.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_g.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev_g.png">   
+<BR>
+<B> Next:</B> <A NAME="tex2html36"
+  HREF="node1.html">Overview</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<P>
+
+<P>
+
+<P>
+<H1 ALIGN="CENTER">IPython
+<BR><BIG CLASS="XLARGE">An enhanced Interactive Python</BIG>
+<BR><BIG CLASS="LARGE">User Manual, v. 0.8.1</BIG></H1>
+<DIV CLASS="author_info">
+
+<P ALIGN="CENTER"><STRONG>Fernando P&#233;rez<A NAME="tex2html1"
+  HREF="footnode.html#foot773"><SUP><SPAN CLASS="arabic">1</SPAN></SUP></A></STRONG></P>
+</DIV>
+
+<P>
+
+<P>
+
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html37"
+  HREF="node1.html">Overview</A>
+<UL>
+<LI><A NAME="tex2html38"
+  HREF="node1.html#SECTION00011000000000000000">Main features</A>
+<LI><A NAME="tex2html39"
+  HREF="node1.html#SECTION00012000000000000000">Portability and Python requirements</A>
+<LI><A NAME="tex2html40"
+  HREF="node1.html#SECTION00013000000000000000">Location</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html41"
+  HREF="node2.html">Installation</A>
+<UL>
+<LI><A NAME="tex2html42"
+  HREF="node2.html#SECTION00021000000000000000">Instant instructions</A>
+<LI><A NAME="tex2html43"
+  HREF="node2.html#SECTION00022000000000000000">Detailed Unix instructions (Linux, Mac OS X, etc.)</A>
+<UL>
+<LI><A NAME="tex2html44"
+  HREF="node2.html#SECTION00022100000000000000">Mac OSX information</A>
+<LI><A NAME="tex2html45"
+  HREF="node2.html#SECTION00022200000000000000">GUI problems</A>
+<LI><A NAME="tex2html46"
+  HREF="node2.html#SECTION00022300000000000000">Readline problems</A>
+<LI><A NAME="tex2html47"
+  HREF="node2.html#SECTION00022400000000000000">DarwinPorts</A>
+</UL>
+<LI><A NAME="tex2html48"
+  HREF="node2.html#SECTION00023000000000000000">Windows instructions</A>
+<UL>
+<LI><A NAME="tex2html49"
+  HREF="node2.html#SECTION00023100000000000000">Installation procedure</A>
+<UL>
+<LI><A NAME="tex2html50"
+  HREF="node2.html#SECTION00023110000000000000">Upgrading</A>
+<LI><A NAME="tex2html51"
+  HREF="node2.html#SECTION00023120000000000000">Manual installation under Win32</A>
+</UL>
+</UL>
+<LI><A NAME="tex2html52"
+  HREF="node2.html#SECTION00024000000000000000">Upgrading from a previous version</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html53"
+  HREF="node3.html">Initial configuration...</A>
+<UL>
+<LI><A NAME="tex2html54"
+  HREF="node3.html#SECTION00031000000000000000">Access to the Python help system</A>
+<LI><A NAME="tex2html55"
+  HREF="node3.html#SECTION00032000000000000000">Editor</A>
+<LI><A NAME="tex2html56"
+  HREF="node3.html#SECTION00033000000000000000">Color </A>
+<UL>
+<LI><A NAME="tex2html57"
+  HREF="node3.html#SECTION00033100000000000000">Input/Output prompts and exception tracebacks</A>
+<LI><A NAME="tex2html58"
+  HREF="node3.html#SECTION00033200000000000000">Object details (types, docstrings, source code, etc.)</A>
+</UL>
+<LI><A NAME="tex2html59"
+  HREF="node3.html#SECTION00034000000000000000">(X)Emacs configuration</A>
+<UL>
+<LI><A NAME="tex2html60"
+  HREF="node3.html#SECTION00034100000000000000">Notes</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html61"
+  HREF="node4.html">Quick tips</A>
+<UL>
+<LI><A NAME="tex2html62"
+  HREF="node4.html#SECTION00041000000000000000">Source code handling tips</A>
+<UL>
+<LI><A NAME="tex2html63"
+  HREF="node4.html#SECTION00041100000000000000">Lightweight 'version control'</A>
+</UL>
+<LI><A NAME="tex2html64"
+  HREF="node4.html#SECTION00042000000000000000">Effective logging</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html65"
+  HREF="node5.html">Command-line use</A>
+<UL>
+<LI><A NAME="tex2html66"
+  HREF="node5.html#SECTION00051000000000000000">Special Threading Options</A>
+<LI><A NAME="tex2html67"
+  HREF="node5.html#SECTION00052000000000000000">Regular Options</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html68"
+  HREF="node6.html">Interactive use</A>
+<UL>
+<LI><A NAME="tex2html69"
+  HREF="node6.html#SECTION00061000000000000000">Caution for Windows users</A>
+<LI><A NAME="tex2html70"
+  HREF="node6.html#SECTION00062000000000000000">Magic command system</A>
+<UL>
+<LI><A NAME="tex2html71"
+  HREF="node6.html#SECTION00062100000000000000">Magic commands</A>
+</UL>
+<LI><A NAME="tex2html72"
+  HREF="node6.html#SECTION00063000000000000000">Access to the standard Python help</A>
+<LI><A NAME="tex2html73"
+  HREF="node6.html#SECTION00064000000000000000">Dynamic object information</A>
+<LI><A NAME="tex2html74"
+  HREF="node6.html#SECTION00065000000000000000">Readline-based features</A>
+<UL>
+<LI><A NAME="tex2html75"
+  HREF="node6.html#SECTION00065100000000000000">Command line completion</A>
+<LI><A NAME="tex2html76"
+  HREF="node6.html#SECTION00065200000000000000">Search command history</A>
+<LI><A NAME="tex2html77"
+  HREF="node6.html#SECTION00065300000000000000">Persistent command history across sessions</A>
+<LI><A NAME="tex2html78"
+  HREF="node6.html#SECTION00065400000000000000">Autoindent</A>
+<LI><A NAME="tex2html79"
+  HREF="node6.html#SECTION00065500000000000000">Customizing readline behavior</A>
+</UL>
+<LI><A NAME="tex2html80"
+  HREF="node6.html#SECTION00066000000000000000">Session logging and restoring</A>
+<LI><A NAME="tex2html81"
+  HREF="node6.html#SECTION00067000000000000000">System shell access</A>
+<UL>
+<LI><A NAME="tex2html82"
+  HREF="node6.html#SECTION00067100000000000000">Manual capture of command output</A>
+</UL>
+<LI><A NAME="tex2html83"
+  HREF="node6.html#SECTION00068000000000000000">System command aliases</A>
+<LI><A NAME="tex2html84"
+  HREF="node6.html#SECTION00069000000000000000">Recursive reload</A>
+<LI><A NAME="tex2html85"
+  HREF="node6.html#SECTION000610000000000000000">Verbose and colored exception traceback printouts</A>
+<LI><A NAME="tex2html86"
+  HREF="node6.html#SECTION000611000000000000000">Input caching system</A>
+<LI><A NAME="tex2html87"
+  HREF="node6.html#SECTION000612000000000000000">Output caching system</A>
+<LI><A NAME="tex2html88"
+  HREF="node6.html#SECTION000613000000000000000">Directory history</A>
+<LI><A NAME="tex2html89"
+  HREF="node6.html#SECTION000614000000000000000">Automatic parentheses and quotes</A>
+<UL>
+<LI><A NAME="tex2html90"
+  HREF="node6.html#SECTION000614100000000000000">Automatic parentheses</A>
+<LI><A NAME="tex2html91"
+  HREF="node6.html#SECTION000614200000000000000">Automatic quoting </A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html92"
+  HREF="node7.html">Customization</A>
+<UL>
+<LI><A NAME="tex2html93"
+  HREF="node7.html#SECTION00071000000000000000">Sample <TT>ipythonrc</TT> file</A>
+<LI><A NAME="tex2html94"
+  HREF="node7.html#SECTION00072000000000000000">Fine-tuning your prompt</A>
+<UL>
+<LI><A NAME="tex2html95"
+  HREF="node7.html#SECTION00072100000000000000">Prompt examples</A>
+</UL>
+<LI><A NAME="tex2html96"
+  HREF="node7.html#SECTION00073000000000000000">IPython profiles</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html97"
+  HREF="node8.html">IPython as default...</A>
+<LI><A NAME="tex2html98"
+  HREF="node9.html">Embedding IPython</A>
+<LI><A NAME="tex2html99"
+  HREF="node10.html">Using the Python debugger (<TT>pdb</TT>)</A>
+<UL>
+<LI><A NAME="tex2html100"
+  HREF="node10.html#SECTION000101000000000000000">Running entire programs via <TT>pdb</TT></A>
+<LI><A NAME="tex2html101"
+  HREF="node10.html#SECTION000102000000000000000">Automatic invocation of <TT>pdb</TT> on exceptions</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html102"
+  HREF="node11.html">Extensions for syntax processing</A>
+<UL>
+<LI><A NAME="tex2html103"
+  HREF="node11.html#SECTION000111000000000000000">Pasting of code starting with <TT>`&gt;&gt;&gt;</TT>
+' or <TT>`...</TT> '</A>
+<LI><A NAME="tex2html104"
+  HREF="node11.html#SECTION000112000000000000000">Input of physical quantities with units</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html105"
+  HREF="node12.html">IPython as a system shell</A>
+<UL>
+<LI><A NAME="tex2html106"
+  HREF="node12.html#SECTION000121000000000000000">Aliases</A>
+<LI><A NAME="tex2html107"
+  HREF="node12.html#SECTION000122000000000000000">Special syntax</A>
+<LI><A NAME="tex2html108"
+  HREF="node12.html#SECTION000123000000000000000">Useful functions and modules</A>
+<LI><A NAME="tex2html109"
+  HREF="node12.html#SECTION000124000000000000000">Directory management</A>
+<LI><A NAME="tex2html110"
+  HREF="node12.html#SECTION000125000000000000000">Prompt customization</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html111"
+  HREF="node13.html">Threading support</A>
+<UL>
+<LI><A NAME="tex2html112"
+  HREF="node13.html#SECTION000131000000000000000">Tk issues</A>
+<LI><A NAME="tex2html113"
+  HREF="node13.html#SECTION000132000000000000000">Signals and Threads</A>
+<LI><A NAME="tex2html114"
+  HREF="node13.html#SECTION000133000000000000000">I/O pitfalls</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html115"
+  HREF="node14.html">Interactive demos with IPython</A>
+<LI><A NAME="tex2html116"
+  HREF="node15.html">Plotting with <TT>matplotlib</TT> </A>
+<LI><A NAME="tex2html117"
+  HREF="node16.html">Plotting with <TT>Gnuplot</TT></A>
+<UL>
+<LI><A NAME="tex2html118"
+  HREF="node16.html#SECTION000161000000000000000">Proper Gnuplot configuration</A>
+<LI><A NAME="tex2html119"
+  HREF="node16.html#SECTION000162000000000000000">The <TT>IPython.GnuplotRuntime</TT> module</A>
+<LI><A NAME="tex2html120"
+  HREF="node16.html#SECTION000163000000000000000">The <TT>numeric</TT> profile: a scientific computing environment</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html121"
+  HREF="node17.html">Reporting bugs</A>
+<UL>
+<LI><A NAME="tex2html122"
+  HREF="node17.html#SECTION000171000000000000000">Automatic crash reports</A>
+<LI><A NAME="tex2html123"
+  HREF="node17.html#SECTION000172000000000000000">The bug tracker</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html124"
+  HREF="node18.html">Brief history</A>
+<UL>
+<LI><A NAME="tex2html125"
+  HREF="node18.html#SECTION000181000000000000000">Origins</A>
+<LI><A NAME="tex2html126"
+  HREF="node18.html#SECTION000182000000000000000">Current status</A>
+<LI><A NAME="tex2html127"
+  HREF="node18.html#SECTION000183000000000000000">Future</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html128"
+  HREF="node19.html">License</A>
+<LI><A NAME="tex2html129"
+  HREF="node20.html">Credits</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

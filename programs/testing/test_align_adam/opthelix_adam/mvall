@@ -1,0 +1,49 @@
+mv helix7.fin.mineng.bgf helix7.fin.mineng.cap.bgf
+mv helix7.fin.mineng.min.bgf helix7.fin.mineng.cap.min.bgf
+mv helix7.fin.mineng.min.raw.bgf helix7.fin.mineng.raw.min.bgf
+mv helix7.fin.minrmsd.bgf helix7.fin.minrmsd.cap.bgf
+mv helix7.fin.minrmsd.min.bgf helix7.fin.minrmsd.cap.min.bgf
+mv helix7.fin.minrmsd.min.raw.bgf helix7.fin.minrmsd.raw.min.bgf
+#
+mv helix6.fin.mineng.bgf helix6.fin.mineng.cap.bgf
+mv helix6.fin.mineng.min.bgf helix6.fin.mineng.cap.min.bgf
+mv helix6.fin.mineng.min.raw.bgf helix6.fin.mineng.raw.min.bgf
+mv helix6.fin.minrmsd.bgf helix6.fin.minrmsd.cap.bgf
+mv helix6.fin.minrmsd.min.bgf helix6.fin.minrmsd.cap.min.bgf
+mv helix6.fin.minrmsd.min.raw.bgf helix6.fin.minrmsd.raw.min.bgf
+#
+mv helix5.fin.mineng.bgf helix5.fin.mineng.cap.bgf
+mv helix5.fin.mineng.min.bgf helix5.fin.mineng.cap.min.bgf
+mv helix5.fin.mineng.min.raw.bgf helix5.fin.mineng.raw.min.bgf
+mv helix5.fin.minrmsd.bgf helix5.fin.minrmsd.cap.bgf
+mv helix5.fin.minrmsd.min.bgf helix5.fin.minrmsd.cap.min.bgf
+mv helix5.fin.minrmsd.min.raw.bgf helix5.fin.minrmsd.raw.min.bgf
+#
+mv helix4.fin.mineng.bgf helix4.fin.mineng.cap.bgf
+mv helix4.fin.mineng.min.bgf helix4.fin.mineng.cap.min.bgf
+mv helix4.fin.mineng.min.raw.bgf helix4.fin.mineng.raw.min.bgf
+mv helix4.fin.minrmsd.bgf helix4.fin.minrmsd.cap.bgf
+mv helix4.fin.minrmsd.min.bgf helix4.fin.minrmsd.cap.min.bgf
+mv helix4.fin.minrmsd.min.raw.bgf helix4.fin.minrmsd.raw.min.bgf
+#
+mv helix3.fin.mineng.bgf helix3.fin.mineng.cap.bgf
+mv helix3.fin.mineng.min.bgf helix3.fin.mineng.cap.min.bgf
+mv helix3.fin.mineng.min.raw.bgf helix3.fin.mineng.raw.min.bgf
+mv helix3.fin.minrmsd.bgf helix3.fin.minrmsd.cap.bgf
+mv helix3.fin.minrmsd.min.bgf helix3.fin.minrmsd.cap.min.bgf
+mv helix3.fin.minrmsd.min.raw.bgf helix3.fin.minrmsd.raw.min.bgf
+#
+mv helix2.fin.mineng.bgf helix2.fin.mineng.cap.bgf
+mv helix2.fin.mineng.min.bgf helix2.fin.mineng.cap.min.bgf
+mv helix2.fin.mineng.min.raw.bgf helix2.fin.mineng.raw.min.bgf
+mv helix2.fin.minrmsd.bgf helix2.fin.minrmsd.cap.bgf
+mv helix2.fin.minrmsd.min.bgf helix2.fin.minrmsd.cap.min.bgf
+mv helix2.fin.minrmsd.min.raw.bgf helix2.fin.minrmsd.raw.min.bgf
+#
+mv helix1.fin.mineng.bgf helix1.fin.mineng.cap.bgf
+mv helix1.fin.mineng.min.bgf helix1.fin.mineng.cap.min.bgf
+mv helix1.fin.mineng.min.raw.bgf helix1.fin.mineng.raw.min.bgf
+mv helix1.fin.minrmsd.bgf helix1.fin.minrmsd.cap.bgf
+mv helix1.fin.minrmsd.min.bgf helix1.fin.minrmsd.cap.min.bgf
+mv helix1.fin.minrmsd.min.raw.bgf helix1.fin.minrmsd.raw.min.bgf
+#

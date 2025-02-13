@@ -1,0 +1,50 @@
+BIOGRF  251
+DESCRP his_2    
+REMARK his second charge form                                      
+REMARK Created by mario @ graf on  3/10/92   15:37:48              
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+ATOM       1  N    HIS      4    6.96973   1.41541   6.40279 N_R1   3 0 -0.32288  14.00674
+ATOM       2 HN    HIS      4    6.72402   2.34217   6.23235 H___A  1 0  0.30589
+ATOM       3  CA   HIS      4    8.26850   1.09950   6.88825 C_3    4 0 -0.01487
+ATOM       4 HCA   HIS      4    8.28774   0.01023   6.99710 H_     1 0  0.18889
+ATOM       5  C    HIS      4    8.51081   1.66615   8.25203 C_R    3 0  0.54137
+ATOM       6  O    HIS      4    8.40536   2.89101   8.50723 O_2    1 2 -0.41836
+ATOM       7  CB   HIS      4    9.33959   1.46873   5.81001 C_3    4 0 -0.21958
+ATOM       8 HCB   HIS      4    9.26742   0.74991   4.98953 H_     1 0  0.17090
+ATOM       9 HCB   HIS      4   10.33630   1.36348   6.24520 H_     1 0  0.17219
+ATOM      10  CG   HIS      4    9.24496   2.82852   5.23958 C_R    3 0  0.15223
+ATOM      11  ND1  HIS      4    9.00491   3.92812   5.95416 N_R    3 0 -0.46514
+ATOM      12 HND1  HIS      4    8.84141   3.88171   6.90231 H___A  1 0  0.32164
+ATOM      13  CD2  HIS      4    9.38068   3.24334   3.91757 C_R    3 0  0.15075
+ATOM      14 HCD2  HIS      4    9.56846   2.64794   3.10986 H_     1 0  0.17174
+ATOM      15  CE1  HIS      4    8.99468   5.00157   5.15131 C_R    3 0  0.26593
+ATOM      16 HCE1  HIS      4    8.83222   5.97112   5.43558 H_     1 0  0.20303
+ATOM      17  NE2  HIS      4    9.22500   4.57604   3.89975 N_R    2 1 -0.45874
+ATOM      18 HNE2  HIS      4    9.27010   5.13928   3.11122 H___A  1 0  0.29865
+ATOM      19  N    ALA      5    8.86030   0.86308   9.27060 N_R2   3 0 -0.04363  14.00674
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     7     1     5     4
+CONECT     4     3
+CONECT     5     6     3    19
+ORDER      5     2     1     1
+CONECT     6     5
+ORDER      6     2
+CONECT     7     3    10     8     9
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7    11    13
+ORDER     10     1     1     2
+CONECT    11    10    15    12
+CONECT    12    11
+CONECT    13    10    17    14
+ORDER     13     2     1     1
+CONECT    14    13
+CONECT    15    11    17    16
+CONECT    16    15
+CONECT    17    13    15    18
+CONECT    18    17
+CONECT    19     5
+END

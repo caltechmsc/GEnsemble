@@ -1,0 +1,27 @@
+            InputFileName helix5.6.mineng.bgf
+        MutateResidueInfo S1_A L2_A V3_A V4_A S5_A L6_A V7_A L8_A S9_A S10_A S11_A L12_A Q13_A F14_A I15_A I16_A N17_A V18_A T19_A S20_A S22_A L23_A L24_A I25_A H26_A S27_A L28_A R29_A 
+    AdditionalLibraryInfo 
+                  Library V10
+          PlacementMethod CreateCB
+       CreateCBParameters 1.81 51.1 1.55 0.5
+  UseScreamEnergyFunction YES
+           UseDeltaMethod FULL
+    UseDeltaForInterResiE YES
+       UseAsymmetricDelta YES
+           FlatDeltaValue 0.000000
+        DeltaStandardDevs 0.000000
+   InnerWallScalingFactor 0.000000
+  MultiplePlacementMethod ClusteringThenDoubletsThenSinglets
+     CBGroundSpectrumCalc YES
+      KeepOriginalRotamer NO
+       OneEnergyFFParFile /home/ravi/GEnsemble/programs/FF/dreiding-0.3.par
+             DeltaParFile /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_delta_Total_Min.par
+        EachAtomDeltaFile /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_EachAtomDeltaFileStub.par
+PolarOptimizationExclusions /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_PolarOptimizationExclusionsStub.par
+                 LJOption 12-6
+              CoulombMode Normal
+               Dielectric 2.5
+               Selections 1
+   AbsStericClashCutoffEL 999999999
+  StericClashCutoffEnergy 250
+    StericClashCutoffDist 0.5

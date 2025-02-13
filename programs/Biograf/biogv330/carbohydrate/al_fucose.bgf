@@ -1,0 +1,54 @@
+BIOGRF  160
+DESCRP AL_FUC  
+REMARK Created by slm @ tms2r on  1/25/90   17:51:25               
+REMARK alpha-L-Fucose (6-Deoxy-L-galactose)
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  FUC      1    0.62514   0.19791  -1.35943 O_3    2 2  0.00000
+HETATM     2  C1*  FUC      1    1.58587   0.41043  -0.31107 C_3    4 0  0.00000
+HETATM     3 HC1*  FUC      1    2.49309  -0.11288  -0.61908 H_     1 0  0.00000
+HETATM     4  O1*  FUC      1    1.92592   1.80001  -0.26712 O_3    2 2  0.00000
+HETATM     5  HO1* FUC      1    2.63904   1.94205   0.38992 H___A  1 0  0.00000
+HETATM     6  C2*  FUC      1    1.11657  -0.20186   1.04210 C_3    4 0  0.00000
+HETATM     7 HC2*  FUC      1    1.14329  -1.28807   0.92591 H_     1 0  0.00000
+HETATM     8  O2*  FUC      1    2.03660   0.08145   2.10327 O_3    2 2  0.00000
+HETATM     9  HO2* FUC      1    1.72718  -0.35005   2.92699 H___A  1 0  0.00000
+HETATM    10  C3*  FUC      1   -0.35003   0.20413   1.37459 C_3    4 0  0.00000
+HETATM    11 HC3*  FUC      1   -0.36861   1.28482   1.53587 H_     1 0  0.00000
+HETATM    12  O3*  FUC      1   -0.83776  -0.36494   2.59622 O_3    2 2  0.00000
+HETATM    13  HO3* FUC      1   -0.84636  -1.34208   2.52163 H___A  1 0  0.00000
+HETATM    14  C4*  FUC      1   -1.29519  -0.10130   0.17483 C_3    4 0  0.00000
+HETATM    15 HC4*  FUC      1   -2.27195   0.33893   0.38905 H_     1 0  0.00000
+HETATM    16  O4*  FUC      1   -1.51343  -1.50538  -0.02164 O_3    2 2  0.00000
+HETATM    17  HO4* FUC      1   -0.66121  -1.94245  -0.22865 H___A  1 0  0.00000
+HETATM    18  C5*  FUC      1   -0.73973   0.58298  -1.10593 C_3    4 0  0.00000
+HETATM    19 HC5*  FUC      1   -0.76073   1.66277  -0.93604 H_     1 0  0.00000
+HETATM    20  C6*  FUC      1   -1.58555   0.35057  -2.37651 C_3    4 0  0.00000
+HETATM    21 HC6*  FUC      1   -1.55081  -0.69623  -2.68280 H_     1 0  0.00000
+HETATM    22 HC6*  FUC      1   -2.62372   0.62928  -2.19010 H_     1 0  0.00000
+HETATM    23 HC6*  FUC      1   -1.20571   0.96448  -3.19511 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    22    23    21
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20
+END

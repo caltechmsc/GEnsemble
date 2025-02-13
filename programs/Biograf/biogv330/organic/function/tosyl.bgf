@@ -1,0 +1,52 @@
+BIOGRF  160
+DESCRP tosyl   
+REMARK Created by ? @ sun4 on  1/24/89   19:59:04                  
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 S1    ORG      1   -2.62100  -0.55400   1.09500 S_3    2 2  0.00000
+HETATM     2 O1    ORG      1   -3.30600  -1.45400   0.01800 O_2    1 2  0.00000
+HETATM     3 O2    ORG      1   -3.46500   0.74300   1.28900 O_2    1 2  0.00000
+HETATM     4 XX    ORG      1   -2.58200  -1.21800   2.24700 H___A  1 0  0.00000
+HETATM     5 C1    ORG      1    0.62100   0.48400  -1.05300 C_R    3 0  0.00000
+HETATM     6 HC1   ORG      1    0.84200   0.66400  -2.03400 H_     1 0  0.00000
+HETATM     7 C2    ORG      1    1.62200   0.60000  -0.06400 C_R    3 0  0.00000
+HETATM     8 C3    ORG      1    1.28600   0.32600   1.28000 C_R    3 0  0.00000
+HETATM     9 HC3   ORG      1    1.99500   0.39200   2.01200 H_     1 0  0.00000
+HETATM    10 C4    ORG      1   -0.02600  -0.04200   1.63000 C_R    3 0  0.00000
+HETATM    11 HC4   ORG      1   -0.24500  -0.23900   2.60800 H_     1 0  0.00000
+HETATM    12 C5    ORG      1   -1.02600  -0.13600   0.64300 C_R    3 0  0.00000
+HETATM    13 C6    ORG      1   -0.69300   0.12200  -0.70300 C_R    3 0  0.00000
+HETATM    14 HC6   ORG      1   -1.40000   0.04800  -1.43600 H_     1 0  0.00000
+HETATM    15 C7    ORG      1    2.98800   1.00200  -0.45000 C_3    4 0  0.00000
+HETATM    16 H3C7  ORG      1    3.66200   1.01900   0.40700 H_     1 0  0.00000
+HETATM    17 H2C7  ORG      1    2.96100   2.00300  -0.88600 H_     1 0  0.00000
+HETATM    18 H1C7  ORG      1    3.38700   0.30700  -1.19000 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3     4    12
+ORDER      1     2     2     0     0
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1
+ORDER      3     2
+CONECT     4     1
+CONECT     5     7    13     6
+ORDER      5     0     2     0
+CONECT     6     5
+CONECT     7     5     8    15
+ORDER      7     0     2     0
+CONECT     8    10     7     9
+ORDER      8     0     2     0
+CONECT     9     8
+CONECT    10     8    12    11
+ORDER     10     0     2     0
+CONECT    11    10
+CONECT    12    10    13     1
+ORDER     12     2     0     0
+CONECT    13    12     5    14
+ORDER     13     0     2     0
+CONECT    14    13
+CONECT    15    18    17    16     7
+CONECT    16    15
+CONECT    17    15
+CONECT    18    15
+END

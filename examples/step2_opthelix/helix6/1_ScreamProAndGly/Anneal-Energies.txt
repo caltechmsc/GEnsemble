@@ -1,0 +1,2 @@
+After annealing P23_A (totE, EL, vdw, hb, coulomb): 939.967 939.967   0.000   0.000   0.000
+After annealing P12_A (totE, EL, vdw, hb, coulomb): 939.967 939.967   0.000   0.000   0.000

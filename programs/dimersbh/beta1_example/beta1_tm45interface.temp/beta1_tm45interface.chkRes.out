@@ -1,0 +1,8 @@
+
+ checkForMissingAtomsInBGF.py - 071106
+ ... searching for residues with potentially incomplete records in:  beta1_tm45interface.noTA.bgf
+   -  36A - LEU - has 18 atoms, but should have 19
+   - 280A - VAL - has 15 atoms, but should have 16
+   -  36B - LEU - has 18 atoms, but should have 19
+   - 280B - VAL - has 15 atoms, but should have 16
+ ... done!

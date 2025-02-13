@@ -1,0 +1,91 @@
+beginmacro
+%
+%  Replace.macro
+%
+%	This macro performs amino acid residue sidechain replacements
+%	quickly, reading the residues to be replaced and the desired
+%	replacements from a data file specified by a command line
+%	argument.  The replacements are performed on a molecule
+%	already present in an active file.
+%
+%	Each line of the data file contains the specification for the
+%	old residue number and the new residue described as its
+%	standard three-letter code.  The following five lines could
+%	be contained in a file called replace.dat and used with this macro
+%	to replace the first five residues in a peptide with alanine, valine,
+%	histidine, arginine, and cysteine, respectively.
+%
+%		rnum/1,ala
+%		rnum/2,val
+%		rnum/3,his
+%		rnum/4,arg
+%		rnum/5,cys
+%
+%	If the data file is called replace.dat, the macro can be run by
+%	entering command mode and typing:  @replace.macro replace.dat.
+%
+%	Get name of data file and open it.
+%
+%	Command line argument:
+%
+	file	= ${input1}
+%
+	open(${file},err=open_error)
+%
+%	Save current position in menu and go to replace menu
+%
+entry-level
+Top menu/build
+        Build/peptide
+             Files/${LASTFILE}
+            Peptide/replace
+%
+loop:
+%		Get next replacement
+%
+	read(${file},end=close_file,err=read_error) record
+	old	= ${record}[1]
+	new	= ${record}[2]
+%
+%		Specify new residue
+%
+        	   Replace/new residue
+	           Selections/${new} 
+%
+%		Specify old residue
+%
+		   Replace/old residue
+	               ${old}
+%
+		   Replace/execute
+%
+%		Loop back for next replacement
+%
+	go to loop
+%
+		   Replace/return
+           Peptide/return
+      Build/return
+% 
+read_error:
+	echo Error in reading data file:  ${file}
+%
+close_file:
+	close(${file},err=close_error)
+%
+%	Return to previous program menu
+%
+	go to end
+%
+open_error:
+	echo Error in opening data file:  ${file}
+	go to end
+%
+close_error:
+	echo Error in closing data file:  ${file}
+%
+end:
+%
+quit
+%
+endmacro

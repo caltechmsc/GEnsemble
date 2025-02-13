@@ -1,0 +1,6 @@
+cd ..
+mol new helix7.fin.minrmsd.cap.bgf
+mol new helix7.fin.minrmsd.cap.min.bgf
+mol new helix7.fin.mineng.cap.bgf
+mol new helix7.fin.mineng.cap.min.bgf
+cd vmd

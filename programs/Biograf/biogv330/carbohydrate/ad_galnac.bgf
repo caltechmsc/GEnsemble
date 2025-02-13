@@ -1,0 +1,70 @@
+BIOGRF  160
+DESCRP AD_GALNA
+REMARK Created by slm @ tms2r on  1/25/90   17:47:32               
+REMARK alpha-N-Acetyl-D-galactosamine
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  GAL      1    1.07508   0.25515  -0.99975 O_3    2 2  0.00000
+HETATM     2  C1*  GAL      1    1.69396  -0.46716   0.07812 C_3    4 0  0.00000
+HETATM     3 HC1*  GAL      1    2.68537  -0.02585   0.20048 H_     1 0  0.00000
+HETATM     4  O1*  GAL      1    1.91579  -1.81760  -0.34556 O_3    2 2  0.00000
+HETATM     5 HO1*  GAL      1    2.43721  -1.81832  -1.17528 H___A  1 0  0.00000
+HETATM     6  C2*  GAL      1    0.91897  -0.28826   1.42082 C_3    4 0  0.00000
+HETATM     7 HC2*  GAL      1    1.01391   0.77296   1.66852 H_     1 0  0.00000
+HETATM     8  C3*  GAL      1   -0.60069  -0.58547   1.22268 C_3    4 0  0.00000
+HETATM     9 HC3*  GAL      1   -0.70530  -1.63978   0.95479 H_     1 0  0.00000
+HETATM    10  O3*  GAL      1   -1.39269  -0.42141   2.40611 O_3    2 2  0.00000
+HETATM    11 HO3*  GAL      1   -1.35864   0.51403   2.69578 H___A  1 0  0.00000
+HETATM    12  C4*  GAL      1   -1.18057   0.24673   0.04148 C_3    4 0  0.00000
+HETATM    13 HC4*  GAL      1   -2.19275  -0.10660  -0.16981 H_     1 0  0.00000
+HETATM    14  O4*  GAL      1   -1.28287   1.64634   0.31623 O_3    2 2  0.00000
+HETATM    15 HO4*  GAL      1   -1.09991   2.03799  -0.56184 H___A  1 0  0.00000
+HETATM    16  C5*  GAL      1   -0.32927   0.03693  -1.24587 C_3    4 0  0.00000
+HETATM    17 HC5*  GAL      1   -0.44659  -1.01337  -1.52555 H_     1 0  0.00000
+HETATM    18  C6*  GAL      1   -0.79190   0.83070  -2.49844 C_3    4 0  0.00000
+HETATM    19 HC6*  GAL      1   -1.84782   0.62507  -2.68015 H_     1 0  0.00000
+HETATM    20 HC6*  GAL      1   -0.23263   0.48096  -3.36787 H_     1 0  0.00000
+HETATM    21  O6*  GAL      1   -0.62908   2.24910  -2.42299 O_3    2 2  0.00000
+HETATM    22 HO6*  GAL      1    0.31711   2.46239  -2.28309 H___A  1 0  0.00000
+HETATM    23  N2*  GAL      1    1.51928  -1.03617   2.45391 N_R    3 0  0.00000
+HETATM    24 HN2*  GAL      1    1.84673  -1.88251   2.20916 H___A  1 0  0.00000
+HETATM    25  C1   GAL      1    1.68216  -0.69981   3.73133 C_R    3 0  0.00000
+HETATM    26  O1   GAL      1    1.28779   0.39848   4.20366 O_2    1 2  0.00000
+HETATM    27  C2   GAL      1    2.35284  -1.63860   4.64720 C_3    4 0  0.00000
+HETATM    28 HC2   GAL      1    3.38106  -1.31147   4.80991 H_     1 0  0.00000
+HETATM    29 HC2   GAL      1    2.37350  -2.65732   4.25306 H_     1 0  0.00000
+HETATM    30 HC2   GAL      1    1.83975  -1.66682   5.61061 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    16
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8     7    23
+CONECT     7     6
+CONECT     8     6    10    12     9
+CONECT     9     8
+CONECT    10     8    11
+CONECT    11    10
+CONECT    12     8    14    16    13
+CONECT    13    12
+CONECT    14    12    15
+CONECT    15    14
+CONECT    16     1    12    18    17
+CONECT    17    16
+CONECT    18    16    21    19    20
+CONECT    19    18
+CONECT    20    18
+CONECT    21    18    22
+CONECT    22    21
+CONECT    23     6    24    25
+CONECT    24    23
+CONECT    25    26    27    23
+ORDER     25     2     1     1
+CONECT    26    25
+ORDER     26     2
+CONECT    27    25    30    29    28
+CONECT    28    27
+CONECT    29    27
+CONECT    30    27
+END

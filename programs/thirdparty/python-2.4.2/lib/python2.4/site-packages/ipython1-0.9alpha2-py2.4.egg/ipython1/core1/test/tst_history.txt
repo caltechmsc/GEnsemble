@@ -1,0 +1,57 @@
+    >>> from ipython1.core1.test.tcommon import *
+    >>> from ipython1.core1.history import History
+    >>> h = History()
+    >>> h.input_cache
+    ['']
+    >>> h.output_cache
+    {}
+    >>> ns = {}
+    >>> h.setup_namespace(ns)
+    >>> ns
+    {'Out': {}, '_ih': [''], '_oh': {}, 'In': ['']}
+    >>> h.namespace_additions
+    {'__': None, '___': None, '_': None}
+
+Now, let us try to pass several statements through the history. The
+namespace_additions dictionary should move _ to __, __ to ___, and put the
+result (as given by display_trap.obj) into _. The input is added to the input
+list with the current cell number.
+# fixme: minimock is nice, but it isn't giving us the ability to distinguish the
+# several trapped objects.
+
+    >>> h = History(input_cache=Mock('ipython1.core1.util.InputList'))
+    >>> h.namespace_additions
+    {'__': None, '___': None, '_': None}
+    >>> python1 = 'print 1'
+    >>> python2 = 'print 2'
+    >>> python3 = 'print 3'
+    >>> python4 = 'print 4'
+    >>> interp = Mock('ipython1.core1.interpreter.Interpreter')
+    >>> h.update_history(interp, python1) # doctest: +ELLIPSIS
+    Called ipython1.core1.interpreter.Interpreter.namespace.update(
+        {'__': None, '___': None, '_': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>})
+    Called ipython1.core1.util.InputList.add(
+        <Mock 0x... ipython1.core1.interpreter.Interpreter.current_cell_number>,
+        'print 1')
+
+    >>> h.update_history(interp, python2) # doctest: +ELLIPSIS
+    Called ipython1.core1.interpreter.Interpreter.namespace.update(
+        {'__': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>, '___': None, '_': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>})
+    Called ipython1.core1.util.InputList.add(
+        <Mock 0x... ipython1.core1.interpreter.Interpreter.current_cell_number>,
+        'print 2')
+
+    >>> h.update_history(interp, python3) # doctest: +ELLIPSIS
+    Called ipython1.core1.interpreter.Interpreter.namespace.update(
+        {'__': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>, '___': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>, '_': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>})
+    Called ipython1.core1.util.InputList.add(
+        <Mock 0x... ipython1.core1.interpreter.Interpreter.current_cell_number>,
+        'print 3')
+
+    >>> h.update_history(interp, python4) # doctest: +ELLIPSIS
+    Called ipython1.core1.interpreter.Interpreter.namespace.update(
+        {'__': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>, '___': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>, '_': <Mock 0x... ipython1.core1.interpreter.Interpreter.display_trap.obj>})
+    Called ipython1.core1.util.InputList.add(
+        <Mock 0x... ipython1.core1.interpreter.Interpreter.current_cell_number>,
+        'print 4')
+

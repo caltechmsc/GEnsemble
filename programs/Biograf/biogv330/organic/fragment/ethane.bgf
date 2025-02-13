@@ -1,0 +1,19 @@
+BIOGRF  110
+DESCRP ETHANE  
+HETATM    1 C1    ORG     1       0.704   0.256   0.167 C_3     4  0  0.0000
+HETATM    2 H3C1  ORG     1       1.415  -0.105  -0.577 H_      1  0  0.0000
+HETATM    3 H2C1  ORG     1       1.004  -0.105   1.152 H_      1  0  0.0000
+HETATM    4 H1C1  ORG     1       0.710   1.346   0.169 H_      1  0  0.0000
+HETATM    5 C2    ORG     1      -0.704  -0.256  -0.167 C_3     4  0  0.0000
+HETATM    6 H3C2  ORG     1      -0.710  -1.346  -0.169 H_      1  0  0.0000
+HETATM    7 H2C2  ORG     1      -1.004   0.105  -1.152 H_      1  0  0.0000
+HETATM    8 H1C2  ORG     1      -1.415   0.105   0.577 H_      1  0  0.0000
+CONECT    1    4    3    2    5    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    0    0    0    0    0
+CONECT    5    8    7    6    1    0    0
+CONECT    6    5    0    0    0    0    0
+CONECT    7    5    0    0    0    0    0
+CONECT    8    5    0    0    0    0    0
+END

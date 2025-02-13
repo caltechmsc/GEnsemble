@@ -1,0 +1,11 @@
+===================
+ External Packages
+===================
+
+This directory contains external packages which we ship inside IPython for ease
+of distributions for users.
+
+Currently we include:
+
+- Twisted web2
+

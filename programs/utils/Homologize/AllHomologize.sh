@@ -1,0 +1,1 @@
+/project/Biogroup/Software/GEnsemble/programs/Homologize.pl -m {mfta} -t {template file prefix} --pair 4

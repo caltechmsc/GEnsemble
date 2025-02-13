@@ -1,0 +1,15 @@
+
+ compareNumBondsWithCONECT.py - 091129
+ ... reading file:   beta1_tm45interfaceOPM.noTA.bgf
+ ... looking for mismatches been the number of bonds and connectivities
+     reported on the ATOM/HETATM and CONECT lines, respectively ...
+           1  N    N_R   on LEU   36A reports 3 bonds but has 1:   [2]
+        3212  C    C_2   on GLN  237A reports 3 bonds but has 2:   [3199, 3213]
+        3214  N    N_R   on VAL  280A reports 3 bonds but has 1:   [3215]
+        4509  C    C_R   on LEU  356A reports 3 bonds but has 2:   [4494, 4510]
+        4511  N    N_R   on LEU   36B reports 3 bonds but has 1:   [4512]
+        7741  C    C_R   on ILE  238B reports 3 bonds but has 2:   [7726, 7742]
+        7743  N    N_R   on VAL  280B reports 3 bonds but has 1:   [7744]
+        9038  C    C_R   on LEU  356B reports 3 bonds but has 2:   [9023, 9039]
+ ... done!
+

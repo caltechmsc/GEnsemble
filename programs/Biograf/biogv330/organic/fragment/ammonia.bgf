@@ -1,0 +1,12 @@
+BIOGRF  110
+DESCRP AMMONIA 
+*WAG MODIFY
+HETATM    1 N1    ORG     1       0.159  -0.083  -0.170 N_3     3  1  0.0000
+HETATM    2 H3N1  ORG     1      -0.772  -0.428  -0.402 H___A   1  0  0.0000
+HETATM    3 H2N1  ORG     1       0.444  -0.425   0.748 H___A   1  0  0.0000
+HETATM    4 H1N1  ORG     1       0.169   0.937  -0.176 H___A   1  0  0.0000
+CONECT    1    4    3    2    0    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    0    0    0    0    0
+END

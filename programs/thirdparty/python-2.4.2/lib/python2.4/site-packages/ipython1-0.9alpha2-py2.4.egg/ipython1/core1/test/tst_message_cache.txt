@@ -1,0 +1,28 @@
+    >>> from ipython1.core1.message_cache import SimpleMessageCache
+    >>> smc = SimpleMessageCache()
+    >>> smc.cache
+    {}
+    >>> smc.add_message(1, dict(number=1))
+    >>> smc.cache
+    {1: {'number': 1}}
+    >>> smc.add_message(2, dict(number=2))
+    >>> smc.cache
+    {1: {'number': 1}, 2: {'number': 2}}
+    >>> smc.add_message(3, dict(number=3))
+    >>> smc.cache
+    {1: {'number': 1}, 2: {'number': 2}, 3: {'number': 3}}
+    >>> smc.get_message()
+    {'number': 3}
+    >>> smc.get_message(1)
+    {'number': 1}
+    >>> smc.get_message(i=2)
+    {'number': 2}
+    >>> smc.get_message(4) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+      ...
+    IndexError: index 4 out of range
+    >>> smc.get_message(0) # doctest: +ELLIPSIS
+    Traceback (most recent call last):
+      ...
+    IndexError: index 0 out of range
+

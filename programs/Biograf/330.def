@@ -1,0 +1,8 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: /biograf/b330.def
+!
+PROGRAM    BIOGRAF
+INTERFACE  ETHERNET
+NODENAME   ps300

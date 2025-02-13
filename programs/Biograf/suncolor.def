@@ -1,0 +1,8 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: ${HOME}/sun.def
+!
+PROGRAM    BIOGRAF
+L_GKS      YES
+TERMINAL   SUN

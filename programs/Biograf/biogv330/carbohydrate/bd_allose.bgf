@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP BD_ALL  
+REMARK Created by slm @ tms2r on  1/25/90   17:45:54               
+REMARK beta-D-Allose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  ALL      1    1.19027   0.29608  -0.91905 O_3    2 2  0.00000
+HETATM     2  C1*  ALL      1    1.80305  -0.30782   0.22855 C_3    4 0  0.00000
+HETATM     3 HC1*  ALL      1    1.92938  -1.37659   0.04214 H_     1 0  0.00000
+HETATM     4  O1*  ALL      1    3.10362   0.27058   0.31436 O_3    2 2  0.00000
+HETATM     5  HO1* ALL      1    3.59682  -0.13905   1.05563 H___A  1 0  0.00000
+HETATM     6  C2*  ALL      1    0.94892  -0.08340   1.50864 C_3    4 0  0.00000
+HETATM     7 HC2*  ALL      1    0.92414   0.99008   1.71423 H_     1 0  0.00000
+HETATM     8  O2*  ALL      1    1.53318  -0.67457   2.67538 O_3    2 2  0.00000
+HETATM     9  HO2* ALL      1    0.98871  -0.45437   3.45988 H___A  1 0  0.00000
+HETATM    10  C3*  ALL      1   -0.52198  -0.54075   1.28326 C_3    4 0  0.00000
+HETATM    11 HC3*  ALL      1   -1.11080  -0.21583   2.14497 H_     1 0  0.00000
+HETATM    12  O3*  ALL      1   -0.65319  -1.96943   1.21677 O_3    2 2  0.00000
+HETATM    13  HO3* ALL      1   -1.59774  -2.20631   1.10634 H___A  1 0  0.00000
+HETATM    14  C4*  ALL      1   -1.08835   0.17038   0.01949 C_3    4 0  0.00000
+HETATM    15 HC4*  ALL      1   -1.09968   1.24103   0.23633 H_     1 0  0.00000
+HETATM    16  O4*  ALL      1   -2.45423  -0.17133  -0.23708 O_3    2 2  0.00000
+HETATM    17  HO4* ALL      1   -2.77047   0.33267  -1.01561 H___A  1 0  0.00000
+HETATM    18  C5*  ALL      1   -0.17230  -0.05689  -1.22094 C_3    4 0  0.00000
+HETATM    19 HC5*  ALL      1   -0.18363  -1.12179  -1.46908 H_     1 0  0.00000
+HETATM    20  C6*  ALL      1   -0.60979   0.69231  -2.50626 C_3    4 0  0.00000
+HETATM    21 HC6*  ALL      1   -1.59269   0.33779  -2.82016 H_     1 0  0.00000
+HETATM    22 HC6*  ALL      1    0.09011   0.46621  -3.31268 H_     1 0  0.00000
+HETATM    23  O6*  ALL      1   -0.67825   2.11012  -2.37072 O_3    2 2  0.00000
+HETATM    24  HO6* ALL      1    0.20146   2.45564  -2.11147 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

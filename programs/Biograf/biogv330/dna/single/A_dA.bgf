@@ -1,0 +1,61 @@
+BIOGRF  160
+DESCRP A_dA    
+REMARK Created by slm @ iris on  5/26/89    5:10:18                
+FORCEFIELD DREIDING
+DNARIS  2.560
+DNATRN 32.727
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  P      A A    1    3.16756   8.33864  -4.06000 P_3    4 0  1.34300
+ATOM       2  O1P    A A    1    3.74719   9.22822  -5.10000 O_2    1 2 -0.73800
+ATOM       3  O2P    A A    1    2.13255   7.38839  -4.53000 O_2    1 2 -0.73800
+ATOM       4  O5*    A A    1    4.33684   7.54200  -3.33000 O_R    2 2 -0.47700
+ATOM       5  C5*    A A    1    5.62733   8.15728  -3.19000 C_32   4 0  0.03400
+ATOM       6  C4*    A A    1    6.71285   7.09863  -3.13000 C_31   4 0  0.13200
+ATOM       7  O4*    A A    1    6.63231   6.40475  -1.86000 O_3    2 2 -0.26500
+ATOM       8  C3*    A A    1    6.60057   5.98503  -4.17000 C_31   4 0  0.03600
+ATOM       9  O3*    A A    1    7.15279   6.37291  -5.43000 O_R    2 2 -0.47700
+ATOM      10  C2*    A A    1    7.35501   4.84974  -3.50000 C_32   4 0  0.01200
+ATOM      11  C1*    A A    1    6.95826   5.03694  -2.04000 C_31   4 0  0.23600
+ATOM      12  N9     A A    1    5.78521   4.21865  -1.62000 N_R    3 0 -0.17800
+ATOM      13  C8     A A    1    4.46986   4.58043  -1.61000 C_R1   3 0  0.24500
+ATOM      14  N7     A A    1    3.67558   3.65000  -1.19000 N_R    2 1 -0.28100
+ATOM      15  C5     A A    1    4.52974   2.59420  -0.91000 C_R    3 0  0.00400
+ATOM      16  C6     A A    1    4.30062   1.29025  -0.43000 C_R    3 0  0.26200
+ATOM      17  N6     A A    1    3.08417   0.81487  -0.13000 N_R2   3 0  0.03900
+ATOM      18  N1     A A    1    5.37691   0.49880  -0.26000 N_R    2 1 -0.31900
+ATOM      19  C2     A A    1    6.71236   0.95531  -0.57000 C_R1   3 0  0.22900
+ATOM      20  N3     A A    1    7.17980   2.23626  -1.02000 N_R    2 1 -0.29800
+ATOM      21  C4     A A    1    5.82478   2.92956  -1.17000 C_R    3 0  0.19900
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3     4
+ORDER      1     2     1     1
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1
+CONECT     4     1     5
+CONECT     5     4     6
+CONECT     6     5     7     8
+CONECT     7     6    11
+CONECT     8     6     9    10
+CONECT     9     8
+CONECT    10     8    11
+CONECT    11     7    10    12
+CONECT    12    11    13    21
+CONECT    13    12    14
+ORDER     13     1     2
+CONECT    14    13    15
+ORDER     14     2     1
+CONECT    15    14    16    21
+ORDER     15     1     1     2
+CONECT    16    15    17    18
+ORDER     16     1     1     2
+CONECT    17    16
+CONECT    18    16    19
+ORDER     18     2     1
+CONECT    19    18    20
+ORDER     19     1     2
+CONECT    20    19    21
+ORDER     20     2     1
+CONECT    21    12    15    20
+ORDER     21     1     2     1
+END

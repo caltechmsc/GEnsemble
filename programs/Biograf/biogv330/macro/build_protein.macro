@@ -1,0 +1,75 @@
+beginmacro
+%
+% This is a macro to build a peptide from a sequence file.
+% For this example, the file called pep_sequence is used.
+%
+% Get input data
+progstat=set(program,BIOGRAF)
+  if( ${input1} = NULL )then
+    echo " "
+    echo "Enter a project title (e.g., leuenk1)"
+    title = ${prompt}
+    if( ${title} = NULL )go to ERROR
+    echo " "
+    echo "Enter the name of data file containing sequence data,"
+    echo "using the pathname of the file if not in current directory."
+    file = ${prompt}
+    if( ${file} = NULL )go to ERROR
+    go to OPEN
+  endif
+%
+  if( ${title} = NULL )then
+    echo " "
+    echo "Enter a project title (e.g., leuenk1)"
+    title = ${prompt}
+    if( ${title} = NULL )go to ERROR
+  endif
+%
+  if( ${file} = NULL )then
+    echo " "
+    echo "Enter the name of data file containing sequence data,"
+    echo "using the pathname of the file if not in current directory."
+    file = ${prompt}
+    if( ${file} = NULL )go to ERROR
+  endif
+%
+% open the data file
+  OPEN:
+  open(${file},err=ERROR)
+%
+% get first residue
+  ^
+  build
+  peptide
+  new file
+  ${title}
+  l_lib
+  LOOP:
+  read(${file},end=FINISHED)amino_acid	% read next amino acid
+  ${amino_acid}				% add next amino acid
+  go to LOOP				% repeat
+%
+  FINISHED:
+%  ^					% return to top level
+% Top Menu
+  return
+  return
+  in-out				% go into i/o menu and save data
+  write
+  biograf
+  ${title}
+  return
+  ${title}
+  return
+  " "
+  go to END
+%
+% error branch
+  ERROR:
+  echo " "
+  echo "An error occurred during operation...."
+%
+  END:
+quit
+%
+endmacro

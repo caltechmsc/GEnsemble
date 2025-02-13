@@ -1,0 +1,107 @@
+PARAMETER FORMAT (1-89)
+  156    4    0    0    0    0    0    0    0    0    0    0    0    0    0    0
+>>> MM2 Force Field (Allinger, JACS 99 (1977) 8127)
+>>> See Reference Manual for details of MM2 implementation
+*                                                                               
+******************************************************************************
+****  This force field implementation was made by BioDesign, Inc.
+****  This file may not be redistributed (whether or not it has been
+****  modified) without the written permission of BioDesign.
+****  This notice must appear in all copies of this file.
+******************************************************************************
+*
+*                                                                               
+FORCEFIELD MM2     
+DEFAULTS
+RNB GEOMN  F
+SHRINK CH  T
+TORS SCAL  F
+SCAL NB14    1.00000
+ATM DEFLT C_3  
+R*EPS      F
+SNGL INVR  F
+*
+FFLABEL    ATNO      MASS CHARG HYB BND CPK #IH #LP
+H__C          1    1.0080  0.00   0   1   8   0   0
+C_3           6   12.0110  0.00   3   4   5   0   0
+C_3_4         6   12.0110  0.00   3   4   5   0   0
+*
+ADDED H   HYDROGEN  1IMPLCTH  2IMPLCTH  3IMPLCTH  4IMPLCTH
+H__C      H__C                                                                  
+C_3       H__C                                                                  
+C_3_4     H__C                                                                  
+*
+LONE PAIRS
+*
+*    Parameters for Gasteiger charges.
+*    Reference: Johann Gasteiger and Mario Marsili, Tetrahedron 36 (1980), 3219-3228
+*
+GASTEIGER          A         B         C        X+
+H__C          7.1700    6.2400   -0.5600   20.0200
+C_3           7.9800    9.1800    1.8800
+C_3_4         7.9800    9.1800    1.8800
+*
+*	End of parameters for Gastieger charge algorithm
+*
+*
+VDW AT ITY       RNB      DENB     SCALE
+H__C     2    3.0004    0.0550   12.5000
+C_3      2    3.8005    0.0515   12.5000
+C_3_4    2    3.8005    0.0515   12.5000
+*
+AUTOTYPE  ELEMENT   HYBRIDIZATION RING_SIZE  REQUIREMNTS  FACTOR
+H__C         H            0           0           1           1
+             C            0           0           0           1
+C_3_4        C            3           4           0           1
+C_3          C            3           0           0           1
+*
+NONBOND-OFF TYPE      RVDW      DVDW     SCALE
+C_3  -H__C     2    3.3404    0.0538   12.5000
+C_3_4-H__C     2    3.3404    0.0538   12.5000
+*
+BONDSTRTCH  TYPE FORC CNST  BND DIST    DE/CUB    KSLOPE    TSLOPE  BOND DIP
+H__C -H__C     3 1000.0000    0.7500   -2.0000    0.0000    0.0000    0.0000
+C_3  -H__C     3  661.8500    1.1130   -2.0000    0.0000    0.0000    0.0000
+C_3  -C_3      3  633.0700    1.5230   -2.0000    0.0000    0.0000    0.0000
+C_3_4-H__C     3  661.8500    1.1130   -2.0000    0.0000    0.0000    0.0000
+C_3_4-C_3      3  633.0700    1.5230   -2.0000    0.0000    0.0000    0.0000
+C_3_4-C_3_4    3  633.0700    1.5230   -2.0000    0.0000    0.0000    0.0000
+*
+ANGLE-(L-C-R)     TYPE FORC CNST EQUIL ANG  A-STR-LC  A-STR-CR   STR-STR DLT-TH-1H DLT-TH-2H  NON-HARM   BARRIER
+X    -C_3  -X       33   64.7400  109.5000   17.2700   17.2700    0.0000    0.0000    0.0000    0.7544    0.0000
+H__C -C_3  -H__C    34   46.0400  109.4000    0.0000    0.0000    0.0000   -0.4000    0.0700    0.7544    0.0000
+C_3  -C_3  -H__C    34   51.8000  109.4000   12.9500    0.0000    0.0000    0.0000    0.6000    0.7544    0.0000
+C_3  -C_3  -C_3     33   64.7400  109.5000   17.2700   17.2700    0.0000    0.0000    0.0000    0.7544    0.0000
+C_3_4-C_3  -H__C    34   51.8000  109.4000   12.9500    0.0000    0.0000    0.0000    0.6000    0.7544    0.0000
+X    -C_3_4-X       33   64.7400  109.5000   17.2700   17.2700    0.0000    0.0000    0.0000    0.7544    0.0000
+H__C -C_3_4-H__C    34   46.0400  109.4000    0.0000    0.0000    0.0000   -0.4000    0.0700    0.7544    0.0000
+C_3  -C_3_4-H__C    34   51.8000  109.4000   12.9500    0.0000    0.0000    0.0000    0.6000    0.7544    0.0000
+C_3_4-C_3_4-H__C    34   51.8000  109.4000   12.9500    0.0000    0.0000    0.0000    0.6000    0.7544    0.0000
+C_3_4-C_3_4-C_3_4   34   48.9200  109.5000   17.2700   17.2700   41.7300    0.0000    0.0000    0.7544    0.0000
+*
+TORSION                 CASE   BARRIER    PERIOD CISMIN(1)
+X    -C_3  -C_3  -X        1    0.2000    1.0000   -1.0000
+X    -C_3  -C_3  -X        1    0.2700    2.0000    1.0000
+X    -C_3  -C_3  -X        1    0.0930    3.0000   -1.0000
+H__C -C_3  -C_3  -X        2    0.2670    3.0000   -1.0000
+H__C -C_3  -C_3  -H__C     3    0.2370    3.0000   -1.0000
+X    -C_3_4-C_3  -X        4    0.2000    1.0000   -1.0000
+X    -C_3_4-C_3  -X        4    0.2700    2.0000    1.0000
+X    -C_3_4-C_3  -X        4    0.0930    3.0000   -1.0000
+X    -C_3_4-C_3  -H__C     5    0.2670    3.0000   -1.0000
+H__C -C_3_4-C_3  -X        6    0.2670    3.0000   -1.0000
+H__C -C_3_4-C_3  -H__C     7    0.2370    3.0000   -1.0000
+X    -C_3_4-C_3_4-X        8    0.2000    1.0000   -1.0000
+X    -C_3_4-C_3_4-X        8    0.2700    2.0000    1.0000
+X    -C_3_4-C_3_4-X        8    0.0930    3.0000   -1.0000
+H__C -C_3_4-C_3_4-X        9    0.2670    3.0000   -1.0000
+H__C -C_3_4-C_3_4-H__C    10    0.2370    3.0000   -1.0000
+C_3_4-C_3_4-C_3_4-C_3_4   11    0.2000    1.0000   -1.0000
+C_3_4-C_3_4-C_3_4-C_3_4   11    0.2700    2.0000    1.0000
+C_3_4-C_3_4-C_3_4-C_3_4   11    1.5330    3.0000   -1.0000
+*
+INVERSION (CENT AT 1ST) TYPE  FRC CNST  EQU ANGL         D         E         F
+*
+HBOND       TYPE    -DE HB     RE HB
+X    -X        1    9.5000    2.7500
+END OF DATA

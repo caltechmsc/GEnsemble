@@ -1,0 +1,43 @@
+beginmacro
+%
+%  POLARIS macro to calculate Free Energy of Solvation (dG)
+%
+%
+% version      : 3.00
+% version date : 16:03:58 3/3/92
+% link date    : 16:44:59 3/16/92
+%
+% Macro created on  3/16/92   16:53:19
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "his_1.bgf"
+% 	/usr/msi/biogv320/data/his_1.bgf
+	In-Out/return
+Top menu/simulate
+	Simulate/region I
+	his_1
+	return
+	Simulate/dG solvation
+	Simulate/electrostatics
+		Electrostatics/field
+			Field/field mode
+			Field/field type
+			Field/field mode
+			Field/field type
+			Field/return
+		Electrostatics/return
+	Simulate/electrostatics
+		Electrostatics/field
+			Field/parameters
+				Parameters/scale labels
+				  "8"
+				Parameters/return
+			Field/return
+		Electrostatics/return
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

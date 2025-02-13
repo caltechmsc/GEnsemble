@@ -1,0 +1,545 @@
+
+#####################################################################
+#                                                                   #
+# PredicTM.pl/PredicTM.pm/Blast.pl/Blast.pm/Clustal.pm/Mafft.pm     #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+# Uses BLAST:                                                       #
+# Altschul S.F., Madden T.L., Schaffer A.A., Zhang J., Zhang Z.,    #
+# Miller W., Lipman D.J.  Gapped BLAST and PSI-BLAST: a new         #
+# generation of protein database search programs. (1997)            #
+# _Nucleic Acids Res_ 25:3389-3402.                                 #
+#                                                                   #
+# BLAST is performed at the SIB using the BLAST network service.    #
+# The SIB BLAST network service uses a server developed at SIB and  #
+# the NCBI BLAST 2 software.                                        #
+#                                                                   #
+# Uses the GPCRDB when flagging of cutting potential non-GPCR       #
+# sequences: http://www.gpcr.org/7tm/htmls/entries.html             #
+#                                                                   #
+# Uses libwww-perl-5.808 from the Comprehensive Perl Archive        #
+# Network (CPAN).                                                   #
+# libwww-perl (c) 1995-2005 Gisle Aas. All rights reserved.         #
+# libwww-perl (c) 1995 Martijn Koster. All rights reserved.         #
+#                                                                   #
+# Uses ClustalW 1.83:                                               #
+# Chenna, et al. "Multiple sequence alignment with the Clustal      #
+# series of programs." (2003)                                       #
+# _Nucleic Acids Res_ 31 (13):3497-500 PubMedID: 12824352           #
+#                                                                   #
+# Uses MAFFT 6.240:                                                 #
+# MAFFT v6.240 (2007/04/04)  Copyright (c) 2006 Kazutaka Katoh      #
+# http://align.bmr.kyushu-u.ac.jp/mafft/software/                   #
+# NAR 30:3059-3066, NAR 33:511-518                                  #
+#                                                                   #
+#####################################################################
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Loading PredicTM Defaults @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Default Values Loaded From :: /home/ravi/GEnsemble/programs/.gensemble/.predictm
+ :: scale         :: octanol
+ :: avgwins       :: 7-21
+ :: minhelix      :: 10
+ :: maxhelix      :: 35
+ :: minloop       :: 6
+ :: maxcap        :: 6
+ :: maxext        :: 4
+ :: ntermbreakers :: G,P,D,E,R,K,H
+ :: ctermbreakers :: G,P,D,E,R,K,H
+ :: baseline      :: 0.0
+ :: clustal       :: 0
+ :: etares        :: 1
+ :: protdb        :: Complete
+ :: ethreshold    :: 0.1
+ :: sequences     :: 1000
+ :: compiter      :: 1000
+ :: maxseqs       :: 5000
+ :: complete      :: 1
+ :: flagnongpcr   :: 0
+ :: cutnongpcr    :: 0
+ :: filter        :: 0
+ :: trembl        :: 0
+ :: qsub          :: 0
+ :: queuetype     :: sge
+Defaults Changed By User
+ :: No defaults changed
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Running Blast v1.25 @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Blast :: Running With the Following Parameters ::
+ :: Protein Database                 :: Complete
+ :: E-Threshold                      :: 0.1
+ :: Sequences                        :: 1000
+ :: Completeness Step                :: 1000
+ :: Maximum Sequences                :: 5000
+ :: Find Completeness                :: Yes
+ :: Flag Possible Non-GPCRs          :: No
+ :: Cut Possible Non-GPCRs           :: No
+ :: Use Low-Complexity Region Filter :: No
+ :: Include TrEMBL Sequences         :: No
+
+Performing BLAST Search ::
+ :: Date                   :: Sat Apr 12 01:47:59 2008
+ :: Database               :: Complete
+ :: Include TrEMBL         :: No
+ :: E-Threshold            :: 0.1
+ :: Filter Low Complexity  :: No
+ :: Accession Number Input :: Q9NYW5
+ :: MLRLFYFSAIIASVILNFVGIIMNLFITVVNCKTWVKSHRISSSDRILFSLGITRFLMLG
+ :: LFLVNTIYFVSSNTERSVYLSAFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLL
+ :: LKRNISPKIPRLLLACVLISAFTTCLYITLSQASPFPELVTTRNNTSFNISEGILSLVVS
+ :: LVLSSSLQFIINVTSASLLIHSLRRHIQKMQKNATGFWNPQTEAHVGAMKLMVYFLILYI
+ :: PYSVATLVQYLPFYAGMDMGTKSICLIFATLYSPGHSVLIIITHPKLKTTAKKILCFKK
+
+Round 1 Results ::
+ :: Number of Sequences Requested  :: 1000
+ :: Number of Sequences Returned   :: 213
+ :: Number of Normal Sequences     :: 213
+ :: Number of Splice Sequences     :: 0
+ :: Largest E-Value                :: 0.0473792
+ :: Completeness Obtained
+
+Output Files ::
+ :: BLAST Results FASTA File      :: Q9NYW5.fta
+ :: E-Value/% Identity File (CSV) :: Q9NYW5.csv
+ :: E-Value/% Identity File (TXT) :: Q9NYW5.txt
+ :: BLAST HTML Output             :: Q9NYW5.html
+ :: BLAST XML Output              :: Q9NYW5.xml
+ :: Blast.pl Log File             :: Q9NYW5.log
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Running PredicTM v1.25 @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+PredicTM :: Running With the Following Parameters ::
+ :: Running From BLAST Output ::
+ :: Hydrophobicity Scale      :: octanol
+ :: Windows to Average        :: 7-21
+ :: Minimum Acceptable Helix  :: 10
+ :: Maximum Cappable Helix    :: 35
+ :: Minimum Loop Length       :: 6
+ :: Maximum Capping Length    :: 6
+ :: Maximum Extension Length  :: 4
+ :: Baseline                  :: 0.0
+ :: Use Clustal               :: No
+
+Running MAFFT :: Q9NYW5.fta
+ :: Sequences  :: 213
+ :: Start Time :: Sat Apr 12 01:48:56 2008
+ :: Stop Time  :: Sat Apr 12 01:50:16 2008
+
+Loading Hydrophobicity Scale :: octanol :: Sat Apr 12 01:50:16 2008
+ :: A / ALA / Alanine       :: -0.500
+ :: C / CYS / Cysteine      ::  0.020
+ :: D / ASP / Aspartic Acid :: -3.640
+ :: E / GLU / Glutamic Acid :: -3.630
+ :: F / PHE / Phenylalanine ::  1.710
+ :: G / GLY / Glycine       :: -1.150
+ :: H / HIS / Histidine     :: -0.110
+ :: I / ILE / Isoleucine    ::  1.120
+ :: K / LYS / Lysine        :: -2.800
+ :: L / LEU / Leucine       ::  1.250
+ :: M / MET / Methionine    ::  0.670
+ :: N / ASN / Asparagine    :: -0.850
+ :: P / PRO / Proline       :: -0.140
+ :: Q / GLN / Glutamine     :: -0.770
+ :: R / ARG / Arginine      :: -1.810
+ :: S / SER / Serine        :: -0.460
+ :: T / THR / Threonine     :: -0.250
+ :: V / VAL / Valine        ::  0.460
+ :: W / TRP / Tryptophan    ::  2.090
+ :: Y / TYR / Tyrosine      ::  0.710
+
+Loading the PIR File :: Q9NYW5.pir ::
+ :: Sequences Loaded       :: 213
+ :: Target Sequence Length :: 299
+ :: Alignment Length       :: 439
+
+Assigning & Averaging Hydrophobicities ::
+ :: Sequence 109, Align Position 65, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z4|T2R10_GORGO Taste receptor type 2 member 10 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 209, Align Position 68, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;P59531|T2R12_HUMAN Putative Taste receptor type 2 member 12 - Homo sapiens (Human).
+ :: Sequence 30, Align Position 71, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646E8|TA2R3_PAPHA Taste receptor type 2 member 3 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 55, Align Position 75, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646F7|T2R13_PAPHA Taste receptor type 2 member 13 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 59, Align Position 81, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646C6|TA2R9_PANTR Taste receptor type 2 member 9 - Pan troglodytes (Chimpanzee).
+ :: Sequence 132, Align Position 104, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646E0|T2R44_PANPA Taste receptor type 2 member 44 - Pan paniscus (Pygmy chimpanzee) (Bonobo).
+ :: Sequence 153, Align Position 112, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z0|T2R60_GORGO Taste receptor type 2 member 60 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 48, Align Position 122, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Y3|T2R41_GORGO Taste receptor type 2 member 41 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 56, Align Position 126, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645V9|TA2R9_PONPY Taste receptor type 2 member 9 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 201, Align Position 132, Nonstandard Amino Acid (B) Replaced With Gap
+    >P1;Q645Y4|T2R16_GORGO Taste receptor type 2 member 16 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 3, Align Position 140, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646B0|TA2R4_PANTR Taste receptor type 2 member 4 - Pan troglodytes (Chimpanzee).
+ :: Sequence 56, Align Position 153, Nonstandard Amino Acid (B) Replaced With Gap
+    >P1;Q645V9|TA2R9_PONPY Taste receptor type 2 member 9 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 5, Align Position 159, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645U4|TA2R4_PONPY Taste receptor type 2 member 4 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 198, Align Position 159, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645T9|T2R42_MACMU Taste receptor type 2 member 42 - Macaca mulatta (Rhesus macaque).
+ :: Sequence 87, Align Position 165, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645U6|T2R41_PONPY Taste receptor type 2 member 41 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 87, Align Position 178, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645U6|T2R41_PONPY Taste receptor type 2 member 41 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 77, Align Position 187, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646G7|TA2R1_GORGO Taste receptor type 2 member 1 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 91, Align Position 211, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646C2|T2R49_PANTR Taste receptor type 2 member 49 - Pan troglodytes (Chimpanzee).
+ :: Sequence 56, Align Position 214, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645V9|TA2R9_PONPY Taste receptor type 2 member 9 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 59, Align Position 214, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646C6|TA2R9_PANTR Taste receptor type 2 member 9 - Pan troglodytes (Chimpanzee).
+ :: Sequence 74, Align Position 219, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646G5|TA2R9_PAPHA Taste receptor type 2 member 9 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 21, Align Position 220, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Y7|T2R39_GORGO Taste receptor type 2 member 39 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 198, Align Position 221, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645T9|T2R42_MACMU Taste receptor type 2 member 42 - Macaca mulatta (Rhesus macaque).
+ :: Sequence 59, Align Position 231, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646C6|TA2R9_PANTR Taste receptor type 2 member 9 - Pan troglodytes (Chimpanzee).
+ :: Sequence 45, Align Position 235, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645U2|TA2R3_PONPY Taste receptor type 2 member 3 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 187, Align Position 237, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z6|T2R44_GORGO Taste receptor type 2 member 44 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 60, Align Position 242, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646C5|TA2R8_PANTR Taste receptor type 2 member 8 - Pan troglodytes (Chimpanzee).
+ :: Sequence 52, Align Position 246, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646E5|TA2R8_PANPA Taste receptor type 2 member 8 - Pan paniscus (Pygmy chimpanzee) (Bonobo).
+ :: Sequence 47, Align Position 292, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646F3|T2R41_PAPHA Taste receptor type 2 member 41 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 184, Align Position 298, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646B7|T2R14_PANTR Taste receptor type 2 member 14 - Pan troglodytes (Chimpanzee).
+ :: Sequence 23, Align Position 306, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646F0|T2R39_PAPHA Taste receptor type 2 member 39 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 56, Align Position 308, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645V9|TA2R9_PONPY Taste receptor type 2 member 9 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 164, Align Position 308, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z2|T2R14_GORGO Taste receptor type 2 member 14 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 87, Align Position 324, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645U6|T2R41_PONPY Taste receptor type 2 member 41 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 184, Align Position 328, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646B7|T2R14_PANTR Taste receptor type 2 member 14 - Pan troglodytes (Chimpanzee).
+ :: Sequence 109, Align Position 335, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z4|T2R10_GORGO Taste receptor type 2 member 10 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 79, Align Position 347, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645Z5|T2R13_GORGO Taste receptor type 2 member 13 - Gorilla gorilla gorilla (Lowland gorilla).
+ :: Sequence 36, Align Position 349, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646G4|TA2R8_PAPHA Taste receptor type 2 member 8 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 97, Align Position 351, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q645V6|T2R49_PONPY Taste receptor type 2 member 49 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 78, Align Position 352, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646G1|T2R49_PAPHA Taste receptor type 2 member 49 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 41, Align Position 373, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646F2|T2R40_PAPHA Taste receptor type 2 member 40 - Papio hamadryas (Hamadryas baboon).
+ :: Sequence 133, Align Position 384, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646G6|TA2R1_PONPY Taste receptor type 2 member 1 - Pongo pygmaeus (Bornean orangutan).
+ :: Sequence 151, Align Position 394, Nonstandard Amino Acid (X) Replaced With Gap
+    >P1;Q646A4|TA2R5_PANTR Taste receptor type 2 member 5 - Pan troglodytes (Chimpanzee).
+ :: 43 Nonstandard Amino Acids Replaced With Gaps
+
+Windowing Hydrophobicities ::
+ :: Windows Calculated :: 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31
+
+Averaging Windows :: 7-21
+ :: Windows Used in Average    :: 7 9 11 13 15 17 19 21
+ :: Number of Windows Averaged :: 8
+
+Raw Predictions ::
+ :: TM  1 (raw) ::   1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVV            ::  30 :: Length 30
+ :: TM  2 (raw) ::  49 :: FSLGITRFLMLGLFLVNTIYFVSSN                 ::  73 :: Length 25
+ :: TM  3 (raw) ::  82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK :: 122 :: Length 41
+ :: TM  4 (raw) :: 127 :: PKIPRLLLACVLISAFTTCLYIT                   :: 149 :: Length 23
+ :: TM  5 (raw) :: 180 :: SLVLSSSLQFIINVTSASLLIHSL                  :: 203 :: Length 24
+ :: TM  6 (raw) :: 231 :: LMVYFLILYIPYSVATLVQYLP                    :: 252 :: Length 22
+ :: TM  7 (raw) :: 263 :: SICLIFATLYSPGHSVLII                       :: 281 :: Length 19
+ :: TM  8 (raw) :: 296 :: CFK                                      :: 299 :: Length 4
+
+Helices That Don't Meet Minimum Helix Length ::
+ :: TM  8 :: Length ( 4 ) is less than minimum helix length ( 10 )
+
+Finding Possible Caps and Extensions ::
+ :: TM  1 :: Possible C-Term Cap :: K33
+ :: TM  1 :: Possible C-Term Ext :: T34
+
+ :: TM  2 :: Possible N-Term Cap :: R46
+ :: TM  2 :: Possible N-Term Ext :: D45
+ :: TM  2 :: Possible C-Term Cap :: E75
+ :: TM  2 :: Possible C-Term Ext :: S77
+
+ :: TM  3 :: Length ( 41 ) is too long to apply capping (cutoff is 35)
+
+ :: TM  4 :: Possible N-Term Cap :: R123
+ :: TM  4 :: Possible N-Term Ext :: R123
+ :: TM  4 :: Possible C-Term Cap :: P155
+ :: TM  4 :: Possible C-Term Ext :: A153
+
+ :: TM  5 :: Possible N-Term Ext :: S176
+ :: TM  5 :: Possible C-Term Cap :: R204
+ :: TM  5 :: Possible C-Term Ext :: I207
+
+ :: TM  6 :: Possible N-Term Cap :: K230
+ :: TM  6 :: Possible N-Term Ext :: G227
+ :: TM  6 :: Possible C-Term Cap :: G256
+ :: TM  6 :: Possible C-Term Ext :: G256
+
+ :: TM  7 :: Possible N-Term Cap :: K262
+ :: TM  7 :: Possible N-Term Ext :: M259
+ :: TM  7 :: Possible C-Term Cap :: H284
+ :: TM  7 :: Possible C-Term Ext :: P285
+
+Applying Capping Rules ::
+ :: Reminder :: Minimum Loop Length :: 6 :: Working on N-Term of TM 1
+    :: TM  1 :: N-Term left at V30
+
+ :: Working on C-Term of TM 1 and N-Term of TM 2
+    :: TM  1 :: C-Term capped from V30 to K33
+    :: TM  2 :: N-Term capped from F49 to R46
+
+ :: Working on C-Term of TM 2 and N-Term of TM 3
+    :: TM  2 :: C-Term capped from N73 to E75
+    :: TM  3 :: N-Term left at A82
+
+ :: Working on C-Term of TM 3 and N-Term of TM 4
+    :: Could not use raw TM 3 C-Term to K122 and cap TM 4 N-Term to R123
+    :: TM  3 :: C-Term left at K122
+    :: TM  4 :: N-Term left at P127
+
+ :: Working on C-Term of TM 4 and N-Term of TM 5
+    :: TM  4 :: C-Term capped from T149 to P155
+    :: TM  5 :: N-Term extended from S180 to S176
+
+ :: Working on C-Term of TM 5 and N-Term of TM 6
+    :: TM  5 :: C-Term capped from L203 to R204
+    :: TM  6 :: N-Term capped from L231 to K230
+
+ :: Working on C-Term of TM 6 and N-Term of TM 7
+    :: Could not cap TM 6 C-Term to G256 and cap TM 7 N-Term to K262
+    :: Could not extend TM 6 C-Term to G256 and extend TM 7 N-Term to M259
+    :: TM  6 :: C-Term left at P252
+    :: TM  7 :: N-Term left at S263
+
+ :: Working on C-Term of TM 7
+    :: TM  7 :: C-Term capped from I281 to H284
+
+Finding Residue to Define Eta Angle Rotation ::
+ :: TM 1 :: Consensus Seq ::     :: SPWQAVLLAALYSLVFLLGLLGNVLVILVILRNK ::
+ :: TM 1 :: Target TM     ::   1 :: M-LRLFYFSAIIASVILNFVGIIMNLFITVVNCK ::  33
+ :: Eta Residue           ::  22 ::                       e
+
+ :: TM 2 :: Consensus Seq ::     :: TVTNYFLLNLAVADLLVALTLPPWAAYYALGG ::
+ :: TM 2 :: Target TM     ::  46 :: RI--LFSLGITRFLMLGLFLVNTIYFVSSNTE ::  75
+ :: Eta Residue           ::  57 ::              e
+
+ :: TM 3 :: Consensus Seq ::     :: GRVGCKLWLALDVLNCTASILSLTAIS-----VDRYLAIVH ::
+ :: TM 3 :: Target TM     ::  82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK :: 122
+ :: Eta Residue           ::  93 ::            e
+
+ :: TM 4 :: Consensus Seq ::     :: TP---RRAKVVIAAVWVLSLLISLPPLLF ::
+ :: TM 4 :: Target TM     :: 127 :: PKIPRLLLACVLISAFTTCLYITLSQASP :: 155
+ :: Eta Residue           :: 142 ::                e
+
+ :: TM 5 :: Consensus Seq ::     :: WNVAYVIYSFILGFYLPLLIMLVCYGRIYRT ::
+ :: TM 5 :: Target TM     :: 176 :: SLVVSLVLSSSLQFIINVTSASLLIHSL--R :: 204
+ :: Eta Residue           :: 192 ::                 e
+
+ :: TM 6 :: Consensus Seq ::     :: RKATKMLVIVVGVFVLCWLPFFIVNLLNAFCPGSII ::
+ :: TM 6 :: Target TM     :: 230 :: KLMVYFLILYIPYSVATLVQY-------------LP :: 252
+ :: Eta Residue           :: 249 ::                    e
+
+ :: TM 7 :: Consensus Seq ::     :: FQVTIWLGYANSCLNPIIYAFLNK ::
+ :: TM 7 :: Target TM     :: 263 :: SICLIFATLYSPGHSVLI--IITH :: 284
+ :: Eta Residue           :: 278 ::                e
+
+Final Results ::
+ :: TM  1 (raw) ::    1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVV            ::   30 :: Length 30
+ :: TM  1 (cap) ::    1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK         ::   33 :: Length 33
+ :: Centers ::                       p a  .g
+    :: Area          ::   12.90 :: S13 :: a
+    :: Peak          ::   11.00 :: I11 :: p
+    :: Geom. (Raw)   ::   15.50 :: L16 :: .
+    :: Geom. (Cap)   ::   17.00 :: N17 :: g
+    :: Eta Angle Res ::   22.00 :: I22
+
+ :: TM  2 (raw) ::   49 ::    FSLGITRFLMLGLFLVNTIYFVSSN              ::   73 :: Length 25
+ :: TM  2 (cap) ::   46 :: RILFSLGITRFLMLGLFLVNTIYFVSSNTE            ::   75 :: Length 30
+ :: Centers ::                            *
+    :: Area          ::   61.31 :: L61 :: *
+    :: Peak          ::   61.00 :: L61 :: *
+    :: Geom. (Raw)   ::   61.00 :: L61 :: *
+    :: Geom. (Cap)   ::   60.50 :: L61 :: *
+    :: Eta Angle Res ::   57.00 :: L57
+
+ :: TM  3 (raw) ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  3 (cap) ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: Centers ::                               * @
+    :: Area          ::  100.03 :: T100 :: *
+    :: Peak          ::  100.00 :: T100 :: *
+    :: Geom. (Raw)   ::  102.00 :: L102 :: @
+    :: Geom. (Cap)   ::  102.00 :: L102 :: @
+    :: Eta Angle Res ::   93.00 :: S93
+
+ :: TM  4 (raw) ::  127 :: PKIPRLLLACVLISAFTTCLYIT                   ::  149 :: Length 23
+ :: TM  4 (cap) ::  127 :: PKIPRLLLACVLISAFTTCLYITLSQASP             ::  155 :: Length 29
+ :: Centers ::                      p *  g
+    :: Area          ::  137.74 :: L138 :: *
+    :: Peak          ::  136.00 :: C136 :: p
+    :: Geom. (Raw)   ::  138.00 :: L138 :: *
+    :: Geom. (Cap)   ::  141.00 :: A141 :: g
+    :: Eta Angle Res ::  142.00 :: F142
+
+ :: TM  5 (raw) ::  180 ::     SLVLSSSLQFIINVTSASLLIHSL              ::  203 :: Length 24
+ :: TM  5 (cap) ::  176 :: SLVVSLVLSSSLQFIINVTSASLLIHSLR             ::  204 :: Length 29
+ :: Centers ::                           g * p
+    :: Area          ::  192.36 :: N192 :: *
+    :: Peak          ::  194.00 :: T194 :: p
+    :: Geom. (Raw)   ::  191.50 :: N192 :: *
+    :: Geom. (Cap)   ::  190.00 :: I190 :: g
+    :: Eta Angle Res ::  192.00 :: N192
+
+ :: TM  6 (raw) ::  231 ::  LMVYFLILYIPYSVATLVQYLP                   ::  252 :: Length 22
+ :: TM  6 (cap) ::  230 :: KLMVYFLILYIPYSVATLVQYLP                   ::  252 :: Length 23
+ :: Centers ::                       p*.
+    :: Area          ::  240.53 :: P241 :: *
+    :: Peak          ::  240.00 :: I240 :: p
+    :: Geom. (Raw)   ::  241.50 :: Y242 :: .
+    :: Geom. (Cap)   ::  241.00 :: P241 :: *
+    :: Eta Angle Res ::  249.00 :: Q249
+
+ :: TM  7 (raw) ::  263 :: SICLIFATLYSPGHSVLII                       ::  281 :: Length 19
+ :: TM  7 (cap) ::  263 :: SICLIFATLYSPGHSVLIIITH                    ::  284 :: Length 22
+ :: Centers ::                      .ag  p
+    :: Area          ::  273.40 :: S273 :: a
+    :: Peak          ::  277.00 :: S277 :: p
+    :: Geom. (Raw)   ::  272.00 :: Y272 :: .
+    :: Geom. (Cap)   ::  273.50 :: P274 :: g
+    :: Eta Angle Res ::  278.00 :: V278
+
+Capped TMs ::
+ :: TM  1 ::    1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK         ::   33 :: Length 33
+ :: TM  2 ::   46 :: RILFSLGITRFLMLGLFLVNTIYFVSSNTE            ::   75 :: Length 30
+ :: TM  3 ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  4 ::  127 :: PKIPRLLLACVLISAFTTCLYITLSQASP             ::  155 :: Length 29
+ :: TM  5 ::  176 :: SLVVSLVLSSSLQFIINVTSASLLIHSLR             ::  204 :: Length 29
+ :: TM  6 ::  230 :: KLMVYFLILYIPYSVATLVQYLP                   ::  252 :: Length 23
+ :: TM  7 ::  263 :: SICLIFATLYSPGHSVLIIITH                    ::  284 :: Length 22
+
+TMs Flipped and Aligned By Area Centers ::
+ :: TM  1  ::    1 ::       MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK   ::   33 :: Length 33
+ :: TM  2f ::   75 ::     ETNSSVFYITNVLFLGLMLFRTIGLSFLIR        ::   46 :: Length 30
+ :: TM  3  ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  4f ::  155 ::  PSAQSLTIYLCTTFASILVCALLLRPIKP            ::  127 :: Length 29
+ :: TM  5  ::  176 ::   SLVVSLVLSSSLQFIINVTSASLLIHSLR           ::  204 :: Length 29
+ :: TM  6f ::  252 ::        PLYQVLTAVSYPIYLILFYVMLK            ::  230 :: Length 23
+ :: TM  7  ::  263 ::         SICLIFATLYSPGHSVLIIITH            ::  284 :: Length 22
+ :: Center         ::                   a
+
+TMs Flipped and Aligned By Peak Centers ::
+ :: TM  1  ::    1 ::          MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK ::   33 :: Length 33
+ :: TM  2f ::   75 ::      ETNSSVFYITNVLFLGLMLFRTIGLSFLIR        ::   46 :: Length 30
+ :: TM  3  ::   82 ::  AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  4f ::  155 :: PSAQSLTIYLCTTFASILVCALLLRPIKP              ::  127 :: Length 29
+ :: TM  5  ::  176 ::  SLVVSLVLSSSLQFIINVTSASLLIHSLR             ::  204 :: Length 29
+ :: TM  6f ::  252 ::        PLYQVLTAVSYPIYLILFYVMLK             ::  230 :: Length 23
+ :: TM  7  ::  263 ::      SICLIFATLYSPGHSVLIIITH                ::  284 :: Length 22
+ :: Center         ::                    p
+
+TMs Flipped and Aligned By Raw Geometric Centers ::
+ :: TM  1  ::    1 ::      MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK    ::   33 :: Length 33
+ :: TM  2f ::   75 ::       ETNSSVFYITNVLFLGLMLFRTIGLSFLIR      ::   46 :: Length 30
+ :: TM  3  ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  4f ::  155 ::    PSAQSLTIYLCTTFASILVCALLLRPIKP          ::  127 :: Length 29
+ :: TM  5  ::  176 ::     SLVVSLVLSSSLQFIINVTSASLLIHSLR         ::  204 :: Length 29
+ :: TM  6f ::  252 ::           PLYQVLTAVSYPIYLILFYVMLK         ::  230 :: Length 23
+ :: TM  7  ::  263 ::            SICLIFATLYSPGHSVLIIITH         ::  284 :: Length 22
+ :: Center         ::                     .
+
+TMs Flipped and Aligned By Capped Geometric Centers ::
+ :: TM  1  ::    1 ::     MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK     ::   33 :: Length 33
+ :: TM  2f ::   75 ::       ETNSSVFYITNVLFLGLMLFRTIGLSFLIR      ::   46 :: Length 30
+ :: TM  3  ::   82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK ::  122 :: Length 41
+ :: TM  4f ::  155 ::       PSAQSLTIYLCTTFASILVCALLLRPIKP       ::  127 :: Length 29
+ :: TM  5  ::  176 ::       SLVVSLVLSSSLQFIINVTSASLLIHSLR       ::  204 :: Length 29
+ :: TM  6f ::  252 ::          PLYQVLTAVSYPIYLILFYVMLK          ::  230 :: Length 23
+ :: TM  7  ::  263 ::          SICLIFATLYSPGHSVLIIITH           ::  284 :: Length 22
+ :: Center         ::                     g
+
+Modified FASTA Output ::
+>P1;Q9NYW5|TA2R4_HUMAN Taste receptor type 2 member 4 - Homo sapiens (Human).
+MLRLFYFSAIIASVILNFVGIIMNLFITVVNCKTWVKSHRISSSDRILFSLGITRFLMLG
+LFLVNTIYFVSSNTERSVYLSAFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLL
+LKRNISPKIPRLLLACVLISAFTTCLYITLSQASPFPELVTTRNNTSFNISEGILSLVVS
+LVLSSSLQFIINVTSASLLIHSLRRHIQKMQKNATGFWNPQTEAHVGAMKLMVYFLILYI
+PYSVATLVQYLPFYAGMDMGTKSICLIFATLYSPGHSVLIIITHPKLKTTAKKILCFKK
+*  1tm    1   30    1   33    X    X    X    X    I   22    A
+*  2tm   49   73   46   75    X    X    X    X    L   57    A
+*  3tm   82  122   82  122    X    X    X    X    S   93    A
+*  4tm  127  149  127  155    X    X    X    X    F  142    A
+*  5tm  180  203  176  204    X    X    X    X    N  192    A
+*  6tm  231  252  230  252    X    X    X    X    Q  249    A
+*  7tm  263  281  263  284    X    X    X    X    V  278    A
+*  1hpc    15.50    17.00    11.00    12.90     X.00     X.00
+*  2hpc    61.00    60.50    61.00    61.31     X.00     X.00
+*  3hpc   102.00   102.00   100.00   100.03     X.00     X.00
+*  4hpc   138.00   141.00   136.00   137.74     X.00     X.00
+*  5hpc   191.50   190.00   194.00   192.36     X.00     X.00
+*  6hpc   241.50   241.00   240.00   240.53     X.00     X.00
+*  7hpc   272.00   273.50   277.00   273.40     X.00     X.00
+
+#####################################################################
+#                                                                   #
+# PredicTM.pl/PredicTM.pm/BLAST.pl/BLAST.pm/Clustal.pm/Mafft.pm     #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+# Uses BLAST:                                                       #
+# Altschul S.F., Madden T.L., Schaffer A.A., Zhang J., Zhang Z.,    #
+# Miller W., Lipman D.J.  Gapped BLAST and PSI-BLAST: a new         #
+# generation of protein database search programs. (1997)            #
+# _Nucleic Acids Res_ 25:3389-3402.                                 #
+#                                                                   #
+# BLAST is performed at the SIB using the BLAST network service.    #
+# The SIB BLAST network service uses a server developed at SIB and  #
+# the NCBI BLAST 2 software.                                        #
+#                                                                   #
+# Uses the GPCRDB when flagging of cutting potential non-GPCR       #
+# sequences: http://www.gpcr.org/7tm/htmls/entries.html             #
+#                                                                   #
+# Uses libwww-perl-5.808 from the Comprehensive Perl Archive        #
+# Network (CPAN).                                                   #
+# libwww-perl (c) 1995-2005 Gisle Aas. All rights reserved.         #
+# libwww-perl (c) 1995 Martijn Koster. All rights reserved.         #
+#                                                                   #
+# Uses ClustalW 1.83:                                               #
+# Chenna, et al. "Multiple sequence alignment with the Clustal      #
+# series of programs." (2003)                                       #
+# _Nucleic Acids Res_ 31 (13):3497-500 PubMedID: 12824352           #
+#                                                                   #
+# Uses MAFFT 6.240:                                                 #
+# MAFFT v6.240 (2007/04/04)  Copyright (c) 2006 Kazutaka Katoh      #
+# http://align.bmr.kyushu-u.ac.jp/mafft/software/                   #
+# NAR 30:3059-3066, NAR 33:511-518                                  #
+#                                                                   #
+#####################################################################
+

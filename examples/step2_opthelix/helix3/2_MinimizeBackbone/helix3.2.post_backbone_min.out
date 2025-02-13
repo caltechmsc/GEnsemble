@@ -1,0 +1,112 @@
+MPSim
+Copyright (c) 2001 Materials and Process Simulation Center(William A. Goddard III)
+                   California Institute of Technology
+All rights reserved.
+
+MPsim workstation version
+Default number of threads for this computer is 1
+version: 2.4 (build 20050627.0345, compiled by maiti)
+running on compute-0-0.local as pid 6463 in directory /home/ravi/GEnsemble/examples/step2_opthelix2/helix3/2_MinimizeBackbone
+Run number assumed to be 1.
+READ_FF: unimplemented keyword `TORANGR  '
+READ_FF: unimplemented keyword `SHRINK CH'
+READ_FF: unimplemented keyword `SHRINK FC'
+Dielectric const used:    2.50000
+READ_FF: unimplemented keyword `ATM DEFLT'
+Your original BBOX: -180 180 -180 180 -180 180
+Warning: No REMARK NATOM line in input BGF file
+atom_bond_order memory 0.00942993 MB
+412 atoms: 412 movable, 0 fixed
+Finished reading files 
+Molecule data
+-------------
+1 molecule  of size 412
+-------------
+Printing final structure in BGF format.
+Trajectory file is helix3.2.post_backbone_min.traj1
+Nonbond update every 5 steps
+Reassign atoms every 5 steps
+Thread 0 started
+1230 degrees of freedom
+Nonbond computation will use CMM
+Total atoms: 412, movable 412, fixed 0, rigid 0
+degrees of freedom 0, total_charge -0.000000, movable charge -0.000000
+1 cell  occupying 408 bytes; average cell occupancy 412.0
+Settings call for EXACT energy force computation.
+This might take awile.
+To reduce computation time (and precision) increase
+number of levels.
+  atom minimization method used: Conjugate-gradient (v145)
+Bond terms: 411 
+angle terms: 738
+HB bonds (dreiding type) 195
+Biograf (Author: WAG) Conjugate Gradient Minimization for 1000 steps(target rms = 0.5)
+    Results printed at the end of each iteration
+GRDRMS=                        27.430
+
+   STEP      T. ENERGY          RMS ATOM        STEP ATM
+      1        342.9478         13.1690          0.6305
+      2        260.1527          7.4458          0.3965
+      3        239.8769          4.5459          0.1831
+      4        228.1533          3.5848          0.1807
+HB bonds (dreiding type) 195
+      5        224.6323          2.0508          0.0559
+      6        220.6443          2.8115          0.1276
+      7        214.2618          3.2422          0.2415
+      8        207.6376          2.4031          0.2762
+      9        202.5892          1.9584          0.2420
+HB bonds (dreiding type) 195
+     10        200.2372          1.6539          0.0683
+     11        197.9887          1.9214          0.1012
+     12        196.2431          1.5110          0.0939
+     13        194.7178          1.2521          0.1002
+     14        193.7395          1.3296          0.0781
+HB bonds (dreiding type) 195
+     15        193.0619          1.0040          0.0290
+     16        192.1015          1.1054          0.0682
+     17        191.2432          1.2617          0.0753
+     18        190.3213          1.1617          0.0908
+     19        189.2752          1.1406          0.1151
+HB bonds (dreiding type) 195
+     20        188.4916          0.9937          0.0391
+     21        187.8925          0.9637          0.0455
+     22        187.4039          0.7870          0.0470
+     23        186.9318          0.7564          0.0568
+     24        186.6057          0.8106          0.0462
+HB bonds (dreiding type) 195
+     25        186.3237          0.6956          0.0198
+     26        186.0477          0.4888          0.0198
+  
+  Minimization is converged (CONJGR)
+Final RMS: 0.488776	Final Energy: 186.047742
+Total number of energy calls during minimization: 101
+1 molecule  of size 412
+-------------
+Maximum Kinetic Energy of Center of Mass: -1.000000
+Energy expression:
+
+Movable atoms	:     412	Fixed atoms	:       0
+Total atoms	:     412
+Bonds			:       0
+Angles			:     738
+Torsions		:    1021
+Pi twist		:       0
+Inversions		:       0
+Nbond exclusions	:    2170
+Dreidi type Hbonds	:     195
+Total charge 	:  0.0000		Movable atoms only	:  0.0000
+Total atoms: 412, movable 412, fixed 0, rigid 0
+total dof 1230, total charge 0.000000, movable charge 0.000000
+
+TOTAL ENERGY = 186.048 kcal/mol   RMS FORCE = 0.488776 (kcal/mol)/A
+
+Energy Decomposition  
+	Valence			Nonbond			Solvation
+Bonds      :  28.41582        Nonbond     : 193.88485        PBSolv  :   0.00000
+Angles     :  39.88375        Coulomb     : 123.14001        SGBSolv :   0.00000
+Torsion    :  63.79291        VDW         :  70.74484
+Inversions :   0.56834        Hbonds      : -140.49793
+
+NB METHOD: CMM
+CMM level used: 0
+

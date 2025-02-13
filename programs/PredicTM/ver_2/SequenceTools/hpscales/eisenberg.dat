@@ -1,0 +1,24 @@
+REMARK Eisenberg 1984 scale
+REMARK PNAS 81:140-144.
+REMARK Convention: Old TMPred
+ALA A    0.62
+CYS C    0.29
+ASP D   -0.90
+GLU E   -0.74
+PHE F    1.19
+GLY G    0.48
+HIS H   -0.40
+ILE I    1.38
+LYS K   -1.50
+LEU L    1.06
+MET M    0.64
+ASN N   -0.78
+PRO P    0.12
+GLN Q   -0.85
+ARG R   -2.53
+SER S   -0.18
+THR T   -0.05
+VAL V    1.08
+TRP W    0.81
+TYR Y    0.26
+END

@@ -1,0 +1,145 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 00:00:01 4/26/93
+% link date    : 04:50:41 4/25/93
+%
+% Macro created on  5/25/93   20:54:40
+%
+% /usr/people/tc/standard.def
+progstat = set(program,NMRGRAF)
+progstat = set(program,POLARIS)
+Top menu/simulate
+   Simulate/return
+Top menu/build
+   Build/peptide
+        new file
+        "a"
+      Peptide/l_library
+      Selections/asn_l
+%       /biodesign/v300/lib/biograf/peptide_l/asn_l.bgf
+      Selections/asn_l
+%       /biodesign/v300/lib/biograf/peptide_l/asn_l.bgf
+      Selections/return
+      Peptide/return
+   Build/return
+Top menu/simulate
+   Simulate/prepare
+      Prepare/make groups
+         Make Groups/setup
+         add group
+           "b"
+         Make Groups/limits
+            Limits/return
+         Make Groups/residues
+         Residues/return
+         Make Groups/limits
+            Limits/pick start res
+              anum/22
+            Limits/pick stop res
+              anum/14
+            Limits/return
+         Make Groups/create
+         Display
+            b
+            b
+            a
+            b
+            b
+            b
+            b
+            return
+         Make Groups/return
+      Prepare/return
+   Simulate/return
+Top menu/utilities
+   Utilities/program reset
+     "OK"
+%    /usr/people/tc/standard.def
+Top menu/build
+   Build/peptide
+        new file
+        "a"
+      Peptide/l_library
+      Selections/arg_l
+%       /biodesign/v300/lib/biograf/peptide_l/arg_l.bgf
+      Selections/asn_l
+%       /biodesign/v300/lib/biograf/peptide_l/asn_l.bgf
+      Selections/return
+      Peptide/setup
+      Files/new file
+        "b"
+      Peptide/l_library
+      Selections/gln_l
+%       /biodesign/v300/lib/biograf/peptide_l/gln_l.bgf
+      Selections/glu_l
+%       /biodesign/v300/lib/biograf/peptide_l/glu_l.bgf
+      Selections/return
+      Peptide/return
+   Build/dock
+      Dock/execute
+      a
+      return
+      b
+      return
+         Display
+            a
+            return
+         Energy dock/modify coords
+         Energy dock/return
+      Dock/return
+   Build/return
+Top menu/simulate
+   Simulate/prepare
+      Prepare/charges
+         Charges/return
+      Prepare/charges
+         Charges/return
+      Prepare/return
+   Simulate/region I
+   a
+   return
+   Simulate/region II
+   b
+   return
+   Simulate/dG solvation
+   Simulate/dG binding
+   Simulate/delta pKa
+   return
+   Simulate/delta pKa
+   return
+   Simulate/log P
+   Simulate/region I
+   a
+   return
+   Simulate/electrostatics
+      Electrostatics/field
+         Field/field type
+         Field/field type
+         Field/field mode
+         Field/field mode
+         Field/field mode
+         Field/field write
+         Field/field read
+           " "
+         Field/field read
+           " "
+         Field/parameters
+            Parameters/return
+         Field/return
+      Electrostatics/potential
+         return
+      Electrostatics/energy
+         Energy/return
+      Electrostatics/return
+   Simulate/dG solvation
+   Simulate/return
+Top menu/simulate
+   Simulate/dG binding
+   Simulate/delta pKa
+   return
+   Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

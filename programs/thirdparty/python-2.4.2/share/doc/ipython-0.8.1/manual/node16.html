@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Plotting with Gnuplot</TITLE>
+<META NAME="description" CONTENT="Plotting with Gnuplot">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html353"
+  HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html351"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html345"
+  HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html354"
+  HREF="node17.html">Reporting bugs</A>
+<B> Up:</B> <A NAME="tex2html352"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html346"
+  HREF="node15.html">Plotting with matplotlib</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html355"
+  HREF="node16.html#SECTION000161000000000000000">Proper Gnuplot configuration</A>
+<LI><A NAME="tex2html356"
+  HREF="node16.html#SECTION000162000000000000000">The <TT>IPython.GnuplotRuntime</TT> module</A>
+<LI><A NAME="tex2html357"
+  HREF="node16.html#SECTION000163000000000000000">The <TT>numeric</TT> profile: a scientific computing environment</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION000160000000000000000"></A><A NAME="sec:Gnuplot"></A>
+<BR>
+Plotting with <TT>Gnuplot</TT>
+</H1>
+
+<P>
+Through the magic extension system described in sec. <A HREF="node6.html#sec:magic">6.2</A>,
+IPython incorporates a mechanism for conveniently interfacing with
+the Gnuplot system (<TT><A NAME="tex2html22"
+  HREF="http://www.gnuplot.info">http://www.gnuplot.info</A></TT>). Gnuplot is a
+very complete 2D and 3D plotting package available for many operating
+systems and commonly included in modern Linux distributions. 
+
+<P>
+Besides having Gnuplot installed, this functionality requires the
+<TT>Gnuplot.py</TT> module for interfacing python with Gnuplot. It
+can be downloaded from: <TT><A NAME="tex2html23"
+  HREF="http://gnuplot-py.sourceforge.net">http://gnuplot-py.sourceforge.net</A></TT>.
+
+<P>
+
+<H2><A NAME="SECTION000161000000000000000">
+Proper Gnuplot configuration</A>
+</H2>
+
+<P>
+As of version 4.0, Gnuplot has excellent mouse and interactive keyboard
+support. However, as of <TT>Gnuplot.py</TT> version 1.7, a new option
+was added to communicate between Python and Gnuplot via FIFOs (pipes).
+This mechanism, while fast, also breaks the mouse system. You must
+therefore set the variable <TT>prefer_fifo_data</TT> to <TT>0</TT>
+in file <TT>gp_unix.py</TT> if you wish to keep the interactive mouse
+and keyboard features working properly (<TT>prefer_inline_data</TT>
+also must be <TT>0</TT>, but this is the default so unless you've
+changed it manually you should be fine).
+
+<P>
+'Out of the box', Gnuplot is configured with a rather poor set of
+size, color and linewidth choices which make the graphs fairly hard
+to read on modern high-resolution displays (although they work fine
+on old 640x480 ones). Below is a section of my <TT>.Xdefaults</TT>
+file which I use for having a more convenient Gnuplot setup. Remember
+to load it by running <TT>`xrdb .Xdefaults`</TT>:
+
+<P>
+<TT>!******************************************************************</TT>&nbsp;
+<BR><TT>! gnuplot options</TT>&nbsp;
+<BR><TT>! modify this for a convenient window size</TT>&nbsp;
+<BR><TT>gnuplot*geometry: 780x580</TT>
+
+<P>
+<TT>! on-screen font (not for PostScript)</TT>&nbsp;
+<BR><TT>gnuplot*font: -misc-fixed-bold-r-normal-15-120-100-100-c-90-iso8859-1</TT>
+
+<P>
+<TT>! color options</TT>&nbsp;
+<BR><TT>gnuplot*background: black</TT>&nbsp;
+<BR><TT>gnuplot*textColor: white</TT>&nbsp;
+<BR><TT>gnuplot*borderColor: white</TT>&nbsp;
+<BR><TT>gnuplot*axisColor: white</TT>&nbsp;
+<BR><TT>gnuplot*line1Color: red</TT>&nbsp;
+<BR><TT>gnuplot*line2Color: green</TT>&nbsp;
+<BR><TT>gnuplot*line3Color: blue</TT>&nbsp;
+<BR><TT>gnuplot*line4Color: magenta</TT>&nbsp;
+<BR><TT>gnuplot*line5Color: cyan</TT>&nbsp;
+<BR><TT>gnuplot*line6Color: sienna</TT>&nbsp;
+<BR><TT>gnuplot*line7Color: orange</TT>&nbsp;
+<BR><TT>gnuplot*line8Color: coral</TT>
+
+<P>
+<TT>! multiplicative factor for point styles</TT>&nbsp;
+<BR><TT>gnuplot*pointsize: 2</TT>
+
+<P>
+<TT>! line width options (in pixels)</TT>&nbsp;
+<BR><TT>gnuplot*borderWidth: 2</TT>&nbsp;
+<BR><TT>gnuplot*axisWidth: 2</TT>&nbsp;
+<BR><TT>gnuplot*line1Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line2Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line3Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line4Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line5Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line6Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line7Width: 2</TT>&nbsp;
+<BR><TT>gnuplot*line8Width: 2</TT>
+
+<P>
+
+<H2><A NAME="SECTION000162000000000000000">
+The <TT>IPython.GnuplotRuntime</TT> module</A>
+</H2>
+
+<P>
+IPython includes a module called <TT>Gnuplot2.py</TT> which extends
+and improves the default <TT>Gnuplot</TT>.<TT>py</TT> (which it still
+relies upon). For example, the new <TT>plot</TT> function adds several
+improvements to the original making it more convenient for interactive
+use, and <TT>hardcopy</TT> fixes a bug in the original which under
+some circumstances blocks the creation of PostScript output.
+
+<P>
+For scripting use, <TT>GnuplotRuntime.py</TT> is provided, which wraps
+<TT>Gnuplot2.py</TT> and creates a series of global aliases. These
+make it easy to control Gnuplot plotting jobs through the Python language.
+
+<P>
+Below is some example code which illustrates how to configure Gnuplot
+inside your own programs but have it available for further interactive
+use through an embedded IPython instance. Simply run this file at
+a system prompt. This file is provided as <TT>example-gnuplot.py</TT>
+in the examples directory:
+
+<P>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim">#!/usr/bin/env python
+"""
+Example code showing how to use Gnuplot and an embedded IPython shell.
+"""
+
+from Numeric import *
+from IPython.numutils import *
+from IPython.Shell import IPShellEmbed
+
+# Arguments to start IPython shell with. Load numeric profile.
+ipargs = ['-profile','numeric']
+ipshell = IPShellEmbed(ipargs)
+
+# Compute sin(x) over the 0..2pi range at 200 points
+x = frange(0,2*pi,npts=200)
+y = sin(x)
+
+# In the 'numeric' profile, IPython has an internal gnuplot instance:
+g = ipshell.IP.gnuplot
+
+# Change some defaults
+g('set style data lines')
+
+# Or also call a multi-line set of gnuplot commands on it:
+g("""
+set xrange [0:pi]     # Set the visible range to half the data only
+set title 'Half sine' # Global gnuplot labels
+set xlabel 'theta'
+set ylabel 'sin(theta)'
+""")
+
+# Now start an embedded ipython.
+ipshell('Starting the embedded IPyhton.\n'
+        'Try calling plot(x,y), or @gpc for direct access to Gnuplot"\n')
+
+#********************** End of file &lt;example-gnuplot.py&gt; *********************
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION000163000000000000000">
+The <TT>numeric</TT> profile: a scientific computing environment</A>
+</H2>
+
+<P>
+The <TT>numeric</TT> IPython profile, which you can activate with
+<TT>`ipython -p numeric</TT>' will automatically load the IPython
+Gnuplot extensions (plus Numeric and other useful things for numerical
+computing), contained in the <TT>IPython.GnuplotInteractive</TT> module.
+This will create the globals <TT>Gnuplot</TT> (an alias to the improved
+Gnuplot2 module), <TT>gp</TT> (a Gnuplot active instance), the new
+magic commands <TT>%gpc</TT> and <TT>%gp_set_instance</TT> and
+several other convenient globals. Type <TT>gphelp()</TT> for further
+details.
+
+<P>
+This should turn IPython into a convenient environment for numerical
+computing, with all the functions in the NumPy library and the Gnuplot
+facilities for plotting. Further improvements can be obtained by loading
+the SciPy libraries for scientific computing, available at <TT><A NAME="tex2html24"
+  HREF="http://scipy.org">http://scipy.org</A></TT>.
+
+<P>
+If you are in the middle of a working session with numerical objects
+and need to plot them but you didn't start the <TT>numeric</TT> profile,
+you can load these extensions at any time by typing
+<BR><TT>from IPython.GnuplotInteractive import *</TT>&nbsp;
+<BR>
+at the IPython prompt. This will allow you to keep your objects intact
+and start using Gnuplot to view them.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html353"
+  HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html351"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html345"
+  HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html354"
+  HREF="node17.html">Reporting bugs</A>
+<B> Up:</B> <A NAME="tex2html352"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html346"
+  HREF="node15.html">Plotting with matplotlib</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

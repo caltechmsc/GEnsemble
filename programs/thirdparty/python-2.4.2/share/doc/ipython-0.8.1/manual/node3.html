@@ -1,0 +1,430 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Initial configuration...</TITLE>
+<META NAME="description" CONTENT="Initial configuration...">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html172"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html170"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html164"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html173"
+  HREF="node4.html">Quick tips</A>
+<B> Up:</B> <A NAME="tex2html171"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html165"
+  HREF="node2.html">Installation</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html174"
+  HREF="node3.html#SECTION00031000000000000000">Access to the Python help system</A>
+<LI><A NAME="tex2html175"
+  HREF="node3.html#SECTION00032000000000000000">Editor</A>
+<LI><A NAME="tex2html176"
+  HREF="node3.html#SECTION00033000000000000000">Color </A>
+<UL>
+<LI><A NAME="tex2html177"
+  HREF="node3.html#SECTION00033100000000000000">Input/Output prompts and exception tracebacks</A>
+<LI><A NAME="tex2html178"
+  HREF="node3.html#SECTION00033200000000000000">Object details (types, docstrings, source code, etc.)</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html179"
+  HREF="node3.html#SECTION00034000000000000000">(X)Emacs configuration</A>
+<UL>
+<LI><A NAME="tex2html180"
+  HREF="node3.html#SECTION00034100000000000000">Notes</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00030000000000000000"></A><A NAME="sec:good_config"></A>
+<BR>
+Initial configuration of your environment
+</H1>
+
+<P>
+This section will help you set various things in your environment
+for your IPython sessions to be as efficient as possible. All of IPython's
+configuration information, along with several example files, is stored
+in a directory named by default <TT>$HOME/.ipython</TT>. You can
+change this by defining the environment variable <TT>IPYTHONDIR</TT>,
+or at runtime with the command line option <TT>-ipythondir</TT>.
+
+<P>
+If all goes well, the first time you run IPython it should automatically
+create a user copy of the config directory for you, based on its builtin
+defaults. You can look at the files it creates to learn more about
+configuring the system. The main file you will modify to configure
+IPython's behavior is called <TT>ipythonrc</TT> (with a <TT>.ini</TT>
+extension under Windows), included for reference in Sec. <A HREF="node7.html#sec:ipytonrc-sample">7.1</A>.
+This file is very commented and has many variables you can change
+to suit your taste, you can find more details in Sec. <A HREF="node7.html#sec:customization">7</A>.
+Here we discuss the basic things you will want to make sure things
+are working properly from the beginning.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000"></A><A NAME="sec:help-access"></A>
+<BR>
+Access to the Python help system
+</H2>
+
+<P>
+This is true for Python in general (not just for IPython): you should
+have an environment variable called <TT>PYTHONDOCS</TT> pointing to
+the directory where your HTML Python documentation lives. In my system
+it's <TT>/usr/share/doc/python-docs-2.3.4/html</TT>, check your local
+details or ask your systems administrator. 
+
+<P>
+This is the directory which holds the HTML version of the Python manuals.
+Unfortunately it seems that different Linux distributions package
+these files differently, so you may have to look around a bit. Below
+I show the contents of this directory on my system for reference:
+
+<P>
+<TT>[html]&gt; ls</TT>&nbsp;
+<BR><TT>about.dat acks.html dist/ ext/ index.html lib/ modindex.html
+stdabout.dat tut/ about.html api/ doc/ icons/ inst/ mac/ ref/ style.css</TT>
+
+<P>
+You should really make sure this variable is correctly set so that
+Python's pydoc-based help system works. It is a powerful and convenient
+system with full access to the Python manuals and all modules accessible
+to you.
+
+<P>
+Under Windows it seems that pydoc finds the documentation automatically,
+so no extra setup appears necessary.
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000">
+Editor</A>
+</H2>
+
+<P>
+The <TT>%edit</TT> command (and its alias <TT>%ed</TT>) will invoke
+the editor set in your environment as <TT>EDITOR</TT>. If this variable
+is not set, it will default to <TT>vi</TT> under Linux/Unix and to
+<TT>notepad</TT> under Windows. You may want to set this variable
+properly and to a lightweight editor which doesn't take too long to
+start (that is, something other than a new instance of <TT>Emacs</TT>).
+This way you can edit multi-line code quickly and with the power of
+a real editor right inside IPython. 
+
+<P>
+If you are a dedicated <TT>Emacs</TT> user, you should set up the
+<TT>Emacs</TT> server so that new requests are handled by the original
+process. This means that almost no time is spent in handling the request
+(assuming an <TT>Emacs</TT> process is already running). For this
+to work, you need to set your <TT>EDITOR</TT> environment variable
+to <TT>'emacsclient'</TT>. The code below, supplied by Francois
+Pinard, can then be used in your <TT>.emacs</TT> file to enable the
+server:
+
+<P>
+<TT>(defvar server-buffer-clients)</TT>&nbsp;
+<BR><TT>(when (and (fboundp 'server-start) (string-equal (getenv &#34;TERM&#34;)
+'xterm))</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;(server-start)</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;(defun fp-kill-server-with-buffer-routine
+()</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;(and server-buffer-clients (server-done)))</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;(add-hook 'kill-buffer-hook 'fp-kill-server-with-buffer-routine))</TT>
+
+<P>
+You can also set the value of this editor via the commmand-line option
+'-<TT>editor'</TT> or in your <TT>ipythonrc</TT> file. This is useful
+if you wish to use specifically for IPython an editor different from
+your typical default (and for Windows users who tend to use fewer
+environment variables).
+
+<P>
+
+<H2><A NAME="SECTION00033000000000000000">
+Color </A>
+</H2>
+
+<P>
+The default IPython configuration has most bells and whistles turned
+on (they're pretty safe). But there's one that <SPAN  CLASS="textit">may</SPAN> cause problems
+on some systems: the use of color on screen for displaying information.
+This is very useful, since IPython can show prompts and exception
+tracebacks with various colors, display syntax-highlighted source
+code, and in general make it easier to visually parse information.
+
+<P>
+The following terminals seem to handle the color sequences fine:
+
+<P>
+
+<UL>
+<LI>Linux main text console, KDE Konsole, Gnome Terminal, E-term, rxvt,
+xterm.
+</LI>
+<LI>CDE terminal (tested under Solaris). This one boldfaces light colors.
+</LI>
+<LI>(X)Emacs buffers. See sec.<A HREF="#sec:emacs">3.4</A> for more details on using
+IPython with (X)Emacs.
+</LI>
+<LI>A Windows (XP/2k) command prompt <SPAN  CLASS="textit">with Gary Bishop's support
+extensions</SPAN>. Gary's extensions are discussed in Sec.&nbsp;<A HREF="node2.html#sub:Under-Windows">2.3</A>.
+</LI>
+<LI>A Windows (XP/2k) CygWin shell. Although some users have reported
+problems; it is not clear whether there is an issue for everyone or
+only under specific configurations. If you have full color support
+under cygwin, please post to the IPython mailing list so this issue
+can be resolved for all users.
+</LI>
+</UL>
+These have shown problems:
+
+<P>
+
+<UL>
+<LI>Windows command prompt in WinXP/2k logged into a Linux machine via
+telnet or ssh.
+</LI>
+<LI>Windows native command prompt in WinXP/2k, <SPAN  CLASS="textit">without</SPAN> Gary Bishop's
+extensions. Once Gary's readline library is installed, the normal
+WinXP/2k command prompt works perfectly.
+</LI>
+</UL>
+Currently the following color schemes are available:
+
+<P>
+
+<UL>
+<LI><TT>NoColor</TT>: uses no color escapes at all (all escapes are empty
+`` `` strings). This 'scheme' is thus fully safe to use in any
+terminal.
+</LI>
+<LI><TT>Linux</TT>: works well in Linux console type environments: dark
+background with light fonts. It uses bright colors for information,
+so it is difficult to read if you have a light colored background.
+</LI>
+<LI><TT>LightBG</TT>: the basic colors are similar to those in the <TT>Linux</TT>
+scheme but darker. It is easy to read in terminals with light backgrounds.
+</LI>
+</UL>
+IPython uses colors for two main groups of things: prompts and tracebacks
+which are directly printed to the terminal, and the object introspection
+system which passes large sets of data through a pager.
+
+<P>
+
+<H3><A NAME="SECTION00033100000000000000">
+Input/Output prompts and exception tracebacks</A>
+</H3>
+
+<P>
+You can test whether the colored prompts and tracebacks work on your
+system interactively by typing <TT>'%colors Linux'</TT> at the prompt
+(use '<TT>%colors LightBG'</TT> if your terminal has a light background).
+If the input prompt shows garbage like:
+<BR><TT>[0;32mIn [[1;32m1[0;32m]: [0;00m</TT>
+<BR>
+instead of (in color) something like:
+<BR><TT>In [1]:</TT> 
+<BR>
+this means that your terminal doesn't properly handle color escape
+sequences. You can go to a 'no color' mode by typing '<TT>%colors
+NoColor</TT>'. 
+
+<P>
+You can try using a different terminal emulator program (Emacs users,
+see below). To permanently set your color preferences, edit the file
+<TT>$HOME/.ipython/ipythonrc</TT> and set the <TT>colors</TT> option
+to the desired value.
+
+<P>
+
+<H3><A NAME="SECTION00033200000000000000">
+Object details (types, docstrings, source code, etc.)</A>
+</H3>
+
+<P>
+IPython has a set of special functions for studying the objects you
+are working with, discussed in detail in Sec. <A HREF="node6.html#sec:dyn-object-info">6.4</A>.
+But this system relies on passing information which is longer than
+your screen through a data pager, such as the common Unix <TT>less</TT>
+and <TT>more</TT> programs. In order to be able to see this information
+in color, your pager needs to be properly configured. I strongly recommend
+using <TT>less</TT> instead of <TT>more</TT>, as it seems that <TT>more</TT>
+simply can not understand colored text correctly.
+
+<P>
+In order to configure <TT>less</TT> as your default pager, do the
+following:
+
+<P>
+
+<OL>
+<LI>Set the environment <TT>PAGER</TT> variable to <TT>less</TT>.
+</LI>
+<LI>Set the environment <TT>LESS</TT> variable to <TT>-r</TT> (plus any
+other options you always want to pass to <TT>less</TT> by default).
+This tells <TT>less</TT> to properly interpret control sequences,
+which is how color information is given to your terminal.
+</LI>
+</OL>
+For the <TT>csh</TT> or <TT>tcsh</TT> shells, add to your <TT>~/.cshrc</TT>
+file the lines:
+
+<P>
+<TT>setenv PAGER less</TT>&nbsp;
+<BR><TT>setenv LESS -r</TT>
+
+<P>
+There is similar syntax for other Unix shells, look at your system
+documentation for details.
+
+<P>
+If you are on a system which lacks proper data pagers (such as Windows),
+IPython will use a very limited builtin pager.
+
+<P>
+
+<H2><A NAME="SECTION00034000000000000000"></A><A NAME="sec:emacs"></A>
+<BR>
+(X)Emacs configuration
+</H2>
+
+<P>
+Thanks to the work of Alexander Schmolck and Prabhu Ramachandran,
+currently (X)Emacs and IPython get along very well. 
+
+<P>
+<SPAN  CLASS="textbf">Important note:</SPAN> You will need to use a recent enough version
+of <TT>python-mode.el</TT>, along with the file <TT>ipython.el</TT>.
+You can check that the version you have of <TT>python-mode.el</TT>
+is new enough by either looking at the revision number in the file
+itself, or asking for it in (X)Emacs via <TT>M-x py-version</TT>.
+Versions 4.68 and newer contain the necessary fixes for proper IPython
+support.
+
+<P>
+The file <TT>ipython.el</TT> is included with the IPython distribution,
+in the documentation directory (where this manual resides in PDF and
+HTML formats).
+
+<P>
+Once you put these files in your Emacs path, all you need in your
+<TT>.emacs</TT> file is:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>(require&nbsp;'ipython)
+</DD>
+</DL>This should give you full support for executing code snippets via
+IPython, opening IPython as your Python shell via <TT>C-c&nbsp;!</TT>,
+etc. 
+
+<P>
+If you happen to get garbage instead of colored prompts as described
+in the previous section, you may need to set also in your <TT>.emacs</TT>
+file:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>(setq&nbsp;ansi-color-for-comint-mode&nbsp;t)
+</DD>
+</DL>
+<P>
+
+<H3><A NAME="SECTION00034100000000000000">
+Notes</A>
+</H3>
+
+<P>
+
+<UL>
+<LI>There is one caveat you should be aware of: you must start the IPython
+shell <SPAN  CLASS="textit">before</SPAN> attempting to execute any code regions via <TT>C-c&nbsp;|</TT>.
+Simply type <TT>C-c&nbsp;!</TT> to start IPython before passing any code
+regions to the interpreter, and you shouldn't experience any problems.
+<BR>
+This is due to a bug in Python itself, which has been fixed for Python
+2.3, but exists as of Python 2.2.2 (reported as SF bug [ 737947
+]).
+</LI>
+<LI>The (X)Emacs support is maintained by Alexander Schmolck, so all comments/requests
+should be directed to him through the IPython mailing lists. 
+</LI>
+<LI>This code is still somewhat experimental so it's a bit rough around
+the edges (although in practice, it works quite well).
+</LI>
+<LI>Be aware that if you customize <TT>py-python-command</TT> previously,
+this value will override what <TT>ipython.el</TT> does (because loading
+the customization variables comes later).
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html172"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html170"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html164"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html173"
+  HREF="node4.html">Quick tips</A>
+<B> Up:</B> <A NAME="tex2html171"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html165"
+  HREF="node2.html">Installation</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

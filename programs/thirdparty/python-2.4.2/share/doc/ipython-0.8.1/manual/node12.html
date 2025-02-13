@@ -1,0 +1,443 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>IPython as a system shell</TITLE>
+<META NAME="description" CONTENT="IPython as a system shell">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html305"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html303"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html297"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html306"
+  HREF="node13.html">Threading support</A>
+<B> Up:</B> <A NAME="tex2html304"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html298"
+  HREF="node11.html">Extensions for syntax processing</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html307"
+  HREF="node12.html#SECTION000121000000000000000">Aliases</A>
+<LI><A NAME="tex2html308"
+  HREF="node12.html#SECTION000122000000000000000">Special syntax</A>
+<LI><A NAME="tex2html309"
+  HREF="node12.html#SECTION000123000000000000000">Useful functions and modules</A>
+<LI><A NAME="tex2html310"
+  HREF="node12.html#SECTION000124000000000000000">Directory management</A>
+<LI><A NAME="tex2html311"
+  HREF="node12.html#SECTION000125000000000000000">Prompt customization</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION000120000000000000000"></A><A NAME="sec:IPython-as-shell"></A>
+<BR>
+IPython as a system shell
+</H1>
+
+<P>
+IPython ships with a special profile called <TT>pysh</TT>, which you
+can activate at the command line as <TT>`ipython -p pysh'</TT>. This
+loads <TT>InterpreterExec</TT>, along with some additional facilities
+and a prompt customized for filesystem navigation.
+
+<P>
+Note that this does <SPAN  CLASS="textit">not</SPAN> make IPython a full-fledged system
+shell. In particular, it has no job control, so if you type Ctrl-Z
+(under Unix), you'll suspend pysh itself, not the process you just
+started. 
+
+<P>
+What the shell profile allows you to do is to use the convenient and
+powerful syntax of Python to do quick scripting at the command line.
+Below we describe some of its features.
+
+<P>
+
+<H2><A NAME="SECTION000121000000000000000">
+Aliases</A>
+</H2>
+
+<P>
+All of your <TT>$PATH</TT> has been loaded as IPython aliases, so
+you should be able to type any normal system command and have it executed.
+See <TT>%alias?</TT> and <TT>%unalias?</TT> for details on the alias
+facilities. See also <TT>%rehash?</TT> and <TT>%rehashx?</TT> for
+details on the mechanism used to load <TT>$PATH</TT>.
+
+<P>
+
+<H2><A NAME="SECTION000122000000000000000">
+Special syntax</A>
+</H2>
+
+<P>
+Any lines which begin with <TT>`~'</TT>, <TT>`/'</TT>
+and <TT>`.'</TT> will be executed as shell commands instead of as
+Python code. The special escapes below are also recognized. <TT>!cmd</TT>
+is valid in single or multi-line input, all others are only valid
+in single-line input:
+
+<P>
+<DL>
+<DT><STRONG><TT>!cmd</TT></STRONG></DT>
+<DD>pass `cmd' directly to the shell 
+</DD>
+<DT><STRONG><TT>!!cmd</TT></STRONG></DT>
+<DD>execute `cmd' and return output as a list (split
+on `&#92;n') 
+</DD>
+<DT><STRONG><TT>$var=cmd</TT></STRONG></DT>
+<DD>capture output of cmd into var, as a string 
+</DD>
+<DT><STRONG><TT>$$var=cmd</TT></STRONG></DT>
+<DD>capture output of cmd into var, as a list
+(split on `&#92;n')
+</DD>
+</DL>
+The <TT>$</TT>/<TT>$$</TT> syntaxes make Python variables from
+system output, which you can later use for further scripting. The
+converse is also possible: when executing an alias or calling to the
+system via <TT>!</TT>/<TT>!!</TT>, you can expand any python variable
+or expression by prepending it with <TT>$</TT>. Full details of the
+allowed syntax can be found in Python's PEP 215.
+
+<P>
+A few brief examples will illustrate these (note that the indentation
+below may be incorrectly displayed):
+
+<P>
+<TT>fperez[~/test]|3&gt; !ls *s.py </TT>&nbsp;
+<BR><TT>scopes.py strings.py</TT>
+
+<P>
+ls is an internal alias, so there's no need to use <TT>!</TT>: 
+
+<P>
+<TT>fperez[~/test]|4&gt; ls *s.py </TT>&nbsp;
+<BR><TT>scopes.py* strings.py</TT>
+
+<P>
+!!ls will return the output into a Python variable: 
+
+<P>
+<TT>fperez[~/test]|5&gt; !!ls *s.py </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;5&gt; ['scopes.py',
+'strings.py'] </TT>&nbsp;
+<BR><TT>fperez[~/test]|6&gt; print _5 </TT>&nbsp;
+<BR><TT>['scopes.py', 'strings.py']</TT>
+
+<P>
+<TT>$</TT> and <TT>$$</TT> allow direct capture to named variables: 
+
+<P>
+<TT>fperez[~/test]|7&gt; $astr = ls *s.py </TT>&nbsp;
+<BR><TT>fperez[~/test]|8&gt; astr </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;8&gt; 'scopes.py&#92;nstrings.py'</TT>
+
+<P>
+<TT>fperez[~/test]|9&gt; $$alist = ls *s.py
+</TT>&nbsp;
+<BR><TT>fperez[~/test]|10&gt; alist </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;10&gt; ['scopes.py',
+'strings.py']</TT>
+
+<P>
+alist is now a normal python list you can loop over. Using <TT>$</TT>
+will expand back the python values when alias calls are made:
+
+<P>
+<TT>fperez[~/test]|11&gt; for f in alist: </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|..&gt;&nbsp;&nbsp;&nbsp;&nbsp;print
+'file',f, </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|..&gt;&nbsp;&nbsp;&nbsp;&nbsp;wc
+-l $f </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|..&gt; </TT>&nbsp;
+<BR><TT>file scopes.py 13 scopes.py </TT>&nbsp;
+<BR><TT>file strings.py 4 strings.py</TT>
+
+<P>
+Note that you may need to protect your variables with braces if you
+want to append strings to their names. To copy all files in alist
+to <TT>.bak</TT> extensions, you must use: 
+
+<P>
+<TT>fperez[~/test]|12&gt; for f in alist: </TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|..&gt;&nbsp;&nbsp;&nbsp;&nbsp;cp
+$f ${f}.bak</TT>
+
+<P>
+If you try using <TT>$f.bak</TT>, you'll get an AttributeError exception
+saying that your string object doesn't have a <TT>.bak</TT> attribute.
+This is because the <TT>$</TT> expansion mechanism allows you to
+expand full Python expressions: 
+
+<P>
+<TT>fperez[~/test]|13&gt; echo &#34;sys.platform
+is: $sys.platform&#34; </TT>&nbsp;
+<BR><TT>sys.platform is: linux2</TT>
+
+<P>
+IPython's input history handling is still active, which allows you
+to rerun a single block of multi-line input by simply using exec:
+
+<BR><TT>fperez[~/test]|14&gt; $$alist = ls *.eps
+</TT>&nbsp;
+<BR><TT>fperez[~/test]|15&gt; exec _i11 </TT>&nbsp;
+<BR><TT>file image2.eps 921 image2.eps </TT>&nbsp;
+<BR><TT>file image.eps 921 image.eps</TT>
+
+<P>
+While these are new special-case syntaxes, they are designed to allow
+very efficient use of the shell with minimal typing. At an interactive
+shell prompt, conciseness of expression wins over readability.
+
+<P>
+
+<H2><A NAME="SECTION000123000000000000000">
+Useful functions and modules</A>
+</H2>
+
+<P>
+The os, sys and shutil modules from the Python standard library are
+automatically loaded. Some additional functions, useful for shell
+usage, are listed below. You can request more help about them with
+`<TT>?</TT>'.
+
+<P>
+<DL>
+<DT><STRONG><TT>shell</TT></STRONG></DT>
+<DD>- execute a command in the underlying system shell 
+</DD>
+<DT><STRONG><TT>system</TT></STRONG></DT>
+<DD>- like <TT>shell()</TT>, but return the exit
+status of the command
+</DD>
+<DT><STRONG><TT>sout</TT></STRONG></DT>
+<DD>- capture the output of a command as a string
+</DD>
+<DT><STRONG><TT>lout</TT></STRONG></DT>
+<DD>- capture the output of a command as a list (split
+on `&#92;n')
+</DD>
+<DT><STRONG><TT>getoutputerror</TT></STRONG></DT>
+<DD>- capture (output,error) of a shell commandss
+</DD>
+</DL>
+<TT>sout</TT>/<TT>lout</TT> are the functional equivalents of <TT>$</TT>/<TT>$$</TT>.
+They are provided to allow you to capture system output in the middle
+of true python code, function definitions, etc (where <TT>$</TT>
+and <TT>$$</TT> are invalid).
+
+<P>
+
+<H2><A NAME="SECTION000124000000000000000">
+Directory management</A>
+</H2>
+
+<P>
+Since each command passed by pysh to the underlying system is executed
+in a subshell which exits immediately, you can NOT use !cd to navigate
+the filesystem.
+
+<P>
+Pysh provides its own builtin <TT>`%cd</TT>' magic command to move
+in the filesystem (the <TT>%</TT> is not required with automagic
+on). It also maintains a list of visited directories (use <TT>%dhist</TT>
+to see it) and allows direct switching to any of them. Type <TT>`cd?</TT>'
+for more details.
+
+<P>
+<TT>%pushd</TT>, <TT>%popd</TT> and <TT>%dirs</TT> are provided
+for directory stack handling.
+
+<P>
+
+<H2><A NAME="SECTION000125000000000000000">
+Prompt customization</A>
+</H2>
+
+<P>
+The supplied <TT>ipythonrc-pysh</TT> profile comes with an example
+of a very colored and detailed prompt, mainly to serve as an illustration.
+The valid escape sequences, besides color names, are:
+
+<P>
+<DL>
+<DT><STRONG>&#92;#</STRONG></DT>
+<DD>- Prompt number, wrapped in the color escapes
+for the input prompt (determined by the current color scheme).
+</DD>
+<DT><STRONG>&#92;N</STRONG></DT>
+<DD>- Just the prompt counter number, <SPAN  CLASS="textit">without</SPAN>
+any coloring wrappers. You can thus customize the actual prompt colors
+manually.
+</DD>
+<DT><STRONG>&#92;D</STRONG></DT>
+<DD>- Dots, as many as there are digits in &#92;#
+(so they align).
+</DD>
+<DT><STRONG>&#92;w</STRONG></DT>
+<DD>- Current working directory (cwd).
+</DD>
+<DT><STRONG>&#92;W</STRONG></DT>
+<DD>- Basename of current working directory.
+</DD>
+<DT><STRONG>&#92;X<SPAN  CLASS="textit">N</SPAN></STRONG></DT>
+<DD>- Where <SPAN  CLASS="textit">N</SPAN>=0..5. N terms of the
+cwd, with $HOME written as ~.
+</DD>
+<DT><STRONG>&#92;Y<SPAN  CLASS="textit">N</SPAN></STRONG></DT>
+<DD>- Where <SPAN  CLASS="textit">N</SPAN>=0..5. Like X<SPAN  CLASS="textit">N</SPAN>,
+but if ~ is term <SPAN  CLASS="textit">N</SPAN>+1 it's also shown.
+</DD>
+<DT><STRONG>&#92;u</STRONG></DT>
+<DD>- Username.
+</DD>
+<DT><STRONG>&#92;H</STRONG></DT>
+<DD>- Full hostname.
+</DD>
+<DT><STRONG>&#92;h</STRONG></DT>
+<DD>- Hostname up to first '.'
+</DD>
+<DT><STRONG>&#92;$</STRONG></DT>
+<DD>- Root symbol ($ or #). 
+</DD>
+<DT><STRONG>&#92;t</STRONG></DT>
+<DD>- Current time, in H:M:S format.
+</DD>
+<DT><STRONG>&#92;v</STRONG></DT>
+<DD>- IPython release version. 
+</DD>
+<DT><STRONG>&#92;n</STRONG></DT>
+<DD>- Newline. 
+</DD>
+<DT><STRONG>&#92;r</STRONG></DT>
+<DD>- Carriage return. 
+</DD>
+<DT><STRONG>&#92;&#92;</STRONG></DT>
+<DD>- An explicitly escaped '&#92;'.
+</DD>
+</DL>
+You can configure your prompt colors using any ANSI color escape.
+Each color escape sets the color for any subsequent text, until another
+escape comes in and changes things. The valid color escapes are:
+
+<P>
+<DL>
+<DT><STRONG>&#92;C_Black</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Blue</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Brown</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Cyan</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_DarkGray</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Green</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightBlue</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightCyan</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightGray</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightGreen</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightPurple</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_LightRed</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Purple</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Red</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_White</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Yellow</STRONG></DT>
+<DD>&nbsp;
+</DD>
+<DT><STRONG>&#92;C_Normal</STRONG></DT>
+<DD>Stop coloring, defaults to your terminal
+settings.
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html305"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html303"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html297"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html306"
+  HREF="node13.html">Threading support</A>
+<B> Up:</B> <A NAME="tex2html304"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html298"
+  HREF="node11.html">Extensions for syntax processing</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

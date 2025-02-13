@@ -1,0 +1,2 @@
+After annealing G15_A (totE, EL, vdw, hb, coulomb):  -2.148  -2.148   0.000   0.000   0.000
+After annealing G7_A (totE, EL, vdw, hb, coulomb):  -2.148  -2.148   0.000   0.000   0.000

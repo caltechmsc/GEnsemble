@@ -1,0 +1,27 @@
+BIOGRF  321
+DESCRP PHENOL  
+REMARK Created by tc @ tahir on  4/30/93   23:49:36                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 C1    PHE      1    0.23900  -0.11700  -1.33300 C_R1   3 0  0.00000
+HETATM     2 C2    PHE      1    1.07603   0.29013  -0.24223 C_R    3 0  0.00000
+HETATM     3 O     PHE      1    2.35037   0.65521  -0.49827 O_31   2 2  0.00000
+HETATM     4 C3    PHE      1    0.60416   0.32223   1.11137 C_R1   3 0  0.00000
+HETATM     5 C4    PHE      1   -0.74527  -0.06422   1.38406 C_R1   3 0  0.00000
+HETATM     6 C5    PHE      1   -1.57839  -0.47042   0.29087 C_R1   3 0  0.00000
+HETATM     7 C6    PHE      1   -1.11086  -0.50394  -1.06345 C_R1   3 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     7
+ORDER      1     1     2
+CONECT     2     1     4     3
+ORDER      2     1     2     1
+CONECT     3     2
+CONECT     4     5     2
+ORDER      4     1     2
+CONECT     5     4     6
+ORDER      5     1     2
+CONECT     6     5     7
+ORDER      6     2     1
+CONECT     7     6     1
+ORDER      7     1     2
+END

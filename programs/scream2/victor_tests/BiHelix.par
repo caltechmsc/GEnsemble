@@ -1,0 +1,25 @@
+            InputFileName BiHelix.bgf
+        MutateResidueInfo W1_A Q2_A F3_A S4_A M5_A L6_A Y9_A M10_A F11_A L12_A L13_A I14_A M15_A L16_A F18_A I20_A N21_A F22_A L23_A T24_A L25_A Y26_A V27_A T28_A V29_A Q30_A L2_B N3_B Y4_B I5_B L6_B L7_B N8_B L9_B V11_B D13_B L14_B F15_B M16_B V17_B F18_B F21_B T22_B T23_B T24_B L25_B Y26_B T27_B S28_B L29_B H30_B 
+    AdditionalLibraryInfo 
+                  Library V10
+          PlacementMethod CreateCB
+       CreateCBParameters 1.81 51.1 1.55 0.5
+  UseScreamEnergyFunction YES
+           UseDeltaMethod FLAT
+    UseDeltaForInterResiE YES
+       UseAsymmetricDelta YES
+              CoulombMode Normal
+                    Dielectric 2.500000
+           FlatDeltaValue 0.400000
+        DeltaStandardDevs 0.400000
+   InnerWallScalingFactor 0.400000
+  MultiplePlacementMethod ClusteringThenDoubletsThenSinglets
+     CBGroundSpectrumCalc YES
+   AbsStericClashCutoffEL 999999999
+      KeepOriginalRotamer NO
+      MaxFinalStepRunTime 5
+       OneEnergyFFParFile /ul/victor/ForceFieldFiles/PS330_mpsim.par
+             DeltaParFile /project/Biogroup/Software/SCREAM/lib/SCREAM_delta_par_files/SCREAM_delta_Total_Min.par
+               Selections 5
+  StericClashCutoffEnergy 999999999
+    StericClashCutoffDist 0.5

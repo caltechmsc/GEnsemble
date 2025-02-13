@@ -1,0 +1,41 @@
+XTLGRF  251
+DESCRP peth    
+REMARK Dreiding 2 peth with exp-6 vdw, 0.01 cell, 0.05 rms         
+REMARK Created by jh @ iris3 on  3/25/92   17:15:10                
+FORCEFIELD DREIDING
+PERIOD 111     MOLXTL F
+AXES   ZYX
+SGNAME P1       C1(1)       1    1    1
+CRYSTX     4.93067    7.16156    2.55203   89.99165   89.99915   90.00240
+CELLS     0    0    0    0   -1    1
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 HH    ETH A  444    4.03160   5.00841   0.70438 C_3    4 0  0.02425
+HETATM     2 H3C1  ETH A  444    5.11333   5.15007   0.70437 H_     1 0 -0.01212
+HETATM     3 H2C1  ETH A  444    3.81917   3.93842   0.70438 H_     1 0 -0.01212
+HETATM     4 TT    ETH A  444    3.43938   5.64121   1.98039 C_3    4 0  0.02425
+HETATM     5 H2C2  ETH A  444    3.65212   6.71113   1.98039 H_     1 0 -0.01212
+HETATM     6 H1C2  ETH A  444    2.35763   5.49965   1.98040 H_     1 0 -0.01212
+HETATM     7 HH    ETH B  444    0.97873   1.42594   0.70376 C_3    4 0  0.02425
+HETATM     8 H3C1  ETH B  444    1.19043   0.35582   0.70376 H_     1 0 -0.01212
+HETATM     9 H2C1  ETH B  444   -0.10290   1.56843   0.70376 H_     1 0 -0.01212
+HETATM    10 TT    ETH B  444    1.57146   2.05828   1.97977 C_3    4 0  0.02425
+HETATM    11 H2C2  ETH B  444    2.65312   1.91589   1.97977 H_     1 0 -0.01212
+HETATM    12 H1C2  ETH B  444    1.35959   3.12839   1.97977 H_     1 0 -0.01212
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2     4     4
+DISPZ      1     0     0     0    -1
+CONECT     2     1
+CONECT     3     1
+CONECT     4     6     5     1     1
+DISPZ      4     0     0     0     1
+CONECT     5     4
+CONECT     6     4
+CONECT     7     9     8    10    10
+DISPZ      7     0     0     0    -1
+CONECT     8     7
+CONECT     9     7
+CONECT    10    12    11     7     7
+DISPZ     10     0     0     0     1
+CONECT    11    10
+CONECT    12    10
+END

@@ -1,0 +1,6 @@
+After annealing S11_A (totE, EL, vdw, hb, coulomb):  -6.414  -5.768  -0.432   0.000  -0.214
+After annealing S1_A (totE, EL, vdw, hb, coulomb):  -6.414  -5.768  -0.432   0.000  -0.214
+After annealing S15_A (totE, EL, vdw, hb, coulomb):  -6.653  -5.454  -0.430   0.000  -0.769
+After annealing T8_A (totE, EL, vdw, hb, coulomb):  -6.653  -5.454  -0.430   0.000  -0.769
+After annealing T21_A (totE, EL, vdw, hb, coulomb):  -6.787  -4.271  -0.430   0.000  -2.086
+After annealing P12_A (totE, EL, vdw, hb, coulomb):  -6.787  -4.271  -0.430   0.000  -2.086

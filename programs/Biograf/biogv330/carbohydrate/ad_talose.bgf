@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_TAL  
+REMARK Created by slm @ tms2r on  1/25/90   17:50:52               
+REMARK alpha-D-Talose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  TAL      1    1.11837   0.26227  -0.90067 O_3    2 2  0.00000
+HETATM     2  C1*  TAL      1    1.70024  -0.38661   0.24420 C_3    4 0  0.00000
+HETATM     3 HC1*  TAL      1    2.69281   0.04888   0.37878 H_     1 0  0.00000
+HETATM     4  O1*  TAL      1    1.94213  -1.76482  -0.04116 O_3    2 2  0.00000
+HETATM     5  HO1* TAL      1    2.42051  -2.17439   0.70991 H___A  1 0  0.00000
+HETATM     6  C2*  TAL      1    0.86500  -0.18922   1.54196 C_3    4 0  0.00000
+HETATM     7 HC2*  TAL      1    1.22212  -0.89019   2.30120 H_     1 0  0.00000
+HETATM     8  O2*  TAL      1    1.10870   1.11367   2.08459 O_3    2 2  0.00000
+HETATM     9  HO2* TAL      1    0.60526   1.21949   2.91870 H___A  1 0  0.00000
+HETATM    10  C3*  TAL      1   -0.64427  -0.47538   1.28467 C_3    4 0  0.00000
+HETATM    11 HC3*  TAL      1   -0.72054  -1.54092   1.05574 H_     1 0  0.00000
+HETATM    12  O3*  TAL      1   -1.46503  -0.31774   2.44708 O_3    2 2  0.00000
+HETATM    13  HO3* TAL      1   -2.38637  -0.57377   2.23257 H___A  1 0  0.00000
+HETATM    14  C4*  TAL      1   -1.19137   0.27758   0.03838 C_3    4 0  0.00000
+HETATM    15 HC4*  TAL      1   -2.18095  -0.12052  -0.19708 H_     1 0  0.00000
+HETATM    16  O4*  TAL      1   -1.35685   1.68212   0.23772 O_3    2 2  0.00000
+HETATM    17  HO4* TAL      1   -1.12522   2.03846  -0.64392 H___A  1 0  0.00000
+HETATM    18  C5*  TAL      1   -0.27338   0.02253  -1.19490 C_3    4 0  0.00000
+HETATM    19 HC5*  TAL      1   -0.36646  -1.04046  -1.43295 H_     1 0  0.00000
+HETATM    20  C6*  TAL      1   -0.68582   0.75666  -2.50062 C_3    4 0  0.00000
+HETATM    21 HC6*  TAL      1   -1.73024   0.53008  -2.72054 H_     1 0  0.00000
+HETATM    22 HC6*  TAL      1   -0.08382   0.37725  -3.32806 H_     1 0  0.00000
+HETATM    23  O6*  TAL      1   -0.54255   2.17918  -2.47899 O_3    2 2  0.00000
+HETATM    24  HO6* TAL      1    0.39593   2.41105  -2.31845 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

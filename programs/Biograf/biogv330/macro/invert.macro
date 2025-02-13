@@ -1,0 +1,64 @@
+beginmacro
+%
+%  This macro finds polymer tacticity centers (marked on monomer units)
+%  and inverts them according to the user input random criterion.
+%  This macro assumes the program is in the polymer builder.
+%
+%
+%  Get file name of chain to be searched
+%  For a null return the default filename "copoly"
+%  from the copoly macro will be used
+%
+echo "Enter the polymer chain file name (copoly is default)"
+fil = ${prompt}
+if( ${fil} = NULL )then
+  fil = copoly
+endif
+%
+%  Get inversion criterion (R/S) ratio
+%  For a null return the default of 50% will be used
+%
+echo "Enter the R/S ratio (50 is default)"
+cut = ${prompt}
+if( ${cut} = NULL )then
+  cut = 50
+endif
+% strt = file_start(${fil})
+% stop = file_stop(${fil})
+strt = 1
+stop = inq(number_of_atoms)
+%
+%  Enter editor
+%
+Polymer/edit
+	Edit/invert
+%
+%  Do search for inversion center
+%
+	do i = ${strt}, ${stop}
+	  list = atom_reference(${i})
+	  if( ${list}[5] = anam/TT00 )then
+%
+%  Generate random number from 0 to 100
+%
+	    random = ran(${comp1})
+	    random = 100 * ${random}
+	    random = fix(${random})
+%
+%  if the random number satisfies the criterion, do invert
+%
+	    if( ${random} <= ${cut} )then
+	      anum/${i}
+	    endif
+	  endif
+	enddo
+	.
+	Edit/return
+quit
+endmacro
+%
+%  Generate random number from 0 to 100
+%
+	  random = ran(${comp1})
+	  random = 100 * ${random}
+	  random = fix(${random})

@@ -1,0 +1,49 @@
+BIOGRF  160
+DESCRP styrene 
+REMARK Created by srl @ iris on 12/11/89   13:02:00                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    STY A    1    1.01700   2.30000   0.43200 C_3    4 0  0.00000
+HETATM     2 HX    STY A    1    0.96200   3.38900   0.40900 H_     1 0  0.00000
+HETATM     3 H3C1  STY A    1    1.89600   1.98400  -0.13200 H_     1 0  0.00000
+HETATM     4 H2C1  STY A    1    1.12200   1.97800   1.47000 H_     1 0  0.00000
+HETATM     5 TT00  STY A    1   -0.26000   1.71000  -0.19100 C_3    4 0  0.00000
+HETATM     6 H1C2  STY A    1   -1.12500   2.12000   0.33600 H_     1 0  0.00000
+HETATM     7 C3    STY A    1   -0.27700   0.23400  -0.14100 C_R    3 0  0.00000
+HETATM     8 C4    STY A    1    0.45000  -0.52000  -1.09100 C_R    3 0  0.00000
+HETATM     9 HC4   STY A    1    1.00000  -0.04800  -1.81100 H_     1 0  0.00000
+HETATM    10 C5    STY A    1    0.42600  -1.92600  -1.06000 C_R    3 0  0.00000
+HETATM    11 HC5   STY A    1    0.95400  -2.46100  -1.75200 H_     1 0  0.00000
+HETATM    12 C6    STY A    1   -0.32200  -2.59500  -0.07600 C_R    3 0  0.00000
+HETATM    13 HC6   STY A    1   -0.34400  -3.61600  -0.05800 H_     1 0  0.00000
+HETATM    14 C7    STY A    1   -1.03800  -1.85800   0.88300 C_R    3 0  0.00000
+HETATM    15 HC7   STY A    1   -1.57700  -2.34500   1.60100 H_     1 0  0.00000
+HETATM    16 C8    STY A    1   -1.01500  -0.45200   0.85200 C_R    3 0  0.00000
+HETATM    17 HC8   STY A    1   -1.53900   0.06700   1.55900 H_     1 0  0.00000
+HETATM    18 TX    STY A    1   -0.33100   2.04000  -1.22900 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     4     3     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     6    18     1     7
+CONECT     6     5
+CONECT     7     8    16     5
+ORDER      7     1     2     1
+CONECT     8     7    10     9
+ORDER      8     1     2     1
+CONECT     9     8
+CONECT    10    12     8    11
+ORDER     10     1     2     1
+CONECT    11    10
+CONECT    12    10    14    13
+ORDER     12     1     2     1
+CONECT    13    12
+CONECT    14    12    16    15
+ORDER     14     2     1     1
+CONECT    15    14
+CONECT    16    14     7    17
+ORDER     16     1     2     1
+CONECT    17    16
+CONECT    18     5
+END

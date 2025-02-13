@@ -1,0 +1,46 @@
+BIOGRF  160
+DESCRP NMP     
+REMARK solvent for the Northrop project                            
+REMARK the structure was given by Weinberg                         
+REMARK Created by ms @ iris on  5/08/89   17:08:40                 
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C1    ORG A    1    0.59902  -0.44354  -0.70835 C_3    4 0  0.02834
+HETATM     2 HC1   ORG A    1    1.66672  -0.21540  -0.70143 H_     1 0  0.03674
+HETATM     3 HC1   ORG A    1    0.37270  -1.15495  -1.50509 H_     1 0  0.03674
+HETATM     4 C2    ORG A    1   -0.19163   0.77419  -0.86834 C_R    3 0  0.22190
+HETATM     5 HC2   ORG A    1   -0.05292   1.50853  -1.87971 O_2    1 2 -0.27489
+HETATM     6 O1    ORG A    1   -1.02793   0.99124   0.13671 N_R    2 1 -0.34574
+HETATM     7 C3    ORG A    1   -0.94643   0.00880   1.12045 C_3    4 0  0.02062
+HETATM     8 HC3   ORG A    1   -1.90448  -0.50614   1.22558 H_     1 0  0.04937
+HETATM     9 HC3   ORG A    1   -0.66826   0.45063   2.08037 H_     1 0  0.04937
+HETATM    10 C4    ORG A    1    0.13845  -0.97694   0.65455 C_3    4 0 -0.02665
+HETATM    11 HC4   ORG A    1   -0.27033  -1.98492   0.55671 H_     1 0  0.02898
+HETATM    12 HC4   ORG A    1    0.97140  -0.99530   1.36078 H_     1 0  0.02898
+HETATM    13 C1    ORG A    1   -1.90770   2.07821   0.23002 C_3    4 0  0.00914
+HETATM    14 H4C1  ORG A    1   -2.55609   2.00643   1.10575 H_     1 0  0.04571
+HETATM    15 H3C1  ORG A    1   -2.54395   2.12292  -0.65594 H_     1 0  0.04571
+HETATM    16 H2C1  ORG A    1   -1.33984   3.00738   0.30258 H_     1 0  0.04571
+FORMAT CONECT (a6,12i6)
+CONECT     1     4    10     3     2
+ORDER      1     1     1     1     1
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1     6     5
+ORDER      4     1     1     2
+CONECT     5     4
+ORDER      5     2
+CONECT     6     4     7    13
+CONECT     7     6    10     9     8
+ORDER      7     1     1     1     1
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7     1    12    11
+ORDER     10     1     1     1     1
+CONECT    11    10
+CONECT    12    10
+CONECT    13    16    15    14     6
+CONECT    14    13
+CONECT    15    13
+CONECT    16    13
+END

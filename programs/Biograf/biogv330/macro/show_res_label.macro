@@ -1,0 +1,161 @@
+beginmacro
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is a macro to page through residues.
+%
+% The syntax for invoking this macro is:
+%
+% @page [optional_control_variable_assignments]
+%
+% Several optional control variables can be specified on the command line if
+% required.  The optional control variables are listed below:
+%
+%   file  = file_name  ! directs macro to use specified input file
+%                      ! the default file is ${LASTFILE}
+%   group = group_name ! directs macro to use specified display group
+%                      ! the default group is ${NEXTGROUP}
+%   start = res_number ! directs macro to start at specified residue number
+%                      ! the default start is 1
+%   half  = true/false ! indicates half bond status for display group
+%                      ! the default half is true
+%   chain = chain_list ! directs macro to use a specified chain designators
+%                      ! the default chain is ?
+%   prims = prim_list  ! directs macro to use a specified primitive list
+%                      ! the default prims is entire residue
+%  
+% Once the macro has been invoked, several commands are availabe:
+%
+%   +    ! set positive increment direction
+%   -    ! set negative increment direction
+%   n    ! display current residue +/- n residues
+%   <CR> ! display current residue +/- 1 residue
+%   r,n  ! display residue n
+%   o    ! set group rotation origin to current residue
+%   e    ! terminate macro
+%   q    ! terminate macro
+%   s    ! terminate macro
+%   t    ! terminate macro
+%
+% Example of typical use (after having read leuenk1.bgf) :
+%
+%   @page start=4   ! invoke macro and start at residue 4
+%   <CR>            ! advance one residue (to residue 5)
+%   r,2             ! display residue 2
+%   2               ! advance two residues (to residue 4)
+%   o               ! set rotation origin to residue 4
+%   -               ! set negative increment direction
+%   <CR>            ! retreat one residue (to residue 3)
+%   <CR>            ! retreat one residue (to residue 2)
+%   +               ! set positive increment direction
+%   3               ! advance three residues (to residue 5)
+%   e               ! terminate macro
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+if( ${file} = NULL )then
+  file = ${LASTFILE}
+endif
+%
+if( ${group} = NULL )then
+  group = ${NEXTGROUP}
+endif
+%
+if( ${start} = NULL )then
+  start = 1
+endif
+%
+if( ${half} = NULL )then
+  half = true
+endif
+%
+if( ${chain} = NULL )then
+  chain = ?
+endif
+%
+if( ${prims} = NULL )then
+  prims = main chain, hmain, side chain, hside, carbonyl, label
+endif
+%
+save
+entry-level
+%
+Top menu/visualize
+         Visualize/make groups
+	off=(Make groups/full file)
+	Make groups/setup
+	  ${group}
+	  page
+	Make groups/files
+	  off=(${ALLFILES})
+	  Files/${file}
+	  Files/return
+	Make groups/chains
+	Chains/?
+	on=(${chain})
+	Chains/return
+	Make groups/residues
+	Residues/ALL
+	Residues/return
+	Make groups/limits
+		Limits/primitives
+		Primitives/STD SET
+		  on=(${prims})
+		Primitives/return
+		Limits/selectors
+		Selectors/ALL
+		Selectors/return
+		Limits/return
+%
+	command = 0
+	direction = +
+	oldres = -999
+	resnum = ${start}
+%
+do until ( ${command} ~ e | ${command} ~ q | ${command} ~ s | ${command} ~ t )
+%
+	if( ${command} = + | ${command} = - )then
+	  direction = ${command}
+%
+	elseif( ${command}[1] = r )then
+	  resnum = ${command}[2]
+%
+	elseif( ${command} = o )then
+	  Make groups/return
+	  Visualize/set origin
+		Set origin/group origin
+		  page
+		  .
+		Set origin/return
+%
+	elseif( ${command} = NULL )then
+	  resnum = ${resnum} ${direction} 1
+%
+	else
+	  resnum = ${resnum} ${direction} ${command}
+%
+	endif
+%
+	if( ${resnum} <> ${oldres} )then
+	  Make groups/limits
+		Limits/forget range
+		Limits/key one res
+		  ${resnum}
+		Limits/return
+	  Make groups/create
+	  oldres = ${resnum}
+	endif
+%
+	echo " "
+	echo "Enter page command :"
+	command = ${prompt}
+%
+enddo
+%
+	Make groups/return
+%
+restore
+%
+endmacro

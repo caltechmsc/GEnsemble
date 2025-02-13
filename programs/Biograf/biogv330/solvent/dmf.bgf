@@ -1,0 +1,27 @@
+BIOGRF  110
+DESCRP DMF     
+HETATM    1 C1    DMF     1      -0.205  -1.449   0.155 C_R     3  0  0.0000
+HETATM    2 H3C1  DMF     1      -0.638  -2.274  -0.700 O_2     1  2  0.0000
+HETATM    3 H2C1  DMF     1       0.014  -1.916   1.044 H_      1  0  0.0000
+HETATM    4 H1C1  DMF     1      -0.021  -0.107   0.002 N_R     3  0  0.0000
+HETATM    5 HH1C1 DMF     1       0.488   0.614   1.116 C_33    4  0  0.0000
+HETATM    6 HHH1C DMF     1      -0.125   0.414   1.999 H_      0  0  0.0000
+HETATM    7 HHH1C DMF     1       0.521   1.701   0.998 H_      0  0  0.0000
+HETATM    8 HHH1C DMF     1       1.506   0.280   1.327 H_      0  0  0.0000
+HETATM    9 HH1C1 DMF     1      -0.319   0.560  -1.221 C_33    4  0  0.0000
+HETATM   10 HHH1C DMF     1       0.368   0.210  -1.995 H_      0  0  0.0000
+HETATM   11 HHH1C DMF     1      -0.252   1.652  -1.191 H_      0  0  0.0000
+HETATM   12 HHH1C DMF     1      -1.336   0.314  -1.533 H_      0  0  0.0000
+CONECT    1    4    3    2    0    0    0    0    0    2    0    0    0
+CONECT    2    1    0    0    0    0    0    2    0    0    0    0    0
+CONECT    3    1    0    0    0    0    0
+CONECT    4    1    9    5    0    0    0
+CONECT    5    4    8    7    6    0    0
+CONECT    6    5    0    0    0    0    0
+CONECT    7    5    0    0    0    0    0
+CONECT    8    5    0    0    0    0    0
+CONECT    9    4   12   11   10    0    0
+CONECT   10    9    0    0    0    0    0
+CONECT   11    9    0    0    0    0    0
+CONECT   12    9    0    0    0    0    0
+END

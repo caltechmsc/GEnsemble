@@ -1,0 +1,19 @@
+mol load pdb fileprefix.pdb
+set sel [atomselect top all]
+
+# Least Squares Plane Equation: Ax + By + Cz + D = 0
+# A =      0.8622724 B =      0.3911886 C =      1.0000000 D =    -57.4536597
+
+# Move the mid-plane to z=0
+$sel moveby {0 0 dummyD}
+$sel move [transvecinv {dummyA dummyB dummyC}]
+$sel move [transaxis y 90]
+
+# Move the x-y center to the origin
+set cen [measure center [atomselect top alpha]]
+lset cen 2 0
+$sel moveby [vecscale $cen -1]
+
+$sel writepdb fileprefix-align.pdb
+
+exit

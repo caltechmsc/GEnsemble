@@ -1,0 +1,73 @@
+______________________________________________________________________________
+_____Grid_parameters_set_1____________________________________________________
+Number of shells:                                 10
+Index of molecular surface:                       3
+Angular point density profile parameter 1 (e):    -1.50
+Angular point density profile parameter 2 (i):    0.50
+Radius of prototype sphere:                       1.90
+Resolution at prototype sphere:                   20
+______________________________________________________________________________
+_____Grid_parameters_set_2____________________________________________________
+Distance from surface to dielectric boundary:     8.00
+Resolution at boundary:                           10
+Distance from charge to first interior shell:     0.35
+Spacing below molecular surface (fractional):     0.0
+Spacing above molecular surface (fractional):     0.0
+Inner normal derivative spacing (fractional):     -0.0250
+Outer normal derivative spacing (fractional):     0.0500
+Radial shell spacing parameter:                   1
+l value assignment scheme (_c_onstant/_s_caled):  c
+Grid type modifiers:                              0 0 0 0 0 0 0 0 0 0
+Rotate atom:                                      0
+Rotate shell:                                     0
+Range of shells of C.S type:                      3 3
+Probe radius value to use for interior:           0.4
+______________________________________________________________________________
+_____Triangulation_parameters_________________________________________________
+Global debug output:                              0
+Delaunay test parameter:                          1.0e-07 5.0e-07 1.0e-08 1.0e-09 1.0e-10
+Zero volume parameter:                            1.0e-10
+Point volume enclosure tolerance parameter:       1.0e-10
+Scaling factor for enclosing pyramid:             3.7
+Interior adaptive edge refinement:                0
+Refinement cutoff (sigma units):                  4.0            
+Type of surface mesh (1-5):                       5
+Interior/Exterior Exp cutoff                      0.68
+Interior/Exterior Exp factor                      1.0
+Interior/Exterior Exp too small                   15.0
+______________________________________________________________________________
+_____Finite_element_solver____________________________________________________
+Maximum residual for potential solver:            1.0e-4
+Number of iterations:                             2000
+Debug level                                       1
+Multi-grid iterations:                            0
+Iteration type:                                   a
+Number of pre-smoothing iterations:               30
+Number of post-smoothing iterations:              30
+Number of coarse grid iterations:                 90
+Surface charge scaling:                           1
+Maximum residual for charge scaling solver:       5.0e-2
+Refined surface polarization charge calculation:  0
+Displacement for polarization energy gradient:    0.000001
+Displacement for hydrophobic energy gradient:     0.000001
+Matrix assembly information output:               1
+File for matrix assembly information:             ./mat_a.dat
+______________________________________________________________________________
+_____Output_flags_____________________________________________________________
+Timings:                                          0
+PDB file:                                         0
+Grid vertices:                                    0
+Mesh connections:                                 0
+Molecular surface vertices and connections:       0
+Surface polarization charge:                      0
+Potential in grid subset:                         0
+Region for subset:                                0
+Point range in subset:                            0 1
+Minimal log file:                                 0 w
+Diagnostics log file:                             0 a
+______________________________________________________________________________
+_____Control_parameters_______________________________________________________
+Read N atoms:                                     0
+Compute coulomb force from surface charge:        0
+Echo results of different stages:                 0
+Displacement test:                                0

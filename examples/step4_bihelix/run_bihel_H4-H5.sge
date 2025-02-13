@@ -1,0 +1,4 @@
+#!/bin/csh
+#$ -N BiHelix_4-5
+#$ -j y
+/home/ravi/GEnsemble/programs/bihelixrot2/bihelixrot_scream2.pl -p protein_initial_bundle.bgf -r -s -i 4 -j 5 > protein_initial_bundle_H4-H5_bihel.out

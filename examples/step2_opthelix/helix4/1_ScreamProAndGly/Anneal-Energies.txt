@@ -1,0 +1,3 @@
+After annealing P37_A (totE, EL, vdw, hb, coulomb): 1410.400 1407.768  -0.335   0.000   2.967
+After annealing P12_A (totE, EL, vdw, hb, coulomb): 1410.400 1407.768  -0.335   0.000   2.967
+After annealing P9_A (totE, EL, vdw, hb, coulomb): 1410.400 1407.768  -0.335   0.000   2.967

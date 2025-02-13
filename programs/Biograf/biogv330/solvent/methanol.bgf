@@ -1,0 +1,15 @@
+BIOGRF  110
+DESCRP METHANOL
+HETATM    1 C1    MTH     1      -0.343   0.032   0.159 C_3     4  0  0.0000
+HETATM    2 HC1   MTH     1      -1.328  -0.355  -0.100 H_      1  0  0.0000
+HETATM    3 H3C1  MTH     1       0.606  -0.408  -0.802 O_3     2  2  0.0000
+HETATM    4 HH3C1 MTH     1       1.492  -0.059  -0.569 H___A   1  0  0.0000
+HETATM    5 H2C1  MTH     1      -0.056  -0.332   1.145 H_      1  0  0.0000
+HETATM    6 H1C1  MTH     1      -0.372   1.122   0.168 H_      1  0  0.0000
+CONECT    1    6    5    3    2    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1    4    0    0    0    0
+CONECT    4    3    0    0    0    0    0
+CONECT    5    1    0    0    0    0    0
+CONECT    6    1    0    0    0    0    0
+END

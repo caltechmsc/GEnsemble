@@ -1,0 +1,3765 @@
+#!/usr/bin/perl -w
+
+$version = '070816p';
+# caglar tanrikulu # playWithBGF.pl # Oct 17 2002 # ver:070816p
+# caglar tanrikulu # getResidueE.pl # Sep 17 2002 # ver:021009
+# caglar tanrikulu # getResidueE.pl # Aug 26 2002 #
+#
+# script to play with bgf files.
+#   (see -h or &printHelp subroutine for usage information.)
+#
+# Aug 18 2007 # modified &startUp() only attempts to read a central defaults
+#               file.  If no central defaults file is found, the behavior is same
+#               as 070816.  The sole difference between 070816p and 070816 is in 
+#               &startUp()
+# Aug 16 2007 # selection of backbone/sidechain atoms allowed with a PDB
+#               through the '-b'/'-s' options
+#               HEADER field automatically added to bgf files 
+#               Program guesses the file format for files without an extension
+#               The atoms defined as backbone are read from the defaults file
+#               from the BACKBONE_DEFN field. The default altloc to read for PDBs
+#               is also set from the defaults file using READ_ALTLOC.
+#               printSelectionInfo() (i.e. '+i') output format modified
+# Aug 15 2007 # reads in the PDB columns after the coordinates field properly
+#               enables setting movable records in PDBs using the occupancy
+#               column.  Options '-V' '+V' and '-m' now also apply to PDBs
+#               Default values (0 and 0) are written into the occupancy and 
+#               temperature factor columns if data is missing 
+# Aug 09 2007 # allow the use of ranges of atoms and residues with the options
+#               '-r' and '-a'
+#               chains and residues can now be entered using a '_' as in Scream
+#               such as 12_A and _A for 12A and A
+# May 17 2007 # redo the defaults file behavior:
+#               - don't give warnings for newer defaults files.
+#               - if you see a defaults file from an older version, update it. 
+# May 16 2007 # option '-H' allow selection of HETATM records.
+#               REMARK lines are added only if ADD_REMARK flag in the defaults 
+#               file is set to '1'.
+# Jan 18 2005 # adds a DESCRP line if not provided by the bgf file.
+#               spyware added.
+# Nov 20 2004 # chains appearing in multiple segments are read and selected
+#               correctly
+# Nov 19 2004 # option '+i' prints out information on the current selection
+#               via printSelectionInfo()
+# Nov 18 2004 # ability to read and (re)write PDB files added
+# Nov 12 2004 # option '-p' prints out the structure in PDB format
+# Aug 23 2004 # prints residues added to selection when using '-d'
+#               resID utility is added
+# Jul 01 2004 # -e/-E now prints column totals.
+# Jun 30 2004 # can use .fin.ener files from avgb/fsm calculations as well as 
+#               sgb/vac.  Also fixed minor bugs: counting res. within radius with
+#               -D, 1 letter resName code for unknown residues.
+# Nov 08 2003 # program dies if no bgf file is found.
+#               modified error messages (die/warn) to contain program name. 
+# Oct 24 2003 # the ability to read and write files in bgf version 400 is enabled
+#               the extra fields are stored in @dummy3 and appended at the end of
+#               the atom records when the selection is written to a BGF file.   
+# Mar 06 2003 # option (-D) is added to select individual atoms around a previous
+#               selection.  (this option is not yet extensively tested)
+# Jan 20 2003 # a defaults file (~/.pwb.defaults) is written containing all the
+#               defaults set by the (-I) option, like the forcefield parameters, 
+#               and read at each execution of the program.  
+#               A bug in the (-F) option, which prevented selection of multiple 
+#               ff-types was fixed. 
+#               IA table formats were modified to have table borders/separators
+#               represent the table format, that could be read by other programs.
+# Jan 10 2003 # nonbond energies are calculated and written out in tables 
+#               separately for electrostatic, H-bond and vDW components, by atom 
+#               or by residue as indicated by the commands specified by the 
+#               (-I) option. (see interaction energy (IA) section in help) 
+# Dec 10 2002 # the ability to write out a list of atom numbers for the current
+#               selection for later loading was added with option (-l)
+# Dec 05 2002 # bug in residue renumbering fixed:  The residue number field 
+#               is read in using the format specified in the FORMAT ATOM line. 
+#               Unintuitively this produces a residue number like '_223_' for
+#               residue 223 which wasn't taken into account in residue renumbering.
+# Dec 02 2002 # option +V was added as an option to modify an existing set of
+#               movable records.  As before, -/+V can only be used once. 
+# Nov 11 2002 # selection options -acrf can now be used multiple times.
+#               option to print fin.ener values by atom (-e) added.
+# Nov 04 2002 # sequence of operations in selection modification changed: 
+#               &selectMovableAtoms and &selectAtomsByFFtypes act on previously
+#               selected atoms. 
+# Nov 03 2002 # option to select atoms that have a certain forcefield typing
+#               was added with the option (-F).  Also dots (.) in selection 
+#               input represent spaces ( ) during the program run.
+# Nov 01 2002 # option to select all residues after all manipulations and 
+#               before printing out was added with the option (-L)
+# Oct 20 2002 # selection around a radius improved by preselecting nearby 
+#               residues using a box and excluding residues outside an
+#               "outerLimit"
+# Oct 17 2002 # selection capabilities improved by the implementation of
+#               sidechain/backbone selection, selection based on movable 
+#               records, atom/residue selection from file, selecting a radius 
+#               around a previous selection.  
+#               added features are residue renumbering, turning movable records
+#               on/off, residue energy calculation on selection, and clearing 
+#               CONECT and ORDER records of information from unselected atoms. 
+# Oct 09 2002 # the ability to invert a selection was added (-i)
+# Sep 17 2002 # program rewritten to select chains from a bgf file and 
+#               renumber and save the selection (see bottom of file for options)
+# Aug 26 2002 # initial version to get residue energies from a .fin.ener file.
+#
+#
+$|=1;
+$spy=-1;
+#
+use Env;
+#
+#Subroutine Declarations: 
+sub startUp;                  # upon startup gets system data and timestamp
+sub processARGV;              # translates ARGV options for the program
+sub prepareInput;             # prepares input arrays for after processARGV is done
+#
+sub readBGF;                  # read in data from bgf file (format sensitive)
+sub readPDB;                  # read in data from pdb file (format sensitive)
+sub setupResArrays;           # setup internal atom/residue/chain arrays
+#
+sub selectAll;                # select all atoms
+sub selectAtoms;              # select specified atoms by atom/residue/chain identifiers
+#
+sub selectWithinRadius;       # select res. within a certain radius around any previous selection 
+sub selectMovableAtoms;       # select only movable atoms
+sub selectHETATMatoms;        # select atoms with HETATM records
+sub selectAtomsByFFtypes;     # select atoms by their forcefield-typing 
+sub invertSelection;          # invert the current selection
+sub selectSCvsBB;             # select only sidechain or backbone atoms form the current selection
+#
+sub printSelectionInfo;       # prints information on the current selection
+sub toggleMovableRecs;        # make selected atoms movable/on or fixed/off 
+sub renumberSelectedAtoms;    # renumber the selected atoms (before saving) 
+sub renumberSelectedResidues; # renumber the residues with atoms selected (before saving) 
+#
+sub saveSelectionList;        # write atom numbers of the selection to file (after renumbering if -n)
+sub saveBGF;                  # save selected BGF atoms to a new BGF file
+sub savePDB;                  # save selected PDB atoms to a new PDB file
+sub saveBGFasPDB;             # save selected BGF atoms to a new PDB file
+#
+# MPSim ENERGY subroutines:
+#   for getting a per residue energy list from a .fin.ener file (MPSim) 
+sub readENER;                 # read data from the fin.ener file
+sub getResidueEnergies;       # calculate residue energies from the by-atom listings
+sub printResidueEnergies;     # print energies by residue
+sub printAtomicEnergies;      # print energies by atom
+#
+# Interaction Analysis subroutines:
+#   for getting a per residue energy list from a .fin.ener file (MPSim) 
+sub readFFparameters;         # read forcefield parameters from a .par file 
+sub interactionAnalysis;      # calculate nonbond energies between two sets of selected atoms
+sub interactionAnalysisTable; # print interaction tables in various formats
+#
+sub finishUp;                 # writes out execution summary before exit
+
+#
+# UTILITIES:
+#  setup:
+sub setBackupValuesForDefaultsFile; # assigns values for missing fields in the defaults file
+sub readDefaultsFile;         # read defaults file
+sub writeDefaultsFile;        # write a defaults file if necessary 
+sub writeDefaultsFileText;    # returns the text of the standard defaults file
+sub setConstants;   # set constant variables/arrays/hashes
+#  input processing:
+sub nextOptionArgument;       # check if the next item in @ARGV is an option argument  
+sub string2array;   # put each word in a string into an array
+sub readFile;       # read a file into an array  (w/o new-line-chars)
+sub fixMissingFieldsInBGF;    # fill in empty fields in BGF records with default values   
+sub fixMissingFieldsInPDB;    # fill in empty fields in PDB records with default values   
+sub replaceDotsWithSpaces;    # substitute each dot (.) with a space ( ) in a given input array
+sub expandAtomRanges;         # expand ranges in the atom selection list
+sub expandResRanges;          # expand ranges in the residue selection list
+#  atom properties:
+sub mainchain;      # check if an atom is a main-chain atom
+sub bonded_1_2;     # check if an atom-1 is bonded to an atom-2 
+sub bonded_1_3;     # check if an atom-1 is connected to an atom-2 through another atom 
+sub bonded_1_4;     # check if an atom-1 is connected to an atom-2 through two other atom 
+#  selection:
+sub updateSelectionList;      # update the list of selected atoms based on the @selected records
+sub clearSelected;            # clears records in the @selected array / initializes to no selection
+sub readAuxillarySelection;   # read an auxillary selection by calling this program within itself
+sub defineBoxAroundSelection; # define a rectangular box with a given range around the max/min 
+                              #  values of the selection, 
+sub outsideTheBox;  # check if atom is outside the box defined by &defineBoxAroundSelection
+#  selection properties:
+sub countSelected;  # count number of selected atoms
+sub resStopsForAtomnList;     # prepare a residue stop array given an int. atom no. list 
+#  calculation:
+sub r3D;            # get distance in 3-D between two points
+sub IA_hydrogenBond;# calculate H-bond energy between a H and an acceptor atom 
+sub IA_vanDerWaals; # calculate VdW energy between two atoms 
+sub IA_coulombic;   # calculate Coulombic energy between two atoms
+#  output:
+sub splitPdbConectLine;       # splits PDB CONECT line into its fields
+sub makePDBelementName;       # turns dreiding ff-type into its element name in PDB format
+sub aas_3to1;       # get 1 letter code from a 3 letter residue name
+sub resID;          # get res.ID (999X) from internal res.no.
+sub getSysInfo;     # get user/system information
+sub wrapString;     # wrap a long string to multiple lines
+sub printHelp;      # print a help message
+# spyware:
+sub runSpyware;     # collects information about program usage
+#
+
+print "\n caglar tanrikulu # playWithBGF.pl # Aug 26 2002 # ver: $version\n";
+if ($#ARGV < 0) {
+    print ""
+	,"   Script to carry out text manipulations on a BGF file, and\n"
+	,"   a couple of other things.  Some options now support PDB files\n"
+        ,"   as well.  See help <-h> for details on how to use this script.\n"
+	," \n"
+	," usage: \n"
+	,"   $0 <bgf-filename> [-aAbcdDeEFHiIlLmnNoprRsVx|+iV]\n"
+	,"   $0 <pdb-filename> [-aAbcdD   Hi lLmnN prRsVx|+iV]\n"
+	,"   $0 -h   (prints usage info, examples, syntax rules)\n"
+	," \n"
+	;
+    exit;
+
+} 
+
+# start program
+&startUp();
+    
+# setup
+&processARGV(@ARGV);
+&prepareInput();
+if ($pdbFile) {
+    &readPDB($pdbFile);
+} else { 
+    &readBGF($bgfFile);
+}
+
+# select atoms
+if ($selectAll) {
+    &selectAll(); #if not -aAcrRmF
+} else { 
+    &selectAtoms(); #-aAcrR
+}
+&updateSelectionList(@selected);
+
+ 
+# modify selection
+&selectWithinRadius() if ($selectionRadius); #-dD
+&selectMovableAtoms() if ($selectMovable); #-m
+&selectHETATMatoms()  if ($selectHETATM); #-H
+&selectAtomsByFFtypes() if ($option{"F"}) ; #if ($ffTypeSelectionInput); #-F
+&invertSelection()  if ($invertSeln); #-i
+if ($selectSC) {  #-s
+    &selectSCvsBB('side-chain');
+} elsif ($selectBB) { #-b
+    &selectSCvsBB('backbone');
+}
+
+
+# examine selection(s)
+if ($selectionInfo) { #+i
+    print "\n... printing information on the current selection ...\n";
+    &printSelectionInfo();
+}
+if ($enerFile) { #-eE
+    &readENER($enerFile);
+    if ($listEnergyByResidue) { #-E
+	print "\n... calculating residue energies ...\n";
+	&getResidueEnergies();
+	print "\nRESIDUE ENERGIES: \n";
+	&printResidueEnergies();
+    }
+    if ($listEnergyByAtom) { #-e
+	print "\nATOM ENERGIES: \n";
+	&printAtomicEnergies();
+    }
+}
+if ($interactionAnalysis) { #-I
+    print "\n... calculating nonbond interaction energies between selections ...\n";
+    &readFFparameters($ff_parameter_file);
+    &interactionAnalysis($IA_1st_selection,$IA_2nd_selection,$IA_output_format);
+}
+
+# modify BGF records of the selected atoms
+if ($switchMovable) { #-V
+    print "\n... turning movable records for selected atoms $switchMovable ...\n";
+    &toggleMovableRecs($switchMovable);
+}
+if ($renumberAtoms) { #-n
+    print "\n... renumbering selected atoms ...\n";
+    &renumberSelectedAtoms();
+}
+if ($renumberResidues) { #-N
+    print "\n... renumbering selected residues ...\n";
+    &renumberSelectedResidues();
+}
+
+&selectAll if ($finalSelectAll); #-L
+
+# write out to file
+if ($bgfOutFile) { #-o
+    print "\n... saving selected atoms to:  $bgfOutFile \n";
+    &saveBGF($bgfOutFile);
+    print "... done ...\n";
+}
+
+if ($pdbOutFile) { #-p
+    print "\n... saving selected atoms in PDB format to:  $pdbOutFile \n";
+    if ($pdbFile) {
+	&savePDB($pdbOutFile);
+    } else {
+	&saveBGFasPDB($pdbOutFile);
+    }
+    print "... done ...\n";
+}
+
+if ($listOutFile) { #-l
+    print "\n... saving selected atoms numbers to:  $listOutFile \n";
+    &saveSelectionList($listOutFile);
+    print "... done ...\n";
+}
+
+
+# end program
+&finishUp();
+&runSpyware() if ($spy && !$debug);
+print "$debug\n" if ($debug);
+#
+exit;
+
+
+
+##########################
+### SUBROUTINES: Setup ###
+##########################
+
+sub startUp {
+    $startTimestamp = time;
+    &getSysInfo();
+
+    # set defaults files
+    my $updateDefaultsFile = 0;
+    my @defFileLines = ();
+    $defaultsFile = "$homedir/.pwb.defaults";
+    $centralDefaultsFile = "/project/Biogroup/scripts/playWithBGF/playWithBGF.defaults";
+    &setBackupValuesForDefaultsFile();
+
+    # read defaults file
+    if (-e $centralDefaultsFile) {
+	my @defFileLines = &readFile($centralDefaultsFile);
+	#push(@defFileLines, &readFile($defaultsFile)) if (-e $defaultsFile);
+	&readDefaultsFile(@defFileLines);
+
+    } else {
+	&writeDefaultsFile($defaultsFile) unless (-e $defaultsFile);
+	$updateDefaultsFile = &readDefaultsFile(&readFile($defaultsFile));
+	if ($updateDefaultsFile) {
+	    print "\n... updating defaults file to the current version ...\n";
+	    &writeDefaultsFile($defaultsFile);
+	}
+    }
+    #return
+}
+
+
+sub processARGV {
+#get input from ARGV
+    my(@args) = @_;
+    
+    # initialize
+    $ffTypeSelectionInput = '';
+    $aSelectionInput = '';
+    $cSelectionInput = '';
+    $rSelectionInput = '';
+    
+    $i=0; 
+    while (defined $args[$i]){
+	
+	if ($args[$i] =~ /^-/ || $args[$i] =~ /^\+/) {
+	    @opts = split("",$args[$i]);
+	    shift(@opts); 
+	 
+	    if ($args[$i] =~ /^\+/) {   
+		$add = 1;
+ 	    } else {
+		$add = 0; 
+	    }
+	    
+	    foreach $entry (@opts) { 
+		if ($entry eq "a") {        # -a   (a)toms to select
+		    $option{"a"} = 1;       
+		    $aSelectionInput = "$aSelectionInput ".$args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "A") {   # -A   (A)tom selection file
+		    $option{"A"} = 1;       
+		    $aSelectionFile = $args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "c") {   # -c   (c)hains to select
+		    $option{"c"} = 1; 
+		    $cSelectionInput = "$cSelectionInput ".$args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "r") {   # -r   (r)esidues to select
+		    $option{"r"} = 1;       
+		    $rSelectionInput = "$rSelectionInput ".$args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "R") {   # -R   (R)esidue selection file
+		    $option{"R"} = 1;       
+		    $rSelectionFile = $args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "m") {   # -m   select (m)ovable atoms
+		    $option{"m"} = 1; 
+		    $selectMovable = 1;
+		} elsif ($entry eq "H") {   # -H   select (H)ETATM atoms
+		    $option{"H"} = 1; 
+		    $selectHETATM = 1;
+		} elsif ($entry eq "F") {   # -F   select by (F)orcefield typing
+		    $option{"F"} = 1;       
+		    $ffTypeSelectionInput = "$ffTypeSelectionInput ".$args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "s") {   # -s   select only (s)idechain atoms 
+		    $option{"s"} = 1;       #      from previous selection
+		    $selectSC = 1;
+		} elsif ($entry eq "b") {   # -b   select only (b)ackbone atoms
+		    $option{"b"} = 1;       #      from previous selection
+		    $selectBB = 1;
+		} elsif ($entry eq "d") {   # -d   (d)istance (Angstroms) for selecting residues 
+		    $option{"d"} = 1;       #      in a radius from previous selection
+		    $selectionRadius = $args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "D") {   # -D   (D)istance (Angstroms) for selecting atoms 
+		    $option{"D"} = 1;       #      in a radius from previous selection
+		    $selectionRadius = $args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "i") {   
+		    if ($add) {             # +i   print (i)nformation on the current selection 
+			$option{"i"} = "info";
+			$selectionInfo = 1;
+		    } else {                # -i   (i)nvert selection from previous selection
+			$option{"i"} = "invert";
+			$invertSeln = 1; 
+		    }
+		} elsif ($entry eq "L") {   # -L   select al(L) before saving file 
+		    $option{"L"} = "finalSelectAll";
+		    $finalSelectAll = 1; 
+		} elsif ($entry eq "n") {   # -n   re(n)umber atom numbers
+		    $option{"n"} = "renumberAtoms";
+		    $renumberAtoms = 1; 
+		} elsif ($entry eq "N") {   # -N   re(N)umber residue numbers
+		    $option{"N"} = "renumberResidues";
+		    $renumberResidues = 1; 
+		} elsif ($entry eq "V") {   # -V   set mo(V)able records on/off 
+		    $option{"V"} = 1;       #(+V   modifies previously set movable records)
+		    $switchMovable = $args[$i+1]; 
+		    $switchMovable_add = 1 if ($add); 
+		    $i++; 
+		} elsif ($entry eq "E") {   # -E   input MPSim (E)nergy (.fin.ener) file 
+		    $option{"E"} = 'byResidue';#   and calculate/print energies by residue   
+		    $listEnergyByResidue = 1;
+		    unless ($enerFile) { 
+			$enerFile = $args[$i+1]; 
+			$i++;
+		    } 
+		} elsif ($entry eq "e") {   # -e   input MPSim (e)nergy (.fin.ener) file 
+		    $option{"e"} = 'byAtom';#      and tabulate/print energies by atom  
+		    $listEnergyByAtom = 1;
+		    unless ($enerFile) { 
+			$enerFile = $args[$i+1]; 
+			$i++;
+		    } 
+		} elsif ($entry eq "I") {   # -I   calculate nonbond (I)nteraction energies 
+		    $option{"I"} = 1;       #      between two sets of atoms given a ff.par file 
+		    $interactionAnalysis = 1;#     and present results in a matrix in terms of 
+		    @IA_argSubList = ();    #      atoms or residues
+                                            #
+		    while (&nextOptionArgument($i,@args)) {
+			push(@IA_argSubList,$args[$i+1]);
+			$i++;
+		    } 
+		} elsif ($entry eq "l") {   # -l   print out the (l)ist of atom numbers of 
+		    $option{"l"} = 1;       #      current selection to a file
+		    $listOutFile = $args[$i+1]; 
+		    $i++; 
+		} elsif ($entry eq "o") {   # -o   save selected atoms (o)ut to a BGF file  
+		    $option{"o"} = 1;
+		    if (&nextOptionArgument($i,@args)) { 
+			$bgfOutFile = $args[$i+1];
+			$i++; 
+		    }
+		} elsif ($entry eq "p") {   # -p   save selected atoms to a (p)DB file  
+		    $option{"p"} = 1;
+		    $pdbOutFile = $args[$i+1];
+		    $i++; 
+		} elsif ($entry eq "x") {   # -x   e(x)tra output for debugging 
+		    $option{"x"} = 1;
+		    if (&nextOptionArgument($i,@args)) { 
+			$debug = $args[$i+1]; 
+			$i++;			
+		    }
+		} elsif ($entry eq "h") {   # -h   print (h)elp message 
+		    $option{"h"} = 1; 
+		    $help = 1;
+		} else {                    # error 
+		    die "$0: ERROR: Unknown option \"-$entry\"! ";
+		} 
+	    }
+	} else {
+	    if (!defined $bgfFile) {
+		$bgfFile = $args[$i];
+	    #} elsif (!defined $bgfOutFile) {
+	    #	$bgfOutFile = $args[$i];
+	    } else {               # error 
+		die "$0: ERROR: Unknown argument \"$args[$i]\"! ";
+	    } 
+	} 
+	$i++; 
+    }    
+}
+
+
+sub prepareInput {
+    my ($line,$chain,$ID);
+
+    # set constants:
+    &setConstants();
+
+    # print help (-h)
+    &printHelp if ($help); # ... and exit program
+
+    # check for BGF file:
+    die "$0: ERROR: No BGF file name was entered!\n" unless ($bgfFile);   # was filename entered?
+    die "$0: ERROR: File \"$bgfFile\" not found!\n" unless (-e $bgfFile); # does it exist?
+    
+    # determine file type
+    if ($bgfFile =~ /\.([pb][dg][bf])$/) {
+	my $fileExtension = $1;
+	$pdbFile = $bgfFile if ($fileExtension =~ /pdb/i);
+    } elsif (! `grep BIOGRF $bgfFile`) {
+	$pdbFile = $bgfFile;
+	warn "$0: WARNING: Guessing that '$pdbFile' is in PDB format. Use a file extension to clarify the argument.!\n";
+    }
+
+    # check for PDB operations that are not allowed:
+    if ($pdbFile) {
+	# check for violations:
+	my $violation = 0;
+	my @forbiddenOpts = qw(F E e I);
+	foreach $forbiddenOpt (@forbiddenOpts) {
+	    if ($option{$forbiddenOpt}) {
+		warn "$0: WARNING: Cannot use option '-$forbiddenOpt' with a PDB file!\n";
+		$violation = 1;
+	    }
+	}
+	die "$0: ERROR: Selected option(s) cannot be used with PDB files!\n" if ($violation);
+    }
+
+    # if needed, set default output BGF file
+    if ($option{"o"} && !defined $bgfOutFile) {
+    	$bgfOutFile = $bgfFile;
+    	$bgfOutFile =~ s/bgf$/out.bgf/;
+    }
+    
+    # if entered PDB and asking for BGF, warn and write a PDB file:
+    if ($pdbFile) {
+	if ($option{"o"}) {
+	    warn "$0: WARNING: Cannot convert PDB file to BGF:  Will write PDB file!\n";
+	    $option{"p"} = 1;
+	    undef $option{"o"};
+	    $pdbOutFile = $bgfOutFile;
+	    undef $bgfOutFile;
+	    unless ($pdbOutFile =~ /.pdb$/) {
+		$pdbOutFile =~ s/.bgf$//;
+		$pdbOutFile .= ".pdb";
+	    }
+	}
+    }
+
+    if ($option{"x"}) {
+        $debug = .1 if (!defined $debug);
+	$def_add_remark = 0;
+	$spy = 0;
+    } else {
+        $debug = 0;
+    }
+
+    unless ($option{a} || $option{A} || $option{c} || $option{r} || $option{R}) {
+	$selectAll = 1;
+    }
+ 
+    if ($option{"I"}) {
+	($IA_1st_selection, $IA_2nd_selection, $IA_output_format, $ff_parameter_file) = @IA_argSubList;
+	# set defaults for interaction analysis:
+	$IA_1st_selection  = $def_IA_seln1  unless (defined $IA_1st_selection);
+	$IA_2nd_selection  = $def_IA_seln2  unless (defined $IA_2nd_selection);
+	$IA_output_format  = $def_IA_format unless (defined $IA_output_format);
+	$ff_parameter_file = $def_ff_parameter_file
+	                                    unless (defined $ff_parameter_file);
+    }
+
+
+
+    @chain_selector  = (); 
+    @res_selector    = ();
+    @atom_selector   = ();
+    
+    if ($cSelectionInput) {  #-c
+	$cSelectionInput =~ s/_//g;
+	@chain_selector  = &string2array($cSelectionInput);
+    }
+    if ($rSelectionInput) {  #-r
+	$rSelectionInput =~ s/_//g;
+	@res_selector    = &string2array($rSelectionInput);
+	@res_selector    = &expandResRanges(@res_selector) if ($rSelectionInput =~ /\.\.\./);
+    }
+    if ($aSelectionInput) {  #-a
+	@atom_selector   = &string2array($aSelectionInput);
+	@atom_selector   = &expandAtomRanges(@atom_selector) if ($aSelectionInput =~ /\.\.\./);
+    }
+
+
+    @ffType_selector = (); 
+    @ffType_selector = &string2array($ffTypeSelectionInput) if ($ffTypeSelectionInput);  #-F
+
+    push(@atom_selector,&readFile($aSelectionFile,1)) if ($aSelectionFile); #-A
+
+    if ($rSelectionFile) { #-R
+	foreach $line (&readFile($rSelectionFile,1)) {
+	    if ($line =~ /^[A-Za-z]$/) {
+		$chain = $line;
+	    } elsif ($line =~ /^_([A-Za-z0-9])$/) {  
+		$chain = $1;
+	    } elsif ($line =~ /^[0-9]+$/) {
+		$ID = $line.$chain;
+		push(@res_selector, $ID); 
+	    } else {
+		die "$0: ERROR \@prepareInput: $line is not a residue number or chain ID\n";
+	    }
+	}
+    }
+
+    # replace all "." (dots) with " " (spaces):    
+    @chain_selector  =  &replaceDotsWithSpaces(@chain_selector);
+    @res_selector    =  &replaceDotsWithSpaces(@res_selector);
+    @ffType_selector =  &replaceDotsWithSpaces(@ffType_selector);
+
+
+    ### testing selection lists:
+    #print "> res_selector:\n>";
+    #foreach $number (@res_selector) {
+    #   print " '$number'";
+    #}
+    #print "\n";
+    ### end testing
+
+
+    # return
+}
+
+
+
+
+sub readBGF {
+# reads in all the information from a bgf file 
+    my ($filename) = @_;
+    my ($line);
+
+    open(FILE,"$filename") || die "Can't open $filename: $!\n";
+
+    @aAtomNo =  (0); # initialize all arrays to a single element array
+    @atomName= (""); #  so that the index of the 1st atom is "1"
+    @aResName= ("");
+    @aChain  = ("");
+    @aResNo  =  (0);
+    @xCoord  =  (0);
+    @yCoord  =  (0);
+    @zCoord  =  (0);
+    @ffType  = ("");
+    @noBonds =  (0);
+    @lonePair=  (0);
+    @atomChrg=  (0);
+    @aFixed  =  (0);
+    @dummy2  =  (0);
+    @dummy3  =  (0); # stores extra fields present in BGF version 400
+
+    @atomsWithSupplementedBGFrecords = ();
+
+    print "\n... loading bgf file:  $filename \n";
+    print "\n";
+
+    $k = 0;
+    while($line = <FILE>) {              # reading bgf file line by line
+	$k++;
+
+	if ($line =~ /^BIOGRF/) {	    
+ 	    print ' ',$line;  
+	    
+	    if ($line =~ /^BIOGRF\s+(\d+)\s*$/) { 
+		$BGFversion = $1;        # read BGF version
+		
+		unless (grep {/$BGFversion/} @supportedBGFversions) {
+		    print "WARNING: Unsupported BGF version: '$BGFversion'\n";
+		    $versionWarning = $1; # if the current version is not in the list
+		                          #  of supported versions give another warning 
+		}                         #  later when the file is saved
+	    }
+	    $FORMAT{"BGF"} = $line;
+
+	} elsif ($line =~ /^DESCRP/) { 
+	    print ' ',$line;  
+	    $DESCRP = $line;             # $DESCRP is the DESCRP line
+
+	} elsif ($line =~ /^REMARK/) { 
+	    print ' ',$line;  
+	    push( @REMARK,  $line);      # @REMARK saves all the REMARK entries
+	                                 #  to be written out if selection is later saved
+
+	} elsif ($line =~ /^FORCEFIELD/) {  
+	    $FORCEFIELD = $line;         # $FORCEFIELD is just the FORCEFIELD line...
+
+	} elsif ($line =~ /^FORMAT/) {   # All the "FORMAT" records are saved in the 
+	    if ($line =~ / ATOM/) {      # %FORMAT hash
+		$FORMAT{"ATOM"} = $line;
+	    } elsif ($line =~ / CONECT/) {
+		$FORMAT{"CONECT"} = $line;
+	    } elsif ($line =~ / ORDER/) {
+		$FORMAT{"ORDER"} = $line;
+	    } else {
+		print "WARNING: Encountered format record for unsupported field: \"$line\"\n";  
+	    }
+
+	} elsif ($line =~ /^ATOM/ || $line =~ /^HETATM/) {
+	    $line =~ s/\s+$//;           # get rid of all trailing spaces
+	    $lineLength = length($line);
+
+	    $atom = substr($line,7,5);   # All atom info (including the original atom 
+	    $atom =~ s/\s+//g;           # no.s) is indexed by the internal atom numbers 
+	    push( @aAtomNo,  $atom               );
+	    push( @atomName, substr($line,13,5)  );
+	    push( @aResName, substr($line,19,3)  );
+	    push( @aChain,   substr($line,23,1)  );
+	    push( @aResNo,   substr($line,25,5)  );
+	    push( @xCoord,   substr($line,30,10) );
+	    push( @yCoord,   substr($line,40,10) );
+	    push( @zCoord,   substr($line,50,10) );
+	    push( @ffType,   substr($line,61,5)  );
+	    push( @noBonds,  substr($line,66,3)  );
+	    push( @lonePair, substr($line,69,2)  );
+	    push( @atomChrg, substr($line,72,8)  );
+	    push( @aFixed,   substr($line,80,2)  ) if ($lineLength >= 82);
+	    push( @dummy2,   substr($line,82,4)  ) if ($lineLength >= 86);
+	    push( @dummy3,   substr($line,86)    ) if ($lineLength >  86);
+
+
+	    $atomn = $#aAtomNo;
+	    if ($line =~ /^HETATM/) {    # This is to remember which atoms records have
+		$aHETATM{$atomn} = 1;    # "HETATM" tags and which don't
+	    }
+	                                 # This hash converts actual AtomNo to the internal
+	    $AtomNo_a{$atom} = $atomn;   # atom numbers (especially useful when storing and,
+	                                 # after renumbering, converting CONECT/ORDER fields)
+
+	    &fixMissingFieldsInBGF($atomn);  # check if last two columns (aFixed and dummy2) 
+	                                     #  are there. If not set them to defaults (0 and 0)
+
+#FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+# the f10.5 at the end is not used here !!!
+
+	} elsif ($line =~ /^CONECT/) {   # CONECT and ORDER records are stored in their 
+	    chomp($line);                # respective hashes as whole lines 
+	    $atom = substr($line,7,5);
+	    $atom =~ s/\s+//g; 
+	    $aCONECT{$AtomNo_a{$atom}} = $line; 
+#FORMAT CONECT (a6,14i6)
+	    
+	} elsif ($line =~ /^ORDER/) {
+	    chomp($line);
+	    $atom = substr($line,7,5);
+	    $atom =~ s/\s+//g;
+	    $aORDER{$AtomNo_a{$atom}} = $line;
+#FORMAT ORDER (a6,i6,13f6.3)
+# connect format information is used also for order format
+# order format ignored
+
+	} elsif ($line =~ /^END/) {      # ... read till the end ...
+	    print "WARNING: BGF records were supplemented for",(1+$#atomsWithSupplementedBGFrecords),"atoms\n" if (@atomsWithSupplementedBGFrecords);
+	    print "WARNING: BGF records were supplemented for the following atoms: @atomsWithSupplementedBGFrecords\n" if (@atomsWithSupplementedBGFrecords && $debug >= 1);
+	    print "WARNING: BGF version not reported\n" if (! $FORMAT{"BGF"} );
+	    print "WARNING: Forcefield type not reported\n" if (! $FORCEFIELD =~ /^FORCEFIELD/);
+	    print "WARNING: FORMAT ATOM line missing\n" if (! $FORMAT{"ATOM"} );
+	    print "WARNING: FORMAT CONECT line missing\n" if (! $FORMAT{"CONECT"} );
+	    print "WARNING: FORMAT ORDER line missing\n" if (! $FORMAT{"ORDER"} );
+	    
+	    print "\n... read $k lines ...\n";
+
+	} else {
+	    print "WARNING: Encountered unsupported entry: \"$line\"\n";  
+	}		
+    }
+    
+    $natoms = $#aAtomNo;                 # Total number of atoms (also the index number
+                                         # of the last atom) stored in $natoms
+
+    $aTER{0} = 0;                        # BGF atom entries don't have a 'TER' entry unlike 
+                                         # the PDB atom entries, hence, this hash is empty
+
+    #####
+    #print "\nCONECT RECORDS: \n";
+    #foreach $key (sort keys %aCONECT) {
+    #   print "C>", $key," => ",$aCONECT{$key},"\n";
+    #}
+    #####
+
+
+    print "\n... setting up residue arrays: \n";
+    &setupResArrays;                     # I think this is the subroutine that makes 
+                                         # all the difference
+    $formatS = "%-18s = %6d \n";
+    print  "\n";
+    printf $formatS,"number of chains",$nchains;
+    printf $formatS,"number of residues",$nres;
+    printf $formatS,"number of atoms",$natoms;
+
+    print "\n... done ...\n";
+    # return
+}
+
+
+sub readPDB {
+# reads in all the information from a bgf file 
+    my ($filename) = @_;
+    my ($line, $lines, $nlines, $fixed, $altloc);
+
+    # initialize data structures:
+    @aAtomNo =  (0); # initialize all arrays to a single element array
+    @atomName= (""); #  so that the index of the 1st atom is "1"
+    #alternate location indicator (a1) ignored 
+    @aResName= ("");
+    @aChain  = ("");
+    @aResNo  =  (0);
+    #code insertion for res. (a1) ignored
+    @xCoord  =  (0);
+    @yCoord  =  (0);
+    @zCoord  =  (0);
+    @aOccpncy=  (0);
+    @aTempF  =  (0);
+    @dummyA  = (""); #includes one field: segment ID 
+    @aElement= ("");
+    @dummyB  = (""); #includes one field: charge
+
+    @aFixed  =  (0); #this field is not real, and is read from the occupancy column
+    @atomsWithSupplementedPDBrecords = ();
+    @ignoredAltLocCoordinates = ();
+
+    $nter = 0; # number of 'TER' records
+
+#pdb samples:
+# ....f....1....f....2....f....3....f....4....f....5....f....6
+#ATOM     26 HCA  PRO A  47      33.330   4.344  32.880
+#
+#....f....1....f....2....f....3....f....4....f....5....f....6....f....7....f....8
+#ATOM     37  OE2 GLU A   4      24.164 104.859 126.840  1.00 49.24           O
+#ATOM     40  CD2ALEU A   8      -2.684  -3.739  20.907  0.50  9.40           C 
+#
+    print "\n... loading pdb file:  $filename \n";                  
+
+    open(FILE,"$filename") || die "Can't open $filename: $!\n";   # unlike readBGF, read 
+    @lines = <FILE>;                                              #  the whole file at once
+    $nlines = @lines;
+    close(FILE);
+
+    print "\n";
+
+    # Parse through @lines:
+
+    # save HEADER line:
+    if ($lines[0] =~ /^HEADER/) {
+	print ' ',$lines[0];
+	$HEADER = shift(@lines);
+    }
+
+    # save all before REMARK lines:
+    @beforeREMARK = ();
+    while ($lines[0] !~ /^REMARK/ && 
+	   $lines[0] !~ /^ATOM/   && 
+	   $lines[0] !~ /^HETATM/ ){
+	print ' ',$lines[0];
+	push(@beforeREMARK, shift(@lines) );
+    }
+
+    # save all REMARK lines:
+    @REMARK = ();
+    while ($lines[0] =~ /^REMARK/) {
+	print ' ',$lines[0];
+	push(@REMARK, shift(@lines) );
+    }
+
+    # save all before ATOM/HETATM lines:
+    @beforeATOM   = ();
+    while ($lines[0] !~ /^ATOM/   && 
+	   $lines[0] !~ /^HETATM/ ){
+	push(@beforeATOM, shift(@lines) );
+    }
+        
+    # read data from ATOM/HETATM lines:
+    while ($lines[0] =~ /^ATOM/   || 
+	   $lines[0] =~ /^HETATM/ || 
+	   $lines[0] =~ /^TER /   ){
+	
+	$line = shift(@lines);
+	chomp($line);
+	$lineLength = length($line);
+	$line = sprintf "%-80s",$line if ($lineLength < 80); 
+
+	$atom   = substr($line,6,5); # All atom info (including the original atom no.s)
+	$atom   =~ s/\s+//g;         #   is indexed by the internal atom numbers 
+
+	$altloc = substr($line,16,1);
+	if ($altloc ne ' ' && $altloc ne $def_altloc_to_read) {
+	    warn "$0: WARNING: Ignoring alternate atom position ($altloc): $atom\n";
+	    push (@ignoredAltLocCoordinates, "$line\n");
+	    next;
+	}
+
+	push( @aAtomNo,  $atom               );
+	push( @atomName, substr($line,12,4)  );
+	push( @aResName, substr($line,17,3)  );
+	push( @aChain,   substr($line,21,1)  );
+	push( @aResNo,   substr($line,22,4)  );
+	push( @xCoord,   substr($line,30,8)  );
+	push( @yCoord,   substr($line,38,8)  );
+	push( @zCoord,   substr($line,46,8)  );
+	push( @aOccpncy, substr($line,54,6)  );
+	push( @aTempF,   substr($line,60,6)  );
+	push( @dummyA,   substr($line,66,10) );
+	push( @aElement, substr($line,76,2)  );
+	push( @dummyB,   substr($line,78,2)  );
+
+#bgf file
+#    #    1    #    2    #    3    #    4    #    5    #    6    #    7    #    8    #
+#ATOM       1  N    ILE X    1   34.13754   3.67111  27.68410 N_3    4 0 -0.80784 0   0	    
+#pdb file
+#....f....1....f....2....f....3....f....4....f....5....f....6....f....7....f....8
+#ATOM     37  OE2 GLU A   4      24.164 104.859 126.840  1.00 49.24           O
+
+	$fixed = substr($line,55,2); # same as the tens & ones 'digits' of occupancy	
+	$fixed = ' 0' if ($fixed !~ /^ [01]$/);
+	push(@aFixed, $fixed);       # movable records based on occupancy are kept here
+
+	$atomn = $#aAtomNo;
+	if ($line =~ /^HETATM/) {    # This is to remember which atoms records have
+	    $aHETATM{$atomn} = 1;    # "HETATM" tags and which don't
+
+	} elsif ($line =~ /^TER/) {  # and this is to keep track of TER records 
+	    $aTER{$atomn} = 1;
+	    $nter++;
+	}
+	                             # This hash converts actual AtomNo to the internal
+	$AtomNo_a{$atom} = $atomn;   # atom numbers (especially useful when storing and,
+	                             # after renumbering, converting CONECT/ORDER fields)
+
+	&fixMissingFieldsInPDB($atomn) if ($line !~ /^TER/); # check if occupancy and temp.
+                                     # factor columns are there. If not set them to 0 and 0
+    }
+
+    # read data from CONECT lines:
+    while ($lines[0] =~ /^CONECT/ ){ # CONECT records are stored in their 
+	$line = shift(@lines);       # respective hashes as whole lines 
+	$atom = substr($line,6,5);
+	$atom =~ s/\s+//g;
+	if ( $aCONECT{$AtomNo_a{$atom}} ) {                 # if there are 2 CONECT lines for
+	    $aCONECT{$AtomNo_a{$atom}} =~ s/\s+$//;         #  the same atom, append these extra
+	    $aCONECT{$AtomNo_a{$atom}} .= substr($line,11); #  atoms at the end of the 1st one
+	} else {                                            #
+	    $aCONECT{$AtomNo_a{$atom}} = $line;             # !!! Hence, HB/saltBridge CONECT !!!
+	}                                                   # !!!    info is not supported    !!!
+    }
+
+    # save all before END:
+    @beforeEND   = ();
+    while ($lines[0] !~ /^END/ && @lines){
+	if ($lines[0] =~ /^MASTER/) {  # ignore the MASTER line
+	    shift(@lines);
+	    next;
+	}
+	push(@beforeEND, shift(@lines));
+    }
+    
+    # done:
+    print "WARNING: PDB records were supplemented for ",(1+$#atomsWithSupplementedPDBrecords)," atoms\n" if (@atomsWithSupplementedPDBrecords);
+    print "WARNING: PDB records were supplemented for the following atoms: @atomsWithSupplementedPDBrecords\n" if (@atomsWithSupplementedPDBrecords && $debug >= 1);
+
+    if (@ignoredAltLocCoordinates) {
+	print "WARNING: Only the alternate atom locations '$def_altloc_to_read' were read. The following ",(1+$#ignoredAltLocCoordinates)," lines were ignored:\n";
+	print $_ for (@ignoredAltLocCoordinates);
+    }
+
+    print "\n... read $nlines lines ...\n";    
+    
+    $natoms = $#aAtomNo;                 # Total number of atoms (also the index number
+                                         # of the last atom) stored in $natoms
+
+    print "\n... setting up residue arrays: \n";
+    &setupResArrays;                     # I think this is the subroutine that makes 
+                                         # all the difference
+    my $formatS = "%-18s = %6d \n";
+    my $formatR = "%-18s = %6d (%d ter records)\n";
+    print  "\n";
+    printf $formatS,"number of chains",$nchains;
+    printf $formatS,"number of residues",$nres;
+    printf $formatR,"number of atoms",$natoms,$nter;
+
+    print "\n... done ...\n";
+    # return
+}
+
+
+sub setupResArrays{  
+# Sets the starting and ending numbers of each residue and chain in terms 
+#   of the internal atom no.s
+# Creates arrays/hashes to store this information
+
+    my($atom,$res,$chain,$resNo,$atomNo,$chainNo,$curaChain,$curaResNo,$key);
+
+    $nres = 0;
+    $nchains = 0;
+
+    @rStopAtom  =  (0); # initialize all arrays to a single element array
+    @rStartAtom =  (0); #  so that the index of the "1st" element is "1"
+    @rResNo     =  (0);
+    @rChain     = ("");
+
+    @cChainName = ("");
+    @cStopRes   =  (0);
+    @cStartRes  =  (0);
+
+
+    $curaChain = "";    # Use these vars to keep track of current 
+    $curaResNo = 0;     #  residue and chain
+
+    $resNo = 0;
+    $chainNo = 0;
+
+    foreach $atomn (1 ... $natoms) {
+	
+	$res      = $aResNo[$atomn];     # Residue no. for current atom
+	$resname  = $aResName[$atomn];   # Residue name for current atom
+	$chain    = $aChain[$atomn];     # Chain descriptor for the current atom
+	
+	if ($curaResNo != $res || $curaChain ne $chain) {  # If a new residue starts ... 
+	    $curaResNo = $res;	    
+	    $resNo++;
+	    $rStopAtom[$resNo-1] = $atomn-1 ;   # stop  atom for old residue
+	    $rStartAtom[$resNo]  = $atomn ;     # start atom for new residue
+	    $rResNo[$resNo]      = $res ;       # translates intr. res.no. => act. Residue No 
+	    $rResName[$resNo]    = $resname ;   # translates intr. res.no. => Residue Name 
+	    $rChain[$resNo]      = $chain ;     # translates intr. res.no. => act. Chain Name 
+
+	    $ID = &resID($resNo);
+	    $ResID_r{$ID}        = $resNo;      # translates act. Residue ID => intr. res.no. 
+	    
+	    if ($curaChain ne $chain) {  # If a new chain starts ...
+		$curaChain = $chain;
+		
+		my $segmentNo = 0;
+		foreach $key (1...$chainNo) {     # need to check whether we've seen this chain before
+		    $segmentNo++ if ($cChainName[$key] eq $curaChain);
+		}
+		$nchains++ unless($segmentNo);    # count the number new chains
+
+		$chainNo++;
+		$cChainName[$chainNo] = $chain;   # translates intr. chain no. => act. Chain Name
+		$cStopRes[$chainNo-1] = $resNo-1; # stop  residue for old chain
+		$cStartRes[$chainNo]  = $resNo;   # start residue for new chain
+
+		$ChainName_c{$chain.$segmentNo}  
+		                      = $chainNo; # translates act. Chain Name => intr. chain no. 
+	    }                                             	    
+	}
+	$a_resn[$atomn] = $resNo; # Residue no. for current atom
+    }
+
+
+    push(@rStopAtom, $natoms);    # Add stop info for the last residue and chain 
+    push(@cStopRes,$resNo);       #
+    
+    $nres = $resNo;               # nres   = total number of residues
+    #$nchains;$chainNo;           # nchain = total number of chains, whereas $chainNo = total segments
+
+    #####
+    #print "Chains";
+    #foreach $key (sort keys %ChainName_c){
+    #	print ":$key=>$ChainName_c{$key}";
+    #}
+    #print "\n";
+    #####
+
+    if ($debug >= 3) {                    # prints a table of start/stop info for each residue 
+	print "\nresidue arrays:\n";
+	$formatT = " %8s | %8s %8s %8s %8s \n";
+	$formatTT = " %8d | %8d %8d %8d %8s \n";
+	printf $formatT,"res","rStrtAtm","rStopAtm","rResNo","rChain";
+	printf $formatT,"--------","--------","--------","--------","--------";
+	foreach $res (1 ... $nres) {
+	    printf $formatTT,$res,$rStartAtom[$res],$rStopAtom[$res],$rResNo[$res],$rChain[$res];
+	}
+	print "\nchain arrays:\n";  # ... and for each chain 
+	$formatT = " %8s | %8s %8s %8s \n";
+	$formatTT = " %8d | %8d %8d %8s \n";
+	printf $formatT,"chain","cStrtRes","cStopRes","cName";
+	printf $formatT,"--------","--------","--------","--------";
+	foreach $chain (1 ... $nchains) {
+	    printf $formatTT,$chain,$cStartRes[$chain],$cStopRes[$chain],$cChainName[$chain];
+	}
+    }
+    # return
+}
+
+
+
+##################################
+### SUBROUTINES: Set Selection ###
+##################################
+
+sub selectAtoms {
+    my($atomn,$startAtom,$stopAtom,$chainn,$ID,$segment);
+
+#    $i = 0;
+
+    foreach $atomn (0 ... $natoms) { # initialize selection
+	$selected[$atomn] = 0;	     #  (1st atom is indexed at $selected[1], not [0])
+    }
+
+    if ( $#chain_selector >= 0 ) {   # select chains:
+	foreach $chain (@chain_selector) {
+	    die "$0: ERROR: Selected chain \"$chain\" is not found in $bgfFile!\n" unless($ChainName_c{$chain.'0'});
+	    foreach $segment (0...999) {
+		$startAtom = $rStartAtom[$cStartRes[$ChainName_c{$chain.$segment}]]; # set ranges
+		$stopAtom  =  $rStopAtom[ $cStopRes[$ChainName_c{$chain.$segment}]];
+		foreach $atomn ($startAtom ... $stopAtom) {                          # select all within range
+		    $selected[$atomn] = 1;
+#		    $i++;
+		}
+		last unless ($ChainName_c{ $chain.( $segment+1 ) });
+	    }
+	}
+    } 
+
+    if ( $#res_selector >= 0 ) {     # select residues:
+	foreach $ID (@res_selector) {
+	    die "$0: ERROR: Selected residue \"$ID\" is not found in $bgfFile!\n" unless($ResID_r{$ID});
+	    $startAtom = $rStartAtom[$ResID_r{$ID}];     # set ranges
+	    $stopAtom  =  $rStopAtom[$ResID_r{$ID}];
+	    foreach $atomn ($startAtom ... $stopAtom) {  # select all within range
+		$selected[$atomn] = 1;
+#		$i++;
+	    }
+	}
+    }
+
+    if ( $#atom_selector >= 0 ) {    # select atoms:
+	foreach $atom (@atom_selector) {
+	    die "$0: ERROR: Selected atom \"$atom\" is not found in $bgfFile!\n" unless($AtomNo_a{$atom});
+	    $selected[$AtomNo_a{$atom}] = 1;
+#	    $i++;
+	}
+    } 
+
+#    $nselected = $i;
+    $nselected = &countSelected(@selected);
+    print "\n... $nselected atoms selected ...\n";
+
+    # return
+}
+
+
+sub selectAll {
+    my($atomn);
+    $selected[0] = 0;
+    foreach $atomn (1 ... $natoms) {
+	$selected[$atomn] = 1;	
+    }
+    $nselected = $natoms;
+    print "\n... all $natoms atoms selected ...\n";
+    @selectionList = (1 ... $natoms);
+
+    # return
+}
+
+
+#####################################
+### SUBROUTINES: Modify Selection ###
+#####################################
+
+sub selectWithinRadius { 
+    my($i,$j,$k,$distance,$x,$y,$z,$atomn,$satomn,$resn);
+    my($selectedAtomsInRes,$atomWithinRadius,$residueTooFarAway,@residuesCloseBy,@additional_selection);
+    my($selectAtoms,$selectResidues);
+
+    my $range = $selectionRadius+10;
+    my(@box) = &defineBoxAroundSelection($range);
+    my $outerLimit = $range + shift(@box);
+ 
+    if ($option{"D"}) {
+	print "\n... selecting atoms within $selectionRadius A radius of the previous selection: \n";
+	$selectAtoms = 1;
+    } else {
+	print "\n... selecting residues within $selectionRadius A radius of the previous selection: ";
+	print "\n" if ($debug >=1); 
+	$selectResidues = 1;
+    }
+
+### warn "$option{d}#$option{D}###$selectAtoms#$selectResidues### what # 810\n"; ###TEST###
+
+    @residues_closeby = ();
+    foreach $resn (1 ... $nres) {
+	foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+	    next if ($aTER{$atomn});
+	    if (! &outsideTheBox(@box,$atomn)) { #&& ! $selected[$atomn]) {
+		push(@residues_closeby,$resn);
+		last;
+	    }
+	}
+    }
+    
+    if ($debug >= 1) {                                                            #X
+	print "residues closeby (",$#residues_closeby+1,"):@residues_closeby \n"; #X
+	print "  range      = $range\n";                                          #X
+	print "  outerLimit = $outerLimit\n";                                     #X   
+    }                                                                             #X
+
+    $i = 0;  # selected atom count
+    $j = 0;  # selected residue count
+    $k = 0;  # previously selected atom count
+    @additional_selection = ();
+
+
+    foreach $resn (@residues_closeby) {               # foreach $resn (1 ... $nres) {
+	$selectedAtomsInRes = 0;
+
+	foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+	    next if ($aTER{$atomn});
+
+	    if (! $selected[$atomn]) {
+		$x = $xCoord[$atomn];
+		$y = $yCoord[$atomn];
+		$z = $zCoord[$atomn];
+		$atomWithinRadius = 0;
+		$residueTooFarAway = 0;
+		
+		foreach $satomn (@selectionList) {
+		    next if ($aTER{$satomn});
+		    $distance = &r3D($x,$y,$z,$xCoord[$satomn],$yCoord[$satomn],$zCoord[$satomn]);
+		    
+		    printf "%5d(%3d) - %5d(%4s) : %6.2f ",                 #X
+		       $atomn,$aResNo[$atomn],$satomn,$atomName[$satomn],  #X
+		       $distance if ($debug >= 2);                         #X
+		    
+		    if ($distance <= $selectionRadius) {     # $atomn is within radius and is selected. 
+			print "   Y\n" if ($debug >= 2);  #X
+			$atomWithinRadius = $atomn;
+			warn "$atomn\n" if ($debug >= 1); #X
+			last;
+		    } elsif ($distance >= $outerLimit) {     # Keeping outerLimit cutoff small runs  
+		    	print " n\n" if ($debug >= 2);    #X #  faster, but results in missing residues 
+		    	$residueTooFarAway = 1;              #  that are within selectionRadius, but also
+		    	last;                                #  have atoms near the edge of the box
+		    } elsif ($debug >= 2) {               #X
+			print "  ?\n";                    #X
+		    }#fi
+		} #@satomn    
+
+
+		# if atomn is within radius of the selection:
+		if ($atomWithinRadius) {  
+###		    warn "atomWithinRadius brings us here! $atomn ### 862\n"; ###TEST###
+
+		    $selectedAtomsInRes++;  # this counter is only used for $j, and its value is correct for -D only
+
+		    if ($selectAtoms) {
+			# record atomn and advance to next atomn
+###			warn "## AS ## @additional_selection ### 864\n"; ###TEST###
+			push(@additional_selection,$atomn); 
+		    } elsif ($selectResidues) {
+			# loop out to advance to next residue
+###			warn "## AS ## @additional_selection ### + $resn ### 864\n"; ###TEST###
+			print ' '.&resID($resn);
+			last; 
+		    }
+
+		} elsif ($residueTooFarAway) {
+		    last;  # current resn is too far away from the selection, check next residue
+		}#fi 
+		
+	    }#fi
+
+	} #@atomn 
+	
+	
+	if ($selectResidues && $atomWithinRadius) {
+	    foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+		push(@additional_selection,$atomn);
+	    }
+	    print "residue within radius  = $resn #\n" if ($debug >= 1);#X
+	} elsif ($debug >= 1) {	                                        #X
+	    if ($residueTooFarAway) {                                   #X # see above note
+	    	print "residue too far away   = $resn\n";               #X #
+	    } else {                                                    #X
+		print "residue outside radius = $resn\n";               #X
+	    }                                                           #X
+	}
+
+###	warn "## AS ## @additional_selection ### 888\n" if ($selectResidues && $atomWithinRadius); ###TEST###
+
+	$j++ if ($selectedAtomsInRes);  # count the no.of residues that atoms are selected in
+
+    } #@resn
+    print "\n" if ($selectResidues);
+
+
+    print "additional selection (",$#additional_selection+1,"):@additional_selection \n" if ($debug >= 1); #X
+### warn "additional selection (",$#additional_selection+1,"):@additional_selection \n" if ($debug >= 1); ###TEST###
+
+    # select atoms in the additional selection:
+    foreach $atomn (@additional_selection) { $selected[$atomn] = 1; }
+
+    $i = @additional_selection;
+    $nselected = &countSelected(@selected);
+
+    print "... $i atoms (in $j residues) selected within the $selectionRadius A radius (total: $nselected atoms) ...\n";
+    #updateSelectionList:
+    @selectionList = (@selectionList,@additional_selection);
+
+    #return
+}
+
+
+
+sub selectMovableAtoms {
+    my($atomn,$i,$j,$fixed);
+    
+    print "\n... selecting movable atoms from previous selection: \n";
+
+    $i = 0; # counts no. still in selection
+    $j = 0; # counts no. deselected
+
+    foreach $atomn (@selectionList) {
+	$fixed = substr($aFixed[$atomn],1,1);
+	if ($fixed) {
+	    $selected[$atomn] = 0;
+	    $j++;
+	}
+    }
+    $i = $nselected - $j;
+
+    &updateSelectionList(@selected);
+    $nselected = $i;
+    print "... $i atoms in selection ($j deselected) ...\n"; 
+
+    #return
+}
+
+
+sub selectHETATMatoms {
+    my($atomn,$i,$j,$fixed);
+    
+    print "\n... selecting HETATM records from the previous selection: \n";
+
+    $i = 0; # counts no. still in selection
+    $j = 0; # counts no. deselected
+
+    foreach $atomn (@selectionList) {
+	unless ($aHETATM{$atomn}) {
+	    $selected[$atomn] = 0;
+	    $j++;
+	}
+    }
+    $i = $nselected - $j;
+
+    &updateSelectionList(@selected);
+    $nselected = $i;
+    print "... $i atoms in selection ($j deselected) ...\n"; 
+
+    #return
+}
+
+
+sub selectAtomsByFFtypes {
+    my($atomn,$i,$j,$fft_entry,$match);
+
+    print "\n... selecting atoms by FF-types from previous selection: \"@ffType_selector\"\n";
+
+    $i = 0; # counts no. still in selection
+    $j = 0; # counts no. deselected
+
+    # select atoms based on their FF-typing:
+    foreach $atomn (@selectionList) {
+
+	$match = 0;
+	foreach $fft_entry (@ffType_selector) {
+	    if ($ffType[$atomn] =~ /^$fft_entry/) {
+		$match = 1;
+		last;		
+	    }
+	}
+
+	if ($match) {
+	    $i++;
+	} else {
+	    $selected[$atomn] = 0;
+	}
+    }
+
+    $j = $nselected - $i;
+
+    &updateSelectionList(@selected);
+    $nselected = $i;
+    print "... $i atoms in selection ($j deselected) ...\n";
+
+    #return
+}
+
+
+sub invertSelection {
+    my($atomn,$i);
+    
+    $i = 0;
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+	    $selected[$atomn] = 0;
+	} else {
+	    $selected[$atomn] = 1;
+	    $i++;
+	}
+    }
+    &updateSelectionList(@selected);
+    $nselected = $i;
+    print "\n... inverting selection: $i atoms selected ...\n";
+
+    #return
+}
+
+
+sub selectSCvsBB {
+    my($choice) = @_;
+    my($atomn,$i,$j,$sc,$mc,$atomName);
+    
+    print "\n... selecting $choice atoms from previous selection: \n";
+
+    if ($choice eq 'side-chain') {
+	$sc = 1; #yes
+	$mc = 0;
+    } elsif ($choice eq 'backbone') {
+	$mc = 1; #yes
+	$sc = 0;
+    }
+
+    $j = 0; # no. deselected
+
+    foreach $atomn (@selectionList) {
+	if ($selected[$atomn]) {
+	    $atomName = $atomName[$atomn];
+	    $atomName =~ s/\s+//g;
+
+	    #print "$atomn  $atomName \n"; 
+
+	    if ($mc && !&mainchain($atomName)) {
+		$selected[$atomn] = 0;
+		$j++;
+	    } elsif ($sc && &mainchain($atomName)) {
+		$selected[$atomn] = 0;
+		$j++;
+	    }
+	}
+    }
+
+    $i = $nselected - $j;  # calculate new $nselected
+    $nselected = $i;
+    print "... $i atoms in selection ($j atoms deselected) ...\n";
+    &updateSelectionList(@selected);
+}
+
+
+#####################################
+### SUBROUTINES: Act on Selection ###
+#####################################
+
+
+sub printSelectionInfo {
+    my($atomn,$atom,$resn,$chainn,$chain);
+    my($resID, $lastResID, $lastChn, $oldChain, $newChain, $curaa);
+
+    # initialize:
+    my($nsatoms, $nsres, $nschains) = (0,0,0);   # number of selected atoms/residues/chains
+    my @satoms = ();     # selected atoms
+    my @sres   = ();     # selected resIDs
+    my @schains= ();     # selected chainIDs
+    my($sMW, $sCharge) = (0,0,0);                # molecular weight, total charge of selection 
+    my($sAvgX, $sAvgY, $sAvgZ) = (0,0,0);        # average coordinates of the selection
+    my($sTotX, $sTotY, $sTotZ) = (0,0,0);        # total coordinates of the selection
+    my $nsMovable = 0;   # number of movable atoms
+
+    my @aaRes = sort keys %aas_3to1; # list of natural amino acids residues
+    my @hetRes= ();                  # hetatm residues
+
+    my %elemComp;        # elemental composition
+    my %resComp;         # amino acid composition
+    my %IDbyRes;         # resIDs that belong to a certain res. type
+    
+    for $curaa (@aaRes) {
+	$resComp{$curaa} = 0;
+	$IDbyRes{$curaa} = '';
+    }
+
+    # compile:
+    $lastResID = '';
+    $lastChn   = '';
+    $ignoreElements = 0;
+
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+
+	    unless ($aTER{$atomn}) {
+		$sTotX += $xCoord[$atomn];  # coordinates: X
+		$sTotY += $yCoord[$atomn];  #              Y
+		$sTotZ += $zCoord[$atomn];  #              Z
+	    }
+
+	    $atom  = $aAtomNo[$atomn];  # actual atom no
+	    $resn  = $a_resn[$atomn];   # intr.res.no.
+	    $resID = &resID($resn);     # actual residue ID
+	    $chain = $rChain[$resn];    # actual chain name
+
+	    push(@satoms , $atom );     # record current atom
+
+	    if ($resID ne $lastResID) {
+		push(@sres, $resID);    # record current resID
+		$resname = $rResName[$resn];
+		if (defined $resComp{$resname}) { # a.a. residues are already defined
+		    $resComp{$resname} += 1;
+		    $IDbyRes{$resname} .= sprintf "%5s",$resID; # " $resID"; 
+		} else { 
+		    push(@hetRes, $resname);      # add to list of non a.a. residues
+		    $resComp{$resname} = 1;
+		    $IDbyRes{$resname} = sprintf "%5s",$resID;  # $resID;     
+		}
+		$lastResID = $resID;
+
+		if ($chain ne $lastChn) {
+		    $lastChn = $chain;
+		    $newChain = 1;
+		    foreach $oldChain (@schains) {
+			if ($chain eq $oldChain) {
+			    $newChain = 0;
+			    last;
+			}
+		    }
+		    push(@schains, $chain) if ($newChain);
+		}
+	    }
+
+	    
+	    $nsMovable += 1 if ($aFixed[$atomn] eq ' 0');     # movable atoms
+
+	    unless ($pdbFile) { 
+		$sCharge += $atomChrg[$atomn];                    # charge
+		$element = &makePDBelementName($ffType[$atomn]);  # element
+	    } else {
+		$element = $aElement[$atomn];          # element
+		$element =~ s/\s+//g;                  #
+		$ignoreElements = 1 unless ($element); # (if no element info: don't look at it)
+	    }
+
+	    unless ($ignoreElements) {
+		if ($elemComp{$element}) {
+		    $elemComp{$element} += 1;
+		} else { 
+		    $elemComp{$element} = 1;
+		}
+	    }	    
+	}
+    }
+
+    $nsatoms = @satoms;
+    $nsres   = @sres;
+    $nschains= @schains;
+
+    $sAvgX = $sTotX / $nsatoms;
+    $sAvgY = $sTotY / $nsatoms;
+    $sAvgZ = $sTotZ / $nsatoms;
+    
+    # print out all the information:
+    print"\nSELECTION SUMMARY:\n";
+    printf " number of atoms      : %10d ", $nsatoms;
+    printf                             " (%d movable)",$nsMovable;
+    print                                           "\n";
+    printf " number of residues   : %10d\n", $nsres;
+    printf " number of chains     : %10d  (@schains)\n", $nschains;
+    printf " total charge         : %10.5f\n", $sCharge unless ($pdbFile);
+    printf " average coordinates  : (%8.3f, %8.3f, %8.3f)\n", $sAvgX, $sAvgY, $sAvgZ;
+    unless ($ignoreElements) {
+	print  " elemental composition:\n";
+	my $k=0;
+	for $key (sort keys %elemComp) {
+	    print "  " unless ($k % 8);
+	    $k++;
+	    my $tempkey = $key;                                            # makes 'AA' into 'Aa'
+	    substr($tempkey,-1) = lc($1) if ($tempkey =~ /^[A-Z]([A-Z])$/);# for pretty looks
+	    printf "%4s:%-5d", $tempkey, $elemComp{$key};
+	    print "\n" unless ($k % 8);
+	    $sMW += ($elemComp{$key} * $atomicWeight{$key}); # calculate molecular weight
+	}
+	print "\n" if ($k % 8);
+	printf " mol. weight (a.m.u.) : %10.3f\n", $sMW; 
+    }
+    print  " residue composition  :\n";
+    printf "  %4s:%5d (%s)\n", $_, $resComp{$_}, $IDbyRes{$_} for (@aaRes);
+    printf "  %4s:%5d (%s)\n", $_, $resComp{$_}, $IDbyRes{$_} for (sort @hetRes);
+
+    # return
+}
+
+
+
+sub toggleMovableRecs {
+    my($command) = @_;
+    my($atomn,$yes,$nope);
+
+    if ($command eq 'on') {
+	$yes  = ' 0'; # on 
+	$nope = ' 1';
+    } elsif ($command eq 'off') {
+	$yes  = ' 1'; # off
+	$nope = ' 0';
+    } # else {die "$0: ERROR \@toggleMovableRecs: No such command: $command" ;}
+
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+	    $aFixed[$atomn] = $yes;
+	} elsif (! $switchMovable_add) {
+	    $aFixed[$atomn] = $nope;   
+	}
+    }
+}
+
+
+sub renumberSelectedAtoms { 
+    my($atomn,$atom);
+    $i = 1;
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+	    $atom = $aAtomNo[$atomn];
+	    $new_AtomNo{$atom} = $i;   # translates act. Atom No => new act. Atom No
+	    $i++;
+	}
+    }
+}
+
+
+sub renumberSelectedResidues { 
+    my($atomn,$atom,$resn,$res,$chainn,$selectedResidue);
+
+    foreach $chainn (1 ... $nchains) {
+	$i = 1;
+	foreach $resn ($cStartRes[$chainn] ... $cStopRes[$chainn]) {	    
+
+	    $selectedResidue = 0;
+	    foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+		if ($selected[$atomn]) {
+		    $new_ResNo{$atomn} = $i.' ';   # translates int. atom no. => new act. Res. No
+		    $selectedResidue = 1;          #  (do not confuse this with $new_AtomNo that 
+		}                                  #   takes in actual atom no.s!)
+	    }	                                   # bug-fix (found by Eun Jung): See log for Dec 05 2002 
+	    
+	    
+	    $i++ if ($selectedResidue);        # if any one atom in a residue is selected, 
+	}                                      #  that residue number
+    }
+}
+
+
+
+
+
+
+###################################
+### SUBROUTINES: Save Selection ###
+###################################
+
+sub saveSelectionList { 
+    my($filename) = $_[0];
+    my($atomn,$atomnInBgf);
+
+    open(FILE,">$filename") || die "$0: Can't open $filename: $!\n";
+
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+	    
+	    if ($renumberAtoms) {
+		$atomnInBgf = $new_AtomNo{$aAtomNo[$atomn]};
+	    } else {
+		$atomnInBgf = $aAtomNo[$atomn];
+	    }
+	
+	    printf FILE "%5s\n", $atomnInBgf; 
+	}
+    }
+    close(FILE);
+}
+
+
+sub saveBGF {
+    my($filename) = $_[0];
+
+    open(FILE,">$filename") || die "$0: Can't open $filename: $!\n";
+
+# print BGF version:
+    if (!$#dummy3 && $BGFversion == 400) {        # this is a hack to set files with the 
+	$FORMAT{"BGF"}  =~ s/$BGFversion/332/;   #  BGF format 400 but w/o FSM types typed
+	print "WARNING: No FSM type information was read from the input BGF file.\n"; 
+	print "WARNING:   The output BGF version is changed from '400' to '332'.\n";
+
+    } elsif (defined $versionWarning) {
+	print "WARNING: The input BGF version, '$BGFversion', is not supported by this program.\n";
+	print "WARNING:   Please check the output and make sure it is written correctly.\n";
+
+	unless ($#dummy3) {
+	    print "WARNING: The output BGF version is set to '332'.\n";
+	    $FORMAT{"BGF"}  =~ s/$BGFversion/332/;
+	}
+    }    
+    print FILE $FORMAT{"BGF"};
+
+# print header:
+    if ($DESCRP) {
+	print FILE $DESCRP;
+    } else { 
+	print "WARNING: A DESCRP line was added to the output BGF file.\n";
+
+	my $prefix = $bgfFile;
+	$prefix =~ s/(\.v400)?\.bgf(\.v400)?$//;
+	print FILE "DESCRP ",substr($prefix,0,8), "\n";
+    }
+    print FILE @REMARK;
+
+# print additional remarks:
+    if ($def_add_remark != 0) {
+	$formatREMARK = "REMARK %s\n";
+	$addnlRemark = "Created by $curuser\@$curhost using \"$execCom\" in $curdir on $curdate";
+	@addnlRemark = &wrapString($addnlRemark,0);
+	foreach $line (@addnlRemark) {
+	    printf FILE $formatREMARK,$line;
+	}
+    }
+
+    print FILE $FORCEFIELD;
+    if ($FORMAT{"ATOM"}) {
+	print FILE $FORMAT{"ATOM"};
+    } else {
+	print FILE "FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)\n";
+	print "WARNING: The default FORMAT ATOM line was added for the missing line in the BGF file.\n";
+    }
+
+# print atom data here
+    print "... writing atom information \n";
+
+    $formatATOM = "%-6s %5d %5s %3s %1s %5s".("%10.5f" x 3)." %5s%3d%2d %8.5f%2d%4d"; #%10.5f\n";
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]){
+
+	    if ($aHETATM{$atomn}) {
+		$tag = "HETATM";
+	    } else { 
+		$tag = "ATOM";
+	    }
+	    
+	    if ($renumberAtoms) {
+		$atomnInBgf = $new_AtomNo{$aAtomNo[$atomn]};
+	    } else {
+		$atomnInBgf = $aAtomNo[$atomn];
+	    }
+
+	    if ($renumberResidues) {
+		$resnInBgf = $new_ResNo{$atomn};
+	    } else {
+		$resnInBgf = $aResNo[$atomn];
+	    }
+	    
+	    printf FILE $formatATOM
+		,$tag
+		,$atomnInBgf
+		,$atomName[$atomn]
+		,$aResName[$atomn]
+		,$aChain[$atomn]
+		,$resnInBgf
+		,$xCoord[$atomn]
+		,$yCoord[$atomn]
+		,$zCoord[$atomn]
+		,$ffType[$atomn]
+		,$noBonds[$atomn]
+		,$lonePair[$atomn]
+		,$atomChrg[$atomn]
+		,$aFixed[$atomn]
+		,$dummy2[$atomn];
+
+	    print  FILE                                 # any text that falls outside the fields 
+                $dummy3[$atomn]  if ($dummy3[$atomn]);  #  above is added to the current line here
+
+	    print  FILE "\n";                           # close line w/a newline
+	}
+    }
+    
+    if ($FORMAT{"CONECT"}) {
+	print FILE $FORMAT{"CONECT"};
+    } else {
+	print FILE "FORMAT CONECT (a6,14i6)\n";
+	print "WARNING: The default FORMAT CONECT line was added for the missing line in the BGF file.\n";
+    }
+    if ($FORMAT{"ORDER"}) {
+	print FILE $FORMAT{"ORDER"};
+    } else {
+	print FILE "FORMAT ORDER (a6,i6,13f6.3)\n";
+	print "WARNING: The default FORMAT ORDER line was added for the missing line in the BGF file.\n";
+    }
+
+# print connection and bond order data 
+
+    #$formatCONECT = "%-6s".("%6d" x 14)."\n";
+    #$formatORDER = "%-6s%6d".("%6.3f" x 13)."\n";
+
+    print "... writing bond order and connectivity information \n";
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+
+	    if ($line = $aCONECT{$atomn}) {
+		@atoms = split(/\s+/,$line);
+		@new_atoms = ($atoms[0]);
+		
+		if ($order_line = $aORDER{$atomn}) {
+		    @entries    = split(/\s+/,$order_line);
+		    @new_entries = ($entries[0]);
+		}
+		
+		if ($renumberAtoms) {      # add the atom of discussion to the new record
+		    push(@new_atoms  ,$new_AtomNo{$atoms[1]});
+		    push(@new_entries,$new_AtomNo{$atoms[1]}) if ($order_line);
+		} else {
+		    push(@new_atoms  ,$atoms[1]);
+		    push(@new_entries,$atoms[1]) if ($order_line);
+		}
+		
+		foreach $k (2 ... $#atoms) {
+		    $oldAtomNo = $atoms[$k];
+		    if ($selected[$AtomNo_a{$oldAtomNo}]) {   # if old atom is selected
+			if ($renumberAtoms) {                 #  add it to the new record 
+			    push(@new_atoms,$new_AtomNo{$oldAtomNo});
+			} else {
+			    push(@new_atoms,$oldAtomNo);
+			}
+			push(@new_entries,$entries[$k]) if ($order_line);
+		    }
+		}
+		$formatCONECT = "%-6s".("%6d" x $#new_atoms)."\n";
+		printf FILE $formatCONECT,@new_atoms;
+		printf FILE $formatCONECT,@new_entries if ($order_line);
+	    }
+	    
+	}
+    }
+
+    print FILE "END\n";
+    close(FILE);
+}
+
+
+sub savePDB {
+    my($filename) = $_[0];
+    my($tag,$occupancy,$atomnInPdb,$resnInPdb);
+
+    open(FILE,">$filename") || die "$0: Can't open $filename: $!\n";
+
+# print HEADER line:
+    if ($HEADER) {
+	print FILE $HEADER;
+    } else {
+	# construct & print header line:
+	my $pdbID      = '0PWB';   # don't know the pdbID, so let it be 0PWB
+	my $headerInfo = "HEADER $filename";  # I'll put the file name as the descriptor
+	my $headerLine = sprintf "%-60s  %4s\n", $headerInfo, $pdbID;
+	print FILE $headerLine; 
+    }
+
+# print all before REMARK lines: 
+    print FILE @beforeREMARK;# if (@beforeREMARK); 
+
+# print REMARK lines:
+    print FILE @REMARK;
+
+# print additional remarks:
+    if ($def_add_remark != 0) {
+	$formatREMARK = "REMARK %s\n";
+	$addnlRemark = "Created by $curuser\@$curhost using \"$execCom\" in $curdir on $curdate";
+	@addnlRemark = &wrapString($addnlRemark,0);
+	foreach $line (@addnlRemark) {
+	    printf FILE $formatREMARK,$line;
+	}
+    }
+
+# print all lines before ATOM lines:
+    print FILE @beforeATOM;
+
+# print atom data:
+    print "... writing atom information \n";
+
+    $formatATOM = "%-6s%5d %4s %3s %1s%4d    ".("%8.3f" x 3)."%6s%6s%10s%2s%2s";
+    $formatTER  = "%-6s%5d %4s %3s %1s%4d    ".(" " x 50);
+
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]){
+
+	    if ($aHETATM{$atomn}) {
+		$tag = "HETATM";
+	    } elsif ($aTER{$atomn}) { 
+		$tag = "TER";
+	    } else {
+		$tag = "ATOM";
+	    }
+	    
+	    if ($renumberAtoms) {
+		$atomnInPdb = $new_AtomNo{$aAtomNo[$atomn]};
+	    } else {
+		$atomnInPdb = $aAtomNo[$atomn];
+	    }
+
+	    if ($renumberResidues) {
+		$resnInPdb = $new_ResNo{$atomn};
+	    } else {
+		$resnInPdb = $aResNo[$atomn];
+	    }
+
+	    if ($switchMovable) {
+		if ($aFixed[$atomn] == ' 1') {
+		    $occupancy = sprintf "%6.2f",1;
+		} else {
+		    $occupancy = sprintf "%6.2f",0;
+		}
+	    } else {
+		$occupancy = $aOccpncy[$atomn];
+	    }
+	    
+	    # print line:
+	    if ($tag eq "TER") {
+		printf FILE $formatTER
+		    ,$tag
+		    ,$atomnInPdb
+		    ,$atomName[$atomn]
+		    ,$aResName[$atomn]
+		    ,$aChain[$atomn]
+		    ,$resnInPdb;
+	    } else { 
+		printf FILE $formatATOM
+		    ,$tag
+		    ,$atomnInPdb
+		    ,$atomName[$atomn]
+		    ,$aResName[$atomn]
+		    ,$aChain[$atomn]
+		    ,$resnInPdb
+		    ,$xCoord[$atomn]
+		    ,$yCoord[$atomn]
+		    ,$zCoord[$atomn]
+		    ,$occupancy
+		    ,$aTempF[$atomn]
+		    ,$dummyA[$atomn]
+		    ,$aElement[$atomn]
+		    ,$dummyB[$atomn];		
+	    }
+
+	    print  FILE "\n";                           # close line w/a newline
+	}
+    }
+
+# print connectivity data:
+    print "... writing connectivity information \n";
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+
+	    if ($line = $aCONECT{$atomn}) {
+		@atoms = &splitPdbConectLine($line);
+		
+		@new_atoms = ($atoms[0]);
+		
+		if ($renumberAtoms) {      # add the atom of discussion to the new record
+		    push(@new_atoms  ,$new_AtomNo{$atoms[1]});
+		} else {
+		    push(@new_atoms  ,$atoms[1]);
+		}
+		
+		foreach $k (2 ... $#atoms) {
+		    $oldAtomNo = $atoms[$k];
+		    if ($selected[$AtomNo_a{$oldAtomNo}]) {   # if old atom is selected
+			if ($renumberAtoms) {                 #  add it to the new record 
+			    push(@new_atoms,$new_AtomNo{$oldAtomNo});
+			} else {
+			    push(@new_atoms,$oldAtomNo);
+			}
+		    }
+		}
+
+		if ($#new_atoms <= 6) {                               # CONECT records can't
+		    $formatCONECT = "%-6s".("%5d" x $#new_atoms)."\n";#  have more than 4 
+		    printf FILE $formatCONECT,@new_atoms;             #  connected atoms in a
+		} else {                                              #  single line
+		    $formatCONECT = "%-6s".("%5d" x 5)."\n";          #
+		    printf FILE $formatCONECT,@new_atoms[0...5];      # (this allows up to 8)
+		    $formatCONECT = "%-6s".("%5d" x ($#new_atoms-4) )."\n";
+		    printf FILE $formatCONECT,@new_atoms[0, 1, 6...13];
+		}
+
+	    }
+	    
+	}
+    }
+
+    print FILE "END\n";
+    close(FILE);
+
+}
+
+
+sub saveBGFasPDB {
+    my($filename) = $_[0];
+    my ($tag,$atomnInBgf,$resnInBgf,$atomName,$elementName,$occupancy,$tempF);
+
+    open(FILE,">$filename") || die "$0: Can't open $filename: $!\n";
+
+# construct & print header line:
+    my $pdbID      = '0PWB';   # don't know the pdbID, so let it be 0PWB
+    my $headerInfo = '';
+    if ($DESCRP) {
+	$headerInfo = $DESCRP;  # I'll simply put the file descriptor to the header field
+
+	$headerInfo =~ s/^DESCRP/HEADER/;
+	$headerInfo =~ s/\s+$//;
+    } else {
+	$headerInfo = "HEADER $bgfFile";  # Otherwise I'll put the file name
+    }
+    $headerLine = sprintf "%-60s  %4s\n", $headerInfo, $pdbID;
+    print FILE $headerLine;
+
+# print remarks:
+    print FILE @REMARK;
+
+# print additional remarks:
+    $formatREMARK = "REMARK %s\n";
+    $addnlRemark = "Created by $curuser\@$curhost using \"$execCom\" in $curdir on $curdate";
+    @addnlRemark = &wrapString($addnlRemark,0);
+    foreach $line (@addnlRemark) {
+	printf FILE $formatREMARK,$line;
+    }
+
+# print atom data:
+    print "... writing atom information \n";
+
+    $formatATOM = "%-6s%5d %4s %3s %1s%4d    ".("%8.3f" x 3)."%6s%6s          %2s  ";
+    #formatFromBGF"%-6s %5d %5s %3s %1s %5s".("%10.5f" x 3)." %5s%3d%2d %8.5f%2d%4d"; #%10.5f\n";
+    #.........1.........2.........3.........4.........5.........6.........7.........8#
+    #HEADER    LIGASE/RNA                              23-JUN-00   1GAX
+    #ATOM     19  CE2 TYR X   1      31.816  41.171  92.728
+    #ATOM     24  CD2 LEU A   3      86.155  64.865  -5.674  1.00 25.05           C
+    #HETATM17151 ZN    ZN A 998      78.737  33.374  39.525  1.00 54.10          ZN
+
+    $tempF = sprintf "%6.2f",0;  # since BGF doesn't have temp.factor, set to zero
+
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]){
+
+	    if ($aHETATM{$atomn}) {
+		$tag = "HETATM";
+	    } else { 
+		$tag = "ATOM";
+	    }
+	    
+	    if ($renumberAtoms) {
+		$atomnInBgf = $new_AtomNo{$aAtomNo[$atomn]};
+	    } else {
+		$atomnInBgf = $aAtomNo[$atomn];
+	    }
+
+	    if ($renumberResidues) {
+		$resnInBgf = $new_ResNo{$atomn};
+	    } else {
+		$resnInBgf = $aResNo[$atomn];
+	    }
+	    
+	    # write movable records into the occupancy field:
+	    if ($aFixed[$atomn] == ' 1') {         
+		$occupancy = sprintf "%6.2f",1;
+	    } else {
+		$occupancy = sprintf "%6.2f",0;
+	    }
+
+	    # reformat fields for PDB:
+	    # ... atom name:  (5chars=>4chars)
+	    $atomName = $atomName[$atomn];
+	    if ($atomName =~ /\s$/) {
+		$atomName =~ s/\s$//;
+	    } elsif ($atomName =~ /^\s/) {
+		$atomName =~ s/^\s//;
+	    } else {
+		$atomName = substr($atomName, 0, 4);
+	    }
+	    # ... element name:
+	    $elementName = &makePDBelementName($ffType[$atomn]);
+
+
+	    printf FILE $formatATOM
+		,$tag
+		,$atomnInBgf
+		,$atomName
+		,$aResName[$atomn]
+		,$aChain[$atomn]
+		,$resnInBgf
+		,$xCoord[$atomn]
+		,$yCoord[$atomn]
+		,$zCoord[$atomn]
+		,$occupancy
+		,$tempF
+		,$elementName;
+
+	    print  FILE "\n";                           # close line w/a newline
+	}
+    }
+    
+# print connection and bond order data 
+
+    print "... writing connectivity information \n";
+    foreach $atomn (1 ... $natoms) {
+	if ($selected[$atomn]) {
+
+	    if ($line = $aCONECT{$atomn}) {
+		@atoms = split(/\s+/,$line);
+		@new_atoms = ($atoms[0]);
+		
+		if ($renumberAtoms) {      # add the atom of discussion to the new record
+		    push(@new_atoms  ,$new_AtomNo{$atoms[1]});
+		} else {
+		    push(@new_atoms  ,$atoms[1]);
+		}
+		
+		foreach $k (2 ... $#atoms) {
+		    $oldAtomNo = $atoms[$k];
+		    if ($selected[$AtomNo_a{$oldAtomNo}]) {   # if old atom is selected
+			if ($renumberAtoms) {                 #  add it to the new record 
+			    push(@new_atoms,$new_AtomNo{$oldAtomNo});
+			} else {
+			    push(@new_atoms,$oldAtomNo);
+			}
+		    }
+		}
+
+		if ($#new_atoms <= 6) {                               # CONECT records can't
+		    $formatCONECT = "%-6s".("%5d" x $#new_atoms)."\n";#  have more than 4 
+		    printf FILE $formatCONECT,@new_atoms;             #  connected atoms in a
+		} else {                                              #  single line
+		    $formatCONECT = "%-6s".("%5d" x 5)."\n";          #
+		    printf FILE $formatCONECT,@new_atoms[0...5];      # (this allows up to 8)
+		    $formatCONECT = "%-6s".("%5d" x ($#new_atoms-4) )."\n";
+		    printf FILE $formatCONECT,@new_atoms[0, 1, 6...13];
+		}
+
+	    }
+	    
+	}
+    }
+
+    print FILE "END\n";
+    close(FILE);
+}
+
+
+
+#################################
+### MPSim Energy Subroutines: ###
+#################################
+
+sub readENER {
+    my ($filename) = @_;
+    my ($line,@Eline,$atom,$atomNo);
+
+    open(FILE,"$filename") || die "$0: Can't open $filename: $!\n";
+    
+    %finalEner = ();       # we'll store all data here:   $finEner{lineNo}{colNo} = data
+    @finalEnerHeader = (); # the header tags will be kept here
+    $atom = 0;             # counts no.of atoms in the .fin.ener file    
+
+    print "\n... loading the final energy file:  $filename \n";
+
+    while($line = <FILE>) {
+	if ($line =~ /^Atom/) {  # first line
+	    next if ($atom);
+	    $line =~ s/FSM Energy/FSM_Energy/;           # These are to get a single word header for each
+	    $line =~ s/Exposed Area/Exp_Area/;           #  field in the header line (for oneEfsm)
+	    
+	    @finalEnerHeader = split /\s+/,$line;        # Header names stored
+	    $noOfFinalEnerDataFields = $#finalEnerHeader;# Store no.of cols for reference later
+
+
+	} elsif ($line =~ /^\d/) { # data line
+	    $atom++;
+	    @Eline = split /\s+/,$line;
+
+	    die "$0: ERROR: Data and header lines in '$filename' contain different number of elements!\n" unless ($#Eline == $noOfFinalEnerDataFields);
+
+	    foreach (0 ... $noOfFinalEnerDataFields) { # Enter data
+		$finalEner{$atom}{$_} = $Eline[$_];    
+	    }
+	}
+
+    }
+    if($natoms != $atom) {
+	die "$0: ERROR: Atom listing in the $filename doesn't match with the bgf file\n $natoms != $atom\n"; 
+    }
+    print "... done ...\n";
+}
+
+
+
+sub getResidueEnergies{
+    my($atom,$res,$chain);
+
+    %finalResEner = ();  # we'll store all res. energies here:   $table{resNo}{colNo} = data
+
+    foreach $chainn (1 ... $nchains) {
+	foreach $resn ($cStartRes[$chainn] ... $cStopRes[$chainn]) { 
+
+	    #initialize:
+	    foreach (0 ... $noOfFinalEnerDataFields) {
+		$finalResEner{$resn}{$_} = 0;
+	    }
+
+	    foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+		if ($selected[$atomn]){    # for every selected atom ... 
+		                           # ... add up atom energies (and sadly, atom no.s, too):
+		    foreach (0 ... $noOfFinalEnerDataFields) {
+			$finalResEner{$resn}{$_} += $finalEner{$atomn}{$_};
+		    }
+
+		}
+	    }
+	}
+    }    
+    # return
+}
+
+
+
+sub printResidueEnergies{
+    my ($atomn,$resn,$chainn,@line);
+    my @totalE  = ("Total"); # will store column totals here
+
+    my $format1 =            "%13s" . (" %14s" x $noOfFinalEnerDataFields)   . "\n";
+    my $format2 = "      %1s%4d%2s" . (" %14.8f" x $noOfFinalEnerDataFields) . "\n";
+    my $format3 =            "%13s" . (" %14.8f" x $noOfFinalEnerDataFields) . "\n";
+
+
+    # print header:
+    printf $format1,"Residue",@finalEnerHeader[1..$noOfFinalEnerDataFields];
+
+    my @headerLine = ();
+    push (@headerLine,"-------------") foreach (0 ... $noOfFinalEnerDataFields);
+    printf $format1,@headerLine;
+
+
+    # print energies:
+    $totalE[$_] = 0 foreach (1 ... $noOfFinalEnerDataFields);  # initialize totals
+    
+    foreach $chainn (1 ... $nchains) {
+	foreach $resn ($cStartRes[$chainn] ... $cStopRes[$chainn]) {
+	    if ($finalResEner{$resn}{0}) {   # though pretty dumb, this is the sum of atom numbers... 
+		                             #  it indicates whether if this residue is selected...
+		@line = ( &aas_3to1($rResName[$resn])
+			  ,$rResNo[$resn]
+			  ,$rChain[$resn]			  
+			  );
+
+		push (@line,$finalResEner{$resn}{$_}) foreach (1 ... $noOfFinalEnerDataFields);
+		printf $format2, @line;
+
+		# sum up to get totals:
+		$totalE[$_] += $finalResEner{$resn}{$_} foreach (1 ... $noOfFinalEnerDataFields);
+	    }
+	}
+    }
+
+    # print totals:
+    printf $format1,@headerLine;
+    printf $format3,@totalE;
+
+    # return
+}
+
+
+sub printAtomicEnergies{
+    my($atomn,$resn,$chainn,@line);
+    my @totalE  = ("Total"); # will store column totals here    
+
+    my $format1 =          "%13s" . (" %14s" x $noOfFinalEnerDataFields)   . "\n";
+    my $format2 = "%5d %1s%4d%2s" . (" %14.8f" x $noOfFinalEnerDataFields) . "\n";
+    my $format3 =          "%13s" . (" %14.8f" x $noOfFinalEnerDataFields) . "\n";
+
+
+    # print header:
+    printf $format1,@finalEnerHeader;
+
+    my @headerLine = ();
+    push (@headerLine,"-------------") foreach (0 ... $noOfFinalEnerDataFields);
+    printf $format1,@headerLine;
+
+
+   # print energies:
+    $totalE[$_] = 0 foreach (1 ... $noOfFinalEnerDataFields);  # initialize totals
+    
+    foreach $chainn (1 ... $nchains) {
+	foreach $resn ($cStartRes[$chainn] ... $cStopRes[$chainn]) {
+	    foreach $atomn ($rStartAtom[$resn] ...  $rStopAtom[$resn]) {
+		if ($selected[$atomn]){
+
+		    @line = ($aAtomNo[$atomn]
+			     ,&aas_3to1($rResName[$resn])
+			     ,$rResNo[$resn]
+			     ,$rChain[$resn]
+			     );
+		    
+		    push (@line,$finalEner{$atomn}{$_}) foreach (1 ... $noOfFinalEnerDataFields);
+		    printf $format2, @line;
+		    
+		    # sum up to get totals:
+		    $totalE[$_] += $finalEner{$atomn}{$_} foreach (1 ... $noOfFinalEnerDataFields);
+		}
+	    }
+	}
+    }
+
+    # print totals:
+    printf $format1,@headerLine;
+    printf $format3,@totalE;
+
+    # return
+}
+
+
+#bgf file
+#    #    1    #    2    #    3    #    4    #    5    #    6    #    7    #    8    #
+#ATOM       1  N    ILE X    1   34.13754   3.67111  27.68410 N_3    4 0 -0.80784 0   0
+#FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+
+#fin.ener file
+#Atom    VDW      Coulomb           HB       HB_dre        Bond         Total
+#--------------------------------------------------------------------------------
+#1  -0.00001343   0.85923147   0.00000000   0.00000000   0.00000000    0.85921803
+
+
+
+###############################################
+### Interaction Analysis Energy Subroutines ###
+###############################################
+
+sub readFFparameters {
+    # adapted from rsdesign.pl by D.Zhang (Jan 06 2003)
+    my ($ff_file) = @_;
+    my ($line,@temp);
+
+     print "... loading force field parameters from file:  $ff_file \n";
+
+    # distance dependencies for vdW: 
+    $vdwAttrPwr = $def_vdw_att; #6;
+    $vdwReplPwr = $def_vdw_rep; #12;
+#    $vdwReplPwr = 10;
+
+    # hydrogen bond distance cutoff:
+    $HbondCutoff = $def_hb_cutoff; #3.5;
+
+    # read ff.par file:
+    open (FF, "$ff_file") or die "$0: Can't open file $ff_file.\n";
+    while ($line = <FF>) {
+
+	# Hydrogen bond parameters
+	if ($line =~ /^MPSIM_HB/) {
+	    $_ = <FF>;           # read in just one line of the parameters since
+	    @temp = split;       #  all of them are the same
+#	    print "### fffile ### @temp ### 1375 \n";
+	    $hb_eq_depth    = $temp[3] * -1;
+	    $hb_eq_distance = $temp[4];
+
+	# Dielectric constant
+	} elsif ($line =~ /^DIELCTRIC/) {
+	    @temp = split(/\s+/,$line);
+	    $epsilon = $temp[1] / 332.0637;
+	
+	# vdW parameters
+	} elsif ($line =~ /^VDW/) {
+	    while (<FF>) {
+		last if (/^\*$/);
+		@temp = split;
+		$vdw_eq_distance{$temp[0]} = $temp[2];
+		$vdw_eq_depth{$temp[0]}    = $temp[3];
+	    }
+	}
+
+    }
+
+    # return 
+    print "... parameters loaded ...\n";
+}
+
+
+
+sub interactionAnalysis {
+    my ($selDef_1,$selDef_2,$formatOut) = @_;
+    my (@selection_1, @selection_2);
+
+
+    ### Initial Setup ###
+
+#    print "### selection Defs #1#$selDef_1#2#$selDef_2### 1399\n";
+
+    # get two lists of atom numbers from selection definitions:
+    # ... selection #1:
+    print "... determining selection #1: ";
+    if ($selDef_1 eq 'selection' || $selDef_1 eq 'same') {
+	@selection_1 = @selectionList;
+	print " current selection selected ...\n";
+    } else {
+	print " an auxillary selection will be selected:\n";
+	@selection_1 =  &readAuxillarySelection($selDef_1);
+    }
+
+    # ... and selection #2:
+    print "... determining selection #2: ";
+    if ($selDef_2 eq 'selection') {
+	@selection_2 = @selectionList;
+	print " current selection selected ...\n";
+    } elsif ($selDef_2 eq 'same') {
+	@selection_2 = @selection_1; 
+	print " selection #1 reselected ...\n";
+    } else {
+	print " an auxillary selection will be selected:\n";
+	@selection_2 =  &readAuxillarySelection($selDef_2);
+    }
+ 
+    # sort both selections by atom numbers:
+    @selection_1 = sort {$a <=> $b} @selection_1;
+    @selection_2 = sort {$a <=> $b} @selection_2;
+
+    # determine output format
+    $formatOut =~ /^(\w)x(\w)$/;  # (remember "RxR" is the default)
+
+    print "... determining output format: ";
+    # ... for rows ...
+    if ($1 eq 'R') {
+	$rowFormat = "by_res" ;
+	print " residue X";
+    } elsif ($1 eq 'A') {
+	$rowFormat = "by_atom";
+	print " atom X";
+    }
+
+    # ... and columns.
+    if ($2 eq 'R') {
+	$colFormat = "by_res";	
+	print " residue ...";
+    } elsif ($2 eq 'A') {
+	$colFormat = "by_atom";
+	print " atom ...";
+    }
+    print "\n";
+
+    die "$0: ERROR: Interaction analysis output format \"$formatOut\" is not recognized.  Check syntax and make sure it is in the form (R|A)x(R|A).\n" unless ($rowFormat && $colFormat);
+
+
+    ### Calculate Energies ###
+
+    # calculate interactions in a atomXatom matrix
+
+    print "... calculating nonbond interactions ... ";
+    
+    foreach $atomn_1 (@selection_1) {
+	$x_1      = $xCoord[$atomn_1];
+	$y_1      = $yCoord[$atomn_1];
+	$z_1      = $zCoord[$atomn_1];
+
+	$ffType_1 = $ffType[$atomn_1];
+	$ePairs_1 = $lonePair[$atomn_1];
+	$chrg_1   = $atomChrg[$atomn_1];
+
+	$ffType_1 =~ s/\s+//g;
+	$vdwD0_1  = $vdw_eq_depth{$ffType_1};
+	$vdwR0_1  = $vdw_eq_distance{$ffType_1};
+
+	@conect_line_1 = split(/\s+/, $aCONECT{$atomn_1}); 
+
+	foreach $atomn_2 (@selection_2) {
+	    if ($atomn_1 == $atomn_2                 # skip calculation if atomn_1 and atomn_2
+		|| &bonded_1_2($atomn_1,$atomn_2,@conect_line_1)    #  refer to the same atom, or
+		|| &bonded_1_3($atomn_1,$atomn_2,@conect_line_1)    #  the two atoms are 1, 2 or 3
+		|| &bonded_1_4($atomn_1,$atomn_2,@conect_line_1)    #  atoms away from each other
+		) {
+		$IA_vdw{$atomn_1}{$atomn_2}   = 0;        
+		$IA_coul{$atomn_1}{$atomn_2}  = 0;        
+		$IA_hb{$atomn_1}{$atomn_2}    = 0;
+		$IA_total{$atomn_1}{$atomn_2} = 0;        
+		next;                                     
+	    }
+	    
+	    $x_2      = $xCoord[$atomn_2];
+	    $y_2      = $yCoord[$atomn_2];
+	    $z_2      = $zCoord[$atomn_2];
+
+	    $ffType_2 = $ffType[$atomn_2];
+	    $ePairs_2 = $lonePair[$atomn_2];
+	    $chrg_2   = $atomChrg[$atomn_2];
+
+	    $ffType_2 =~ s/\s+//g;
+	    $vdwD0_2  = $vdw_eq_depth{$ffType_2};
+	    $vdwR0_2  = $vdw_eq_distance{$ffType_2};
+
+	    # calculate interatomic distance:
+	    $distance = &r3D($x_1,$y_1,$z_1,$x_2,$y_2,$z_2);
+
+	    # calculate vdW and Coulombic energies:
+	    $Evdw  = &IA_vanDerWaals($distance,$vdwD0_1,$vdwR0_1,$vdwD0_2,$vdwR0_2,$vdwAttrPwr,$vdwReplPwr);
+	    $Ecoul = &IA_coulombic($distance, $chrg_1, $chrg_2);
+	    
+	    # calculate H-bond energy:
+	    if ($distance < $HbondCutoff 
+		&& $ffType_1 eq "H___A" 
+		&& $ePairs_2 != 0) { 
+		$Ehb = &IA_hydrogenBond($atomn_1,$x_1,$y_1,$z_1,$x_2,$y_2,$z_2,$distance);
+#		print "### Ehb (1) ### $Ehb | ($ffType_1,$ePairs_1) ($ffType_2,$ePairs_2)  ### 1522\n";
+		    
+	    } elsif ($distance < $HbondCutoff 
+		     && $ffType_2 eq "H___A" 
+		     && $ePairs_1 != 0) { 
+		$Ehb = &IA_hydrogenBond($atomn_2,$x_2,$y_2,$z_2,$x_1,$y_1,$z_1,$distance);
+#		print "### Ehb (2) ### $Ehb | ($ffType_1,$ePairs_1) ($ffType_2,$ePairs_2)  ### 1528\n";		
+
+	    } else {
+		$Ehb = 0;
+#		print "### Ehb (3) ### $Ehb | ($ffType_1,$ePairs_1) ($ffType_2,$ePairs_2)  ### 1532\n";
+	    }
+	    
+	    
+	    # store energies
+	    $IA_vdw{$atomn_1}{$atomn_2}   = $Evdw;
+	    $IA_coul{$atomn_1}{$atomn_2}  = $Ecoul;
+	    $IA_hb{$atomn_1}{$atomn_2}    = $Ehb;
+	    $IA_total{$atomn_1}{$atomn_2} = $Evdw + $Ecoul + $Ehb;
+	}
+    }
+    print "done ...\n";
+
+    ### Tabulate Interactions ###
+    print "... tabulating results:  (energies in kcal/mol)\n";
+
+    &interactionAnalysisTable('van Der Waals Energy',\%IA_vdw  
+			      ,\@selection_1, \@selection_2
+			      ,$rowFormat,$colFormat);
+    &interactionAnalysisTable('Coulombic Energy'    ,\%IA_coul 
+			      ,\@selection_1, \@selection_2
+			      ,$rowFormat,$colFormat);
+    &interactionAnalysisTable('H-Bonding Energy'    ,\%IA_hb   
+			      ,\@selection_1, \@selection_2
+			      ,$rowFormat,$colFormat);
+    &interactionAnalysisTable('Total Nonbond Energy',\%IA_total
+			      ,\@selection_1, \@selection_2
+			      ,$rowFormat,$colFormat);
+
+    # return
+    print "\n... done ...\n"
+}
+
+
+
+sub interactionAnalysisTable {
+    # tabulates interaction analysis energy matrices
+    my ($title, $matrix, $selection_1, $selection_2, $rowFormat, $colFormat) = @_;
+    my ($atomn, $resn, $atomn_1, $atomn_2, $rown, $coln);
+    my (@resLimits_1, @resLimits_2, $IDtag);
+    my (@rowHeader, @header, @header_aName, @header_aNo); 
+    my ($text_format, $table_format, @separator_line); 
+    my (@colTotal, @curRow, @curRowByAtom, $rowTotal, $curEnergy);
+
+    my $col_by_res = 1 if ($colFormat eq 'by_res');
+    my $row_by_res = 1 if ($rowFormat eq 'by_res');
+    my $ncols = 0;    # number of data containing columns in the table (excluding totals)
+    my $nrows = 0;    # number of data containing row in the table (excluding totals)
+
+
+    # set residue-stop indices for selection_1,
+    #  and determine number of rows in the table:
+    if ($row_by_res) {
+	@resLimits_1 = &resStopsForAtomnList($selection_1);
+	$nrows = $#resLimits_1;	           # number of residues in selection
+
+    } else {
+	$nrows = @$selection_1;            # number of atoms in selection
+    }
+    
+    # set residue-stop indices for selection_2, 
+    #  and determine number of columns in the table:
+    if ($col_by_res) {
+	@resLimits_2 = &resStopsForAtomnList($selection_2);
+	$ncols = $#resLimits_2;	           # number of residues in selection
+
+    } else {
+	$ncols = @$selection_2;            # number of atoms in selection
+    }
+#    print "nrows###$nrows### 1588 \n";
+#    print "ncols###$ncols### 1689 \n";
+    
+
+    # set up row and column headers
+    # for selection_1 ... (row headers)
+    $rown = 1;
+    foreach $atomn (@$selection_1) {
+#	print "atomn1###$atomn### 1604\n";
+	if (!$row_by_res || ($row_by_res && $resLimits_1[$rown] == $atomn) ) {
+	    $resn  = $a_resn[$atomn];
+
+	    $IDtag = sprintf "%1s%4s%1s"       # prepare residue tag
+		,&aas_3to1($rResName[$resn])
+	        ,substr($rResNo[$resn],0,4)    # See log for Dec 05 2002
+		,$rChain[$resn]
+		;
+#	    print "###$IDtag### 1613 \n";
+	    if (!$row_by_res) {                # if by_atom add atom info to tag
+		$IDtag = sprintf "%6s %5s%5s"
+		    ,$IDtag
+		    ,$atomName[$atomn]
+		    ,$aAtomNo[$atomn]
+		    ;
+	    }
+	    $rowHeader[$rown] = $IDtag;
+	    $rown++;
+	}	   
+    }
+#    print "rowheaders "; print "###$rowHeader[$_]" foreach (1 ... $#rowHeader); print "### 1629\n";
+
+    # ... and for selection_2.  (column headers)
+    $coln = 1;
+    foreach $atomn (@$selection_2) { 
+#	print "atomn1###$atomn### 1628\n";
+	if (!$col_by_res || ($col_by_res && $resLimits_2[$coln] == $atomn) ) {
+	    $resn  = $a_resn[$atomn];
+
+	    $IDtag = sprintf "%4s%1s %1s"      # prepare residue tag
+	        ,substr($rResNo[$resn],0,4)    # See log for Dec 05 2002
+		,$rChain[$resn]
+		,&aas_3to1($rResName[$resn])
+		;
+	    push (@header, $IDtag);
+#	    print "###$IDtag### 1638 \n";
+
+	    if (!$col_by_res) {                # if by_atom prepare atom info arrays
+		$atomName[$atomn] =~ /\s*(\w+)\s*/;      # remove leading/trailing whitespace 
+		push (@header_aName, $1);                #  from the atomNames
+		push (@header_aNo  , $aAtomNo[$atomn] );
+	    }
+	    $coln++;
+	}	   
+    }
+
+    # prepare the seperator line:
+    $separator_line[$_]       = "-------" foreach (1 ... $ncols);
+    $separator_line[$ncols+1] = "----------";
+
+    # prepare table format:
+#    if ($col_by_res) {
+#	$text_format   = " |" . (  " %7s" x $ncols) . " | %10s\n";
+#	$table_format  = " |" . (" %7.2f" x $ncols) . " | %10.2f\n";
+#    } else {
+	$text_format   = " |" . (  " %7s" x $ncols) . " | %10s\n";
+	$table_format  = " |" . (" %7.2f" x $ncols) . " | %10.2f\n";
+#    }
+    if ($row_by_res) {
+	$text_format   =  "%-7s" . $text_format; 
+	$table_format  =  "%-7s" . $table_format; 
+	$separator_line[0]    = "-------";
+    } else {
+	$text_format   = "%-17s" . $text_format; 
+	$table_format  = "%-17s" . $table_format;
+	$separator_line[0]    = "-----------------";
+    }
+
+
+    # print table header:
+    print  "\n$title : \n";
+    printf     $text_format, '', @header      , 'Total';
+    if (!$col_by_res) { 
+	printf $text_format, '', @header_aName, '';
+	printf $text_format, '', @header_aNo  , '';
+    }
+    printf $text_format, @separator_line;
+
+
+    # sum up and print out energies:
+    $rown = 1;                                 # initialize variables/arrays that 
+    @colTotal     = ('Total');                 #  act across rows
+    $colTotal[$_] = 0 foreach (1 ... $ncols+1);#  |
+    @curRow     = ($rowHeader[$rown]);         # initialize 1st row
+
+    foreach $atomn_1 (@$selection_1) {
+
+	@curRowByAtom = ("");                  # initialize variables/arrays that
+	$rowTotal  = 0;                        #  act across columns
+	$curEnergy = 0;                        #  |
+	$coln      = 1;                        #  |
+	
+	foreach $atomn_2 (@$selection_2) {
+	    
+	    $curEnergy += $$matrix{$atomn_1}{$atomn_2};
+
+	    # i.e. if its_time_to_push_this_entry 
+	    if (!$col_by_res || ($col_by_res && $resLimits_2[$coln] == $atomn_2) ) {		
+		push (@curRowByAtom, $curEnergy); # add current entry to current atom row
+		$rowTotal += $curEnergy;          # add current entry to the row total
+		$curEnergy = 0;                   # initialize current energy
+		$coln++;                          # increment column number
+	    }
+        }
+	push (@curRowByAtom,$rowTotal);
+	
+	$curRow[$_] += $curRowByAtom[$_] foreach (1 ... $ncols+1);
+#	print "###$_###$curRowByAtom[$_]### 1701\n" foreach (1 ... $ncols+1);
+
+	# if its_time_to_really_print_this_row
+        if (!$row_by_res || ($row_by_res && $resLimits_1[$rown] == $atomn_1) ) {
+	    printf $table_format, @curRow;                         # print current row
+	    $colTotal[$_] += $curRow[$_] foreach (1 ... $ncols+1); # add current row to column totals
+	    $rown++;                                               # increment row number
+	    @curRow     = ($rowHeader[$rown]);                     # initialize current row
+	    $curRow[$_] = 0 foreach (1 ... $nrows+1);              #  |
+	}
+    }
+
+    # print table footer with column totals:
+    printf $text_format, @separator_line;
+    printf $table_format, @colTotal;
+    
+    # return
+}
+
+
+sub IA_hydrogenBond {
+    # calculate H-bonding interaction energies given three atoms (D,H,A) 
+    #   adapted from rsdesign.pl by D.Zhang (Jan 06 2003)
+    my ($atomn_H, $x_H, $y_H, $z_H, $x_A, $y_A, $z_A, $R_HA) = @_;
+    my (@H_conect_line, $atomn_D, $x_D, $y_D, $z_D, $R_HD, $R_DA, $cos_theta, $Ehb);  
+
+    # determine donor atom from the CONECT information
+    @H_conect_line = split(/\s+/, $aCONECT{$atomn_H}); 
+    $atomn_D = $AtomNo_a{$H_conect_line[2]};      # get the last number as donor atom
+                                                  #  and turn it into internal atom no.
+    # retrieve donor atom coordinates:
+    $x_D  = $xCoord[$atomn_D];
+    $y_D  = $yCoord[$atomn_D];
+    $z_D  = $zCoord[$atomn_D];
+    
+    # calculate the other two sides of the triangle:
+    # (R_HA already known)                            #a
+    $R_HD =  &r3D($x_H,$y_H,$z_H,$x_D,$y_D,$z_D);     #b
+    $R_DA =  &r3D($x_A,$y_A,$z_A,$x_D,$y_D,$z_D);     #c
+
+
+    # no H-bond if D-A > cutoff:
+    return 0 if ($R_DA > $HbondCutoff);  
+
+    # calculate H-bond energy:
+    $cos_theta = ($R_HA**2 + $R_HD**2 - $R_DA**2) / (2 * $R_HA * $R_HD);  
+    $Ehb = $hb_eq_depth 
+	       * ( 5*($hb_eq_distance/$R_DA)**12  -  6*($hb_eq_distance/$R_DA)**10 ) 
+	       * ( $cos_theta ** 4 );
+
+#    print "\n### hbnd ### ($atomn_H | $x_H, $y_H, $z_H | $x_A, $y_A, $z_A | $hb_eq_distance, $hb_eq_depth) \n###  => ($R_HA, $R_HD, $R_DA | $cos_theta) ==> $Ehb ### 1758\n";
+
+
+    # return energy
+    return $Ehb;    
+}
+
+
+sub IA_vanDerWaals {
+    # calculate vdw energies between two atoms 
+    my ($R, $D0_1, $R0_1, $D0_2, $R0_2, $att, $rep) = @_;
+
+    my $R0 = sqrt($R0_1 * $R0_2);
+    my $D0 = sqrt($D0_1 * $D0_2);
+    my $Evdw = ( $D0/($rep-$att) ) * ( $att*($R0/$R)**$rep - $rep*($R0/$R)**$att );
+#    print "\n### vdw ### ($R, $D0_1, $R0_1, $D0_2, $R0_2, $att, $rep) => $R0, $D0, $Evdw### 1786\n";
+   
+    # return energy
+    return $Evdw;
+}
+
+
+sub IA_coulombic {
+    # calculate coulombic interaction energies between two point charges
+    my ($R, $Q_1, $Q_2) = @_;
+
+    my $Ecoul = $Q_1 * $Q_2 / ($epsilon * $R);
+#    print "\n### coul ### ($R, $Q_1, $Q_2) => $Ecoul ### 1798\n";
+
+    # return energy
+    return $Ecoul;
+}
+
+
+sub resStopsForAtomnList {
+    my ($atomList) = @_;     # reference to an atom/selection list
+    my (@resStop, $atomn, $resn, $i);
+
+    my $n = 0;
+    my $lastResidue = 0;
+
+#    print "### " . $#$selection_1 .  "### 1560 \n"; 
+
+    foreach $i ( 0 ... $#$atomList ) { 
+	$atomn = $$atomList[$i];
+	$resn  = $a_resn[$atomn];
+	
+	if ($lastResidue != $resn) {
+	    $resStop[$n] = $$atomList[$i-1]; 
+	    $n++;                  # count number of residues in selection 
+	    $lastResidue = $resn;
+	}    
+    }
+    $resStop[$n] = $atomn;
+    
+    # return res. stop list:
+    return @resStop;
+}
+
+
+sub readAuxillarySelection {
+    my ($selectionDefinition) = @_;
+    my ($atom,@listArray,$temporaryListFileName,$selectionCommand,@selectionArray);
+
+    # auxillary selections cannot be used if any type of renumbering is performed on the BGF record
+    warn "$0: WARNING: An auxillary selection may not be defined correctly if atoms or residues were renumbered.\n"  if ($renumberAtoms || $renumberResidues);
+
+    # set temporary filenames:
+    $temporaryListFileName = "auxillary_selection.lst";
+
+    # create/locate selection list file: 
+	
+    if ($selectionDefinition =~ /^%/) {    # selection is a selection definition
+	# remove tag
+	$selectionDefinition =~ s/^%\s*//;
+
+	# create a list file
+	$selectionCommand = "$0 $bgfFile $selectionDefinition -l $temporaryListFileName > ${temporaryListFileName}.out";
+	print "... generating auxillary selection from $bgfFile using \"$selectionDefinition\" ... ";
+	system $selectionCommand;
+
+	# check for success
+	if (`grep ERROR ${temporaryListFileName}.out` || !(-s $temporaryListFileName) ) {
+	    die "$0: ERROR:  Auxillary selection failed... Check temporary file: ${temporaryListFileName}.out\n";
+	} elsif (`grep renumbering ${temporaryListFileName}.out`) {
+	    die "$0: ERROR:  An auxillary selection will not be defined correctly after atoms or residues were renumbered during selection.  Try execution without any renumbering.\n";
+	} else {
+	    system " rm -f ${temporaryListFileName}.out ";
+	}
+	
+    } elsif (-s $selectionDefinition) {    # selection is an atom list file
+	print "    reading auxillary selection from file: $selectionDefinition ... ";
+	system "cp $selectionDefinition $temporaryListFileName";
+
+    } else {
+	die "$0: ERROR:  Auxillary selection definition provided, \"$selectionDefinition\", cannot be resolved. If this is a list file, make sure its path is entered correctly.\n";
+    }
+
+    # read selection and delete temporary files
+    @listArray = &readFile($temporaryListFileName,1);
+    system " rm -f $temporaryListFileName  ";
+    print "done ...\n";
+
+    # convert actual atom numbers to internal ones
+    if ( $#listArray >= 0 ) {    
+	foreach $atom (@listArray) {
+	    die "$0: ERROR: Selected atom \"$atom\" is not found in $bgfFile!\n" unless($AtomNo_a{$atom});
+	    push(@selectionArray,$AtomNo_a{$atom});
+	}
+    }
+
+    # return auxillary selection
+    return @selectionArray;
+}
+
+
+sub bonded_1_2 {
+    # true if atoms 1 and 2 are bonded together
+    my ($atomn_i, $atomn_j, @conect_line_i) = @_;
+    my ($atom);
+
+    shift(@conect_line_i);
+    foreach $atom (@conect_line_i) {
+	# return true if atomn_j is in the CONECT list of atomn_i
+	return 1 if ($AtomNo_a{$atom} == $atomn_j);
+    }
+
+    # return false if not connected  
+    return 0;
+}
+
+
+sub bonded_1_3 {
+    # true if atoms i and k are connected through an atom j
+    my ($atomn_i, $atomn_k, @conect_line_i) = @_;
+    my ($atom_ci, $atom_ck); 
+
+    my @conect_line_k = split(/\s+/, $aCONECT{$atomn_k}); 
+    
+    shift(@conect_line_i);
+    shift(@conect_line_k);
+
+    # searching for (j) where (i)-?j?-(k) 
+    foreach $atom_ci (@conect_line_i) {
+	foreach $atom_ck (@conect_line_k) {
+	    # return true if an atomn_j (= atom_ci/k) is commonly 
+	    #  present in the CONECT lists of atomn_i and atomn_k. 
+	    #  (no need to convert by $AtomNo_a{$atom} here)
+	    return 1 if ($atom_ci == $atom_ck);
+	}
+    }
+
+    # return false if not connected 1-3
+    return 0;
+}
+
+
+sub bonded_1_4 {
+    # true if atoms i and l are connected through an atom j and k
+    my ($atomn_1, $atomn_2, @conect_line_1) = @_;
+    my ($atom_j, $atom_cj, $atom_cl);
+    my ($conect_line_i, $conect_line_l, @conect_line_j);
+
+    my @conect_line_2 = split(/\s+/, $aCONECT{$atomn_2}); 
+    
+    shift(@conect_line_1);
+    shift(@conect_line_2);
+
+    if (@conect_line_1 <= @conect_line_2) {
+	$conect_line_i = \@conect_line_1;
+	$conect_line_l = \@conect_line_2;
+    } else {
+	$conect_line_i = \@conect_line_2;
+	$conect_line_l = \@conect_line_1;
+    }
+
+#    print "### $atomn_1, $atomn_2 ### 1919\n";
+
+    # searching for (k) where (i)-(j)-?k?-(l) 
+    foreach $atom_j (@$conect_line_i) {
+
+#	print "### $atom_j => $aCONECT{$AtomNo_a{$atom_j}} ### 1924\n";
+
+	@conect_line_j = split(/\s+/, $aCONECT{$AtomNo_a{$atom_j}}); 	
+	shift(@conect_line_j);
+
+	foreach $atom_cj (@conect_line_j) {
+	    
+	    foreach $atom_cl (@$conect_line_l) {
+		# return true if an atom_k (= atom_cj/l) is commonly 
+		#  present in the CONECT lists of atom_j and atom_l
+		#  (no need to convert by $AtomNo_a{$atom} here)
+		return 1 if ($atom_cj == $atom_cl);
+	    }
+	}
+    }
+
+    # return false if not connected 1-4
+    return 0;
+}
+
+
+############################
+### SUBROUTINES: End Run ###
+############################
+
+sub finishUp {
+    print "\n... finished !\n\n";
+
+    $stopTimestamp = time;
+    $etime = $stopTimestamp - $startTimestamp;
+
+    $format = " %-16s : %s\n";
+    printf $format,"Execution Summary","";
+    printf $format,"User","$curuser on $curhost";
+    printf $format,"Command","$execCom";
+    printf $format,"Date & Location","$curdir on $curdate";
+    printf $format,"Run Time","$etime s";
+    print "\n";
+
+    #return
+}
+
+
+#################
+### UTILITIES ###
+#################
+
+
+sub setBackupValuesForDefaultsFile {
+    $noOfDefaultsFileFields = 10;     # this count excludes the VERSION field
+
+    $def_IA_seln1                    = 'selection';
+    $def_IA_seln2                    = 'selection';
+    $def_IA_format                   = 'RxR';
+    $def_ff_parameter_file           = '/ul/vaid/ff/dreidii322-mpsim.par';
+    $def_hb_cutoff                   = 3.5;
+    $def_vdw_att                     = 6;
+    $def_vdw_rep                     = 12;
+    $def_add_remark                  = 1;
+    $def_altloc_to_read              = 'A';
+    @def_BB_atom_defns               = qw/N HN CA HCA C O OXT  HA 1HA 2HA HT1 HT2 HT3/;
+}
+
+
+sub readDefaultsFile { 
+    my(@file) = @_;
+    my(@line);
+    my $noOfFields = 0;
+    my $def_version = 0;
+    my $newerVersionWarning = 0;
+
+    foreach (@file) {
+	@line = split;
+	if (!$line[0] || $line[0] =~ /^\s*$/ || $line[0] =~ /^\#/) { 
+	    next;
+	} elsif ($line[0] eq 'VERSION') {
+	    $def_version                     = $line[1];
+	    if (substr($def_version,0,6) > substr($version,0,6) ){
+		print "\n... the defaults file read was written by a newer version of playWithBGF:\n... $defaultsFile -- version: $def_version ...\n";
+		$newerVersionWarning = 1
+	    }
+	} elsif ($line[0] eq 'IA_SELN1') {
+	    $def_IA_seln1                    = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'IA_SELN2') {
+	    $def_IA_seln2                    = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'IA_FORMAT') {
+	    $def_IA_format                   = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'DEF_FF') {
+	    $def_ff_parameter_file           = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'HB_CUTOFF') {
+	    $def_hb_cutoff                   = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'VDW_ATT') {
+	    $def_vdw_att                     = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'VDW_REP') {
+	    $def_vdw_rep                     = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'ADD_REMARK') {
+	    $def_add_remark                  = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'READ_ALTLOC') {
+	    $def_altloc_to_read              = $line[1];
+	    $noOfFields++;
+	} elsif ($line[0] eq 'BACKBONE_DEFN') {
+	    shift(@line);
+	    @def_BB_atom_defns               = @line;
+	    $noOfFields++;
+
+	} else {	    
+	    warn "$0: WARNING: Unknown keyword \"$line[0]\" in defaults file \"$defaultsFile\".\n" unless ($newerVersionWarning);
+	}
+    }
+    
+    # return
+    return ($noOfDefaultsFileFields - $noOfFields);  # will be 0 if all fields are read
+} 
+
+
+sub writeDefaultsFileText { 
+    my ($i) = @_;
+    $i = '' unless ($i);  # this is the indent
+    
+    return "
+${i}### playWithBGF defaults file ###
+${i}VERSION         $version
+${i}#
+${i}# NonBond interaction analysis (-I) defaults:
+${i}IA_SELN1        $def_IA_seln1
+${i}IA_SELN2        $def_IA_seln2
+${i}IA_FORMAT       $def_IA_format
+${i}# default forcefield parameter file:
+${i}DEF_FF          $def_ff_parameter_file
+${i}# hydrogen bond distance cutoff in Angstroms:
+${i}HB_CUTOFF       $def_hb_cutoff
+${i}# distance dependencies for VdW (attractive and repulsive):
+${i}VDW_ATT         $def_vdw_att
+${i}VDW_REP         $def_vdw_rep
+${i}# turn on/off (1/0) REMARK lines added to each BGF/PDB file written out
+${i}ADD_REMARK      $def_add_remark
+${i}# alternate location to read from PDB files
+${i}READ_ALTLOC     $def_altloc_to_read
+${i}# names of atoms considered as backbone
+${i}BACKBONE_DEFN   @def_BB_atom_defns
+${i}#
+";
+} 
+
+sub writeDefaultsFile { 
+    my($file) = @_;
+    my $text = &writeDefaultsFileText();
+
+    # write defaults file
+    open(FILE,">$file") || die "$0: Can't open $file: $!\n";
+    print FILE $text;
+    close(FILE);
+
+    # return
+} 
+
+
+
+sub setConstants {
+
+    # all 20 AA
+    %aas_3to1 = ("ALA" => 'A', "CYS" => 'C', "ASP" => 'D', "GLU" => 'E', "PHE" => 'F', 
+		 "GLY" => 'G', "HIS" => 'H', "ILE" => 'I', "LYS" => 'K', "LEU" => 'L', 
+		 "MET" => 'M', "ASN" => 'N', "PRO" => 'P', "GLN" => 'Q', "ARG" => 'R', 
+		 "SER" => 'S', "THR" => 'T', "VAL" => 'V', "TRP" => 'W', "TYR" => 'Y');
+
+    @supportedBGFversions = (332, 400);
+
+    %atomicWeight = ('H' => 1.007947 ,'HE' => 4.0026022 ,'LI' => 6.9412 ,'BE' => 9.0121823 ,
+		     'B' => 10.8117 ,'C' => 12.01078 ,'N' => 14.00672 ,'O' => 15.99943 ,
+		     'F' => 18.99840325 ,'NE' => 20.17976 ,'NA' => 22.9897702 ,'MG' => 24.30506 ,
+		     'AL' => 26.9815382 ,'SI' => 28.08553 ,'P' => 30.9737612 ,'S' => 32.0655 ,
+		     'CL' => 35.4532 ,'AR' => 39.9481 ,'K' => 39.09831 ,'CA' => 40.0784 ,
+		     'SC' => 44.9559108 ,'TI' => 47.8671 ,'V' => 50.94151 ,'CR' => 51.99616 ,
+		     'MN' => 54.9380499 ,'FE' => 55.8452 ,'CO' => 58.9332009 ,'NI' => 58.69342 ,
+		     'CU' => 63.5463 ,'ZN' => 65.4094 ,'GA' => 69.7231 ,'GE' => 72.641 ,
+		     'AS' => 74.921602 ,'SE' => 78.963 ,'BR' => 79.9041 ,'KR' => 83.7982 ,
+		     'RB' => 85.46783 ,'SR' => 87.621 ,'Y' => 88.905852 ,'ZR' => 91.2242 ,
+		     'NB' => 92.906382 ,'MO' => 95.942 ,'TC' => 98 ,'RU' => 101.072 ,
+		     'RH' => 102.905502 ,'PD' => 106.421 ,'AG' => 107.86822 ,'CD' => 112.4118 ,
+		     'IN' => 114.8183 ,'SN' => 118.7107 ,'SB' => 121.7601 ,'TE' => 127.603 ,
+		     'I' => 126.904473 ,'XE' => 131.2936 ,'CS' => 132.905452 ,'BA' => 137.3277 ,
+		     'LA' => 138.90552 ,'CE' => 140.1161 ,'PR' => 140.907652 ,'ND' => 144.243 ,
+		     'PM' => 145 ,'SM' => 150.363 ,'EU' => 151.9641 ,'GD' => 157.253 ,
+		     'TB' => 158.925342 ,'DY' => 162.5001 ,'HO' => 164.930322 ,'ER' => 167.2593 ,
+		     'TM' => 168.934212 ,'YB' => 173.043 ,'LU' => 174.9671 ,'HF' => 178.492 ,
+		     'TA' => 180.94791 ,'W' => 183.841 ,'RE' => 186.2071 ,'OS' => 190.233 ,
+		     'IR' => 192.2173 ,'PT' => 195.0782 ,'AU' => 196.966552 ,'HG' => 200.592 ,
+		     'TL' => 204.38332 ,'PB' => 207.21 ,'BI' => 208.980382 ,'PO' => 209 ,
+		     'AT' => 210 ,'RN' => 222 ,'FR' => 223 ,'RA' => 226 ,'AC' => 227 ,
+		     'TH' => 232.03811 ,'PA' => 231.035882 ,'U' => 238.028913 ,'NP' => 237 ,
+		     'PU' => 244 ,'AM' => 243 ,'CM' => 247 ,'BK' => 247 ,'CF' => 251 ,
+		     'ES' => 252 ,'FM' => 257 ,'MD' => 258 ,'NO' => 259 ,'LR' => 262 ,
+		     'RF' => 261 ,'DB' => 262 ,'SG' => 266 ,'BH' => 264 ,'HS' => 277 ,
+		     'MT' => 268 ,'DS' => 281 ,'RG' => 272 );
+    
+    # this is not currently used
+    # foreach $i (keys %aas_3to1) {
+    #	$aas_1to3{$aas_3to1{$i}} = $i;
+    # }
+    
+    #return
+}
+
+
+
+sub string2array {
+    my($string,@array);
+    $string = $_[0];
+    @array = split(/\s+/,$string);
+    shift(@array) while (!$array[0]);
+    return @array;
+}
+
+
+sub nextOptionArgument {
+    my ($i,@args) = @_;
+    
+#    print "### i = $i ###\n";
+#    print "### $_ :: $args[$_] ###\n" foreach ($#args); 
+	
+    if (defined $args[$i+1]
+        && $args[$i+1] !~ /^-/ 
+	&& $args[$i+1] !~ /^\+/) {
+#	print "### option:$args[$i]=>$args[$i+1]=>  return 1\n";
+	return 1;
+    } else {
+#	print "### option:$args[$i]=>$args[$i+1]=>  return 0\n";
+	return 0;
+    }
+}
+
+
+sub readFile {
+    my (@file);
+    my ($filename,$noWS) = @_;
+
+    open(FILE,"$filename") || die "$0: Can't open $filename: $!\n";
+    @rawfile = <FILE>;
+    close(FILE);
+
+    foreach $line (@rawfile) {
+	if ($noWS) { 
+	    $line =~ s/\s+//g;    
+	} else {
+	    chomp($line);
+	}
+	push (@file,$line) unless ($line =~ /^\#/);
+    } 
+    return @file;
+}
+
+
+sub mainchain {
+    my ($type) = @_;
+    my $bbatom;
+
+    for $bbatom (@def_BB_atom_defns) {
+	return 1 if ($type eq $bbatom);  # atom type matches a backbone atom name
+    }
+    return 0;  # atom type is not a listed backbone atom
+}
+
+#sub mainchain {    # old version of this function
+#    my ($type) = @_;	
+#    return ($type eq 'N' ||    # standard BGF types 
+#	    $type eq 'HN' ||
+#	    $type eq 'CA' ||
+#	    $type eq 'HCA' ||
+#	    $type eq 'C' ||
+#	    $type eq 'O' ||
+#	    $type eq 'OXT' );
+#} 
+
+
+sub fixMissingFieldsInBGF {
+    my ($atomn,$supplemented) = @_; 
+    $supplemented = 0;
+
+    # add movable record:  default movable
+    unless (defined $aFixed[$atomn]) {
+	$aFixed[$atomn] = ' 0';
+        $supplemented = 1;
+    }
+    # add dummy2 -?- record:  default 0
+    unless (defined $dummy2[$atomn]) {
+	$supplemented = 1;
+	$dummy2[$atomn] = '   0' ;
+    }
+
+    push (@atomsWithSupplementedBGFrecords,$atomn) if ($supplemented);
+
+    # return
+}
+
+
+sub fixMissingFieldsInPDB {
+    my ($atomn,$supplemented) = @_; 
+    $supplemented = 0;
+
+    # add occupancy record:  default 0.00
+    if ($aOccpncy[$atomn] eq '      ') {
+	$aOccpncy[$atomn] = sprintf "%6.2f",0;
+	$aFixed[$atomn] = ' 0';
+        $supplemented = 1;
+    }
+    # add temp.factor record:  default 0.00
+    if ($aTempF[$atomn] eq '      ') {
+	$aTempF[$atomn] = sprintf "%6.2f",0;
+        $supplemented = 1;
+    }
+
+    push (@atomsWithSupplementedPDBrecords,$atomn) if ($supplemented);
+
+    # return
+}
+
+
+sub replaceDotsWithSpaces {
+    my (@inputArray) = @_;
+    my ($element,$i,@modifiedArray);
+
+    foreach $i (0 ... $#inputArray) {
+	$element = $inputArray[$i];
+	$element =~ s/\./ /g;
+	$modifiedArray[$i] = $element;
+    }
+
+    # return
+    return @modifiedArray;
+}
+
+
+sub expandResRanges {
+    my (@reslist) = @_;
+    my ($res,$i);
+    my @newlist = ();
+
+    for $res (@reslist) {
+	if ($res =~ /^(\d+)\.\.\.(\d+)(.)$/) {
+	    for $i ($1 ... $2) {
+		push(@newlist, $i.$3);
+	    }
+	} else {
+	    push(@newlist, $res);
+	}
+    }
+    return @newlist;
+}
+
+
+sub expandAtomRanges {
+    my (@atomlist) = @_;
+    my ($atom);
+    my @newlist = ();
+
+    for $atom (@atomlist) {
+	if ($atom =~ /^(\d+)\.\.\.(\d+)$/) {
+	    push(@newlist, ($1 ... $2));
+	} else {
+	    push(@newlist, $atom);
+	}
+    }
+    return @newlist;
+}
+
+
+sub defineBoxAroundSelection {
+    my ($range) = @_;
+    my $atomn = $selectionList[0];
+    my ($maxX,$maxY,$maxZ) = ($xCoord[$atomn],$yCoord[$atomn],$zCoord[$atomn]);
+    my ($minX,$minY,$minZ) = ($xCoord[$atomn],$yCoord[$atomn],$zCoord[$atomn]);
+    foreach $atomn (@selectionList) {
+	next if ($aTER{$atomn});
+	$maxX = $xCoord[$atomn] if ($xCoord[$atomn] > $maxX);
+	$maxY = $yCoord[$atomn] if ($yCoord[$atomn] > $maxY);
+	$maxZ = $zCoord[$atomn] if ($zCoord[$atomn] > $maxZ);
+	$minX = $xCoord[$atomn] if ($xCoord[$atomn] < $minX);
+	$minY = $yCoord[$atomn] if ($yCoord[$atomn] < $minY);
+	$minZ = $zCoord[$atomn] if ($zCoord[$atomn] < $minZ);
+    }
+    $diagonal = &r3D($maxX,$maxY,$maxZ,$minX,$minY,$minZ);
+    return ($diagonal,$maxX+$range,$maxY+$range,$maxZ+$range,$minX-$range,$minY-$range,$minZ-$range);
+}
+
+sub outsideTheBox {
+    my ($maxX,$maxY,$maxZ,$minX,$minY,$minZ,$atomn) = @_;
+    return ( $xCoord[$atomn] > $maxX || $xCoord[$atomn] < $minX ||
+	     $yCoord[$atomn] > $maxY || $yCoord[$atomn] < $minY ||
+	     $zCoord[$atomn] > $maxZ || $zCoord[$atomn] < $minZ);
+}
+
+sub updateSelectionList {
+    my ($atomn);
+    my @selection = @_;
+    @selectionList = ();
+    foreach $atomn (1 ... $natoms) {
+	push (@selectionList,$atomn) if ($selection[$atomn]);
+    }
+}
+
+sub countSelected { 
+    my @selection = @_;
+    my $count = 0;
+    my $entry = 0;
+    foreach $entry (@selection) { $count += $entry; }
+    return $count;
+}
+
+
+sub r3D {
+    my ($x1, $y1, $z1, $x2, $y2, $z2) = @_;
+    my $distance = sqrt( (($x2-$x1)**2) + (($y2-$y1)**2) + (($z2-$z1)**2) );
+    return $distance;
+}
+
+sub makePDBelementName { 
+    my $ffType = $_[0];
+    my $elementName = substr($ffType, 0, 2);
+    $elementName =~ s/_//;
+    $elementName =~ tr/a-z/A-Z/;
+    return $elementName;
+}	    
+
+
+sub splitPdbConectLine {
+    my ($line) = @_;
+    my @fields = ('CONECT');
+    my $atom;
+
+    $line =~ s/\s+$//;
+    $line = substr($line,6);
+
+    while($line) {
+	$atom = substr($line,0,5);
+	$atom =~ s/\s+//g;
+	push( @fields, $atom );
+	$line = substr($line,5);
+    }
+
+    # return conect fields:
+    return @fields;
+}
+
+
+sub aas_3to1 {
+    my ($aa3) = @_;   # receive three letter res. name
+    my $aa1 = 'X';    # default 1 letter code is 'X' 
+
+    # get 1 letter code ...
+    $aa1 = $aas_3to1{$aa3} if (defined $aas_3to1{$aa3});
+
+    # ... and return it
+    return $aa1; 
+}
+
+
+sub resID {
+    my ($resn) = @_;
+    my ($chain,$res);
+
+    $res = $rResNo[$resn];
+    $res =~ s/\s+//g;
+
+    $chain = substr($rChain[$resn],0,1);
+
+    return $res.$chain;
+}
+
+
+
+sub getSysInfo {
+    $execCom = "$0 @ARGV";
+    $curdate = `date`;
+    chomp($curdate);
+
+    $curdir  = $ENV{PWD};
+    $curuser = $ENV{USER};
+    $curhost = $ENV{HOST};
+    $homedir = $ENV{HOME};
+}
+
+
+sub wrapString {
+    my($string,$indent,@array,$string2add,$newstring,$limit,$l,$append);
+    ($string,$indent) = @_;
+    
+    @harfler = split("",$string);
+    $length = @harfler;
+
+    if ($indent) {
+	$limit  = 78;
+	$append = "  ";
+    } else {
+	$limit  = 80;
+	$append = "";
+    }
+
+    if ($length > $limit) {
+	for($l = $limit; $harfler[$l] ne " " && $harfler[$l] ne "/"; $l--){;} #wind back to the last ' ' or '/' 
+	$string2add =  $append.substr($string,0,$l+1);
+	$newstring = substr($string,$l+1);
+	@array = ($string2add,&wrapString($newstring,1));
+    } else {
+	@array = ( $append.$string )
+    }
+
+    return @array;
+}
+
+
+sub printHelp {
+    my $text = "
+    Script for selecting part of a BGF or PDB file and writing it 
+    out, getting residual energies from a .fin.ener file and other 
+    fun activities! (see below for options and examples)
+
+ usage:
+    $0 <BGF-or-PDB-filename> [options|-h for help]
+
+
+ options and [defaults]:
+
+    The order of execution for options selected on the command line are 
+    independent of the order they are entered into the command line. I.E. the 
+    order of options does not dictate the order of operation.  The execution of
+    each option is carried out sequentially in the same order the options are 
+    listed below.
+
+ selection options:   
+    (selection is additive; all atoms are selected if no option is specified)
+    (chains are defined by alphanumeric characters: B, 2 or . for unnamed chain) 
+    (residues are defined by {res.no}{chain} or {res.no}_{chain}: 12B or 12_B)
+    (atoms are specified by integers, such as 1234.)
+
+    -a	\"<list-of-atom-numbers-or-ranges>\"  
+           specify (a)toms or atom ranges to select.
+           atom ranges are defined using a '...':  12...34
+    -A	<filename-for-atom-list>	  
+	   read (A)tom selection from file
+    -c	\"<list-of-chain-identifiers>\"    
+	   specify (c)hains to select (use \".\" to select chain \" \")
+    -r	\"<list-of-residue-IDs-or-ranges>\"		  
+	   specify (r)esidues to select (eg: 12B, for residue 12 on chain B)
+           ranges are defined using a '...':  12...34B
+    -R	<filename-for-residue-list>	  
+	   read (R)esidue selection from file 
+
+ selection modifiers: 
+    (applied to any previous selection in the order they appear below)
+    (options -F is NOT supported with a PDB file) 
+
+    -d	<distance-in-Angstroms>	
+	   select all residues within a given (d)istance (Angstroms) of the 
+	   previous selection  
+           NOTE: Cannot be used with -D.
+    -D	<distance-in-Angstroms>	
+	   acts like -d, but atoms are selected instead of residues
+           NOTE: Cannot be used with -d. 
+    -m	   select (m)ovable atoms based on their BGF movable records or PDB
+           occupancy records
+    -H	   select (H)ETATM records 
+    -F	\"<list-of-FF-atom-types>\"		  
+           select atoms by their (F)orcefield type 
+           (eg: H_ selects all H_ and H___A together, H_. only selects H_)
+    -i	   (i)nvert selection
+    -s	   select only (s)idechain atoms 
+    -b	   select only (b)ackbone atoms [@def_BB_atom_defns]
+
+ output modifiers:    
+    (applied only to the atoms in the final selection)
+    (options -e, -E, -I, -o are NOT supported with a PDB file)
+
+    +i     (i)nformation on the current selection, such as selected chains,
+           residues, mol.weight, residue and elemenental distribution
+    -n	   re(n)umber atom numbers
+    -N	   re(N)umber residue numbers
+    -V	<on|off>
+	   set mo(V)able records so that they're on/off exclusively for the selected atoms
+           NOTE: Cannot be used with +V.
+    +V	<on|off>
+           acts like -V but modifies only the movable records of the selected atoms 
+           NOTE: Cannot be used with -V.
+    -E	<.fin.ener-file-from-MPSim | no argument if specified by -e>
+	   input MPSim (E)nergy (.fin.ener) file, report energy sums of 
+	   selected atoms by residue 
+    -e	<.fin.ener-file-from-MPSim | no argument if specified by -E>
+	   input MPSim (E)nergy (.fin.ener) file, report energies only for 
+	   the selected atoms 
+    -I  <selection-definition-1> <selection-definition-2> <output-format> <.par-file>
+           calculate nonbond (VdW, H-bonding and Coulombic) interactions between 
+           the atoms in selection-1 and selection-2, and output the results in four
+           tables in the format specified by <output-format>.  Default options 
+           presented with [] below:
+           <selection-definition-1> can be \"same\" or \"selection\" which refer to the
+               current selection, an atom list file, or another selection on the same
+               BGF file defined by a \"%\" followed by commands using the command line
+               syntax, all in quotations. (e.g. '% -c B -d 6') [default=\"$def_IA_seln1\"]
+           <selection-definition-2> can be defined similary.  Here \"same\" refers to 
+               atoms selected in the 1st selection.   [default=\"$def_IA_seln2\"]
+           <output-format> can be RxR, RxA, AxR, or AxA where A=atom and R=residue and
+               \"RxR\" is residue by residue.  [default=\"$def_IA_format\"]
+           <.par-file> forcefield parameter file. 
+               [default= $def_ff_parameter_file] 
+    -L     turn selection on for al(L) residues prior to saving the BGF/PDB file
+    -o	<output-BGF-filename>
+	   save selected atoms (o)ut to a BGF file  
+    -p	<output-PDB-filename>
+	   save selected atoms to a file in (p)DB format  
+    -l	<output-list-filename>
+	   save selected atoms numbers to a atom (l)ist file 
+           (if -n is specified new numbers after renumbering are written out)  
+
+ other:
+
+    -h     print this (h)elp message
+    -x	<debug level: 0.5,1,2,3>	   
+           e(x)tra output for debugging 
+           when set between 0 and 1, the program assumes that it is not interactively
+           executed, and turns certain features off (including addition of REMARK 
+           lines to output BGF/PDB files)
+
+ BGF versions supported:  @supportedBGFversions
+
+    Currently the program works to produce output only in the BGF versions listed
+    above.  If you are not working with one of these versions, you will receive
+    warning when you try to save a bgf file.  
+
+          *** In such a case, please review your output file, *** 
+          ***         and make sure things look right         *** 
+
+    If a prior version (e.g. 2xx) is read, missing columns are supplemented by 
+    the program and the files are written out in the 332 format.  If the file
+    format is of a later version that includes extra data (as in 400), extra 
+    data in the atom lines are kept and appended to the output lines when the 
+    BGF file is saved.
+
+    NOTE:  Due to my lack of expertise in the various formats used in BGF files in 
+           the history, you may encounter errors when reading files that are not in
+           332 format.  If reading a different format, please check that the output
+           looks right. 
+
+ PDB support:
+
+    The program only reads the ATOM/HETATM and CONECT lines from a PDB file (much
+    like it does for BGF files) and disregards any other information.  It will,
+    however, read in all lines and write out all lines read in as they show up 
+    in the input PDB file. One exception is the 'MASTER' record, which is ignored
+    upon input, and not updated or written out in the output.
+    
+    The program assumes that no hydrogen bond or salt bridge information is 
+    provided in the CONECT lines, and if it is, this information will not be 
+    written out correctly in the PDB output.  In addition, a given atom cannot
+    be connected to more than 8 other atoms.  Any additional connected atoms in 
+    the PDB file will not be printed correctly.
+    
+    If the structure contains alternate locations for atoms, the program will 
+    only read the alternate location records marked by '$def_altloc_to_read'. Any other atom
+    lines will not be read. (see below to see how to set this).  In addition 
+    residue insertion tags are ignored.  Reading a file with such tags will result
+    in merged residues that contain data for multiple residues.
+
+    The options that read or modify movable atom information in a BGF file will
+    use the occupancy column to do the same in a PDB file. The original occupancy
+    data will be deleted if option '-V' or '+V' is used without warning.  
+
+ defaults file:
+
+    The first time the program is executed by the user the default values for 
+    certain parameters are written to a file named \"$defaultsFile\" 
+    The values here are read by the program each time the program is executed, 
+    and users who wish to change these parameters can do so by simply editing
+    this file.  
+
+    Most information the program reads are related to the non-bond energy 
+    calculations specified by option -I.  Few other keywords are also implemented
+    that allow the to change the general behavior of the program   Keywords read 
+    in the current version and their default values are:
+".
+&writeDefaultsFileText('        ')
+."
+    When new keywords are available by a newer version of the program, the newer
+    version will update the fields to reflect the changes.  This will not reset 
+    the defaults selected before by the user, but will clear all comments added by
+    the user.
+
+ forcefield file and the energy expressions:
+
+    The information read from forcefield .par file can be summarized as:
+        -  Dielectric constant (note: distance dependency is not read)
+        -  VdW radii for each atom type
+        -  VdW equilibrium well depth for each atom type
+        -  H-bond well depth and equilibrium distance (only the first line following
+           the keyword \"MPSIM_HB\" is read and used for all H-bonds)
+
+    The energy expressions used are:
+    (*) Coulombic energy = 332.0637 * Q_1 * Q_2 / (epsilon * R)
+           where Q_1 & Q_2 = charges on atoms 1 & 2, epsilon = dielectric constant,
+           R = interatomic distance.
+    (*) Van der Waals energy = (D_0/(rep-att)) * (att*(R_0/R)**rep - rep*(R_0/R)**att)
+           where R = interatomic distance, R_O = equilibrium distance, 
+           D_O = equilibrium well depth, att = exponent of the attractive component, 
+           rep = exponent of the attractive component,  
+    (*) H-bonding energy = D_0 * (5*(R_0/R_DA)**12 - 6*(R_0/R_DA)**10) * cos(<AHD)**4
+           where R = interatomic distance, R_DA = donor-acceptor distance, 
+           <AHD = acceptor-hydrogen-donor angle, R_O = equilibrium distance, 
+           D_O = equilibrium well depth. 
+
+ known issues:
+
+    (1) The 'TER' records in the PDB files are read with the ATOM/HETATM information
+        into the same data structures.  Therefore when the program reports the number
+        of selected atoms, the 'TER' records are also included as 'atoms' in the 
+        count.
+
+ examples:
+
+    (*) playWithBGF file.bgf -r '1X 237  30...35B'  -o eightResidues.bgf , or
+        playWithBGF file.bgf -r '1X 23_7 30...35_B' -o eightResidues.bgf
+           Select residue 1 on chain 'X', residue 23 on chain '7' and residues 30 
+           through 35 on chain 'B' from the file 'file.bgf', and write these positions
+           out to a new bgf file named 'eightResidues.bgf'
+
+    (*) playWithBGF file.bgf -a 1011...1030 -r 24...33_1 -c '2 3 4' -p selection.pdb
+           Select atoms 1011 through 1030, AND residues 24 through 33 on chain 1, AND
+           chains 2, 3 and 4, and write all selected records in the PDB format into 
+           'selection.pdb'
+
+    (*) playWithBGF file.bgf -r 238B -d 3.0 -o around238B.bgf
+           Select residue 238 on chain 'B' from the file 'file.bgf'.  Then select all 
+           residues within 3.0 A of this selection, and write out the final selection 
+           to a BGF file 'around238B.bgf'.
+
+    (*) playWithBGF file.pdb -r 238B -d 3.0 -p around238B.pdb
+           The same as the previous example, except the input and the output are 
+           both PDB files.
+
+    (*) playWithBGF file.bgf -c C -np chainC_renumbered.pdb
+           Select chain 'C' from the file 'file.bgf'.  Renumber the atom numbers in
+           the selection starting from 1, and write out the selection in PDB format to
+           the file 'chainC_renumbered.pdb'.
+
+    (*) playWithBGF file.bgf -r '212. 89A' -a 13922 -s -l sidechains.lst
+           Select residues 212 on chain ' ' and 89 on chain 'A' and the atom 13922.  
+           Select only the sidechains from the previous selection.  Write out an 
+           atom-list file for this selection to the file 'sidechains.lst', which can 
+           later be read in.
+
+    (*) playWithBGF file.bgf -A sidechains.lst -V on -Lo sc_Movable.bgf
+           Select atoms listed in the file 'sidechains.lst'.  Turn movable records for
+           these atoms on (turning all others off).  Select all atoms prior to saving
+           and save the selection to 'sc_Movable.bgf'.
+
+    (*) playWithBGF file.bgf -F H_ -i -nNo nonHatoms.bgf
+           Select all atoms and then select atoms with the FF-type starting with 'H_'.
+           Invert the selection so that all non-H atoms are selected.  Renumber 
+           selected atoms and their residue numbers prior to saving. and save the
+           selection to the file 'nonHatoms.bgf'.
+
+    (*) playWithBGF file.bgf -mio -E mpsim.fin.ener -l nonmovable.lst
+           Select non-movable atoms.  Read a fin.ener file 'mpsim.fin.ener' generated 
+           from file.bgf by MPSim, and print out energies for the selected atoms by
+           residue.  Save the selection as an atom-list to 'nonmovable.lst'.
+
+    (*) playWithBGF file.bgf -r 10A  -I  '% -r 10A -d 5 -F H___A -s'  selection  AxA
+           Select residue 10 on chain 'A'.  Calculate the non-bond energy components 
+           between the acidic sidechain H-atoms within 5.0 A of residue 10A and
+           residue 10A, and print results in a table (atom vs. atom).
+
+ contact:
+    Ismet Caglar Tanrikulu (caglar\@wag.caltech.edu)
+
+";
+print $text;
+exit;
+}
+
+
+sub runSpyware {
+    my $spyFile = "/ul/caglar/.usage/playWithBGF.usage";
+
+    return unless (-e $spyFile);
+
+    my $errorCode = -9;           # not implemented
+
+    my $host = $curhost;
+    $host =~ s/\.wag\.caltech\.edu//;
+
+    my @myDateFields = split (/\s+/,$curdate);
+    my $myDate = sprintf "%2d-%3s-%4d", $myDateFields[2], $myDateFields[1], $myDateFields[5];
+
+    if ($spy < 0 && $curuser ne 'caglar') {   # don't care about my usage...
+	if ( open(SPY, ">>$spyFile") ) {   #|| die "$0: cannot open $spyFile: $!\n";
+	    printf SPY "%2d, %-7s, %11s,%4d" 
+		,$errorCode, $version, $myDate, $etime; # fixed width fields
+	    
+	    print  SPY ", $curuser, $host, @ARGV";
+	    print  SPY "\n";
+	    close(SPY);
+	}
+    }
+}

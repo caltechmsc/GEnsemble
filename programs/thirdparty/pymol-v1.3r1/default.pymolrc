@@ -1,0 +1,49 @@
+###
+### PyMol Settings File
+###
+### Created by Adam Griffith, March 2012
+###
+### Updated by Adam Griffith, Dec 2014
+### * add docktools.py
+### * remove mappotential.py (now part of doctools.py)
+###
+### To use these as your default settings:
+### * Option one: copy this file to ~/.pymolrc
+### * Option two: make symbolic link to this file:
+###               ln -s {path}/default.pymolrc ~/.pymolrc
+###
+### You can adjust or add new settings as desired.  If you find a setting
+### that you think would be useful for the group, please let everyone know.
+###
+
+# Scripts
+run /project/Biogroup/Software/GEnsemble/programs/thirdparty/pymol-v1.3r1/scripts/load_sep.py
+run /project/Biogroup/Software/GEnsemble/programs/thirdparty/pymol-v1.3r1/scripts/showaxes.py
+run /project/Biogroup/Software/GEnsemble/programs/thirdparty/pymol-v1.3r1/scripts/align_all.py
+run /project/Biogroup/Software/GEnsemble/programs/thirdparty/pymol-v1.3r1/scripts/mappotential.py
+
+# White background
+bg white
+
+# No shadows during ray-trace
+util.ray_shadows('none')
+
+# Normal view and ray-trace use orthoscopic view
+set ray_orthoscopic=on
+set ortho=on
+
+# Ray-trace background is transparent
+set ray_opaque_background=off
+
+# Speeds up rendering by increasing memory allowance
+set hash_max=200
+
+# Maximum view quality
+util.performance(0)
+
+## Surface transparency
+#set transparency=0.5
+
+## Cartoon transparency & width
+#set cartoon_transparency=0.5
+#set cartoon_oval_length=1.0

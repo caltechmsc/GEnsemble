@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Quick tips</TITLE>
+<META NAME="description" CONTENT="Quick tips">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html189"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html187"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html181"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html190"
+  HREF="node5.html">Command-line use</A>
+<B> Up:</B> <A NAME="tex2html188"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html182"
+  HREF="node3.html">Initial configuration...</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html191"
+  HREF="node4.html#SECTION00041000000000000000">Source code handling tips</A>
+<UL>
+<LI><A NAME="tex2html192"
+  HREF="node4.html#SECTION00041100000000000000">Lightweight 'version control'</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html193"
+  HREF="node4.html#SECTION00042000000000000000">Effective logging</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00040000000000000000"></A><A NAME="sec:quick_tips"></A>
+<BR>
+Quick tips
+</H1>
+
+<P>
+IPython can be used as an improved replacement for the Python prompt, and for that
+you don't really need to read any more of this manual. But in this section we'll
+try to summarize a few tips on how to make the most effective use of it for everyday
+Python development, highlighting things you might miss in the rest of the manual
+(which is getting long). We'll give references to parts in the manual which provide
+more detail when appropriate.
+
+<P>
+The following article by Jeremy Jones provides an introductory tutorial about IPython:
+<BR><TT><A NAME="tex2html11"
+  HREF="http://www.onlamp.com/pub/a/python/2005/01/27/ipython.html">http://www.onlamp.com/pub/a/python/2005/01/27/ipython.html</A></TT>
+<P>
+
+<UL>
+<LI>The TAB key. TAB-completion, especially for attributes, is a convenient way to
+explore the structure of any object you're dealing with. Simply type <TT>object_name.&lt;TAB&gt;</TT>
+and a list of the object's attributes will be printed (see sec. <A HREF="node6.html#sec:readline">6.5</A>
+for more). Tab completion also works on file and directory names, which combined
+with IPython's alias system allows you to do from within IPython many of the things
+you normally would need the system shell for. 
+</LI>
+<LI>Explore your objects. Typing <TT>object_name?</TT> will print all sorts of details
+about any object, including docstrings, function definition lines (for call arguments)
+and constructor details for classes. The magic commands <TT>%pdoc</TT>, <TT>%pdef</TT>,
+<TT>%psource</TT> and <TT>%pfile</TT> will respectively print the docstring,
+function definition line, full source code and the complete file for any object
+(when they can be found). If automagic is on (it is by default), you don't need
+to type the '<TT>%</TT>' explicitly. See sec. <A HREF="node6.html#sec:dyn-object-info">6.4</A> for more.
+</LI>
+<LI>The <TT>%run</TT> magic command allows you to run any python script and load all
+of its data directly into the interactive namespace. Since the file is re-read
+from disk each time, changes you make to it are reflected immediately (in contrast
+to the behavior of <TT>import</TT>). I rarely use <TT>import</TT> for code I am
+testing, relying on <TT>%run</TT> instead. See sec. <A HREF="node6.html#sec:magic">6.2</A> for more
+on this and other magic commands, or type the name of any magic command and ? to
+get details on it. See also sec. <A HREF="node6.html#sec:dreload">6.9</A> for a recursive reload command.
+<BR><TT>%run</TT> also has special flags for timing the execution of your scripts
+(<TT>-t</TT>) and for executing them under the control of either Python's <TT>pdb</TT>
+debugger (<TT>-d</TT>) or profiler (<TT>-p</TT>). With all of these, <TT>%run</TT>
+can be used as the main tool for efficient interactive development of code which
+you write in your editor of choice.
+</LI>
+<LI>Use the Python debugger, <TT>pdb</TT><A NAME="tex2html12"
+  HREF="footnode.html#foot358"><SUP><SPAN CLASS="arabic">2</SPAN></SUP></A>. The <TT>%pdb</TT> command allows you to toggle on and off the automatic invocation
+of an IPython-enhanced <TT>pdb</TT> debugger (with coloring, tab completion and
+more) at any uncaught exception. The advantage of this is that <TT>pdb</TT> starts
+<SPAN  CLASS="textit">inside</SPAN> the function where the exception occurred, with all data still available.
+You can print variables, see code, execute statements and even walk up and down
+the call stack to track down the true source of the problem (which often is many
+layers in the stack above where the exception gets triggered).
+<BR>
+Running programs with <TT>%run</TT> and pdb active can be an efficient to develop
+and debug code, in many cases eliminating the need for <TT>print</TT> statements
+or external debugging tools. I often simply put a <TT>1/0</TT> in a place where
+I want to take a look so that pdb gets called, quickly view whatever variables
+I need to or test various pieces of code and then remove the <TT>1/0</TT>.
+<BR>
+Note also that `<TT>%run -d</TT>' activates <TT>pdb</TT> and automatically sets
+initial breakpoints for you to step through your code, watch variables, etc. See
+Sec.&nbsp;<A HREF="node6.html#sec:cache_output">6.12</A> for details.
+</LI>
+<LI>Use the output cache. All output results are automatically stored in a global dictionary
+named <TT>Out</TT> and variables named <TT>_1</TT>, <TT>_2</TT>, etc. alias them.
+For example, the result of input line 4 is available either as <TT>Out[4]</TT>
+or as <TT>_4</TT>. Additionally, three variables named <TT>_</TT>, <TT>__</TT>
+and <TT>___</TT> are always kept updated with the for the last three results.
+This allows you to recall any previous result and further use it for new calculations.
+See Sec.&nbsp;<A HREF="node6.html#sec:cache_output">6.12</A> for more.
+</LI>
+<LI>Put a '<TT>;</TT>' at the end of a line to supress the printing of output. This
+is useful when doing calculations which generate long output you are not interested
+in seeing. The <TT>_*</TT> variables and the <TT>Out[]</TT> list do get
+updated with the contents of the output, even if it is not printed. You can thus
+still access the generated results this way for further processing.
+</LI>
+<LI>A similar system exists for caching input. All input is stored in a global list
+called <TT>In</TT> , so you can re-execute lines 22 through 28 plus line 34 by
+typing <TT>'exec In[22:29]+In[34]'</TT> (using Python slicing notation).
+If you need to execute the same set of lines often, you can assign them to a macro
+with the <TT>%macro</TT> <TT>function.</TT> See sec. <A HREF="node6.html#sec:cache_input">6.11</A> for
+more.
+</LI>
+<LI>Use your input history. The <TT>%hist</TT> command can show you all previous input,
+without line numbers if desired (option <TT>-n</TT>) so you can directly copy and
+paste code either back in IPython or in a text editor. You can also save all your
+history by turning on logging via <TT>%logstart</TT>; these logs can later be
+either reloaded as IPython sessions or used as code for your programs.
+</LI>
+<LI>Define your own system aliases. Even though IPython gives you access to your system
+shell via the <TT>!</TT> prefix, it is convenient to have aliases to the system
+commands you use most often. This allows you to work seamlessly from inside IPython
+with the same commands you are used to in your system shell.
+<BR>
+IPython comes with some pre-defined aliases and a complete system for changing
+directories, both via a stack (see <TT>%pushd</TT>, <TT>%popd</TT> and <TT>%ds</TT>)
+and via direct <TT>%cd</TT>. The latter keeps a history of visited directories
+and allows you to go to any previously visited one.
+</LI>
+<LI>Use Python to manipulate the results of system commands. The `<TT>!!</TT>' special
+syntax, and the <TT>%sc</TT> and <TT>%sx</TT> magic commands allow you to capture
+system output into Python variables.
+</LI>
+<LI>Expand python variables when calling the shell (either via <TT>`!'</TT> and <TT>`!!'</TT>
+or via aliases) by prepending a <TT>$</TT> in front of them. You can also expand
+complete python expressions. See sec.&nbsp;<A HREF="node6.html#sub:System-shell-access">6.7</A> for more.
+</LI>
+<LI>Use profiles to maintain different configurations (modules to load, function definitions,
+option settings) for particular tasks. You can then have customized versions of
+IPython for specific purposes. See sec.&nbsp;<A HREF="node7.html#sec:profiles">7.3</A> for more.
+</LI>
+<LI>Embed IPython in your programs. A few lines of code are enough to load a complete
+IPython inside your own programs, giving you the ability to work with your data
+interactively after automatic processing has been completed. See sec.&nbsp;<A HREF="node9.html#sec:embed">9</A>
+for more.
+</LI>
+<LI>Use the Python profiler. When dealing with performance issues, the <TT>%run</TT>
+command with a <TT>-p</TT> option allows you to run complete programs under the
+control of the Python profiler. The <TT>%prun</TT> command does a similar job
+for single Python expressions (like function calls).
+</LI>
+<LI>Use the IPython.demo.Demo class to load any Python script as an interactive demo.
+With a minimal amount of simple markup, you can control the execution of the script,
+stopping as needed. See sec.&nbsp;<A HREF="node14.html#sec:interactive-demos">14</A> for more.
+</LI>
+</UL>
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+Source code handling tips</A>
+</H2>
+
+<P>
+IPython is a line-oriented program, without full control of the terminal. Therefore,
+it doesn't support true multiline editing. However, it has a number of useful tools
+to help you in dealing effectively with more complex editing.
+
+<P>
+The <TT>%edit</TT> command gives a reasonable approximation of multiline editing,
+by invoking your favorite editor on the spot. IPython will execute the code you
+type in there as if it were typed interactively. Type <TT>%edit?</TT> for the
+full details on the edit command.
+
+<P>
+If you have typed various commands during a session, which you'd like to reuse,
+IPython provides you with a number of tools. Start by using <TT>%hist</TT> to
+see your input history, so you can see the line numbers of all input. Let us say
+that you'd like to reuse lines 10 through 20, plus lines 24 and 28. All the commands
+below can operate on these with the syntax
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>%command&nbsp;10-20&nbsp;24&nbsp;28
+</DD>
+</DL>where the command given can be:
+
+<P>
+
+<UL>
+<LI><TT>%macro &lt;macroname&gt;</TT>: this stores the lines into a variable which, when
+called at the prompt, re-executes the input. Macros can be edited later using <TT>`%edit
+macroname</TT>', and they can be stored persistently across sessions with `<TT>%store
+macroname</TT>' (the storage system is per-profile). The combination of quick macros,
+persistent storage and editing, allows you to easily refine quick-and-dirty interactive
+input into permanent utilities, always available both in IPython and as files for
+general reuse.
+</LI>
+<LI><TT>%edit</TT>: this will open a text editor with those lines pre-loaded for further
+modification. It will then execute the resulting file's contents as if you had
+typed it at the prompt.
+</LI>
+<LI><TT>%save &lt;filename&gt;</TT>: this saves the lines directly to a named file on disk.
+</LI>
+</UL>
+While <TT>%macro</TT> saves input lines into memory for interactive re-execution,
+sometimes you'd like to save your input directly to a file. The <TT>%save</TT>
+magic does this: its input sytnax is the same as <TT>%macro</TT>, but it saves
+your input directly to a Python file. Note that the <TT>%logstart</TT> command
+also saves input, but it logs <SPAN  CLASS="textit">all</SPAN> input to disk (though you can temporarily
+suspend it and reactivate it with <TT>%logoff/%logon</TT>); <TT>%save</TT> allows
+you to select which lines of input you need to save.
+
+<P>
+
+<H3><A NAME="SECTION00041100000000000000">
+Lightweight 'version control'</A>
+</H3>
+
+<P>
+When you call <TT>%edit</TT> with no arguments, IPython opens an empty editor
+with a temporary file, and it returns the contents of your editing session as a
+string variable. Thanks to IPython's output caching mechanism, this is automatically
+stored:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>In&nbsp;[1]:&nbsp;%edit
+
+<P>
+IPython&nbsp;will&nbsp;make&nbsp;a&nbsp;temporary&nbsp;file&nbsp;named:&nbsp;/tmp/ipython_edit_yR-HCN.py
+
+<P>
+Editing...&nbsp;done.&nbsp;Executing&nbsp;edited&nbsp;code...
+
+<P>
+hello&nbsp;-&nbsp;this&nbsp;is&nbsp;a&nbsp;temporary&nbsp;file
+
+<P>
+Out[1]:&nbsp;&#34;print&nbsp;'hello&nbsp;-&nbsp;this&nbsp;is&nbsp;a&nbsp;temporary&nbsp;file'&#92;n&#34;
+</DD>
+</DL>Now, if you call <TT>`%edit -p'</TT>, IPython tries to open an editor with the
+same data as the last time you used <TT>%edit</TT>. So if you haven't used <TT>%edit</TT>
+in the meantime, this same contents will reopen; however, it will be done in a
+<SPAN  CLASS="textit">new file</SPAN>. This means that if you make changes and you later want to find
+an old version, you can always retrieve it by using its output number, via <TT>`%edit
+_NN'</TT>, where <TT>NN</TT> is the number of the output prompt.
+
+<P>
+Continuing with the example above, this should illustrate this idea:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>In&nbsp;[2]:&nbsp;edit&nbsp;-p
+
+<P>
+IPython&nbsp;will&nbsp;make&nbsp;a&nbsp;temporary&nbsp;file&nbsp;named:&nbsp;/tmp/ipython_edit_nA09Qk.py
+
+<P>
+Editing...&nbsp;done.&nbsp;Executing&nbsp;edited&nbsp;code...
+
+<P>
+hello&nbsp;-&nbsp;now&nbsp;I&nbsp;made&nbsp;some&nbsp;changes
+
+<P>
+Out[2]:&nbsp;&#34;print&nbsp;'hello&nbsp;-&nbsp;now&nbsp;I&nbsp;made&nbsp;some&nbsp;changes'&#92;n&#34;
+
+<P>
+In&nbsp;[3]:&nbsp;edit&nbsp;_1
+
+<P>
+IPython&nbsp;will&nbsp;make&nbsp;a&nbsp;temporary&nbsp;file&nbsp;named:&nbsp;/tmp/ipython_edit_gy6-zD.py
+
+<P>
+Editing...&nbsp;done.&nbsp;Executing&nbsp;edited&nbsp;code...
+
+<P>
+hello&nbsp;-&nbsp;this&nbsp;is&nbsp;a&nbsp;temporary&nbsp;file
+
+<P>
+IPython&nbsp;version&nbsp;control&nbsp;at&nbsp;work&nbsp;:)
+
+<P>
+Out[3]:&nbsp;&#34;print&nbsp;'hello&nbsp;-&nbsp;this&nbsp;is&nbsp;a&nbsp;temporary&nbsp;file'&#92;nprint&nbsp;'IPython&nbsp;version&nbsp;control&nbsp;at&nbsp;work&nbsp;:)'&#92;n&#34;
+</DD>
+</DL>This section was written after a contribution by Alexander Belchenko on the IPython
+user list.
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD><P>
+</DD>
+</DL>
+<P>
+
+<H2><A NAME="SECTION00042000000000000000">
+Effective logging</A>
+</H2>
+
+<P>
+A very useful suggestion sent in by Robert Kern follows:
+
+<P>
+I recently happened on a nifty way to keep tidy per-project log files. I made a
+profile for my project (which is called &#34;parkfield&#34;).
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>include&nbsp;ipythonrc
+
+<P>
+#&nbsp;cancel&nbsp;earlier&nbsp;logfile&nbsp;invocation:
+
+<P>
+logfile&nbsp;''
+
+<P>
+execute&nbsp;import&nbsp;time
+
+<P>
+execute&nbsp;__cmd&nbsp;=&nbsp;'/Users/kern/research/logfiles/parkfield-%s.log&nbsp;rotate'
+
+<P>
+execute&nbsp;__IP.magic_logstart(__cmd&nbsp;%&nbsp;time.strftime('%Y-%m-%d'))
+</DD>
+</DL>I also added a shell alias for convenience:
+
+<P>
+
+<DL COMPACT>
+<DT>
+<DD>alias&nbsp;parkfield=&#34;ipython&nbsp;-pylab&nbsp;-profile&nbsp;parkfield&#34;
+</DD>
+</DL>Now I have a nice little directory with everything I ever type in, organized by
+project and date.
+
+<P>
+<SPAN  CLASS="textbf">Contribute your own:</SPAN> If you have your own favorite tip on using IPython
+efficiently for a certain task (especially things which can't be done in the normal
+Python interpreter), don't hesitate to send it!
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html189"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html187"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html181"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html190"
+  HREF="node5.html">Command-line use</A>
+<B> Up:</B> <A NAME="tex2html188"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html182"
+  HREF="node3.html">Initial configuration...</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2006-06-06
+</ADDRESS>
+</BODY>
+</HTML>

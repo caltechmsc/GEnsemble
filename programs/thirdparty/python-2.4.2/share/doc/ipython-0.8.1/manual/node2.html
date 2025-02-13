@@ -1,0 +1,472 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Installation</TITLE>
+<META NAME="description" CONTENT="Installation">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html151"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html149"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html143"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html152"
+  HREF="node3.html">Initial configuration...</A>
+<B> Up:</B> <A NAME="tex2html150"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html144"
+  HREF="node1.html">Overview</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html153"
+  HREF="node2.html#SECTION00021000000000000000">Instant instructions</A>
+<LI><A NAME="tex2html154"
+  HREF="node2.html#SECTION00022000000000000000">Detailed Unix instructions (Linux, Mac OS X, etc.)</A>
+<UL>
+<LI><A NAME="tex2html155"
+  HREF="node2.html#SECTION00022100000000000000">Mac OSX information</A>
+<LI><A NAME="tex2html156"
+  HREF="node2.html#SECTION00022200000000000000">GUI problems</A>
+<LI><A NAME="tex2html157"
+  HREF="node2.html#SECTION00022300000000000000">Readline problems</A>
+<LI><A NAME="tex2html158"
+  HREF="node2.html#SECTION00022400000000000000">DarwinPorts</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html159"
+  HREF="node2.html#SECTION00023000000000000000">Windows instructions</A>
+<UL>
+<LI><A NAME="tex2html160"
+  HREF="node2.html#SECTION00023100000000000000">Installation procedure</A>
+<UL>
+<LI><A NAME="tex2html161"
+  HREF="node2.html#SECTION00023110000000000000">Upgrading</A>
+<LI><A NAME="tex2html162"
+  HREF="node2.html#SECTION00023120000000000000">Manual installation under Win32</A>
+</UL>
+</UL>
+<BR>
+<LI><A NAME="tex2html163"
+  HREF="node2.html#SECTION00024000000000000000">Upgrading from a previous version</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00020000000000000000"></A><A NAME="sec:install"></A>
+<BR>
+Installation
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Instant instructions</A>
+</H2>
+
+<P>
+If you are of the impatient kind, under Linux/Unix simply untar/unzip
+the download, then install with <TT>`python setup.py install'</TT>.
+Under Windows, double-click on the provided <TT>.exe</TT> binary installer.
+
+<P>
+Then, take a look at Sections <A HREF="node3.html#sec:good_config">3</A> for configuring
+things optimally and <A HREF="node4.html#sec:quick_tips">4</A> for quick tips on efficient
+use of IPython. You can later refer to the rest of the manual for
+all the gory details.
+
+<P>
+See the notes in sec. <A HREF="#sec:upgrade">2.4</A> for upgrading IPython versions.
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Detailed Unix instructions (Linux, Mac OS X, etc.)</A>
+</H2>
+
+<P>
+For RPM based systems, simply install the supplied package in the
+usual manner. If you download the tar archive, the process is:
+
+<P>
+
+<OL>
+<LI>Unzip/untar the <TT>ipython-XXX.tar.gz</TT> file wherever you want
+(<TT>XXX</TT> is the version number). It will make a directory called
+<TT>ipython-XXX.</TT> Change into that directory where you will find
+the files <TT>README</TT> and <TT>setup.py</TT>. <TT>O</TT>nce you've
+completed the installation, you can safely remove this directory. 
+</LI>
+<LI>If you are installing over a previous installation of version 0.2.0
+or earlier, first remove your <TT>$HOME/.ipython</TT> directory,
+since the configuration file format has changed somewhat (the '='
+were removed from all option specifications). Or you can call ipython
+with the <TT>-upgrade</TT> option and it will do this automatically
+for you.
+</LI>
+<LI>IPython uses distutils, so you can install it by simply typing at
+the system prompt (don't type the <TT>$</TT>)
+<BR><TT>$ python setup.py install</TT>
+<BR>
+Note that this assumes you have root access to your machine. If you
+don't have root access or don't want IPython to go in the default
+python directories, you'll need to use the <code>--home</code> option (or
+<code>--prefix</code>). For example:
+<BR><code>$ python setup.py install --home $HOME/local</code>
+<BR>
+will install IPython into <TT>$HOME/local</TT> and its subdirectories
+(creating them if necessary).
+<BR>
+You can type
+<BR><code>$ python setup.py --help</code> 
+<BR>
+for more details.
+<BR>
+Note that if you change the default location for <code>--home</code> at
+installation, IPython may end up installed at a location which is
+not part of your <TT>$PYTHONPATH</TT> environment variable. In this
+case, you'll need to configure this variable to include the actual
+directory where the <TT>IPython/</TT> directory ended (typically the
+value you give to <code>--home</code> plus <TT>/lib/python</TT>).
+</LI>
+</OL>
+
+<P>
+
+<H3><A NAME="SECTION00022100000000000000">
+Mac OSX information</A>
+</H3>
+
+<P>
+Under OSX, there is a choice you need to make. Apple ships its own
+build of Python, which lives in the core OSX filesystem hierarchy.
+You can also manually install a separate Python, either purely by
+hand (typically in <TT>/usr/local</TT>) or by using Fink, which puts
+everything under <TT>/sw</TT>. Which route to follow is a matter of
+personal preference, as I've seen users who favor each of the approaches.
+Here I will simply list the known installation issues under OSX, along
+with their solutions.
+
+<P>
+This page: <TT><A NAME="tex2html4"
+  HREF="http://geosci.uchicago.edu/~tobis/pylab.html">http://geosci.uchicago.edu/~tobis/pylab.html</A></TT> contains
+information on this topic, with additional details on how to make
+IPython and matplotlib play nicely under OSX.
+
+<P>
+
+<H3><A NAME="SECTION00022200000000000000">
+GUI problems</A>
+</H3>
+
+<P>
+The following instructions apply to an install of IPython under OSX
+from unpacking the <TT>.tar.gz</TT> distribution and installing it
+for the default Python interpreter shipped by Apple. If you are using
+a fink install, fink will take care of these details for you, by installing
+IPython against fink's Python.
+
+<P>
+IPython offers various forms of support for interacting with graphical
+applications from the command line, from simple Tk apps (which are
+in principle always supported by Python) to interactive control of
+WX, Qt and GTK apps. Under OSX, however, this requires that ipython
+is installed by calling the special <TT>pythonw</TT> script at installation
+time, which takes care of coordinating things with Apple's graphical
+environment.
+
+<P>
+So when installing under OSX, it is best to use the following command:&nbsp;
+<BR><code>  $ sudo pythonw setup.py install --install-scripts=/usr/local/bin</code>
+<BR>
+or
+<BR><code>  $ sudo pythonw setup.py install --install-scripts=/usr/bin</code>
+<BR>
+depending on where you like to keep hand-installed executables.
+
+<P>
+The resulting script will have an appropriate shebang line (the first
+line in the script whic begins with <TT>#!...</TT>) such that the
+ipython interpreter can interact with the OS X GUI. If the installed
+version does not work and has a shebang line that points to, for example,
+just <TT>/usr/bin/python</TT>, then you might have a stale, cached
+version in your <TT>build/scripts-&lt;python-version&gt;</TT> directory.
+Delete that directory and rerun the <TT>setup.py</TT>. 
+
+<P>
+It is also a good idea to use the special flag <code>--install-scripts</code>
+as indicated above, to ensure that the ipython scripts end up in a
+location which is part of your <TT>$PATH</TT>. Otherwise Apple's
+Python will put the scripts in an internal directory not available
+by default at the command line (if you use <TT>/usr/local/bin</TT>,
+you need to make sure this is in your <TT>$PATH</TT>, which may not
+be true by default).
+
+<P>
+
+<H3><A NAME="SECTION00022300000000000000">
+Readline problems</A>
+</H3>
+
+<P>
+By default, the Python version shipped by Apple does <SPAN  CLASS="textit">not</SPAN> include
+the readline library, so central to IPython's behavior. If you install
+IPython against Apple's Python, you will not have arrow keys, tab
+completion, etc. For Mac OSX 10.3 (Panther), you can find a prebuilt
+readline library here:
+<BR><TT><A NAME="tex2html5"
+  HREF="http://pythonmac.org/packages/readline-5.0-py2.3-macosx10.3.zip">http://pythonmac.org/packages/readline-5.0-py2.3-macosx10.3.zip</A></TT> 
+
+<P>
+If you are using OSX 10.4 (Tiger), after installing this package you
+need to either: 
+
+<P>
+
+<OL>
+<LI>move <TT>readline.so</TT> from <TT>/Library/Python/2.3</TT> to <TT>/Library/Python/2.3/site-packages</TT>,
+or
+</LI>
+<LI>install <TT><A NAME="tex2html6"
+  HREF="http://pythonmac.org/packages/TigerPython23Compat.pkg.zip">http://pythonmac.org/packages/TigerPython23Compat.pkg.zip</A></TT>
+</LI>
+</OL>
+Users installing against Fink's Python or a properly hand-built one
+should not have this problem.
+
+<P>
+
+<H3><A NAME="SECTION00022400000000000000">
+DarwinPorts</A>
+</H3>
+
+<P>
+I report here a message from an OSX user, who suggests an alternative
+means of using IPython under this operating system with good results.
+Please let me know of any updates that may be useful for this section.
+His message is reproduced verbatim below:
+
+<P>
+<BLOCKQUOTE>
+From: Markus Banfi <TT>&lt;markus.banfi-AT-mospheira.net&gt;</TT>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>As a MacOS X (10.4.2) user I prefer to install software using DawinPorts
+instead of Fink. I had no problems installing ipython with DarwinPorts.
+It's just:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><TT>sudo port install py-ipython</TT>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>It automatically resolved all dependencies (python24, readline, py-readline).
+So far I did not encounter any problems with the DarwinPorts port
+of ipython. 
+
+</BLOCKQUOTE>
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000"></A><A NAME="sub:Under-Windows"></A>
+<BR>
+Windows instructions
+</H2>
+
+<P>
+Some of IPython's very useful features are:
+
+<P>
+
+<UL>
+<LI>Integrated readline support (Tab-based file, object and attribute
+completion, input history across sessions, editable command line,
+etc.)
+</LI>
+<LI>Coloring of prompts, code and tracebacks.
+</LI>
+</UL>
+These, by default, are only available under Unix-like operating systems.
+However, thanks to Gary Bishop's work, Windows XP/2k users can also
+benefit from them. His readline library originally implemented both
+GNU readline functionality and color support, so that IPython under
+Windows XP/2k can be as friendly and powerful as under Unix-like environments. 
+
+<P>
+This library, now named <TT>PyReadline</TT>, has been absorbed by
+the IPython team (J&#246;rgen Stenarson, in particular), and it continues
+to be developed with new features, as well as being distributed directly
+from the IPython site.
+
+<P>
+The <TT>PyReadline</TT> extension requires <TT>CTypes</TT> and the
+windows IPython installer needs <TT>PyWin32</TT>, so in all you need:
+
+<P>
+
+<OL>
+<LI><TT>PyWin32</TT> from <TT><A NAME="tex2html7"
+  HREF="http://sourceforge.net/projects/pywin32">http://sourceforge.net/projects/pywin32</A></TT>.
+</LI>
+<LI><TT>PyReadline</TT> for Windows from <TT><A NAME="tex2html8"
+  HREF="http://ipython.scipy.org/moin/PyReadline/Intro">http://ipython.scipy.org/moin/PyReadline/Intro</A></TT>.
+That page contains further details on using and configuring the system
+to your liking.
+</LI>
+<LI>Finally, <SPAN  CLASS="textit">only</SPAN> if you are using Python 2.3 or 2.4, you need
+<TT>CTypes</TT> from <TT><A NAME="tex2html9"
+  HREF="http://starship.python.net/crew/theller/ctypes">http://starship.python.net/crew/theller/ctypes</A></TT>(you <SPAN  CLASS="textit">must</SPAN> use version 0.9.1 or newer). This package is included
+in Python 2.5, so you don't need to manually get it if your Python
+version is 2.5 or newer.
+</LI>
+</OL>
+<SPAN  CLASS="textbf">Warning about a broken readline-like library:</SPAN> several users
+have reported problems stemming from using the pseudo-readline library
+at <TT><A NAME="tex2html10"
+  HREF="http://newcenturycomputers.net/projects/readline.html">http://newcenturycomputers.net/projects/readline.html</A></TT>. This
+is a broken library which, while called readline, only implements
+an incomplete subset of the readline API. Since it is still called
+readline, it fools IPython's detection mechanisms and causes unpredictable
+crashes later. If you wish to use IPython under Windows, you must
+NOT use this library, which for all purposes is (at least as of version
+1.6) terminally broken.
+
+<P>
+
+<H3><A NAME="SECTION00023100000000000000">
+Installation procedure</A>
+</H3>
+
+<P>
+Once you have the above installed, from the IPython download directory
+grab the <TT>ipython-XXX.win32.exe</TT> file, where <TT>XXX</TT> represents
+the version number. This is a regular windows executable installer,
+which you can simply double-click to install. It will add an entry
+for IPython to your Start Menu, as well as registering IPython in
+the Windows list of applications, so you can later uninstall it from
+the Control Panel. 
+
+<P>
+IPython tries to install the configuration information in a directory
+named <TT>.ipython</TT> (<TT>_ipython</TT> under Windows) located
+in your `home' directory. IPython sets this directory by looking for
+a <TT>HOME</TT> environment variable; if such a variable does not
+exist, it uses <TT>HOMEDRIVE&#92;HOMEPATH</TT> (these are
+always defined by Windows). This typically gives something like <TT>C:&#92;Documents
+and Settings&#92;YourUserName</TT>, but your local details
+may vary. In this directory you will find all the files that configure
+IPython's defaults, and you can put there your profiles and extensions.
+This directory is automatically added by IPython to <TT>sys.path</TT>,
+so anything you place there can be found by <TT>import</TT> statements.
+
+<P>
+
+<H4><A NAME="SECTION00023110000000000000">
+Upgrading</A>
+</H4>
+
+<P>
+For an IPython upgrade, you should first uninstall the previous version.
+This will ensure that all files and directories (such as the documentation)
+which carry embedded version strings in their names are properly removed.
+
+<P>
+
+<H4><A NAME="SECTION00023120000000000000">
+Manual installation under Win32</A>
+</H4>
+
+<P>
+In case the automatic installer does not work for some reason, you
+can download the <TT>ipython-XXX.tar.gz</TT> file, which contains
+the full IPython source distribution (the popular WinZip can read
+<TT>.tar.gz</TT> files). After uncompressing the archive, you can
+install it at a command terminal just like any other Python module,
+by using <TT>`python setup.py install'</TT>. 
+
+<P>
+After the installation, run the supplied <TT>win32_manual_post_install.py</TT>
+script, which creates the necessary Start Menu shortcuts for you.
+
+<P>
+
+<H2><A NAME="SECTION00024000000000000000"></A><A NAME="sec:upgrade"></A>
+<BR>
+Upgrading from a previous version
+</H2>
+
+<P>
+If you are upgrading from a previous version of IPython, after doing
+the routine installation described above, you should call IPython
+with the <TT>-upgrade</TT> option the first time you run your new
+copy. This will automatically update your configuration directory
+while preserving copies of your old files. You can then later merge
+back any personal customizations you may have made into the new files.
+It is a good idea to do this as there may be new options available
+in the new configuration files which you will not have.
+
+<P>
+Under Windows, if you don't know how to call python scripts with arguments
+from a command line, simply delete the old config directory and IPython
+will make a new one. Win2k and WinXP users will find it in <TT>C:&#92;Documents
+and Settings&#92;YourUserName&#92;_ipython</TT>,
+and Win 9x users under <TT>C:&#92;Program Files&#92;IPython&#92;_ipython.</TT>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html151"
+  HREF="node3.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html149"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html143"
+  HREF="node1.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html152"
+  HREF="node3.html">Initial configuration...</A>
+<B> Up:</B> <A NAME="tex2html150"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html144"
+  HREF="node1.html">Overview</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

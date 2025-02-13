@@ -1,0 +1,1084 @@
+C***********************************************************************
+C***  This force field implementation was made by BioDesign, Inc.
+C***  This file may not be redistributed (whether or not it has been
+C***  modified) without the written permission of BioDesign.
+C***  This notice must appear in all copies of this file.
+C***********************************************************************
+C
+C  Conversion table for nucleic acids and amino acids to the AMBER
+C  atom types.  6/2/85
+C
+C  BASE N_2HB CHANGE MADE 8/23/87 (AMN)
+C  WAG 22/12/87 CHANGED ARG,MTX,NDP:H__N+ TO H__N2
+C                       C,G,A:H__N2 TO H__NB
+C
+C  Record format is 1X,A3, 1X,A7, 1X,A7, 1X,I2, 1X,I2, 1X,F8.4 and
+C  corresponds to:
+C
+C RES OLDTYP- NEWTYP- MB- NL- CHARGE----
+C
+C  where RES    = residue name
+C        OLDTYP = old atom type (type on input data file)
+C        NEWTYP = new atom type (type used in calculations)
+C        MB     = maximum number of covalent connections (for building)
+C        NL     = number of lone pairs at MB (for H-bond acceptors)
+C        CHARGE = charge on atom (used in electrostatic calculation)
+C
+C***********************************************************************
+C
+C  Methotrexate info added 9/9/85 from BLM file (AMN)
+C  Modified to reflect full hydrogen set (AMN - 9/2/86)
+C  Charges changed to reflect non-protonated pterin -NH2's (AMN - 9/3/86)
+C
+C***********************************************************************
+C
+C  NADPH and fragments added 1/4/86 (amn)
+C
+C***********************************************************************
+C
+C  Charges for water from Kollman work with STO-3G basis
+C  9/19/89  charges from Kollman JACS paper p. 777, 
+C  9/19/89  charges for cytosine HN4 and deoxyribose C2* corrected a la 
+C           Alan Mathiowetz 
+C***********************************************************************
+C
+C  ms 12/2/87
+C
+C    * All hydrogens ( & deuteriums) have been added to residues for 
+C      proteins. Standard Brookhaven and Kollman's hydrogen representaion
+C      (also all other atoms) is different.
+C                                                            
+C    * Non standard residues (used in some of the Kollman's file) added.
+C
+C    * Six different types of Histidine (HIS,HSD,HSP,HIE,HIP,HID) shown
+C      in this file. Some of them differ only in their names. Others have
+C      differences in the position for protonation.
+C
+C **********************************************************************
+C srl 1/88--add atom labels for H on E and H nitrogens of arg
+C              to match labels in BG_PEP_L:ARG_L.BGF
+C           add atom labels for hydrogens on amide nitrogens of gln and asp
+C              to match labels on BG_PEP_L files
+C **********************************************************************
+C
+*  BASES                                                     
+   A  N9     N_2      3  0  -0.4570
+   A  C8     C_R1E    3  0   0.4880
+   A  N7     N_2L5    2  1  -0.5990
+   A  C5     C_RB     3  0  -0.1510
+   A  C6     C_R      3  0   0.8130
+   A  N6     N_2HB    3  0  -0.7930
+   A HN6     H__NB    1  0   0.3370
+   A  N1     N_2L6    2  1  -0.7600
+   A  C2     C_R1N    3  0   0.5710
+   A  N3     N_2L6    2  1  -0.7170
+   A  C4     C_RB     3  0   0.6950
+*
+ ADE N9      N_2      3  0  -0.4570
+ ADE C8      C_R1E    3  0   0.4880  
+ ADE H8      H_       1  0   0.0000
+ ADE N7      N_2L5    2  1  -0.5990
+ ADE C5      C_RB     3  0  -0.1510
+ ADE C6      C_R      3  0   0.8130
+ ADE N6      N_2HB    3  0  -0.7930
+ ADE HN6     H__NB    1  0   0.3370
+ ADE HN6A    H__NB    1  0   0.3390
+ ADE HN6B    H__NB    1  0   0.3350
+ ADE N1      N_2L6    2  1  -0.7600
+ ADE C2      C_R1N    3  0   0.5710
+ ADE H2      H_       1  0   0.0000
+ ADE N3      N_2L6    2  1  -0.7170
+ ADE C4      C_RB     3  0   0.6950
+*
+   G  N9     N_2      3  0  -0.3790
+   G  C8     C_R1E    3  0   0.4280
+   G  N7     N_2L5    2  1  -0.5750
+   G  C5     C_RB     3  0  -0.0880
+   G  C6     C_2+     3  0   0.7140
+   G  O6     O_2      1  2  -0.4590
+   G  N1     N_2H5    3  0  -0.7460
+   G HN1     H__N     1  0   0.3400
+   G  C2     C_R      3  0   0.8420
+   G  N2     N_2HB    3  0  -0.7580
+   G HN2     H__NB    1  0   0.3285
+   G  N3     N_2L6    2  1  -0.7020
+   G  C4     C_RB     3  0   0.4900
+*
+ GUA N9      N_2      3  0  -0.3790
+ GUA C8      C_R1E    3  0   0.4280    
+ GUA H8      H_       1  0   0.0000
+ GUA N7      N_2L5    2  1  -0.5750
+ GUA C5      C_RB     3  0  -0.0880
+ GUA C6      C_2+     3  0   0.7140
+ GUA O6      O_2      1  2  -0.4590
+ GUA N1      N_2H5    3  0  -0.7460
+ GUA HN1     H__N     1  0   0.3400
+ GUA H1      H__N     1  0   0.3400
+ GUA C2      C_R      3  0   0.8420
+ GUA N2      N_2HB    3  0  -0.7580
+ GUA HN2     H__NB    1  0   0.3285
+ GUA HN2A    H__NB    1  0   0.3224
+ GUA HN2B    H__NB    1  0   0.3330
+ GUA N3      N_2L6    2  1  -0.7020
+ GUA C4      C_RB     3  0   0.4900
+*
+   C  N1     N_2      3  0  -0.5720
+   C  C2     C_2+     3  0   0.9380
+   C  O2     O_2      1  2  -0.5180
+   C  N3     N_2L6    2  1  -0.7910
+   C  C4     C_R      3  0   0.6300
+   C  N4     N_2HB    3  0  -0.7430
+   C HN4     H__NB    1  0   0.3365  ! fixed, was .3370
+   C  C5     C_21     3  0  -0.2300
+   C  C6     C_21     3  0   0.3770
+*
+ CYT N1      N_2      3  0  -0.5720
+ CYT C2      C_2+     3  0   0.9380
+ CYT O2      O_2      1  2  -0.5180
+ CYT N3      N_2L6    2  1  -0.7910
+ CYT C4      C_R      3  0   0.6300
+ CYT N4      N_2HB    3  0  -0.7430
+ CYT HN4     H__NB    1  0   0.3365  ! fixed, was .3370
+ CYT HN4A    H__NB    1  0   0.3350
+ CYT HN4B    H__NB    1  0   0.3380
+ CYT C5      C_21     3  0  -0.2300
+ CYT H5      H_       1  0   0.0000
+ CYT C6      C_21     3  0   0.3770  
+ CYT H6      H_       1  0   0.0000
+*
+   T  N1     N_2      3  0  -0.7390
+   T  C2     C_2+     3  0   1.1130
+   T  O2     O_2      1  2  -0.5290
+   T  N3     N_2H5    3  0  -1.0120
+   T HN3     H__N     1  0   0.3700
+   T  C4     C_2+     3  0   0.9800
+   T  O4     O_2      1  2  -0.4720
+   T  C5     C_2      3  0  -0.5950
+   T  C5M    C_33     4  0   0.0970
+   T  C5A    C_33     4  0   0.0970
+   T  C6     C_21     3  0   0.5510
+*
+ THY N1      N_2      3  0  -0.7390
+ THY C2      C_2+     3  0   1.1130
+ THY O2      O_2      1  2  -0.5290
+ THY N3      N_2H5    3  0  -1.0120
+ THY HN3     H__N     1  0   0.3700
+ THY H3      H__N     1  0   0.3700
+ THY C4      C_2+     3  0   0.9800
+ THY O4      O_2      1  2  -0.4720
+ THY C5      C_2      3  0  -0.5950
+ THY C5M     C_33     4  0   0.0970
+ THY C5A     C_33     4  0   0.0970
+ THY C6      C_21     3  0   0.5510    
+ THY H6      H_       1  0   0.0000
+ THY C7      C_33     4  0   0.0970
+ THY H7A     H_       1  0   0.0000
+ THY H7B     H_       1  0   0.0000
+ THY H7C     H_       1  0   0.0000
+
+*
+ 5MU  N1     N_2      3  0  -0.7390
+ 5MU  C2     C_2+     3  0   1.1130
+ 5MU  O2     O_2      1  2  -0.5290
+ 5MU  N3     N_2H5    3  0  -1.0120
+ 5MU HN3     H__N     1  0   0.3700
+ 5MU  C4     C_2+     3  0   0.9800
+ 5MU  O4     O_2      1  2  -0.4720
+ 5MU  C5     C_2      3  0  -0.5950
+ 5MU  C5M    C_33     4  0   0.0970
+ 5MU  C5A    C_33     4  0   0.0970
+ 5MU  C6     C_21     3  0   0.5510
+*
+   U  N1     N_2      3  0  -0.5670
+   U  C2     C_2+     3  0   0.8960
+   U  O2     O_2      1  2  -0.4940
+   U  N3     N_2H5    3  0  -0.7580
+   U HN3     H__N     1  0   0.3470
+   U  C4     C_2+     3  0   0.5720
+   U  O4     O_2      1  2  -0.3940
+   U  C5     C_21     3  0  -0.2040
+   U  C6     C_21     3  0   0.3660
+*
+C  Sugar and Phosphate conversions deoxy cases!
+ ***  P      P_4      3  1   1.4290
+ *** P       P_4      3  1   1.4290
+ ***  O1P    O_2-     1  2  -0.8500
+ ***  O2P    O_2-     1  2  -0.8500
+ *** OA      O_2-     1  2  -0.8500
+ *** OB      O_2-     1  2  -0.8500
+ ***  O5*    O_3      2  2  -0.5350  ! change to O_3H (-.425) if 5' terminus
+ *** O5'     O_3      2  2  -0.5350  ! change to O_3H (-.425) if 5' terminus
+ *** HO5*    H__O     1  0   0.2850  
+ ***  C5*    C_32     4  0   0.1530
+ *** C5'     C_32     4  0   0.1530
+ *** H5A'    H_       1  0   0.0000
+ *** H5B'    H_       1  0   0.0000
+ ***  O4*    O_3      2  2  -0.3860
+ *** O1'     O_3      2  2  -0.3860
+ ***  C4*    C_31     4  0   0.1850
+ *** C4'     C_31     4  0   0.1850
+ *** HC4'    H_       1  0   0.0000
+ ***  C3*    C_31     4  0   0.1720
+ *** C3'     C_31     4  0   0.1720
+ *** H3'     H_       1  0   0.0000
+ ***  O3*    O_3      2  2  -0.5350  ! change to O_3H (-.514) if 3' terminus
+ *** O3'     O_3      2  2  -0.5350  ! change to O_3H (-.514) if 3' terminus
+ *** HO3*    H__O     1  0   0.3130  
+ ***  C2*    C_32     4  0  -0.0470  ! fixed, was 0.0120 
+ ***  C1*    C_31     4  0   0.5000
+ *** C2'     C_32     4  0  -0.0470  ! fixed, was 0.0120
+ *** C1'     C_31     4  0   0.5000
+* 
+C For OHB,OHE,HB and HE
+ *** H       H_       1  0   0.0000
+ *** O       O_3      2  2   0.0000   
+C  Amino acid conversions to AMBER atom types 
+*
+ ALA  N      N_2H1    3  0  -0.5200
+ ALA  CA     C_31     4  0   0.2150
+ ALA  C      C_2+     3  0   0.5260
+ ALA  O      O_2      1  2  -0.5000
+ ALA  CB     C_33     4  0   0.0310
+*
+ ARG  N      N_2H1    3  0  -0.5200
+ ARG  CA     C_31     4  0   0.2370
+ ARG  C      C_2+     3  0   0.5260
+ ARG  O      O_2      1  2  -0.5000
+ ARG  CB     C_32     4  0   0.0490
+ ARG  CG     C_32     4  0   0.0580
+ ARG  CD     C_32     4  0   0.1110
+ ARG  NE     N_2H2    3  0  -0.4930
+ ARG HNE     H__N2    1  0   0.2940
+ ARG  CZ     C_R      3  0   0.8130
+ ARG  NH1    N_2H2    3  0  -0.6345
+ ARG HNH1    H__N2    1  0   0.3615
+ ARG  NH2    N_2H2    3  0  -0.6345
+ ARG HNH2    H__N2    1  0   0.3615
+ ARG HN11    H__N2    1  0   0.3615
+ ARG HN12    H__N2    1  0   0.3615
+ ARG HH11    H__N2    1  0   0.3615
+ ARG HN22    H__N2    1  0   0.3615
+ ARG HNH21   H__N2    1  0   0.3615
+ ARG HNH22   H__N2    1  0   0.3615
+ ARG HNH11   H__N2    1  0   0.3615
+ ARG HNH12   H__N2    1  0   0.3615
+ ARG #HG     H_       1  0   0.0000
+ ARG #DG     H_       1  0   0.0000
+ ARG HG1     H_       1  0   0.0000
+ ARG HG2     H_       1  0   0.0000
+ ARG #HD     H_       1  0   0.0000
+ ARG #DD     H_       1  0   0.0000
+ ARG HD1     H_       1  0   0.0000
+ ARG HD2     H_       1  0   0.0000
+ ARG #HE     H__N2    1  0   0.2940
+ ARG #DE     H__N2    1  0   0.2940
+ ARG  DZ     H_       1  0   0.0000
+ ARG #HH1    H__N2    1  0   0.3615
+ ARG #DH1    H__N2    1  0   0.3615
+ ARG #HH2    H__N2    1  0   0.3615
+ ARG #DH2    H__N2    1  0   0.3615
+*
+ ASN  N      N_2H1    3  0  -0.5200
+ ASN  CA     C_31     4  0   0.2170
+ ASN  C      C_2+     3  0   0.5260
+ ASN  O      O_2      1  2  -0.5000
+ ASN  CB     C_32     4  0   0.0030
+ ASN  CG     C_2+     4  0   0.6750
+ ASN  OD1    O_2      1  2  -0.4700
+ ASN  OT1    O_2      1  2  -0.4700
+ ASN  AD1    O_2      1  2  -0.4700
+ ASN  ND2    N_2H1    3  0  -0.8670
+ ASN  AD2    N_2H1    3  0  -0.8670
+ ASN HND2    H__N     1  0   0.3440
+ ASN HAD2    H__N     1  0   0.3440
+ ASN HND1    H__N     1  0   0.3440
+ ASN HND2    H__N     1  0   0.3440
+ ASN HND21   H__N     1  0   0.3440
+ ASN HND22   H__N     1  0   0.3440
+ ASN HD21    H__N     1  0   0.3440
+ ASN HD22    H__N     1  0   0.3440
+ ASN HAD2    H__N     1  0   0.3440
+ ASN  HG     H_       1  0   0.0000
+ ASN  DG     H_       1  0   0.0000
+ ASN #HD2    H__N     1  0   0.3440
+ ASN #DD2    H__N     1  0   0.3440
+*
+ ASP  N      N_2H1    3  0  -0.5200
+ ASP  CA     C_31     4  0   0.2460
+ ASP  C      C_2+     3  0   0.5260
+ ASP  O      O_2      1  2  -0.5000
+ ASP  CB     C_32     4  0  -0.2080
+ ASP  CG     C_2+     4  0   0.6200
+ ASP  OD1    O_2-     1  2  -0.7060
+ ASP  OD2    O_2-     1  2  -0.7060
+ ASP  HG     H_       1  0   0.0000
+ ASP  DG     H_       1  0   0.0000
+ ASP  HD1    H_       1  0   0.0000
+ ASP  DD1    H_       1  0   0.0000
+ ASP  HD2    H_       1  0   0.0000
+ ASP  DD2    H_       1  0   0.0000
+
+*
+ CYS  N      N_2H1    3  0  -0.5200
+ CYS  CA     C_31     4  0   0.1460
+ CYS  C      C_2+     3  0   0.5260
+ CYS  O      O_2      1  2  -0.5000
+ CYS  CB     C_32     4  0   0.1000
+ CYS  SG     S_3HL    2  2   0.8270
+ CYS HSG     H__S     1  0   0.1350
+ CYS LPSG    LP_S_    1  0  -0.4810
+ CYS LP1     LP_S_    1  0  -0.4810
+ CYS LP2     LP_S_    1  0  -0.4810
+ CYS  HG     H__S     1  0   0.1350
+ CYS  DG     H__S     1  0   0.1350
+* CHARGE FROM KOLLMAN MISSING +1
+ CYX  N      N_2H1    3  0  -0.5200
+ CYX  CA     C_31     4  0   0.0880
+ CYX  C      C_2+     3  0   0.5260
+ CYX  O      O_2      1  2  -0.5000
+ CYX  CB     C_32     4  0   0.1430
+ CYX  SG     S_3HL    2  2   0.8240
+ CYX LPSG    LP_S_    1  0  -0.4045
+ CYX LP1     LP_S_    1  0  -0.4045
+ CYX LP2     LP_S_    1  0  -0.4045
+*
+ GLU  N      N_2H1    3  0  -0.5200
+ GLU  CA     C_31     4  0   0.2460
+ GLU  C      C_2+     3  0   0.5260
+ GLU  O      O_2      1  2  -0.5000
+ GLU  CB     C_32     4  0   0.0000
+ GLU  CG     C_32     4  0  -0.2080
+ GLU  CD     C_2+     3  0   0.6200
+ GLU  OE1    O_2-     1  2  -0.7060
+ GLU  OE2    O_2-     1  2  -0.7060
+ GLU #HG     H_       1  0   0.0000
+ GLU #DG     H_       1  0   0.0000
+ GLU HG1     H_       1  0   0.0000
+ GLU HG2     H_       1  0   0.0000
+ GLU  HD     H_       1  0   0.0000
+ GLU  DD     H_       1  0   0.0000
+ GLU  HE1    H_       1  0   0.0000
+ GLU  DE1    H_       1  0   0.0000
+ GLU  HE2    H_       1  0   0.0000
+ GLU  DE2    H_       1  0   0.0000
+*
+ GLN  N      N_2H1    3  0  -0.5200
+ GLN  CA     C_31     4  0   0.2100
+ GLN  C      C_2+     3  0   0.5260
+ GLN  O      O_2      1  2  -0.5000
+ GLN  CB     C_32     4  0   0.0530
+ GLN  CG     C_32     4  0  -0.0430
+ GLN  CD     C_2+     3  0   0.6750
+ GLN  OE1    O_2      1  2  -0.4700
+ GLN  AE1    O_2      1  2  -0.4700
+ GLN  NE2    N_2H1    3  0  -0.8670
+ GLN  AE2    N_2H1    3  0  -0.8670
+ GLN HNE2    H__N     1  0   0.3440
+ GLN HAE2    H__N     1  0   0.3440
+ GLN HNE1    H__N     1  0   0.3440
+ GLN HE21    H__N     1  0   0.3440
+ GLN HE22    H__N     1  0   0.3440
+ GLN HNE21   H__N     1  0   0.3440
+ GLN HNE22   H__N     1  0   0.3440
+ GLN HAE2    H__N     1  0   0.3440
+ GLN #HG     H_       1  0   0.0000
+ GLN #DG     H_       1  0   0.0000
+ GLN HG1     H_       1  0   0.0000
+ GLN HG2     H_       1  0   0.0000
+ GLN  HD     H_       1  0   0.0000
+ GLN  DD     H_       1  0   0.0000
+ GLN #HE2    H__N     1  0   0.3440
+ GLN #DE2    H__N     1  0   0.3440
+*
+ GLY  N      N_2H1    3  0  -0.5200
+ GLY  CA     C_32     4  0   0.2460
+ GLY  C      C_2+     3  0   0.5260
+ GLY  O      O_2      1  2  -0.5000
+ GLY #HA     H_       1  0   0.0000
+ GLY HA1     H_       1  0   0.0000
+ GLY HA2     H_       1  0   0.0000
+*
+ HIS  N      N_2H1    3  0  -0.5200
+ HIS  CA     C_31     4  0   0.2190
+ HIS  C      C_2+     3  0   0.5260
+ HIS  O      O_2      1  2  -0.5000
+ HIS  CB     C_32     4  0   0.0600
+ HIS  CG     C_R0N    3  0   0.0890
+ HIS  ND1    N_2H5    3  0  -0.4440
+ HIS  AD1    N_2H5    3  0  -0.4440
+ HIS HND1    H__N     1  0   0.3200
+ HIS HND     H__N     1  0   0.3200
+ HIS HAD1    H__N     1  0   0.3200
+ HIS  CD2    C_R1F    3  0   0.1450
+ HIS  AD2    C_R1F    3  0   0.1450
+ HIS  CE1    C_R1P    3  0   0.3840
+ HIS  AE1    C_R1P    3  0   0.3840
+ HIS  NE2    N_2L5    2  1  -0.5270
+ HIS  AE2    N_2L5    2  1  -0.5270
+*
+ HID  N      N_2H1    3  0  -0.5200
+ HID  CA     C_31     4  0   0.2190
+ HID  C      C_2+     3  0   0.5260
+ HID  O      O_2      1  2  -0.5000
+ HID  CB     C_32     4  0   0.0600
+ HID  CG     C_R0N    3  0   0.0890
+ HID  ND1    N_2H5    3  0  -0.4440
+ HID  AD1    N_2H5    3  0  -0.4440
+ HID HND1    H__N     1  0   0.3200
+ HID HND     H__N     1  0   0.3200
+ HID HAD1    H__N     1  0   0.3200
+ HID  CD2    C_R1F    3  0   0.1450
+ HID  AD2    C_R1F    3  0   0.1450
+ HID  CE1    C_R1P    3  0   0.3840
+ HID  AE1    C_R1P    3  0   0.3840
+ HID  NE2    N_2L5    2  1  -0.5270
+ HID  AE2    N_2L5    2  1  -0.5270
+*
+ HSD  N      N_2H1    3  0  -0.5200
+ HSD  CA     C_31     4  0   0.2190
+ HSD  C      C_2+     3  0   0.5260
+ HSD  O      O_2      1  2  -0.5000
+ HSD  CB     C_32     4  0   0.0600
+ HSD  CG     C_R0N    3  0   0.1120
+ HSD  ND1    N_2L5    2  1  -0.5270
+ HSD  AD1    N_2L5    2  1  -0.5270
+ HSD  CD2    C_R1G    3  0   0.1220
+ HSD  AD2    C_R1G    3  0   0.1220
+ HSD  CE1    C_R1P    3  0   0.3840
+ HSD  AE1    C_R1P    3  0   0.3840
+ HSD  NE2    N_2H5    3  0  -0.4440
+ HSD  AE2    N_2H5    3  0  -0.4440
+ HSD HNE2    H__N     1  0   0.3200
+ HSD HNE     H__N     1  0   0.3200
+ HSD HAE2    H__N     1  0   0.3200
+*
+ HIE  N      N_2H1    3  0  -0.5200
+ HIE  CA     C_31     4  0   0.2190
+ HIE  C      C_2+     3  0   0.5260
+ HIE  O      O_2      1  2  -0.5000
+ HIE  CB     C_32     4  0   0.0600
+ HIE  CG     C_R0N    3  0   0.1120
+ HIE  ND1    N_2L5    2  1  -0.5270
+ HIE  AD1    N_2L5    2  1  -0.5270
+ HIE  CD2    C_R1G    3  0   0.1220
+ HIE  AD2    C_R1G    3  0   0.1220
+ HIE  CE1    C_R1P    3  0   0.3840
+ HIE  AE1    C_R1P    3  0   0.3840
+ HIE  NE2    N_2H5    3  0  -0.4440
+ HIE  AE2    N_2H5    3  0  -0.4440
+ HIE HNE2    H__N     1  0   0.3200
+ HIE HNE     H__N     1  0   0.3200
+ HIE HAE2    H__N     1  0   0.3200
+*
+ HSP  N      N_2H1    3  0  -0.5200
+ HSP  CA     C_31     4  0   0.1950
+ HSP  C      C_2+     3  0   0.5260
+ HSP  O      O_2      1  2  -0.5000
+ HSP  CB     C_32     4  0   0.2110
+ HSP  CG     C_R0N    3  0   0.1030
+ HSP  ND1    N_2H5    3  0  -0.6130
+ HSP  AD1    N_2H5    3  0  -0.6130
+ HSP HND1    H__N     1  0   0.4780
+ HSP HND     H__N     1  0   0.4780
+ HSP HAD1    H__N     1  0   0.4780
+ HSP  CD2    C_R1G    3  0   0.3530
+ HSP  AD2    C_R1G    3  0   0.3530
+ HSP  CE1    C_R1P    3  0   0.7190
+ HSP  AE1    C_R1P    3  0   0.7190
+ HSP  NE2    N_2H5    3  0  -0.6860
+ HSP  AE2    N_2H5    3  0  -0.6860
+ HSP HNE2    H__N     1  0   0.4860
+ HSP HNE     H__N     1  0   0.4860
+ HSP HAE2    H__N     1  0   0.4860
+*
+ HIP  N      N_2H1    3  0  -0.5200
+ HIP  CA     C_31     4  0   0.1950
+ HIP  C      C_2+     3  0   0.5260
+ HIP  O      O_2      1  2  -0.5000
+ HIP  CB     C_32     4  0   0.2110
+ HIP  CG     C_R0N    3  0   0.1030
+ HIP  ND1    N_2H5    3  0  -0.6130
+ HIP  AD1    N_2H5    3  0  -0.6130
+ HIP HND1    H__N     1  0   0.4780
+ HIP HND     H__N     1  0   0.4780
+ HIP HAD1    H__N     1  0   0.4780
+ HIP  CD2    C_R1G    3  0   0.3530
+ HIP  AD2    C_R1G    3  0   0.3530
+ HIP  CE1    C_R1P    3  0   0.7190
+ HIP  AE1    C_R1P    3  0   0.7190
+ HIP  NE2    N_2H5    3  0  -0.6860
+ HIP  AE2    N_2H5    3  0  -0.6860
+ HIP HNE2    H__N     1  0   0.4860
+ HIP HNE     H__N     1  0   0.4860
+ HIP HAE2    H__N     1  0   0.4860
+* 
+ ILE  N      N_2H1    3  0  -0.5200
+ ILE  CA     C_31     4  0   0.1990
+ ILE  C      C_2+     3  0   0.5260
+ ILE  O      O_2      1  2  -0.5000
+ ILE  CB     C_31     4  0   0.0300
+ ILE  CG1    C_32     4  0   0.0170
+ ILE  CG2    C_33     4  0   0.0010
+ ILE  CD1    C_33     4  0  -0.0010
+ ILE  CD     C_33     4  0  -0.0010
+ ILE  HB     H_       1  0   0.0000
+ ILE  DB     H_       1  0   0.0000
+ ILE #HG1    H_       1  0   0.0000
+ ILE #DG1    H_       1  0   0.0000
+ ILE #HG2    H_       1  0   0.0000
+ ILE #DG2    H_       1  0   0.0000
+ ILE #HD1    H_       1  0   0.0000
+ ILE #DD1    H_       1  0   0.0000
+ ILE HG1     H_       1  0   0.0000
+ ILE HG2     H_       1  0   0.0000
+ ILE HG3     H_       1  0   0.0000
+ ILE HG4     H_       1  0   0.0000
+ ILE HG5     H_       1  0   0.0000
+ ILE HD1     H_       1  0   0.0000
+ ILE HD2     H_       1  0   0.0000
+ ILE HD3     H_       1  0   0.0000
+*
+ LEU  N      N_2H1    3  0  -0.5200
+ LEU  CA     C_31     4  0   0.2040
+ LEU  C      C_2+     3  0   0.5260
+ LEU  O      O_2      1  2  -0.5000
+ LEU  CB     C_32     4  0   0.0160
+ LEU  CG     C_31     4  0   0.0540
+ LEU  CD1    C_33     4  0  -0.0140
+ LEU  CD2    C_33     4  0  -0.0140
+ LEU  HG     H_       1  0   0.0000
+ LEU  DG     H_       1  0   0.0000
+ LEU #HD1    H_       1  0   0.0000
+ LEU #DD1    H_       1  0   0.0000
+ LEU #HD2    H_       1  0   0.0000
+ LEU #DD2    H_       1  0   0.0000
+ LEU HD1     H_       1  0   0.0000
+ LEU HD2     H_       1  0   0.0000
+ LEU HD3     H_       1  0   0.0000
+ LEU HD4     H_       1  0   0.0000
+ LEU HD5     H_       1  0   0.0000
+ LEU HD6     H_       1  0   0.0000
+*
+ LYS  N      N_2H1    3  0  -0.5200
+ LYS  CA     C_31     4  0   0.2270
+ LYS  C      C_2+     3  0   0.5260
+ LYS  O      O_2      1  2  -0.5000
+ LYS  CB     C_32     4  0   0.0390
+ LYS  CG     C_32     4  0   0.0530
+ LYS  CD     C_32     4  0   0.0480
+ LYS  CE     C_32     4  0   0.2180
+ LYS  NZ     N_3+     4  0  -0.2720
+ LYS HNZ     H__N+    1  0   0.3110
+ LYS HZ1     H__N+    1  0   0.3110
+ LYS HZ2     H__N+    1  0   0.3110
+ LYS HZ3     H__N+    1  0   0.3110
+ LYS #HG     H_       1  0   0.0000
+ LYS #DG     H_       1  0   0.0000
+ LYS HG1     H_       1  0   0.0000
+ LYS HG2     H_       1  0   0.0000
+ LYS #HD     H_       1  0   0.0000
+ LYS #DD     H_       1  0   0.0000
+ LYS HD1     H_       1  0   0.0000
+ LYS HD2     H_       1  0   0.0000
+ LYS #HE     H_       1  0   0.0000
+ LYS #DE     H_       1  0   0.0000
+ LYS HE1     H_       1  0   0.0000
+ LYS HE2     H_       1  0   0.0000
+ LYS #HZ     H__N+    1  0   0.3110
+ LYS #DZ     H__N+    1  0   0.3110
+ LYS HNZ1    H__N+    1  0   0.3110
+ LYS HNZ2    H__N+    1  0   0.3110
+ LYS HNZ3    H__N+    1  0   0.3110
+*
+ MET  N      N_2H1    3  0  -0.5200
+ MET  CA     C_31     4  0   0.1370
+ MET  C      C_2+     3  0   0.5260
+ MET  O      O_2      1  2  -0.5000
+ MET  CB     C_32     4  0   0.0370
+ MET  CG     C_32     4  0   0.0900
+ MET  SD     S_3_L    2  2   0.7370
+ MET  HSD    H__S     1  0   0.0000
+ MET LPSD    LP_S_    1  0  -0.3810
+ MET LP1     LP_S_    1  0  -0.3810
+ MET LP2     LP_S_    1  0  -0.3810
+ MET  CE     C_33     4  0   0.0070
+ MET #HG     H_       1  0   0.0000
+ MET #DG     H_       1  0   0.0000
+ MET HG1     H_       1  0   0.0000
+ MET HG2     H_       1  0   0.0000
+ MET #HE     H_       1  0   0.0000
+ MET #DE     H_       1  0   0.0000
+ MET HE1     H_       1  0   0.0000
+ MET HE2     H_       1  0   0.0000
+ MET HE3     H_       1  0   0.0000
+*
+ PHE  N      N_2H1    3  0  -0.5200
+ PHE  CA     C_31     4  0   0.2140
+ PHE  C      C_2+     3  0   0.5260
+ PHE  O      O_2      1  2  -0.5000
+ PHE  CB     C_32     4  0   0.0380
+ PHE  CG     C_R      3  0   0.0110
+ PHE  CD1    C_R1     3  0  -0.0110
+ PHE  CD2    C_R1     3  0  -0.0110
+ PHE  CE1    C_R1     3  0   0.0040
+ PHE  CE2    C_R1     3  0   0.0040
+ PHE  CZ     C_R1     3  0  -0.0030
+ PHE  HD1    H_       1  0   0.0000
+ PHE  DD1    H_       1  0   0.0000
+ PHE  HD2    H_       1  0   0.0000
+ PHE  DD2    H_       1  0   0.0000
+ PHE  HE1    H_       1  0   0.0000
+ PHE  DE1    H_       1  0   0.0000
+ PHE  HE2    H_       1  0   0.0000
+ PHE  DE2    H_       1  0   0.0000
+ PHE  HZ     H_       1  0   0.0000
+ PHE  DZ     H_       1  0   0.0000
+*
+ PRO  N      N_2H1    3  0  -0.2570
+ PRO  CA     C_31     4  0   0.1120
+ PRO  C      C_2+     3  0   0.5260
+ PRO  O      O_2      1  2  -0.5000
+ PRO  CB     C_32     4  0  -0.0010
+ PRO  CG     C_32     4  0   0.0360
+ PRO  CD     C_32     4  0   0.0840
+ PRO #HG     H_       1  0   0.0000
+ PRO #DG     H_       1  0   0.0000
+ PRO HG1     H_       1  0   0.0000
+ PRO HG2     H_       1  0   0.0000
+ PRO #HD     H_       1  0   0.0000
+ PRO #DD     H_       1  0   0.0000
+ PRO HD1     H_       1  0   0.0000
+ PRO HD2     H_       1  0   0.0000
+*
+ SER  N      N_2H1    3  0  -0.5200
+ SER  CA     C_31     4  0   0.2920
+ SER  C      C_2+     3  0   0.5260
+ SER  O      O_2      1  2  -0.5000
+ SER  CB     C_32     4  0   0.1940
+ SER  OG     O_3H     2  2  -0.5500
+ SER HOG     H__O     1  0   0.3100
+ SER HG      H__O     1  0   0.3100
+ SER  HG     H_       1  0   0.0000
+ SER  DG     H_       1  0   0.0000
+*
+ THR  N      N_2H1    3  0  -0.5200
+ THR  CA     C_31     4  0   0.2680
+ THR  C      C_2+     3  0   0.5260
+ THR  O      O_2      1  2  -0.5000
+ THR  CB     C_31     4  0   0.2110
+ THR  OG1    O_3H     2  2  -0.5500
+ THR HOG1    H__O     1  0   0.3100
+ THR HOG     H__O     1  0   0.3100
+ THR  CG2    C_33     4  0   0.0070
+ THR HB      H_       1  0   0.0000
+ THR #HG1    H_       1  0   0.0000
+ THR #DG1    H_       1  0   0.0000
+ THR #HG2    H_       1  0   0.0000
+ THR #DG2    H_       1  0   0.0000
+ THR HG1     H_       1  0   0.0000
+ THR HG2     H_       1  0   0.0000
+ THR HG3     H_       1  0   0.0000
+*
+ TRP  N      N_2H1    3  0  -0.5200
+ TRP  CA     C_31     4  0   0.2480
+ TRP  C      C_2+     3  0   0.5260
+ TRP  O      O_2      1  2  -0.5000
+ TRP  CB     C_32     4  0   0.0200
+ TRP  CG     C_R05    3  0   0.0460
+ TRP  CD1    C_R1G    3  0   0.1170
+ TRP  CD2    C_RB     3  0  -0.2750
+ TRP  NE1    N_2H5    3  0  -0.3300
+ TRP HNE1    H__N     1  0   0.2940
+ TRP  CE2    C_RBN    3  0   0.0000
+ TRP  CE3    C_R1     3  0   0.1450
+ TRP  CZ2    C_R1     3  0   0.0290
+ TRP  CZ3    C_R1     3  0  -0.0820
+ TRP  CH2    C_R1     3  0   0.0340
+ TRP HNE     H__N     1  0   0.2940
+ TRP HE1     H__N     1  0   0.2940
+ TRP #HD1    H_       1  0   0.0000
+ TRP #DD1    H_       1  0   0.0000
+ TRP #HE1    H__N     1  0   0.2940
+ TRP #DE1    H__N     1  0   0.2940
+ TRP #HE3    H_       1  0   0.0000
+ TRP #DE3    H_       1  0   0.0000
+ TRP HE      H_       1  0   0.0000
+ TRP #HZ2    H_       1  0   0.0000
+ TRP #DZ2    H_       1  0   0.0000
+ TRP #HZ3    H_       1  0   0.0000
+ TRP #DZ3    H_       1  0   0.0000
+ TRP HZ1     H_       1  0   0.0000
+ TRP HZ2     H_       1  0   0.0000
+ TRP #HH2    H_       1  0   0.0000
+ TRP #DH2    H_       1  0   0.0000
+ TRP HH      H_       1  0   0.0000
+*
+ TYR  N      N_2H1    3  0  -0.5200
+ TYR  CA     C_31     4  0   0.2450
+ TYR  C      C_2+     3  0   0.5260
+ TYR  O      O_2      1  2  -0.5000
+ TYR  CB     C_32     4  0   0.0220
+ TYR  CG     C_R      3  0  -0.0010
+ TYR  CD1    C_R1     3  0  -0.0350
+ TYR  CD2    C_R1     3  0  -0.0350
+ TYR  CE1    C_R1     3  0   0.1000
+ TYR  CE2    C_R1     3  0   0.1000
+ TYR  CZ     C_2+     3  0  -0.1210
+ TYR  OH     O_3H     2  2  -0.3680
+ TYR HOH     H__O     1  0   0.3390
+ TYR HH      H__O     1  0   0.3390
+ TYR  HD1    H_       1  0   0.0000
+ TYR  DD1    H_       1  0   0.0000
+ TYR  HD2    H_       1  0   0.0000
+ TYR  DD2    H_       1  0   0.0000
+ TYR  HE1    H_       1  0   0.0000
+ TYR  DE1    H_       1  0   0.0000
+ TYR  HE2    H_       1  0   0.0000
+ TYR  DE2    H_       1  0   0.0000
+ TYR  HH     H_       1  0   0.0000
+ TYR  DH     H_       1  0   0.0000
+*
+ VAL  N      N_2H1    3  0  -0.5200
+ VAL  CA     C_31     4  0   0.2010
+ VAL  C      C_2+     3  0   0.5260
+ VAL  O      O_2      1  2  -0.5000
+ VAL  CB     C_31     4  0   0.0330
+ VAL  CG1    C_33     4  0   0.0060
+ VAL  CG2    C_33     4  0   0.0060
+ VAL HB      H_       1  0   0.0000
+ VAL #HG1    H_       1  0   0.0000
+ VAL #DG1    H_       1  0   0.0000
+ VAL #HG2    H_       1  0   0.0000
+ VAL #DG2    H_       1  0   0.0000
+ VAL HG1     H_       1  0   0.0000
+ VAL HG2     H_       1  0   0.0000
+ VAL HG3     H_       1  0   0.0000
+ VAL HG4     H_       1  0   0.0000
+ VAL HG5     H_       1  0   0.0000
+ VAL HG6     H_       1  0   0.0000
+*
+*  Kollman's non standard residues.
+*
+ QNX  C9     C_RB     3  0   0.2735
+ QNX  N3     N_2L5    2  1  -0.5958
+ QNX  C8     C_R1N    3  0   0.4910
+ QNX  C7     C_R      3  0  -0.2708
+ QNX  C6     C_R      3  0  -0.0461
+ QNX  C5     C_R      3  0  -0.0773
+ QNX  C4     C_R      3  0  -0.2015
+ QNX  C3     C_RB     3  0   0.2787
+ QNX  N2     N_2L5    2  1  -0.4270
+ QNX  C2     C_R1N    3  0   0.0876
+ QNX  C1     C_2+     3  0   0.3982
+ QNX  O1     O_2      1  2  -0.3926  
+ QNX HC4     H_       1  0   0.1068
+ QNX HC5     H_       1  0   0.0865
+ QNX HC6     H_       1  0   0.0866
+ QNX HC7     H_       1  0   0.1211
+ QNX HC9     H_       1  0   0.0811
+*
+ SEO  N      N_2H1    3  0  -0.5200
+ SEO HN      H__N     1  0   0.2480
+ SEO  CA     C_3      4  0   0.2920
+ SEO HA      H_       1  0   0.0480
+ SEO  CB     C_3      4  0   0.1940
+ SEO HB1     H_       1  0   0.1250
+ SEO HB2     H_       1  0   0.1250
+ SEO  OG     O_3H     2  2  -0.5500
+ SEO  C      C_2+     3  0   0.5260
+ SEO  O      O_2      1  2  -0.5000  
+*
+ NCY  N      N_2H1    3  0  -0.5200
+ NCY  CN     C_3      4  0  -0.3420
+ NCY HK1     H_       1  0   0.1170
+ NCY HK2     H_       1  0   0.1170
+ NCY HK3     H_       1  0   0.1170
+ NCY HCN1    H_       1  0   0.1170
+ NCY HCN2    H_       1  0   0.1170
+ NCY HCN3    H_       1  0   0.1170
+ NCY  CA     C_3      4  0   0.1460
+ NCY  HA     H_       1  0   0.0480
+ NCY  CB     C_3      4  0   0.1000
+ NCY HB1     H_       1  0   0.0495
+ NCY HB2     H_       1  0   0.0495
+ NCY  SG     S_3HL    2  2   0.8270
+ NCY LP1     LP_S_    1  0  -0.4045
+ NCY LP2     LP_S_    1  0  -0.4045
+ NCY  C      C_2+     3  0   0.5260
+ NCY  O      O_2      1  2  -0.5000  
+*
+ NMV  N      N_2H1    3  0  -0.5200
+ NMV  CN     C_3      4  0  -0.3410
+ NMV HK1     H_       1  0   0.1170
+ NMV HK2     H_       1  0   0.1170
+ NMV HK3     H_       1  0   0.1170
+ NMV HCN1    H_       1  0   0.1170
+ NMV HCN2    H_       1  0   0.1170
+ NMV HCN3    H_       1  0   0.1170
+ NMV  CA     C_3      4  0   0.2010
+ NMV  HA     H_       1  0   0.0480
+ NMV  CB     C_3      4  0   0.0330
+ NMV  HB     H_       1  0   0.0240
+ NMV  CG1    C_3      4  0   0.0060
+ NMV HG1     H_       1  0   0.0310
+ NMV HG2     H_       1  0   0.0310
+ NMV HG3     H_       1  0   0.0310
+ NMV  CG2    C_3      4  0   0.0060
+ NMV HG4     H_       1  0   0.0310
+ NMV HG5     H_       1  0   0.0310
+ NMV HG6     H_       1  0   0.0310
+ NMV  C      C_2+     3  0   0.5260
+ NMV  O      O_2      1  2  -0.5000
+*
+C backbone and first side chain carbon
+C for UNKnown residues from crystallographic
+C studies--uses glycine charges, except for
+C CB (alanine charge)
+ UNK  N      N_2H1    3  0  -0.5200
+ UNK  CA     C_32     4  0   0.2460
+ UNK  C      C_2+     3  0   0.5260
+ UNK  O      O_2      1  2  -0.5000
+ UNK  CB     C_33     4  0   0.0310
+*
+C  Common hydrogens in amino acids.
+ *** HN      H__N     1  0   0.2480
+ *** H       H__N     1  0   0.2480
+ *** #H      H__N     1  0   0.2480
+ *** #D      H__N     1  0   0.2480
+ ***  HA     H_       1  0   0.0000
+ ***  DA     H_       1  0   0.0000
+ *** #HB     H_       1  0   0.0000
+ *** #DB     H_       1  0   0.0000
+ *** HB1     H_       1  0   0.0000
+ *** HB2     H_       1  0   0.0000
+ *** HB3     H_       1  0   0.0000
+C  Conversion for ACE
+ ACE  CH3    C_33     4  0  -0.0260
+ ACE  C3     C_33     4  0  -0.0260
+ ACE  C      C_2+     3  0   0.5260
+ ACE  O      O_2      1  2  -0.5000
+*
+C  Methylated amino terminus, WAG GUESS
+ CBX  N      N_3+     4  0  -0.5200
+ CBX HN      H__N     1  0   0.5150
+ CBX H       H__N     1  0   0.5150
+ CBX  CA     C_33     4  0   0.2180
+*
+C  Formyl amino terminus, WAG GUESS
+ FRM  C      C_21     3  0   0.5000
+ FRM  O      O_2      1  2  -0.5000
+*
+C  N terminus wag, should change charge on n also
+ NTE  HT1    H__N     1  0   0.4160
+ NTE  HT2    H__N     1  0   0.4160
+ NTE  HT3    H__N     1  0   0.4160
+ NTR  HT1    H__N     1  0   0.4160
+ NTR  HT2    H__N     1  0   0.4160
+ NTR  HT3    H__N     1  0   0.4160
+*
+C  C terminus wag, should have program dist charge
+ CTE  OT2    O_2      1  2  -1.00
+ CTR  OT2    O_2      1  2  -1.00
+ CTE  OXT    O_2      1  2  -1.00
+ ***  OXT    O_2      1  2  -1.00
+*
+ NDP AP      P_4      4  0   1.3779
+ NDP AO1     O_2-     1  2  -0.7365
+ NDP AO2     O_2-     1  2  -0.7368
+ NDP AO5*    O_3      2  2  -0.5461
+ NDP AC5*    C_32     4  0   0.1246
+ NDP AC4*    C_31     4  0   0.1912
+ NDP AO4*    O_3      2  2  -0.3061
+ NDP AC3*    C_31     4  0   0.0440
+ NDP AO3*    O_3H     2  2  -0.2014
+ NDP HAO3*   H__O     1  0   0.0000
+ NDP AC2*    C_31     4  0   0.1410
+ NDP AO2*    O_3H     2  2  -0.5740
+ NDP HAO2*   H__O     1  0   0.0000
+ NDP AC1*    C_31     4  0   0.3863
+ NDP AN9     N_2      3  0  -0.2050
+ NDP AC8     C_R1E    3  0   0.2666
+ NDP AN7     N_2L5    2  1  -0.2122
+ NDP AC5     C_RB     3  0  -0.2211
+ NDP AC6     C_R      3  0   0.0821
+ NDP AN6     N_2HB    3  0   0.8603
+ NDP HAN6    H__NB    1  0   0.0000
+ NDP AN1     N_2L6    2  1  -0.1204
+ NDP AC2     C_R1N    3  0   0.3250
+ NDP AN3     N_2L6    2  1  -0.1473
+ NDP AC4     C_RB     3  0   0.0625
+ NDP  O3     O_3      2  2  -0.8012
+ NDP NP      P_4      4  0   1.3918
+ NDP NO1     O_2-     1  2  -0.7022
+ NDP NO2     O_2-     1  2  -0.9986
+ NDP NO5*    O_3      2  2  -0.5384
+ NDP NC5*    C_32     4  0   0.2639
+ NDP NC4*    C_31     4  0   0.1715
+ NDP NO4*    O_3      2  2  -0.3005
+ NDP NC3*    C_31     4  0   0.0858
+ NDP NO3*    O_3H     2  2  -0.1399
+ NDP HNO3*   H__O     1  0   0.0000
+ NDP NC2*    C_31     4  0   0.0896
+ NDP NO2*    O_3H     2  2  -0.1475
+ NDP HNO2*   H__O     1  0   0.0000
+ NDP NC1*    C_31     4  0   0.3567
+ NDP NN1     N_2      3  0  -0.3327  !?LP
+ NDP NC2     C_21     2  0   0.2190
+ NDP NC3     C_2+     3  0  -0.1784
+ NDP NC7     C_2+     3  0   0.2625
+ NDP NO7     O_2      1  2  -0.4137
+ NDP NN7     N_2H1    3  1   0.0486
+ NDP HNN7    H__N     1  0   0.0000
+ NDP NC4     C_32     2  0   0.0948
+ NDP NC5     C_21     2  0  -0.0418
+ NDP NC6     C_21     2  0   0.1392
+ NDP AP2*    P_4      4  0   1.3021
+ NDP AOP1    O_2-     1  2  -0.7909
+ NDP AOP2    O_2-     1  2  -0.9007
+ NDP AOP3    O_2-     1  2  -0.9936
+*
+C  Methotrexate
+ MTX  N1     N_2H2    3  0  -0.2756 !?LP
+ MTX HN1     H__N2    1  0   0.3247
+ MTX  C2     C_R1N    3  0   0.3913
+ MTX  NA2    N_2H2    3  1  -0.2552
+ MTX HNA2    H__N2    1  0   0.2151
+ MTX  N3     N_2L6    2  1  -0.3131
+ MTX  C4     C_R1N    3  0   0.3276
+ MTX  NA4    N_2H2    3  1  -0.2600
+ MTX HNA4    H__N2    1  0   0.18975
+ MTX  C4A    C_RB     3  0  -0.2461
+ MTX  N5     N_2L6    2  1  -0.1683
+ MTX  C6     C_2+     3  0  -0.0167
+ MTX  C7     C_32     4  0   0.1673
+ MTX  N8     N_3      3  1  -0.1494
+ MTX HN8     H__N     1  0   0.2416
+ MTX  C8A    C_RB     3  0   0.2756
+ MTX  C9     C_32     4  0   0.2630
+ MTX  N10    N_3      3  1  -0.3424
+ MTX  CM     C_33     4  0   0.1645
+ MTX  C11    C_R      3  0   0.1312
+ MTX  C12    C_R1     3  0  -0.1083
+ MTX  C13    C_R1     3  0   0.0237
+ MTX  C14    C_R      3  0  -0.0941
+ MTX  C15    C_R1     3  0   0.1702
+ MTX  C16    C_R1     3  0  -0.0648
+ MTX  C      C_2+     3  0   0.3581
+ MTX  O      O_2      1  0  -0.3802
+ MTX  N      N_2H1    3  1  -0.3233
+ MTX HN      H__N     1  0   0.1476
+ MTX  CA     C_31     4  0   0.0723
+ MTX  CT     C_2+     3  0   0.3880
+ MTX  O1     O_2-     1  2  -0.7008
+ MTX  O2     O_2-     1  2  -0.6055
+ MTX  CB     C_32     4  0   0.0521
+ MTX  CG     C_32     4  0   0.0420
+ MTX  CD     C_2+     3  0   0.2712
+ MTX  OE1    O_2-     1  2  -0.8730
+ MTX  OE2    O_2-     1  2  -0.4449
+*
+C  Water charges from JACS paper, page 777
+ HOH  OH2    O_3_J    2  1  -0.6600   ! fixed, was -0.8340 
+ HOH  HOH    O_3_J    2  1  -0.6600   ! fixed, was -0.8340 
+ HOH  O      O_3_J    2  1  -0.6600   ! fixed, was -0.8340 
+ HOH  H1     H__OJ    1  0   0.3300   ! fixed, was  0.4170 
+ HOH  H2     H__OJ    1  0   0.3300   ! fixed, was  0.4170 
+ HOH HO      H__OJ    1  0   0.3300   ! fixed, was  0.4170 
+! HOH  OH2    O_3_L    4  0  -0.3720
+! HOH  HOH    O_3_L    4  0  -0.3720
+! HOH  O      O_3_L    4  0  -0.3720
+! HOH  H1     H__O     1  0   0.5170
+! HOH  H2     H__O     1  0   0.5170
+! HOH HO      H__O     1  0   0.5170
+! HOH LPO     LP_O_    1  1  -0.3310
+! HOH LPHO    LP_O_    1  1  -0.3310
+! HOH LPOH    LP_O_    1  1  -0.3310
+*
+C DEFAULTS FOR AMBER 
+ *** H__N+   H__N+    1  0   0.0000 
+ *** H__N2   H__N2    1  0   0.0000 
+ *** H__NB   H__NB    1  0   0.0000 
+ *** H_      H_       1  0   0.0000
+ *** H__N    H__N     1  0   0.0000
+ *** H__O    H__O     1  0   0.0000
+ *** H__OJ   H__OJ    1  0   0.3300   ! fixed, was 0.4170
+ *** H__S    H__S     1  0   0.0000
+ *** C_2+    C_2+     4  0   0.0000
+ *** C_32    C_32     4  0   0.0000
+ *** C_33    C_33     4  0   0.0000
+ *** C_R1    C_R1     3  0   0.0000
+ *** C_R1E   C_R1E    3  0   0.0000
+ *** C_R1F   C_R1F    3  0   0.0000
+ *** C_R1G   C_R1G    3  0   0.0000
+ *** C_31    C_31     4  0   0.0000
+ *** C_R1N   C_R1N    3  0   0.0000
+ *** C_21    C_21     3  0   0.0000
+ *** C_R1P   C_R1P    3  0   0.0000
+ *** C_2+    C_2+     3  0   0.0000
+ *** C_R05   C_R05    3  0   0.0000
+ *** C_R     C_R      3  0   0.0000
+ *** C_RB    C_RB     3  0   0.0000
+ *** C_R0N   C_R0N    3  0   0.0000
+ *** C_2     C_2      3  0   0.0000
+ *** C_RBN   C_RBN    3  0   0.0000
+ *** C_3     C_3      4  0   0.0000
+ *** O_2     O_2      1  2   0.0000
+ *** O_2-    O_2-     1  2   0.0000
+ *** O_3     O_3      2  2   0.0000
+ *** O_3H    O_3H     2  2   0.0000
+ *** O_3_J   O_3_J    2  1  -0.6600   ! fixed, was -0.8340 
+ *** O_3_L   O_3_L    2  1   0.0000
+ *** LP_O    LP_O_    1  0  -1.0400 
+ *** LP_O_   LP_O_    1  0  -1.0400 
+ *** S_3_L   S_3_L    2  2   0.0000
+ *** S_3HL   S_3HL    2  2   0.0000
+ *** LP_S    LP_S_    1  0   0.0000
+ *** LP_S_   LP_S_    1  0   0.0000
+ *** Na      Na       6  0   1.0000 !AMM 
+ *** N_2L6   N_2L6    2  1   0.0000
+ *** N_2H5   N_2H5    3  2   0.0000
+ *** N_2L5   N_2L5    2  1   0.0000
+ *** N_2H2   N_2H2    3  1   0.0000
+ *** N_2HB   N_2HB    3  1   0.0000
+ *** N_2     N_2      3  1   0.0000
+ *** N_2H1   N_2H1    3  1   0.0000
+ *** N_3+    N_3+     4  1   0.0000
+ *** N_3     N_3      3  1   0.0000
+ *** P_4     P_4      4  0   0.0000
+*H ATOMS FROM BUILDING
+ *** HC_2+   H_       1  0   0.0000
+ *** HC_32   H_       1  0   0.0000 
+ *** HC_33   H_       1  0   0.0000 
+ *** HC_R1   H_       1  0   0.0000 
+ *** HC_R1E  H_       1  0   0.0000 
+ *** HC_R1F  H_       1  0   0.0000 
+ *** HC_R1G  H_       1  0   0.0000 
+ *** HC_31   H_       1  0   0.0000 
+ *** HC_R1N  H_       1  0   0.0000 
+ *** HC_21   H_       1  0   0.0000 
+ *** HC_R1P  H_       1  0   0.0000 
+ *** HC_2+   H_       1  0   0.0000 
+ *** HC_R05  H_       1  0   0.0000 
+ *** HC_R    H_       1  0   0.0000 
+ *** HC_RB   H_       1  0   0.0000 
+ *** HC_R0N  H_       1  0   0.0000 
+ *** HC_2    H_       1  0   0.0000 
+ *** HC_RBN  H_       1  0   0.0000 
+ *** HC_3    H_       1  0   0.0000 
+ *** HN_2L6  H__N     1  0   0.0000 
+ *** HN_2H5  H__N     1  0   0.0000               
+ *** HN_2L5  H__N     1  0   0.0000  
+ *** HN_2    H__N     1  0   0.0000  
+ *** HN_2H1  H__N     1  0   0.0000  
+ *** HN_2H2  H__N2    1  0   0.0000  
+ *** HN_2HB  H__NB    1  0   0.0000  
+ *** HN_3+   H__N+    1  0   0.0000  
+ *** HN_3    H__N     1  0   0.0000  
+ *** HO_2    H__O     1  0   0.0000  
+ *** HO_2-   H__O     1  0   0.0000  
+ *** HO_3    H__O     1  0   0.0000   
+ *** HO_3H   H__O     1  0   0.0000   
+ *** HO_3_L  H__O     1  0   0.0000   
+ *** HS_3_L  H__S     1  0   0.0000   
+ *** HS_3HL  H__S     1  0   0.0000    
+ *** HP_4    H_       1  0   0.0000    

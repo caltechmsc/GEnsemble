@@ -1,0 +1,136 @@
+MPSim
+Copyright (c) 2001 Materials and Process Simulation Center(William A. Goddard III)
+                   California Institute of Technology
+All rights reserved.
+
+MPsim workstation version
+Default number of threads for this computer is 1
+version: 2.4 (build 20050627.0345, compiled by maiti)
+running on compute-0-0.local as pid 14453 in directory /home/ravi/GEnsemble/examples/step2_opthelix2/helix4/6_FinalMinimize
+Run number assumed to be 1.
+READ_FF: unimplemented keyword `TORANGR  '
+READ_FF: unimplemented keyword `SHRINK CH'
+READ_FF: unimplemented keyword `SHRINK FC'
+Dielectric const used:    2.50000
+READ_FF: unimplemented keyword `ATM DEFLT'
+Your original BBOX: -180 180 -180 180 -180 180
+Warning: No REMARK NATOM line in input BGF file
+atom_bond_order memory 0.0142365 MB
+622 atoms: 622 movable, 0 fixed
+Finished reading files 
+Molecule data
+-------------
+1 molecule  of size 622
+-------------
+Printing final structure in BGF format.
+Trajectory file is helix4.8.minrmsd.scream.min.traj1
+Nonbond update every 5 steps
+Reassign atoms every 5 steps
+Thread 0 started
+1860 degrees of freedom
+Nonbond computation will use CMM
+Total atoms: 622, movable 622, fixed 0, rigid 0
+degrees of freedom 0, total_charge 2.000000, movable charge 2.000000
+1 cell  occupying 408 bytes; average cell occupancy 622.0
+Settings call for EXACT energy force computation.
+This might take awile.
+To reduce computation time (and precision) increase
+number of levels.
+  atom minimization method used: Conjugate-gradient (v145)
+Bond terms: 626 
+angle terms: 1143
+HB bonds (dreiding type) 265
+Biograf (Author: WAG) Conjugate Gradient Minimization for 100 steps(target rms = 0.5)
+    Results printed at the end of each iteration
+GRDRMS=                        17.409
+
+   STEP      T. ENERGY          RMS ATOM        STEP ATM
+      1        308.4256          9.3093          0.3813
+      2        247.5086          7.2849          0.3439
+      3        203.2901          5.2414          0.3757
+      4        178.8115          4.6129          0.3001
+HB bonds (dreiding type) 273
+      5        167.9222          3.1132          0.1093
+      6        156.0906          3.2659          0.2121
+      7        146.7463          3.2313          0.2136
+      8        135.8272          3.5000          0.2944
+      9        120.6466          2.3938          0.4545
+HB bonds (dreiding type) 281
+     10        116.6914          1.9460          0.0765
+     11        113.2673          1.8470          0.1050
+     12        109.8370          1.7818          0.1359
+     13        106.0091          1.9664          0.1814
+     14        102.5732          1.9135          0.1816
+HB bonds (dreiding type) 285
+     15        100.6057          1.4119          0.0476
+     16         98.7174          1.3093          0.0769
+     17         96.9282          1.2960          0.0965
+     18         94.9213          1.4779          0.1298
+     19         92.7759          1.5942          0.1541
+HB bonds (dreiding type) 287
+     20         91.2863          1.2067          0.0433
+     21         90.0206          1.0476          0.0609
+     22         88.8663          1.0054          0.0754
+     23         87.6132          1.1580          0.1002
+     24         86.3329          1.4186          0.1144
+HB bonds (dreiding type) 286
+     25         85.3335          0.9910          0.0326
+     26         84.4185          0.8745          0.0521
+     27         83.5837          0.8602          0.0649
+     28         82.6747          1.0253          0.0860
+     29         81.6407          1.2393          0.1084
+HB bonds (dreiding type) 286
+     30         80.7858          0.9107          0.0319
+     31         80.0621          0.7784          0.0457
+     32         79.4124          0.7468          0.0563
+     33         78.7235          0.8677          0.0734
+     34         77.9839          1.1406          0.0881
+HB bonds (dreiding type) 288
+     35         77.3483          0.7872          0.0258
+     36         76.7675          0.6941          0.0415
+     37         76.2346          0.6842          0.0521
+     38         75.6620          0.8131          0.0681
+     39         75.0072          1.0268          0.0863
+HB bonds (dreiding type) 288
+     40         74.4296          0.7491          0.0260
+     41         73.9328          0.6449          0.0380
+     42         73.4833          0.6223          0.0472
+     43         73.0119          0.7143          0.0606
+     44         72.5054          0.9647          0.0729
+HB bonds (dreiding type) 288
+     45         72.0513          0.6667          0.0218
+     46         71.6931          0.4461          0.0218
+  
+  Minimization is converged (CONJGR)
+Final RMS: 0.446118	Final Energy: 71.693109
+Total number of energy calls during minimization: 185
+1 molecule  of size 622
+-------------
+Maximum Kinetic Energy of Center of Mass: -1.000000
+Energy expression:
+
+Movable atoms	:     622	Fixed atoms	:       0
+Total atoms	:     622
+Bonds			:       0
+Angles			:    1143
+Torsions		:    1658
+Pi twist		:       0
+Inversions		:       0
+Nbond exclusions	:    3406
+Dreidi type Hbonds	:     288
+Total charge 	:  0.0000		Movable atoms only	:  0.0000
+Total atoms: 622, movable 622, fixed 0, rigid 0
+total dof 1860, total charge 0.000000, movable charge 0.000000
+
+TOTAL ENERGY = 71.6931 kcal/mol   RMS FORCE = 0.446118 (kcal/mol)/A
+
+Energy Decomposition  
+	Valence			Nonbond			Solvation
+Bonds      :  35.29951        Nonbond     : 145.74634        PBSolv  :   0.00000
+Angles     :  85.55047        Coulomb     :  -3.46369        SGBSolv :   0.00000
+Torsion    :  84.55699        VDW         : 149.21003
+Inversions :   2.43158        Hbonds      : -281.89178
+
+NB METHOD: CMM
+CMM level used: 0
+

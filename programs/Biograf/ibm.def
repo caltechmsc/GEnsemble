@@ -1,0 +1,8 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: /usr/tmp/biograf.def
+!
+PROGRAM    BIOGRAF
+L_RS6000   YES
+TERMINAL   RS6000

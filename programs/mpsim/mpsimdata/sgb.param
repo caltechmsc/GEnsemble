@@ -1,0 +1,153 @@
+// This is the new parameter file format nice huh?
+// Lines beginning w/ // are ignored
+// 
+// This is the current version of the parameter file
+// which is double checked w/in the code to make sure the
+// parameter file matches the version of the code being executed
+//
+// in general 0 is false 1 is true
+//
+version(2.25)
+//
+// the first 0 toggles if the surface integrals should be read from disc or not
+// the second 0 toggles if the surface integrals should be written to disc or
+// not (once written they can be read) this isn't entirely useful right now
+//
+rwprecalc(0,0)
+//
+// base is 0.00002 its the accuracy in q^2 / r^3 (r^2) in coulombs 
+// to do the surface integral.. basically it is used to pick the closest
+// sphere size for the surface integral.. the bigger the number
+// the less accurate
+//
+//accuracy(0.00001)
+accuracy(0.0001)
+//
+// One can use the 'real' single energies from pbf to test the interaction
+// bits separately.. another thing that isn't really entirely useful for 
+// anyone (but me :))
+//
+savere(0)
+//
+//
+// W/ fitlow(0) it will generate spherical grid coordinates of increasing sparsity
+// until the value set by mingrid(%d). In selecting a sphere to do the integrating 
+// the cheapest grid it will use is this.
+//
+// W/ fitlow(1) it will generate in addition provide a second order multipole expansion
+// of the surface for use. And for parts of the integral it deems appropriate (set by
+// accuracy) it will opt for the the multipole expansion instead
+// 
+fitlow(1)
+//
+// maximum number of atoms that could possibly be touching a given sphere 
+//
+nas(500)
+//
+// maximum number of spheres w/in a certain distance for short range correction
+//
+cas(1400)
+// maximum number of spheres per atom that can possibly be created
+//
+ms(200)
+//
+// the ratio btwn each sphere generated and the one that is more accurate
+//
+scaling(10)
+//
+// maximum number of possible grid points per atom on a one angstrom sphere..
+// (program really uses accuracy but will max out the number of points at this
+// number (*r^2)
+//u
+size(70)
+//size(1500)
+// 
+// if fitlow is on it will start calculating fitted lores spheres starting at
+// this number of points
+//
+// 40 (when to start using fitlow
+//
+mingrid(20)
+// 
+// If derivative(1) then sgb will calculate a *full* derivative i.e. complete analytical equivalent to
+// the energy. 
+// derivative(0) allows sgb to assume that d E_i /d r (the change in the electrostatic energy of a (single)
+// charge w/ coordinate || (i.e. the integrals) )  is zero (i.e. the 'alpha' radii do not change much
+// between time steps)
+//
+derivative(0)
+//
+// The dielectric constant of the solute 
+//
+// This can now be set in the fort.1 impact input file
+// You can uncomment this if you are feeling a bit fascist
+// and would like everyone to use your internal dielectric
+//
+// dielectric_in(1)
+//
+// The dielectric constant of the solvent
+//
+// dtm passed as sgb_run_imp argument dielectric_out(80)
+//
+//
+// the radii going into sgb is multiplied by first number and added w/ second number
+//
+radius_offset(1.0,0.0)
+//
+// Uses radii that are at sqrt(2 * sigma)
+old_sigma(0)
+//
+// Set the minimum distance before a multipole expansion can be used..
+//
+min_lores_distance(12.0)
+// The grid size is based on q^2/r^3 but we dont want to use lo res expansions too close (ie d small) so allow the
+//scaling to be dependant on q^2/r^3 up to a minimum charge.
+//
+mincharge(0.0)
+//
+// For surface generation option we will use this number instead of size.. (since size is set
+// for accuracy of integration while in surface generation the number of points are important
+// in their own right
+//
+docksize(70)
+//
+// When opls gives us an atom of radius 0 its a bit unphysical because there is likely to
+// still be a cavity around that hydrogen so so set it to the following
+//
+hydrogenradius(1.0)
+//
+// Print out the step (call) number and the energy on each run
+//
+printenergy(0)
+//
+// Print out the forces on each run
+printforce(0)
+//
+// Buffers and frozen and active mean slightly different things
+// than in impact.
+//
+// in SGB the frozen region is defined as a region where the rxn field
+// contribution is a constant throughout the simulation.
+// the buffer region redoes the integrals but doesn't recalculate
+// the surface.. (i.e. for regions where the surface doesn't change too much)
+// 
+// Given the original set of frozen/buffer/active parameters sent to sgb
+// it will change every atom nearer than the following parameter to a
+// active atom to an active atom
+// I.E. this is the minimum distance from a ACTIVE atom for a atom to be
+// designated as a BUFFER.
+//
+set_buffer_region_radius(2.0)
+//
+// It will change every atom that is further way from the closest active
+// atom (in the original set sent to sgb) than the above but closer than
+// the radius below to a buffer.
+// I.E. this is the minimum distance from a ACTIVE atom for a atom to
+// be FROZEN.
+set_frozen_region_radius(2.0)
+//
+cavity_offset(1.77)
+// use old cavity (0) or use new cavity (1)
+// dtm new_cavity(1)
+new_cavity(0)
+new_cavity_parameters(0.0023, -9.13455606015218,   -0.04767386885887098, 20.75564731642892)

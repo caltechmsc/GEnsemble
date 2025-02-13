@@ -1,0 +1,23 @@
+BIOGRF  160
+DESCRP ethylene
+REMARK Created by srl @ iris on 12/11/89   11:56:10                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    ETH A    1    0.70400   0.25600   0.16700 C_3    4 0  0.00000
+HETATM     2 HX    ETH A    1    0.71000   1.34600   0.16900 H_     1 0  0.00000
+HETATM     3 H3C1  ETH A    1    1.41500  -0.10500  -0.57700 H_     1 0  0.00000
+HETATM     4 H2C1  ETH A    1    1.00400  -0.10500   1.15200 H_     1 0  0.00000
+HETATM     5 TT    ETH A    1   -0.70400  -0.25600  -0.16700 C_3    4 0  0.00000
+HETATM     6 H2C2  ETH A    1   -1.00400   0.10500  -1.15200 H_     1 0  0.00000
+HETATM     7 H1C2  ETH A    1   -1.41500   0.10500   0.57700 H_     1 0  0.00000
+HETATM     8 TX    ETH A    1   -0.71000  -1.34600  -0.16900 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     4     3     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     7     6     8     1
+CONECT     6     5
+CONECT     7     5
+CONECT     8     5
+END

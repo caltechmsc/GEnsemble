@@ -1,0 +1,18 @@
+
+Assigned bond orders to the workspace, while skipping residues with existing double & triple bonds
+  No bond orders were changed
+
+Added hydrogens to the Workspace structure
+
+Treated metals in the Workspace structure
+  Created disulfide bonds: []
+
+Found 0 het groups
+
+Deleted waters farther than 5 angstroms from hets
+
+Found 0 waters
+
+The following atoms (24) were overlapping: (3, 3304), (196, 3306), (481, 3308), (484, 3310), (897, 3312), (991, 3314), (994, 3316), (1525, 3318), (1542, 3320), (1958, 3322), (2502, 3324), (2948, 3325)
+
+The following atoms (5) had bad atom types: [(36, 'Unknown', 4), (637, 'Unknown', 4), (1483, 'Unknown', 4), (1950, 'Unknown', 4), (2494, 'Unknown', 4)].

@@ -1,0 +1,29 @@
+beginmacro
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "helix2.fin.mineng.raw.min.bgf"
+   In-Out/return
+Top menu/build
+   Build/connect
+        helix2.f
+        return
+      Connect/execute
+      Connect/return
+   Build/modify H
+      Modify H/add all H
+        helix2.f
+      Modify H/return
+   Build/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     helix2.f
+     return
+     "helix2.fin.mineng.raw.min.bgfH"
+     " "
+   In-Out/return
+Top menu/exit
+  "OK"
+%
+endmacro

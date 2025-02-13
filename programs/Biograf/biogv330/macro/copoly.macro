@@ -1,0 +1,123 @@
+beginmacro
+%
+%  Copolymer builder will use both monomer library and user library
+%  monomer units.  The limit to the number of different monomer units
+%  is 
+%  To end monomer input, just enter a return at the monomer name input
+%
+nunits = 0
+line1 = "Enter the name of the monomer unit (return to end)."
+line2 = "Enter the percent composition."
+line3 = "Is the monomer unit in a user library (y/n)?"
+line4 = "Enter the polymer chain length."
+line5 = "Enter directory tree for user monomer library."
+%
+%  Get monomer info
+%
+out = display_info(Random copolymer builder)
+first = 1
+START:
+  echo ${line1}
+num = ${prompt}
+if( ${num} = NULL )then
+  goto OUT
+else
+  if( ${first} = 1 )then
+    mono = ${num}
+    echo ${line2}
+    num = ${prompt}
+    comp = ${num}
+    echo ${line3}
+    num = ${prompt}
+    if( ${num} ~ y )then
+      lib = 1
+    else
+      lib = 0
+    endif
+    first = 0
+  else
+    mono = ${mono},${num}
+    echo ${line2}
+    num = ${prompt}
+    num = ${num} + ${comp}[${nunits}]
+    comp = ${comp},${num}
+    echo ${line3}
+    num = ${prompt}
+    if( ${num} ~ y )then
+      lib = ${lib},1
+    else
+      lib = ${lib},0
+    endif
+  endif
+  nunits = ${nunits} + 1
+  goto START
+endif
+OUT:
+echo ${mono}
+echo ${comp}
+echo ${lib}
+%
+%  Get chain length
+%
+echo ${line4}
+chainlen = ${prompt}
+%
+%  Enter polymer builder
+%
+Top menu/Build
+	Build/polymer
+	  new file
+	  "copoly"
+%
+%  Check for user monomers & get library name
+%
+	do i = 1, ${nunits}
+	  if( ${lib}[${i}] = 1 )then
+	    flag = 1
+	  endif
+	enddo
+	if( ${flag} = 1 )then
+	  echo ${line5}
+	  TREE = ${prompt}
+	  read library
+	    Selections/user library
+	  ${TREE}
+	endif
+%
+%  Build chain
+%
+	do loop = 1 , ${chainlen}
+%
+%  Generate random number from 0 to 100
+%
+	  random = ran(${comp1})
+	  random = 100 * ${random}
+	  random = fix(${random})
+	  flag = 1
+%
+%  Select the monomer unit
+%
+	  do i = 2, ${nunits}
+	    im1 = ${i} - 1
+	    if( ${random} >= ${comp}[${im1}] )then
+	      flag = ${i}
+	    endif
+	  enddo
+	  echo Adding monomer ${mono}[${flag}]
+%
+%  Check for user library
+%
+	  if( ${lib}[${flag}] = 1 )then
+	    user library
+	      ${mono}[${flag}]
+	      return
+	  else
+	    monomer lib
+	      ${mono}[${flag}]
+	      return
+	  endif
+	enddo
+@invert
+quit
+%
+endmacro

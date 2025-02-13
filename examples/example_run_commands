@@ -1,0 +1,86 @@
+##################################################################
+#                       GEnSeMBLE  1.0                           #
+#                       An Example Run                           #
+# Refer to GEnsemble/documentation/README for notes on each step #
+##################################################################
+
+#--------------------------------------------------
+### STEP 0 :: Set shortcuts in your .cshrc file ###
+#--------------------------------------------------
+
+Make sure that you have the following in your .cshrc file:
+(Replace "yourpath" with the path of your GEnsemble Installation)
+
+set ge_path = /yourpath/GEnsemble
+alias ge_blast           "$ge_path/programs/Blast.pl"
+alias ge_predictm        "$ge_path/programs/PredicTM.pl"
+alias ge_opthelix        "$ge_path/programs/OptHelix.pl"
+alias ge_template        "$ge_path/programs/Align2Template.pl"
+alias ge_bihelix         "$ge_path/programs/bihelixrot2/all_bihelix_pairs.pl"
+alias ge_bihelixanal     "$ge_path/programs/bihelixrot2/bihelix_anal.pl"
+alias ge_combihelix      "$ge_path/programs/bihelixrot2/combi_frombihelixsum.pl"
+
+
+The following directory structure is recommended:
+mkdir step1_predictpm
+mkdir step2_opthelix
+mkdir step3_template
+mkdir step4_bihelix
+mkdir step5_combihelix
+
+#-----------------------------------------------------------------
+#   STEP 1 :: Predict TM regions (Blast step run through PredicTM)
+#-----------------------------------------------------------------
+Input: Swiss-Prot ID of your target protein (e.g. Q9NYW5)
+Output: Q9NYW5.mfta (modified fasta file)
+Help: ge_predictm -h for detailed help
+
+cd step1_predictpm
+ge_predictm -a Q9NYW5 -c -d Complete
+cp Q9NYW5.mfta ../step2_opthelix/
+
+
+#--------------------------------------------------
+#   STEP 2 :: Optimize Helix Kinks
+#--------------------------------------------------
+Input: Modified fasta file from STEP 1 (e.g. Q9NYW5.mfta)
+Output: 8 sets of optimized helices
+Help: ge_opthelix -h for detailed help
+
+cd ../step2_opthelix
+ge_opthelix -f Q9NYW5.mfta
+
+
+#--------------------------------------------------
+#   STEP 3 :: Align optimized helices to a template
+#--------------------------------------------------
+Input: Optimized helices from STEP 2, mfta file from STEP 1
+Output: protein_initial_bundle.bgf has your helices in template of your choice
+Help: ge_template -h
+
+cd ../step3_template
+ge_template -t humbeta2_2rh1 -d ../step2_opthelix -m ../step2_opthelix/Q9NYW5.mfta -oc minrmsd.cap.min -c area
+cp protein_initial_bundle.bgf ../step4_bihelix
+
+
+#--------------------------------------------------
+#   STEP 4 :: Perform BiHelix Sampling and Analysis
+#--------------------------------------------------
+Input: protein_initial_bundle.bgf from STEP 3
+Output: protein_initial_bundle.bihelix_*.out with BiHelix energies ordered
+using three criteria
+Help: ge_bihelix -h for detailed help
+
+cd ../step4_bihelix
+ge_bihelix -p protein_initial_bundle.bgf -r -s -mach davinci -an 10
+
+#
+#---------------------------------------------------------------------------
+#   STEP 5 :: Perform Combinatorial Scan on top structures from BiHelix Step
+#---------------------------------------------------------------------------
+Input: protein_initial_bundle.bgf from STEP 3 and output *.out from STEP 4.
+Output: protein_initial_bundle_allcombi_scream.out with Protein energies for
+all bundles.
+Help: ge_combihelix -h for detailed help
+cd ../step5_combihelix
+ge_combihelix -p protein_initial_bundle.bgf -n 2 -r -s -mach davinci

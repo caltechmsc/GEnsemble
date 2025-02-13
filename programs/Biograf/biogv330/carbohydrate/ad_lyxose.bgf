@@ -1,0 +1,48 @@
+BIOGRF  160
+DESCRP AD_LYX  
+REMARK Created by slm @ tms2r on  1/25/90   17:49:15               
+REMARK alpha-D-Lyxose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  O5*  LYX      1   -0.69915   1.99175  -2.45425 O_3    2 2  0.00000
+ATOM       2 HO5*  LYX      1   -0.83618   2.96056  -2.51045 H___A  1 0  0.00000
+ATOM       3  C5*  LYX      1   -0.90377   1.56070  -1.11163 C_3    4 0  0.00000
+ATOM       4 HC5*  LYX      1   -1.91861   1.85006  -0.83659 H_     1 0  0.00000
+ATOM       5 HC5*  LYX      1   -0.20642   2.09967  -0.46898 H_     1 0  0.00000
+ATOM       6  C4*  LYX      1   -0.73278   0.02958  -0.93429 C_3    4 0  0.00000
+ATOM       7 HC4*  LYX      1   -1.40870  -0.47717  -1.62794 H_     1 0  0.00000
+ATOM       8  O4*  LYX      1    0.60683  -0.37233  -1.24456 O_3    2 2  0.00000
+ATOM       9  C3*  LYX      1   -0.97905  -0.52519   0.48747 C_3    4 0  0.00000
+ATOM      10 HC3*  LYX      1   -1.27319  -1.57282   0.38055 H_     1 0  0.00000
+ATOM      11  O3*  LYX      1   -2.04451   0.07772   1.22705 O_3    2 2  0.00000
+ATOM      12 HO3*  LYX      1   -2.12828  -0.36353   2.09802 H___A  1 0  0.00000
+ATOM      13  C2*  LYX      1    0.41736  -0.51200   1.14498 C_3    4 0  0.00000
+ATOM      14 HC2*  LYX      1    0.49469  -1.33701   1.85802 H_     1 0  0.00000
+ATOM      15  C1*  LYX      1    1.35112  -0.70886  -0.07255 C_3    4 0  0.00000
+ATOM      16 HC1*  LYX      1    2.23795  -0.07215  -0.02728 H_     1 0  0.00000
+ATOM      17  O1*  LYX      1    1.80131  -2.05397  -0.21620 O_3    2 2  0.00000
+ATOM      18 HO1*  LYX      1    2.30795  -2.31616   0.58068 H___A  1 0  0.00000
+HETATM    19  O2*  LYX      1    0.74296   0.68385   1.86218 O_3    2 2  0.00000
+HETATM    20 HO2*  LYX      1    1.65554   0.61527   2.21329 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     6     4     5
+CONECT     4     3
+CONECT     5     3
+CONECT     6     3     8     9     7
+CONECT     7     6
+CONECT     8     6    15
+CONECT     9     6    11    13    10
+CONECT    10     9
+CONECT    11     9    12
+CONECT    12    11
+CONECT    13     9    15    19    14
+CONECT    14    13
+CONECT    15     8    13    17    16
+CONECT    16    15
+CONECT    17    15    18
+CONECT    18    17
+CONECT    19    13    20
+CONECT    20    19
+END

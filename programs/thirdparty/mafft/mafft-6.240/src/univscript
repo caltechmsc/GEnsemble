@@ -1,0 +1,28 @@
+progs="dvtditr dndfast7 dndblast sextet5 mafft-distance pairalign pairlocalalign pair2hat3s multi2hat3s splittbfast splitfromaln disttbfast tbfast mafft-profile f2cl countlen score getlag dndpre dndpre2 setcore"
+for prog in $progs; do
+	printf  $prog" "
+done
+
+make clean
+make CC="gcc -arch ppc -fast"
+for prog in $progs; do
+	mv $prog $prog.ppc64
+done
+
+make clean
+make CC="gcc -arch ppc -O3"
+for prog in $progs; do
+	mv $prog $prog.ppc32
+done
+
+make clean
+make CC="icc -fast"
+for prog in $progs; do
+	mv $prog $prog.icc
+done
+
+set $progs
+for prog in $progs; do
+	lipo -create $prog.icc $prog.ppc32 $prog.ppc64 -output $prog
+	cp $prog ../binaries
+done

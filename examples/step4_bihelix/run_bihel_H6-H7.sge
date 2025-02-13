@@ -1,0 +1,6 @@
+#!/bin/csh
+#$ -N BiHelix_6-7
+#$ -j y
+/home/ravi/GEnsemble/programs/bihelixrot2/bihelixrot_scream2.pl -p protein_initial_bundle.bgf -r -s -i 6 -j 7 > protein_initial_bundle_H6-H7_bihel.out
+/home/ravi/GEnsemble/programs/bihelixrot2/annex/check_bihelix_status.pl
+/home/ravi/GEnsemble/programs/bihelixrot2/bihelix_anal.pl protein_initial_bundle 10 0_0_0_0_0_0_0

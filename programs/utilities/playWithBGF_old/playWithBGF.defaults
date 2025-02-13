@@ -1,0 +1,21 @@
+### playWithBGF defaults file ###
+VERSION         070816p
+#
+# NonBond interaction analysis (-I) defaults:
+IA_SELN1        selection
+IA_SELN2        selection
+IA_FORMAT       RxR
+# default forcefield parameter file:
+DEF_FF          /ul/vaid/ff/dreidii322-mpsim.par
+# hydrogen bond distance cutoff in Angstroms:
+HB_CUTOFF       3.5
+# distance dependencies for VdW (attractive and repulsive):
+VDW_ATT         6
+VDW_REP         12
+# turn on/off (1/0) REMARK lines added to each BGF/PDB file written out
+ADD_REMARK      1
+# alternate location to read from PDB files
+READ_ALTLOC     A
+# names of atoms considered as backbone
+BACKBONE_DEFN   N HN CA HCA C O OXT HA 1HA 2HA HT1 HT2 HT3
+#

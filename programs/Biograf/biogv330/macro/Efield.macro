@@ -1,0 +1,55 @@
+beginmacro
+%
+% version      : 2.21
+% version date : 09:35:40 11/29/90
+% link date    : 08:43:46 2/20/92
+%
+% Macro created on  3/30/92   11:43:16
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  fieldtest2.bgf
+	In-Out/return
+Top menu/utilities
+	Utilities/user
+		User/energy utilities
+		Energy utils/External E
+			external E field/Define axes
+			external E field/field strength
+		  	  "5000"
+		  	external E field/  Ex
+		  	  "1"
+		  	external E field/  Ey
+		  	  "1"
+			external E field/display E
+			external E field/return
+		Energy utils/return
+		User/return
+	Utilities/return
+Top menu/simulate
+	Simulate/setup eex
+	  pvdf
+	  return
+	  pvdf
+	  return
+	  pvdf
+	  return
+	Simulate/dynamics
+		Dynamics/canonical (TVN)
+			Canonical/write traject
+			Canonical/execute
+			  "fieldtest"
+			  " "
+			Canonical/append traject
+			  fieldtest.trj
+			Canonical/time
+			  "19.5"
+			Canonical/execute
+			Canonical/return
+		Dynamics/return
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

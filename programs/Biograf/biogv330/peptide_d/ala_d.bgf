@@ -1,0 +1,23 @@
+BIOGRF  160
+DESCRP ALA-D   
+REMARK Created by srl @ sun4 on  1/28/89   13:51:13                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  N    ALA      1   -0.66500  -0.76200   0.39200 N_R    3 0 -0.08000
+ATOM       2 HN    ALA      1   -1.58300  -0.56000   0.39300 H___A  1 0  0.00000
+ATOM       3  CA   ALA      1    0.23500   0.10000  -0.21500 C_31   4 0  0.07500
+ATOM       4  C    ALA      1    1.63300  -0.22700  -0.03100 C_R    3 0  0.35000
+ATOM       5  O    ALA      1    2.15400  -1.28700  -0.37500 O_2    1 2 -0.36500
+ATOM       6  CB   ALA      1   -0.18400   0.34500  -1.67500 C_33   4 0  0.02000
+ATOM       7  OXT  ALA      1    2.35800   0.60000   0.50500 O_2    1 2 -0.56000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3
+CONECT     2     1
+CONECT     3     1     4     6
+CONECT     4     3     5     7
+ORDER      4     0     2     0
+CONECT     5     4
+ORDER      5     2
+CONECT     6     3
+CONECT     7     4
+END

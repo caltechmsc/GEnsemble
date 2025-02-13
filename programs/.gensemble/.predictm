@@ -1,0 +1,61 @@
+#######################
+# Version Information #
+#######################
+version 1.25
+
+#########################
+# Directory Information #
+#########################
+# General location of user directories
+user_home           ~
+
+# Clustal Executable
+clustal_executable  thirdparty/clustal/clustalw
+
+# MAFFT Executable
+mafft_executable    thirdparty/mafft/mafft
+
+# MAFFT Binaries
+mafft_binaries      thirdparty/mafft/lib/mafft
+
+# Hydrophobicity Scales Directory
+hpscales_dir        hpscales
+
+# Hydrophobic Center Directory
+hpcenter_executable utilities/hpcenter/hpc_by_centroid.x
+
+# libwww-perl-5.808 :: Note that libwww must be installed in the libwww subdirectory of
+# the main program directory.  This parameter should not be altered and is listed here
+# only for reference.
+libwww_dir          thirdparty/libwww/
+
+####################
+# Default Settings #
+####################
+qsub             1             # PredicTM Submit to Queue (1 = on, 0 = off)
+queuetype        pbs           # Cluster Queue Type (sge or pbs)
+scale            octanol       # PredicTM Hydrophobicity Scale (recognized keyword or full filename path)
+avgwins          7-21          # PredicTM Set of windows to average over (range is odd numbers 1 to 31)
+                               #    Example: 7-21           (note that ranges MUST be low to high)
+                               #    Example: 7,15,21        (note that numbers MUST be low to high without spaces)
+                               #    Not Allowed: 7,15-21,31 (note that mixed input is NOT allowed))
+minhelix         10            # PredicTM Minimum Helix Length before ignoring helix
+maxhelix         35            # PredicTM Maximum Helix Length before capping/extension not allowed
+minloop          6             # PredicTM Minimum Loop Length
+maxcap           6             # PredicTM Maximum Capping Size
+maxext           4             # PredicTM Default Extension Size
+ntermbreakers    G,P,D,E,R,K,H # PredicTM N-Term Helix Breakers (separate by commas, no spaces)
+ctermbreakers    G,P,D,E,R,K,H # PredicTM C-Term Helix Breakers (separate by commas, no spaces)
+baseline         0.0           # PredicTM Baseline
+clustal          0             # PredicTM Use Clustal instead of MAFFT Flag
+protdb           Complete      # BLAST Protein Database
+ethreshold       0.1           # BLAST E-Value Threshold
+sequences        1000          # BLAST Initial number of sequences
+compiter         1000          # BLAST Completeness Step Size
+maxseqs          2000          # BLAST Maximum number of sequences
+complete         1             # BLAST Completeness Flag                 (1 = on, 0 = off)
+flagnongpcr      0             # BLAST Flag Non-GPCRs Flag               (1 = on, 0 = off)
+cutnongpcr       0             # BLAST Cut Non-GPCRs Flag                (1 = on, 0 = off)
+filter           0             # BLAST Low-Region Complexity Filter Flag (1 = on, 0 = off)
+trembl           0             # BLAST Use TrEMBL Flag                   (1 = on, 0 = off)
+etares           1             # BLAST Calculate Residues for Eta Angle  (1 = on, 0 = off)

@@ -1,0 +1,63 @@
+BIOGRF  160
+DESCRP B_dG      
+REMARK Created by slm @ iris on  5/26/89    5:03:23                
+FORCEFIELD DREIDING
+DNARIS  3.380
+DNATRN 36.000
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  P      G A    1   -0.80754   8.87333   2.08000 P_3    4 0  1.34300
+ATOM       2  O1P    G A    1   -0.19581  10.19812   1.86000 O_2    1 2 -0.73800
+ATOM       3  O2P    G A    1   -2.02904   8.58344   1.29000 O_2    1 2 -0.73800
+ATOM       4  O5*    G A    1    0.26977   7.72529   1.83000 O_R    2 2 -0.47700
+ATOM       5  C5*    G A    1    1.36355   7.57831   2.77000 C_32   4 0  0.03400
+ATOM       6  C4*    G A    1    2.60838   7.12773   2.04000 C_31   4 0  0.13200
+ATOM       7  O4*    G A    1    2.52990   5.68225   1.83000 O_3    2 2 -0.26500
+ATOM       8  C3*    G A    1    2.81801   7.70057   0.64000 C_31   4 0  0.03600
+ATOM       9  O3*    G A    1    4.18855   7.68235   0.25000 O_R    2 2 -0.47700
+ATOM      10  C2*    G A    1    2.03478   6.73953  -0.24000 C_32   4 0  0.01200
+ATOM      11  C1*    G A    1    2.25197   5.41001   0.47000 C_31   4 0  0.23600
+ATOM      12  N9     G A    1    1.07299   4.50395   0.42000 N_R    3 0 -0.18000
+ATOM      13  C8     G A    1   -0.26906   4.81248   0.50000 C_R1   3 0  0.21000
+ATOM      14  N7     G A    1   -1.06075   3.77375   0.42000 N_R    2 1 -0.25200
+ATOM      15  C5     G A    1   -0.18834   2.69342   0.28000 C_R    3 0 -0.02200
+ATOM      16  C6     G A    1   -0.45941   1.31188   0.15000 C_R    3 0  0.29900
+ATOM      17  O6     G A    1   -1.54470   0.73348   0.13000 O_2    1 2 -0.28400
+ATOM      18  N1     G A    1    0.72596   0.56514   0.03000 N_R1   3 0 -0.14200
+ATOM      19  C2     G A    1    1.99989   1.09491   0.03000 C_R    3 0  0.38800
+ATOM      20  N2     G A    1    3.00192   0.22045  -0.10000 N_R2   3 0  0.03800
+ATOM      21  N3     G A    1    2.25634   2.39437   0.28000 N_R    2 1 -0.35300
+ATOM      22  C4     G A    1    1.12253   3.13510   0.28000 C_R    3 0  0.20000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3     4
+ORDER      1     2     1     1
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1
+CONECT     4     1     5
+CONECT     5     4     6
+CONECT     6     5     7     8
+CONECT     7     6    11
+CONECT     8     6     9    10
+CONECT     9     8
+CONECT    10     8    11
+CONECT    11     7    10    12
+CONECT    12    11    13    22
+CONECT    13    12    14
+ORDER     13     1     2
+CONECT    14    13    15
+ORDER     14     2     1
+CONECT    15    14    16    22
+ORDER     15     1     1     2
+CONECT    16    15    17    18
+ORDER     16     1     2     1
+CONECT    17    16
+ORDER     17     2
+CONECT    18    16    19
+CONECT    19    18    20    21
+ORDER     19     1     1     2
+CONECT    20    19
+CONECT    21    19    22
+ORDER     21     2     1
+CONECT    22    12    15    21
+ORDER     22     1     2     1
+END

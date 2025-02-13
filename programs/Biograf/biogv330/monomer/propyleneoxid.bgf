@@ -1,0 +1,31 @@
+BIOGRF  160
+DESCRP prplen_o
+REMARK Created by srl @ iris on 12/11/89   11:56:50                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    POO A    1    0.81400   0.30900   0.26100 C_3    4 0  0.00000
+HETATM     2 HX    POO A    1    1.55400  -0.00200  -0.48100 H_     1 0  0.00000
+HETATM     3 H2C1  POO A    1    1.14400  -0.04300   1.24100 H_     1 0  0.00000
+HETATM     4 H1C1  POO A    1    0.78800   1.40000   0.29500 H_     1 0  0.00000
+HETATM     5 C200  POO A    1   -0.58500  -0.26200  -0.05500 C_3    4 0  0.00000
+HETATM     6 TT    POO A    1   -0.56200  -1.68500  -0.07500 O_3    2 2  0.00000
+HETATM     7 C3    POO A    1   -1.13900   0.21700  -1.40500 C_3    4 0  0.00000
+HETATM     8 H3C3  POO A    1   -2.14000  -0.18800  -1.55100 H_     1 0  0.00000
+HETATM     9 H2C3  POO A    1   -0.48700  -0.12500  -2.20800 H_     1 0  0.00000
+HETATM    10 H1C3  POO A    1   -1.18400   1.30600  -1.41300 H_     1 0  0.00000
+HETATM    11 HC2   POO A    1   -1.27800   0.05400   0.72600 H_     1 0  0.00000
+HETATM    12 TX    POO A    1   -0.24700  -2.01900   0.79100 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     3     2     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5    11     7     6     1
+CONECT     6     5    12
+CONECT     7     5    10     9     8
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7
+CONECT    11     5
+CONECT    12     6
+END

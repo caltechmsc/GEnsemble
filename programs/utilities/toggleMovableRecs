@@ -1,0 +1,122 @@
+#!/usr/local/bin/perl -w
+
+# caglar tanrikulu # toggleMovableRecs.pl # Oct 09 2002 # ver: 031024
+#   set atoms in a bgf file <bgf-file> movable (on) or fixed (off), or read
+#     a list of atom numbers from a file <list-file> and make them movable.
+#   output resulting file to stdout, or to (output-file) if specified.
+#
+# usage: 
+#   toggleMovableRecs.pl [on/off/<list-file>] <bgf-file> (output-file)
+#
+# versions:
+#   021009 # initial version
+#   021113 # script can read a list of unformatted/unordered numbers as
+#              the atom list 
+#   031024 # deleted subroutine completeTo5chars, replaced w/ sprintf
+#            if movable recs (chars 80,6) are missing in a bgf file, 
+#              program adds these, and fixes the format
+#
+$|=1;
+$version = '031024';
+#
+
+if ($#ARGV < 1) { die "
+ caglar tanrikulu # toggleMovableRecs.pl # Oct 09 2002 # ver: $version
+   set atoms in a bgf file <bgf-file> movable (on) or fixed (off), or read
+     a list of atom numbers from a file <list-file> and make them movable.
+   output resulting file to stdout, or to (output-file) if specified.
+
+ usage: 
+   $0 [on/off/<list-file>] <bgf-file> (output-file)
+
+"} 
+
+($todo,$bgfFile,$outFile) = @ARGV;
+
+&readBGF($bgfFile);
+
+if (-e $todo) {
+    @movelist_raw = &readFile($todo);
+    @movelist = sort {$a <=> $b} @movelist_raw;    # sort movable list
+
+    for $ii (0 ... $#movelist) {                   # fix format for each number
+	$movelist[$ii] = sprintf '%5d', $movelist[$ii]; 
+    }
+
+    $i = 0;
+    foreach $line (@bgf) {
+	last if (!$movelist[$i]);
+	if ($line =~ /$movelist[$i] / && ($line =~ /^ATOM/ || $line =~ /^HETATM/)){
+	    substr($line,81,1) = "0" ;
+	    $i++;
+	}
+    }
+
+} elsif ($todo eq 'on') {
+    foreach $line (@bgf) {
+	if ($line =~ /^ATOM/ || $line =~ /^HETATM/){
+	    substr($line,81,1) = "0" ;
+	}
+    }
+
+} elsif ($todo eq 'off') {
+    ;  #do nothing
+
+} else {
+    die "ERROR: File not found: $todo \n";
+}
+
+# print out bgf file:
+if (defined $outFile) {
+     open(OUT,">$outFile") || die "Can't open $outFile: $!\n";
+     print OUT @bgf;
+     close(OUT);
+} else {
+    print @bgf;
+}
+
+# done
+if (defined $outFile) {
+    print "... done !\n";
+} else {
+    warn "... done !\n";
+}
+    
+exit;
+
+
+
+
+### SUBROUTINES ###
+
+sub readBGF {
+# read bgf file and set all recs to fixed
+    open(BGF,"$_[0]") || die "Can't open $_[0]: $!\n";
+
+    while ($line = <BGF>){
+	chomp($line);                 # remove newline here
+	$lineLength = length($line);
+
+	if ( $line =~ /^ATOM/ || $line =~ /^HETATM/ ) {
+	    if ($lineLength >= 86) {  # this includes the movable rec & isotope rec		
+		substr($line,81,1) = "1" ;
+	    } else {                  # assuming that the last record is charge (80 chars total)
+		$line .= " 1   0";
+	    }
+	}
+	push (@bgf,"$line\n");        # re-add newline here
+    }
+    close(BGF);
+}
+
+sub readFile {
+    my ($filename, @file);
+    $filename = $_[0];
+    open(FILE,"$filename") || die "Can't open $filename: $!\n";
+    @file = <FILE>;
+    chomp(@file);
+    close(FILE);
+    return @file;
+}
+
+

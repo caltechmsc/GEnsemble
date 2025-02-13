@@ -1,0 +1,91 @@
+BIOGRF  251
+DESCRP substrat
+REMARK 4tpi substrate                                              
+REMARK Created by mario @ graf on  9/10/92   16:09:45              
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+ATOM       1  N    VAL S   16   18.52800  66.49600  12.57500 N_R    3 0 -0.40000  11.99086
+ATOM       2 HN    VAL S   16   17.59581  66.61999  12.91506 H___A  1 0  0.40000
+ATOM       3 HN    VAL S   16   18.74846  66.72279  11.62634 H___A  1 0  0.00000
+ATOM       4  CA   VAL S   16   19.57700  65.97900  13.47200 C_3    4 0 -0.09700
+ATOM       5 HCA   VAL S   16   19.63840  66.66803  14.31436 H_     1 0  0.09700
+ATOM       6  C    VAL S   16   20.97600  65.83500  12.81900 C_R    3 0  0.55000
+ATOM       7  O    VAL S   16   21.07400  65.36600  11.65300 O_2    1 2 -0.55000
+ATOM       8  CB   VAL S   16   19.13600  64.74100  14.32500 C_3    4 0 -0.09700
+ATOM       9 HCB   VAL S   16   19.13622  65.48908  15.11776 H_     1 0  0.09700
+ATOM      10  CG1  VAL S   16   17.71600  64.24400  14.09700 C_3    4 0 -0.29100
+ATOM      11 HCG1  VAL S   16   17.60679  63.97440  13.14024 H_     1 0  0.09700
+ATOM      12 HCG1  VAL S   16   17.53965  63.45644  14.68746 H_     1 0  0.09700
+ATOM      13 HCG1  VAL S   16   17.06836  64.97456  14.31346 H_     1 0  0.09700
+ATOM      14  CG2  VAL S   16   20.07600  63.52000  14.28300 C_3    4 0 -0.29100
+ATOM      15 HCG2  VAL S   16   20.97914  63.78279  14.62255 H_     1 0  0.09700
+ATOM      16 HCG2  VAL S   16   19.70261  62.79194  14.85790 H_     1 0  0.09700
+ATOM      17 HCG2  VAL S   16   20.15605  63.19319  13.34130 H_     1 0  0.09700
+ATOM      18  N    VAL S   17   22.00600  66.41000  13.48800 N_R    3 0 -0.40000  12.99880
+ATOM      19 HN    VAL S   17   21.71058  66.79630  14.32729 H___A  1 0  0.40000
+ATOM      20  CA   VAL S   17   23.44300  66.50000  13.08900 C_3    4 0 -0.09700
+ATOM      21 HCA   VAL S   17   23.47427  66.59229  12.00336 H_     1 0  0.09700
+ATOM      22  C    VAL S   17   24.27100  65.29800  13.52000 C_R    3 0  0.55000
+ATOM      23  O    VAL S   17   24.07600  64.81800  14.66700 O_2    1 2 -0.55000
+ATOM      24  CB   VAL S   17   24.17200  67.71800  13.68100 C_3    4 0 -0.09700
+ATOM      25 HCB   VAL S   17   24.12269  67.16258  14.61757 H_     1 0  0.09700
+ATOM      26  CG1  VAL S   17   25.58900  67.67400  13.14100 C_3    4 0 -0.29100
+ATOM      27 HCG1  VAL S   17   25.56674  67.72076  12.14234 H_     1 0  0.09700
+ATOM      28 HCG1  VAL S   17   26.10665  68.45081  13.49962 H_     1 0  0.09700
+ATOM      29 HCG1  VAL S   17   26.02765  66.82143  13.42509 H_     1 0  0.09700
+ATOM      30  CG2  VAL S   17   23.57000  69.11400  13.39100 C_3    4 0 -0.29100
+ATOM      31 HCG2  VAL S   17   22.63944  69.15778  13.75452 H_     1 0  0.09700
+ATOM      32 HCG2  VAL S   17   24.13186  69.81656  13.82771 H_     1 0  0.09700
+ATOM      33 HCG2  VAL S   17   23.54973  69.26965  12.40339 H_     1 0  0.09700
+ATOM      34  OXT  VAL S   17   24.71900  64.53000  12.63200 O_2    1 2  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     2     3
+ORDER      1     1     1     1
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1     6     8     5
+ORDER      4     1     1     1     1
+CONECT     5     4
+CONECT     6     4     7    18
+ORDER      6     1     2     1
+CONECT     7     6
+ORDER      7     2
+CONECT     8     4    10    14     9
+ORDER      8     1     1     1     1
+CONECT     9     8
+CONECT    10     8    11    12    13
+ORDER     10     1     1     1     1
+CONECT    11    10
+CONECT    12    10
+CONECT    13    10
+CONECT    14     8    15    16    17
+ORDER     14     1     1     1     1
+CONECT    15    14
+CONECT    16    14
+CONECT    17    14
+CONECT    18     6    20    19
+ORDER     18     1     1     1
+CONECT    19    18
+CONECT    20    18    22    24    21
+ORDER     20     1     1     1     1
+CONECT    21    20
+CONECT    22    20    23    34
+ORDER     22     1     2     1
+CONECT    23    22
+ORDER     23     2
+CONECT    24    20    26    30    25
+ORDER     24     1     1     1     1
+CONECT    25    24
+CONECT    26    24    27    28    29
+ORDER     26     1     1     1     1
+CONECT    27    26
+CONECT    28    26
+CONECT    29    26
+CONECT    30    24    31    32    33
+ORDER     30     1     1     1     1
+CONECT    31    30
+CONECT    32    30
+CONECT    33    30
+CONECT    34    22
+ORDER     34     1
+END

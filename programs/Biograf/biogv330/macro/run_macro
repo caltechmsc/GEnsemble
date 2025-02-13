@@ -1,0 +1,42 @@
+#
+# cshell to submit several POLARIS calculations serially 
+# it uses the user input ($1) macro name as a template
+# to run over various *.bgf files.  Remember to substitute
+# the name of the bgf file you use to create your macro for
+# the generic name:
+#                   filename
+#
+# Thus, for example if you made a run with histidine.bgf the
+# input line in you macro will read:
+#
+# Top menu/in-out
+#        In-Out/read
+#        File types/BioDesign
+#          "histidine.bgf"
+#
+# change the name "histidine" to "filename" so this cshell can find it
+# here. Do the same anywhere through your entire macro.  Note that
+# you can use this cshell with any other macro you generate in POLARIS.
+#
+# To submit this cshell just type:
+#    
+#      % csh run_macro your_macro.macro &
+#
+# on the Unix command line. All results will go to *.log files 
+# The cshell assumes you use the command "polaris" to run POLARIS.
+# As an example of your_macro.macro see
+#
+#                  logp_all.macro
+#
+# Begin Cshell:
+#
+alias rm rm
+foreach file (*.bgf)
+echo Working on $file ...
+sed "s/filename/$file:r/" $1 > $file:r.macro
+polaris  $file:r.macro >> $file:r.log
+rm $file:r.macro
+echo $file job completed.
+end
+#
+# End Cshell.

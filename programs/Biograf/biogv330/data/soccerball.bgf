@@ -1,0 +1,188 @@
+BIOGRF  160
+DESCRP c60
+REMARK C60 soccerball                                              
+REMARK                                                             
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C_3   TES      0   -0.05188  -2.32891  -5.81241 C_R    3 0  0.00000
+HETATM     2 C_3   TES      0   -0.36528  -0.99180  -6.10805 C_R    3 0  0.00000
+HETATM     3 C_3   TES      0   -1.74712  -0.81879  -5.92349 C_R    3 0  0.00000
+HETATM     4 C_3   TES      0   -2.28775  -2.04897  -5.51379 C_R    3 0  0.00000
+HETATM     5 C_3   TES      0   -1.24003  -2.98228  -5.44514 C_R    3 0  0.00000
+HETATM     6 C_3   TES      0    1.16759  -2.64422  -5.15001 C_R    3 0  0.00000
+HETATM     7 C_3   TES      0    2.05795  -1.61835  -4.79176 C_R    3 0  0.00000
+HETATM     8 C_3   TES      0    1.74046  -0.26380  -5.09126 C_R    3 0  0.00000
+HETATM     9 C_3   TES      0    0.53670   0.04744  -5.74514 C_R    3 0  0.00000
+HETATM    10 C_3   TES      0    0.04523   1.24632  -5.20233 C_R    3 0  0.00000
+HETATM    11 C_3   TES      0   -1.35464   1.42158  -5.01537 C_R    3 0  0.00000
+HETATM    12 C_3   TES      0   -2.24501   0.39572  -5.37361 C_R    3 0  0.00000
+HETATM    13 C_3   TES      0   -3.27711   0.36441  -4.42111 C_R    3 0  0.00000
+HETATM    14 C_3   TES      0   -3.82479  -0.88182  -4.00606 C_R    3 0  0.00000
+HETATM    15 C_3   TES      0   -3.33331  -2.08069  -4.54886 C_R    3 0  0.00000
+HETATM    16 C_3   TES      0   -3.31770  -3.04531  -3.52771 C_R    3 0  0.00000
+HETATM    17 C_3   TES      0   -2.25632  -3.99079  -3.45817 C_R    3 0  0.00000
+HETATM    18 C_3   TES      0   -1.22421  -3.95948  -4.41067 C_R    3 0  0.00000
+HETATM    19 C_3   TES      0   -0.02045  -4.27072  -3.75679 C_R    3 0  0.00000
+HETATM    20 C_3   TES      0    1.18320  -3.60883  -4.12885 C_R    3 0  0.00000
+HETATM    21 C_3   TES      0   -1.69043  -4.32138  -2.21561 C_R    3 0  0.00000
+HETATM    22 C_3   TES      0   -0.30859  -4.49439  -2.40017 C_R    3 0  0.00000
+HETATM    23 C_3   TES      0    2.08321  -3.17913  -3.13950 C_R    3 0  0.00000
+HETATM    24 C_3   TES      0    2.62384  -1.94895  -3.54921 C_R    3 0  0.00000
+HETATM    25 C_3   TES      0    1.99295   0.74271  -4.14434 C_R    3 0  0.00000
+HETATM    26 C_3   TES      0    0.94524   1.67601  -4.21298 C_R    3 0  0.00000
+HETATM    27 C_3   TES      0   -1.83647   2.02429  -3.84146 C_R    3 0  0.00000
+HETATM    28 C_3   TES      0   -3.02462   1.37092  -3.47418 C_R    3 0  0.00000
+HETATM    29 C_3   TES      0   -3.79952  -2.44260  -2.35380 C_R    3 0  0.00000
+HETATM    30 C_3   TES      0   -4.11292  -1.10549  -2.64944 C_R    3 0  0.00000
+HETATM    31 C_3   TES      0    2.10001   0.04589  -0.69050 C_R    3 0  0.00000
+HETATM    32 C_3   TES      0    2.08440   1.01050  -1.71166 C_R    3 0  0.00000
+HETATM    33 C_3   TES      0    1.05444   0.01417   0.27443 C_R    3 0  0.00000
+HETATM    34 C_3   TES      0    2.59149  -1.15298  -1.23331 C_R    3 0  0.00000
+HETATM    35 C_3   TES      0    1.02301   1.95598  -1.78120 C_R    3 0  0.00000
+HETATM    36 C_3   TES      0    2.56622   0.40780  -2.88557 C_R    3 0  0.00000
+HETATM    37 C_3   TES      0    0.00673   0.94748   0.20578 C_R    3 0  0.00000
+HETATM    38 C_3   TES      0    0.51382  -1.21601   0.68413 C_R    3 0  0.00000
+HETATM    39 C_3   TES      0    2.04381  -2.39921  -0.81826 C_R    3 0  0.00000
+HETATM    40 C_3   TES      0    2.87962  -0.92931  -2.58993 C_R    3 0  0.00000
+HETATM    41 C_3   TES      0   -0.00909   1.92467  -0.82870 C_R    3 0  0.00000
+HETATM    42 C_3   TES      0    0.45712   2.28658  -3.02376 C_R    3 0  0.00000
+HETATM    43 C_3   TES      0   -1.18142   0.29411   0.57305 C_R    3 0  0.00000
+HETATM    44 C_3   TES      0   -0.86802  -1.04300   0.86869 C_R    3 0  0.00000
+HETATM    45 C_3   TES      0    1.01171  -2.43052   0.13424 C_R    3 0  0.00000
+HETATM    46 C_3   TES      0    1.79132  -3.40572  -1.76518 C_R    3 0  0.00000
+HETATM    47 C_3   TES      0   -1.21285   2.23592  -1.48258 C_R    3 0  0.00000
+HETATM    48 C_3   TES      0   -0.92472   2.45959  -2.83920 C_R    3 0  0.00000
+HETATM    49 C_3   TES      0   -2.40089   0.60942  -0.08936 C_R    3 0  0.00000
+HETATM    50 C_3   TES      0   -1.77000  -2.08224   0.50577 C_R    3 0  0.00000
+HETATM    51 C_3   TES      0    0.12134  -3.45638  -0.22400 C_R    3 0  0.00000
+HETATM    52 C_3   TES      0    0.60317  -4.05909  -1.39791 C_R    3 0  0.00000
+HETATM    53 C_3   TES      0   -2.41650   1.57403  -1.11051 C_R    3 0  0.00000
+HETATM    54 C_3   TES      0   -3.29125  -0.41644  -0.44760 C_R    3 0  0.00000
+HETATM    55 C_3   TES      0   -1.27852  -3.28111  -0.03703 C_R    3 0  0.00000
+HETATM    56 C_3   TES      0   -2.97376  -1.77100  -0.14811 C_R    3 0  0.00000
+HETATM    57 C_3   TES      0   -3.31651   1.14433  -2.09986 C_R    3 0  0.00000
+HETATM    58 C_3   TES      0   -3.85714  -0.08585  -1.69016 C_R    3 0  0.00000
+HETATM    59 C_3   TES      0   -2.17854  -3.71081  -1.02638 C_R    3 0  0.00000
+HETATM    60 C_3   TES      0   -3.22625  -2.77751  -1.09503 C_R    3 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     5     6
+ORDER      1     0     0     2
+CONECT     2     1     3     9
+ORDER      2     0     0     2
+CONECT     3     2     4    12
+ORDER      3     0     0     2
+CONECT     4     3     5    15
+ORDER      4     0     0     2
+CONECT     5     4     1    18
+ORDER      5     0     0     2
+CONECT     6     1     7    20
+ORDER      6     2     0     0
+CONECT     7     6     8    24
+ORDER      7     0     2     0
+CONECT     8     7     9    25
+ORDER      8     2     0     0
+CONECT     9     8     2    10
+ORDER      9     0     2     0
+CONECT    10     9    11    26
+ORDER     10     0     2     0
+CONECT    11    10    12    27
+ORDER     11     2     0     0
+CONECT    12    11     3    13
+ORDER     12     0     2     0
+CONECT    13    12    14    28
+ORDER     13     0     2     0
+CONECT    14    13    15    30
+ORDER     14     2     0     0
+CONECT    15    14     4    16
+ORDER     15     0     2     0
+CONECT    16    15    17    29
+ORDER     16     0     2     0
+CONECT    17    16    18    21
+ORDER     17     2     0     0
+CONECT    18    17     5    19
+ORDER     18     0     2     0
+CONECT    19    18    20    22
+ORDER     19     0     2     0
+CONECT    20    19     6    23
+ORDER     20     2     0     0
+CONECT    21    17    22    59
+ORDER     21     0     0     2
+CONECT    22    21    19    52
+ORDER     22     0     0     2
+CONECT    23    20    24    46
+ORDER     23     0     0     2
+CONECT    24    23     7    40
+ORDER     24     0     0     2
+CONECT    25     8    26    36
+ORDER     25     0     0     2
+CONECT    26    25    10    42
+ORDER     26     0     0     2
+CONECT    27    11    28    48
+ORDER     27     0     0     2
+CONECT    28    27    13    57
+ORDER     28     0     0     2
+CONECT    29    16    30    60
+ORDER     29     0     0     2
+CONECT    30    29    14    58
+ORDER     30     0     0     2
+CONECT    31    32    33    34
+ORDER     31     0     2     0
+CONECT    32    35    31    36
+ORDER     32     2     0     0
+CONECT    33    37    38    31
+ORDER     33     0     0     2
+CONECT    34    31    39    40
+ORDER     34     0     2     0
+CONECT    35    41    32    42
+ORDER     35     0     2     0
+CONECT    36    32    40    25
+ORDER     36     0     0     2
+CONECT    37    33    43    41
+ORDER     37     0     0     2
+CONECT    38    33    44    45
+ORDER     38     0     0     2
+CONECT    39    34    45    46
+ORDER     39     2     0     0
+CONECT    40    36    34    24
+ORDER     40     0     0     2
+CONECT    41    37    35    47
+ORDER     41     2     0     0
+CONECT    42    48    35    26
+ORDER     42     0     0     2
+CONECT    43    44    37    49
+ORDER     43     0     0     2
+CONECT    44    38    43    50
+ORDER     44     0     0     2
+CONECT    45    39    38    51
+ORDER     45     0     2     0
+CONECT    46    39    52    23
+ORDER     46     0     0     2
+CONECT    47    53    41    48
+ORDER     47     2     0     0
+CONECT    48    47    42    27
+ORDER     48     0     0     2
+CONECT    49    54    43    53
+ORDER     49     0     2     0
+CONECT    50    55    44    56
+ORDER     50     0     2     0
+CONECT    51    45    55    52
+ORDER     51     0     2     0
+CONECT    52    46    51    22
+ORDER     52     0     0     2
+CONECT    53    49    47    57
+ORDER     53     0     2     0
+CONECT    54    56    49    58
+ORDER     54     2     0     0
+CONECT    55    51    50    59
+ORDER     55     2     0     0
+CONECT    56    50    54    60
+ORDER     56     0     2     0
+CONECT    57    58    53    28
+ORDER     57     0     0     2
+CONECT    58    54    57    30
+ORDER     58     0     0     2
+CONECT    59    60    55    21
+ORDER     59     0     0     2
+CONECT    60    56    59    29
+ORDER     60     0     0     2
+END

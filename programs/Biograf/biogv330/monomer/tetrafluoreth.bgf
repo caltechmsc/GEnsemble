@@ -1,0 +1,23 @@
+BIOGRF  160
+DESCRP tetfluet
+REMARK Created by srl @ iris on 12/11/89   13:02:03                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    TFE A    1    0.71500   0.26500   0.17900 C_3    4 0  0.00000
+HETATM     2 HX    TFE A    1    0.99500  -0.11400   1.16300 H_     1 0  0.00000
+HETATM     3 F1    TFE A    1    1.64500  -0.16900  -0.73500 F_     1 0  0.00000
+HETATM     4 F2    TFE A    1    0.77600   1.63800   0.20800 F_     1 0  0.00000
+HETATM     5 TT    TFE A    1   -0.70100  -0.22400  -0.19100 C_3    4 0  0.00000
+HETATM     6 F3    TFE A    1   -0.76100  -1.59600  -0.21800 F_     1 0  0.00000
+HETATM     7 F4    TFE A    1   -1.63200   0.21300   0.72000 F_     1 0  0.00000
+HETATM     8 TX    TFE A    1   -0.98000   0.15300  -1.17700 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     2     3     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     7     8     6     1
+CONECT     6     5
+CONECT     7     5
+CONECT     8     5
+END

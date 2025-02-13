@@ -1,0 +1,7 @@
+#!/bin/sh
+for i in `/bin/ls *_cshrc.doc`
+do
+  grep run.csh $i|sed 's/^.*alias/alias/'>>$HOME/.cshrc
+  /bin/rm -f $i
+done
+exit

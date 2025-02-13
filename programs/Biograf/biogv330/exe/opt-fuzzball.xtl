@@ -1,0 +1,22 @@
+XTLGRF  332
+DESCRP percec  
+REMARK optimized with Morse fuzzball from Pm3n                     
+REMARK Created by biograf @ impact1 on  8/16/98   18:39:14         
+FORCEFIELD DREIDING
+PERIOD 111     MOLXTL F
+AXES   ZYX
+SGNAME Pm3n     Oh(3)     264    9    1
+CRYSTX    23.23138   23.23207   23.23313   89.99899   89.99936   89.99915
+CELLS    -1    1   -1    1   -1    1
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+HETATM     1 Te    001    444    0.55201   8.74042   0.02921 Te3    2 2  0.00000 0   0
+HETATM     2 Te    002    444   19.19431   8.74054  11.64595 Te3    2 2  0.00000 0   0
+HETATM     3 Te    003    444   12.16808   1.71438   4.61784 Te3    2 2  0.00000 0   0
+HETATM     4 Te    004    444   -4.03690  -2.87598  -6.99955 Te3    2 2  0.00000 0   0
+HETATM     5 Te    005    444   12.16789  13.33056   0.02989 Te3    2 2  0.00000 0   0
+HETATM     6 Te    006    444    7.57829  13.33044  11.64640 Te3    2 2  0.00000 0   0
+HETATM     7 Te    007    444    7.57899   1.71416  16.23432 Te3    2 2  0.00000 0   0
+HETATM     8 Te    008    444    0.55272  -2.87586   4.61708 Te3    2 2  0.00000 0   0
+FORMAT CONECT (a6,14i6)
+FORMAT ORDER (a6,i6,13f6.3)
+END

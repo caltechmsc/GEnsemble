@@ -1,0 +1,114 @@
+    >>> from ipython1.core1.test.tcommon import Mock
+    >>> from ipython1.core1 import output_trap
+    >>> output_trap.sys = Mock('sys')
+
+Test initialization.
+
+    >>> ot = output_trap.OutputTrap()
+    >>> ot.out # doctest: +ELLIPSIS
+    <cStringIO.StringO object at 0x...>
+    >>> ot.err # doctest: +ELLIPSIS
+    <cStringIO.StringO object at 0x...>
+    >>> ot.out_set
+    False
+    >>> ot.err_set
+    False
+    >>> ot.out_text
+    ''
+    >>> ot.err_text
+    ''
+
+If the out_text is empty, then it is not added to a message dictionary.
+Similarly for err_text.
+
+    >>> msg = {}
+    >>> ot.add_to_message(msg)
+    >>> msg
+    {}
+
+Setting the trap will replace sys.stdout and sys.stderr.
+
+    >>> ot.set()
+    >>> ot._out_save # doctest: +ELLIPSIS
+    <Mock 0x... sys.stdout>
+    >>> ot._err_save # doctest: +ELLIPSIS
+    <Mock 0x... sys.stderr>
+    >>> output_trap.sys.stdout # doctest: +ELLIPSIS
+    <cStringIO.StringO object at 0x...>
+    >>> output_trap.sys.stderr # doctest: +ELLIPSIS
+    <cStringIO.StringO object at 0x...>
+    >>> ot.out_set
+    True
+    >>> ot.err_set
+    True
+
+Unsetting the trap will return the old values of sys.stdout and sys.stderr.
+
+    >>> ot.unset()
+    >>> output_trap.sys.stdout # doctest: +ELLIPSIS
+    <Mock 0x... sys.stdout>
+    >>> output_trap.sys.stderr # doctest: +ELLIPSIS
+    <Mock 0x... sys.stderr>
+    >>> ot.out_set
+    False
+    >>> ot.err_set
+    False
+
+Both .out and .err are (naturally) filelike objects with write() methods.
+.out_text and .err_text are properties that get the current value. Each are
+added to the message dictionary under the keys 'stdout'/'stderr' respectively if
+it is present.
+
+    >>> ot.out.write('1234\n')
+    >>> ot.out_text
+    '1234\n'
+    >>> ot.err_text
+    ''
+    >>> msg
+    {}
+    >>> ot.add_to_message(msg)
+    >>> msg
+    {'stdout': '1234\n'}
+    >>> ot.clear()
+    >>> ot.out_text
+    ''
+    >>> ot.err.write('5678\n')
+    >>> ot.err_text
+    '5678\n'
+    >>> msg = {}
+    >>> ot.add_to_message(msg)
+    >>> msg
+    {'stderr': '5678\n'}
+    >>> ot.clear()
+    >>> ot.err_text
+    ''
+
+Multiple writes to each stream append to the current value.
+
+    >>> ot.out.write('foo\n')
+    >>> ot.out.write('bar\n')
+    >>> ot.out_text
+    'foo\nbar\n'
+    >>> ot.err.write('foo\n')
+    >>> ot.err.write('bar\n')
+    >>> ot.err_text
+    'foo\nbar\n'
+    >>> ot.clear()
+
+If both .out_text and .err_text are present, then both are added.
+
+    >>> ot.out.write('foo\n')
+    >>> ot.err.write('bar\n')
+    >>> ot.out_text
+    'foo\n'
+    >>> ot.err_text
+    'bar\n'
+    >>> msg = {}
+    >>> ot.add_to_message(msg)
+    >>> msg
+    {'stderr': 'bar\n', 'stdout': 'foo\n'}
+    >>> ot.clear()
+    >>> ot.out_text
+    ''
+    >>> ot.err_text
+    ''

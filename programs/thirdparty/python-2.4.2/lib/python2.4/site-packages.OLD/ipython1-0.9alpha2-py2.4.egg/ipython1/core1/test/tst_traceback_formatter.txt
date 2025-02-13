@@ -1,0 +1,35 @@
+    >>> from ipython1.core1.test.tcommon import Mock
+    >>> from ipython1.core1 import traceback_formatter
+    >>> traceback_formatter.traceback = Mock('traceback')
+
+The ITracebackFormatter interface should be abstract.
+
+    >>> itf = traceback_formatter.ITracebackFormatter()
+    >>> itf.kind
+    'traceback'
+    >>> itf.identifier
+    >>> itf(None, None, None)
+    Traceback (most recent call last):
+      ...
+    NotImplementedError
+
+Test initialization.
+
+    >>> ptf = traceback_formatter.PlainTracebackFormatter()
+    >>> ptf.kind
+    'traceback'
+    >>> ptf.identifier
+    'plain'
+    >>> ptf.limit
+    >>> traceback_formatter.traceback.format_tb.mock_returns = []
+    >>> ptf(Mock('exc_type'), Mock('exc_value'), Mock('exc_traceback')) # doctest: +ELLIPSIS
+    Called traceback.format_tb(<Mock 0x... exc_traceback>, None)
+    '<Mock 0x... exc_type.__name__>: <Mock 0x... exc_value>'
+
+Check that the limit is passed appropriately to format_tb().
+
+    >>> ptf = traceback_formatter.PlainTracebackFormatter(limit=2)
+    >>> ptf(Mock('exc_type'), Mock('exc_value'), Mock('exc_traceback')) # doctest: +ELLIPSIS
+    Called traceback.format_tb(<Mock 0x... exc_traceback>, 2)
+    '<Mock 0x... exc_type.__name__>: <Mock 0x... exc_value>'
+

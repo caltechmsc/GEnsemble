@@ -1,0 +1,27 @@
+BIOGRF  110
+DESCRP CYCLOBUT
+HETATM    1 C1    ORG     1       0.915   0.123  -0.571 C_3     4  0  0.0000
+HETATM    2 H2C1  ORG     1       1.566  -0.705  -0.856 H_      1  0  0.0000
+HETATM    3 C2    ORG     1       0.560   0.122   0.922 C_3     4  0  0.0000
+HETATM    4 H2C2  ORG     1       1.012  -0.708   1.468 H_      1  0  0.0000
+HETATM    5 H1C2  ORG     1       0.730   1.088   1.403 H_      1  0  0.0000
+HETATM    6 H1C1  ORG     1       1.281   1.090  -0.922 H_      1  0  0.0000
+HETATM    7 C3    ORG     1      -0.559  -0.123  -0.922 C_3     4  0  0.0000
+HETATM    8 H2C3  ORG     1      -0.729  -1.090  -1.400 H_      1  0  0.0000
+HETATM    9 H1C3  ORG     1      -1.013   0.705  -1.470 H_      1  0  0.0000
+HETATM   10 C4    ORG     1      -0.915  -0.122   0.571 C_3     4  0  0.0000
+HETATM   11 H2C4  ORG     1      -1.565   0.708   0.855 H_      1  0  0.0000
+HETATM   12 H1C4  ORG     1      -1.283  -1.088   0.924 H_      1  0  0.0000
+CONECT    1    6    3    2    7    0    0
+CONECT    2    1    0    0    0    0    0
+CONECT    3    1   10    5    4    0    0
+CONECT    4    3    0    0    0    0    0
+CONECT    5    3    0    0    0    0    0
+CONECT    6    1    0    0    0    0    0
+CONECT    7   10    9    8    1    0    0
+CONECT    8    7    0    0    0    0    0
+CONECT    9    7    0    0    0    0    0
+CONECT   10    7    3   12   11    0    0
+CONECT   11   10    0    0    0    0    0
+CONECT   12   10    0    0    0    0    0
+END

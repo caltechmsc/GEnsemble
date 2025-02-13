@@ -1,0 +1,17 @@
+BIOGRF  160
+DESCRP METHYL  
+REMARK Created by ? @ sun4 on  1/24/89   19:58:59                  
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C1    ORG      1    0.00000   0.00000   0.00000 C_3    4 0  0.00000
+HETATM     2 H4C1  ORG      1    0.70600  -0.36300  -0.74700 H_     1 0  0.00000
+HETATM     3 H3C1  ORG      1   -1.00000  -0.36300  -0.23800 H_     1 0  0.00000
+HETATM     4 H2C1  ORG      1    0.29400  -0.36300   0.98500 H_     1 0  0.00000
+HETATM     5 XX    ORG      1    0.00000   1.09000   0.00000 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     5     4     3     2
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     1
+END

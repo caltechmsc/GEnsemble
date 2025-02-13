@@ -1,0 +1,90 @@
+beginmacro
+%
+%  Dihedral.macro
+%
+%	This macro calculates the distribution of trans, gauche plus, and
+%	gauche minus dihedral angles in a chain of polyethylene.  It could be
+%	rewritten for use with another type of polymer or perhaps be made
+%	completely general, allowing for any monomer unit.
+%
+%	The polymer to be analyzed is read in as a bgf file that is specified
+%	by a command line argument.  One might run the macro by typing a line
+%	similar to the following in command mode:  @dihedral.macro pe50.bgf
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+%
+%	Command line argument:
+%
+		${input1}
+	In-Out/return
+%
+%	Remove hydrogens to make the problem less confusing
+%
+Top menu/build
+	Build/organic
+	        Files/${LASTFILE}
+	Organic/edit
+		Edit/select
+		     Select/hydrogens
+		Edit/delete
+%
+%	Calculate number of carbons in chain
+%	One could use:  inq(number_of_atoms), if there is only one file.
+%
+first	= file_start(${LASTFILE})
+last	= file_stop(${LASTFILE})
+natoms	= ${last} - ${first}
+natoms	= ${natoms} + 1
+ndihed	= ${natoms} - 3
+%
+%	Initialize variables
+%
+gplus = 0
+trans = 0
+gminus = 0
+i = ${first}
+j = ${i} + 1
+k = ${i} + 2
+l = ${i} + 3
+%
+%	Measure the angle for all of the dihedrals
+%
+echo "   "
+echo ">>> CALCULATING DIHEDRAL ANGLE DISTRIBUTION ..."
+echo "   "
+%
+	do loop = 1,${ndihed}
+		dihed = dihedral(${i},${j},${k},${l})
+		if(${dihed} < 0) then
+			dihed = 360 + ${dihed}
+		endif
+		if(${dihed} <= 120) then
+			gplus = ${gplus} + 1
+		endif
+		if(${dihed} >= 240) then
+			gminus = ${gminus} + 1
+		endif
+		i = ${i} + 1
+		j = ${j} + 1
+		k = ${k} + 1
+		l = ${l} + 1
+	enddo
+%
+%	Calculate number of trans
+%
+trans = ${ndihed} - ${gplus}
+trans = ${trans} - ${gminus}
+%
+%	List results
+%
+echo "gauche +:" ${gplus}
+echo "trans   :" ${trans}
+echo "gauche -:" ${gminus}
+%
+entry-level
+%
+quit
+%
+endmacro

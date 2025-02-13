@@ -1,0 +1,51 @@
+The Macro object holds a string of newline-separated IPython commands to
+re-execute. It has one attribute, .value, with that string. The input value is
+possibly modified to ensure that it ends in a newline. It has __str__ and
+__repr__.
+
+    >>> from ipython1.core1 import macro
+
+    >>> mm = macro.Macro('print 1')
+
+    >>> mm
+    IPython.macro.Macro('print 1\n')
+
+    >>> str(mm)
+    'print 1\n'
+
+    >>> mm.value
+    'print 1\n'
+
+    >>> mm = macro.Macro('print 1\n')
+
+    >>> mm
+    IPython.macro.Macro('print 1\n')
+
+    >>> str(mm)
+    'print 1\n'
+
+    >>> mm.value
+    'print 1\n'
+
+    >>> mm = macro.Macro('print 1\nprint 2')
+
+    >>> mm
+    IPython.macro.Macro('print 1\nprint 2\n')
+
+    >>> str(mm)
+    'print 1\nprint 2\n'
+
+    >>> mm.value
+    'print 1\nprint 2\n'
+
+    >>> mm = macro.Macro('print 1\nprint 2\n')
+
+    >>> mm
+    IPython.macro.Macro('print 1\nprint 2\n')
+
+    >>> str(mm)
+    'print 1\nprint 2\n'
+
+    >>> mm.value
+    'print 1\nprint 2\n'
+

@@ -1,0 +1,54 @@
+BIOGRF  160
+DESCRP AL_RHAMN
+REMARK Created by slm @ tms2r on  1/25/90   17:51:43               
+REMARK alpha-L-Rhamnose (6-Deoxy-L-mannose)
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  RHA      1    0.89025   0.27359  -1.14310 O_3    2 2  0.00000
+HETATM     2  C1*  RHA      1    1.77153   0.46616  -0.02505 C_3    4 0  0.00000
+HETATM     3 HC1*  RHA      1    2.73815   0.04285  -0.30722 H_     1 0  0.00000
+HETATM     4  O1*  RHA      1    2.02259   1.85665   0.18288 O_3    2 2  0.00000
+HETATM     5  HO1* RHA      1    2.38606   2.24841  -0.63865 H___A  1 0  0.00000
+HETATM     6  C2*  RHA      1    1.24820  -0.24701   1.25147 C_3    4 0  0.00000
+HETATM     7 HC2*  RHA      1    1.85759   0.06643   2.10328 H_     1 0  0.00000
+HETATM     8  O2*  RHA      1    1.44943  -1.66085   1.12571 O_3    2 2  0.00000
+HETATM     9  HO2* RHA      1    1.14651  -2.10749   1.94366 H___A  1 0  0.00000
+HETATM    10  C3*  RHA      1   -0.23400   0.13812   1.53178 C_3    4 0  0.00000
+HETATM    11 HC3*  RHA      1   -0.24664   1.20504   1.76903 H_     1 0  0.00000
+HETATM    12  O3*  RHA      1   -0.73777  -0.51166   2.70626 O_3    2 2  0.00000
+HETATM    13  HO3* RHA      1   -1.65592  -0.21378   2.87600 H___A  1 0  0.00000
+HETATM    14  C4*  RHA      1   -1.12795  -0.08271   0.27584 C_3    4 0  0.00000
+HETATM    15 HC4*  RHA      1   -1.21166  -1.15685   0.09426 H_     1 0  0.00000
+HETATM    16  O4*  RHA      1   -2.45601   0.40954   0.48786 O_3    2 2  0.00000
+HETATM    17  HO4* RHA      1   -2.42352   1.37503   0.65243 H___A  1 0  0.00000
+HETATM    18  C5*  RHA      1   -0.50621   0.58548  -0.98616 C_3    4 0  0.00000
+HETATM    19 HC5*  RHA      1   -0.59341   1.67201  -0.89808 H_     1 0  0.00000
+HETATM    20  C6*  RHA      1   -1.20905   0.17078  -2.29783 C_3    4 0  0.00000
+HETATM    21 HC6*  RHA      1   -1.15281  -0.91024  -2.43853 H_     1 0  0.00000
+HETATM    22 HC6*  RHA      1   -2.25845   0.46734  -2.27721 H_     1 0  0.00000
+HETATM    23 HC6*  RHA      1   -0.73828   0.66079  -3.15217 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    22    23    21
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20
+END

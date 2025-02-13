@@ -1,0 +1,31 @@
+BIOGRF  160
+DESCRP dimesi_o
+REMARK Created by srl @ iris on 12/11/89   11:56:00                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    DMS A    1   -0.46600  -0.34100   0.19700 Si3    4 0  0.00000
+HETATM     2 HX    DMS A    1   -1.61500  -0.76500  -0.09000 H_     1 0  0.00000
+HETATM     3 C1    DMS A    1    0.64700  -0.93000  -0.94700 C_3    4 0  0.00000
+HETATM     4 H3C1  DMS A    1    0.45500  -0.47900  -1.92100 H_     1 0  0.00000
+HETATM     5 H2C1  DMS A    1    0.54600  -2.01100  -1.02600 H_     1 0  0.00000
+HETATM     6 H1C1  DMS A    1    1.66300  -0.68500  -0.63200 H_     1 0  0.00000
+HETATM     7 TT00  DMS A    1   -0.06300  -0.87000   1.64000 O_3    2 2  0.00000
+HETATM     8 C2    DMS A    1   -0.48600   1.35900   0.21700 C_3    4 0  0.00000
+HETATM     9 H3C2  DMS A    1   -1.13300   1.71400   1.02200 H_     1 0  0.00000
+HETATM    10 H2C2  DMS A    1   -0.86400   1.73700  -0.73300 H_     1 0  0.00000
+HETATM    11 H1C2  DMS A    1    0.51900   1.74600   0.37700 H_     1 0  0.00000
+HETATM    12 TX    DMS A    1    0.79800  -0.47600   1.89700 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     8     7     2     3
+CONECT     2     1
+CONECT     3     1     6     5     4
+CONECT     4     3
+CONECT     5     3
+CONECT     6     3
+CONECT     7     1    12
+CONECT     8     1    11    10     9
+CONECT     9     8
+CONECT    10     8
+CONECT    11     8
+CONECT    12     7
+END

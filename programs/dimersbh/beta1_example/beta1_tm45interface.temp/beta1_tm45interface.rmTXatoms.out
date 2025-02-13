@@ -1,0 +1,7 @@
+
+ removeBondsBetweenTexasAtoms.py - 091221
+ ... identifying Texas hydrogens and carbons in:  beta1_tm45interface.noLB.bgf
+ ... removing bonds between Texas atoms ...
+ ... saving modified file to:   beta1_tm45interface.noTA.bgf
+ ... done!
+

@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# PyMOL startup script
+#
+# Set PYMOL_PATH to point to this directory
+#
+# ================================================
+PYMOL_PATH=/project/Biogroup/Software/GEnsemble/programs/thirdparty/pymol-v1.3r1
+# ================================================
+#
+export PYMOL_PATH
+PYTHONHOME=$PYMOL_PATH/ext
+export PYTHONHOME
+exec $PYMOL_PATH/pymol.exe "$@"

@@ -1,0 +1,26 @@
+beginmacro
+%
+% version      : 2.21
+% version date : 09:35:40 11/29/90
+% link date    : 17:13:29 2/24/92
+%
+% Macro created on  2/24/92   19:11:40
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "intro.bgf"
+% 	/usr/msi/biogv320/data/intro.bgf
+	In-Out/read
+	File types/dot
+	Selections/yes
+	add group
+	  "dots"
+	Selections/no
+	Selections/no
+	  "intro.dot"
+% 	/usr/msi/biogv320/data/intro.dot
+	In-Out/return
+menu
+%
+endmacro

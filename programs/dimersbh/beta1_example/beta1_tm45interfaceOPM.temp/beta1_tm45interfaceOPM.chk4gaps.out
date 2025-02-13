@@ -1,0 +1,14 @@
+
+ checkForGapsInProtein.py - 091215
+ ... looking at chain B in:  beta1_tm45interfaceOPM.noTA.bgf
+       found 280  N atoms
+       found 280 CA atoms
+       found 280  C atoms
+ ... checking for the continuity of backbone connectivity ...
+       238 - residues 238 and 280 are not connected
+ ... found 2 segment(s):
+        36B -- 238B
+       280B -- 356B
+ ... protein on chain B is NOT CONTINUOUS
+ ... done!
+

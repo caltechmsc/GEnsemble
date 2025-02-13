@@ -1,0 +1,314 @@
+Warning: no access to tty (Bad file descriptor).
+Thus no job control in this shell.
+
+#####################################################################
+#                                                                   #
+# OptHelix.pl/OptHelix.pm                                           #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+#####################################################################
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Loading OptHelix Defaults @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Default Values Loaded From :: /home/ravi/GEnsemble/programs/.gensemble/.opthelix
+ :: dynsteps         :: 1000000
+ :: dyntimestep      :: 2
+ :: dynsnapint       :: 5000
+ :: dyntemp          :: 300
+ :: dynresidues      :: PST
+ :: ff               :: FF/dreiding-0.3.par
+ :: alaninecap       :: 1
+ :: caplength        :: 8
+ :: staticcaps       :: 0
+ :: backboneminrms   :: 0.5
+ :: backboneminsteps :: 1000
+ :: warmup           :: 1
+ :: warmupstart      :: 50
+ :: warmupinterval   :: 50
+ :: warmupsteps      :: 5000
+ :: warmuptimestep   :: 2
+ :: ignorepct        :: 25
+ :: finalminimize    :: 1
+ :: finalminrms      :: 0.5
+ :: finalminsteps    :: 100
+ :: runlocal         :: 1
+ :: runparallel      :: 1
+ :: qsub             :: 0
+ :: queuetype        :: sge
+ :: raw              :: pred
+ :: cap              :: pred
+Defaults Changed By User
+ :: No defaults changed
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@ Running OptHelix v1.1 @@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Loading MFTA File :: Q9NYW5.mfta
+ :: TM  1 RAW ::   1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVV                ::  30 :: Length 30
+ :: TM  1 CAP ::   1 :: MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK             ::  33 :: Length 33
+ :: TM  1 ALA :: + 0 :: MLRLFYFSAIIASVILNFVGIIMNLFITVVNCK             :: + 0 :: Length 33
+
+ :: TM  2 RAW ::  49 ::    FSLGITRFLMLGLFLVNTIYFVSSN                  ::  73 :: Length 25
+ :: TM  2 CAP ::  46 :: RILFSLGITRFLMLGLFLVNTIYFVSSNTE                ::  75 :: Length 30
+ :: TM  2 ALA :: + 0 :: RILFSLGITRFLMLGLFLVNTIYFVSSNTE                :: + 0 :: Length 30
+
+ :: TM  3 RAW ::  82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK     :: 122 :: Length 41
+ :: TM  3 CAP ::  82 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK     :: 122 :: Length 41
+ :: TM  3 ALA :: + 0 :: AFFVLCFMFLDSSSVWFVTLLNILYCVKITNFQHSVFLLLK     :: + 0 :: Length 41
+
+ :: TM  4 RAW :: 127 ::         PKIPRLLLACVLISAFTTCLYIT               :: 149 :: Length 23
+ :: TM  4 CAP :: 127 ::         PKIPRLLLACVLISAFTTCLYITLSQASP         :: 155 :: Length 29
+ :: TM  4 ALA :: + 8 :: AAAAAAAAPKIPRLLLACVLISAFTTCLYITLSQASPAAAAAAAA :: + 8 :: Length 45
+
+ :: TM  5 RAW :: 180 ::     SLVLSSSLQFIINVTSASLLIHSL                  :: 203 :: Length 24
+ :: TM  5 CAP :: 176 :: SLVVSLVLSSSLQFIINVTSASLLIHSLR                 :: 204 :: Length 29
+ :: TM  5 ALA :: + 0 :: SLVVSLVLSSSLQFIINVTSASLLIHSLR                 :: + 0 :: Length 29
+
+ :: TM  6 RAW :: 231 ::  LMVYFLILYIPYSVATLVQYLP                       :: 252 :: Length 22
+ :: TM  6 CAP :: 230 :: KLMVYFLILYIPYSVATLVQYLP                       :: 252 :: Length 23
+ :: TM  6 ALA :: + 0 :: KLMVYFLILYIPYSVATLVQYLPAAAAAAAA               :: + 8 :: Length 31
+
+ :: TM  7 RAW :: 263 :: SICLIFATLYSPGHSVLII                           :: 281 :: Length 19
+ :: TM  7 CAP :: 263 :: SICLIFATLYSPGHSVLIIITH                        :: 284 :: Length 22
+ :: TM  7 ALA :: + 0 :: SICLIFATLYSPGHSVLIIITH                        :: + 0 :: Length 22
+
+OptHelix Setup ::
+ :: Place Proline & Glycine
+    :: Scream Library             :: 1.0 A
+ :: Minimizing Backbone
+    :: RMS Force Threshold        :: 0.5
+    :: Maximum Steps              :: 1000
+ :: Residues for Dynamics
+    :: Scream Library             :: 1.0 A
+ :: Warmup Information
+    :: Start Temperature          :: 50 K
+    :: Temperature Increment      :: 50 K
+    :: Warmup Timestep            :: 2 fs
+    :: Warmup Steps               :: 5000
+    :: Warmup Length (per temp)   :: 10 ps (per temp. increment)
+ :: Dynamics Information
+    :: Dynamics Temperature       :: 300 K
+    :: Dynamics Timestep          :: 2 fs
+    :: Dynamics Steps             :: 1000000
+    :: Dynamics Length            :: 2 ns (2000 ps)
+    :: Dynamics Snaps Interval    :: 5000 (10 ps)
+    :: Total Number of Snapshots  :: 200
+    :: % of Snaps Ignored         :: 25 %
+    :: Snapshots Used in Analysis :: 150
+    :: First Snapshot in Analysis :: snap254999
+ :: Final Minimization
+    :: RMS Force Threshold        :: 0.5
+    :: Maximum Steps              :: 100
+
+Working on TM :: 1
+ :: Placing Proline and Glycine ::
+    :: G20
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: S8 S13 T28
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 2
+ :: Placing Proline and Glycine ::
+    :: G52 G60
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: S50 T54 T66 S71 S72 T74
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 3
+ :: Placing Proline and Glycine ::
+    :: No Prolines or Glycines found in this TM
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: S93 S94 S95 T100 T111 S116
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 4
+ :: Placing Proline and Glycine ::
+    :: P135 P138 P163
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: P135 P138 S148 T151 T152 T157 S159 S162 P163
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 5
+ :: Placing Proline and Glycine ::
+    :: No Prolines or Glycines found in this TM
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: S176 S180 S184 S185 S186 T194 S195 S197 S202
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 6
+ :: Placing Proline and Glycine ::
+    :: P241 P252
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: P241 S243 T246 P252
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Submitting Dynamics Job to SGE Queue
+
+Working on TM :: 7
+ :: Placing Proline and Glycine ::
+    :: P274 G275
+ :: Minimizing Backbone
+ :: Placing Dynamics Residues ::
+    :: S263 T270 S273 P274 S277 T283
+ :: Setting Up Warmup
+ :: Setting up Dynamics
+    :: Running Dynamics Job on Current Machine
+
+Finishing TM :: 1
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.3085
+    :: Energy          :: 343.315615
+    :: Snapshot        :: helix1.5.dynamics.snap764999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.543
+    :: Energy          :: 305.711441
+    :: Snapshot        :: helix1.5.dynamics.snap674999
+ :: Placing Remaining Residues ::
+    :: M1 L2 R3 L4 F5 Y6 F7 S8 I10 I11
+    :: S13 V14 I15 L16 N17 F18 V19 I21 I22 M23
+    :: N24 L25 F26 I27 T28 V29 V30 N31 C32 K33
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 2
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.2422
+    :: Energy          :: 273.804598
+    :: Snapshot        :: helix2.5.dynamics.snap284999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.4387
+    :: Energy          :: 257.949245
+    :: Snapshot        :: helix2.5.dynamics.snap384999
+ :: Placing Remaining Residues ::
+    :: R46 I47 L48 F49 S50 L51 I53 T54 R55 F56
+    :: L57 M58 L59 L61 F62 L63 V64 N65 T66 I67
+    :: Y68 F69 V70 S71 S72 N73 T74 E75
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 3
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.3711
+    :: Energy          :: 399.652503
+    :: Snapshot        :: helix3.5.dynamics.snap734999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.9174
+    :: Energy          :: 361.341083
+    :: Snapshot        :: helix3.5.dynamics.snap574999
+ :: Placing Remaining Residues ::
+    :: F83 F84 V85 L86 C87 F88 M89 F90 L91 D92
+    :: S93 S94 S95 V96 W97 F98 V99 T100 L101 L102
+    :: N103 I104 L105 Y106 C107 V108 K109 I110 T111 N112
+    :: F113 Q114 H115 S116 V117 F118 L119 L120 L121 K122
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 4
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.5322
+    :: Energy          :: 543.348157
+    :: Snapshot        :: helix4.5.dynamics.snap559999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.933
+    :: Energy          :: 491.038575
+    :: Snapshot        :: helix4.5.dynamics.snap379999
+ :: Placing Remaining Residues ::
+    :: P135 K136 I137 P138 R139 L140 L141 L142 C144 V145
+    :: L146 I147 S148 F150 T151 T152 C153 L154 Y155 I156
+    :: T157 L158 S159 Q160 S162 P163
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 5
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.2696
+    :: Energy          :: 271.514792
+    :: Snapshot        :: helix5.5.dynamics.snap884999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.4153
+    :: Energy          :: 247.665065
+    :: Snapshot        :: helix5.5.dynamics.snap649999
+ :: Placing Remaining Residues ::
+    :: S176 L177 V178 V179 S180 L181 V182 L183 S184 S185
+    :: S186 L187 Q188 F189 I190 I191 N192 V193 T194 S195
+    :: S197 L198 L199 I200 H201 S202 L203 R204
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 6
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.3652
+    :: Energy          :: 410.243733
+    :: Snapshot        :: helix6.5.dynamics.snap699999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.6138
+    :: Energy          :: 358.694193
+    :: Snapshot        :: helix6.5.dynamics.snap829999
+ :: Placing Remaining Residues ::
+    :: K230 L231 M232 V233 Y234 F235 L236 I237 L238 Y239
+    :: I240 P241 Y242 S243 V244 T246 L247 V248 Q249 Y250
+    :: L251 P252
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+Finishing TM :: 7
+ :: Analyzing Dynamics
+ :: RMSD Closest to Average
+    :: RMSD to Average :: 0.3258
+    :: Energy          :: 252.350319
+    :: Snapshot        :: helix7.5.dynamics.snap679999
+ :: Minimum Energy
+    :: RMSD to Average :: 0.4618
+    :: Energy          :: 234.416029
+    :: Snapshot        :: helix7.5.dynamics.snap909999
+ :: Placing Remaining Residues ::
+    :: S263 I264 C265 L266 I267 F268 T270 L271 Y272 S273
+    :: P274 H276 S277 V278 L279 I280 I281 I282 T283 H284
+ :: Final Minimization
+ :: Removing Caps and Renumbering
+
+
+#####################################################################
+#                                                                   #
+# OptHelix.pl/OptHelix.pm                                           #
+#                                                                   #
+# Copyright (c) 2008                                                #
+# Adam R. Griffith, Ravinder Abrol, and William A. Goddard III      #
+# Materials and Process Simulation Center                           #
+# California Institute of Technology                                #
+# Pasadena, CA, USA                                                 #
+# All Rights Reserved.                                              #
+#                                                                   #
+#####################################################################
+

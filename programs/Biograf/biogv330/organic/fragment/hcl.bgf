@@ -1,0 +1,7 @@
+BIOGRF  110
+DESCRP HCL     
+HETATM    1 HCl1  ORG     1      -0.658   0.016   0.000 H___A   1  0  0.0000
+HETATM    2 Cl1   ORG     1       0.658  -0.016   0.000 Cl      1  0  0.0000
+CONECT    1    2    0    0    0    0    0
+CONECT    2    1    0    0    0    0    0
+END

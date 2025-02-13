@@ -1,0 +1,1009 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Customization</TITLE>
+<META NAME="description" CONTENT="Customization">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html247"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html245"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html239"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html248"
+  HREF="node8.html">IPython as default...</A>
+<B> Up:</B> <A NAME="tex2html246"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html240"
+  HREF="node6.html">Interactive use</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html249"
+  HREF="node7.html#SECTION00071000000000000000">Sample <TT>ipythonrc</TT> file</A>
+<LI><A NAME="tex2html250"
+  HREF="node7.html#SECTION00072000000000000000">Fine-tuning your prompt</A>
+<UL>
+<LI><A NAME="tex2html251"
+  HREF="node7.html#SECTION00072100000000000000">Prompt examples</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html252"
+  HREF="node7.html#SECTION00073000000000000000">IPython profiles</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00070000000000000000"></A><A NAME="sec:customization"></A>
+<BR>
+Customization
+</H1>
+
+<P>
+As we've already mentioned, IPython reads a configuration file which
+can be specified at the command line (<TT>-rcfile</TT>) or which by
+default is assumed to be called <TT>ipythonrc</TT>. Such a file is
+looked for in the current directory where IPython is started and then
+in your <TT>IPYTHONDIR</TT>, which allows you to have local configuration
+files for specific projects. In this section we will call these types
+of configuration files simply rcfiles (short for resource configuration
+file).
+
+<P>
+The syntax of an rcfile is one of key-value pairs separated by whitespace,
+one per line. Lines beginning with a <TT>#</TT> are ignored as comments,
+but comments can <SPAN  CLASS="textbf">not</SPAN> be put on lines with data (the parser
+is fairly primitive). Note that these are not python files, and this
+is deliberate, because it allows us to do some things which would
+be quite tricky to implement if they were normal python files.
+
+<P>
+First, an rcfile can contain permanent default values for almost all
+command line options (except things like <TT>-help</TT> or <TT>-Version</TT>).
+Sec&nbsp;<A HREF="node5.html#sec:cmd-line-opts">5.2</A> contains a description of all command-line
+options. However, values you explicitly specify at the command line
+override the values defined in the rcfile.
+
+<P>
+Besides command line option values, the rcfile can specify values
+for certain extra special options which are not available at the command
+line. These options are briefly described below. 
+
+<P>
+Each of these options may appear as many times as you need it in the
+file.
+
+<P>
+
+<UL>
+<LI>[<TT><SPAN  CLASS="textbf">include&nbsp;&lt;file1&gt;&nbsp;&lt;file2&gt;&nbsp;...</SPAN></TT>:] you can name
+<SPAN  CLASS="textit">other</SPAN> rcfiles you want to recursively load up to 15 levels
+(don't use the <TT>&lt;&gt;</TT> brackets in your names!). This feature
+allows you to define a 'base' rcfile with general options and special-purpose
+files which can be loaded only when needed with particular configuration
+options. To make this more convenient, IPython accepts the <TT>-profile
+&lt;name&gt;</TT> option (abbreviates to <TT>-p &lt;name</TT>&gt;) <TT>which</TT>
+tells it to look for an rcfile named <TT>ipythonrc-&lt;name&gt;</TT>. 
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">import_mod&nbsp;&lt;mod1&gt;&nbsp;&lt;mod2&gt;&nbsp;...</SPAN></TT>:] import modules
+with '<TT>import</TT> <TT>&lt;mod1&gt;,&lt;mod2&gt;,...</TT>' 
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">import_some&nbsp;&lt;mod&gt;&nbsp;&lt;f1&gt;&nbsp;&lt;f2&gt;&nbsp;...</SPAN></TT>:] import
+functions with '<TT>from &lt;mod&gt; import</TT> <TT>&lt;f1&gt;,&lt;f2&gt;,...</TT>' 
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">import_all&nbsp;&lt;mod1&gt;&nbsp;&lt;mod2&gt;&nbsp;...</SPAN></TT>:] for each
+module listed import functions with '<TT>from &lt;mod&gt; import *</TT>' 
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">execute&nbsp;&lt;python&nbsp;code&gt;</SPAN></TT>:] give any single-line
+python code to be executed.
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">execfile&nbsp;&lt;filename&gt;</SPAN></TT>:] execute the python file
+given with an '<TT>execfile(filename)</TT>' command. Username expansion
+is performed on the given names. So if you need any amount of extra
+fancy customization that won't fit in any of the above 'canned' options,
+you can just put it in a separate python file and execute it.
+</LI>
+<LI>[<TT><SPAN  CLASS="textbf">alias&nbsp;&lt;alias_def&gt;</SPAN></TT>:] this is equivalent to
+calling '<TT>%alias&nbsp;&lt;alias_def&gt;</TT>' at the IPython command line.
+This way, from within IPython you can do common system tasks without
+having to exit it or use the <TT>!</TT> escape. IPython isn't meant
+to be a shell replacement, but it is often very useful to be able
+to do things with files while testing code. This gives you the flexibility
+to have within IPython any aliases you may be used to under your normal
+system shell.
+</LI>
+</UL>
+<P>
+
+<H2><A NAME="SECTION00071000000000000000"></A><A NAME="sec:ipytonrc-sample"></A>
+<BR>
+Sample <TT>ipythonrc</TT> file
+</H2>
+
+<P>
+The default rcfile, called <TT>ipythonrc</TT> and supplied in your
+<TT>IPYTHONDIR</TT> directory contains lots of comments on all of
+these options. We reproduce it here for reference:
+
+<P>
+
+<P>
+<BR>
+<PRE  CLASS="verbatim"># -*- Mode: Shell-Script -*-  Not really, but shows comments correctly
+# $Id: ipythonrc 2156 2007-03-19 02:32:19Z fperez $
+
+#***************************************************************************
+#
+# Configuration file for IPython -- ipythonrc format
+#
+# ===========================================================
+# Deprecation note: you should look into modifying ipy_user_conf.py (located 
+# in ~/.ipython or ~/_ipython, depending on your platform) instead, it's a 
+# more flexible and robust (and better supported!) configuration
+# method.
+# ===========================================================
+#
+# The format of this file is simply one of 'key value' lines.
+# Lines containing only whitespace at the beginning and then a # are ignored
+# as comments. But comments can NOT be put on lines with data.
+
+# The meaning and use of each key are explained below.
+
+#---------------------------------------------------------------------------
+# Section: included files
+
+# Put one or more *config* files (with the syntax of this file) you want to
+# include. For keys with a unique value the outermost file has precedence. For
+# keys with multiple values, they all get assembled into a list which then
+# gets loaded by IPython.
+
+# In this file, all lists of things should simply be space-separated.
+
+# This allows you to build hierarchies of files which recursively load
+# lower-level services. If this is your main ~/.ipython/ipythonrc file, you
+# should only keep here basic things you always want available. Then you can
+# include it in every other special-purpose config file you create.
+include 
+
+#---------------------------------------------------------------------------
+# Section: startup setup
+
+# These are mostly things which parallel a command line option of the same
+# name.
+
+# Keys in this section should only appear once. If any key from this section
+# is encountered more than once, the last value remains, all earlier ones get
+# discarded.
+
+
+# Automatic calling of callable objects.  If set to 1 or 2, callable objects
+# are automatically called when invoked at the command line, even if you don't
+# type parentheses.  IPython adds the parentheses for you.  For example:
+
+#In [1]: str 45
+#------&gt; str(45)
+#Out[1]: '45'
+
+# IPython reprints your line with '----&gt;' indicating that it added
+# parentheses.  While this option is very convenient for interactive use, it
+# may occasionally cause problems with objects which have side-effects if
+# called unexpectedly.
+
+# The valid values for autocall are:
+
+# autocall 0 -&gt; disabled (you can toggle it at runtime with the %autocall magic)
+
+# autocall 1 -&gt; active, but do not apply if there are no arguments on the line.
+
+# In this mode, you get:
+
+#In [1]: callable
+#Out[1]: &lt;built-in function callable&gt;
+
+#In [2]: callable 'hello'
+#------&gt; callable('hello')
+#Out[2]: False
+
+# 2 -&gt; Active always.  Even if no arguments are present, the callable object
+# is called:
+
+#In [4]: callable
+#------&gt; callable()
+
+# Note that even with autocall off, you can still use '/' at the start of a
+# line to treat the first argument on the command line as a function and add
+# parentheses to it:
+
+#In [8]: /str 43
+#------&gt; str(43)
+#Out[8]: '43'
+
+autocall 1
+
+# Auto-edit syntax errors.  When you use the %edit magic in ipython to edit
+# source code (see the 'editor' variable below), it is possible that you save
+# a file with syntax errors in it.  If this variable is true, IPython will ask
+# you whether to re-open the editor immediately to correct such an error.
+
+autoedit_syntax 0
+
+# Auto-indent. IPython can recognize lines ending in ':' and indent the next
+# line, while also un-indenting automatically after 'raise' or 'return'.  
+
+# This feature uses the readline library, so it will honor your ~/.inputrc
+# configuration (or whatever file your INPUTRC variable points to).  Adding
+# the following lines to your .inputrc file can make indent/unindenting more
+# convenient (M-i indents, M-u unindents):
+
+#  $if Python
+#  "\M-i": "    "
+#  "\M-u": "\d\d\d\d"
+#  $endif
+
+# The feature is potentially a bit dangerous, because it can cause problems
+# with pasting of indented code (the pasted code gets re-indented on each
+# line).  But it's a huge time-saver when working interactively.  The magic
+# function %autoindent allows you to toggle it on/off at runtime.
+
+autoindent 1
+
+# Auto-magic. This gives you access to all the magic functions without having
+# to prepend them with an % sign. If you define a variable with the same name
+# as a magic function (say who=1), you will need to access the magic function
+# with % (%who in this example). However, if later you delete your variable
+# (del who), you'll recover the automagic calling form.
+
+# Considering that many magic functions provide a lot of shell-like
+# functionality, automagic gives you something close to a full Python+system
+# shell environment (and you can extend it further if you want).
+
+automagic 1
+
+# Size of the output cache. After this many entries are stored, the cache will
+# get flushed. Depending on the size of your intermediate calculations, you
+# may have memory problems if you make it too big, since keeping things in the
+# cache prevents Python from reclaiming the memory for old results. Experiment
+# with a value that works well for you.
+
+# If you choose cache_size 0 IPython will revert to python's regular &gt;&gt;&gt;
+# unnumbered prompt. You will still have _, __ and ___ for your last three
+# results, but that will be it.  No dynamic _1, _2, etc. will be created. If
+# you are running on a slow machine or with very limited memory, this may
+# help.
+
+cache_size 1000
+
+# Classic mode: Setting 'classic 1' you lose many of IPython niceties,
+# but that's your choice! Classic 1 -&gt; same as IPython -classic.
+# Note that this is _not_ the normal python interpreter, it's simply
+# IPython emulating most of the classic interpreter's behavior.
+classic 0
+
+# colors - Coloring option for prompts and traceback printouts.
+
+# Currently available schemes: NoColor, Linux, LightBG.
+
+# This option allows coloring the prompts and traceback printouts. This
+# requires a terminal which can properly handle color escape sequences. If you
+# are having problems with this, use the NoColor scheme (uses no color escapes
+# at all).
+
+# The Linux option works well in linux console type environments: dark
+# background with light fonts.
+
+# LightBG is similar to Linux but swaps dark/light colors to be more readable
+# in light background terminals.
+
+# keep uncommented only the one you want:
+colors Linux
+#colors LightBG
+#colors NoColor
+
+########################
+# Note to Windows users
+#
+# Color and readline support is avaialble to Windows users via Gary Bishop's
+# readline library.  You can find Gary's tools at
+# http://sourceforge.net/projects/uncpythontools.
+# Note that his readline module requires in turn the ctypes library, available
+# at http://starship.python.net/crew/theller/ctypes.
+########################
+
+# color_info: IPython can display information about objects via a set of
+# functions, and optionally can use colors for this, syntax highlighting
+# source code and various other elements. This information is passed through a
+# pager (it defaults to 'less' if $PAGER is not set). 
+
+# If your pager has problems, try to setting it to properly handle escapes
+# (see the less manpage for detail), or disable this option.  The magic
+# function %color_info allows you to toggle this interactively for testing.
+
+color_info 1
+
+# confirm_exit: set to 1 if you want IPython to confirm when you try to exit
+# with an EOF (Control-d in Unix, Control-Z/Enter in Windows). Note that using
+# the magic functions %Exit or %Quit you can force a direct exit, bypassing
+# any confirmation.
+
+confirm_exit 1
+
+# Use deep_reload() as a substitute for reload() by default. deep_reload() is
+# still available as dreload() and appears as a builtin.
+
+deep_reload 0
+
+# Which editor to use with the %edit command. If you leave this at 0, IPython
+# will honor your EDITOR environment variable. Since this editor is invoked on
+# the fly by ipython and is meant for editing small code snippets, you may
+# want to use a small, lightweight editor here.
+
+# For Emacs users, setting up your Emacs server properly as described in the
+# manual is a good idea. An alternative is to use jed, a very light editor
+# with much of the feel of Emacs (though not as powerful for heavy-duty work).
+
+editor 0
+
+# log 1 -&gt; same as ipython -log. This automatically logs to ./ipython.log
+log 0
+
+# Same as ipython -Logfile YourLogfileName. 
+# Don't use with log 1 (use one or the other)
+logfile ''
+
+# banner 0 -&gt; same as ipython -nobanner
+banner 1
+
+# messages 0 -&gt; same as ipython -nomessages
+messages 1
+
+# Automatically call the pdb debugger after every uncaught exception. If you
+# are used to debugging using pdb, this puts you automatically inside of it
+# after any call (either in IPython or in code called by it) which triggers an
+# exception which goes uncaught.
+pdb 0
+
+# Enable the pprint module for printing. pprint tends to give a more readable
+# display (than print) for complex nested data structures.
+pprint 1
+
+# Prompt strings
+
+# Most bash-like escapes can be used to customize IPython's prompts, as well as
+# a few additional ones which are IPython-specific.  All valid prompt escapes
+# are described in detail in the Customization section of the IPython HTML/PDF
+# manual.
+
+# Use \# to represent the current prompt number, and quote them to protect
+# spaces.
+prompt_in1 'In [\#]: '
+
+# \D is replaced by as many dots as there are digits in the
+# current value of \#.
+prompt_in2 '   .\D.: '
+
+prompt_out 'Out[\#]: '
+
+# Select whether to left-pad the output prompts to match the length of the
+# input ones.  This allows you for example to use a simple '&gt;' as an output
+# prompt, and yet have the output line up with the input.  If set to false,
+# the output prompts will be unpadded (flush left).
+prompts_pad_left 1
+
+# Pylab support: when ipython is started with the -pylab switch, by default it
+# executes 'from matplotlib.pylab import *'.  Set this variable to false if you
+# want to disable this behavior.
+
+# For details on pylab, see the matplotlib website:
+# http://matplotlib.sf.net
+pylab_import_all 1
+
+
+# quick 1 -&gt; same as ipython -quick
+quick 0
+
+# Use the readline library (1) or not (0). Most users will want this on, but
+# if you experience strange problems with line management (mainly when using
+# IPython inside Emacs buffers) you may try disabling it. Not having it on
+# prevents you from getting command history with the arrow keys, searching and
+# name completion using TAB.
+
+readline 1
+
+# Screen Length: number of lines of your screen. This is used to control
+# printing of very long strings. Strings longer than this number of lines will
+# be paged with the less command instead of directly printed.
+
+# The default value for this is 0, which means IPython will auto-detect your
+# screen size every time it needs to print. If for some reason this isn't
+# working well (it needs curses support), specify it yourself. Otherwise don't
+# change the default.
+
+screen_length 0
+
+# Prompt separators for input and output.
+# Use \n for newline explicitly, without quotes.
+# Use 0 (like at the cmd line) to turn off a given separator.
+
+# The structure of prompt printing is:
+# (SeparateIn)Input....
+# (SeparateOut)Output...
+# (SeparateOut2),   # that is, no newline is printed after Out2
+# By choosing these you can organize your output any way you want.
+
+separate_in \n
+separate_out 0
+separate_out2 0
+
+# 'nosep 1' is a shorthand for '-SeparateIn 0 -SeparateOut 0 -SeparateOut2 0'.
+# Simply removes all input/output separators, overriding the choices above.
+nosep 0
+
+# Wildcard searches - IPython has a system for searching names using
+# shell-like wildcards; type %psearch? for details.  This variables sets
+# whether by default such searches should be case sensitive or not.  You can
+# always override the default at the system command line or the IPython
+# prompt.
+
+wildcards_case_sensitive 1
+
+# Object information: at what level of detail to display the string form of an
+# object.  If set to 0, ipython will compute the string form of any object X,
+# by calling str(X), when X? is typed.  If set to 1, str(X) will only be
+# computed when X?? is given, and if set to 2 or higher, it will never be
+# computed (there is no X??? level of detail).  This is mostly of use to
+# people who frequently manipulate objects whose string representation is
+# extremely expensive to compute.
+
+object_info_string_level 0
+
+# xmode - Exception reporting mode. 
+
+# Valid modes: Plain, Context and Verbose.
+
+# Plain: similar to python's normal traceback printing.
+
+# Context: prints 5 lines of context source code around each line in the
+# traceback.
+
+# Verbose: similar to Context, but additionally prints the variables currently
+# visible where the exception happened (shortening their strings if too
+# long). This can potentially be very slow, if you happen to have a huge data
+# structure whose string representation is complex to compute. Your computer
+# may appear to freeze for a while with cpu usage at 100%. If this occurs, you
+# can cancel the traceback with Ctrl-C (maybe hitting it more than once).
+
+#xmode Plain
+xmode Context
+#xmode Verbose
+
+# multi_line_specials: if true, allow magics, aliases and shell escapes (via
+# !cmd) to be used in multi-line input (like for loops).  For example, if you
+# have this active, the following is valid in IPython:
+#
+#In [17]: for i in range(3):
+#   ....:     mkdir $i
+#   ....:     !touch $i/hello
+#   ....:     ls -l $i
+
+multi_line_specials 1
+
+
+# System calls: When IPython makes system calls (e.g. via special syntax like
+# !cmd or !!cmd, or magics like %sc or %sx), it can print the command it is
+# executing to standard output, prefixed by a header string.
+
+system_header "IPython system call: "
+
+system_verbose 1
+
+# wxversion: request a specific wxPython version (used for -wthread)
+
+# Set this to the value of wxPython you want to use, but note that this
+# feature requires you to have the wxversion Python module to work.  If you
+# don't have the wxversion module (try 'import wxversion' at the prompt to
+# check) or simply want to leave the system to pick up the default, leave this
+# variable at 0.
+
+wxversion 0
+
+#---------------------------------------------------------------------------
+# Section: Readline configuration (readline is not available for MS-Windows)
+
+# This is done via the following options:
+
+# (i) readline_parse_and_bind: this option can appear as many times as you
+# want, each time defining a string to be executed via a
+# readline.parse_and_bind() command. The syntax for valid commands of this
+# kind can be found by reading the documentation for the GNU readline library,
+# as these commands are of the kind which readline accepts in its
+# configuration file.
+
+# The TAB key can be used to complete names at the command line in one of two
+# ways: 'complete' and 'menu-complete'. The difference is that 'complete' only
+# completes as much as possible while 'menu-complete' cycles through all
+# possible completions. Leave the one you prefer uncommented.
+
+readline_parse_and_bind tab: complete
+#readline_parse_and_bind tab: menu-complete
+
+# This binds Control-l to printing the list of all possible completions when
+# there is more than one (what 'complete' does when hitting TAB twice, or at
+# the first TAB if show-all-if-ambiguous is on)
+readline_parse_and_bind "\C-l": possible-completions
+
+# This forces readline to automatically print the above list when tab
+# completion is set to 'complete'. You can still get this list manually by
+# using the key bound to 'possible-completions' (Control-l by default) or by
+# hitting TAB twice. Turning this on makes the printing happen at the first
+# TAB.
+readline_parse_and_bind set show-all-if-ambiguous on
+
+# If you have TAB set to complete names, you can rebind any key (Control-o by
+# default) to insert a true TAB character.
+readline_parse_and_bind "\C-o": tab-insert
+
+# These commands allow you to indent/unindent easily, with the 4-space
+# convention of the Python coding standards.  Since IPython's internal
+# auto-indent system also uses 4 spaces, you should not change the number of
+# spaces in the code below.
+readline_parse_and_bind "\M-i": "    "
+readline_parse_and_bind "\M-o": "\d\d\d\d"
+readline_parse_and_bind "\M-I": "\d\d\d\d"
+
+# Bindings for incremental searches in the history. These searches use the
+# string typed so far on the command line and search anything in the previous
+# input history containing them.
+readline_parse_and_bind "\C-r": reverse-search-history
+readline_parse_and_bind "\C-s": forward-search-history
+
+# Bindings for completing the current line in the history of previous
+# commands. This allows you to recall any previous command by typing its first
+# few letters and hitting Control-p, bypassing all intermediate commands which
+# may be in the history (much faster than hitting up-arrow 50 times!)
+readline_parse_and_bind "\C-p": history-search-backward
+readline_parse_and_bind "\C-n": history-search-forward
+
+# I also like to have the same functionality on the plain arrow keys. If you'd
+# rather have the arrows use all the history (and not just match what you've
+# typed so far), comment out or delete the next two lines.
+readline_parse_and_bind "\e[A": history-search-backward
+readline_parse_and_bind "\e[B": history-search-forward
+
+# These are typically on by default under *nix, but not win32.
+readline_parse_and_bind "\C-k": kill-line
+readline_parse_and_bind "\C-u": unix-line-discard
+
+# (ii) readline_remove_delims: a string of characters to be removed from the
+# default word-delimiters list used by readline, so that completions may be
+# performed on strings which contain them.
+
+readline_remove_delims -/~
+
+# (iii) readline_merge_completions: whether to merge the result of all
+# possible completions or not.  If true, IPython will complete filenames,
+# python names and aliases and return all possible completions.  If you set it
+# to false, each completer is used at a time, and only if it doesn't return
+# any completions is the next one used.
+
+# The default order is: [python_matches, file_matches, alias_matches]
+
+readline_merge_completions 1
+
+# (iv) readline_omit__names: normally hitting &lt;tab&gt; after a '.' in a name
+# will complete all attributes of an object, including all the special methods
+# whose names start with single or double underscores (like __getitem__ or
+# __class__).
+
+# This variable allows you to control this completion behavior:
+
+# readline_omit__names 1 -&gt; completion will omit showing any names starting
+# with two __, but it will still show names starting with one _.
+
+# readline_omit__names 2 -&gt; completion will omit all names beginning with one
+# _ (which obviously means filtering out the double __ ones).
+
+# Even when this option is set, you can still see those names by explicitly
+# typing a _ after the period and hitting &lt;tab&gt;: 'name._&lt;tab&gt;' will always
+# complete attribute names starting with '_'.
+
+# This option is off by default so that new users see all attributes of any
+# objects they are dealing with.
+
+readline_omit__names 0
+
+#---------------------------------------------------------------------------
+# Section: modules to be loaded with 'import ...'
+
+# List, separated by spaces, the names of the modules you want to import
+
+# Example:
+# import_mod sys os
+# will produce internally the statements
+# import sys
+# import os
+
+# Each import is executed in its own try/except block, so if one module
+# fails to load the others will still be ok.
+
+import_mod 
+
+#---------------------------------------------------------------------------
+# Section: modules to import some functions from: 'from ... import ...'
+
+# List, one per line, the modules for which you want only to import some
+# functions. Give the module name first and then the name of functions to be
+# imported from that module.
+
+# Example:
+
+# import_some IPython.genutils timing timings
+# will produce internally the statement
+# from IPython.genutils import timing, timings
+
+# timing() and timings() are two IPython utilities for timing the execution of
+# your own functions, which you may find useful.  Just commment out the above
+# line if you want to test them.
+
+# If you have more than one modules_some line, each gets its own try/except
+# block (like modules, see above).
+
+import_some 
+
+#---------------------------------------------------------------------------
+# Section: modules to import all from : 'from ... import *'
+
+# List (same syntax as import_mod above) those modules for which you want to
+# import all functions. Remember, this is a potentially dangerous thing to do,
+# since it is very easy to overwrite names of things you need. Use with
+# caution.
+
+# Example:
+# import_all sys os
+# will produce internally the statements
+# from sys import *
+# from os import *
+
+# As before, each will be called in a separate try/except block.
+
+import_all 
+
+#---------------------------------------------------------------------------
+# Section: Python code to execute.
+
+# Put here code to be explicitly executed (keep it simple!)
+# Put one line of python code per line. All whitespace is removed (this is a
+# feature, not a bug), so don't get fancy building loops here.
+# This is just for quick convenient creation of things you want available.
+
+# Example:
+# execute x = 1
+# execute print 'hello world'; y = z = 'a'
+# will produce internally
+# x = 1
+# print 'hello world'; y = z = 'a'
+# and each *line* (not each statement, we don't do python syntax parsing) is
+# executed in its own try/except block.
+
+execute 
+
+# Note for the adventurous: you can use this to define your own names for the
+# magic functions, by playing some namespace tricks:
+
+# execute __IPYTHON__.magic_pf = __IPYTHON__.magic_profile
+
+# defines %pf as a new name for %profile.
+
+#---------------------------------------------------------------------------
+# Section: Pyhton files to load and execute.
+
+# Put here the full names of files you want executed with execfile(file).  If
+# you want complicated initialization, just write whatever you want in a
+# regular python file and load it from here.
+
+# Filenames defined here (which *must* include the extension) are searched for
+# through all of sys.path. Since IPython adds your .ipython directory to
+# sys.path, they can also be placed in your .ipython dir and will be
+# found. Otherwise (if you want to execute things not in .ipyton nor in
+# sys.path) give a full path (you can use ~, it gets expanded)
+
+# Example:
+# execfile file1.py ~/file2.py
+# will generate
+# execfile('file1.py')
+# execfile('_path_to_your_home/file2.py')
+
+# As before, each file gets its own try/except block.
+
+execfile
+
+# If you are feeling adventurous, you can even add functionality to IPython
+# through here. IPython works through a global variable called __ip which
+# exists at the time when these files are read. If you know what you are doing
+# (read the source) you can add functions to __ip in files loaded here. 
+
+# The file example-magic.py contains a simple but correct example. Try it:
+
+# execfile example-magic.py
+
+# Look at the examples in IPython/iplib.py for more details on how these magic
+# functions need to process their arguments.
+
+#---------------------------------------------------------------------------
+# Section: aliases for system shell commands
+
+# Here you can define your own names for system commands. The syntax is
+# similar to that of the builtin %alias function:
+
+# alias alias_name command_string
+
+# The resulting aliases are auto-generated magic functions (hence usable as
+# %alias_name)
+
+# For example:
+
+# alias myls ls -la
+
+# will define 'myls' as an alias for executing the system command 'ls -la'.
+# This allows you to customize IPython's environment to have the same aliases
+# you are accustomed to from your own shell.
+
+# You can also define aliases with parameters using %s specifiers (one per
+# parameter):
+
+# alias parts echo first %s second %s
+
+# will give you in IPython:
+# &gt;&gt;&gt; %parts A B
+# first A second B
+
+# Use one 'alias' statement per alias you wish to define.
+
+# alias 
+
+#************************* end of file &lt;ipythonrc&gt; ************************
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00072000000000000000"></A><A NAME="sec:prompts"></A>
+<BR>
+Fine-tuning your prompt
+</H2>
+
+<P>
+IPython's prompts can be customized using a syntax similar to that
+of the <TT>bash</TT> shell. Many of <TT>bash</TT>'s escapes are supported,
+as well as a few additional ones. We list them below:
+
+<P>
+<DL>
+<DT><STRONG>&#92;#</STRONG></DT>
+<DD>the prompt/history count number. This escape
+is automatically wrapped in the coloring codes for the currently active
+color scheme.
+</DD>
+<DT><STRONG>&#92;N</STRONG></DT>
+<DD>the 'naked' prompt/history count number: this
+is just the number itself, without any coloring applied to it. This
+lets you produce numbered prompts with your own colors.
+</DD>
+<DT><STRONG>&#92;D</STRONG></DT>
+<DD>the prompt/history count, with the actual digits
+replaced by dots. Used mainly in continuation prompts (prompt_in2)
+</DD>
+<DT><STRONG>&#92;w</STRONG></DT>
+<DD>the current working directory
+</DD>
+<DT><STRONG>&#92;W</STRONG></DT>
+<DD>the basename of current working directory
+</DD>
+<DT><STRONG>&#92;X<SPAN  CLASS="textit">n</SPAN></STRONG></DT>
+<DD>where <SPAN CLASS="MATH"><IMG
+ WIDTH="87" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$n=0\ldots5.$"></SPAN> The current working
+directory, with <TT>$HOME</TT> replaced by <TT>~</TT>,
+and filtered out to contain only <SPAN CLASS="MATH"><IMG
+ WIDTH="15" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img3.png"
+ ALT="$n$"></SPAN> path elements
+</DD>
+<DT><STRONG>&#92;Y<SPAN  CLASS="textit">n</SPAN></STRONG></DT>
+<DD>Similar to &#92;X<SPAN  CLASS="textit">n</SPAN>,
+but with the <SPAN CLASS="MATH"><IMG
+ WIDTH="45" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$n+1$"></SPAN> element included if it is <TT>~</TT>
+(this is similar to the behavior of the %c<SPAN  CLASS="textit">n</SPAN> escapes in <TT>tcsh</TT>)
+</DD>
+<DT><STRONG>&#92;u</STRONG></DT>
+<DD>the username of the current user
+</DD>
+<DT><STRONG>&#92;$</STRONG></DT>
+<DD>if the effective UID is 0, a #, otherwise
+a $
+</DD>
+<DT><STRONG>&#92;h</STRONG></DT>
+<DD>the hostname up to the first `.'
+</DD>
+<DT><STRONG>&#92;H</STRONG></DT>
+<DD>the hostname
+</DD>
+<DT><STRONG>&#92;n</STRONG></DT>
+<DD>a newline
+</DD>
+<DT><STRONG>&#92;r</STRONG></DT>
+<DD>a carriage return
+</DD>
+<DT><STRONG>&#92;v</STRONG></DT>
+<DD>IPython version string
+</DD>
+</DL>
+In addition to these, ANSI color escapes can be insterted into the
+prompts, as <TT>&#92;C_<SPAN  CLASS="textit">ColorName</SPAN></TT>.
+The list of valid color names is: Black, Blue, Brown, Cyan, DarkGray,
+Green, LightBlue, LightCyan, LightGray, LightGreen, LightPurple, LightRed,
+NoColor, Normal, Purple, Red, White, Yellow.
+
+<P>
+Finally, IPython supports the evaluation of arbitrary expressions
+in your prompt string. The prompt strings are evaluated through the
+syntax of PEP 215, but basically you can use <TT>$x.y</TT> to expand
+the value of <TT>x.y</TT>, and for more complicated expressions you
+can use braces: <TT>${foo()+x}</TT> will call function <TT>foo</TT>
+and add to it the value of <TT>x</TT>, before putting the result into
+your prompt. For example, using 
+<BR><TT>prompt_in1 '${commands.getoutput(&#34;uptime&#34;)}&#92;nIn
+[&#92;#]: '</TT>&nbsp;
+<BR>
+will print the result of the uptime command on each prompt (assuming
+the <TT>commands</TT> module has been imported in your <TT>ipythonrc</TT>
+file).
+
+<P>
+
+<H3><A NAME="SECTION00072100000000000000">
+Prompt examples</A>
+</H3>
+
+<P>
+The following options in an ipythonrc file will give you IPython's
+default prompts:
+
+<P>
+<TT>prompt_in1 'In [&#92;#]:'</TT>&nbsp;
+<BR><TT>prompt_in2 '&nbsp;&nbsp;&nbsp;.&#92;D.:'</TT>&nbsp;
+<BR><TT>prompt_out 'Out[&#92;#]:'</TT>
+
+<P>
+which look like this:
+
+<P>
+<TT>In [1]: 1+2</TT>&nbsp;
+<BR><TT>Out[1]: 3</TT>
+
+<P>
+<TT>In [2]: for i in (1,2,3):</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;...:&nbsp;&nbsp;&nbsp;&nbsp;print i,</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;...:</TT>&nbsp;
+<BR><TT>1 2 3</TT>
+
+<P>
+These will give you a very colorful prompt with path information:
+
+<P>
+<TT>#prompt_in1 '&#92;C_Red&#92;u&#92;C_Blue[&#92;C_Cyan&#92;Y1&#92;C_Blue]&#92;C_LightGreen&#92;#&gt;'</TT>&nbsp;
+<BR><TT>prompt_in2 ' ..&#92;D&gt;'</TT>&nbsp;
+<BR><TT>prompt_out '&lt;&#92;#&gt;' </TT>
+
+<P>
+which look like this:
+
+<P>
+<TT><SPAN ID="hue2315">fperez</SPAN><SPAN ID="hue3198">[</SPAN><SPAN ID="hue3199">~/ipython</SPAN><SPAN ID="hue2321">]</SPAN><SPAN ID="hue2323">1&gt;</SPAN></TT>
+<TT>1+2</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2327">&lt;1&gt;</SPAN></TT>
+<TT>3</TT>&nbsp;
+<BR><TT><SPAN ID="hue2330">fperez</SPAN><SPAN ID="hue3205">[</SPAN><SPAN ID="hue3206">~/ipython</SPAN><SPAN ID="hue2336">]</SPAN><SPAN ID="hue2338">2&gt;</SPAN></TT>
+<TT>for i in (1,2,3):</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2342">...&gt;</SPAN></TT>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp;print i,</TT>&nbsp;
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SPAN ID="hue2346">...&gt;</SPAN></TT>&nbsp;
+<BR><TT>1 2 3</TT>
+
+<P>
+The following shows the usage of dynamic expression evaluation:
+
+<P>
+
+<H2><A NAME="SECTION00073000000000000000"></A><A NAME="sec:profiles"></A>
+<BR>
+IPython profiles
+</H2>
+
+<P>
+As we already mentioned, IPython supports the <TT>-profile</TT> command-line
+option (see sec. <A HREF="node5.html#sec:cmd-line-opts">5.2</A>). A profile is nothing more
+than a particular configuration file like your basic <TT>ipythonrc</TT>
+one, but with particular customizations for a specific purpose. When
+you start IPython with '<TT>ipython -profile &lt;name&gt;</TT>', it assumes
+that in your <TT>IPYTHONDIR</TT> there is a file called <TT>ipythonrc-&lt;name&gt;</TT>,
+and loads it instead of the normal <TT>ipythonrc</TT>.
+
+<P>
+This system allows you to maintain multiple configurations which load
+modules, set options, define functions, etc. suitable for different
+tasks and activate them in a very simple manner. In order to avoid
+having to repeat all of your basic options (common things that don't
+change such as your color preferences, for example), any profile can
+include another configuration file. The most common way to use profiles
+is then to have each one include your basic <TT>ipythonrc</TT> file
+as a starting point, and then add further customizations.
+
+<P>
+In sections <A HREF="node11.html#sec:syntax-extensions">11</A> and <A HREF="node16.html#sec:Gnuplot">16</A> we
+discuss some particular profiles which come as part of the standard
+IPython distribution. You may also look in your <TT>IPYTHONDIR</TT>
+directory, any file whose name begins with <TT>ipythonrc-</TT> is
+a profile. You can use those as examples for further customizations
+to suit your own needs.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html247"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html245"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html239"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html248"
+  HREF="node8.html">IPython as default...</A>
+<B> Up:</B> <A NAME="tex2html246"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html240"
+  HREF="node6.html">Interactive use</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

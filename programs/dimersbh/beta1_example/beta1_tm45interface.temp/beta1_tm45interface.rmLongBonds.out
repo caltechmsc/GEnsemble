@@ -1,0 +1,8 @@
+
+ removeUnusuallyLongBonds.py - 091128
+ ... removing bonds that are longer than 3.0 A in:  beta1_tm45interface.vk2.bgf
+ GLN  237A  C    3212  --  11.1 A --  3214  N     280A VAL
+ ILE  238B  C    7741  --  13.4 A --  7743  N     280B VAL
+ ... saving modified file to:   beta1_tm45interface.noLB.bgf
+ ... done!
+

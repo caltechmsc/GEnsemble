@@ -1,0 +1,21 @@
+# minimize in vacuum (no solvation)
+PROJECT          project           
+FF               /ul/caglar/common/ff/dreidii322-mpsim.par
+BBOX            -240.0 240.0     -240.0 240.0      -240.0 240.0
+STRUCTURE        your-structure.bgf    
+NB_METHOD          CMM
+CMM_EXPANSION      CENTROID
+LEVEL              4
+NB_UPDATE_FREQ     5
+CELL_REALLOC_FREQ  5
+LOAD_BAL_FREQ      10
+MIN_RMS_DESIRED  0.2
+MIN_MAX_STEPS    1000
+MIN_METHOD      CONJUGATE_WAG  
+ACTION           MINIMIZE      
+FINAL_BGF
+SETUP_EEX
+DO
+#FINAL_ENER
+INFO
+EXIT

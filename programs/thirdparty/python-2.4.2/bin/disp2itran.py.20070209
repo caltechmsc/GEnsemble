@@ -1,0 +1,79 @@
+#!/usr/bin/env python 
+import sys
+
+
+def disp2itran(filepath):
+    """
+    Translates a bgf file from DISP to ITRAN convention
+    """
+
+    neighbors = []
+    itrans = []
+    f = open(filepath, 'r')
+    disp_flag = False
+
+    for line in f:
+        line = line.strip()
+
+        if line.find('DISP') != 0: # not a disp line so print it
+            if disp_flag:          # if we have disp info, print that first
+                disp_flag = False
+                sys.stdout.write('ITRAN  ')
+                for itran in itrans:
+                    sys.stdout.write('%5i' % itran)
+                    sys.stdout.write(' ')
+                sys.stdout.write('\n')    
+            print line # print the line
+
+        if line.find('CONECT') ==0:
+            data = line.split()[1:]
+            rootNumber = int(data.pop(0))
+            neighbors = [rootNumber]
+            itrans = [rootNumber]
+            for neighbor in data:
+                neighborNumber = int(neighbor)
+                neighbors.append(neighborNumber)
+                itrans.append(222)  # default is unit cell
+
+        if line.find('DISPX') == 0:
+            disp_flag = True
+            data = line.split()[1:]
+            for i in range(1, len(data)):
+                dispx = int(data[i])
+                itrans[i] += 100*dispx
+            
+        if line.find('DISPY') == 0:
+            disp_flag = True
+            data = line.split()[1:]
+            for i in range(1, len(data)):
+                dispy = int(data[i])
+                itrans[i] += 10*dispy
+
+        if line.find('DISPZ') == 0:
+            disp_flag = True
+            data = line.split()[1:]
+            for i in range(1, len(data)):
+                dispz = int(data[i])
+                itrans[i] += dispz
+
+    f.close()
+    
+def usage():
+    print 'usage: disp2itran input_bgf '
+
+def main():
+
+    try:
+        filepath = sys.argv[1]
+    except:
+        usage()
+        sys.exit()
+
+    disp2itran(filepath)
+
+
+if __name__ == '__main__':
+    main()
+
+
+

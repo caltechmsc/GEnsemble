@@ -1,0 +1,27 @@
+            InputFileName 1aho.bgf
+        MutateResidueInfo A62_A A64_A 
+    AdditionalLibraryInfo 
+                  Library V30
+          PlacementMethod CreateCB
+       CreateCBParameters 1.81 51.1 1.55 0.5
+  UseScreamEnergyFunction YES
+           UseDeltaMethod FLAT
+    UseDeltaForInterResiE YES
+       UseAsymmetricDelta YES
+           FlatDeltaValue 0.400000
+        DeltaStandardDevs 0.400000
+   InnerWallScalingFactor 0.400000
+  MultiplePlacementMethod ClusteringThenDoubletsThenSinglets
+     CBGroundSpectrumCalc YES
+      KeepOriginalRotamer NO
+       OneEnergyFFParFile ../../FF/dreiding-0.3.par
+             DeltaParFile ../lib/SCREAM_delta_par_files/SCREAM_delta_Total_Min.par
+        EachAtomDeltaFile ../lib/SCREAM_delta_par_files/SCREAM_EachAtomDeltaFileStub.par
+PolarOptimizationExclusions ../lib/SCREAM_delta_par_files/SCREAM_PolarOptimizationExclusionsStub.par
+                 LJOption 12-6
+              CoulombMode Normal
+               Dielectric 2.5
+               Selections 1
+   AbsStericClashCutoffEL 999999999
+  StericClashCutoffEnergy 250
+    StericClashCutoffDist 0.5

@@ -1,0 +1,259 @@
+!
+!  -----------------------------------------------------------
+!
+!               SAMPLE DEFAULTS FILE  (updated 1/8/89)
+! 
+!  ----------------------------------------------------------- 
+!
+!  This file contains all the variables which can currently be reset
+!  by input from am ascii file (i.e. DEFAULTS file).
+!  The values displayed here indicate the program DEFAULTS.
+!  If you wish to override any of these DEFAULTS, you should create a
+!  new file and eliminate any variables which are not changed (to speed
+!  up execution time). Comments can be interspersed through this file by
+!  preceding with exclamation points. This file is free format.  A line
+!  ending with a minus sign (-) is continued on the next line.  Strings
+!  containing blanks or ending in (-) may be surrounded with quotes (").
+!
+!
+!
+!  CONFIGURATION PARAMETERS
+!
+INTERFACE  ETHERNET   !  PS300 COMMUNICATIONS INTERFACE
+NODENAME      PS300   !  ETHERNET NODE NAME (PS390)
+HOST            VAX   !  HOST COMPUTER (FX1,SUN)
+OP_SYS          VMS   !  OPERATING SYSTEM (UNIX)
+!
+!  GRAPHICS PARAMETERS
+!
+!
+!  for GKS workstations
+!
+L_GKS            NO   !  DO NOT RUN GKS GRAPHICS CALLS
+L_COLOR         YES   !  COLOR GRAPHICS TERMINAL BEING USED
+TERMINAL     DECGPX   !  GKS TERMINAL TYPE
+LOCATOR       MOUSE   !  Type of locator to be used    
+PALETTE          16   !  NUMBER OF GKS COLORS
+L_BW_INV         NO   !  COLOR DISPLAY DOES NOT INVERT BLACK & WHITE
+L_GKSDC          NO   !  to use depth cueing 
+TXT_SMAL     0.0192   ! GKS small character height 
+TXT_MED      0.0192   ! GKS medium character height                     
+TXT_LARG       0.08   ! GKS large character height                      
+TXT_XPND        1.0   ! GKS character width/height expansion factor     
+TXT_SPAC        0.0   ! GKS extra character spacing                     
+TXT_FONT          1   ! GKS font number (machine dependent; 1 is VAX default)
+TXT_PREC     STRING   ! GKS font precision (STRING, CHARACTER, STROKE)  
+!
+!
+!  for ENS display systems
+!
+L_PS340          NO   !  PS340 NOT AVAILABLE
+L_PS390          NO   !  PS390 NOT AVAILABLE
+MENU_HI         0.9   !  HIGH INTENSITY FOR MENUS
+MENU_LOW        0.0   !  LOW INTENSITY FOR MENUS
+MENU_SAT        0.6   !  COLOR SATURATION FOR MENUS
+MENU_HUE      280.0   !  COLOR FOR MENUS
+L_COLLBL        YES   !  Use color to indicate a particular label in
+                      !  the menu is toggled on
+LABL_COL      180.0   !  Color used for the label when toggled on
+LABL_SAT        1.0   !  Color saturation for labels
+L_DEFCOL         NO   !  For using the default group color for the
+                      !  group label when toggled on
+L_CLOCK          NO   !  Display clock in top right corner
+CLOK_CLR        0.0   !  Color of the clock 
+MON_CLR         0.0   !  Color of the memory monitor 
+!
+!
+!  for SGI workstations
+!
+XORIGIN         321   ! Lower left X position (in pixels) of main window. 
+YORIGIN          48   ! Lower left Y position (in pixels) of main window. 
+XSIZE           952   ! Size of the main window (in pixels) excluding border
+YSIZE           952   ! Size of the main window (in pixels) excluding border
+!
+!
+!  for SGI and ARDENT workstations
+!
+L_WINPUT        YES   ! Accept the keyboard input only when the mouse is
+                      ! in the main window  
+L_STEREO         NO   ! Puts the program into stereo monitor display mode
+!
+!
+!  general defaults  
+!
+STEREO_MODE PROXIMAL  ! Stereo display mode:  PROXIMAL or DISTAL
+L_CMND           NO   ! Start the program in command mode
+L_LOGFILE        YES  ! To log the session in logfile.macro
+!
+!  ENERGY PARAMETERS
+!
+NSTEP          50     !  NUMBER OF STEPS 
+MIN_TYPE       CG     !  CHOOSES CG OR SD(new) MINIMIZATION
+INFO_LVL        1     !  INFORMATION LEVEL
+E_CUTOFF    0.001     !  ENERGY CONVERGENCE CRITERION FOR MINIMIZATIONS
+PURG_COR      YES     !  PURGE COORDINATE FILES IN MINIMIZATION
+TIME_STP    0.001     !  TIME STEP (IN PS) FOR DYNAMICS
+INIT_TEM    300.0     !  INITIAL TEMPERATURE
+FINL_TEM    300.0     !  FINAL TEMPERATURE
+WRIT_VEL       NO     !  DO NOT WRITE VELOCITIES TO .TRJ FILE
+NQSTEP         10     !  NUMBER OF QUENCHING STEPS FOR MOLECULAR DYNAMICS
+E_CYCLE        20     !  ENERGY CYCLE IN CONSTRAINED MINIMIZATION
+NPOINTS        10     !  NUMBER OF POINTS IN A CONSTRAINED MINIMIZATION
+DIR_X         1.0     !  X COMPONENT OF DIRECTION VECTOR
+DIR_Y         0.0     !  Y COMPONENT OF DIRECTION VECTOR
+DIR_Z         0.0     !  Z COMPONENT OF DIRECTION VECTOR
+INCREMNT      0.5     !  INCREMENT (IN A) IN A CONSTRAINED MINIMIZATION
+CON_TYPE   PLANE      !  CONSTRAINT TYPE (PLANE,LINE,POINT)
+TRAN_TEM   1000.0     !  TRANSLATIONAL TEMPERATURE
+WRIT_PAR       NO     !  DO NOT WRITE OUT NEW PARAMETER FILE 
+SCL_B14       1.0     !  Scaling factor for 1-4 nonbond interactions
+!
+!
+!  ENERGY SWITCHES
+!
+L_BONDS       YES     !  INCLUDE BONDS IN ENERGY CALCULATION
+L_ANGLES      YES     !  INCLUDE ANGLES IN ENERGY CALCULATION
+L_TORSIN      YES     !  INCLUDE TORSIONS IN ENERGY CALCULATION
+L_INVRSN      YES     !  INCLUDE TORSIONS IN ENERGY CALCULATION
+L_NBONDS      YES     !  INCLUDE NBONDS IN ENERGY CALCULATION
+L_HBONDS      YES     !  INCLUDE HBONDS IN ENERGY CALCULATION
+L_USER_E       NO     !  INCLUDE USER ENERGY IN ENERGY CALCULATION
+L_CONSTR       NO     !  DON'T INCLUDE HARMONIC CONSTRAINTS IN ENERGY 
+                      !  CALCULATION
+L_EEFULL       NO     !  If torsion or inversion parameters are missing,
+                      !  omit the terms from the energy calculation
+L_SNGINV       NO     !  Calculate and normalize all inversion terms for
+                      !  each inversion center 
+!
+!    DYNAMICS SWITCHES
+!
+L_ANNEAL       NO     !  Don't run annealed dynamics
+L_MAXFOR      YES     !  Don't check for maximum force
+WRT_TRJ        NO     !  To write the trajectory
+!
+!   NBOND SWITCHES
+!
+L_NBEXCB      YES     !  Exclude 1-2 and 1-3 interactions from nonbond lists
+L_NBEXCT      YES     !  Exclude 1-3 interactions from nonbond lists
+!
+!
+!  NBOND VARIABLES
+!
+NB_ON         8.0       !  ENERGY COMPLETELY ON BELOW THIS DISTANCE
+NB_OFF        8.5       !  ENERGY OFF ABOVE THIS DISTANCE
+NB_SEL        9.0       !  ALL NBONDS SELECTED WITHIN THIS DISTANCE
+EPSILON       1.0       !  DIELECTRIC CONSTANT
+L_R_EPS       YES       !  DIELECTRIC = R*EPS
+!
+!  HBOND VARIABLES
+!
+HB_ON         4.0       !  ENERGY COMPLETELY ON BELOW THIS DISTANCE
+HB_OFF        4.5       !  ENERGY OFF ABOVE THIS DISTANCE
+HB_SEL        5.0       !  ALL HBONDS SELECTED WITHIN THIS DISTANCE
+HBA_ON       65.0       !  ENERGY COMPLETELY ON BELOW THIS ANGLE
+HBA_OFF      75.0       !  ENERGY OFF ABOVE THIS ANGLE
+HBA_SEL      90.0       !  ALL HBONDS SELECTED WITHIN THIS ANGLE
+!
+!  MISCELLANEOUS ENERGY VARIABLES
+!
+!
+!  FOR CONSTRAINTS
+!
+K_DIST     1000.0       ! Distance force constant for next constraints.
+K_TOR        20.0       ! Torsion force constant for next constraints.
+K_ANG       100.0       ! Angle force constant for next constraints.
+K_INV        40.0       ! Inversion force constant for next constraints.
+!                        
+!  FOR MINIMIZATION
+!
+MAX_STEP      1.5       ! Maximum displacement size during the minimization.
+GRD_CVRG      0.1       ! Criterion for convergence.
+MIN_DLTE    0.001       ! Minimum energy difference.
+!
+!  FOR DYNAMICS
+!
+ANEL_INC     10.0       ! Temperature increment for each each step of 
+                        ! annealing. 
+DRAW_FRQ        1       ! ALSO USED FOR MINIMIZATION - The frequency with
+                        ! which structure is redrawn or updated on PS300
+                        ! display.   
+T_CYCLE       0.1       ! Interval between updating NBond and HBond lists
+UPDAT_FQ      0.1       ! Interval between updating NBond and HBond lists
+HT_FRQ        0.1       ! Time interval between temperature equilibrations
+WTRJ_FRQ      0.1       ! Time interval between writes to trajectory file
+ANEL_FRQ      0.1       ! Interval between annealing temperature adjustments
+MAX_FORC    200.0       ! Maximum force level allowed in dynamics 
+TIM_DYN      0.50       ! TIME DURATION IN PICOSECONDS
+ANEAL_CY        1       ! Number of cycles of annealed dynamics  
+!                
+!   FOR TEMPERATURE
+!
+HEAT_INC     20.0       ! Heating increment after each equilibration cycle
+                        ! in dynamics
+TEM_WIND     50.0       ! Difference allowed between desired temerature and
+                        ! and actual temperature in dynamics
+!
+!
+!  FOR ANIMATION
+!
+COL_INC       5.0       ! INCREMENT ON THE COLOR WHEEL USED IN COLOR
+                        ! CODING CONFORMATIONS BY SEQUENCE NUMBER OR
+                        ! ENERGY.
+E_DIFF       10.0       ! TO CHANGE THE SCALE FOR COLOR CODING
+                        ! CONFORMATIONS BY ENERGY.
+!
+!    FOR CON MIN
+!
+NX_STEP       100       ! Number of steps of minimization at each point
+!
+! FOR SEARCH
+!
+IC_STEP         0       ! Number of steps of minimization at each point
+! 
+!  FOR IMPULSE DYNAMICS
+!  
+NS_STEP       100       ! NUMBER OF STEPS IN DYNAMICS TRAJECTORY.
+!                        
+!  FOR SURFACES
+!
+DOT_DENS      8.0       !  DENSITY OF DOTS FOR CALCULATING SURFACE.
+PROB_RAD      0.0       !  PROBE RADIUS DURING THE CALCULATIONS.
+MAX_CHRG      0.5       !  USED FOR DEFINING PROPERTY OF DOTS BY CHARGE.
+                        !  (CHARGES WILL BE SCALED USING MAX_CHRG)
+GRS_CHRG      0.2       !  USED FOR DEFINING PROPERTY OF DOTS BY -,0,+. 
+MAX_ESP     100.0       !  MAX ELECTROSTATIC POTENTIAL.
+VDW_SCL       1.0       !  VANDERWAL SCALE RADIUS.   
+TOT_COLR       20       !  TOTAL NUMBER IF COLORS TO BE DISPLAYED.  
+!
+!  FOR CONNECT FUNCTIONS.
+!
+CN_RMIN       0.8       ! MINIMUM ALLOWD BOND DISTANCE.
+CN_RMAX       2.0       ! MAXIMUM ALLOWED BOND DISTANCE.
+CN_SCAL      0.55       ! SCALE FACTOR FOR RADIUS. 
+!
+!  ENERGY AND FORCE ANALYSIS VARIABLES AND SWITCHES.
+!
+DIST_NBCT    10.0       ! NBOND CUTOFF DISTANCE USED FOR DISPLAY PURPOSES.
+VDW_ENRCT  -9999.99     ! VDW ENERGY CUTOFF USED DURING ANALYSIS.
+ELC_ENRCT  -9999.99     ! ELECTROSTATIC ENERGY CUTOFF USED DURING ANALYSIS.
+SCAL_FAC      1.0       ! SCALE FACTOR FOR DISPLAYING FORCE VECTORS.
+L_DSPGEOM     YES       ! FOR DISPLAYING BOND DISTANCE OR ANGLE.
+L_DSPENR      YES       ! FOR DISPLAYING ENERGY VALUES DURING ANALYSIS.
+L_DSPFRC      YES       ! FOR DISPLAYING FORCE VALUES DURING ANALYSIS.
+L_EAF14       YES       ! INCLUDE 1-4 NBONDS DURING ANALYSIS.
+L_FIXFRC       NO       ! DO NOT INCLUDE FIXED ATOMS DURING FORCE ANALYSIS.
+!
+! CONTACT CHECK ANALYSIS VARIABLES AND SWITCHES.
+! 
+L_CON14        NO       ! DO NOT INCLUDE 1-4 NBONDS DURING CONTACT ANALYSIS.
+L_DIS          NO       ! DON'T DISPLAY DISTANCE VALUES DURING ANALYSIS.
+L_ENR          NO       ! DON'T DISPLAY ENERGY VALUES DURING ANALYSIS.
+VDWCT         0.0       ! VDW ENERGY CUTOFF USED DURING ANALYSIS.
+!
+!  TO READ FROM ANOTHER FILE
+!
+!READ         SYS$LOGIN:MYDEFAULTS.DEF  ! ADD DEFAULTS FROM ANOTHER FILE
+!                       ! (REMOVE COMMENT CHARACTER TO USE THIS COMMAND)
+!
+!  END OF SAMPLE FILE  
+!

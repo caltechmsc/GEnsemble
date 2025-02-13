@@ -1,0 +1,28 @@
+progs="_PROGS"
+for prog in $progs; do
+	printf  $prog" "
+done
+
+make clean
+make CC="gcc -arch ppc -fast"
+for prog in $progs; do
+	mv $prog $prog.ppc64
+done
+
+make clean
+make CC="gcc -arch ppc -O3"
+for prog in $progs; do
+	mv $prog $prog.ppc32
+done
+
+make clean
+make CC="icc -fast"
+for prog in $progs; do
+	mv $prog $prog.icc
+done
+
+set $progs
+for prog in $progs; do
+	lipo -create $prog.icc $prog.ppc32 $prog.ppc64 -output $prog
+	cp $prog ../binaries
+done

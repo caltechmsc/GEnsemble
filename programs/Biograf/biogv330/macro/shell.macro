@@ -1,0 +1,133 @@
+beginmacro
+%
+% link date    : 08:43:46 2/20/92
+%
+%
+% This macro demonstrates the use of the user function shell.
+% The shell user function places an ellipsoidal harmonic repulsion
+% shell around a set of atoms.  The volume of the ellipsoid is 
+% calculated from the user's input density.
+%
+nfixd = 0
+nmovb = 0
+%
+%  Get the input file name
+%
+echo Enter the input filename (default is shelltest.bgf)
+TOP:
+infil = ${prompt}
+%
+%  Does input file exist?
+%
+if( ${infil} = NULL )then
+  infil = shelltest
+else
+  open( ${infil}.bgf, err=EROR )
+  close( ${infil}.bgf, err=EROR )
+endif
+goto NEXT
+EROR:
+echo File does not exist, please reenter the file name
+goto TOP
+NEXT:
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  ${infil}
+	In-Out/return
+%
+%  Get movable and fixed groups
+%
+Display
+echo Enter the movable groups, ending with a null return
+MOVE:
+movgrp = ${prompt}
+if( ${movgrp} = NULL )goto MOVE
+nmovb = ${nmovb} + 1
+AGAIN:
+in = ${prompt}
+if( ${in} = NULL )goto FIX
+movgrp = ${movgrp},${in}
+nmovb = ${nmovb} + 1
+goto AGAIN
+%
+FIX:
+echo Enter the fixed groups, ending with a null return
+in = ${prompt}
+if( ${in} = NULL )goto OUT
+fixgrp = ${in}
+nfixd = ${nfixd} + 1
+BGAIN:
+in = ${prompt}
+if( ${in} = NULL )goto OUT
+fixgrp = ${fixgrp},${in}
+nfixd = ${nfixd} + 1
+goto BGAIN
+OUT:
+Display/return
+%
+%  Get the density
+%
+DNS:
+echo Enter the density
+dens = ${prompt}
+if( ${dens} = NULL )goto DNS
+%
+%  The energy expression must be setup before using the shell user function
+%
+Top menu/simulate
+	Simulate/setup eex
+	do i = 1,${nmovb}
+	  ${movgrp}[${i}]
+	enddo
+%	polya
+%	water
+	return
+	do i = 1,${nfixd}
+	  ${fixgrp}[${i}]
+	enddo
+	return
+	do i = 1,${nmovb}
+	  ${movgrp}[${i}]
+	enddo
+%	polya
+%	water
+	return
+	Simulate/return
+%
+%  Setup the shell function
+%
+Top menu/utilities
+	Utilities/user
+		User/energy utilities
+		Energy utils/Shell potential
+		shell/density
+		  ${dens}
+		shell/return
+		Energy utils/return
+		User/return
+	Utilities/return
+%
+%  Do simulation
+%
+Top menu/simulate
+	Simulate/mechanics
+%
+%  Do a few steps of minimization to ensure reasonable starting energy
+%  for dynamics
+%
+		Mechanics/# of steps
+		  "5"
+		Mechanics/minimize
+%
+%  Do 100 steps of dynamics
+%
+		Mechanics/# of steps
+		  "100"
+		Mechanics/simple dynamics
+		Mechanics/return
+	Simulate/return
+echo End of demo
+quit
+%
+endmacro

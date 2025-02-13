@@ -1,0 +1,22 @@
+=head2 Sun Jan 27 02:15:27 2008: C<Module> L<LWP|LWP>
+
+=over 4
+
+=item *
+
+C<installed into: /home/adam/dev/libwww>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 5.808>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

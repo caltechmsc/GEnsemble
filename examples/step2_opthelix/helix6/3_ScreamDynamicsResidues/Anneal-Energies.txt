@@ -1,0 +1,4 @@
+After annealing S14_A (totE, EL, vdw, hb, coulomb):   4.913   5.309  -0.043   0.000  -0.353
+After annealing T17_A (totE, EL, vdw, hb, coulomb):   4.913   5.309  -0.043   0.000  -0.353
+After annealing P23_A (totE, EL, vdw, hb, coulomb):   4.913   5.309  -0.043   0.000  -0.353
+After annealing P12_A (totE, EL, vdw, hb, coulomb):   4.913   5.309  -0.043   0.000  -0.353

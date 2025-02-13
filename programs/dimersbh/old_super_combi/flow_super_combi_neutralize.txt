@@ -1,0 +1,104 @@
+1. run_super_combi_neutralize.pl
+
+GetOptions ('h|help'        => \$help,
+            'b|bgf=s'       => \$bgf,
+            'm|mfta=s'      => \$mfta,
+            'n|number=i'    => \$totnum,
+            'p|proc=i'      => \$numproc,
+            'r|ref=s'       => \$ref,
+            'bio|bioscratch=s'  => \$bio,
+            'w|wall=i'      => \$walltime,
+            'mach=s'        => \$machine,
+            'i|input=s'     => \$totin,
+            'neut=s'        => \$neut,
+            );
+
+$bgf - needed, no default
+$mfta - needed, no default
+$totnum - needed, default = 1000
+$numproc - needed
+$ref - defaults to $bgf
+$bio - optional, dirname if on bioscratch, else 0
+$walltime - optional, defaults to 100
+$machine - optional
+$totin - defaults to Super_Bihelix_TotalE.out
+$neut - defaults to $neut1 (victors new scheme)
+
+runs:
+
+super_combi_neutralize_dev.pl -b $bgf -m $mfta -n1 $num1 -n2 $num2 -p $i -f
+$fin -r $ref --bio $bio -cd $masterdir --mach $machine -n $neut
+
+$num1 - created from $totnum and $numproc
+$num2 - created from $totnum and $numproc
+-p $i = number of processor, created from $totnum and $numproc
+-f $fin = 1 if last processort, created from $totnum and $numproc
+--bio $bio = directory if on bioscratch, else 0
+-md $masterdir = master directory
+
+
+2. super_combi_neutralize.pl
+
+GetOptions ('h|help'         => \$help,
+            'b|bgf=s'        => \$bgf,
+            'm|mfta=s'       => \$mfta,
+            'n1|number1=i'   => \$num_str1,
+            'n2|number2=i'   => \$num_str2,
+            'p|proc=i'       => \$proc,
+            'f|fin=i'        => \$fin,
+            'r|ref=s'        => \$ref,
+            'bio=s'          => \$bio,
+            'md=s'           => \$masterdir,
+            'mach=s'         => \$machine,
+            'n|neutralize=s' => \$neut,
+            );
+
+$bgf - from 1
+$mfta - from 1
+$n1 -from 1 (start)
+$n2 - from 1 (end)
+$proc = number of processors the job were run on from 1
+$fin - if = 1 then last $proc
+$ref - from 1
+$bio - bioscratch dir or 0
+$masterdir = master dir from 1
+$mach - from 1
+$neut - from 1
+
+runs:
+
+super_combi_sort.pl $proc $bgf (to concatenate results)
+super_neutral_sort.pl -p $proc -b $bgf -m $mfta --rank 'NCti' --range '1-100'
+--ppn 4 --bio $bio -md $masterdir"
+super_neutral_sort.pl -p $proc -b $bgf -m $mfta --rank 'Cih'  --range
+'1-25' --ppn 1 --bio $bio -md $masterdir
+super_neutral_sort.pl -p $proc -b $bgf -m $mfta --rank 'Ctl'  --range
+'1-25' --ppn 1 --bio $bio -md $masterdir
+super_neutral_sort.pl -p $proc -b $bgf -m $mfta --rank 'Nih'  --range
+'1-25' --ppn 1 --bio $bio -md $masterdir
+super_neutral_sort.pl -p $proc -b $bgf -m $mfta --rank 'Ntl'  --range
+'1-25' --ppn 1 --bio $bio -md $masterdir
+
+$proc = $proc
+$bgf = $bgf
+$mfta = $mfta
+--rank = new, set for good here
+--range = new, set for good here
+--bio $bio = bioscratch dir or 0
+$masterdir = $masterdir
+
+
+3. super_neutral_sort.pl
+
+GetOptions ('h|help'         => \$help,
+            'b|bgf=s'        => \$bgf,
+            'm|mfta=s'       => \$mfta,
+            'p|proc=i'       => \$tot,
+            'bio=s'          => \$bio,
+            'md=s'           => \$masterdir,
+            'range=s'        => \$range,
+            'sortrank=s'     => \$sortrank,
+            'ppn=i'          => \$ppn,
+            );
+
+

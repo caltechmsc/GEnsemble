@@ -1,0 +1,50 @@
+SuperBiHelix programs
+---------------------
+
+run_super_bihelix.pl submits the 12 pbs jobs for running super_bihelix and the analysis.
+
+super_bihelix_pl.pl controls the superbihelix and analysis jobs.
+
+super_bihelix.cpp does the super_bihelix sampling for a pair of helices.
+
+fix_angles_file.cpp takes the angles.txt and puts in any angles not explicitly in the file.  
+
+super_anal1.cpp runs the quadhelix analysis on the 1-2-3-7 bundle.
+
+super_anal2.cpp runs the quadhelix analysis on the 2-3-4-5 bundle.
+
+super_anal3.cpp runs the quadhelix analysis on the 3-5-6-7 bundle.
+
+super_anal_sort2.cpp used the quadhelix analysis to determine which angles to use for the super_bihelix analysis.
+
+output_TM_configs.cpp uses the Consensus_*.out files to output files in a readable format that show the ranking of conformations for each helix.
+
+mean_field_anal.cpp calculates the total bihelical energy for bundles.
+
+mean_field_order.cpp puts the bundles in order by total bihelical energy.    
+
+In the super_bihelix_anal directory is run_super_bihelix_anal.pl, which submits the pbs jobs for running the super_bihelix analysis, without running super_bihelix.cpp.
+
+super_bihelix_anal.pl controls the analysis jobs.
+
+
+SuperComBiHelix programs
+------------------------
+
+run_super_combihelix.pl submits the pbs jobs to do super_combihelix, which builds the entire bundles from the best super_bihelix structures.
+
+super_combihelix.pl runs super_combihelix.
+
+make-bgf-for-combi.pl makes a bgf bundle file for super_combihelix.
+
+rmsd_hive.pl and rmsd_matrix.pl calculate the rmsd of a reference structure to a structure built for super_combihelix. 
+
+super_combi_sort.pl puts the bundles in order by total energy.
+
+rmsd_hive.  
+
+
+Other notes
+-----------
+
+All of the c++ (.cpp files) programs were compliled with icc, on both hive and matrix.  The _matrix files can be used on borg or matrix.  Any program that calls a c++ program must also have a matrix version.

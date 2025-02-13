@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node2.html">
+<LINK REL="previous" HREF="manual.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node2.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html138"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html136"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html130"
+  HREF="manual.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html139"
+  HREF="node2.html">Installation</A>
+<B> Up:</B> <A NAME="tex2html137"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html131"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html140"
+  HREF="node1.html#SECTION00011000000000000000">Main features</A>
+<LI><A NAME="tex2html141"
+  HREF="node1.html#SECTION00012000000000000000">Portability and Python requirements</A>
+<LI><A NAME="tex2html142"
+  HREF="node1.html#SECTION00013000000000000000">Location</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION00010000000000000000">
+Overview</A>
+</H1>
+
+<P>
+One of Python's most useful features is its interactive interpreter. This system
+allows very fast testing of ideas without the overhead of creating test files as
+is typical in most programming languages. However, the interpreter supplied with
+the standard Python distribution is somewhat limited for extended interactive use.
+
+<P>
+IPython is a free software project (released under the BSD license) which tries
+to:
+
+<P>
+
+<OL>
+<LI>Provide an interactive shell superior to Python's default. IPython has many features
+for object introspection, system shell access, and its own special command system
+for adding functionality when working interactively. It tries to be a very efficient
+environment both for Python code development and for exploration of problems using
+Python objects (in situations like data analysis).
+</LI>
+<LI>Serve as an embeddable, ready to use interpreter for your own programs. IPython
+can be started with a single call from inside another program, providing access
+to the current namespace. This can be very useful both for debugging purposes and
+for situations where a blend of batch-processing and interactive exploration are
+needed.
+</LI>
+<LI>Offer a flexible framework which can be used as the base environment for other
+systems with Python as the underlying language. Specifically scientific environments
+like Mathematica, IDL and Matlab inspired its design, but similar ideas can be
+useful in many fields.
+</LI>
+<LI>Allow interactive testing of threaded graphical toolkits. IPython has support for
+interactive, non-blocking control of GTK, Qt and WX applications via special threading
+flags. The normal Python shell can only do this for Tkinter applications.
+</LI>
+</OL>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000">
+Main features</A>
+</H2>
+
+<P>
+
+<UL>
+<LI>Dynamic object introspection. One can access docstrings, function definition prototypes,
+source code, source files and other details of any object accessible to the interpreter
+with a single keystroke (`<TT>?</TT>', and using `<TT>??</TT>' provides additional
+detail).
+</LI>
+<LI>Searching through modules and namespaces with `<TT>*</TT>' wildcards, both when
+using the `<TT>?</TT>' system and via the <TT>%psearch</TT> command.
+</LI>
+<LI>Completion in the local namespace, by typing TAB at the prompt. This works for
+keywords, methods, variables and files in the current directory. This is supported
+via the readline library, and full access to configuring readline's behavior is
+provided.
+</LI>
+<LI>Numbered input/output prompts with command history (persistent across sessions
+and tied to each profile), full searching in this history and caching of all input
+and output.
+</LI>
+<LI>User-extensible `magic' commands. A set of commands prefixed with <TT>%</TT> is
+available for controlling IPython itself and provides directory control, namespace
+information and many aliases to common system shell commands.
+</LI>
+<LI>Alias facility for defining your own system aliases.
+</LI>
+<LI>Complete system shell access. Lines starting with ! are passed directly to the
+system shell, and using !! captures shell output into python variables for further
+use.
+</LI>
+<LI>Background execution of Python commands in a separate thread. IPython has an internal
+job manager called <TT>jobs</TT>, and a conveninence backgrounding magic function
+called <TT>%bg</TT>.
+</LI>
+<LI>The ability to expand python variables when calling the system shell. In a shell
+command, any python variable prefixed with <TT>$</TT> is expanded. A double <TT>$$</TT>
+allows passing a literal <TT>$</TT> to the shell (for access to shell and environment
+variables like <TT>$PATH</TT>).
+</LI>
+<LI>Filesystem navigation, via a magic <TT>%cd</TT> command, along with a persistent
+bookmark system (using <TT>%bookmark</TT>) for fast access to frequently visited
+directories.
+</LI>
+<LI>A lightweight persistence framework via the <TT>%store</TT> command, which allows
+you to save arbitrary Python variables. These get restored automatically when your
+session restarts.
+</LI>
+<LI>Automatic indentation (optional) of code as you type (through the readline library).
+</LI>
+<LI>Macro system for quickly re-executing multiple lines of previous input with a single
+name. Macros can be stored persistently via <TT>%store</TT> and edited via <TT>%edit</TT>. 
+</LI>
+<LI>Session logging (you can then later use these logs as code in your programs). Logs
+can optionally timestamp all input, and also store session output (marked as comments,
+so the log remains valid Python source code).
+</LI>
+<LI>Session restoring: logs can be replayed to restore a previous session to the state
+where you left it.
+</LI>
+<LI>Verbose and colored exception traceback printouts. Easier to parse visually, and
+in verbose mode they produce a lot of useful debugging information (basically a
+terminal version of the cgitb module).
+</LI>
+<LI>Auto-parentheses: callable objects can be executed without parentheses: <TT>`sin
+3'</TT> is automatically converted to <TT>`sin(3)</TT>'.
+</LI>
+<LI>Auto-quoting: using `<TT>,</TT>' or `<TT>;</TT>' as the first character forces
+auto-quoting of the rest of the line: <TT>`,my_function a&nbsp;b'</TT> becomes automatically
+<TT>`my_function(&#34;a&#34;,&#34;b&#34;)'</TT>, while <TT>`;my_function
+a&nbsp;b'</TT> becomes <TT>`my_function(&#34;a b&#34;)'</TT>.
+</LI>
+<LI>Extensible input syntax. You can define filters that pre-process user input to
+simplify input in special situations. This allows for example pasting multi-line
+code fragments which start with <TT>`&gt;&gt;&gt;'</TT>
+or <TT>`...'</TT> such as those from other python sessions or the standard Python
+documentation.
+</LI>
+<LI>Flexible configuration system. It uses a configuration file which allows permanent
+setting of all command-line options, module loading, code and file execution. The
+system allows recursive file inclusion, so you can have a base file with defaults
+and layers which load other customizations for particular projects.
+</LI>
+<LI>Embeddable. You can call IPython as a python shell inside your own python programs.
+This can be used both for debugging code or for providing interactive abilities
+to your programs with knowledge about the local namespaces (very useful in debugging
+and data analysis situations).
+</LI>
+<LI>Easy debugger access. You can set IPython to call up an enhanced version of the
+Python debugger (<TT>pdb</TT>) every time there is an uncaught exception. This
+drops you inside the code which triggered the exception with all the data live
+and it is possible to navigate the stack to rapidly isolate the source of a bug.
+The <TT>%run</TT> magic command -with the <TT>-d</TT> option- can run any script
+under <TT>pdb</TT>'s control, automatically setting initial breakpoints for you.
+This version of <TT>pdb</TT> has IPython-specific improvements, including tab-completion
+and traceback coloring support.
+</LI>
+<LI>Profiler support. You can run single statements (similar to <TT>profile.run()</TT>)
+or complete programs under the profiler's control. While this is possible with
+the standard <TT>profile</TT> module, IPython wraps this functionality with magic
+commands (see <TT>`%prun'</TT> and <TT>`%run -p</TT>') convenient for rapid interactive
+work.
+</LI>
+</UL>
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000">
+Portability and Python requirements</A>
+</H2>
+
+<P>
+<SPAN  CLASS="textbf">Python requirements:</SPAN> IPython requires with Python version 2.3 or newer.
+If you are still using Python 2.2 and can not upgrade, the last version of IPython
+which worked with Python 2.2 was 0.6.15, so you will have to use that.
+
+<P>
+IPython is developed under <SPAN  CLASS="textbf">Linux</SPAN>, but it should work in any reasonable
+Unix-type system (tested OK under Solaris and the *BSD family, for which a port
+exists thanks to Dryice Liu).
+
+<P>
+<SPAN  CLASS="textbf">Mac OS X</SPAN>: it works, apparently without any problems (thanks to Jim Boyle
+at Lawrence Livermore for the information). Thanks to Andrea Riciputi, Fink support
+is available.
+
+<P>
+<SPAN  CLASS="textbf">CygWin</SPAN>: it works mostly OK, though some users have reported problems with
+prompt coloring. No satisfactory solution to this has been found so far, you may
+want to disable colors permanently in the <TT>ipythonrc</TT> configuration file
+if you experience problems. If you have proper color support under cygwin, please
+post to the IPython mailing list so this issue can be resolved for all users.
+
+<P>
+<SPAN  CLASS="textbf">Windows</SPAN>: it works well under Windows XP/2k, and I suspect NT should behave
+similarly. Section&nbsp;<A HREF="node2.html#sub:Under-Windows">2.3</A> describes installation details for
+Windows, including some additional tools needed on this platform.
+
+<P>
+Windows 9x support is present, and has been reported to work fine (at least on
+WinME).
+
+<P>
+Note, that I have very little access to and experience with Windows development.
+However, an excellent group of Win32 users (led by Ville Vainio), consistenly contribute
+bugfixes and platform-specific enhancements, so they more than make up for my deficiencies
+on that front. In fact, Win32 users report using IPython as a system shell (see
+Sec.&nbsp;<A HREF="node12.html#sec:IPython-as-shell">12</A> for details), as it offers a level of control
+and features which the default <TT>cmd.exe</TT> doesn't provide.
+
+<P>
+
+<H2><A NAME="SECTION00013000000000000000">
+Location</A>
+</H2>
+
+<P>
+IPython is generously hosted at <TT><A NAME="tex2html2"
+  HREF="http://ipython.scipy.org">http://ipython.scipy.org</A></TT> by the Enthought,
+Inc and the SciPy project. This site offers downloads, subversion access, mailing
+lists and a bug tracking system. I am very grateful to Enthought (<TT><A NAME="tex2html3"
+  HREF="http://www.enthought.com">http://www.enthought.com</A></TT>)
+and all of the SciPy team for their contribution.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html138"
+  HREF="node2.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html136"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html130"
+  HREF="manual.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html139"
+  HREF="node2.html">Installation</A>
+<B> Up:</B> <A NAME="tex2html137"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html131"
+  HREF="manual.html">IPython An enhanced Interactive</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2006-06-06
+</ADDRESS>
+</BODY>
+</HTML>

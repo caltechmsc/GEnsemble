@@ -1,0 +1,22 @@
+BIOGRF  160
+DESCRP sulfo   
+REMARK Created by ? @ sun4 on  1/24/89   19:59:02                  
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 S1    ORG      1   -1.13400   0.96600   2.65900 S_3    2 2  0.00000
+HETATM     2 O1    ORG      1   -1.75600   0.08000   1.49600 O_2    1 2  0.00000
+HETATM     3 O2    ORG      1   -1.99200   2.29200   2.82400 O_2    1 2  0.00000
+HETATM     4 XX    ORG      1   -1.16100   0.25900   3.81700 H___A  1 0  0.00000
+HETATM     5 O3    ORG      1    0.46500   1.35200   2.27300 O_3    1 2  0.00000
+HETATM     6 HO3   ORG      1    0.94300   1.63600   3.08000 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3     4     5
+ORDER      1     2     2     0     0
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1
+ORDER      3     2
+CONECT     4     1
+CONECT     5     1     6
+CONECT     6     5
+END

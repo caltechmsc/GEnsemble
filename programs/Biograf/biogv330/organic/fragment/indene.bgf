@@ -1,0 +1,37 @@
+BIOGRF  110
+DESCRP INDENE  
+HETATM    1 C1    ORG     1       0.589   0.117  -0.248 C_R     3  0  0.0000
+HETATM    2 C2    ORG     1       1.332   0.413   0.909 C_R     3  0  0.0000
+HETATM    3 HC2   ORG     1       2.324   0.646   0.845 H_      1  0  0.0000
+HETATM    4 C3    ORG     1       0.682   0.384   2.161 C_R     3  0  0.0000
+HETATM    5 HC3   ORG     1       1.208   0.596   3.010 H_      1  0  0.0000
+HETATM    6 C4    ORG     1      -0.691   0.062   2.248 C_R     3  0  0.0000
+HETATM    7 HC4   ORG     1      -1.151   0.045   3.159 H_      1  0  0.0000
+HETATM    8 C5    ORG     1      -1.430  -0.235   1.084 C_R     3  0  0.0000
+HETATM    9 HC5   ORG     1      -2.423  -0.468   1.143 H_      1  0  0.0000
+HETATM   10 C6    ORG     1      -0.768  -0.202  -0.155 C_R     3  0  0.0000
+HETATM   11 C7    ORG     1      -0.197  -0.282  -2.325 C_R     3  0  0.0000
+HETATM   12 HC7   ORG     1      -0.281  -0.402  -3.335 H_      1  0  0.0000
+HETATM   13 C8    ORG     1       1.048   0.087  -1.640 C_3     4  0  0.0000
+HETATM   14 H2C8  ORG     1       1.817  -0.674  -1.787 H_      1  0  0.0000
+HETATM   15 H1C8  ORG     1       1.399   1.068  -1.963 H_      1  0  0.0000
+HETATM   16 C9    ORG     1      -1.251  -0.449  -1.430 C_R     3  0  0.0000
+HETATM   17 HC9   ORG     1      -2.208  -0.707  -1.674 H_      1  0  0.0000
+CONECT    1    2   10   13    0    0    0    0    2    0    0    0    0
+CONECT    2    1    4    3    0    0    0    0    2    0    0    0    0
+CONECT    3    2    0    0    0    0    0
+CONECT    4    6    2    5    0    0    0    0    2    0    0    0    0
+CONECT    5    4    0    0    0    0    0
+CONECT    6    4    8    7    0    0    0    0    2    0    0    0    0
+CONECT    7    6    0    0    0    0    0
+CONECT    8    6   10    9    0    0    0    2    0    0    0    0    0
+CONECT    9    8    0    0    0    0    0
+CONECT   10    8    1   16    0    0    0    0    2    0    0    0    0
+CONECT   11   13   16   12    0    0    0    1    2    0    0    0    0
+CONECT   12   11    0    0    0    0    0
+CONECT   13   11    1   15   14    0    0    1    0    0    0    0    0
+CONECT   14   13    0    0    0    0    0
+CONECT   15   13    0    0    0    0    0
+CONECT   16   11   10   17    0    0    0    2    0    0    0    0    0
+CONECT   17   16    0    0    0    0    0
+END

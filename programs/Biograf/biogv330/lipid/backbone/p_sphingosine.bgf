@@ -1,0 +1,69 @@
+BIOGRF  160
+DESCRP P_SPHING
+REMARK Created by pws @ sun4 on  1/24/89   19:26:17                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C1    LIP      1  -14.92100   0.17100  -0.23600 C_33   4 0  0.00000
+HETATM     2 C2    LIP      1  -13.68000  -0.72300  -0.26400 C_32   4 0  0.00000
+HETATM     3 C3    LIP      1  -12.42400   0.15000  -0.24600 C_32   4 0  0.00000
+HETATM     4 C4    LIP      1  -11.17500  -0.73600  -0.25700 C_32   4 0  0.00000
+HETATM     5 C5    LIP      1   -9.92900   0.15200  -0.26300 C_32   4 0  0.00000
+HETATM     6 C6    LIP      1   -8.67200  -0.72100  -0.25900 C_32   4 0  0.00000
+HETATM     7 C7    LIP      1   -7.43300   0.17700  -0.25800 C_32   4 0  0.00000
+HETATM     8 C8    LIP      1   -6.16300  -0.67800  -0.22700 C_32   4 0  0.00000
+HETATM     9 C9    LIP      1   -4.93300   0.23400  -0.20200 C_32   4 0  0.00000
+HETATM    10 C10   LIP      1   -3.65700  -0.60700  -0.11300 C_32   4 0  0.00000
+HETATM    11 C11   LIP      1   -2.42600   0.30100  -0.04100 C_32   4 0  0.00000
+HETATM    12 C12   LIP      1   -1.16500  -0.55300   0.13000 C_32   4 0  0.00000
+HETATM    13 C13   LIP      1    0.08000   0.33800   0.17400 C_32   4 0  0.00000
+HETATM    14 C14   LIP      1    1.34700  -0.52300   0.16800 C_32   4 0  0.00000
+HETATM    15 C15   LIP      1    2.51300   0.30600   0.19600 C_21   3 0  0.00000
+HETATM    16 C16   LIP      1    3.45500   0.16500  -0.73900 C_21   3 0  0.00000
+HETATM    17 C17   LIP      1    4.65000   0.97000  -0.73200 C_31   4 0  0.00000
+HETATM    18 C18   LIP      1    5.98800   0.28400  -0.36000 C_31   4 0  0.00000
+HETATM    19 C19   LIP      1    6.18000   0.07400   1.14900 C_32   4 0  0.00000
+HETATM    20 O1    LIP      1    7.21200   0.94400   1.61900 O_3    2 2  0.00000
+HETATM    21 O2    LIP      1    4.78000   1.66400  -1.97000 O_3    2 2  0.00000
+HETATM    22 HO2   LIP      1    5.09900   1.04900  -2.66100 H___A  1 0  0.00000
+HETATM    23 N1    LIP      1    6.31800  -0.96400  -1.06400 N_3    3 1  0.00000
+HETATM    24 H2N1  LIP      1    7.25000  -1.26400  -0.78600 H___A  1 0  0.00000
+HETATM    25 FA    LIP      1    6.29300  -0.79600  -2.07000 H___A  1 0  0.00000
+HETATM    26 P_3   LIP      1    8.51000   0.29800   2.17900 P_3    3 1  0.00000
+HETATM    27 O_32  LIP      1    9.37400   1.38600   2.55400 O_2    1 2  0.00000
+HETATM    28 HG    LIP      1    8.26500  -0.54800   3.44800 O_3    2 2  0.00000
+HETATM    29 O_32  LIP      1    9.26500  -0.55000   1.13200 O_3    2 2  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2
+CONECT     2     1     3
+CONECT     3     2     4
+CONECT     4     3     5
+CONECT     5     4     6
+CONECT     6     5     7
+CONECT     7     6     8
+CONECT     8     7     9
+CONECT     9     8    10
+CONECT    10     9    11
+CONECT    11    10    12
+CONECT    12    11    13
+CONECT    13    12    14
+CONECT    14    13    15
+CONECT    15    14    16
+ORDER     15     0     2
+CONECT    16    15    17
+ORDER     16     2     0
+CONECT    17    16    18    21
+CONECT    18    17    19    23
+CONECT    19    18    20
+CONECT    20    19    26
+CONECT    21    17    22
+CONECT    22    21
+CONECT    23    18    25    24
+CONECT    24    23
+CONECT    25    23
+CONECT    26    20    27    28    29
+ORDER     26     0     2     0     0
+CONECT    27    26
+ORDER     27     2
+CONECT    28    26
+CONECT    29    26
+END

@@ -1,0 +1,27 @@
+BIOGRF  160
+DESCRP ethylami
+REMARK Created by srl @ iris on 12/11/89   11:56:03                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    ETA A    1    0.76300   0.72400   0.18200 C_3    4 0  0.00000
+HETATM     2 HX    ETA A    1    0.73100   1.81500   0.17500 H_     1 0  0.00000
+HETATM     3 H3C1  ETA A    1    1.49400   0.39600  -0.55900 H_     1 0  0.00000
+HETATM     4 H2C1  ETA A    1    1.08200   0.39600   1.17300 H_     1 0  0.00000
+HETATM     5 LL    ETA A    1   -0.63700   0.17700  -0.15100 C_3    4 0  0.00000
+HETATM     6 H2C2  ETA A    1   -0.94100   0.54000  -1.13400 H_     1 0  0.00000
+HETATM     7 H1C2  ETA A    1   -1.35100   0.53900   0.59000 H_     1 0  0.00000
+HETATM     8 TT    ETA A    1   -0.68000  -1.28700  -0.16300 N_3    3 1  0.00000
+HETATM     9 TX    ETA A    1   -0.03700  -1.64900  -0.86700 H___A  1 0  0.00000
+HETATM    10 TX    ETA A    1   -0.42600  -1.65000   0.75600 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     4     3     5
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1
+CONECT     5     7     6     1     8
+CONECT     6     5
+CONECT     7     5
+CONECT     8    10     9     5
+CONECT     9     8
+CONECT    10     8
+END

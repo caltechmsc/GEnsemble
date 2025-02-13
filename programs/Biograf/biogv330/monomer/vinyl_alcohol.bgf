@@ -1,0 +1,25 @@
+BIOGRF  160
+DESCRP vinyl_al
+REMARK Created by srl @ iris on 12/11/89   13:02:19                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    VAL A    1   -0.74600  -0.25400  -0.15100 C_3    4 0  0.00000
+HETATM     2 TT00  VAL A    1    0.64700   0.28200   0.21600 C_3    4 0  0.00000
+HETATM     3 O1    VAL A    1    1.63500  -0.13900  -0.71800 O_3    2 2  0.00000
+HETATM     4 HO1   VAL A    1    2.50500   0.23300  -0.46200 H___A  1 0  0.00000
+HETATM     5 H1C1  VAL A    1    0.62400   1.37200   0.23200 H_     1 0  0.00000
+HETATM     6 HX    VAL A    1   -0.74800  -1.34600  -0.15300 H_     1 0  0.00000
+HETATM     7 H2C2  VAL A    1   -1.04700   0.10600  -1.13700 H_     1 0  0.00000
+HETATM     8 H1C2  VAL A    1   -1.47300   0.09400   0.58400 H_     1 0  0.00000
+HETATM     9 TX    VAL A    1    0.92500  -0.07800   1.20700 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     8     7     6     2
+CONECT     2     5     9     3     1
+CONECT     3     2     4
+CONECT     4     3
+CONECT     5     2
+CONECT     6     1
+CONECT     7     1
+CONECT     8     1
+CONECT     9     2
+END

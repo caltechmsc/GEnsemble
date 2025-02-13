@@ -1,0 +1,10 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: ${HOME}/bsgidre.def
+!
+PROGRAM    POLYGRAF
+L_SGI      YES
+TERMINAL   SGI  
+L_BATCH    YES
+F_VIBRAT   YES

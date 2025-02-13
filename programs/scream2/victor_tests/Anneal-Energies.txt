@@ -1,0 +1,2 @@
+After annealing A64_A (totE, EL, vdw, hb, coulomb):  -7.640  -9.170  -0.007   0.000   1.536
+After annealing A62_A (totE, EL, vdw, hb, coulomb):  -7.640  -9.170  -0.007   0.000   1.536

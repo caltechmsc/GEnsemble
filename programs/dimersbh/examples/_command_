@@ -1,0 +1,1 @@
+run_angles_local2abs.pl beta2.bgf beta2.mfta angles_local.txt

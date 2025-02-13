@@ -1,0 +1,1720 @@
+==> A/A.lib <==
+REM A rotamer 1 (original sorted energy numbering is 1)
+REM energy 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ALA A    1   -1.01900   0.54552  -0.85324 N_R    3 0 -0.47000
+ATOM       2  CA   ALA A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ALA A    1   -0.37470  -0.90920   0.48219 H_     1 0  0.09000
+ATOM       4  C    ALA A    1    0.36247   0.96308   1.08277 C_R    3 0  0.51000
+ATOM       5  CB   ALA A    1    1.22589  -0.39219  -0.86079 C_3    4 0 -0.27000
+ATOM       6 HCB   ALA A    1    1.63879   0.47556  -1.38140 H_     1 0  0.09000
+ATOM       7 HCB   ALA A    1    2.00682  -0.83192  -0.23371 H_     1 0  0.09000
+ATOM       8 HCB   ALA A    1    0.93198  -1.13857  -1.60119 H_     1 0  0.09000
+PHI         -91.9284068034865
+PSI         90.0666945690303
+
+==> B/B.lib <==
+REM B rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HIS A    1    2.04700   2.86200  -0.66000 N_3    4 0  0.48000 0   0
+ATOM       2  CA   HIS A    1    0.77500   2.63100  -1.16200 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   HIS A    1    0.11660   3.36421  -0.69615 H_     1 0  0.00000 0   0
+ATOM       4  C    HIS A    1    0.25900   1.30000  -0.92500 C_R    3 0  0.34800 0   0
+ATOM       5  CB   HIS A    1    0.70400   3.10100  -2.62900 C_3    4 0  0.01000 0   0
+ATOM       6 HCB   HIS A    1    0.96309   4.15959  -2.64807 H_     1 0  0.00000 0   0
+ATOM       7 HCB   HIS A    1   -0.32459   2.97256  -2.96605 H_     1 0  0.00000 0   0
+ATOM       8  CG   HIS A    1    1.58853   2.37503  -3.50091 C_R    3 0  0.05000 0   0
+ATOM       9  ND1  HIS A    1    1.33424   1.26413  -4.08161 N_R    3 0  0.01700 0   0
+ATOM      10 HND1  HIS A    1    0.52942   0.78434  -4.00495 H___A  1 0  0.00000 0   0
+ATOM      11  CD2  HIS A    1    2.84662   2.75066  -3.85183 C_R    3 0 -0.01500 0   0
+ATOM      12 HCD2  HIS A    1    3.43482   3.55110  -3.62005 H_     1 0  0.00000 0   0
+ATOM      13  CE1  HIS A    1    2.36746   0.89709  -4.80095 C_R    3 0  0.14500 0   0
+ATOM      14 HCE1  HIS A    1    2.53853   0.08663  -5.39618 H_     1 0  0.00000 0   0
+ATOM      15  NE2  HIS A    1    3.29801   1.81454  -4.65618 N_R    2 1 -0.19000 0   0
+REM B rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> C/C_10.lib <==
+REM C rotamer 1 (original SCWRL numbering is 1)
+REM energy 2.640 0.079 0.696 0.029 0.000 0.000 1.837 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+ATOM       6 HCB   CYS A    1   -0.66835   0.79658  -1.88309 H_     1 0  0.09000
+ATOM       7 HCB   CYS A    1    0.92659   0.00851  -1.94130 H_     1 0  0.09000
+ATOM       8  SG   CYS A    1    1.07670   2.26358  -1.14426 S_3    2 2 -0.23000
+ATOM       9 HSG   CYS A    1    0.12108   2.82155  -0.35357 H___A  1 0  0.16000
+REM C rotamer 2 (original SCWRL numbering is 2)
+REM energy 2.708 0.067 0.669 0.020 0.000 0.000 1.952 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+
+==> C/C-centered.lib <==
+REM C rotamer 1 (original SCWRL numbering is 1)
+REM energy 2.640 0.079 0.696 0.029 0.000 0.000 1.837 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_3    4 0  0.48500 0   0
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.09200 0   0
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.00000 0   0
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.35000 0   0
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0  0.04000 0   0
+ATOM       6 HCB   CYS A    1   -0.66835   0.79658  -1.88309 H_     1 0  0.00000 0   0
+ATOM       7 HCB   CYS A    1    0.92659   0.00851  -1.94130 H_     1 0  0.00000 0   0
+ATOM       8  SG   CYS A    1    1.07670   2.26358  -1.14426 S_3    2 2 -0.05000 0   0
+ATOM       9 HSG   CYS A    1    0.12108   2.82155  -0.35357 H___A  1 0  0.00000 0   0
+REM C rotamer 2 (original SCWRL numbering is 2)
+REM energy 2.708 0.067 0.669 0.020 0.000 0.000 1.952 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_3    4 0  0.48500 0   0
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.09200 0   0
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.00000 0   0
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.35000 0   0
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0  0.04000 0   0
+
+==> C/C-charge-corrected.lib <==
+REM C rotamer 1 (original SCWRL numbering is 1)
+REM energy 2.640 0.079 0.696 0.029 0.000 0.000 1.837 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+ATOM       6 HCB   CYS A    1   -0.66835   0.79658  -1.88309 H_     1 0  0.09000
+ATOM       7 HCB   CYS A    1    0.92659   0.00851  -1.94130 H_     1 0  0.09000
+ATOM       8  SG   CYS A    1    1.07670   2.26358  -1.14426 S_3    2 2 -0.23000
+ATOM       9 HSG   CYS A    1    0.12108   2.82155  -0.35357 H___A  1 0  0.16000
+REM C rotamer 2 (original SCWRL numbering is 2)
+REM energy 2.708 0.067 0.669 0.020 0.000 0.000 1.952 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+
+==> C/C.lib <==
+REM C rotamer 1 (original SCWRL numbering is 1)
+REM energy 2.640 0.079 0.696 0.029 0.000 0.000 1.837 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+ATOM       6 HCB   CYS A    1   -0.66835   0.79658  -1.88309 H_     1 0  0.09000
+ATOM       7 HCB   CYS A    1    0.92659   0.00851  -1.94130 H_     1 0  0.09000
+ATOM       8  SG   CYS A    1    1.07670   2.26358  -1.14426 S_3    2 2 -0.23000
+ATOM       9 HSG   CYS A    1    0.12108   2.82155  -0.35357 H___A  1 0  0.16000
+REM C rotamer 2 (original SCWRL numbering is 2)
+REM energy 2.708 0.067 0.669 0.020 0.000 0.000 1.952 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    CYS A    1   -0.89900   0.77200   0.72100 N_R    4 0 -0.47000
+ATOM       2  CA   CYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   CYS A    1   -0.53859  -0.89038  -0.32441 H_     1 0  0.09000
+ATOM       4  C    CYS A    1    1.18400  -0.39300   0.73400 C_R    3 0  0.51000
+ATOM       5  CB   CYS A    1    0.27800   0.66300  -1.35900 C_3    4 0 -0.11000
+
+==> D/D_10.lib <==
+REM D rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.172 0.238 1.917 0.181 0.014 0.000 2.823 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+ATOM       5  CB   ASP A    1    0.14500   0.57300  -1.42700 C_3    4 0 -0.28000
+ATOM       6 HCB   ASP A    1   -0.84490   0.56282  -1.88317 H_     1 0  0.09000
+ATOM       7 HCB   ASP A    1    0.80646  -0.09448  -1.97931 H_     1 0  0.09000
+ATOM       8  CG   ASP A    1    0.67423   1.90764  -1.46136 C_R    3 0  0.62000
+ATOM       9  OD1  ASP A    1    1.73245   2.16847  -0.90865 O_2    1 2 -0.76000
+ATOM      10  OD2  ASP A    1    0.07699   2.79877  -2.04698 O_2    1 2 -0.76000
+REM D rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.891 0.270 2.427 0.067 0.001 0.000 3.126 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+
+==> D/D-centered.lib <==
+REM D rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.172 0.238 1.917 0.181 0.014 0.000 2.823 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_3    4 0  0.45000 0   0
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000 0   0
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.00000 0   0
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.35500 0   0
+ATOM       5  CB   ASP A    1    0.14500   0.57300  -1.42700 C_3    4 0 -0.15000 0   0
+ATOM       6 HCB   ASP A    1   -0.84490   0.56282  -1.88317 H_     1 0  0.00000 0   0
+ATOM       7 HCB   ASP A    1    0.80646  -0.09448  -1.97931 H_     1 0  0.00000 0   0
+ATOM       8  CG   ASP A    1    0.67423   1.90764  -1.46136 C_2    3 0  0.36500 0   0
+ATOM       9  OD1  ASP A    1    1.73245   2.16847  -0.90865 O_2    1 2 -0.57500 0   0
+ATOM      10  OD2  ASP A    1    0.07699   2.79877  -2.04698 O_2    1 2 -0.57500 0   0
+REM D rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.891 0.270 2.427 0.067 0.001 0.000 3.126 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_3    4 0  0.45000 0   0
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000 0   0
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.00000 0   0
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.35500 0   0
+
+==> D/D-charge-corrected.lib <==
+REM D rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.172 0.238 1.917 0.181 0.014 0.000 2.823 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+ATOM       5  CB   ASP A    1    0.14500   0.57300  -1.42700 C_3    4 0 -0.28000
+ATOM       6 HCB   ASP A    1   -0.84490   0.56282  -1.88317 H_     1 0  0.09000
+ATOM       7 HCB   ASP A    1    0.80646  -0.09448  -1.97931 H_     1 0  0.09000
+ATOM       8  CG   ASP A    1    0.67423   1.90764  -1.46136 C_R    3 0  0.62000
+ATOM       9  OD1  ASP A    1    1.73245   2.16847  -0.90865 O_2    1 2 -0.76000
+ATOM      10  OD2  ASP A    1    0.07699   2.79877  -2.04698 O_2    1 2 -0.76000
+REM D rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.891 0.270 2.427 0.067 0.001 0.000 3.126 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+
+==> D/D.lib <==
+REM D rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.172 0.238 1.917 0.181 0.014 0.000 2.823 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+ATOM       5  CB   ASP A    1    0.14500   0.57300  -1.42700 C_3    4 0 -0.28000
+ATOM       6 HCB   ASP A    1   -0.84490   0.56282  -1.88317 H_     1 0  0.09000
+ATOM       7 HCB   ASP A    1    0.80646  -0.09448  -1.97931 H_     1 0  0.09000
+ATOM       8  CG   ASP A    1    0.67423   1.90764  -1.46136 C_R    3 0  0.62000
+ATOM       9  OD1  ASP A    1    1.73245   2.16847  -0.90865 O_2    1 2 -0.76000
+ATOM      10  OD2  ASP A    1    0.07699   2.79877  -2.04698 O_2    1 2 -0.76000
+REM D rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.891 0.270 2.427 0.067 0.001 0.000 3.126 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASP A    1   -0.80300   0.82100   0.78100 N_R    4 0 -0.47000
+ATOM       2  CA   ASP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASP A    1   -0.58594  -0.88960  -0.23105 H_     1 0  0.09000
+ATOM       4  C    ASP A    1    1.24700  -0.39200   0.62600 C_R    3 0  0.51000
+
+==> E/E_10.lib <==
+REM E rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.330 0.309 2.277 0.612 0.002 0.000 4.130 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+ATOM       2  CA   GLU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLU A    1   -0.94174  -0.54330   0.07782 H_     1 0  0.09000
+ATOM       4  C    GLU A    1    1.10300  -0.93200   0.08700 C_R    3 0  0.51000
+ATOM       5  CB   GLU A    1   -0.18800   0.63600  -1.38900 C_3    4 0 -0.18000
+ATOM       6 HCB   GLU A    1   -1.19066   1.05953  -1.44724 H_     1 0  0.09000
+ATOM       7 HCB   GLU A    1   -0.07649  -0.13933  -2.14698 H_     1 0  0.09000
+ATOM       8  CG   GLU A    1    0.85124   1.74350  -1.63172 C_3    4 0 -0.28000
+ATOM       9 HCG   GLU A    1    0.98623   2.27280  -0.68847 H_     1 0  0.09000
+ATOM      10 HCG   GLU A    1    0.43203   2.42360  -2.37323 H_     1 0  0.09000
+ATOM      11  CD   GLU A    1    2.12158   1.25569  -2.09327 C_R    3 0  0.62000
+ATOM      12  OE1  GLU A    1    2.18418   0.46466  -3.02393 O_2    1 2 -0.76000
+ATOM      13  OE2  GLU A    1    3.16036   1.62925  -1.56592 O_2    1 2 -0.76000
+REM E rotamer 2 (original SCWRL numbering is 112)
+REM energy 8.902 0.354 2.753 0.990 0.004 0.000 4.802 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+
+==> E/E-centered.lib <==
+REM E rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.330 0.309 2.277 0.612 0.002 0.000 4.130 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_3    4 0  0.46500 0   0
+ATOM       2  CA   GLU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.05000 0   0
+ATOM       3 HCA   GLU A    1   -0.94174  -0.54330   0.07782 H_     1 0  0.00000 0   0
+ATOM       4  C    GLU A    1    1.10300  -0.93200   0.08700 C_R    3 0  0.35500 0   0
+ATOM       5  CB   GLU A    1   -0.18800   0.63600  -1.38900 C_3    4 0  0.01000 0   0
+ATOM       6 HCB   GLU A    1   -1.19066   1.05953  -1.44724 H_     1 0  0.00000 0   0
+ATOM       7 HCB   GLU A    1   -0.07649  -0.13933  -2.14698 H_     1 0  0.00000 0   0
+ATOM       8  CG   GLU A    1    0.85124   1.74350  -1.63172 C_3    4 0 -0.15500 0   0
+ATOM       9 HCG   GLU A    1    0.98623   2.27280  -0.68847 H_     1 0  0.00000 0   0
+ATOM      10 HCG   GLU A    1    0.43203   2.42360  -2.37323 H_     1 0  0.00000 0   0
+ATOM      11  CD   GLU A    1    2.12158   1.25569  -2.09327 C_2    3 0  0.36500 0   0
+ATOM      12  OE1  GLU A    1    2.18418   0.46466  -3.02393 O_2    1 2 -0.57500 0   0
+ATOM      13  OE2  GLU A    1    3.16036   1.62925  -1.56592 O_2    1 2 -0.57500 0   0
+REM E rotamer 2 (original SCWRL numbering is 112)
+REM energy 8.902 0.354 2.753 0.990 0.004 0.000 4.802 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_3    4 0  0.46500 0   0
+
+==> E/E-charge-corrected.lib <==
+REM E rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.330 0.309 2.277 0.612 0.002 0.000 4.130 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+ATOM       2  CA   GLU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLU A    1   -0.94174  -0.54330   0.07782 H_     1 0  0.09000
+ATOM       4  C    GLU A    1    1.10300  -0.93200   0.08700 C_R    3 0  0.51000
+ATOM       5  CB   GLU A    1   -0.18800   0.63600  -1.38900 C_3    4 0 -0.18000
+ATOM       6 HCB   GLU A    1   -1.19066   1.05953  -1.44724 H_     1 0  0.09000
+ATOM       7 HCB   GLU A    1   -0.07649  -0.13933  -2.14698 H_     1 0  0.09000
+ATOM       8  CG   GLU A    1    0.85124   1.74350  -1.63172 C_3    4 0 -0.28000
+ATOM       9 HCG   GLU A    1    0.98623   2.27280  -0.68847 H_     1 0  0.09000
+ATOM      10 HCG   GLU A    1    0.43203   2.42360  -2.37323 H_     1 0  0.09000
+ATOM      11  CD   GLU A    1    2.12158   1.25569  -2.09327 C_R    3 0  0.62000
+ATOM      12  OE1  GLU A    1    2.18418   0.46466  -3.02393 O_2    1 2 -0.76000
+ATOM      13  OE2  GLU A    1    3.16036   1.62925  -1.56592 O_2    1 2 -0.76000
+REM E rotamer 2 (original SCWRL numbering is 112)
+REM energy 8.902 0.354 2.753 0.990 0.004 0.000 4.802 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+
+==> E/E.lib <==
+REM E rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.330 0.309 2.277 0.612 0.002 0.000 4.130 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+ATOM       2  CA   GLU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLU A    1   -0.94174  -0.54330   0.07782 H_     1 0  0.09000
+ATOM       4  C    GLU A    1    1.10300  -0.93200   0.08700 C_R    3 0  0.51000
+ATOM       5  CB   GLU A    1   -0.18800   0.63600  -1.38900 C_3    4 0 -0.18000
+ATOM       6 HCB   GLU A    1   -1.19066   1.05953  -1.44724 H_     1 0  0.09000
+ATOM       7 HCB   GLU A    1   -0.07649  -0.13933  -2.14698 H_     1 0  0.09000
+ATOM       8  CG   GLU A    1    0.85124   1.74350  -1.63172 C_3    4 0 -0.28000
+ATOM       9 HCG   GLU A    1    0.98623   2.27280  -0.68847 H_     1 0  0.09000
+ATOM      10 HCG   GLU A    1    0.43203   2.42360  -2.37323 H_     1 0  0.09000
+ATOM      11  CD   GLU A    1    2.12158   1.25569  -2.09327 C_R    3 0  0.62000
+ATOM      12  OE1  GLU A    1    2.18418   0.46466  -3.02393 O_2    1 2 -0.76000
+ATOM      13  OE2  GLU A    1    3.16036   1.62925  -1.56592 O_2    1 2 -0.76000
+REM E rotamer 2 (original SCWRL numbering is 112)
+REM energy 8.902 0.354 2.753 0.990 0.004 0.000 4.802 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLU A    1   -0.01700   0.97500   0.98900 N_R    4 0 -0.47000
+
+==> F/F_10.lib <==
+REM F rotamer 1 (original SCWRL numbering is 11)
+REM energy 14.571 0.455 2.174 1.047 0.005 0.000 10.890 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PHE A    1    0.19600  -1.32300  -0.36400 N_R    4 0 -0.47000
+ATOM       2  CA   PHE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   PHE A    1    0.21955   0.06895   1.06543 H_     1 0  0.09000
+ATOM       4  C    PHE A    1   -1.33300   0.50700  -0.25200 C_R    3 0  0.51000
+ATOM       5  CB   PHE A    1    1.14800   0.86700  -0.55800 C_3    4 0 -0.18000
+ATOM       6 HCB   PHE A    1    2.07806   0.46680  -0.15434 H_     1 0  0.09000
+ATOM       7 HCB   PHE A    1    0.99606   1.87982  -0.18490 H_     1 0  0.09000
+ATOM       8  CG   PHE A    1    1.21972   0.89089  -1.99291 C_R    3 0  0.00000
+ATOM       9  CD1  PHE A    1    0.52017   1.87408  -2.69285 C_R    3 0 -0.11500
+ATOM      10 HCD1  PHE A    1   -0.03561   2.56092  -2.18318 H_     1 0  0.11500
+ATOM      11  CD2  PHE A    1    1.97986  -0.06789  -2.66260 C_R    3 0 -0.11500
+ATOM      12 HCD2  PHE A    1    2.47814  -0.78201  -2.13143 H_     1 0  0.11500
+ATOM      13  CE1  PHE A    1    0.58012   1.92042  -4.10898 C_R    3 0 -0.11500
+ATOM      14 HCE1  PHE A    1    0.07732   2.63549  -4.63458 H_     1 0  0.11500
+ATOM      15  CE2  PHE A    1    2.06102  -0.05154  -4.07907 C_R    3 0 -0.11500
+ATOM      16 HCE2  PHE A    1    2.61448  -0.74427  -4.58327 H_     1 0  0.11500
+ATOM      17  CZ   PHE A    1    1.35597   0.95018  -4.79443 C_R    3 0 -0.11500
+
+==> F/F-centered.lib <==
+REM F rotamer 1 (original SCWRL numbering is 11)
+REM energy 14.571 0.455 2.174 1.047 0.005 0.000 10.890 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PHE A    1    0.19600  -1.32300  -0.36400 N_3    4 0  0.48000 0   0
+ATOM       2  CA   PHE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   PHE A    1    0.21955   0.06895   1.06543 H_     1 0  0.00000 0   0
+ATOM       4  C    PHE A    1   -1.33300   0.50700  -0.25200 C_R    3 0  0.35000 0   0
+ATOM       5  CB   PHE A    1    1.14800   0.86700  -0.55800 C_3    4 0  0.00500 0   0
+ATOM       6 HCB   PHE A    1    2.07806   0.46680  -0.15434 H_     1 0  0.00000 0   0
+ATOM       7 HCB   PHE A    1    0.99606   1.87982  -0.18490 H_     1 0  0.00000 0   0
+ATOM       8  CG   PHE A    1    1.21972   0.89089  -1.99291 C_R    3 0  0.03900 0   0
+ATOM       9  CD1  PHE A    1    0.52017   1.87408  -2.69285 C_R    3 0 -0.01900 0   0
+ATOM      10 HCD1  PHE A    1   -0.03561   2.56092  -2.18318 H_     1 0  0.00000 0   0
+ATOM      11  CD2  PHE A    1    1.97986  -0.06789  -2.66260 C_R    3 0 -0.01900 0   0
+ATOM      12 HCD2  PHE A    1    2.47814  -0.78201  -2.13143 H_     1 0  0.00000 0   0
+ATOM      13  CE1  PHE A    1    0.58012   1.92042  -4.10898 C_R    3 0  0.01000 0   0
+ATOM      14 HCE1  PHE A    1    0.07732   2.63549  -4.63458 H_     1 0  0.00000 0   0
+ATOM      15  CE2  PHE A    1    2.06102  -0.05154  -4.07907 C_R    3 0  0.01000 0   0
+ATOM      16 HCE2  PHE A    1    2.61448  -0.74427  -4.58327 H_     1 0  0.00000 0   0
+ATOM      17  CZ   PHE A    1    1.35597   0.95018  -4.79443 C_R    3 0 -0.00600 0   0
+
+==> F/F-charge-corrected.lib <==
+REM F rotamer 1 (original SCWRL numbering is 11)
+REM energy 14.571 0.455 2.174 1.047 0.005 0.000 10.890 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PHE A    1    0.19600  -1.32300  -0.36400 N_R    4 0 -0.47000
+ATOM       2  CA   PHE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   PHE A    1    0.21955   0.06895   1.06543 H_     1 0  0.09000
+ATOM       4  C    PHE A    1   -1.33300   0.50700  -0.25200 C_R    3 0  0.51000
+ATOM       5  CB   PHE A    1    1.14800   0.86700  -0.55800 C_3    4 0 -0.18000
+ATOM       6 HCB   PHE A    1    2.07806   0.46680  -0.15434 H_     1 0  0.09000
+ATOM       7 HCB   PHE A    1    0.99606   1.87982  -0.18490 H_     1 0  0.09000
+ATOM       8  CG   PHE A    1    1.21972   0.89089  -1.99291 C_R    3 0  0.00000
+ATOM       9  CD1  PHE A    1    0.52017   1.87408  -2.69285 C_R    3 0 -0.11500
+ATOM      10 HCD1  PHE A    1   -0.03561   2.56092  -2.18318 H_     1 0  0.11500
+ATOM      11  CD2  PHE A    1    1.97986  -0.06789  -2.66260 C_R    3 0 -0.11500
+ATOM      12 HCD2  PHE A    1    2.47814  -0.78201  -2.13143 H_     1 0  0.11500
+ATOM      13  CE1  PHE A    1    0.58012   1.92042  -4.10898 C_R    3 0 -0.11500
+ATOM      14 HCE1  PHE A    1    0.07732   2.63549  -4.63458 H_     1 0  0.11500
+ATOM      15  CE2  PHE A    1    2.06102  -0.05154  -4.07907 C_R    3 0 -0.11500
+ATOM      16 HCE2  PHE A    1    2.61448  -0.74427  -4.58327 H_     1 0  0.11500
+ATOM      17  CZ   PHE A    1    1.35597   0.95018  -4.79443 C_R    3 0 -0.11500
+
+==> F/F.lib <==
+REM F rotamer 1 (original SCWRL numbering is 11)
+REM energy 14.571 0.455 2.174 1.047 0.005 0.000 10.890 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PHE A    1    0.19600  -1.32300  -0.36400 N_R    4 0 -0.47000
+ATOM       2  CA   PHE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   PHE A    1    0.21955   0.06895   1.06543 H_     1 0  0.09000
+ATOM       4  C    PHE A    1   -1.33300   0.50700  -0.25200 C_R    3 0  0.51000
+ATOM       5  CB   PHE A    1    1.14800   0.86700  -0.55800 C_3    4 0 -0.18000
+ATOM       6 HCB   PHE A    1    2.07806   0.46680  -0.15434 H_     1 0  0.09000
+ATOM       7 HCB   PHE A    1    0.99606   1.87982  -0.18490 H_     1 0  0.09000
+ATOM       8  CG   PHE A    1    1.21972   0.89089  -1.99291 C_R    3 0  0.00000
+ATOM       9  CD1  PHE A    1    0.52017   1.87408  -2.69285 C_R    3 0 -0.11500
+ATOM      10 HCD1  PHE A    1   -0.03561   2.56092  -2.18318 H_     1 0  0.11500
+ATOM      11  CD2  PHE A    1    1.97986  -0.06789  -2.66260 C_R    3 0 -0.11500
+ATOM      12 HCD2  PHE A    1    2.47814  -0.78201  -2.13143 H_     1 0  0.11500
+ATOM      13  CE1  PHE A    1    0.58012   1.92042  -4.10898 C_R    3 0 -0.11500
+ATOM      14 HCE1  PHE A    1    0.07732   2.63549  -4.63458 H_     1 0  0.11500
+ATOM      15  CE2  PHE A    1    2.06102  -0.05154  -4.07907 C_R    3 0 -0.11500
+ATOM      16 HCE2  PHE A    1    2.61448  -0.74427  -4.58327 H_     1 0  0.11500
+ATOM      17  CZ   PHE A    1    1.35597   0.95018  -4.79443 C_R    3 0 -0.11500
+
+==> G/G.lib <==
+REM G rotamer 1 (original sorted energy numbering is 1)
+REM energy 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLY A    1   -1.01900   0.54552  -0.85324 N_R    3 0 -0.47000
+ATOM       2  CA   GLY A    1    0.00000   0.00000   0.00000 C_3    4 0 -0.02000
+ATOM       3 HCA   GLY A    1   -0.37470  -0.90920   0.48219 H_     1 0  0.09000
+ATOM       4 HCA   GLY A    1    0.89152  -0.21484  -0.58998 H_     1 0  0.09000
+ATOM       5  C    GLY A    1    0.36247   0.96308   1.08277 C_R    3 0  0.51000
+PHI         -91.9284068034865
+PSI         90.0666945690303
+
+==> H/H_10.lib <==
+REM H rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HIS A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HIS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HIS A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HIS A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HIS A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.09000
+ATOM       6 HCB   HIS A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HIS A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HIS A    1    0.81353  -0.25597  -2.33891 C_R    3 0 -0.05000
+ATOM       9  ND1  HIS A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.36000
+ATOM      10 HND1  HIS A    1   -0.24558  -1.84666  -2.84295 H___A  1 0  0.32000
+ATOM      11  CD2  HIS A    1    2.07162   0.11966  -2.68983 C_R    3 0  0.22000
+ATOM      12 HCD2  HIS A    1    2.65982   0.92010  -2.45805 H_     1 0  0.10000
+ATOM      13  CE1  HIS A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      14 HCE1  HIS A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      15  NE2  HIS A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.70000
+REM H rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> H/H-centered.lib <==
+REM H rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HIS A    1    1.27200   0.23100   0.50200 N_3    4 0  0.48000 0   0
+ATOM       2  CA   HIS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   HIS A    1   -0.65840   0.73321   0.46585 H_     1 0  0.00000 0   0
+ATOM       4  C    HIS A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.34800 0   0
+ATOM       5  CB   HIS A    1   -0.07100   0.47000  -1.46700 C_3    4 0  0.01000 0   0
+ATOM       6 HCB   HIS A    1    0.18809   1.52859  -1.48607 H_     1 0  0.00000 0   0
+ATOM       7 HCB   HIS A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.00000 0   0
+ATOM       8  CG   HIS A    1    0.81353  -0.25597  -2.33891 C_R    3 0  0.05000 0   0
+ATOM       9  ND1  HIS A    1    0.55924  -1.36687  -2.91961 N_R    3 0  0.01700 0   0
+ATOM      10 HND1  HIS A    1   -0.24558  -1.84666  -2.84295 H___A  1 0  0.00000 0   0
+ATOM      11  CD2  HIS A    1    2.07162   0.11966  -2.68983 C_R    3 0 -0.01500 0   0
+ATOM      12 HCD2  HIS A    1    2.65982   0.92010  -2.45805 H_     1 0  0.00000 0   0
+ATOM      13  CE1  HIS A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.14500 0   0
+ATOM      14 HCE1  HIS A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.00000 0   0
+ATOM      15  NE2  HIS A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.19000 0   0
+REM H rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> H/H-charge-corrected.lib <==
+REM H rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HIS A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HIS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HIS A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HIS A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HIS A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.09000
+ATOM       6 HCB   HIS A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HIS A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HIS A    1    0.81353  -0.25597  -2.33891 C_R    3 0 -0.05000
+ATOM       9  ND1  HIS A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.36000
+ATOM      10 HND1  HIS A    1   -0.24558  -1.84666  -2.84295 H___A  1 0  0.32000
+ATOM      11  CD2  HIS A    1    2.07162   0.11966  -2.68983 C_R    3 0  0.22000
+ATOM      12 HCD2  HIS A    1    2.65982   0.92010  -2.45805 H_     1 0  0.10000
+ATOM      13  CE1  HIS A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      14 HCE1  HIS A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      15  NE2  HIS A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.70000
+REM H rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> H/H.lib <==
+REM H rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HIS A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HIS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HIS A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HIS A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HIS A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.09000
+ATOM       6 HCB   HIS A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HIS A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HIS A    1    0.81353  -0.25597  -2.33891 C_R    3 0 -0.05000
+ATOM       9  ND1  HIS A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.36000
+ATOM      10 HND1  HIS A    1   -0.24558  -1.84666  -2.84295 H___A  1 0  0.32000
+ATOM      11  CD2  HIS A    1    2.07162   0.11966  -2.68983 C_R    3 0  0.22000
+ATOM      12 HCD2  HIS A    1    2.65982   0.92010  -2.45805 H_     1 0  0.10000
+ATOM      13  CE1  HIS A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      14 HCE1  HIS A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      15  NE2  HIS A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.70000
+REM H rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> I/I_10.lib <==
+REM I rotamer 1 (original SCWRL numbering is 11)
+REM energy 18.551 0.790 8.341 1.948 0.000 0.000 7.472 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ILE A    1    1.26600   0.18500   0.55200 N_R    4 0 -0.47000
+ATOM       2  CA   ILE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ILE A    1   -0.65156   0.74869   0.45060 H_     1 0  0.09000
+ATOM       4  C    ILE A    1   -0.56400  -1.31500   0.20400 C_R    3 0  0.51000
+ATOM       5  CB   ILE A    1   -0.24200   0.55900  -1.42900 C_3    4 0 -0.09000
+ATOM       6 HCB   ILE A    1   -1.29861   0.35164  -1.59835 H_     1 0  0.09000
+ATOM       7  CG1  ILE A    1    0.58158   0.06957  -2.64572 C_3    4 0 -0.18000
+ATOM       8 HCG1  ILE A    1    1.58653  -0.07771  -2.25014 H_     1 0  0.09000
+ATOM       9 HCG1  ILE A    1    0.58140   0.91738  -3.33078 H_     1 0  0.09000
+ATOM      10  CG2  ILE A    1   -0.59749   2.05803  -1.45265 C_3    4 0 -0.27000
+ATOM      11 HCG2  ILE A    1    0.15070   2.58445  -1.04880 H_     1 0  0.09000
+ATOM      12 HCG2  ILE A    1   -0.73968   2.35201  -2.39783 H_     1 0  0.09000
+ATOM      13 HCG2  ILE A    1   -1.43421   2.21051  -0.92668 H_     1 0  0.09000
+ATOM      14  CD1  ILE A    1    0.13509  -1.19781  -3.39747 C_3    4 0 -0.27000
+ATOM      15 HCD1  ILE A    1   -0.78689  -1.06270  -3.76038 H_     1 0  0.09000
+ATOM      16 HCD1  ILE A    1    0.76692  -1.37823  -4.15128 H_     1 0  0.09000
+ATOM      17 HCD1  ILE A    1    0.13526  -1.97562  -2.76897 H_     1 0  0.09000
+
+==> I/I-centered.lib <==
+REM I rotamer 1 (original SCWRL numbering is 11)
+REM energy 18.551 0.790 8.341 1.948 0.000 0.000 7.472 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ILE A    1    1.26600   0.18500   0.55200 N_3    4 0  0.48000 0   0
+ATOM       2  CA   ILE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   ILE A    1   -0.65156   0.74869   0.45060 H_     1 0  0.00000 0   0
+ATOM       4  C    ILE A    1   -0.56400  -1.31500   0.20400 C_R    3 0  0.35000 0   0
+ATOM       5  CB   ILE A    1   -0.24200   0.55900  -1.42900 C_3    4 0  0.02800 0   0
+ATOM       6 HCB   ILE A    1   -1.29861   0.35164  -1.59835 H_     1 0  0.00000 0   0
+ATOM       7  CG1  ILE A    1    0.58158   0.06957  -2.64572 C_3    4 0  0.01200 0   0
+ATOM       8 HCG1  ILE A    1    1.58653  -0.07771  -2.25014 H_     1 0  0.00000 0   0
+ATOM       9 HCG1  ILE A    1    0.58140   0.91738  -3.33078 H_     1 0  0.00000 0   0
+ATOM      10  CG2  ILE A    1   -0.59749   2.05803  -1.45265 C_3    4 0 -0.01200 0   0
+ATOM      11 HCG2  ILE A    1    0.15070   2.58445  -1.04880 H_     1 0  0.00000 0   0
+ATOM      12 HCG2  ILE A    1   -0.73968   2.35201  -2.39783 H_     1 0  0.00000 0   0
+ATOM      13 HCG2  ILE A    1   -1.43421   2.21051  -0.92668 H_     1 0  0.00000 0   0
+ATOM      14  CD1  ILE A    1    0.13509  -1.19781  -3.39747 C_3    4 0 -0.00800 0   0
+ATOM      15 HCD1  ILE A    1   -0.78689  -1.06270  -3.76038 H_     1 0  0.00000 0   0
+ATOM      16 HCD1  ILE A    1    0.76692  -1.37823  -4.15128 H_     1 0  0.00000 0   0
+ATOM      17 HCD1  ILE A    1    0.13526  -1.97562  -2.76897 H_     1 0  0.00000 0   0
+
+==> I/I-charge-corrected.lib <==
+REM I rotamer 1 (original SCWRL numbering is 11)
+REM energy 18.551 0.790 8.341 1.948 0.000 0.000 7.472 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ILE A    1    1.26600   0.18500   0.55200 N_R    4 0 -0.47000
+ATOM       2  CA   ILE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ILE A    1   -0.65156   0.74869   0.45060 H_     1 0  0.09000
+ATOM       4  C    ILE A    1   -0.56400  -1.31500   0.20400 C_R    3 0  0.51000
+ATOM       5  CB   ILE A    1   -0.24200   0.55900  -1.42900 C_3    4 0 -0.09000
+ATOM       6 HCB   ILE A    1   -1.29861   0.35164  -1.59835 H_     1 0  0.09000
+ATOM       7  CG1  ILE A    1    0.58158   0.06957  -2.64572 C_3    4 0 -0.18000
+ATOM       8 HCG1  ILE A    1    1.58653  -0.07771  -2.25014 H_     1 0  0.09000
+ATOM       9 HCG1  ILE A    1    0.58140   0.91738  -3.33078 H_     1 0  0.09000
+ATOM      10  CG2  ILE A    1   -0.59749   2.05803  -1.45265 C_3    4 0 -0.27000
+ATOM      11 HCG2  ILE A    1    0.15070   2.58445  -1.04880 H_     1 0  0.09000
+ATOM      12 HCG2  ILE A    1   -0.73968   2.35201  -2.39783 H_     1 0  0.09000
+ATOM      13 HCG2  ILE A    1   -1.43421   2.21051  -0.92668 H_     1 0  0.09000
+ATOM      14  CD1  ILE A    1    0.13509  -1.19781  -3.39747 C_3    4 0 -0.27000
+ATOM      15 HCD1  ILE A    1   -0.78689  -1.06270  -3.76038 H_     1 0  0.09000
+ATOM      16 HCD1  ILE A    1    0.76692  -1.37823  -4.15128 H_     1 0  0.09000
+ATOM      17 HCD1  ILE A    1    0.13526  -1.97562  -2.76897 H_     1 0  0.09000
+
+==> I/I.lib <==
+REM I rotamer 1 (original SCWRL numbering is 11)
+REM energy 18.551 0.790 8.341 1.948 0.000 0.000 7.472 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ILE A    1    1.26600   0.18500   0.55200 N_R    4 0 -0.47000
+ATOM       2  CA   ILE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ILE A    1   -0.65156   0.74869   0.45060 H_     1 0  0.09000
+ATOM       4  C    ILE A    1   -0.56400  -1.31500   0.20400 C_R    3 0  0.51000
+ATOM       5  CB   ILE A    1   -0.24200   0.55900  -1.42900 C_3    4 0 -0.09000
+ATOM       6 HCB   ILE A    1   -1.29861   0.35164  -1.59835 H_     1 0  0.09000
+ATOM       7  CG1  ILE A    1    0.58158   0.06957  -2.64572 C_3    4 0 -0.18000
+ATOM       8 HCG1  ILE A    1    1.58653  -0.07771  -2.25014 H_     1 0  0.09000
+ATOM       9 HCG1  ILE A    1    0.58140   0.91738  -3.33078 H_     1 0  0.09000
+ATOM      10  CG2  ILE A    1   -0.59749   2.05803  -1.45265 C_3    4 0 -0.27000
+ATOM      11 HCG2  ILE A    1    0.15070   2.58445  -1.04880 H_     1 0  0.09000
+ATOM      12 HCG2  ILE A    1   -0.73968   2.35201  -2.39783 H_     1 0  0.09000
+ATOM      13 HCG2  ILE A    1   -1.43421   2.21051  -0.92668 H_     1 0  0.09000
+ATOM      14  CD1  ILE A    1    0.13509  -1.19781  -3.39747 C_3    4 0 -0.27000
+ATOM      15 HCD1  ILE A    1   -0.78689  -1.06270  -3.76038 H_     1 0  0.09000
+ATOM      16 HCD1  ILE A    1    0.76692  -1.37823  -4.15128 H_     1 0  0.09000
+ATOM      17 HCD1  ILE A    1    0.13526  -1.97562  -2.76897 H_     1 0  0.09000
+
+==> J/J_10.lib <==
+REM J rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HSE A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HSE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HSE A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HSE A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HSE A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.08000
+ATOM       6 HCB   HSE A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HSE A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HSE A    1    0.81353  -0.25597  -2.33891 C_R    3 0  0.22000
+ATOM       9  ND1  HSE A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.70000
+ATOM      10  CD2  HSE A    1    2.07162   0.11966  -2.68983 C_R    3 0 -0.05000
+ATOM      11 HCD2  HSE A    1    2.65982   0.92010  -2.45805 H_     1 0  0.09000
+ATOM      12  CE1  HSE A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      13 HCE1  HSE A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      14  NE2  HSE A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.36000
+ATOM      15 HNE2  HSE A    1    3.39828  -0.82855  -3.91210 H___A  1 0  0.32000
+REM J rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> J/J-centered.lib <==
+REM J rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HSE A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HSE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HSE A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HSE A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HSE A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.09000
+ATOM       6 HCB   HSE A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HSE A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HSE A    1    0.81353  -0.25597  -2.33891 C_R    3 0 -0.05000
+ATOM       9  ND1  HSE A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.36000
+ATOM      10  CD2  HSE A    1    2.07162   0.11966  -2.68983 C_R    3 0  0.22000
+ATOM      11 HCD2  HSE A    1    2.65982   0.92010  -2.45805 H_     1 0  0.10000
+ATOM      12  CE1  HSE A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      13 HCE1  HSE A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      14  NE2  HSE A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.70000
+ATOM      15 HNE2  HSE A    1    3.39828  -0.82855  -3.91210 H___A  1 0  0.32000
+REM J rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> J/J-charge-corrected.lib <==
+REM J rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HSE A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HSE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HSE A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HSE A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HSE A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.08000
+ATOM       6 HCB   HSE A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HSE A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HSE A    1    0.81353  -0.25597  -2.33891 C_R    3 0  0.22000
+ATOM       9  ND1  HSE A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.70000
+ATOM      10  CD2  HSE A    1    2.07162   0.11966  -2.68983 C_R    3 0 -0.05000
+ATOM      11 HCD2  HSE A    1    2.65982   0.92010  -2.45805 H_     1 0  0.09000
+ATOM      12  CE1  HSE A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      13 HCE1  HSE A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      14  NE2  HSE A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.36000
+ATOM      15 HNE2  HSE A    1    3.39828  -0.82855  -3.91210 H___A  1 0  0.32000
+REM J rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> J/J.lib <==
+REM J rotamer 1 (original SCWRL numbering is 11)
+REM energy 20.397 0.120 17.240 0.996 0.001 0.000 2.041 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    HSE A    1    1.27200   0.23100   0.50200 N_R    4 0 -0.47000
+ATOM       2  CA   HSE A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   HSE A    1   -0.65840   0.73321   0.46585 H_     1 0  0.09000
+ATOM       4  C    HSE A    1   -0.51600  -1.33100   0.23700 C_R    3 0  0.51000
+ATOM       5  CB   HSE A    1   -0.07100   0.47000  -1.46700 C_3    4 0 -0.08000
+ATOM       6 HCB   HSE A    1    0.18809   1.52859  -1.48607 H_     1 0  0.09000
+ATOM       7 HCB   HSE A    1   -1.09959   0.34156  -1.80405 H_     1 0  0.09000
+ATOM       8  CG   HSE A    1    0.81353  -0.25597  -2.33891 C_R    3 0  0.22000
+ATOM       9  ND1  HSE A    1    0.55924  -1.36687  -2.91961 N_R    3 0 -0.70000
+ATOM      10  CD2  HSE A    1    2.07162   0.11966  -2.68983 C_R    3 0 -0.05000
+ATOM      11 HCD2  HSE A    1    2.65982   0.92010  -2.45805 H_     1 0  0.09000
+ATOM      12  CE1  HSE A    1    1.59246  -1.73391  -3.63895 C_R    3 0  0.25000
+ATOM      13 HCE1  HSE A    1    1.76353  -2.54437  -4.23418 H_     1 0  0.13000
+ATOM      14  NE2  HSE A    1    2.52301  -0.81646  -3.49418 N_R    2 1 -0.36000
+ATOM      15 HNE2  HSE A    1    3.39828  -0.82855  -3.91210 H___A  1 0  0.32000
+REM J rotamer 2 (original SCWRL numbering is 12)
+REM energy 21.227 0.180 17.107 0.349 0.001 0.000 3.590 0.000 0.000 
+
+==> K/K_10.lib <==
+REM K rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.133 0.358 8.416 0.545 0.000 0.000 5.814 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LYS A    1    0.64500  -1.17000   0.38200 N_R    4 0 -0.47000
+ATOM       2  CA   LYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LYS A    1    0.03383   0.66773   0.86087 H_     1 0  0.09000
+ATOM       4  C    LYS A    1   -1.37300  -0.16400  -0.43000 C_R    3 0  0.51000
+ATOM       5  CB   LYS A    1    0.92100   0.93500  -0.82400 C_3    4 0 -0.18000
+ATOM       6 HCB   LYS A    1    1.79747   1.09458  -0.19596 H_     1 0  0.09000
+ATOM       7 HCB   LYS A    1    0.36618   1.86856  -0.91751 H_     1 0  0.09000
+ATOM       8  CG   LYS A    1    1.36878   0.46184  -2.21977 C_3    4 0 -0.18000
+ATOM       9 HCG   LYS A    1    1.65578  -0.58914  -2.18532 H_     1 0  0.09000
+ATOM      10 HCG   LYS A    1    2.21353   1.05804  -2.56478 H_     1 0  0.09000
+ATOM      11  CD   LYS A    1    0.19035   0.63852  -3.18492 C_3    4 0 -0.18000
+ATOM      12 HCD   LYS A    1   -0.67111   0.11656  -2.76832 H_     1 0  0.09000
+ATOM      13 HCD   LYS A    1    0.46216   0.18710  -4.13909 H_     1 0  0.09000
+ATOM      14  CE   LYS A    1   -0.16150   2.11416  -3.39987 C_3    4 0  0.21000
+ATOM      15 HCE   LYS A    1   -0.24557   2.59843  -2.42698 H_     1 0  0.05000
+ATOM      16 HCE   LYS A    1   -1.11816   2.17306  -3.91894 H_     1 0  0.05000
+ATOM      17  NZ   LYS A    1    0.86538   2.78823  -4.19264 N_3    4 0 -0.30000
+
+==> K/K-centered.lib <==
+REM K rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.133 0.358 8.416 0.545 0.000 0.000 5.814 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LYS A    1    0.64500  -1.17000   0.38200 N_3    4 0  0.47000 0   0
+ATOM       2  CA   LYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.08000 0   0
+ATOM       3 HCA   LYS A    1    0.03383   0.66773   0.86087 H_     1 0  0.00000 0   0
+ATOM       4  C    LYS A    1   -1.37300  -0.16400  -0.43000 C_R    3 0  0.34800 0   0
+ATOM       5  CB   LYS A    1    0.92100   0.93500  -0.82400 C_3    4 0  0.04000 0   0
+ATOM       6 HCB   LYS A    1    1.79747   1.09458  -0.19596 H_     1 0  0.00000 0   0
+ATOM       7 HCB   LYS A    1    0.36618   1.86856  -0.91751 H_     1 0  0.00000 0   0
+ATOM       8  CG   LYS A    1    1.36878   0.46184  -2.21977 C_3    4 0  0.05400 0   0
+ATOM       9 HCG   LYS A    1    1.65578  -0.58914  -2.18532 H_     1 0  0.00000 0   0
+ATOM      10 HCG   LYS A    1    2.21353   1.05804  -2.56478 H_     1 0  0.00000 0   0
+ATOM      11  CD   LYS A    1    0.19035   0.63852  -3.18492 C_3    4 0  0.06300 0   0
+ATOM      12 HCD   LYS A    1   -0.67111   0.11656  -2.76832 H_     1 0  0.00000 0   0
+ATOM      13 HCD   LYS A    1    0.46216   0.18710  -4.13909 H_     1 0  0.00000 0   0
+ATOM      14  CE   LYS A    1   -0.16150   2.11416  -3.39987 C_3    4 0  0.20500 0   0
+ATOM      15 HCE   LYS A    1   -0.24557   2.59843  -2.42698 H_     1 0  0.00000 0   0
+ATOM      16 HCE   LYS A    1   -1.11816   2.17306  -3.91894 H_     1 0  0.00000 0   0
+ATOM      17  NZ   LYS A    1    0.86538   2.78823  -4.19264 N_3    4 0  0.66000 0   0
+
+==> K/K-charge-corrected.lib <==
+REM K rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.133 0.358 8.416 0.545 0.000 0.000 5.814 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LYS A    1    0.64500  -1.17000   0.38200 N_R    4 0 -0.47000
+ATOM       2  CA   LYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LYS A    1    0.03383   0.66773   0.86087 H_     1 0  0.09000
+ATOM       4  C    LYS A    1   -1.37300  -0.16400  -0.43000 C_R    3 0  0.51000
+ATOM       5  CB   LYS A    1    0.92100   0.93500  -0.82400 C_3    4 0 -0.18000
+ATOM       6 HCB   LYS A    1    1.79747   1.09458  -0.19596 H_     1 0  0.09000
+ATOM       7 HCB   LYS A    1    0.36618   1.86856  -0.91751 H_     1 0  0.09000
+ATOM       8  CG   LYS A    1    1.36878   0.46184  -2.21977 C_3    4 0 -0.18000
+ATOM       9 HCG   LYS A    1    1.65578  -0.58914  -2.18532 H_     1 0  0.09000
+ATOM      10 HCG   LYS A    1    2.21353   1.05804  -2.56478 H_     1 0  0.09000
+ATOM      11  CD   LYS A    1    0.19035   0.63852  -3.18492 C_3    4 0 -0.18000
+ATOM      12 HCD   LYS A    1   -0.67111   0.11656  -2.76832 H_     1 0  0.09000
+ATOM      13 HCD   LYS A    1    0.46216   0.18710  -4.13909 H_     1 0  0.09000
+ATOM      14  CE   LYS A    1   -0.16150   2.11416  -3.39987 C_3    4 0  0.21000
+ATOM      15 HCE   LYS A    1   -0.24557   2.59843  -2.42698 H_     1 0  0.05000
+ATOM      16 HCE   LYS A    1   -1.11816   2.17306  -3.91894 H_     1 0  0.05000
+ATOM      17  NZ   LYS A    1    0.86538   2.78823  -4.19264 N_3    4 0 -0.30000
+
+==> K/K.lib <==
+REM K rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.133 0.358 8.416 0.545 0.000 0.000 5.814 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LYS A    1    0.64500  -1.17000   0.38200 N_R    4 0 -0.47000
+ATOM       2  CA   LYS A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LYS A    1    0.03383   0.66773   0.86087 H_     1 0  0.09000
+ATOM       4  C    LYS A    1   -1.37300  -0.16400  -0.43000 C_R    3 0  0.51000
+ATOM       5  CB   LYS A    1    0.92100   0.93500  -0.82400 C_3    4 0 -0.18000
+ATOM       6 HCB   LYS A    1    1.79747   1.09458  -0.19596 H_     1 0  0.09000
+ATOM       7 HCB   LYS A    1    0.36618   1.86856  -0.91751 H_     1 0  0.09000
+ATOM       8  CG   LYS A    1    1.36878   0.46184  -2.21977 C_3    4 0 -0.18000
+ATOM       9 HCG   LYS A    1    1.65578  -0.58914  -2.18532 H_     1 0  0.09000
+ATOM      10 HCG   LYS A    1    2.21353   1.05804  -2.56478 H_     1 0  0.09000
+ATOM      11  CD   LYS A    1    0.19035   0.63852  -3.18492 C_3    4 0 -0.18000
+ATOM      12 HCD   LYS A    1   -0.67111   0.11656  -2.76832 H_     1 0  0.09000
+ATOM      13 HCD   LYS A    1    0.46216   0.18710  -4.13909 H_     1 0  0.09000
+ATOM      14  CE   LYS A    1   -0.16150   2.11416  -3.39987 C_3    4 0  0.21000
+ATOM      15 HCE   LYS A    1   -0.24557   2.59843  -2.42698 H_     1 0  0.05000
+ATOM      16 HCE   LYS A    1   -1.11816   2.17306  -3.91894 H_     1 0  0.05000
+ATOM      17  NZ   LYS A    1    0.86538   2.78823  -4.19264 N_3    4 0 -0.30000
+
+==> L/L_10.lib <==
+REM L rotamer 1 (original SCWRL numbering is 11)
+REM energy 10.041 0.430 2.080 0.632 0.000 0.000 6.901 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LEU A    1    1.18200  -0.65100   0.32000 N_R    4 0 -0.47000
+ATOM       2  CA   LEU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LEU A    1   -0.00847   0.92888   0.57027 H_     1 0  0.09000
+ATOM       4  C    LEU A    1   -1.20600  -0.74800   0.27900 C_R    3 0  0.51000
+ATOM       5  CB   LEU A    1    0.08600   0.57100  -1.42800 C_3    4 0 -0.18000
+ATOM       6 HCB   LEU A    1    0.89486   1.30119  -1.45387 H_     1 0  0.09000
+ATOM       7 HCB   LEU A    1   -0.85829   1.06667  -1.65323 H_     1 0  0.09000
+ATOM       8  CG   LEU A    1    0.35078  -0.52227  -2.47028 C_3    4 0 -0.09000
+ATOM       9 HCG   LEU A    1    0.83587  -1.03010  -1.63667 H_     1 0  0.09000
+ATOM      10  CD1  LEU A    1   -0.96246  -1.23349  -2.80657 C_3    4 0 -0.27000
+ATOM      11 HCD1  LEU A    1   -1.61501  -0.57161  -3.17548 H_     1 0  0.09000
+ATOM      12 HCD1  LEU A    1   -0.79075  -1.94664  -3.48623 H_     1 0  0.09000
+ATOM      13 HCD1  LEU A    1   -1.33945  -1.64680  -1.97769 H_     1 0  0.09000
+ATOM      14  CD2  LEU A    1    0.92122   0.10354  -3.74583 C_3    4 0 -0.27000
+ATOM      15 HCD2  LEU A    1    1.77886   0.57157  -3.53275 H_     1 0  0.09000
+ATOM      16 HCD2  LEU A    1    1.09181  -0.61365  -4.42151 H_     1 0  0.09000
+ATOM      17 HCD2  LEU A    1    0.26558   0.76145  -4.11635 H_     1 0  0.09000
+
+==> L/L-centered.lib <==
+REM L rotamer 1 (original SCWRL numbering is 11)
+REM energy 10.041 0.430 2.080 0.632 0.000 0.000 6.901 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LEU A    1    1.18200  -0.65100   0.32000 N_3    4 0  0.48000 0   0
+ATOM       2  CA   LEU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   LEU A    1   -0.00847   0.92888   0.57027 H_     1 0  0.00000 0   0
+ATOM       4  C    LEU A    1   -1.20600  -0.74800   0.27900 C_R    3 0  0.35000 0   0
+ATOM       5  CB   LEU A    1    0.08600   0.57100  -1.42800 C_3    4 0  0.01800 0   0
+ATOM       6 HCB   LEU A    1    0.89486   1.30119  -1.45387 H_     1 0  0.00000 0   0
+ATOM       7 HCB   LEU A    1   -0.85829   1.06667  -1.65323 H_     1 0  0.00000 0   0
+ATOM       8  CG   LEU A    1    0.35078  -0.52227  -2.47028 C_3    4 0  0.03000 0   0
+ATOM       9 HCG   LEU A    1    0.83587  -1.03010  -1.63667 H_     1 0  0.00000 0   0
+ATOM      10  CD1  LEU A    1   -0.96246  -1.23349  -2.80657 C_3    4 0 -0.01400 0   0
+ATOM      11 HCD1  LEU A    1   -1.61501  -0.57161  -3.17548 H_     1 0  0.00000 0   0
+ATOM      12 HCD1  LEU A    1   -0.79075  -1.94664  -3.48623 H_     1 0  0.00000 0   0
+ATOM      13 HCD1  LEU A    1   -1.33945  -1.64680  -1.97769 H_     1 0  0.00000 0   0
+ATOM      14  CD2  LEU A    1    0.92122   0.10354  -3.74583 C_3    4 0 -0.01400 0   0
+ATOM      15 HCD2  LEU A    1    1.77886   0.57157  -3.53275 H_     1 0  0.00000 0   0
+ATOM      16 HCD2  LEU A    1    1.09181  -0.61365  -4.42151 H_     1 0  0.00000 0   0
+ATOM      17 HCD2  LEU A    1    0.26558   0.76145  -4.11635 H_     1 0  0.00000 0   0
+
+==> L/L-charge-corrected.lib <==
+REM L rotamer 1 (original SCWRL numbering is 11)
+REM energy 10.041 0.430 2.080 0.632 0.000 0.000 6.901 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LEU A    1    1.18200  -0.65100   0.32000 N_R    4 0 -0.47000
+ATOM       2  CA   LEU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LEU A    1   -0.00847   0.92888   0.57027 H_     1 0  0.09000
+ATOM       4  C    LEU A    1   -1.20600  -0.74800   0.27900 C_R    3 0  0.51000
+ATOM       5  CB   LEU A    1    0.08600   0.57100  -1.42800 C_3    4 0 -0.18000
+ATOM       6 HCB   LEU A    1    0.89486   1.30119  -1.45387 H_     1 0  0.09000
+ATOM       7 HCB   LEU A    1   -0.85829   1.06667  -1.65323 H_     1 0  0.09000
+ATOM       8  CG   LEU A    1    0.35078  -0.52227  -2.47028 C_3    4 0 -0.09000
+ATOM       9 HCG   LEU A    1    0.83587  -1.03010  -1.63667 H_     1 0  0.09000
+ATOM      10  CD1  LEU A    1   -0.96246  -1.23349  -2.80657 C_3    4 0 -0.27000
+ATOM      11 HCD1  LEU A    1   -1.61501  -0.57161  -3.17548 H_     1 0  0.09000
+ATOM      12 HCD1  LEU A    1   -0.79075  -1.94664  -3.48623 H_     1 0  0.09000
+ATOM      13 HCD1  LEU A    1   -1.33945  -1.64680  -1.97769 H_     1 0  0.09000
+ATOM      14  CD2  LEU A    1    0.92122   0.10354  -3.74583 C_3    4 0 -0.27000
+ATOM      15 HCD2  LEU A    1    1.77886   0.57157  -3.53275 H_     1 0  0.09000
+ATOM      16 HCD2  LEU A    1    1.09181  -0.61365  -4.42151 H_     1 0  0.09000
+ATOM      17 HCD2  LEU A    1    0.26558   0.76145  -4.11635 H_     1 0  0.09000
+
+==> L/L.lib <==
+REM L rotamer 1 (original SCWRL numbering is 11)
+REM energy 10.041 0.430 2.080 0.632 0.000 0.000 6.901 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    LEU A    1    1.18200  -0.65100   0.32000 N_R    4 0 -0.47000
+ATOM       2  CA   LEU A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   LEU A    1   -0.00847   0.92888   0.57027 H_     1 0  0.09000
+ATOM       4  C    LEU A    1   -1.20600  -0.74800   0.27900 C_R    3 0  0.51000
+ATOM       5  CB   LEU A    1    0.08600   0.57100  -1.42800 C_3    4 0 -0.18000
+ATOM       6 HCB   LEU A    1    0.89486   1.30119  -1.45387 H_     1 0  0.09000
+ATOM       7 HCB   LEU A    1   -0.85829   1.06667  -1.65323 H_     1 0  0.09000
+ATOM       8  CG   LEU A    1    0.35078  -0.52227  -2.47028 C_3    4 0 -0.09000
+ATOM       9 HCG   LEU A    1    0.83587  -1.03010  -1.63667 H_     1 0  0.09000
+ATOM      10  CD1  LEU A    1   -0.96246  -1.23349  -2.80657 C_3    4 0 -0.27000
+ATOM      11 HCD1  LEU A    1   -1.61501  -0.57161  -3.17548 H_     1 0  0.09000
+ATOM      12 HCD1  LEU A    1   -0.79075  -1.94664  -3.48623 H_     1 0  0.09000
+ATOM      13 HCD1  LEU A    1   -1.33945  -1.64680  -1.97769 H_     1 0  0.09000
+ATOM      14  CD2  LEU A    1    0.92122   0.10354  -3.74583 C_3    4 0 -0.27000
+ATOM      15 HCD2  LEU A    1    1.77886   0.57157  -3.53275 H_     1 0  0.09000
+ATOM      16 HCD2  LEU A    1    1.09181  -0.61365  -4.42151 H_     1 0  0.09000
+ATOM      17 HCD2  LEU A    1    0.26558   0.76145  -4.11635 H_     1 0  0.09000
+
+==> M/M_10.lib <==
+REM M rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.122 0.310 2.843 0.606 0.000 0.000 3.363 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    MET A    1    0.60700  -1.23100   0.20400 N_R    4 0 -0.47000
+ATOM       2  CA   MET A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   MET A    1   -0.04424   0.49373   0.97076 H_     1 0  0.09000
+ATOM       4  C    MET A    1   -1.32900  -0.06700  -0.56800 C_R    3 0  0.51000
+ATOM       5  CB   MET A    1    0.96300   0.94100  -0.74600 C_3    4 0 -0.18000
+ATOM       6 HCB   MET A    1    1.85610   1.06332  -0.13321 H_     1 0  0.09000
+ATOM       7 HCB   MET A    1    0.46803   1.90502  -0.86334 H_     1 0  0.09000
+ATOM       8  CG   MET A    1    1.36007   0.39769  -2.12721 C_3    4 0 -0.14000
+ATOM       9 HCG   MET A    1    1.56047  -0.66804  -2.01702 H_     1 0  0.09000
+ATOM      10 HCG   MET A    1    2.27275   0.90933  -2.43272 H_     1 0  0.09000
+ATOM      11  SD   MET A    1    0.10608   0.63940  -3.35872 S_3    2 0 -0.09000
+ATOM      12  CE   MET A    1    0.11984   2.36708  -3.75300 C_3    4 0 -0.22000
+ATOM      13 HCE   MET A    1    1.02087   2.62166  -4.10421 H_     1 0  0.09000
+ATOM      14 HCE   MET A    1   -0.57425   2.55599  -4.44765 H_     1 0  0.09000
+ATOM      15 HCE   MET A    1   -0.07931   2.89848  -2.92962 H_     1 0  0.09000
+REM M rotamer 2 (original SCWRL numbering is 112)
+REM energy 6.169 0.274 2.170 0.417 0.000 0.000 3.308 0.000 0.000 
+
+==> M/M-centered.lib <==
+REM M rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.122 0.310 2.843 0.606 0.000 0.000 3.363 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    MET A    1    0.60700  -1.23100   0.20400 N_3    4 0  0.48000 0   0
+ATOM       2  CA   MET A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   MET A    1   -0.04424   0.49373   0.97076 H_     1 0  0.00000 0   0
+ATOM       4  C    MET A    1   -1.32900  -0.06700  -0.56800 C_R    3 0  0.35000 0   0
+ATOM       5  CB   MET A    1    0.96300   0.94100  -0.74600 C_3    4 0  0.04000 0   0
+ATOM       6 HCB   MET A    1    1.85610   1.06332  -0.13321 H_     1 0  0.00000 0   0
+ATOM       7 HCB   MET A    1    0.46803   1.90502  -0.86334 H_     1 0  0.00000 0   0
+ATOM       8  CG   MET A    1    1.36007   0.39769  -2.12721 C_3    4 0  0.00400 0   0
+ATOM       9 HCG   MET A    1    1.56047  -0.66804  -2.01702 H_     1 0  0.00000 0   0
+ATOM      10 HCG   MET A    1    2.27275   0.90933  -2.43272 H_     1 0  0.00000 0   0
+ATOM      11  SD   MET A    1    0.10608   0.63940  -3.35872 S_3    2 0 -0.17000 0   0
+ATOM      12  CE   MET A    1    0.11984   2.36708  -3.75300 C_3    4 0  0.14600 0   0
+ATOM      13 HCE   MET A    1    1.02087   2.62166  -4.10421 H_     1 0  0.00000 0   0
+ATOM      14 HCE   MET A    1   -0.57425   2.55599  -4.44765 H_     1 0  0.00000 0   0
+ATOM      15 HCE   MET A    1   -0.07931   2.89848  -2.92962 H_     1 0  0.00000 0   0
+REM M rotamer 2 (original SCWRL numbering is 112)
+REM energy 6.169 0.274 2.170 0.417 0.000 0.000 3.308 0.000 0.000 
+
+==> M/M-charge-corrected.lib <==
+REM M rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.122 0.310 2.843 0.606 0.000 0.000 3.363 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    MET A    1    0.60700  -1.23100   0.20400 N_R    4 0 -0.47000
+ATOM       2  CA   MET A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   MET A    1   -0.04424   0.49373   0.97076 H_     1 0  0.09000
+ATOM       4  C    MET A    1   -1.32900  -0.06700  -0.56800 C_R    3 0  0.51000
+ATOM       5  CB   MET A    1    0.96300   0.94100  -0.74600 C_3    4 0 -0.18000
+ATOM       6 HCB   MET A    1    1.85610   1.06332  -0.13321 H_     1 0  0.09000
+ATOM       7 HCB   MET A    1    0.46803   1.90502  -0.86334 H_     1 0  0.09000
+ATOM       8  CG   MET A    1    1.36007   0.39769  -2.12721 C_3    4 0 -0.14000
+ATOM       9 HCG   MET A    1    1.56047  -0.66804  -2.01702 H_     1 0  0.09000
+ATOM      10 HCG   MET A    1    2.27275   0.90933  -2.43272 H_     1 0  0.09000
+ATOM      11  SD   MET A    1    0.10608   0.63940  -3.35872 S_3    2 0 -0.09000
+ATOM      12  CE   MET A    1    0.11984   2.36708  -3.75300 C_3    4 0 -0.22000
+ATOM      13 HCE   MET A    1    1.02087   2.62166  -4.10421 H_     1 0  0.09000
+ATOM      14 HCE   MET A    1   -0.57425   2.55599  -4.44765 H_     1 0  0.09000
+ATOM      15 HCE   MET A    1   -0.07931   2.89848  -2.92962 H_     1 0  0.09000
+REM M rotamer 2 (original SCWRL numbering is 112)
+REM energy 6.169 0.274 2.170 0.417 0.000 0.000 3.308 0.000 0.000 
+
+==> M/M.lib <==
+REM M rotamer 1 (original SCWRL numbering is 111)
+REM energy 7.122 0.310 2.843 0.606 0.000 0.000 3.363 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    MET A    1    0.60700  -1.23100   0.20400 N_R    4 0 -0.47000
+ATOM       2  CA   MET A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   MET A    1   -0.04424   0.49373   0.97076 H_     1 0  0.09000
+ATOM       4  C    MET A    1   -1.32900  -0.06700  -0.56800 C_R    3 0  0.51000
+ATOM       5  CB   MET A    1    0.96300   0.94100  -0.74600 C_3    4 0 -0.18000
+ATOM       6 HCB   MET A    1    1.85610   1.06332  -0.13321 H_     1 0  0.09000
+ATOM       7 HCB   MET A    1    0.46803   1.90502  -0.86334 H_     1 0  0.09000
+ATOM       8  CG   MET A    1    1.36007   0.39769  -2.12721 C_3    4 0 -0.14000
+ATOM       9 HCG   MET A    1    1.56047  -0.66804  -2.01702 H_     1 0  0.09000
+ATOM      10 HCG   MET A    1    2.27275   0.90933  -2.43272 H_     1 0  0.09000
+ATOM      11  SD   MET A    1    0.10608   0.63940  -3.35872 S_3    2 0 -0.09000
+ATOM      12  CE   MET A    1    0.11984   2.36708  -3.75300 C_3    4 0 -0.22000
+ATOM      13 HCE   MET A    1    1.02087   2.62166  -4.10421 H_     1 0  0.09000
+ATOM      14 HCE   MET A    1   -0.57425   2.55599  -4.44765 H_     1 0  0.09000
+ATOM      15 HCE   MET A    1   -0.07931   2.89848  -2.92962 H_     1 0  0.09000
+REM M rotamer 2 (original SCWRL numbering is 112)
+REM energy 6.169 0.274 2.170 0.417 0.000 0.000 3.308 0.000 0.000 
+
+==> N/N_10.lib <==
+REM N rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.987 0.152 2.612 0.375 0.016 0.000 2.831 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASN A    1   -0.72980  -0.80942  -0.01810 H_     1 0  0.09000
+ATOM       4  C    ASN A    1    1.33500  -0.55400  -0.03200 C_R    3 0  0.51000
+ATOM       5  CB   ASN A    1   -0.39500   0.75000  -1.29100 C_3    4 0 -0.18000
+ATOM       6 HCB   ASN A    1   -1.48475   0.72870  -1.30047 H_     1 0  0.09000
+ATOM       7 HCB   ASN A    1   -0.01239   0.12780  -2.10006 H_     1 0  0.09000
+ATOM       8  CG   ASN A    1    0.06106   2.10689  -1.47093 C_R    3 0  0.55000
+ATOM       9  OD1  ASN A    1   -0.66663   3.09086  -1.52512 O_2    1 2 -0.55000
+ATOM      10  ND2  ASN A    1    1.32200   2.29600  -1.58342 N_R    3 0 -0.62000
+ATOM      11 HND1  ASN A    1    1.91147   1.56539  -1.54681 H___A  1 0  0.31000
+ATOM      12 HND2  ASN A    1    1.65701   3.16616  -1.70141 H___A  1 0  0.31000
+REM N rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.899 0.133 2.897 0.139 0.064 0.000 2.666 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> N/N-centered.lib <==
+REM N rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.987 0.152 2.612 0.375 0.016 0.000 2.831 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_3    4 0  0.48500 0   0
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.09200 0   0
+ATOM       3 HCA   ASN A    1   -0.72980  -0.80942  -0.01810 H_     1 0  0.00000 0   0
+ATOM       4  C    ASN A    1    1.33500  -0.55400  -0.03200 C_R    3 0  0.35000 0   0
+ATOM       5  CB   ASN A    1   -0.39500   0.75000  -1.29100 C_3    4 0 -0.01500 0   0
+ATOM       6 HCB   ASN A    1   -1.48475   0.72870  -1.30047 H_     1 0  0.00000 0   0
+ATOM       7 HCB   ASN A    1   -0.01239   0.12780  -2.10006 H_     1 0  0.00000 0   0
+ATOM       8  CG   ASN A    1    0.06106   2.10689  -1.47093 C_R    3 0  0.35500 0   0
+ATOM       9  OD1  ASN A    1   -0.66663   3.09086  -1.52512 O_2    1 2 -0.36500 0   0
+ATOM      10  ND2  ASN A    1    1.32200   2.29600  -1.58342 N_R    3 0  0.01500 0   0
+ATOM      11 HND1  ASN A    1    1.91147   1.56539  -1.54681 H___A  1 0  0.00000 0   0
+ATOM      12 HND2  ASN A    1    1.65701   3.16616  -1.70141 H___A  1 0  0.00000 0   0
+REM N rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.899 0.133 2.897 0.139 0.064 0.000 2.666 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_3    4 0  0.48500 0   0
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.09200 0   0
+
+==> N/N-charge-corrected.lib <==
+REM N rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.987 0.152 2.612 0.375 0.016 0.000 2.831 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASN A    1   -0.72980  -0.80942  -0.01810 H_     1 0  0.09000
+ATOM       4  C    ASN A    1    1.33500  -0.55400  -0.03200 C_R    3 0  0.51000
+ATOM       5  CB   ASN A    1   -0.39500   0.75000  -1.29100 C_3    4 0 -0.18000
+ATOM       6 HCB   ASN A    1   -1.48475   0.72870  -1.30047 H_     1 0  0.09000
+ATOM       7 HCB   ASN A    1   -0.01239   0.12780  -2.10006 H_     1 0  0.09000
+ATOM       8  CG   ASN A    1    0.06106   2.10689  -1.47093 C_R    3 0  0.55000
+ATOM       9  OD1  ASN A    1   -0.66663   3.09086  -1.52512 O_2    1 2 -0.55000
+ATOM      10  ND2  ASN A    1    1.32200   2.29600  -1.58342 N_R    3 0 -0.62000
+ATOM      11 HND1  ASN A    1    1.91147   1.56539  -1.54681 H___A  1 0  0.31000
+ATOM      12 HND2  ASN A    1    1.65701   3.16616  -1.70141 H___A  1 0  0.31000
+REM N rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.899 0.133 2.897 0.139 0.064 0.000 2.666 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> N/N.lib <==
+REM N rotamer 1 (original SCWRL numbering is 11)
+REM energy 5.987 0.152 2.612 0.375 0.016 0.000 2.831 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ASN A    1   -0.72980  -0.80942  -0.01810 H_     1 0  0.09000
+ATOM       4  C    ASN A    1    1.33500  -0.55400  -0.03200 C_R    3 0  0.51000
+ATOM       5  CB   ASN A    1   -0.39500   0.75000  -1.29100 C_3    4 0 -0.18000
+ATOM       6 HCB   ASN A    1   -1.48475   0.72870  -1.30047 H_     1 0  0.09000
+ATOM       7 HCB   ASN A    1   -0.01239   0.12780  -2.10006 H_     1 0  0.09000
+ATOM       8  CG   ASN A    1    0.06106   2.10689  -1.47093 C_R    3 0  0.55000
+ATOM       9  OD1  ASN A    1   -0.66663   3.09086  -1.52512 O_2    1 2 -0.55000
+ATOM      10  ND2  ASN A    1    1.32200   2.29600  -1.58342 N_R    3 0 -0.62000
+ATOM      11 HND1  ASN A    1    1.91147   1.56539  -1.54681 H___A  1 0  0.31000
+ATOM      12 HND2  ASN A    1    1.65701   3.16616  -1.70141 H___A  1 0  0.31000
+REM N rotamer 2 (original SCWRL numbering is 12)
+REM energy 5.899 0.133 2.897 0.139 0.064 0.000 2.666 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ASN A    1   -0.28700   0.77000   1.11800 N_R    4 0 -0.47000
+ATOM       2  CA   ASN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> P/P_10.lib <==
+REM P rotamer 1 (original SCWRL numbering is 11)
+REM energy 11.479 0.084 3.642 5.420 0.000 0.000 2.333 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+ATOM       2  CA   PRO A    1    0.00000   0.00000   0.00000 C_3    4 0  0.02000
+ATOM       3 HCA   PRO A    1   -0.17218   0.14898   1.06596 H_     1 0  0.09000
+ATOM       4  C    PRO A    1   -1.23700   0.20700  -0.72200 C_2    3 0  0.51000
+ATOM       5  CB   PRO A    1    1.10900   1.01600  -0.30900 C_3    4 0 -0.18000
+ATOM       6 HCB   PRO A    1    1.00965   1.93715   0.27347 H_     1 0  0.09000
+ATOM       7 HCB   PRO A    1    1.11508   1.27555  -1.37391 H_     1 0  0.09000
+ATOM       8  CG   PRO A    1    2.40062   0.27166   0.03599 C_3    4 0 -0.18000
+ATOM       9 HCG   PRO A    1    2.58972   0.27780   1.11364 H_     1 0  0.09000
+ATOM      10 HCG   PRO A    1    3.26686   0.65842  -0.50574 H_     1 0  0.09000
+ATOM      11  CD   PRO A    1    1.97478  -1.18134  -0.46441 C_3    4 0  0.00000
+ATOM      12 HCD   PRO A    1    2.54529  -1.95466   0.05287 H_     1 0  0.09000
+ATOM      13 HCD   PRO A    1    2.09938  -1.28919  -1.54546 H_     1 0  0.09000
+REM P rotamer 2 (original SCWRL numbering is 21)
+REM energy 11.982 0.115 3.199 6.212 0.000 0.000 2.457 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+
+==> P/P-centered.lib <==
+REM P rotamer 1 (original SCWRL numbering is 11)
+REM energy 11.479 0.084 3.642 5.420 0.000 0.000 2.333 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_3    3 1  0.38400
+ATOM       2  CA   PRO A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500
+ATOM       3 HCA   PRO A    1   -0.17218   0.14898   1.06596 H_     1 0  0.00000
+ATOM       4  C    PRO A    1   -1.23700   0.20700  -0.72200 C_R    3 0  0.35000
+ATOM       5  CB   PRO A    1    1.10900   1.01600  -0.30900 C_3    4 0  0.02900
+ATOM       6 HCB   PRO A    1    1.00965   1.93715   0.27347 H_     1 0  0.00000
+ATOM       7 HCB   PRO A    1    1.11508   1.27555  -1.37391 H_     1 0  0.00000
+ATOM       8  CG   PRO A    1    2.40062   0.27166   0.03599 C_3    4 0  0.00800
+ATOM       9 HCG   PRO A    1    2.58972   0.27780   1.11364 H_     1 0  0.00000
+ATOM      10 HCG   PRO A    1    3.26686   0.65842  -0.50574 H_     1 0  0.00000
+ATOM      11  CD   PRO A    1    1.97478  -1.18134  -0.46441 C_3    4 0  0.07900
+ATOM      12 HCD   PRO A    1    2.54529  -1.95466   0.05287 H_     1 0  0.00000
+ATOM      13 HCD   PRO A    1    2.09938  -1.28919  -1.54546 H_     1 0  0.00000
+REM P rotamer 2 (original SCWRL numbering is 21)
+REM energy 11.982 0.115 3.199 6.212 0.000 0.000 2.457 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_3    3 1  0.38400
+
+==> P/P-charge-corrected.lib <==
+REM P rotamer 1 (original SCWRL numbering is 11)
+REM energy 11.479 0.084 3.642 5.420 0.000 0.000 2.333 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+ATOM       2  CA   PRO A    1    0.00000   0.00000   0.00000 C_3    4 0  0.02000
+ATOM       3 HCA   PRO A    1   -0.17218   0.14898   1.06596 H_     1 0  0.09000
+ATOM       4  C    PRO A    1   -1.23700   0.20700  -0.72200 C_2    3 0  0.51000
+ATOM       5  CB   PRO A    1    1.10900   1.01600  -0.30900 C_3    4 0 -0.18000
+ATOM       6 HCB   PRO A    1    1.00965   1.93715   0.27347 H_     1 0  0.09000
+ATOM       7 HCB   PRO A    1    1.11508   1.27555  -1.37391 H_     1 0  0.09000
+ATOM       8  CG   PRO A    1    2.40062   0.27166   0.03599 C_3    4 0 -0.18000
+ATOM       9 HCG   PRO A    1    2.58972   0.27780   1.11364 H_     1 0  0.09000
+ATOM      10 HCG   PRO A    1    3.26686   0.65842  -0.50574 H_     1 0  0.09000
+ATOM      11  CD   PRO A    1    1.97478  -1.18134  -0.46441 C_3    4 0  0.00000
+ATOM      12 HCD   PRO A    1    2.54529  -1.95466   0.05287 H_     1 0  0.09000
+ATOM      13 HCD   PRO A    1    2.09938  -1.28919  -1.54546 H_     1 0  0.09000
+REM P rotamer 2 (original SCWRL numbering is 21)
+REM energy 11.982 0.115 3.199 6.212 0.000 0.000 2.457 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+
+==> P/P.lib <==
+REM P rotamer 1 (original SCWRL numbering is 11)
+REM energy 11.479 0.084 3.642 5.420 0.000 0.000 2.333 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+ATOM       2  CA   PRO A    1    0.00000   0.00000   0.00000 C_3    4 0  0.02000
+ATOM       3 HCA   PRO A    1   -0.17218   0.14898   1.06596 H_     1 0  0.09000
+ATOM       4  C    PRO A    1   -1.23700   0.20700  -0.72200 C_2    3 0  0.51000
+ATOM       5  CB   PRO A    1    1.10900   1.01600  -0.30900 C_3    4 0 -0.18000
+ATOM       6 HCB   PRO A    1    1.00965   1.93715   0.27347 H_     1 0  0.09000
+ATOM       7 HCB   PRO A    1    1.11508   1.27555  -1.37391 H_     1 0  0.09000
+ATOM       8  CG   PRO A    1    2.40062   0.27166   0.03599 C_3    4 0 -0.18000
+ATOM       9 HCG   PRO A    1    2.58972   0.27780   1.11364 H_     1 0  0.09000
+ATOM      10 HCG   PRO A    1    3.26686   0.65842  -0.50574 H_     1 0  0.09000
+ATOM      11  CD   PRO A    1    1.97478  -1.18134  -0.46441 C_3    4 0  0.00000
+ATOM      12 HCD   PRO A    1    2.54529  -1.95466   0.05287 H_     1 0  0.09000
+ATOM      13 HCD   PRO A    1    2.09938  -1.28919  -1.54546 H_     1 0  0.09000
+REM P rotamer 2 (original SCWRL numbering is 21)
+REM energy 11.982 0.115 3.199 6.212 0.000 0.000 2.457 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    PRO A    1    0.59000  -1.25100  -0.11300 N_R    3 1 -0.29000
+
+==> Q/Q_10.lib <==
+REM Q rotamer 1 (original SCWRL numbering is 111)
+REM energy 10.354 0.188 6.177 0.393 0.004 0.000 3.593 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLN A    1    0.02500   1.23600   0.63400 N_R    4 0 -0.47000
+ATOM       2  CA   GLN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLN A    1   -0.94799  -0.45971   0.27942 H_     1 0  0.09000
+ATOM       4  C    GLN A    1    1.08500  -0.90500   0.31100 C_2    3 0  0.51000
+ATOM       5  CB   GLN A    1   -0.41600   0.08400  -1.48600 C_3    4 0 -0.18000
+ATOM       6 HCB   GLN A    1   -1.40145   0.54982  -1.48641 H_     1 0  0.09000
+ATOM       7 HCB   GLN A    1   -0.50230  -0.94905  -1.82285 H_     1 0  0.09000
+ATOM       8  CG   GLN A    1    0.52057   0.85964  -2.43853 C_3    4 0 -0.18000
+ATOM       9 HCG   GLN A    1    0.77169   1.79735  -1.94281 H_     1 0  0.09000
+ATOM      10 HCG   GLN A    1   -0.04954   1.06852  -3.34376 H_     1 0  0.09000
+ATOM      11  CD   GLN A    1    1.72936   0.16121  -2.78376 C_R    3 0  0.55000
+ATOM      12  OE1  GLN A    1    2.82822   0.66169  -2.58510 O_2    1 2 -0.55000
+ATOM      13  NE2  GLN A    1    1.67556  -1.00469  -3.31655 N_R    3 0 -0.62000
+ATOM      14 HNE1  GLN A    1    0.84196  -1.40849  -3.48200 H___A  1 0  0.31000
+ATOM      15 HNE2  GLN A    1    2.46863  -1.45561  -3.54235 H___A  1 0  0.31000
+REM Q rotamer 2 (original SCWRL numbering is 112)
+REM energy 12.532 0.197 6.169 1.838 0.001 0.000 4.328 0.000 0.000 
+
+==> Q/Q-centered.lib <==
+REM Q rotamer 1 (original SCWRL numbering is 111)
+REM energy 10.354 0.188 6.177 0.393 0.004 0.000 3.593 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLN A    1    0.02500   1.23600   0.63400 N_3    4 0  0.48000 0   0
+ATOM       2  CA   GLN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.06500 0   0
+ATOM       3 HCA   GLN A    1   -0.94799  -0.45971   0.27942 H_     1 0  0.00000 0   0
+ATOM       4  C    GLN A    1    1.08500  -0.90500   0.31100 C_2    3 0  0.35000 0   0
+ATOM       5  CB   GLN A    1   -0.41600   0.08400  -1.48600 C_3    4 0  0.04200 0   0
+ATOM       6 HCB   GLN A    1   -1.40145   0.54982  -1.48641 H_     1 0  0.00000 0   0
+ATOM       7 HCB   GLN A    1   -0.50230  -0.94905  -1.82285 H_     1 0  0.00000 0   0
+ATOM       8  CG   GLN A    1    0.52057   0.85964  -2.43853 C_3    4 0 -0.01600 0   0
+ATOM       9 HCG   GLN A    1    0.77169   1.79735  -1.94281 H_     1 0  0.00000 0   0
+ATOM      10 HCG   GLN A    1   -0.04954   1.06852  -3.34376 H_     1 0  0.00000 0   0
+ATOM      11  CD   GLN A    1    1.72936   0.16121  -2.78376 C_R    3 0  0.36100 0   0
+ATOM      12  OE1  GLN A    1    2.82822   0.66169  -2.58510 O_2    1 2 -0.37000 0   0
+ATOM      13  NE2  GLN A    1    1.67556  -1.00469  -3.31655 N_R    3 0  0.01000 0   0
+ATOM      14 HNE1  GLN A    1    0.84196  -1.40849  -3.48200 H___A  1 0  0.00000 0   0
+ATOM      15 HNE2  GLN A    1    2.46863  -1.45561  -3.54235 H___A  1 0  0.00000 0   0
+REM Q rotamer 2 (original SCWRL numbering is 112)
+REM energy 12.532 0.197 6.169 1.838 0.001 0.000 4.328 0.000 0.000 
+
+==> Q/Q-charge-corrected.lib <==
+REM Q rotamer 1 (original SCWRL numbering is 111)
+REM energy 10.354 0.188 6.177 0.393 0.004 0.000 3.593 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLN A    1    0.02500   1.23600   0.63400 N_R    4 0 -0.47000
+ATOM       2  CA   GLN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLN A    1   -0.94799  -0.45971   0.27942 H_     1 0  0.09000
+ATOM       4  C    GLN A    1    1.08500  -0.90500   0.31100 C_2    3 0  0.51000
+ATOM       5  CB   GLN A    1   -0.41600   0.08400  -1.48600 C_3    4 0 -0.18000
+ATOM       6 HCB   GLN A    1   -1.40145   0.54982  -1.48641 H_     1 0  0.09000
+ATOM       7 HCB   GLN A    1   -0.50230  -0.94905  -1.82285 H_     1 0  0.09000
+ATOM       8  CG   GLN A    1    0.52057   0.85964  -2.43853 C_3    4 0 -0.18000
+ATOM       9 HCG   GLN A    1    0.77169   1.79735  -1.94281 H_     1 0  0.09000
+ATOM      10 HCG   GLN A    1   -0.04954   1.06852  -3.34376 H_     1 0  0.09000
+ATOM      11  CD   GLN A    1    1.72936   0.16121  -2.78376 C_R    3 0  0.55000
+ATOM      12  OE1  GLN A    1    2.82822   0.66169  -2.58510 O_2    1 2 -0.55000
+ATOM      13  NE2  GLN A    1    1.67556  -1.00469  -3.31655 N_R    3 0 -0.62000
+ATOM      14 HNE1  GLN A    1    0.84196  -1.40849  -3.48200 H___A  1 0  0.31000
+ATOM      15 HNE2  GLN A    1    2.46863  -1.45561  -3.54235 H___A  1 0  0.31000
+REM Q rotamer 2 (original SCWRL numbering is 112)
+REM energy 12.532 0.197 6.169 1.838 0.001 0.000 4.328 0.000 0.000 
+
+==> Q/Q.lib <==
+REM Q rotamer 1 (original SCWRL numbering is 111)
+REM energy 10.354 0.188 6.177 0.393 0.004 0.000 3.593 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    GLN A    1    0.02500   1.23600   0.63400 N_R    4 0 -0.47000
+ATOM       2  CA   GLN A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   GLN A    1   -0.94799  -0.45971   0.27942 H_     1 0  0.09000
+ATOM       4  C    GLN A    1    1.08500  -0.90500   0.31100 C_2    3 0  0.51000
+ATOM       5  CB   GLN A    1   -0.41600   0.08400  -1.48600 C_3    4 0 -0.18000
+ATOM       6 HCB   GLN A    1   -1.40145   0.54982  -1.48641 H_     1 0  0.09000
+ATOM       7 HCB   GLN A    1   -0.50230  -0.94905  -1.82285 H_     1 0  0.09000
+ATOM       8  CG   GLN A    1    0.52057   0.85964  -2.43853 C_3    4 0 -0.18000
+ATOM       9 HCG   GLN A    1    0.77169   1.79735  -1.94281 H_     1 0  0.09000
+ATOM      10 HCG   GLN A    1   -0.04954   1.06852  -3.34376 H_     1 0  0.09000
+ATOM      11  CD   GLN A    1    1.72936   0.16121  -2.78376 C_R    3 0  0.55000
+ATOM      12  OE1  GLN A    1    2.82822   0.66169  -2.58510 O_2    1 2 -0.55000
+ATOM      13  NE2  GLN A    1    1.67556  -1.00469  -3.31655 N_R    3 0 -0.62000
+ATOM      14 HNE1  GLN A    1    0.84196  -1.40849  -3.48200 H___A  1 0  0.31000
+ATOM      15 HNE2  GLN A    1    2.46863  -1.45561  -3.54235 H___A  1 0  0.31000
+REM Q rotamer 2 (original SCWRL numbering is 112)
+REM energy 12.532 0.197 6.169 1.838 0.001 0.000 4.328 0.000 0.000 
+
+==> R/R_10.lib <==
+REM R rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.468 0.398 8.216 1.867 0.023 0.000 4.964 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ARG A    1   -0.81500   0.67500   0.89900 N_R    4 0 -0.47000
+ATOM       2  CA   ARG A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ARG A    1   -0.32404  -1.04038   0.02639 H_     1 0  0.09000
+ATOM       4  C    ARG A    1    1.42600   0.06800   0.24600 C_R    3 0  0.51000
+ATOM       5  CB   ARG A    1   -0.46700   0.17600  -1.46500 C_3    4 0 -0.18000
+ATOM       6 HCB   ARG A    1   -1.42299  -0.34524  -1.51489 H_     1 0  0.09000
+ATOM       7 HCB   ARG A    1    0.27218  -0.36321  -2.05742 H_     1 0  0.09000
+ATOM       8  CG   ARG A    1   -0.63054   1.60454  -2.02330 C_3    4 0 -0.18000
+ATOM       9 HCG   ARG A    1   -1.09573   2.21200  -1.24697 H_     1 0  0.09000
+ATOM      10 HCG   ARG A    1   -1.29339   1.54851  -2.88678 H_     1 0  0.09000
+ATOM      11  CD   ARG A    1    0.70195   2.24147  -2.44163 C_3    4 0  0.20000
+ATOM      12 HCD   ARG A    1    1.36207   2.25999  -1.57445 H_     1 0  0.09000
+ATOM      13 HCD   ARG A    1    0.50725   3.26182  -2.77190 H_     1 0  0.09000
+ATOM      14  NE   ARG A    1    1.31264   1.52371  -3.47808 N_R    3 0 -0.70000
+ATOM      15 HNE   ARG A    1    1.97889   0.91943  -3.20434 H___A  1 0  0.44000
+ATOM      16  CZ   ARG A    1    1.09496   1.56968  -4.76803 C_R    3 0  0.64000
+ATOM      17  NH1  ARG A    1    1.80963   0.78600  -5.49128 N_R    3 0 -0.80000
+
+==> R/R-centered.lib <==
+REM R rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.468 0.398 8.216 1.867 0.023 0.000 4.964 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ARG A    1   -0.81500   0.67500   0.89900 N_3    4 0  0.48000 0   0
+ATOM       2  CA   ARG A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   ARG A    1   -0.32404  -1.04038   0.02639 H_     1 0  0.00000 0   0
+ATOM       4  C    ARG A    1    1.42600   0.06800   0.24600 C_R    3 0  0.35200 0   0
+ATOM       5  CB   ARG A    1   -0.46700   0.17600  -1.46500 C_3    4 0  0.03900 0   0
+ATOM       6 HCB   ARG A    1   -1.42299  -0.34524  -1.51489 H_     1 0  0.00000 0   0
+ATOM       7 HCB   ARG A    1    0.27218  -0.36321  -2.05742 H_     1 0  0.00000 0   0
+ATOM       8  CG   ARG A    1   -0.63054   1.60454  -2.02330 C_3    4 0  0.04400 0   0
+ATOM       9 HCG   ARG A    1   -1.09573   2.21200  -1.24697 H_     1 0  0.00000 0   0
+ATOM      10 HCG   ARG A    1   -1.29339   1.54851  -2.88678 H_     1 0  0.00000 0   0
+ATOM      11  CD   ARG A    1    0.70195   2.24147  -2.44163 C_3    4 0  0.11500 0   0
+ATOM      12 HCD   ARG A    1    1.36207   2.25999  -1.57445 H_     1 0  0.00000 0   0
+ATOM      13 HCD   ARG A    1    0.50725   3.26182  -2.77190 H_     1 0  0.00000 0   0
+ATOM      14  NE   ARG A    1    1.31264   1.52371  -3.47808 N_R    3 0 -0.02900 0   0
+ATOM      15 HNE   ARG A    1    1.97889   0.91943  -3.20434 H___A  1 0  0.00000 0   0
+ATOM      16  CZ   ARG A    1    1.09496   1.56968  -4.76803 C_R    3 0  0.46000 0   0
+ATOM      17  NH1  ARG A    1    1.80963   0.78600  -5.49128 N_R    3 0  0.19200 0   0
+
+==> R/R-charge-corrected.lib <==
+REM R rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.468 0.398 8.216 1.867 0.023 0.000 4.964 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ARG A    1   -0.81500   0.67500   0.89900 N_R    4 0 -0.47000
+ATOM       2  CA   ARG A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ARG A    1   -0.32404  -1.04038   0.02639 H_     1 0  0.09000
+ATOM       4  C    ARG A    1    1.42600   0.06800   0.24600 C_R    3 0  0.51000
+ATOM       5  CB   ARG A    1   -0.46700   0.17600  -1.46500 C_3    4 0 -0.18000
+ATOM       6 HCB   ARG A    1   -1.42299  -0.34524  -1.51489 H_     1 0  0.09000
+ATOM       7 HCB   ARG A    1    0.27218  -0.36321  -2.05742 H_     1 0  0.09000
+ATOM       8  CG   ARG A    1   -0.63054   1.60454  -2.02330 C_3    4 0 -0.18000
+ATOM       9 HCG   ARG A    1   -1.09573   2.21200  -1.24697 H_     1 0  0.09000
+ATOM      10 HCG   ARG A    1   -1.29339   1.54851  -2.88678 H_     1 0  0.09000
+ATOM      11  CD   ARG A    1    0.70195   2.24147  -2.44163 C_3    4 0  0.20000
+ATOM      12 HCD   ARG A    1    1.36207   2.25999  -1.57445 H_     1 0  0.09000
+ATOM      13 HCD   ARG A    1    0.50725   3.26182  -2.77190 H_     1 0  0.09000
+ATOM      14  NE   ARG A    1    1.31264   1.52371  -3.47808 N_R    3 0 -0.70000
+ATOM      15 HNE   ARG A    1    1.97889   0.91943  -3.20434 H___A  1 0  0.44000
+ATOM      16  CZ   ARG A    1    1.09496   1.56968  -4.76803 C_R    3 0  0.64000
+ATOM      17  NH1  ARG A    1    1.80963   0.78600  -5.49128 N_R    3 0 -0.80000
+
+==> R/R.lib <==
+REM R rotamer 1 (original SCWRL numbering is 1111)
+REM energy 15.468 0.398 8.216 1.867 0.023 0.000 4.964 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    ARG A    1   -0.81500   0.67500   0.89900 N_R    4 0 -0.47000
+ATOM       2  CA   ARG A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   ARG A    1   -0.32404  -1.04038   0.02639 H_     1 0  0.09000
+ATOM       4  C    ARG A    1    1.42600   0.06800   0.24600 C_R    3 0  0.51000
+ATOM       5  CB   ARG A    1   -0.46700   0.17600  -1.46500 C_3    4 0 -0.18000
+ATOM       6 HCB   ARG A    1   -1.42299  -0.34524  -1.51489 H_     1 0  0.09000
+ATOM       7 HCB   ARG A    1    0.27218  -0.36321  -2.05742 H_     1 0  0.09000
+ATOM       8  CG   ARG A    1   -0.63054   1.60454  -2.02330 C_3    4 0 -0.18000
+ATOM       9 HCG   ARG A    1   -1.09573   2.21200  -1.24697 H_     1 0  0.09000
+ATOM      10 HCG   ARG A    1   -1.29339   1.54851  -2.88678 H_     1 0  0.09000
+ATOM      11  CD   ARG A    1    0.70195   2.24147  -2.44163 C_3    4 0  0.20000
+ATOM      12 HCD   ARG A    1    1.36207   2.25999  -1.57445 H_     1 0  0.09000
+ATOM      13 HCD   ARG A    1    0.50725   3.26182  -2.77190 H_     1 0  0.09000
+ATOM      14  NE   ARG A    1    1.31264   1.52371  -3.47808 N_R    3 0 -0.70000
+ATOM      15 HNE   ARG A    1    1.97889   0.91943  -3.20434 H___A  1 0  0.44000
+ATOM      16  CZ   ARG A    1    1.09496   1.56968  -4.76803 C_R    3 0  0.64000
+ATOM      17  NH1  ARG A    1    1.80963   0.78600  -5.49128 N_R    3 0 -0.80000
+
+==> S/S_10.lib <==
+REM S rotamer 1 (original SCWRL numbering is 1) 
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+ATOM       6 HCB   SER A    1    1.89022   0.97422   0.33090 H_     1 0  0.09000
+ATOM       7 HCB   SER A    1    0.56775   2.07160  -0.13288 H_     1 0  0.09000
+ATOM       8  OG   SER A    1    1.43899   1.02456  -1.67898 O_3    2 2 -0.66000
+ATOM       9 HOG   SER A    1    1.77444   0.12284  -1.86352 H___A  1 0  0.43000
+REM S rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+
+==> S/S-centered.lib <==
+REM S rotamer 1 (original SCWRL numbering is 1) 
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_3    4 0  0.48000 0   0
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.06000 0   0
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.00000 0   0
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.36000 0   0
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.13000 0   0
+ATOM       6 HCB   SER A    1    1.89022   0.97422   0.33090 H_     1 0  0.00000 0   0
+ATOM       7 HCB   SER A    1    0.56775   2.07160  -0.13288 H_     1 0  0.00000 0   0
+ATOM       8  OG   SER A    1    1.43899   1.02456  -1.67898 O_3    2 2 -0.10700 0   0
+ATOM       9 HOG   SER A    1    1.77444   0.12284  -1.86352 H___A  1 0  0.00000 0   0
+REM S rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_3    4 0  0.48000 0   0
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.06000 0   0
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.00000 0   0
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.36000 0   0
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.13000 0   0
+
+==> S/S-charge-corrected.lib <==
+REM S rotamer 1 (original SCWRL numbering is 1) 
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+ATOM       6 HCB   SER A    1    1.89022   0.97422   0.33090 H_     1 0  0.09000
+ATOM       7 HCB   SER A    1    0.56775   2.07160  -0.13288 H_     1 0  0.09000
+ATOM       8  OG   SER A    1    1.43899   1.02456  -1.67898 O_3    2 2 -0.66000
+ATOM       9 HOG   SER A    1    1.77444   0.12284  -1.86352 H___A  1 0  0.43000
+REM S rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+
+==> S/S.lib <==
+REM S rotamer 1 (original SCWRL numbering is 1) 
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+ATOM       6 HCB   SER A    1    1.89022   0.97422   0.33090 H_     1 0  0.09000
+ATOM       7 HCB   SER A    1    0.56775   2.07160  -0.13288 H_     1 0  0.09000
+ATOM       8  OG   SER A    1    1.43899   1.02456  -1.67898 O_3    2 2 -0.66000
+ATOM       9 HOG   SER A    1    1.77444   0.12284  -1.86352 H___A  1 0  0.43000
+REM S rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 2.285 0.056 0.603 0.030 0.000 0.000 1.596 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    SER A    1    0.59800  -1.24700  -0.10700 N_R    4 0 -0.47000
+ATOM       2  CA   SER A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   SER A    1   -0.16126   0.18086   1.06273 H_     1 0  0.09000
+ATOM       4  C    SER A    1   -1.25500   0.13400  -0.70800 C_R    3 0  0.51000
+ATOM       5  CB   SER A    1    1.02500   1.10000  -0.32000 C_3    4 0  0.05000
+
+==> T/T_10.lib <==
+REM T rotamer 1 (original SCWRL numbering is 1) 
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   THR A    1   -0.31646   0.40951   0.95930 H_     1 0  0.09000
+ATOM       4  C    THR A    1   -1.07500   0.12900  -0.95700 C_R    3 0  0.51000
+ATOM       5  CB   THR A    1    1.11200   1.05400  -0.22700 C_3    4 0  0.14000
+ATOM       6 HCB   THR A    1    0.60248   2.01167  -0.33360 H_     1 0  0.09000
+ATOM       7  OG1  THR A    1    1.95964   0.83900  -1.35236 O_3    2 2 -0.66000
+ATOM       8 HOG1  THR A    1    1.38984   0.63011  -2.12037 H___A  1 0  0.43000
+ATOM       9  CG2  THR A    1    1.94984   1.34779   1.02591 C_3    4 0 -0.27000
+ATOM      10 HCG2  THR A    1    2.39525   0.50705   1.33374 H_     1 0  0.09000
+ATOM      11 HCG2  THR A    1    2.64501   2.03310   0.80889 H_     1 0  0.09000
+ATOM      12 HCG2  THR A    1    1.35486   1.69455   1.75101 H_     1 0  0.09000
+REM T rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> T/T-centered.lib <==
+REM T rotamer 1 (original SCWRL numbering is 1) 
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_3    4 0  0.48000 0   0
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.06000 0   0
+ATOM       3 HCA   THR A    1   -0.31646   0.40951   0.95930 H_     1 0  0.00000 0   0
+ATOM       4  C    THR A    1   -1.07500   0.12900  -0.95700 C_R    3 0  0.36000 0   0
+ATOM       5  CB   THR A    1    1.11200   1.05400  -0.22700 C_3    4 0  0.14000 0   0
+ATOM       6 HCB   THR A    1    0.60248   2.01167  -0.33360 H_     1 0  0.00000 0   0
+ATOM       7  OG1  THR A    1    1.95964   0.83900  -1.35236 O_3    2 2 -0.13000 0   0
+ATOM       8 HOG1  THR A    1    1.38984   0.63011  -2.12037 H___A  1 0  0.00000 0   0
+ATOM       9  CG2  THR A    1    1.94984   1.34779   1.02591 C_3    4 0  0.01300 0   0
+ATOM      10 HCG2  THR A    1    2.39525   0.50705   1.33374 H_     1 0  0.00000 0   0
+ATOM      11 HCG2  THR A    1    2.64501   2.03310   0.80889 H_     1 0  0.00000 0   0
+ATOM      12 HCG2  THR A    1    1.35486   1.69455   1.75101 H_     1 0  0.00000 0   0
+REM T rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_3    4 0  0.48000 0   0
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.06000 0   0
+
+==> T/T-charge-corrected.lib <==
+REM T rotamer 1 (original SCWRL numbering is 1) 
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   THR A    1   -0.31646   0.40951   0.95930 H_     1 0  0.09000
+ATOM       4  C    THR A    1   -1.07500   0.12900  -0.95700 C_R    3 0  0.51000
+ATOM       5  CB   THR A    1    1.11200   1.05400  -0.22700 C_3    4 0  0.14000
+ATOM       6 HCB   THR A    1    0.60248   2.01167  -0.33360 H_     1 0  0.09000
+ATOM       7  OG1  THR A    1    1.95964   0.83900  -1.35236 O_3    2 2 -0.66000
+ATOM       8 HOG1  THR A    1    1.38984   0.63011  -2.12037 H___A  1 0  0.43000
+ATOM       9  CG2  THR A    1    1.94984   1.34779   1.02591 C_3    4 0 -0.27000
+ATOM      10 HCG2  THR A    1    2.39525   0.50705   1.33374 H_     1 0  0.09000
+ATOM      11 HCG2  THR A    1    2.64501   2.03310   0.80889 H_     1 0  0.09000
+ATOM      12 HCG2  THR A    1    1.35486   1.69455   1.75101 H_     1 0  0.09000
+REM T rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> T/T.lib <==
+REM T rotamer 1 (original SCWRL numbering is 1) 
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   THR A    1   -0.31646   0.40951   0.95930 H_     1 0  0.09000
+ATOM       4  C    THR A    1   -1.07500   0.12900  -0.95700 C_R    3 0  0.51000
+ATOM       5  CB   THR A    1    1.11200   1.05400  -0.22700 C_3    4 0  0.14000
+ATOM       6 HCB   THR A    1    0.60248   2.01167  -0.33360 H_     1 0  0.09000
+ATOM       7  OG1  THR A    1    1.95964   0.83900  -1.35236 O_3    2 2 -0.66000
+ATOM       8 HOG1  THR A    1    1.38984   0.63011  -2.12037 H___A  1 0  0.43000
+ATOM       9  CG2  THR A    1    1.94984   1.34779   1.02591 C_3    4 0 -0.27000
+ATOM      10 HCG2  THR A    1    2.39525   0.50705   1.33374 H_     1 0  0.09000
+ATOM      11 HCG2  THR A    1    2.64501   2.03310   0.80889 H_     1 0  0.09000
+ATOM      12 HCG2  THR A    1    1.35486   1.69455   1.75101 H_     1 0  0.09000
+REM T rotamer 2 (original SCWRL numbering is 1)  (H1)
+REM energy 7.157 0.207 3.190 0.361 0.000 0.000 3.399 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    THR A    1    0.40600  -1.31600   0.23000 N_R    4 0 -0.47000
+ATOM       2  CA   THR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+
+==> V/V_10.lib <==
+REM V rotamer 1 (original SCWRL numbering is 1)
+REM energy 8.783 0.538 3.900 0.084 0.000 0.000 4.260 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    VAL A    1    0.78000  -0.88100  -0.75200 N_R    4 0 -0.47000
+ATOM       2  CA   VAL A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   VAL A    1    0.15231  -0.20194   1.06025 H_     1 0  0.09000
+ATOM       4  C    VAL A    1   -1.40300  -0.17400  -0.32900 C_R    3 0  0.51000
+ATOM       5  CB   VAL A    1    0.56400   1.45400   0.01000 C_3    4 0 -0.09000
+ATOM       6 HCB   VAL A    1    1.50250   0.91258   0.12907 H_     1 0  0.09000
+ATOM       7  CG1  VAL A    1    0.57318   2.20772  -1.33212 C_3    4 0 -0.27000
+ATOM       8 HCG1  VAL A    1   -0.36201   2.28407  -1.67794 H_     1 0  0.09000
+ATOM       9 HCG1  VAL A    1    0.95477   3.12230  -1.19820 H_     1 0  0.09000
+ATOM      10 HCG1  VAL A    1    1.13275   1.70643  -1.99212 H_     1 0  0.09000
+ATOM      11  CG2  VAL A    1   -0.18309   2.41077   0.95617 C_3    4 0 -0.27000
+ATOM      12 HCG2  VAL A    1   -0.12486   2.06596   1.89304 H_     1 0  0.09000
+ATOM      13 HCG2  VAL A    1    0.23305   3.31884   0.90872 H_     1 0  0.09000
+ATOM      14 HCG2  VAL A    1   -1.14285   2.46916   0.68152 H_     1 0  0.09000
+REM V rotamer 2 (original SCWRL numbering is 2)
+REM energy 8.436 0.705 2.193 0.114 0.000 0.000 5.425 0.000 0.000 
+REM library_name SCWRL
+
+==> V/V-centered.lib <==
+REM V rotamer 1 (original SCWRL numbering is 1)
+REM energy 8.783 0.538 3.900 0.084 0.000 0.000 4.260 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    VAL A    1    0.78000  -0.88100  -0.75200 N_3    4 0  0.48000 0   0
+ATOM       2  CA   VAL A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   VAL A    1    0.15231  -0.20194   1.06025 H_     1 0  0.00000 0   0
+ATOM       4  C    VAL A    1   -1.40300  -0.17400  -0.32900 C_R    3 0  0.35000 0   0
+ATOM       5  CB   VAL A    1    0.56400   1.45400   0.01000 C_3    4 0  0.06200 0   0
+ATOM       6 HCB   VAL A    1    1.50250   0.91258   0.12907 H_     1 0  0.00000 0   0
+ATOM       7  CG1  VAL A    1    0.57318   2.20772  -1.33212 C_3    4 0 -0.02100 0   0
+ATOM       8 HCG1  VAL A    1   -0.36201   2.28407  -1.67794 H_     1 0  0.00000 0   0
+ATOM       9 HCG1  VAL A    1    0.95477   3.12230  -1.19820 H_     1 0  0.00000 0   0
+ATOM      10 HCG1  VAL A    1    1.13275   1.70643  -1.99212 H_     1 0  0.00000 0   0
+ATOM      11  CG2  VAL A    1   -0.18309   2.41077   0.95617 C_3    4 0 -0.02100 0   0
+ATOM      12 HCG2  VAL A    1   -0.12486   2.06596   1.89304 H_     1 0  0.00000 0   0
+ATOM      13 HCG2  VAL A    1    0.23305   3.31884   0.90872 H_     1 0  0.00000 0   0
+ATOM      14 HCG2  VAL A    1   -1.14285   2.46916   0.68152 H_     1 0  0.00000 0   0
+REM V rotamer 2 (original SCWRL numbering is 2)
+REM energy 8.436 0.705 2.193 0.114 0.000 0.000 5.425 0.000 0.000 
+REM library_name SCWRL
+
+==> V/V-charge-corrected.lib <==
+REM V rotamer 1 (original SCWRL numbering is 1)
+REM energy 8.783 0.538 3.900 0.084 0.000 0.000 4.260 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    VAL A    1    0.78000  -0.88100  -0.75200 N_R    4 0 -0.47000
+ATOM       2  CA   VAL A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   VAL A    1    0.15231  -0.20194   1.06025 H_     1 0  0.09000
+ATOM       4  C    VAL A    1   -1.40300  -0.17400  -0.32900 C_R    3 0  0.51000
+ATOM       5  CB   VAL A    1    0.56400   1.45400   0.01000 C_3    4 0 -0.09000
+ATOM       6 HCB   VAL A    1    1.50250   0.91258   0.12907 H_     1 0  0.09000
+ATOM       7  CG1  VAL A    1    0.57318   2.20772  -1.33212 C_3    4 0 -0.27000
+ATOM       8 HCG1  VAL A    1   -0.36201   2.28407  -1.67794 H_     1 0  0.09000
+ATOM       9 HCG1  VAL A    1    0.95477   3.12230  -1.19820 H_     1 0  0.09000
+ATOM      10 HCG1  VAL A    1    1.13275   1.70643  -1.99212 H_     1 0  0.09000
+ATOM      11  CG2  VAL A    1   -0.18309   2.41077   0.95617 C_3    4 0 -0.27000
+ATOM      12 HCG2  VAL A    1   -0.12486   2.06596   1.89304 H_     1 0  0.09000
+ATOM      13 HCG2  VAL A    1    0.23305   3.31884   0.90872 H_     1 0  0.09000
+ATOM      14 HCG2  VAL A    1   -1.14285   2.46916   0.68152 H_     1 0  0.09000
+REM V rotamer 2 (original SCWRL numbering is 2)
+REM energy 8.436 0.705 2.193 0.114 0.000 0.000 5.425 0.000 0.000 
+REM library_name SCWRL
+
+==> V/V.lib <==
+REM V rotamer 1 (original SCWRL numbering is 1)
+REM energy 8.783 0.538 3.900 0.084 0.000 0.000 4.260 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    VAL A    1    0.78000  -0.88100  -0.75200 N_R    4 0 -0.47000
+ATOM       2  CA   VAL A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   VAL A    1    0.15231  -0.20194   1.06025 H_     1 0  0.09000
+ATOM       4  C    VAL A    1   -1.40300  -0.17400  -0.32900 C_R    3 0  0.51000
+ATOM       5  CB   VAL A    1    0.56400   1.45400   0.01000 C_3    4 0 -0.09000
+ATOM       6 HCB   VAL A    1    1.50250   0.91258   0.12907 H_     1 0  0.09000
+ATOM       7  CG1  VAL A    1    0.57318   2.20772  -1.33212 C_3    4 0 -0.27000
+ATOM       8 HCG1  VAL A    1   -0.36201   2.28407  -1.67794 H_     1 0  0.09000
+ATOM       9 HCG1  VAL A    1    0.95477   3.12230  -1.19820 H_     1 0  0.09000
+ATOM      10 HCG1  VAL A    1    1.13275   1.70643  -1.99212 H_     1 0  0.09000
+ATOM      11  CG2  VAL A    1   -0.18309   2.41077   0.95617 C_3    4 0 -0.27000
+ATOM      12 HCG2  VAL A    1   -0.12486   2.06596   1.89304 H_     1 0  0.09000
+ATOM      13 HCG2  VAL A    1    0.23305   3.31884   0.90872 H_     1 0  0.09000
+ATOM      14 HCG2  VAL A    1   -1.14285   2.46916   0.68152 H_     1 0  0.09000
+REM V rotamer 2 (original SCWRL numbering is 2)
+REM energy 8.436 0.705 2.193 0.114 0.000 0.000 5.425 0.000 0.000 
+REM library_name SCWRL
+
+==> W/W_10.lib <==
+REM W rotamer 1 (original SCWRL numbering is 11)
+REM energy 31.261 0.527 20.351 1.101 0.008 0.000 9.273 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TRP A    1    0.97700  -0.74500  -0.64800 N_R    4 0 -0.47000
+ATOM       2  CA   TRP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TRP A    1    0.09182  -0.22542   1.06248 H_     1 0  0.09000
+ATOM       4  C    TRP A    1   -1.35500  -0.25500  -0.43100 C_R    3 0  0.51000
+ATOM       5  CB   TRP A    1    0.36400   1.49800   0.03400 C_3    4 0 -0.18000
+ATOM       6 HCB   TRP A    1    1.31201   1.60253   0.56169 H_     1 0  0.09000
+ATOM       7 HCB   TRP A    1   -0.41761   2.02231   0.58381 H_     1 0  0.09000
+ATOM       8  CG   TRP A    1    0.48440   2.06370  -1.28767 C_R    3 0 -0.03000
+ATOM       9  CD1  TRP A    1    1.64629   2.09721  -2.00757 C_R    3 0  0.03500
+ATOM      10 HCD1  TRP A    1    2.59611   1.78323  -1.80840 H_     1 0  0.11500
+ATOM      11  CD2  TRP A    1   -0.46086   2.63876  -2.04309 C_R    3 0 -0.02000
+ATOM      12  NE1  TRP A    1    1.36887   2.66488  -3.16394 N_R    3 0 -0.61000
+ATOM      13 HNE1  TRP A    1    1.98870   2.80902  -3.85607 H___A  1 0  0.38000
+ATOM      14  CE2  TRP A    1    0.13103   2.99222  -3.20659 C_R    3 0  0.13000
+ATOM      15  CE3  TRP A    1   -1.81442   2.88313  -1.80237 C_R    3 0 -0.11500
+ATOM      16 HCE3  TRP A    1   -2.26559   2.62373  -0.92512 H_     1 0  0.11500
+ATOM      17  CZ2  TRP A    1   -0.55426   3.60890  -4.24589 C_R    3 0 -0.11500
+
+==> W/W-centered.lib <==
+REM W rotamer 1 (original SCWRL numbering is 11)
+REM energy 31.261 0.527 20.351 1.101 0.008 0.000 9.273 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TRP A    1    0.97700  -0.74500  -0.64800 N_3    4 0  0.48000 0   0
+ATOM       2  CA   TRP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   TRP A    1    0.09182  -0.22542   1.06248 H_     1 0  0.00000 0   0
+ATOM       4  C    TRP A    1   -1.35500  -0.25500  -0.43100 C_R    3 0  0.35000 0   0
+ATOM       5  CB   TRP A    1    0.36400   1.49800   0.03400 C_3    4 0  0.01000 0   0
+ATOM       6 HCB   TRP A    1    1.31201   1.60253   0.56169 H_     1 0  0.00000 0   0
+ATOM       7 HCB   TRP A    1   -0.41761   2.02231   0.58381 H_     1 0  0.00000 0   0
+ATOM       8  CG   TRP A    1    0.48440   2.06370  -1.28767 C_R    3 0 -0.01800 0   0
+ATOM       9  CD1  TRP A    1    1.64629   2.09721  -2.00757 C_R    3 0  0.02100 0   0
+ATOM      10 HCD1  TRP A    1    2.59611   1.78323  -1.80840 H_     1 0  0.00000 0   0
+ATOM      11  CD2  TRP A    1   -0.46086   2.63876  -2.04309 C_R    3 0 -0.02300 0   0
+ATOM      12  NE1  TRP A    1    1.36887   2.66488  -3.16394 N_R    3 0 -0.01600 0   0
+ATOM      13 HNE1  TRP A    1    1.98870   2.80902  -3.85607 H___A  1 0  0.00000 0   0
+ATOM      14  CE2  TRP A    1    0.13103   2.99222  -3.20659 C_R    3 0  0.14000 0   0
+ATOM      15  CE3  TRP A    1   -1.81442   2.88313  -1.80237 C_R    3 0 -0.00300 0   0
+ATOM      16 HCE3  TRP A    1   -2.26559   2.62373  -0.92512 H_     1 0  0.00000 0   0
+ATOM      17  CZ2  TRP A    1   -0.55426   3.60890  -4.24589 C_R    3 0 -0.07200 0   0
+
+==> W/W-charge-corrected.lib <==
+REM W rotamer 1 (original SCWRL numbering is 11)
+REM energy 31.261 0.527 20.351 1.101 0.008 0.000 9.273 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TRP A    1    0.97700  -0.74500  -0.64800 N_R    4 0 -0.47000
+ATOM       2  CA   TRP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TRP A    1    0.09182  -0.22542   1.06248 H_     1 0  0.09000
+ATOM       4  C    TRP A    1   -1.35500  -0.25500  -0.43100 C_R    3 0  0.51000
+ATOM       5  CB   TRP A    1    0.36400   1.49800   0.03400 C_3    4 0 -0.18000
+ATOM       6 HCB   TRP A    1    1.31201   1.60253   0.56169 H_     1 0  0.09000
+ATOM       7 HCB   TRP A    1   -0.41761   2.02231   0.58381 H_     1 0  0.09000
+ATOM       8  CG   TRP A    1    0.48440   2.06370  -1.28767 C_R    3 0 -0.03000
+ATOM       9  CD1  TRP A    1    1.64629   2.09721  -2.00757 C_R    3 0  0.03500
+ATOM      10 HCD1  TRP A    1    2.59611   1.78323  -1.80840 H_     1 0  0.11500
+ATOM      11  CD2  TRP A    1   -0.46086   2.63876  -2.04309 C_R    3 0 -0.02000
+ATOM      12  NE1  TRP A    1    1.36887   2.66488  -3.16394 N_R    3 0 -0.61000
+ATOM      13 HNE1  TRP A    1    1.98870   2.80902  -3.85607 H___A  1 0  0.38000
+ATOM      14  CE2  TRP A    1    0.13103   2.99222  -3.20659 C_R    3 0  0.13000
+ATOM      15  CE3  TRP A    1   -1.81442   2.88313  -1.80237 C_R    3 0 -0.11500
+ATOM      16 HCE3  TRP A    1   -2.26559   2.62373  -0.92512 H_     1 0  0.11500
+ATOM      17  CZ2  TRP A    1   -0.55426   3.60890  -4.24589 C_R    3 0 -0.11500
+
+==> W/W.lib <==
+REM W rotamer 1 (original SCWRL numbering is 11)
+REM energy 31.261 0.527 20.351 1.101 0.008 0.000 9.273 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TRP A    1    0.97700  -0.74500  -0.64800 N_R    4 0 -0.47000
+ATOM       2  CA   TRP A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TRP A    1    0.09182  -0.22542   1.06248 H_     1 0  0.09000
+ATOM       4  C    TRP A    1   -1.35500  -0.25500  -0.43100 C_R    3 0  0.51000
+ATOM       5  CB   TRP A    1    0.36400   1.49800   0.03400 C_3    4 0 -0.18000
+ATOM       6 HCB   TRP A    1    1.31201   1.60253   0.56169 H_     1 0  0.09000
+ATOM       7 HCB   TRP A    1   -0.41761   2.02231   0.58381 H_     1 0  0.09000
+ATOM       8  CG   TRP A    1    0.48440   2.06370  -1.28767 C_R    3 0 -0.03000
+ATOM       9  CD1  TRP A    1    1.64629   2.09721  -2.00757 C_R    3 0  0.03500
+ATOM      10 HCD1  TRP A    1    2.59611   1.78323  -1.80840 H_     1 0  0.11500
+ATOM      11  CD2  TRP A    1   -0.46086   2.63876  -2.04309 C_R    3 0 -0.02000
+ATOM      12  NE1  TRP A    1    1.36887   2.66488  -3.16394 N_R    3 0 -0.61000
+ATOM      13 HNE1  TRP A    1    1.98870   2.80902  -3.85607 H___A  1 0  0.38000
+ATOM      14  CE2  TRP A    1    0.13103   2.99222  -3.20659 C_R    3 0  0.13000
+ATOM      15  CE3  TRP A    1   -1.81442   2.88313  -1.80237 C_R    3 0 -0.11500
+ATOM      16 HCE3  TRP A    1   -2.26559   2.62373  -0.92512 H_     1 0  0.11500
+ATOM      17  CZ2  TRP A    1   -0.55426   3.60890  -4.24589 C_R    3 0 -0.11500
+
+==> Y/Y_10.lib <==
+REM Y rotamer 1 (original SCWRL numbering is 11) 
+REM energy 15.852 0.586 2.047 2.291 0.002 0.000 10.926 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TYR A    1    0.92300  -0.81700  -0.63600 N_R    4 0 -0.47000
+ATOM       2  CA   TYR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TYR A    1    0.06710  -0.22973   1.06340 H_     1 0  0.09000
+ATOM       4  C    TYR A    1   -1.37000  -0.14900  -0.44000 C_R    3 0  0.51000
+ATOM       5  CB   TYR A    1    0.49800   1.45900   0.01700 C_3    4 0 -0.18000
+ATOM       6 HCB   TYR A    1    1.46684   1.46952   0.51634 H_     1 0  0.09000
+ATOM       7 HCB   TYR A    1   -0.21624   2.04307   0.59736 H_     1 0  0.09000
+ATOM       8  CG   TYR A    1    0.62932   2.02981  -1.29579 C_R    3 0  0.00000
+ATOM       9  CD1  TYR A    1   -0.45883   2.69519  -1.85810 C_R    3 0 -0.11500
+ATOM      10 HCD1  TYR A    1   -1.33975   2.77639  -1.35038 H_     1 0  0.11500
+ATOM      11  CD2  TYR A    1    1.84101   1.90912  -1.97475 C_R    3 0 -0.11500
+ATOM      12 HCD2  TYR A    1    2.62998   1.41996  -1.55208 H_     1 0  0.11500
+ATOM      13  CE1  TYR A    1   -0.33091   3.26263  -3.15107 C_R    3 0 -0.11500
+ATOM      14 HCE1  TYR A    1   -1.11001   3.75502  -3.58806 H_     1 0  0.11500
+ATOM      15  CE2  TYR A    1    1.96900   2.47665  -3.26868 C_R    3 0 -0.11500
+ATOM      16 HCE2  TYR A    1    2.84231   2.40435  -3.79070 H_     1 0  0.11500
+ATOM      17  CZ   TYR A    1    0.87919   3.14005  -3.82422 C_R    3 0  0.11000
+
+==> Y/Y-centered.lib <==
+REM Y rotamer 1 (original SCWRL numbering is 11) 
+REM energy 15.852 0.586 2.047 2.291 0.002 0.000 10.926 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TYR A    1    0.92300  -0.81700  -0.63600 N_3    4 0  0.47500 0   0
+ATOM       2  CA   TYR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07500 0   0
+ATOM       3 HCA   TYR A    1    0.06710  -0.22973   1.06340 H_     1 0  0.00000 0   0
+ATOM       4  C    TYR A    1   -1.37000  -0.14900  -0.44000 C_R    3 0  0.35200 0   0
+ATOM       5  CB   TYR A    1    0.49800   1.45900   0.01700 C_3    4 0  0.00600 0   0
+ATOM       6 HCB   TYR A    1    1.46684   1.46952   0.51634 H_     1 0  0.00000 0   0
+ATOM       7 HCB   TYR A    1   -0.21624   2.04307   0.59736 H_     1 0  0.00000 0   0
+ATOM       8  CG   TYR A    1    0.62932   2.02981  -1.29579 C_R    3 0  0.02400 0   0
+ATOM       9  CD1  TYR A    1   -0.45883   2.69519  -1.85810 C_R    3 0  0.00200 0   0
+ATOM      10 HCD1  TYR A    1   -1.33975   2.77639  -1.35038 H_     1 0  0.00000 0   0
+ATOM      11  CD2  TYR A    1    1.84101   1.90912  -1.97475 C_R    3 0  0.00200 0   0
+ATOM      12 HCD2  TYR A    1    2.62998   1.41996  -1.55208 H_     1 0  0.00000 0   0
+ATOM      13  CE1  TYR A    1   -0.33091   3.26263  -3.15107 C_R    3 0 -0.02500 0   0
+ATOM      14 HCE1  TYR A    1   -1.11001   3.75502  -3.58806 H_     1 0  0.00000 0   0
+ATOM      15  CE2  TYR A    1    1.96900   2.47665  -3.26868 C_R    3 0 -0.02500 0   0
+ATOM      16 HCE2  TYR A    1    2.84231   2.40435  -3.79070 H_     1 0  0.00000 0   0
+ATOM      17  CZ   TYR A    1    0.87919   3.14005  -3.82422 C_R    3 0  0.16200 0   0
+
+==> Y/Y-charge-corrected.lib <==
+REM Y rotamer 1 (original SCWRL numbering is 11) 
+REM energy 15.852 0.586 2.047 2.291 0.002 0.000 10.926 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TYR A    1    0.92300  -0.81700  -0.63600 N_R    4 0 -0.47000
+ATOM       2  CA   TYR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TYR A    1    0.06710  -0.22973   1.06340 H_     1 0  0.09000
+ATOM       4  C    TYR A    1   -1.37000  -0.14900  -0.44000 C_R    3 0  0.51000
+ATOM       5  CB   TYR A    1    0.49800   1.45900   0.01700 C_3    4 0 -0.18000
+ATOM       6 HCB   TYR A    1    1.46684   1.46952   0.51634 H_     1 0  0.09000
+ATOM       7 HCB   TYR A    1   -0.21624   2.04307   0.59736 H_     1 0  0.09000
+ATOM       8  CG   TYR A    1    0.62932   2.02981  -1.29579 C_R    3 0  0.00000
+ATOM       9  CD1  TYR A    1   -0.45883   2.69519  -1.85810 C_R    3 0 -0.11500
+ATOM      10 HCD1  TYR A    1   -1.33975   2.77639  -1.35038 H_     1 0  0.11500
+ATOM      11  CD2  TYR A    1    1.84101   1.90912  -1.97475 C_R    3 0 -0.11500
+ATOM      12 HCD2  TYR A    1    2.62998   1.41996  -1.55208 H_     1 0  0.11500
+ATOM      13  CE1  TYR A    1   -0.33091   3.26263  -3.15107 C_R    3 0 -0.11500
+ATOM      14 HCE1  TYR A    1   -1.11001   3.75502  -3.58806 H_     1 0  0.11500
+ATOM      15  CE2  TYR A    1    1.96900   2.47665  -3.26868 C_R    3 0 -0.11500
+ATOM      16 HCE2  TYR A    1    2.84231   2.40435  -3.79070 H_     1 0  0.11500
+ATOM      17  CZ   TYR A    1    0.87919   3.14005  -3.82422 C_R    3 0  0.11000
+
+==> Y/Y.lib <==
+REM Y rotamer 1 (original SCWRL numbering is 11) 
+REM energy 15.852 0.586 2.047 2.291 0.002 0.000 10.926 0.000 0.000 
+REM library_name SCWRL
+ATOM       1  N    TYR A    1    0.92300  -0.81700  -0.63600 N_R    4 0 -0.47000
+ATOM       2  CA   TYR A    1    0.00000   0.00000   0.00000 C_3    4 0  0.07000
+ATOM       3 HCA   TYR A    1    0.06710  -0.22973   1.06340 H_     1 0  0.09000
+ATOM       4  C    TYR A    1   -1.37000  -0.14900  -0.44000 C_R    3 0  0.51000
+ATOM       5  CB   TYR A    1    0.49800   1.45900   0.01700 C_3    4 0 -0.18000
+ATOM       6 HCB   TYR A    1    1.46684   1.46952   0.51634 H_     1 0  0.09000
+ATOM       7 HCB   TYR A    1   -0.21624   2.04307   0.59736 H_     1 0  0.09000
+ATOM       8  CG   TYR A    1    0.62932   2.02981  -1.29579 C_R    3 0  0.00000
+ATOM       9  CD1  TYR A    1   -0.45883   2.69519  -1.85810 C_R    3 0 -0.11500
+ATOM      10 HCD1  TYR A    1   -1.33975   2.77639  -1.35038 H_     1 0  0.11500
+ATOM      11  CD2  TYR A    1    1.84101   1.90912  -1.97475 C_R    3 0 -0.11500
+ATOM      12 HCD2  TYR A    1    2.62998   1.41996  -1.55208 H_     1 0  0.11500
+ATOM      13  CE1  TYR A    1   -0.33091   3.26263  -3.15107 C_R    3 0 -0.11500
+ATOM      14 HCE1  TYR A    1   -1.11001   3.75502  -3.58806 H_     1 0  0.11500
+ATOM      15  CE2  TYR A    1    1.96900   2.47665  -3.26868 C_R    3 0 -0.11500
+ATOM      16 HCE2  TYR A    1    2.84231   2.40435  -3.79070 H_     1 0  0.11500
+ATOM      17  CZ   TYR A    1    0.87919   3.14005  -3.82422 C_R    3 0  0.11000

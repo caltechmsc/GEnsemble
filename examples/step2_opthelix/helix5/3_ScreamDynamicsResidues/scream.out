@@ -1,0 +1,413 @@
+InputFileName           helix5.2.post_backbone_min.bgf
+MutateResidueInfo       S1_A S5_A S9_A S10_A S11_A T19_A S20_A S22_A S27_A 
+AdditionalLibraryInfo   
+Library                 V10
+PlacementMethod         CreateCB
+CreateCBParameters      1.81 51.1 1.55 0.5 
+UseScreamEnergyFunction YES
+UseDeltaMethod          FULL
+UseRotamerNeighborList  NO
+UseAsymmetricDelta      YES
+UseDeltaForInterResiE   YES
+FlatDeltaValue          0
+DeltaStandardDevs       0
+InnerWallScalingFactor  0
+NonPolarHCalc           YES
+ScoringFunction         
+OneEnergyFFParFile      /home/ravi/GEnsemble/programs/FF/dreiding-0.3.par
+DeltaParFile            /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_delta_Total_Min.par
+EachAtomDeltaFile       /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_EachAtomDeltaFileStub.par
+PolarOptimizationExclusions /home/ravi/GEnsemble/programs/scream2/lib/SCREAM_delta_par_files/SCREAM_PolarOptimizationExclusionsStub.par
+LJOption                12-6
+CoulombMode             Normal
+Dielectric              2.5
+MultiplePlacementMethod ClusteringThenDoubletsThenSinglets
+CBGroundSpectrumCalc    YES
+Selections              1
+MaxSearchNumber         99999999
+AbsStericClashCutoffEL  1e+09
+StericClashCutoffEnergy 250
+StericClashCutoffDist   0.5
+MaxFinalStepRunTime     36000
+LibPath                 
+Verbosity               0
+DesignPositionAndClass  
+DesignAAClassDefns      
+JustOutputSequence      NO
+BindingSiteMode         
+FixedResidues           
+AroundAtom              
+AroundResidue           
+AroundChain             
+AroundDistance          4
+AroundDistanceDefn      SideChainOnly
+
+Number of atoms in system: 292
+Total atoms in this system: 292
+Initializing chain...
+New SCREAM Chain Initialized... 
+New Protein created with 1 components.
+S1_A
+S5_A
+S9_A
+S10_A
+S11_A
+T19_A
+S20_A
+S22_A
+S27_A
+Total Number of Libraries loaded:  9
+Delta value updated for 0 atoms.
+##################################
+Calculating Empty Lattice Energies
+Method used:  FULL
+##################################
+
+S20_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -2.94660260678
+
+Rotamer 2
+Total:   0.599447686345
+
+Rotamer 3
+Total:   -2.05197298013
+
+Rotamer 4
+Total:   5.1763680844
+
+Rotamer 5
+Total:   8.43710000187
+
+Rotamer 6
+Total:   2.2513420966
+
+Rotamer 7
+Total:   -1.38991082503
+
+Rotamer 8
+Total:   4.79448270167
+
+Rotamer 9
+Total:   1.12424314449
+
+S11_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -2.96003745405
+
+Rotamer 2
+Total:   0.4240206563
+
+Rotamer 3
+Total:   -1.51814147879
+
+Rotamer 4
+Total:   5.46653463815
+
+Rotamer 5
+Total:   7.15082598101
+
+Rotamer 6
+Total:   2.00337686182
+
+Rotamer 7
+Total:   -0.646964440924
+
+Rotamer 8
+Total:   4.98264989616
+
+Rotamer 9
+Total:   0.843366172538
+
+T19_A
+
+Rotamer 1
+ALA ==> THR Mutation! 
+Total:   4.38251085161
+
+Rotamer 2
+Total:   0.572620339749
+
+Rotamer 3
+Total:   6.07079299228
+
+Rotamer 4
+Total:   1.53716187178
+
+Rotamer 5
+Total:   1.51640950805
+
+Rotamer 6
+Total:   3.78041465318
+
+Rotamer 7
+Total:   67.8448310061
+
+Rotamer 8
+Total:   70.0878669962
+
+Rotamer 9
+Total:   72.5792413578
+
+Rotamer 10
+Total:   7.03295094807
+
+Rotamer 11
+Total:   1.3180804993
+
+Rotamer 12
+Total:   5.7886121669
+
+Rotamer 13
+Total:   7.90693106469
+
+Rotamer 14
+Total:   10.6552724686
+
+Rotamer 15
+Total:   12.7794470185
+
+Rotamer 16
+Total:   28.2455237738
+
+Rotamer 17
+Total:   25.1451173282
+
+Rotamer 18
+Total:   32.2108548071
+
+S1_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   1.71911670011
+
+Rotamer 2
+Total:   -1.08314473073
+
+Rotamer 3
+Total:   -1.46283461097
+
+Rotamer 4
+Total:   3.53569515327
+
+Rotamer 5
+Total:   6.62003471045
+
+Rotamer 6
+Total:   1.59070240692
+
+Rotamer 7
+Total:   -2.5436637917
+
+Rotamer 8
+Total:   -0.271631127034
+
+Rotamer 9
+Total:   1.91102138557
+
+S10_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -3.58796240813
+
+Rotamer 2
+Total:   0.311218168447
+
+Rotamer 3
+Total:   -1.7283788094
+
+Rotamer 4
+Total:   4.74620934851
+
+Rotamer 5
+Total:   6.65963067679
+
+Rotamer 6
+Total:   2.06799345191
+
+Rotamer 7
+Total:   -0.625671898268
+
+Rotamer 8
+Total:   4.44404957039
+
+Rotamer 9
+Total:   0.517137894698
+
+S27_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -2.82620984313
+
+Rotamer 2
+Total:   0.213421983773
+
+Rotamer 3
+Total:   -1.92007962418
+
+Rotamer 4
+Total:   5.13477187088
+
+Rotamer 5
+Total:   7.42878658895
+
+Rotamer 6
+Total:   1.49932087502
+
+Rotamer 7
+Total:   -0.161879118303
+
+Rotamer 8
+Total:   5.29601849178
+
+Rotamer 9
+Total:   1.56015425755
+
+S5_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -2.03183272857
+
+Rotamer 2
+Total:   -1.62084023243
+
+Rotamer 3
+Total:   -3.33807545716
+
+Rotamer 4
+Total:   3.72151555753
+
+Rotamer 5
+Total:   6.77493898228
+
+Rotamer 6
+Total:   1.62165463562
+
+Rotamer 7
+Total:   -2.99805450174
+
+Rotamer 8
+Total:   3.6989430923
+
+Rotamer 9
+Total:   2.78777194316
+
+S22_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -2.85390833145
+
+Rotamer 2
+Total:   -0.979847597149
+
+Rotamer 3
+Total:   -3.01731176848
+
+Rotamer 4
+Total:   4.88247173927
+
+Rotamer 5
+Total:   6.65604053444
+
+Rotamer 6
+Total:   2.47356979055
+
+Rotamer 7
+Total:   -2.24814253139
+
+Rotamer 8
+Total:   3.53342896316
+
+Rotamer 9
+Total:   1.33618431555
+
+S9_A
+
+Rotamer 1
+ALA ==> SER Mutation! 
+Total:   -3.14379795501
+
+Rotamer 2
+Total:   -1.32748994383
+
+Rotamer 3
+Total:   -3.06553345877
+
+Rotamer 4
+Total:   4.62542177491
+
+Rotamer 5
+Total:   6.34585097979
+
+Rotamer 6
+Total:   1.91114162344
+
+Rotamer 7
+Total:   -1.82613618727
+
+Rotamer 8
+Total:   3.52682568111
+
+Rotamer 9
+Total:   1.17870896183
+Initializing Data Structure for Dynamic Memory Data Structures. 
+Done sorting All Rotamer Libraries by their Empty Lattice Energies!
+Maximum number of excited rotamer configurations: 7.74841e+08
+Done initializing Data structures for Dynamic Memory Energy Excitation Scheme Calculation.
+Start Clash Resolution (or DeterministicClashEliminationWithSnapshotField)
+Doing ClusteringThenDoubletsThenSinglets!
+Initializing Data Structure for Dynamic Memory Data Structures. 
+Done sorting All Rotamer Libraries by their Empty Lattice Energies!
+Maximum number of excited rotamer configurations: 7.74841e+08
+Done initializing Data structures for Dynamic Memory Energy Excitation Scheme Calculation.
+------------------------------------
+Number of Clashes identified: 0
+All ground state clashes eliminated!
+Clash resolution finished!
++++++++++++++++++++++++++++++++++++++++++++++++
+Doing SCREAM doublet excitation.
+No further clashes needed to be resolved by doublet excitation.
+Starting round  1  of deterministicClashEliminationWithSnapshotField procedure.
+Calculating all interaction energies before this round begins:
+No Clashes identified in this round.
+No Polar Optimization/Surface Residues definitions given.  Proceeding.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Solving rest of protein.
+End round  1  of deterministicClashEliminationWithSnapshotField procedure.
+Initializing Data Structure for Dynamic Memory Data Structures. 
+Done sorting All Rotamer Libraries by their Empty Lattice Energies!
+Maximum number of excited rotamer configurations: 7.74841e+08
+Done initializing Data structures for Dynamic Memory Energy Excitation Scheme Calculation.
+ClashCollection Added.
+Starting HBNetworkOptimization!
+Done HBNetworkOptimization.
+before
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+Delta value updated for 0 atoms.
+SCREAM all done!  Exiting.
+Destroying ScreamModel! 
+ScreamModel destroyed.

@@ -1,0 +1,27 @@
+BIOGRF  160
+DESCRP VAL-L   
+REMARK Created by srl @ sun4 on  1/28/89   13:11:58                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  N    VAL      1    2.81600   1.48000  -1.46300 N_R    3 0 -0.08000
+ATOM       2 HN    VAL      1    2.65800   0.55500  -1.41700 H___A  1 0  0.00000
+ATOM       3  CA   VAL      1    2.03600   2.36100  -0.71100 C_31   4 0  0.07500
+ATOM       4  C    VAL      1    0.63300   2.18700  -1.04000 C_R    3 0  0.35000
+ATOM       5  O    VAL      1   -0.09900   1.64800  -0.22300 O_2    1 2 -0.36500
+ATOM       6  CB   VAL      1    2.60000   3.81500  -0.70100 C_31   4 0  0.06200
+ATOM       7  CG1  VAL      1    1.70000   4.90800  -0.09700 C_33   4 0 -0.02100
+ATOM       8  CG2  VAL      1    3.92300   3.97000   0.07000 C_33   4 0 -0.02100
+ATOM       9  OXT  VAL      1    0.13000   2.55600  -2.09900 O_2    1 2 -0.56000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     4     6
+CONECT     4     3     5     9
+ORDER      4     0     2     0
+CONECT     5     4
+ORDER      5     2
+CONECT     6     3     7     8
+CONECT     7     6
+CONECT     8     6
+CONECT     9     4
+END

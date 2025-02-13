@@ -1,0 +1,37 @@
+BIOGRF  321
+DESCRP CYCLOPEN
+REMARK Created by tc @ tahir on  4/30/93   23:52:19                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 C1    CPE      1    0.52100  -0.63200  -1.00100 C_3    4 0  0.00000
+HETATM     2 H2C1  CPE      1    0.27504  -1.22098  -1.88811 H_     1 0  0.00000
+HETATM     3 H1C1  CPE      1    1.60789  -0.53102  -0.92734 H_     1 0  0.00000
+HETATM     4 C2    CPE      1   -0.13706   0.75630  -1.04237 C_3    4 0  0.00000
+HETATM     5 H2C2  CPE      1    0.43903   1.45526  -1.65413 H_     1 0  0.00000
+HETATM     6 H1C2  CPE      1   -1.15058   0.67684  -1.44842 H_     1 0  0.00000
+HETATM     7 C3    CPE      1   -0.19169   1.19846   0.43199 C_3    4 0  0.00000
+HETATM     8 H2C3  CPE      1    0.71302   1.76092   0.68169 H_     1 0  0.00000
+HETATM     9 H1C3  CPE      1   -1.06074   1.83548   0.61657 H_     1 0  0.00000
+HETATM    10 C4    CPE      1   -0.25325  -0.10119   1.26674 C_3    4 0  0.00000
+HETATM    11 H2C4  CPE      1    0.53189  -0.09822   2.02827 H_     1 0  0.00000
+HETATM    12 H1C4  CPE      1   -1.22037  -0.19693   1.76790 H_     1 0  0.00000
+HETATM    13 C5    CPE      1   -0.04096  -1.27074   0.28077 C_3    4 0  0.00000
+HETATM    14 H2C5  CPE      1    0.64564  -2.01980   0.68370 H_     1 0  0.00000
+HETATM    15 H1C5  CPE      1   -0.99877  -1.75267   0.06175 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4    13     3     2
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1     7     6     5
+CONECT     5     4
+CONECT     6     4
+CONECT     7     4    10     9     8
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7    13    12    11
+CONECT    11    10
+CONECT    12    10
+CONECT    13    10     1    15    14
+CONECT    14    13
+CONECT    15    13
+END

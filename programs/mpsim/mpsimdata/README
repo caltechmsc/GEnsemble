@@ -1,0 +1,5 @@
+This directory is meant for data/parameter/forcefield files which can
+be accessed by any MPSim job.  The mechanism to search $cwd first for
+a file, and then here, is not implemented yet.  Its on my list.
+
+11/7/97  Daniel Mainz <mainz@wag.caltech.edu>

@@ -1,0 +1,29 @@
+BIOGRF  321
+DESCRP ACETONE 
+REMARK Created by tc @ tahir on  4/30/93   23:50:52                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 C1    ACE      1   -0.22800  -0.32600  -0.41300 C_2    3 0  0.00000
+HETATM     2 H3C1  ACE      1   -0.75200  -1.01767  -1.27660 O_2    1 2  0.00000
+HETATM     3 H2C1  ACE      1    0.28600  -0.95088   0.78765 C_3    4 0  0.00000
+HETATM     4 HH2C1 ACE      1    1.35655  -0.75822   0.87665 H_     1 0  0.00000
+HETATM     5 HH2C1 ACE      1    0.13170  -2.03262   0.77286 H_     1 0  0.00000
+HETATM     6 HH2C1 ACE      1   -0.22185  -0.54384   1.66391 H_     1 0  0.00000
+HETATM     7 H1C1  ACE      1   -0.13022   1.10564  -0.60616 C_3    4 0  0.00000
+HETATM     8 HH1C1 ACE      1   -0.66058   1.62473   0.19419 H_     1 0  0.00000
+HETATM     9 HH1C1 ACE      1   -0.56521   1.41107  -1.56097 H_     1 0  0.00000
+HETATM    10 HH1C1 ACE      1    0.91762   1.41091  -0.59331 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     7     3     2
+ORDER      1     1     1     2
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1     6     5     4
+CONECT     4     3
+CONECT     5     3
+CONECT     6     3
+CONECT     7     1    10     9     8
+CONECT     8     7
+CONECT     9     7
+CONECT    10     7
+END

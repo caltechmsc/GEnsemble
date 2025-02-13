@@ -1,0 +1,98 @@
+C***********************************************************************
+C***  This force field implementation was made by BioDesign, Inc.
+C***  This file may not be redistributed (whether or not it has been
+C***  modified) without the written permission of BioDesign.
+C***  This notice must appear in all copies of this file.
+C***********************************************************************
+C
+C  Conversion table MMP2 -- 3/26/87 -- BDO
+C
+C  Record format is 1X,A3, 1X,A7, 1X,A7, 1X,I2, 1X,I2, 1X,F8.4 and
+C  corresponds to:
+C
+C
+C  where RES    = residue name
+C        OLDTYP = old atom type (type on input data file)
+C        NEWTYP = new atom type (type used in calculations)
+C        MB     = maximum number of covalent connections (for building)
+C        NL     = number of lone pairs at MB (for H-bond acceptors)
+C        CHARGE = charge on atom (used in electrostatic calculation)
+C
+C***********************************************************************
+*
+C  MMP2 atom type conversion to MMP2 atom types
+*RES OLDTYP* NEWTYP* MB NL CHARGE**
+ *** Z_      Z_       0  0   0.0000
+ *** LP      LP       0  0   0.0000
+ *** H__C    H__C     1  0   0.0000
+ *** H__V    H__V     1  0   0.0000
+ *** H__O    H__0     1  0   0.0000
+ *** H__OC   H__OC    1  0   0.0000
+ *** H__N    H__N     1  0   0.0000
+ *** D__C    D__C     1  0   0.0000
+ *** B_3     B_3      4  0   0.0000
+ *** B_2     B_2      3  0   0.0000
+ *** C_3     C_3      4  0   0.0000
+ *** HC_3    H__C     1  0   0.0000
+ *** C_3+    C_3+     3  0   0.0000
+ *** HC_3+   H__C     1  0   0.0000
+ *** C_2     C_2      3  0   0.0000
+ *** HC_2    HC_2     1  0   0.0000
+ *** C_2R    C_2R     3  0   0.0000
+ *** C_2+    C_2+     3  0   0.0000
+ *** HC_2+   H__C     1  0   0.0000
+ *** C_2_3   C_2_3    3  0   0.0000
+ *** HC_2_3  H__C     1  0   0.0000
+ *** C_1     C_1      2  0   0.0000
+ *** HC_1    H__C     1  0   0.0000
+ *** N_3_L   N_3_L    3  1   0.0000
+ *** HN_3_L  H__N     1  0   0.0000
+ *** N_3+    N_3+     4  0   0.0000
+ *** HN_3+   H__N     1  0   0.0000
+ *** N_2_L   N_2_L    2  1   0.0000
+ *** HN_2_L  H__N     1  0   0.0000
+ *** N_2     N_2      3  0   0.0000
+ *** HN_2    H__N     1  0   0.0000
+ *** N_2+    N_2+     3  0   0.0000
+ *** HN_2+   H__N     1  0   0.0000
+ *** N_R     N_R      3  0   0.0000
+ *** HN_R    H__N     1  0   0.0000
+ *** N_1     N_1      1  1   0.0000
+ *** O_3_L   O_3_L    2  2   0.0000
+ *** HO_3_L  H__O     1  0   0.0000
+ *** O_2+    O_2+     1  2   0.0000
+ *** HO_2+   H__O     1  0   0.0000
+ *** O_R     O_R      2  1   0.0000
+ *** HO_R    H__O     1  0   0.0000
+ *** F_      F_       1  0   0.0000
+ *** HF_     H__C     1  0   0.0000
+ *** Si      Si       4  0   0.0000
+ *** HSi     H__C     1  0   0.0000
+ *** P_3     P_3      3  1   0.0000
+ *** HP_3    H__C     1  0   0.0000
+ *** S_3     S_3      2  2   0.0000
+ *** HS_3    H__C     1  0   0.0000
+ *** S_3+    S_3+     4  0   0.0000
+ *** HS_3+   H__C     1  0   0.0000
+ *** S_2+    S_2+     3  0   0.0000
+ *** HS_2+   H__C     1  0   0.0000
+ *** S_2++   S_2++    4  0   0.0000
+ *** HS_2++  H__C     1  0   0.0000
+ *** S_R     S_R      2  1   0.0000
+ *** HS_R    H__C     1  0   0.0000
+ *** Cl      Cl       1  0   0.0000
+ *** HCl     H__C     1  0   0.0000
+ *** Ge      Ge       4  0   0.0000
+ *** HGe     H__C     1  0   0.0000
+ *** Br      Br       1  0   0.0000
+ *** HBr     H__C     1  0   0.0000
+ *** Se      Se       2  2   0.0000
+ *** HSe     H__C     1  0   0.0000
+ *** Sn      Sn       4  0   0.0000
+ *** HSn     H__C     1  0   0.0000
+ *** I_      I_       1  0   0.0000
+ *** HI_     H__C     1  0   0.0000
+ *** Te      Te       2  2   0.0000
+ *** HTe     H__C     1  0   0.0000
+ *** Pb      Pb       4  0   0.0000
+ *** HPb     H__C     1  0   0.0000

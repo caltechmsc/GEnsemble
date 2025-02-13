@@ -1,0 +1,7 @@
+cd ../helix1/4_Dynamics
+cd helix1.5.dynamics.bgfs
+mol new helix1.4.pre_dynamics.bgf
+for { set i 254999 } { $i < 1000000 } {incr i 5000 } {
+mol addfile helix1.5.dynamics.snap${i}.bgf
+}
+cd ../../../vmd

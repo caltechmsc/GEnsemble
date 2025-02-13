@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Plotting with matplotlib </TITLE>
+<META NAME="description" CONTENT="Plotting with matplotlib ">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node16.html">
+<LINK REL="previous" HREF="node14.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node16.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html343"
+  HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html341"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html335"
+  HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html344"
+  HREF="node16.html">Plotting with Gnuplot</A>
+<B> Up:</B> <A NAME="tex2html342"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html336"
+  HREF="node14.html">Interactive demos with IPython</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION000150000000000000000"></A><A NAME="sec:matplotlib-support"></A>
+<BR>
+Plotting with <TT>matplotlib</TT> 
+</H1>
+
+<P>
+The matplotlib library (http://matplotlib.sourceforge.net <TT><A NAME="tex2html21"
+  HREF="http://matplotlib.sourceforge.net">http://matplotlib.sourceforge.net</A></TT>)
+provides high quality 2D plotting for Python. Matplotlib can produce plots on screen
+using a variety of GUI toolkits, including Tk, GTK and WXPython. It also provides
+a number of commands useful for scientific computing, all with a syntax compatible
+with that of the popular Matlab program.
+
+<P>
+IPython accepts the special option <TT>-pylab</TT> (Sec.&nbsp;<A HREF="node5.html#sec:cmd-line-opts">5.2</A>).
+This configures it to support matplotlib, honoring the settings in the <TT>.matplotlibrc</TT>
+file. IPython will detect the user's choice of matplotlib GUI backend, and automatically
+select the proper threading model to prevent blocking. It also sets matplotlib
+in interactive mode and modifies <TT>%run</TT> slightly, so that any matplotlib-based
+script can be executed using <TT>%run</TT> and the final <TT>show()</TT> command
+does not block the interactive shell.
+
+<P>
+The <TT>-pylab</TT> option must be given first in order for IPython to configure
+its threading mode. However, you can still issue other options afterwards. This
+allows you to have a matplotlib-based environment customized with additional modules
+using the standard IPython profile mechanism (Sec.&nbsp;<A HREF="node7.html#sec:profiles">7.3</A>): ``<TT>ipython
+-pylab -p myprofile</TT>'' will load the profile defined in <TT>ipythonrc-myprofile</TT>
+after configuring matplotlib.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html343"
+  HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html341"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html335"
+  HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html344"
+  HREF="node16.html">Plotting with Gnuplot</A>
+<B> Up:</B> <A NAME="tex2html342"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html336"
+  HREF="node14.html">Interactive demos with IPython</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2006-06-06
+</ADDRESS>
+</BODY>
+</HTML>

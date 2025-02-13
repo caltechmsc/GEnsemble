@@ -1,0 +1,60 @@
+BIOGRF  160
+DESCRP AD_GLCAM
+REMARK Created by slm @ tms2r on  1/25/90   17:47:50               
+REMARK alpha-D-Glucosamine
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  GLU      1    1.12891   0.29688  -0.92010 O_3    2 2  0.00000
+HETATM     2  C1*  GLU      1    1.71418  -0.36593   0.20940 C_3    4 0  0.00000
+HETATM     3 HC1*  GLU      1    2.69352   0.10067   0.34114 H_     1 0  0.00000
+HETATM     4  O1*  GLU      1    1.96904  -1.73396  -0.13634 O_3    2 2  0.00000
+HETATM     5 HO1*  GLU      1    2.52966  -1.76817  -0.93953 H___A  1 0  0.00000
+HETATM     6  C2*  GLU      1    0.86372  -0.11620   1.49324 C_3    4 0  0.00000
+HETATM     7 HC2*  GLU      1    0.89969   0.96130   1.67382 H_     1 0  0.00000
+HETATM     8  C3*  GLU      1   -0.63838  -0.48394   1.26112 C_3    4 0  0.00000
+HETATM     9 HC3*  GLU      1   -0.71446  -1.56776   1.13529 H_     1 0  0.00000
+HETATM    10  O3*  GLU      1   -1.47319  -0.13468   2.37873 O_3    2 2  0.00000
+HETATM    11 HO3*  GLU      1   -2.39399  -0.41900   2.20053 H___A  1 0  0.00000
+HETATM    12  C4*  GLU      1   -1.18272   0.20113  -0.03114 C_3    4 0  0.00000
+HETATM    13 HC4*  GLU      1   -1.26160   1.27414   0.16063 H_     1 0  0.00000
+HETATM    14  O4*  GLU      1   -2.49937  -0.25825  -0.36103 O_3    2 2  0.00000
+HETATM    15 HO4*  GLU      1   -2.81716   0.22288  -1.15330 H___A  1 0  0.00000
+HETATM    16  C5*  GLU      1   -0.23948  -0.00075  -1.25421 C_3    4 0  0.00000
+HETATM    17 HC5*  GLU      1   -0.27923  -1.05458  -1.54502 H_     1 0  0.00000
+HETATM    18  C6*  GLU      1   -0.62400   0.80466  -2.52307 C_3    4 0  0.00000
+HETATM    19 HC6*  GLU      1   -1.61232   0.49747  -2.86768 H_     1 0  0.00000
+HETATM    20 HC6*  GLU      1    0.08328   0.57739  -3.32287 H_     1 0  0.00000
+HETATM    21  O6*  GLU      1   -0.64160   2.21934  -2.34588 O_3    2 2  0.00000
+HETATM    22 HO6*  GLU      1    0.24730   2.52452  -2.06794 H___A  1 0  0.00000
+HETATM    23  N2*  GLU      1    1.48578  -0.70568   2.70250 N_3    4 0  0.00000
+HETATM    24 HN2*  GLU      1    1.51428  -1.72111   2.61069 H___A  1 0  0.00000
+HETATM    25 HN2*  GLU      1    2.43509  -0.34711   2.80586 H___A  1 0  0.00000
+HETATM    26 HN2*  GLU      1    0.93585  -0.45412   3.52398 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    16
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8     7    23
+CONECT     7     6
+CONECT     8     6    10    12     9
+CONECT     9     8
+CONECT    10     8    11
+CONECT    11    10
+CONECT    12     8    14    16    13
+CONECT    13    12
+CONECT    14    12    15
+CONECT    15    14
+CONECT    16     1    12    18    17
+CONECT    17    16
+CONECT    18    16    21    19    20
+CONECT    19    18
+CONECT    20    18
+CONECT    21    18    22
+CONECT    22    21
+CONECT    23    26     6    24    25
+CONECT    24    23
+CONECT    25    23
+CONECT    26    23
+END

@@ -1,0 +1,9 @@
+After annealing S5_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S9_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S20_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S1_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S10_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S11_A (totE, EL, vdw, hb, coulomb): -24.297 -23.451  -0.185  -0.453  -0.208
+After annealing S22_A (totE, EL, vdw, hb, coulomb): -25.335 -23.288  -0.186  -0.453  -1.409
+After annealing S27_A (totE, EL, vdw, hb, coulomb): -25.335 -23.288  -0.186  -0.453  -1.409
+After annealing T19_A (totE, EL, vdw, hb, coulomb): -25.335 -23.288  -0.186  -0.453  -1.409

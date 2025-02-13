@@ -1,0 +1,146 @@
+BIOGRF  321
+DESCRP sulphone
+REMARK Created by msi             
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 HH    SUL A    1   -5.89358   -.97584 -15.97228 O_R    2 1   .00000
+HETATM     2 HC1   SUL A    1     .03327    .76917  -1.78552 H_     1 0   .00000
+HETATM     3 C2    SUL A    1    1.65053    .23212   -.57306 C_R    3 0   .00000
+HETATM     4 HC2   SUL A    1    2.01531   1.18564   -.49584 H_     1 0   .00000
+HETATM     5 TT    SUL A    1    2.31418   -.82467    .07014 C_R    3 0   .00000
+HETATM     6 TX    SUL A    1    3.16111   -.64349    .61618 H_     1 0   .00000
+HETATM     7 C4    SUL A    1    1.81676  -2.13221   -.04412 C_R    3 0   .00000
+HETATM     8 HC4   SUL A    1    2.30608  -2.90592    .41354 H_     1 0   .00000
+HETATM     9 C5    SUL A    1     .64585  -2.37873   -.78539 C_R    3 0   .00000
+HETATM    10 HC5   SUL A    1     .32553  -3.34534   -.83211 H_     1 0   .00000
+HETATM    11 C1    SUL A    1   -3.49853   1.46203 -13.55740 C_R    3 0   .00000
+HETATM    12 S1    SUL A    1   -2.50319   2.49658 -12.56293 S_3    4 0   .00000
+HETATM    13 C1    SUL A    1    -.91165    .30616  -8.84971 C_R    3 0   .00000
+HETATM    14 H3C2  SUL A    1   -3.45617   -.98108  -1.92899 H_     1 0   .00000
+HETATM    15 H2C2  SUL A    1   -2.32411    .32827  -1.59614 H_     1 0   .00000
+HETATM    16 H1C2  SUL A    1   -2.49564  -1.00626   -.45225 H_     1 0   .00000
+HETATM    17 O1    SUL A    1    -.40597   -.43609  -7.82202 O_R    2 1   .00000
+HETATM    18 H4C1  SUL A    1   -2.05495  -3.41323  -1.30409 H_     1 0   .00000
+HETATM    19 H3C1  SUL A    1   -1.07886  -3.68781  -2.75595 H_     1 0   .00000
+HETATM    20 H2C1  SUL A    1   -2.74218  -3.12295  -2.90316 H_     1 0   .00000
+HETATM    21 C1    SUL A    1   -1.11110  -1.14624  -3.70288 C_R    3 0   .00000
+HETATM    22 C2    SUL A    1     .03848  -1.61293  -4.39411 C_R    3 0   .00000
+HETATM    23 HC1   SUL A    1     .73655  -2.18153  -3.90936 H_     1 0   .00000
+HETATM    24 C3    SUL A    1     .25187  -1.33222  -5.75493 C_R    3 0   .00000
+HETATM    25 HC2   SUL A    1    1.09315  -1.69355  -6.21281 H_     1 0   .00000
+HETATM    26 C1    SUL A    1   -1.33307  -1.54578  -2.25149 C_3    4 0   .00000
+HETATM    27 C5    SUL A    1   -1.83966   -.11861  -5.83002 C_R    3 0   .00000
+HETATM    28 HC4   SUL A    1   -2.56444    .38762  -6.33866 H_     1 0   .00000
+HETATM    29 C6    SUL A    1   -2.03637   -.37869  -4.45918 C_R    3 0   .00000
+HETATM    30 HC5   SUL A    1   -2.88897   -.01578  -4.03355 H_     1 0   .00000
+HETATM    31 C1    SUL A    1   -1.83001  -3.03473  -2.30505 C_3    4 0   .00000
+HETATM    32 O1    SUL A    1   -3.32523   3.79584 -12.15411 O_2    1 2   .00000
+HETATM    33 O2    SUL A    1   -1.25364   2.99776 -13.41223 O_2    1 2   .00000
+HETATM    34 C6    SUL A    1    -.05895  -1.33020  -1.44182 C_R    3 0   .00000
+HETATM    35 C2    SUL A    1   -2.91277    .64212 -14.54654 C_R    3 0   .00000
+HETATM    36 HC1   SUL A    1   -1.89996    .63922 -14.68380 H_     1 0   .00000
+HETATM    37 C3    SUL A    1   -3.71483   -.18061 -15.36022 C_R    3 0   .00000
+HETATM    38 HC2   SUL A    1   -3.27941   -.76877 -16.07522 H_     1 0   .00000
+HETATM    39 C4    SUL A    1   -5.11201   -.19403 -15.19131 C_R    3 0   .00000
+HETATM    40 C5    SUL A    1   -5.70226    .61397 -14.20211 C_R    3 0   .00000
+HETATM    41 HC4   SUL A    1   -6.71674    .60474 -14.07513 H_     1 0   .00000
+HETATM    42 C6    SUL A    1   -4.90093   1.44036 -13.39139 C_R    3 0   .00000
+HETATM    43 HC5   SUL A    1   -5.35027   2.02576 -12.68434 H_     1 0   .00000
+HETATM    44 C1    SUL A    1     .48600   -.02100  -1.32100 C_R    3 0   .00000
+HETATM    45 HX    SUL A    1   -5.50332  -1.52981 -16.68105 H___A  1 0   .00000
+HETATM    46 C2    SUL A    1   -2.47232   -.75024  -1.51552 C_3    4 0   .00000
+HETATM    47 C4    SUL A    1    -.68361   -.58396  -6.49257 C_R    3 0   .00000
+HETATM    48 C2    SUL A    1    -.65860   -.18391 -10.14754 C_R    3 0   .00000
+HETATM    49 HC1   SUL A    1    -.11332  -1.04062 -10.27263 H_     1 0   .00000
+HETATM    50 C3    SUL A    1   -1.15055    .48542 -11.28375 C_R    3 0   .00000
+HETATM    51 HC2   SUL A    1    -.95274    .10309 -12.21121 H_     1 0   .00000
+HETATM    52 C4    SUL A    1   -1.90185   1.67008 -11.14662 C_R    3 0   .00000
+HETATM    53 C5    SUL A    1   -2.12419   2.18553  -9.85159 C_R    3 0   .00000
+HETATM    54 HC4   SUL A    1   -2.64615   3.05508  -9.72220 H_     1 0   .00000
+HETATM    55 C6    SUL A    1   -1.62006   1.52066  -8.71624 C_R    3 0   .00000
+HETATM    56 HC5   SUL A    1   -1.75876   1.94265  -7.79880 H_     1 0   .00000
+FORMAT CONECT (a6,12i6)
+CONECT     1    45    39
+CONECT     2    44
+CONECT     3    44     5     4
+ORDER      3     1     2     1
+CONECT     4     3
+CONECT     5     7     3     6
+ORDER      5     1     2     1
+CONECT     6     5
+CONECT     7     5     9     8
+ORDER      7     1     2     1
+CONECT     8     7
+CONECT     9     7    34    10
+ORDER      9     2     1     1
+CONECT    10     9
+CONECT    11    35    42    12
+ORDER     11     1     2     1
+CONECT    12    32    33    11    52
+ORDER     12     2     2     1     1
+CONECT    13    48    55    17
+ORDER     13     1     2     1
+CONECT    14    46
+CONECT    15    46
+CONECT    16    46
+CONECT    17    47    13
+CONECT    18    31
+CONECT    19    31
+CONECT    20    31
+CONECT    21    22    29    26
+ORDER     21     1     2     1
+CONECT    22    21    24    23
+ORDER     22     1     2     1
+CONECT    23    22
+CONECT    24    47    22    25
+ORDER     24     1     2     1
+CONECT    25    24
+CONECT    26    46    34    31    21
+CONECT    27    47    29    28
+ORDER     27     2     1     1
+CONECT    28    27
+CONECT    29    27    21    30
+ORDER     29     1     2     1
+CONECT    30    29
+CONECT    31    20    19    18    26
+CONECT    32    12
+ORDER     32     2
+CONECT    33    12
+ORDER     33     2
+CONECT    34     9    44    26
+ORDER     34     1     2     1
+CONECT    35    11    37    36
+ORDER     35     1     2     1
+CONECT    36    35
+CONECT    37    39    35    38
+ORDER     37     1     2     1
+CONECT    38    37
+CONECT    39    37    40     1
+ORDER     39     1     2     1
+CONECT    40    39    42    41
+ORDER     40     2     1     1
+CONECT    41    40
+CONECT    42    40    11    43
+ORDER     42     1     2     1
+CONECT    43    42
+CONECT    44     3    34     2
+ORDER     44     1     2     1
+CONECT    45     1
+CONECT    46    16    15    14    26
+CONECT    47    24    27    17
+ORDER     47     1     2     1
+CONECT    48    13    50    49
+ORDER     48     1     2     1
+CONECT    49    48
+CONECT    50    52    48    51
+ORDER     50     1     2     1
+CONECT    51    50
+CONECT    52    50    53    12
+ORDER     52     1     2     1
+CONECT    53    52    55    54
+ORDER     53     2     1     1
+CONECT    54    53
+CONECT    55    53    13    56
+ORDER     55     1     2     1
+CONECT    56    55
+END

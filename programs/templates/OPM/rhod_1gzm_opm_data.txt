@@ -1,0 +1,24 @@
+1gzm » Rhodopsin
+
+    * Type: 1. Transmembrane (2 classes)
+    * Class: 1.1. Alpha-helical transmembrane (47 superfamilies)
+    * Superfamily: 1.1.01. Rhodopsin-like proteins (2 families)
+    * Family: 1.1.01.02. G-protein coupled receptors (10 proteins)
+    * Species: Bos taurus (37 proteins)
+    * Localization: Eukaryotic plasma membrane (166 proteins)
+
+1gzm » Rhodopsin
+Hydrophobic Thickness 	32.4 ± 1.7 Å
+Tilt Angle 	8 ± 3°
+?Gtransfer 	-91.3 kcal/mol
+Links to 1gzm 	PDB Sum, SCOP, MSD, OCA, MMDB, Dali
+Topology 	subunit A (N-terminus extracellular)
+Resolution 	2.70 Å
+Related PDB Sum entries 	1f88, 1hzx, 1l9h, 1u19, 2g87, 2hpy, 2i35, 2i36, 2i37, 2j4y, 2ped
+Number of TM Secondary Structures 	7
+1 transmembrane subunit
+
+A - Tilt: 8° - Segments: 1(38-63), 2(72-96), 3(109-133), 4(153-172), 5(202-224), 6(253-274), 7(286-309)
+
+Experimental Verification for 1gzm » Rhodopsin
+Results are consitent with X-ray scattering (Blaurock and Wilkins 1972), chemical modification (Barclay and Findlay 1984, Davison and Findlay 1986a,b) and electron microscopy (Krebs et al. 2003) studies. Hydrophobic boundaries of rhodopsin expand when calculated with detergent parameters (Figure 4), in agreement with results of Hubbell et al. (2003).

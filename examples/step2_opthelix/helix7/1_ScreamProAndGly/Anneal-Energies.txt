@@ -1,0 +1,2 @@
+After annealing G13_A (totE, EL, vdw, hb, coulomb): 467.856 467.108  -0.026   0.000   0.774
+After annealing P12_A (totE, EL, vdw, hb, coulomb): 467.856 467.108  -0.026   0.000   0.774

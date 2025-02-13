@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_GLUC 
+REMARK Created by slm @ tms2r on  1/25/90   17:48:24               
+REMARK alpha-D-Glucose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  GLU      1    1.18874   0.31734  -0.91464 O_3    2 2  0.00000
+HETATM     2  C1*  GLU      1    1.81068  -0.29426   0.22416 C_3    4 0  0.00000
+HETATM     3 HC1*  GLU      1    2.77047   0.20964   0.35353 H_     1 0  0.00000
+HETATM     4  O1*  GLU      1    2.11392  -1.66270  -0.06575 O_3    2 2  0.00000
+HETATM     5  HO1* GLU      1    2.57543  -2.06440   0.69972 H___A  1 0  0.00000
+HETATM     6  C2*  GLU      1    0.96454  -0.05815   1.50539 C_3    4 0  0.00000
+HETATM     7 HC2*  GLU      1    0.98043   1.01797   1.69852 H_     1 0  0.00000
+HETATM     8  O2*  GLU      1    1.57976  -0.66022   2.65163 O_3    2 2  0.00000
+HETATM     9  HO2* GLU      1    1.06090  -0.44069   3.45346 H___A  1 0  0.00000
+HETATM    10  C3*  GLU      1   -0.51924  -0.48383   1.30445 C_3    4 0  0.00000
+HETATM    11 HC3*  GLU      1   -0.55404  -1.57177   1.20281 H_     1 0  0.00000
+HETATM    12  O3*  GLU      1   -1.31040  -0.14589   2.45241 O_3    2 2  0.00000
+HETATM    13  HO3* GLU      1   -2.22854  -0.46298   2.32216 H___A  1 0  0.00000
+HETATM    14  C4*  GLU      1   -1.10924   0.16115   0.01439 C_3    4 0  0.00000
+HETATM    15 HC4*  GLU      1   -1.22439   1.23335   0.19123 H_     1 0  0.00000
+HETATM    16  O4*  GLU      1   -2.41345  -0.35406  -0.27674 O_3    2 2  0.00000
+HETATM    17  HO4* GLU      1   -2.76669   0.09698  -1.07159 H___A  1 0  0.00000
+HETATM    18  C5*  GLU      1   -0.17564  -0.03142  -1.21823 C_3    4 0  0.00000
+HETATM    19 HC5*  GLU      1   -0.18235  -1.09123  -1.48850 H_     1 0  0.00000
+HETATM    20  C6*  GLU      1   -0.61050   0.73657  -2.49369 C_3    4 0  0.00000
+HETATM    21 HC6*  GLU      1   -1.59888   0.39844  -2.80752 H_     1 0  0.00000
+HETATM    22 HC6*  GLU      1    0.08302   0.51065  -3.30573 H_     1 0  0.00000
+HETATM    23  O6*  GLU      1   -0.65978   2.15376  -2.34492 O_3    2 2  0.00000
+HETATM    24  HO6* GLU      1    0.22527   2.48574  -2.08655 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

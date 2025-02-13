@@ -1,0 +1,35 @@
+mv beta2.helix7.fin.mineng.bgf beta2.helix7.fin.mineng.cap.bgf
+mv beta2.helix7.fin.mineng.min.bgf beta2.helix7.fin.mineng.cap.min.bgf
+mv beta2.helix7.fin.minrmsd.bgf beta2.helix7.fin.minrmsd.cap.bgf
+mv beta2.helix7.fin.minrmsd.min.bgf beta2.helix7.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix6.fin.mineng.bgf beta2.helix6.fin.mineng.cap.bgf
+mv beta2.helix6.fin.mineng.min.bgf beta2.helix6.fin.mineng.cap.min.bgf
+mv beta2.helix6.fin.minrmsd.bgf beta2.helix6.fin.minrmsd.cap.bgf
+mv beta2.helix6.fin.minrmsd.min.bgf beta2.helix6.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix5.fin.mineng.bgf beta2.helix5.fin.mineng.cap.bgf
+mv beta2.helix5.fin.mineng.min.bgf beta2.helix5.fin.mineng.cap.min.bgf
+mv beta2.helix5.fin.minrmsd.bgf beta2.helix5.fin.minrmsd.cap.bgf
+mv beta2.helix5.fin.minrmsd.min.bgf beta2.helix5.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix4.fin.mineng.bgf beta2.helix4.fin.mineng.cap.bgf
+mv beta2.helix4.fin.mineng.min.bgf beta2.helix4.fin.mineng.cap.min.bgf
+mv beta2.helix4.fin.minrmsd.bgf beta2.helix4.fin.minrmsd.cap.bgf
+mv beta2.helix4.fin.minrmsd.min.bgf beta2.helix4.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix3.fin.mineng.bgf beta2.helix3.fin.mineng.cap.bgf
+mv beta2.helix3.fin.mineng.min.bgf beta2.helix3.fin.mineng.cap.min.bgf
+mv beta2.helix3.fin.minrmsd.bgf beta2.helix3.fin.minrmsd.cap.bgf
+mv beta2.helix3.fin.minrmsd.min.bgf beta2.helix3.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix2.fin.mineng.bgf beta2.helix2.fin.mineng.cap.bgf
+mv beta2.helix2.fin.mineng.min.bgf beta2.helix2.fin.mineng.cap.min.bgf
+mv beta2.helix2.fin.minrmsd.bgf beta2.helix2.fin.minrmsd.cap.bgf
+mv beta2.helix2.fin.minrmsd.min.bgf beta2.helix2.fin.minrmsd.cap.min.bgf
+#
+mv beta2.helix1.fin.mineng.bgf beta2.helix1.fin.mineng.cap.bgf
+mv beta2.helix1.fin.mineng.min.bgf beta2.helix1.fin.mineng.cap.min.bgf
+mv beta2.helix1.fin.minrmsd.bgf beta2.helix1.fin.minrmsd.cap.bgf
+mv beta2.helix1.fin.minrmsd.min.bgf beta2.helix1.fin.minrmsd.cap.min.bgf
+#

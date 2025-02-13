@@ -1,0 +1,111 @@
+#!/usr/bin/python
+
+import sys, os
+#from Py_Scream_EE import *
+import BgfTools, PyResidue
+
+def usage():
+    print '''
+This is a generator for par files that scream all residues except GLY, ALA, PRO and CYX.
+Usage: %s <bgffile> <rotlib_specs> <delta method> <value> 
+E.g.:  %s PheRS.bgf 10 FLAT 0.4
+Function:  Writes out a SCREAM .par.
+Remark: If you don\'t know what "delta method" means, just use "FLAT" with a value of "0.4", i.e. use the parameters given in the example.
+''' % (sys.argv[0], sys.argv[0])
+    sys.exit()
+
+def main():
+
+    if len(sys.argv) <= 3:
+        usage()
+        
+    bgf_file = sys.argv[1]
+    rotlib_specs = sys.argv[2]
+    delta_method = sys.argv[3].upper()
+    final_delta_value = float(sys.argv[4])
+    
+    scream_delta_file_dir = os.environ.get('SCREAM_DELTA_PAR_FILE_PATH')
+    scream_delta_file = scream_delta_file_dir + 'SCREAM_delta_Total_Min.par'
+    ff_file = scream_delta_file_dir + 'dreiding-0.3.par'
+
+    scream_par_filename = 'scream.par'
+    SCREAM_PAR_FILE = open(scream_par_filename, 'w')
+    mutInfo_string = ''
+    extra_lib_string = ''
+
+    mutInfo_string = returnAllString_no_AGP_CYX(bgf_file)
+    
+    #     for mutInfo in mutInfo_list:
+    #         import re
+    #         CNN_REGEX = re.compile("cnn")
+    #         if CNN_REGEX.search(mutInfo):\
+    #                extra_lib_string = mutInfo
+    #         else:
+    #             mutInfo_string += mutInfo
+    #             mutInfo_string += ' '
+    rotlib_specs_string = ''
+    if rotlib_specs == 'SCWRL':
+        rotlib_specs_string = rotlib_specs
+    else:
+        rotlib_specs_string = 'V' + rotlib_specs
+    
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('InputFileName', bgf_file)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('MutateResidueInfo', mutInfo_string)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('AdditionalLibraryInfo', extra_lib_string)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('Library', rotlib_specs_string)
+
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('PlacementMethod', 'CreateCB')
+    print >>SCREAM_PAR_FILE, '%25s %s' %('CreateCBParameters', '1.81 51.1 1.55 0.5')
+    
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('UseScreamEnergyFunction', 'YES')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('UseDeltaMethod', delta_method)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('LJOption', '12-6')
+
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('UseDeltaForInterResiE', 'YES')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('UseAsymmetricDelta', 'YES')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('CoulombMode', 'Normal')
+    print >>SCREAM_PAR_FILE, '%30s %f' % ('Dielectric', 2.5)
+    
+    print >>SCREAM_PAR_FILE, '%25s %f' % ('FlatDeltaValue', final_delta_value)
+    print >>SCREAM_PAR_FILE, '%25s %f' % ('DeltaStandardDevs', final_delta_value)
+    print >>SCREAM_PAR_FILE, '%25s %f' % ('InnerWallScalingFactor', final_delta_value)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('MultiplePlacementMethod', 'ClusteringThenDoubletsThenSinglets')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('CBGroundSpectrumCalc', 'YES')
+    
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('AbsStericClashCutoffEL', '999999999')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('KeepOriginalRotamer', 'NO')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('MaxFinalStepRunTime', '5')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('OneEnergyFFParFile', ff_file)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('DeltaParFile', scream_delta_file)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('Selections', 5)
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('StericClashCutoffEnergy', '999999999')
+    print >>SCREAM_PAR_FILE, '%25s %s' % ('StericClashCutoffDist', '0.5')
+    SCREAM_PAR_FILE.close()
+
+    sys.exit()
+
+def unpackMutInfo(mutInfo):
+    """_unpackMutInfo: unpacks a string like C123_X, i.e. returns a (C, 123, X) tuple."""
+    mutAA = mutInfo[0]
+    (mutPstn, mutChn) = mutInfo[1:].split('_')
+    mutPstn = int(mutPstn)
+    return (mutAA, mutPstn, mutChn)
+
+def returnAllString_no_AGP_CYX(bgf_file):
+    '''Returns a SCREAM string like S123_A T234_A, that includes all polar residues.'''
+    al = BgfTools.make_PyAtom_list_from_bgf_file(bgf_file)
+    rl = PyResidue.make_PyResidue_list(al)
+
+    s = ''
+
+    for r in rl:
+        three_letter_resname = r.res_name
+        if three_letter_resname in ['CYX', 'ALA', 'GLY', 'PRO']:
+            continue
+        else:
+            s += r.return_SCREAM_string()
+            s += ' '
+    return s
+
+if __name__ == '__main__':
+    main()

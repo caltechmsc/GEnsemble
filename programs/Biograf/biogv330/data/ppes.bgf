@@ -1,0 +1,266 @@
+BIOGRF  160
+DESCRP ppes    
+REMARK Created by biodesig @ The_Traveling_Iris on  3/27/90   14:52
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HX    ORG B    1    2.30207   6.20135   3.11710 H___A  1 0  0.00000
+HETATM     2 HH    ORG B    1    1.57559   5.54382   3.12877 O_31   2 2 -0.33839
+HETATM     3 HC1   ORG B    1    6.42716   6.96406   3.94431 H_     1 0  0.06632
+HETATM     4 S1    ORG B    1    2.21026   4.01154   3.19939 S_3    4 0  1.91371
+HETATM     5 C3    ORG B    1    5.96837   4.95713   6.59967 C_R    3 0 -0.01612
+HETATM     6 HC3   ORG B    1    6.35775   4.70857   7.50890 H_     1 0  0.06632
+HETATM     7 C4    ORG B    1    4.83419   4.26477   6.14777 C_R    3 0 -0.02109
+HETATM     8 HC4   ORG B    1    4.43137   3.53333   6.73703 H_     1 0  0.06613
+HETATM     9 O1    ORG B    1    3.14399   3.86976   4.56754 O_R    2 1 -0.65857
+HETATM    10 C6    ORG B    1    4.86221   5.56539   4.09579 C_R    3 0 -0.02109
+HETATM    11 HC6   ORG B    1    4.48574   5.80119   3.17798 H_     1 0  0.06613
+HETATM    12 C2    ORG B    1    6.54916   5.97696   5.81118 C_R    3 0  0.12834
+HETATM    13 C5    ORG B    1    4.25963   4.57096   4.90117 C_R    3 0  0.06836
+HETATM    14 O1    ORG B    1    7.62095   6.72741   6.20015 O_R    2 1 -0.41459
+HETATM    15 O1    ORG B    1    3.09868   3.74987   1.94461 O_2    1 2 -0.53741
+HETATM    16 O2    ORG B    1    1.04634   2.97176   3.24252 O_2    1 2 -0.53741
+HETATM    17 C1    ORG B    1    6.00111   6.25481   4.54495 C_R    3 0 -0.01612
+HETATM    18 C1    ORG B    1    8.34786   6.73728   7.43257 C_3    4 0  0.50726
+HETATM    19 H3C1  ORG B    1    8.90537   5.49508   7.61855 F_     1 3 -0.14297
+HETATM    20 H2C1  ORG B    1    7.40282   6.94725   8.41493 F_     1 3 -0.14297
+HETATM    21 N1    ORG B    1    9.37553   7.71596   7.50674 N_R    3 0 -0.17390
+HETATM    22 C1    ORG B    1    9.91410   8.17497   8.64517 C_R    3 0  0.26882
+HETATM    23 O1    ORG B    1    9.69045   7.77271   9.81495 O_2    1 2 -0.26823
+HETATM    24 C1    ORG B    1    9.99392   8.35183   6.49798 C_R    3 0  0.26882
+HETATM    25 O1    ORG B    1    9.85090   8.17299   5.26345 O_2    1 2 -0.26823
+HETATM    26 C1    ORG B    1   10.80370   9.20817   8.37642 C_R    3 0  0.05306
+HETATM    27 C2    ORG B    1   10.88098   9.30760   7.00105 C_R    3 0  0.05306
+HETATM    28 C3    ORG B    1   11.73938  10.25051   6.39250 C_R    3 0 -0.04862
+HETATM    29 HC2   ORG B    1   11.81226  10.29115   5.37290 H_     1 0  0.06312
+HETATM    30 TT    ORG B    1   12.48785  11.13224   7.21513 C_R    3 0 -0.06142
+HETATM    31 C5    ORG B    1   12.37237  11.03435   8.62573 C_R    3 0 -0.06142
+HETATM    32 HC4   ORG B    1   12.89068  11.66989   9.23639 H_     1 0  0.06229
+HETATM    33 C6    ORG B    1   11.54262  10.06118   9.21681 C_R    3 0 -0.04862
+HETATM    34 HC5   ORG B    1   11.47986   9.98075  10.23300 H_     1 0  0.06312
+HETATM    35 HH    ORG B    2   13.29810  12.07305   6.64669 O_31   2 2 -0.33839
+HETATM    36 HC1   ORG B    2   14.75858   7.10413   9.13438 H_     1 0  0.06632
+HETATM    37 S1    ORG B    2   14.95883  11.88789   6.73237 S_3    4 0  1.91371
+HETATM    38 C3    ORG B    2   16.24869   6.85309   6.14663 C_R    3 0 -0.01612
+HETATM    39 HC3   ORG B    2   16.73287   6.21205   5.52065 H_     1 0  0.06632
+HETATM    40 C4    ORG B    2   16.11312   8.19338   5.73646 C_R    3 0 -0.02109
+HETATM    41 HC4   ORG B    2   16.46438   8.46301   4.81541 H_     1 0  0.06613
+HETATM    42 O1    ORG B    2   15.44469  10.42824   6.07058 O_R    2 1 -0.65857
+HETATM    43 C6    ORG B    2   15.03025   8.73255   7.82917 C_R    3 0 -0.02109
+HETATM    44 HC6   ORG B    2   14.60516   9.39766   8.47238 H_     1 0  0.06613
+HETATM    45 C2    ORG B    2   15.73077   6.41373   7.38750 C_R    3 0  0.12834
+HETATM    46 C5    ORG B    2   15.50764   9.15592   6.56878 C_R    3 0  0.06836
+HETATM    47 O1    ORG B    2   15.75950   5.12142   7.85603 O_R    2 1 -0.41459
+HETATM    48 O1    ORG B    2   15.47383  11.96297   8.20414 O_2    1 2 -0.53741
+HETATM    49 O2    ORG B    2   15.61968  13.05433   5.93021 O_2    1 2 -0.53741
+HETATM    50 C1    ORG B    2   15.13038   7.38111   8.22345 C_R    3 0 -0.01612
+HETATM    51 C1    ORG B    2   16.23219   3.85617   7.35169 C_3    4 0  0.50726
+HETATM    52 H3C1  ORG B    2   17.52847   3.75254   7.79842 F_     1 3 -0.14297
+HETATM    53 H2C1  ORG B    2   16.24398   3.89190   5.97572 F_     1 3 -0.14297
+HETATM    54 N1    ORG B    2   15.47252   2.71872   7.73249 N_R    3 0 -0.17390
+HETATM    55 C1    ORG B    2   15.76968   1.46596   7.35860 C_R    3 0  0.26882
+HETATM    56 O1    ORG B    2   16.77229   1.08356   6.70367 O_2    1 2 -0.26823
+HETATM    57 C1    ORG B    2   14.36290   2.65551   8.48812 C_R    3 0  0.26882
+HETATM    58 O1    ORG B    2   13.77101   3.58472   9.09075 O_2    1 2 -0.26823
+HETATM    59 C1    ORG B    2   14.78679   0.58701   7.79661 C_R    3 0  0.05306
+HETATM    60 C2    ORG B    2   13.89376   1.33804   8.53668 C_R    3 0  0.05306
+HETATM    61 C3    ORG B    2   12.77674   0.72852   9.15083 C_R    3 0 -0.04862
+HETATM    62 HC2   ORG B    2   12.14734   1.28608   9.73226 H_     1 0  0.06312
+HETATM    63 TT    ORG B    2   12.54638  -0.65563   8.94171 C_R    3 0 -0.06142
+HETATM    64 C5    ORG B    2   13.46610  -1.40636   8.16531 C_R    3 0 -0.06142
+HETATM    65 HC4   ORG B    2   13.31586  -2.40435   8.00136 H_     1 0  0.06229
+HETATM    66 C6    ORG B    2   14.60424  -0.79487   7.60406 C_R    3 0 -0.04862
+HETATM    67 HC5   ORG B    2   15.27676  -1.34573   7.06770 H_     1 0  0.06312
+HETATM    68 HH    ORG B    3   11.43970  -1.25089   9.47489 O_31   2 2 -0.33839
+HETATM    69 HC1   ORG B    3   16.92932  -2.06677  11.08972 H_     1 0  0.06632
+HETATM    70 S1    ORG B    3   11.63449  -2.32111  10.74451 S_3    4 0  1.91371
+HETATM    71 C3    ORG B    3   15.51476  -0.77842  13.84377 C_R    3 0 -0.01612
+HETATM    72 HC3   ORG B    3   15.71302  -0.38309  14.76069 H_     1 0  0.06632
+HETATM    73 C4    ORG B    3   14.16774  -0.93169  13.47549 C_R    3 0 -0.02109
+HETATM    74 HC4   ORG B    3   13.44188  -0.61265  14.11945 H_     1 0  0.06613
+HETATM    75 O1    ORG B    3   12.47852  -1.61846  12.00012 O_R    2 1 -0.65857
+HETATM    76 C6    ORG B    3   14.85097  -1.93986  11.38247 C_R    3 0 -0.02109
+HETATM    77 HC6   ORG B    3   14.64150  -2.38419  10.49142 H_     1 0  0.06613
+HETATM    78 C2    ORG B    3   16.55378  -1.16447  12.96627 C_R    3 0  0.12834
+HETATM    79 C5    ORG B    3   13.81520  -1.51468  12.24426 C_R    3 0  0.06836
+HETATM    80 O1    ORG B    3   17.89211  -1.00828  13.20547 O_R    2 1 -0.41459
+HETATM    81 O1    ORG B    3   12.32421  -3.64893  10.29546 O_2    1 2 -0.53741
+HETATM    82 O2    ORG B    3   10.21166  -2.69821  11.26577 O_2    1 2 -0.53741
+HETATM    83 C1    ORG B    3   16.20092  -1.75988  11.73794 C_R    3 0 -0.01612
+HETATM    84 C1    ORG B    3   18.64137  -0.36177  14.24717 C_3    4 0  0.50726
+HETATM    85 H3C1  ORG B    3   18.90983  -1.36692  15.14555 F_     1 3 -0.14297
+HETATM    86 H2C1  ORG B    3   17.92923   0.58353  14.94590 F_     1 3 -0.14297
+HETATM    87 N1    ORG B    3   19.74916   0.31369  13.68729 N_R    3 0 -0.17390
+HETATM    88 C1    ORG B    3   21.03522   0.19721  14.03351 C_R    3 0  0.26882
+HETATM    89 O1    ORG B    3   21.53601  -0.54911  14.91014 O_2    1 2 -0.26823
+HETATM    90 C1    ORG B    3   19.66357   1.21393  12.69745 C_R    3 0  0.26882
+HETATM    91 O1    ORG B    3   18.62247   1.59329  12.09753 O_2    1 2 -0.26823
+HETATM    92 C1    ORG B    3   21.80748   1.05815  13.26015 C_R    3 0  0.05306
+HETATM    93 C2    ORG B    3   20.93218   1.70478  12.40421 C_R    3 0  0.05306
+HETATM    94 C3    ORG B    3   21.39651   2.65244  11.47161 C_R    3 0 -0.04862
+HETATM    95 HC2   ORG B    3   20.75145   3.12391  10.83603 H_     1 0  0.06312
+HETATM    96 TT    ORG B    3   22.77826   2.93957  11.43790 C_R    3 0 -0.06142
+HETATM    97 C5    ORG B    3   23.66921   2.28277  12.31667 C_R    3 0 -0.06142
+HETATM    98 HC4   ORG B    3   24.66681   2.49987  12.28637 H_     1 0  0.06229
+HETATM    99 C6    ORG B    3   23.18957   1.32952  13.23755 C_R    3 0 -0.04862
+HETATM   100 HC5   ORG B    3   23.83036   0.84938  13.87130 H_     1 0  0.06312
+HETATM   101 TX    ORG B    3   23.13704   3.62639  10.77233 H_     1 0  0.06229
+FORMAT CONECT (a6,12i6)
+CONECT     1     2
+CONECT     2     4     1
+CONECT     3    17
+CONECT     4    15    16     2     9
+ORDER      4     2     2     1     1
+CONECT     5     7    12     6
+ORDER      5     1     2     1
+CONECT     6     5
+CONECT     7     5    13     8
+ORDER      7     1     2     1
+CONECT     8     7
+CONECT     9    13     4
+CONECT    10    13    17    11
+ORDER     10     1     2     1
+CONECT    11    10
+CONECT    12    17     5    14
+ORDER     12     1     2     1
+CONECT    13     7    10     9
+ORDER     13     2     1     1
+CONECT    14    12    18
+CONECT    15     4
+ORDER     15     2
+CONECT    16     4
+ORDER     16     2
+CONECT    17    12    10     3
+ORDER     17     1     2     1
+CONECT    18    20    19    14    21
+CONECT    19    18
+CONECT    20    18
+CONECT    21    18    22    24
+CONECT    22    23    21    26
+ORDER     22     2     1     1
+CONECT    23    22
+ORDER     23     2
+CONECT    24    25    21    27
+ORDER     24     2     1     1
+CONECT    25    24
+ORDER     25     2
+CONECT    26    27    33    22
+ORDER     26     1     2     1
+CONECT    27    26    28    24
+ORDER     27     1     2     1
+CONECT    28    30    27    29
+ORDER     28     1     2     1
+CONECT    29    28
+CONECT    30    28    31    35
+ORDER     30     1     2     1
+CONECT    31    30    33    32
+ORDER     31     2     1     1
+CONECT    32    31
+CONECT    33    31    26    34
+ORDER     33     1     2     1
+CONECT    34    33
+CONECT    35    37    30
+CONECT    36    50
+CONECT    37    48    49    35    42
+ORDER     37     2     2     1     1
+CONECT    38    40    45    39
+ORDER     38     1     2     1
+CONECT    39    38
+CONECT    40    38    46    41
+ORDER     40     1     2     1
+CONECT    41    40
+CONECT    42    46    37
+CONECT    43    46    50    44
+ORDER     43     1     2     1
+CONECT    44    43
+CONECT    45    50    38    47
+ORDER     45     1     2     1
+CONECT    46    40    43    42
+ORDER     46     2     1     1
+CONECT    47    45    51
+CONECT    48    37
+ORDER     48     2
+CONECT    49    37
+ORDER     49     2
+CONECT    50    45    43    36
+ORDER     50     1     2     1
+CONECT    51    53    52    47    54
+CONECT    52    51
+CONECT    53    51
+CONECT    54    51    55    57
+CONECT    55    56    54    59
+ORDER     55     2     1     1
+CONECT    56    55
+ORDER     56     2
+CONECT    57    58    54    60
+ORDER     57     2     1     1
+CONECT    58    57
+ORDER     58     2
+CONECT    59    60    66    55
+ORDER     59     1     2     1
+CONECT    60    59    61    57
+ORDER     60     1     2     1
+CONECT    61    63    60    62
+ORDER     61     1     2     1
+CONECT    62    61
+CONECT    63    61    64    68
+ORDER     63     1     2     1
+CONECT    64    63    66    65
+ORDER     64     2     1     1
+CONECT    65    64
+CONECT    66    64    59    67
+ORDER     66     1     2     1
+CONECT    67    66
+CONECT    68    70    63
+CONECT    69    83
+CONECT    70    81    82    68    75
+ORDER     70     2     2     1     1
+CONECT    71    73    78    72
+ORDER     71     1     2     1
+CONECT    72    71
+CONECT    73    71    79    74
+ORDER     73     1     2     1
+CONECT    74    73
+CONECT    75    79    70
+CONECT    76    79    83    77
+ORDER     76     1     2     1
+CONECT    77    76
+CONECT    78    83    71    80
+ORDER     78     1     2     1
+CONECT    79    73    76    75
+ORDER     79     2     1     1
+CONECT    80    78    84
+CONECT    81    70
+ORDER     81     2
+CONECT    82    70
+ORDER     82     2
+CONECT    83    78    76    69
+ORDER     83     1     2     1
+CONECT    84    86    85    80    87
+CONECT    85    84
+CONECT    86    84
+CONECT    87    84    88    90
+CONECT    88    89    87    92
+ORDER     88     2     1     1
+CONECT    89    88
+ORDER     89     2
+CONECT    90    91    87    93
+ORDER     90     2     1     1
+CONECT    91    90
+ORDER     91     2
+CONECT    92    93    99    88
+ORDER     92     1     2     1
+CONECT    93    92    94    90
+ORDER     93     1     2     1
+CONECT    94    96    93    95
+ORDER     94     1     2     1
+CONECT    95    94
+CONECT    96    94    97   101
+ORDER     96     1     2     1
+CONECT    97    96    99    98
+ORDER     97     2     1     1
+CONECT    98    97
+CONECT    99    97    92   100
+ORDER     99     1     2     1
+CONECT   100    99
+CONECT   101    96
+END

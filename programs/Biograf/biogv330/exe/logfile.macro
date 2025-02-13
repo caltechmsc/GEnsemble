@@ -1,0 +1,639 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 21:49:53 4/30/93
+% link date    : 17:52:34 8/16/98
+%
+% Macro created on  8/16/98   18:11:28
+%
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe/Percec.xtl"
+   In-Out/return
+Top menu/build
+   Build/periodic
+      Periodic/pbc on
+      Periodic/edit id
+         Edit id/atom type
+            Selections/return
+         Edit id/return
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/fast setup
+   EEX options/return
+   Simulate/setup eex
+   Simulate/modify params
+      Modify params/modify
+      Modify params/van der Waals
+        anum/4
+      Parameters/FF type
+        "13"
+      Parameters/equil distance
+        "15"
+      Parameters/equil energy
+        "20"
+      Parameters/execute
+      Parameters/reset/return
+      Modify params/return
+   Simulate/return
+Top menu/in-out
+   In-Out/write
+   File types/FF parameters
+     "fuzzball.par"
+   Selections/yes
+     "for percec"
+     " "
+   In-Out/return
+Top menu/simulate
+   Simulate/setup eex
+   Simulate/mechanics
+      Mechanics/minimize
+      Mechanics/geometry prop
+      nonbonds
+      max nb
+        "30"
+      return
+      Mechanics/one energy
+      Mechanics/geometry prop
+      geom analysis
+      analyze by FF
+      return
+      Mechanics/one energy
+      Mechanics/return
+   Simulate/return
+Top menu/analyze
+   Analyze/geometry
+      Geometry/distance
+        anum/2
+        anum/4
+        anum/3
+        anum/4
+        anum/8
+        anum/5
+        anum/3
+        anum/5
+        anum/7
+        anum/4
+        anum/6
+        anum/2
+        anum/6
+        anum/3
+        .
+      Geometry/return
+   Analyze/return
+Top menu/simulate
+   Simulate/dynamics
+      Dynamics/canonical (TVN)
+         Canonical/execute
+         Canonical/temp
+           "2000"
+         Canonical/time
+           ".1"
+         Canonical/execute
+         Canonical/return
+      Dynamics/return
+   Simulate/return
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe/Percec.xtl"
+   Selections/continue-delete
+   In-Out/return
+Top menu/build
+   Build/periodic
+      Periodic/modify cell
+      Modify cell/A
+        "15"
+      Modify cell/B
+        "15"
+      Modify cell/C
+        "15"
+      Modify cell/do not scale
+      Modify cell/execute
+      Periodic/modify cell
+      Modify cell/reset/abort
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/return
+   Simulate/eex options
+   EEX options/fast setup
+   EEX options/return
+   Simulate/setup eex
+   unit cel
+   percec
+   return
+   return
+   unit cel
+   percec
+   return
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/minimize
+      .
+      Mechanics/minimize
+      .
+      Mechanics/return
+   Simulate/setup eex
+   percec
+   return
+   return
+   percec
+   return
+   Simulate/dynamics
+      Dynamics/adiabatic
+         Adiabatic(EVN)/0.500
+         Adiabatic(EVN)/time
+           ".1"
+         Adiabatic(EVN)/execute
+         Adiabatic(EVN)/return
+      Dynamics/return
+   Simulate/mechanics
+      Mechanics/minimize
+      Mechanics/geometry prop
+      geom analysis
+      analyze by FF
+      nonbonds
+      return
+      Mechanics/one energy
+      Mechanics/return
+   Simulate/return
+Top menu/build
+   Build/periodic
+      Periodic/modify cell
+      Modify cell/reset/abort
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/constrained min
+      Constraind min/return
+   Simulate/mechanics
+      Mechanics/restrict forces
+      eqvcel
+        "7"
+      eqvang
+        " "
+      fix strain
+      alp
+      bet
+      gam
+      execute
+      Mechanics/return
+   Simulate/mechanics
+      Mechanics/restrict forces
+      A
+      A
+      execute
+      Mechanics/return
+   Simulate/return
+Top menu/simulate
+   Simulate/mechanics
+      Mechanics/modify cell
+      Modify cell/A
+        "25"
+      Modify cell/B
+        "25"
+      Modify cell/C
+        "25"
+      Modify cell/execute
+      Mechanics/one energy
+      Mechanics/minimize
+      .
+      Mechanics/defaults
+         Defaults/return
+      Mechanics/defaults
+         Defaults/minimize var
+            Minimize var/method (atoms)
+            conj grad/v145
+            return
+            Minimize var/return
+         Defaults/return
+      Mechanics/minimize
+      Mechanics/one energy
+      Mechanics/one energy
+      Mechanics/one energy
+      Mechanics/one energy
+      Mechanics/defaults
+         Defaults/nonbond var
+            Nonbond var/r*epsilon
+            Nonbond var/coulomb
+            Nonbond var/nblst cut
+              "40"
+            Nonbond var/splin on
+              "0.001"
+            Nonbond var/splin on
+              "38"
+            Nonbond var/splin of
+              "39"
+            Nonbond var/return
+         Defaults/return
+      Mechanics/one energy
+      Mechanics/minimize
+      Mechanics/minimize
+      Mechanics/minimize
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/setup eex
+   unit cel
+   percec
+   return
+   return
+   unit cel
+   percec
+   return
+   Simulate/mechanics
+      Mechanics/return
+   Simulate/setup eex
+   unit cel
+   percec
+   return
+   return
+   unit cel
+   percec
+   return
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/minimize
+      Mechanics/deform cell
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/visualize
+   Visualize/render groups
+   percec
+   return
+      Render groups/spheres
+      Render groups/execute
+      Render groups/ball scale
+        ".1"
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/simulate
+   Simulate/mechanics
+      Mechanics/restrict forces
+      alp
+      alp
+      eqvcel
+        "0"
+      execute
+      Mechanics/minimize
+      Mechanics/modify cell
+      Modify cell/reset/abort
+      Mechanics/restrict forces
+      alp
+      bet
+      gam
+      execute
+      Mechanics/minimize
+      Mechanics/simple dynamics
+      Mechanics/simple dynamics
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/build
+   Build/periodic
+      Periodic/extend
+      Periodic/molxtl on
+      Periodic/extend
+      execute
+      Periodic/return
+   Build/return
+Top menu/analyze
+   Analyze/return
+Top menu/visualize
+   Visualize/render groups
+   percec
+   ext atms
+   return
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     percec
+     return
+     "opt-fuzzball.xtl"
+     "optimized with Morse fuzzball from Pm3n"
+     " "
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe/Percec.xtl"
+   Selections/continue-delete
+   In-Out/return
+Top menu/build
+   Build/periodic
+      Periodic/molxtl on
+      Periodic/extend
+      execute
+      Periodic/return
+   Build/return
+Top menu/visualize
+   Visualize/render groups
+   percec
+   ext atms
+   return
+      Render groups/ball scale
+        ".1"
+      Render groups/spheres
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/in-out
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe/opt-fuzzball.xtl"
+   Selections/continue-delete
+   In-Out/return
+Top menu/build
+   Build/periodic
+      Periodic/extend
+      execute
+      Periodic/return
+   Build/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   ext atms
+   return
+      Render groups/ball scale
+        ".1"
+      Render groups/execute
+      Render groups/spheres
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/build
+   Build/periodic
+      Display
+         ext atms
+         ext_cell
+         ext atms
+         return
+      Periodic/return
+   Build/return
+Top menu/build
+   Build/periodic
+      Periodic/keep supercell
+      Periodic/keep supercell
+      Periodic/build supercell
+      Periodic/unbuild supercel
+      Periodic/build supercell
+      Periodic/extend
+      execute
+      Periodic/build supercell
+      Periodic/return
+   Build/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/return
+   Simulate/setup eex
+   Group 1
+   Group 2
+   return
+   return
+   Group 1
+   Group 2
+   return
+   Simulate/mechanics
+   Simulate/setup eex
+   Group 1
+   Group 2
+   return
+   return
+   Group 1
+   Group 2
+   return
+   Simulate/mechanics
+   Simulate/return
+Top menu/in-out
+   In-Out/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     percec
+     return
+     "FB-216"
+     "extended uc"
+     " "
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe/FB-216.xtl"
+   Selections/continue-delete
+   In-Out/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/fast setup
+   EEX options/return
+   Simulate/setup eex
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/minimize
+      Mechanics/rms force cvrg
+        ".01"
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/spheres
+      Render groups/ball scale
+        ".1"
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/simulate
+   Simulate/mechanics
+      Mechanics/simple dynamics
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/build
+   Build/periodic
+      Periodic/connect pbc
+           percec
+           return
+         Connect/max distance
+           "23"
+         Connect/execute
+         Connect/execute
+         Connect/return
+      Periodic/return
+   Build/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/ball & stick
+      Render groups/execute
+      Render groups/half bond
+      Render groups/half bond
+      Render groups/return
+   Visualize/return
+Top menu/build
+   Build/periodic
+      Periodic/connect pbc
+           percec
+           return
+         Connect/execute
+         Connect/max distance
+           "30"
+         Connect/execute
+         Connect/min distance
+           "15"
+         Connect/execute
+         Connect/min distance
+           "20"
+         Connect/max distance
+           "23"
+         Connect/execute
+         Connect/return
+      Periodic/return
+   Build/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/half bond
+      Render groups/ball & stick
+      Render groups/ball & stick
+      Render groups/half bond
+      Render groups/ball & stick
+      Render groups/ball & stick
+      Render groups/ball & stick
+      Render groups/half bond
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/build
+   Build/periodic
+      Periodic/connect pbc
+           percec
+           return
+         Connect/setup
+           percec
+           return
+         Connect/execute
+         Connect/max distance
+           "60"
+         Connect/min distance
+           "5"
+         Connect/execute
+         Connect/return
+      Periodic/return
+   Build/return
+Top menu/analyze
+   Analyze/geometry
+      Geometry/distance
+        anum/179
+        anum/184
+        anum/47
+        anum/47
+        anum/184
+        anum/177
+        anum/184
+        anum/208
+        anum/184
+        anum/188
+        anum/184
+        anum/101
+        anum/184
+        anum/102
+        anum/184
+        anum/120
+        anum/184
+        anum/171
+        anum/184
+        anum/150
+        anum/184
+        anum/149
+        .
+      Geometry/return
+   Analyze/return
+Top menu/simulate
+   Simulate/eex options
+   EEX options/return
+   Simulate/setup eex
+   Simulate/mechanics
+      Mechanics/minimize
+      Mechanics/one energy
+      Mechanics/simple dynamics
+      Mechanics/return
+   Simulate/return
+Top menu/analyze
+   Analyze/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/ball & stick
+      Render groups/half bond
+      Render groups/ball & stick
+      Render groups/ball & stick
+      Render groups/ball & stick
+      Render groups/spheres
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/in-out
+   In-Out/write
+   File types/BioDesign
+     percec
+     return
+     " "
+   In-Out/read
+   File types/BioDesign
+     "/exec/biograf/biogv330/exe"
+   In-Out/return
+Top menu/simulate
+   Simulate/dynamics
+      Dynamics/canonical (TVN)
+         Canonical/temp
+           "2000"
+         Canonical/execute
+         Canonical/return
+      Dynamics/return
+   Simulate/mechanics
+      Mechanics/one energy
+      Mechanics/minimize
+      Mechanics/return
+   Simulate/return
+Top menu/visualize
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/return
+   Visualize/render groups
+   uc-perce
+   return
+      Render groups/execute
+      Render groups/return
+   Visualize/return
+Top menu/analyze
+   Analyze/return
+Top menu/exit
+  "CANCEL"
+Top menu/build
+   Build/periodic
+      Periodic/analyze
+         Analyze/return
+      Periodic/return
+   Build/return
+Top menu/exit
+  "OK"
+%
+endmacro

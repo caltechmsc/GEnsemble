@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>IPython as default...</TITLE>
+<META NAME="description" CONTENT="IPython as default...">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html261"
+  HREF="node9.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html259"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html253"
+  HREF="node7.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html262"
+  HREF="node9.html">Embedding IPython</A>
+<B> Up:</B> <A NAME="tex2html260"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html254"
+  HREF="node7.html">Customization</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000">
+IPython as your default Python environment</A>
+</H1>
+
+<P>
+Python honors the environment variable <TT>PYTHONSTARTUP</TT> and
+will execute at startup the file referenced by this variable. If you
+put at the end of this file the following two lines of code:
+
+<P>
+<TT>import IPython</TT>&nbsp;
+<BR><TT>IPython.Shell.IPShell().mainloop(sys_exit=1)</TT>
+
+<P>
+then IPython will be your working environment anytime you start Python.
+The <TT>sys_exit=1</TT> is needed to have IPython issue a call to
+<TT>sys.exit()</TT> when it finishes, otherwise you'll be back at
+the normal Python '<TT>&gt;&gt;&gt;</TT>'
+prompt<A NAME="tex2html16"
+  HREF="footnode.html#foot2370"><SUP><SPAN CLASS="arabic">4</SPAN></SUP></A>.
+
+<P>
+This is probably useful to developers who manage multiple Python versions
+and don't want to have correspondingly multiple IPython versions.
+Note that in this mode, there is no way to pass IPython any command-line
+options, as those are trapped first by Python itself.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Fernando Perez
+2007-05-09
+</ADDRESS>
+</BODY>
+</HTML>

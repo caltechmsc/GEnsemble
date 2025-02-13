@@ -1,0 +1,33 @@
+BIOGRF  321
+DESCRP tm1     
+REMARK tm1                                                         
+REMARK Created by griffith @ hive.wag.caltech.edu on 11/09/07   16:
+FORCEFIELD DREIDING
+REMARK : E =    0.000000 Gradient =   0.000000 cRMSD =   0.00
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+ATOM       1  N    ALA A    1   -0.66300  -0.42900   0.56900 N_R    3 0 -0.47000
+ATOM       2 HN    ALA A    1   -1.64472  -0.30654   0.42331 H___A  1 0  0.15500
+ATOM       3 HN    ALA A    1   -0.33304  -0.88049   1.39802 H___A  1 0  0.15500
+ATOM       4  CA   ALA A    1    0.26600   0.04000  -0.40500 C_3    4 0  0.07000
+ATOM       5 HCA   ALA A    1    0.03752  -0.46095  -1.34572 H_     1 0  0.09000
+ATOM       6  C    ALA A    1    1.68800  -0.22100  -0.03500 C_R    3 0  0.51000
+ATOM       7 HC    ALA A    1    2.05978   0.17230   0.82958 H_     1 0  0.00000
+ATOM       8  O    ALA A    1    2.42400  -0.91600  -0.77500 O_2    1 2 -0.51000
+ATOM       9  CB   ALA A    1   -0.05800   1.54000  -0.62900 C_3    4 0 -0.27000
+ATOM      10 HCB   ALA A    1    0.04526   2.03571   0.23333 H_     1 0  0.09000
+ATOM      11 HCB   ALA A    1    0.57023   1.91885  -1.30856 H_     1 0  0.09000
+ATOM      12 HCB   ALA A    1   -0.99840   1.63264  -0.95620 H_     1 0  0.09000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     2     3
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1     6     9     5
+CONECT     5     4
+CONECT     6     4     8     7
+CONECT     7     6
+CONECT     8     6
+CONECT     9     4    10    11    12
+CONECT    10     9
+CONECT    11     9
+CONECT    12     9
+END

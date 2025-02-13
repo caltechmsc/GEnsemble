@@ -1,0 +1,64 @@
+beginmacro
+%
+%  Extract.macro
+%
+%	This macro is intended to be used as a subroutine (called in
+%	this example by run_extract.macro).  It extracts a conformation from
+%	the trajectory file described by the first command line argument.  The
+%	second argument is the time of the first conformation to be extracted,
+%	the third is the total number of conformations to be extracted, and
+%	the fourth is the spacing between the desired conformations.  The
+%	fourth argument must be a multiple of the write trajectory frequency
+%	with which the trajectory file was made.
+%
+%	The third and fourth arguments are optional.  If absent the routine
+%	will assume that only one conformation is desired to be extracted.
+%
+%	Command line arguments:
+%
+trj_file	= ${input1}
+start		= ${input2}
+nconf		= ${input3}
+inc		= ${input4}
+%
+if(${inc} <> NULL) then
+	nconf = ${nconf} - 1
+else
+	nconf	= 0
+	inc	= 0
+endif
+%
+%
+echo ">>>>> from trajectory file "${trj_file}
+echo ">>>>>"
+%
+%	Save current position in menu
+save
+entry-level
+%
+Top menu/simulate
+	Simulate/animate
+		Animate/define traject
+		  ${trj_file}
+		  ${FIRSTFILE}
+%
+%	Do not create a display group here.  It is not necessary
+%	and will be confusing if the file is renamed later.
+%
+		off = (auto group)
+%
+		do icon = 0, ${nconf}
+%
+%	Calculate the time the conformation to extract
+                   step = ${icon} * ${inc}
+		  extract_time = ${start} + ${step}
+%
+		  Animate/extract
+		    ${extract_time}
+%
+		  enddo
+%
+%	Return to previous program menu
+restore
+%
+endmacro

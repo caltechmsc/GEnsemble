@@ -1,0 +1,5 @@
+BIOGRF  110
+DESCRP H2O     
+HETATM    1 O1    HOH     1       0.000   0.000   0.000 O_32    2  2  0.0000
+CONECT    1    0    0    0    0    0    0
+END

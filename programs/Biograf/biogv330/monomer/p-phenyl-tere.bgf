@@ -1,0 +1,83 @@
+BIOGRF  321
+DESCRP kevlar  
+REMARK Created by msi             
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 HH    PTP A    1    8.41862  -2.27074  -2.76444 N_R    3 0   .00000
+HETATM     2 HC1   PTP A    1     .88525   -.14893  -2.25364 H_     1 0   .00000
+HETATM     3 C1    PTP A    1    4.54859  -1.12492  -1.65286 C_R    3 0   .00000
+HETATM     4 C3    PTP A    1     .59470   -.16945   1.09391 C_R    3 0   .00000
+HETATM     5 HC3   PTP A    1    1.08376   -.39406   1.96435 H_     1 0   .00000
+HETATM     6 C4    PTP A    1    -.71543    .33534   1.18529 C_R    3 0   .00000
+HETATM     7 HC4   PTP A    1   -1.13043    .45492   2.11371 H_     1 0   .00000
+HETATM     8 C1    PTP A    1    3.29891   -.67621  -1.36047 N_R    3 0   .00000
+HETATM     9 C6    PTP A    1    -.82356    .48596  -1.23186 C_R    3 0   .00000
+HETATM    10 HC6   PTP A    1   -1.31826    .71531  -2.09784 H_     1 0   .00000
+HETATM    11 C2    PTP A    1    2.54768   -.86466   -.24238 C_R    3 0   .00000
+HETATM    12 TX    PTP A    1   -3.17869   1.30450   1.06035 H_     1 0   .00000
+HETATM    13 O1    PTP A    1   -3.44960   1.48953   -.85574 O_2    1 2   .00000
+HETATM    14 C5    PTP A    1   -1.44565    .67273    .02388 C_R    3 0   .00000
+HETATM    15 O1    PTP A    1    3.03267  -1.45894    .75067 O_2    1 2   .00000
+HETATM    16 TT    PTP A    1   -2.75479   1.17786    .13861 C_R    3 0   .00000
+HETATM    17 H4C1  PTP A    1    2.90066   -.11043  -2.03942 H___A  1 0   .00000
+HETATM    18 C2    PTP A    1    1.22835   -.35652   -.16065 C_R    3 0   .00000
+HETATM    19 C2    PTP A    1    5.13742  -2.29977  -1.12314 C_R    3 0   .00000
+HETATM    20 HC1   PTP A    1    4.62371  -2.89963   -.47697 H_     1 0   .00000
+HETATM    21 C3    PTP A    1    6.44048  -2.68245  -1.49334 C_R    3 0   .00000
+HETATM    22 HC2   PTP A    1    6.84911  -3.53151  -1.09414 H_     1 0   .00000
+HETATM    23 C4    PTP A    1    7.17316  -1.90616  -2.41154 C_R    3 0   .00000
+HETATM    24 C5    PTP A    1    6.59081   -.74817  -2.96137 C_R    3 0   .00000
+HETATM    25 HC4   PTP A    1    7.10979   -.17831  -3.63436 H_     1 0   .00000
+HETATM    26 C6    PTP A    1    5.28881   -.36666  -2.58745 C_R    3 0   .00000
+HETATM    27 HC5   PTP A    1    4.88526    .47818  -3.00159 H_     1 0   .00000
+HETATM    28 C1    PTP A    1     .48600   -.02100  -1.32100 C_R    3 0   .00000
+HETATM    29 HX    PTP A    1    8.92201  -1.73491  -3.39760 H___A  1 0   .00000
+HETATM    30 H2C1  PTP A    1    8.81732  -3.07066  -2.38683 H___A  1 0   .00000
+FORMAT CONECT (a6,12i6)
+CONECT     1    30    29    23
+CONECT     2    28
+CONECT     3    19    26     8
+ORDER      3     1     2     1
+CONECT     4     6    18     5
+ORDER      4     1     2     1
+CONECT     5     4
+CONECT     6     4    14     7
+ORDER      6     1     2     1
+CONECT     7     6
+CONECT     8    17    11     3
+CONECT     9    14    28    10
+ORDER      9     1     2     1
+CONECT    10     9
+CONECT    11    15    18     8
+ORDER     11     2     1     1
+CONECT    12    16
+CONECT    13    16
+ORDER     13     2
+CONECT    14     6     9    16
+ORDER     14     2     1     1
+CONECT    15    11
+ORDER     15     2
+CONECT    16    13    14    12
+ORDER     16     2     1     1
+CONECT    17     8
+CONECT    18    28     4    11
+ORDER     18     1     2     1
+CONECT    19     3    21    20
+ORDER     19     1     2     1
+CONECT    20    19
+CONECT    21    23    19    22
+ORDER     21     1     2     1
+CONECT    22    21
+CONECT    23    21    24     1
+ORDER     23     1     2     1
+CONECT    24    23    26    25
+ORDER     24     2     1     1
+CONECT    25    24
+CONECT    26    24     3    27
+ORDER     26     1     2     1
+CONECT    27    26
+CONECT    28    18     9     2
+ORDER     28     1     2     1
+CONECT    29     1
+CONECT    30     1
+END

@@ -1,0 +1,61 @@
+BIOGRF  160
+DESCRP ARACHIDO
+REMARK Created by pws @ sun4 on  1/24/89   19:32:02                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 O1    LIP      1   -1.67100  -5.47600  -6.24700 O_2    1 2  0.00000
+HETATM     2 XX    LIP      1   -3.60300  -4.62900  -5.62900 O_31   2 2  0.00000
+HETATM     3 C1    LIP      1   -2.28200  -4.57400  -5.69000 C_2    3 0  0.00000
+HETATM     4 C2    LIP      1   -1.58000  -3.45800  -5.11400 C_32   4 0  0.00000
+HETATM     5 C3    LIP      1   -0.98600  -3.70600  -3.71600 C_32   4 0  0.00000
+HETATM     6 C4    LIP      1   -0.31200  -2.40500  -3.27400 C_32   4 0  0.00000
+HETATM     7 C5    LIP      1    0.44900  -2.55500  -2.06000 C_21   3 0  0.00000
+HETATM     8 C6    LIP      1    1.24100  -1.64200  -1.46200 C_21   3 0  0.00000
+HETATM     9 C7    LIP      1    1.51800  -0.29100  -1.89000 C_32   4 0  0.00000
+HETATM    10 C8    LIP      1    1.39900   0.71700  -0.86000 C_21   3 0  0.00000
+HETATM    11 C9    LIP      1    0.31900   1.16100  -0.18800 C_21   3 0  0.00000
+HETATM    12 C10   LIP      1   -1.04700   0.70400  -0.25000 C_32   4 0  0.00000
+HETATM    13 C11   LIP      1   -1.85900   1.18300   0.84700 C_21   3 0  0.00000
+HETATM    14 C12   LIP      1   -1.82600   0.87900   2.16200 C_21   3 0  0.00000
+HETATM    15 C13   LIP      1   -0.91000   0.00600   2.85500 C_32   4 0  0.00000
+HETATM    16 C14   LIP      1   -0.41900   0.59200   4.07800 C_21   3 0  0.00000
+HETATM    17 C15   LIP      1    0.50700   1.55500   4.26600 C_21   3 0  0.00000
+HETATM    18 C16   LIP      1    1.23900   2.31900   3.28400 C_32   4 0  0.00000
+HETATM    19 C17   LIP      1    2.36100   3.14700   3.92300 C_32   4 0  0.00000
+HETATM    20 C18   LIP      1    1.87300   4.51500   4.42300 C_32   4 0  0.00000
+HETATM    21 C19   LIP      1    3.04000   5.29600   5.03300 C_32   4 0  0.00000
+HETATM    22 C20   LIP      1    2.54900   6.66500   5.50800 C_33   4 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3
+ORDER      1     2
+CONECT     2     3
+CONECT     3     1     2     4
+ORDER      3     2     0     0
+CONECT     4     3     5
+CONECT     5     4     6
+CONECT     6     5     7
+CONECT     7     6     8
+ORDER      7     0     2
+CONECT     8     7     9
+ORDER      8     2     0
+CONECT     9     8    10
+CONECT    10     9    11
+ORDER     10     0     2
+CONECT    11    10    12
+ORDER     11     2     0
+CONECT    12    11    13
+CONECT    13    12    14
+ORDER     13     0     2
+CONECT    14    13    15
+ORDER     14     2     0
+CONECT    15    14    16
+CONECT    16    15    17
+ORDER     16     0     2
+CONECT    17    16    18
+ORDER     17     2     0
+CONECT    18    17    19
+CONECT    19    18    20
+CONECT    20    19    21
+CONECT    21    20    22
+CONECT    22    21
+END

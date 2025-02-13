@@ -1,0 +1,10 @@
+scale=1.0
+perfil=100
+prbrad=1.4
+bndcon=4
+salt=0.0
+pbx=t
+pby=t
+pbz=f
+Acenter(0.0,0.0,0.0)
+energy(s,g,c)

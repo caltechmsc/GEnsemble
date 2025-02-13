@@ -1,0 +1,104 @@
+beginmacro
+%
+% version      : 3.10
+% version date : 16:03:58 8/14/92
+% link date    : 20:26:07 9/9/92
+%
+% Macro created on  9/11/92   18:07:18
+%
+% /usr/people/mario/standard.def
+progstat = set(program,NMRGRAF)
+progstat = set(program,POLARIS)
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "filename.bgf"
+	In-Out/read
+	File types/Mopac
+        Files/${FIRSTFILE}
+	Selections/yes
+	Selections/MNDO/AM1/PM3
+	  "filename.out"
+	In-Out/return
+Top menu/visualize
+	Visualize/render groups
+	  filename
+	  return
+		Render groups/half bond
+		Render groups/execute
+		Render groups/return
+	Visualize/return
+Top menu/simulate
+	Simulate/region I
+	filename
+	return
+	Simulate/log P
+	Selections/MNDO
+	Simulate/return
+Top menu/in-out
+	In-Out/read
+	File types/Mopac
+        Files/${FIRSTFILE}
+	Selections/no
+	Selections/ESP MNDO
+	  "filename.out"
+	In-Out/return
+Top menu/simulate
+	Simulate/region I
+	filename
+	return
+	Simulate/log P
+	Selections/MNDO ESP
+	Simulate/return
+Top menu/in-out
+	In-Out/read
+	File types/Mopac
+        Files/${FIRSTFILE}
+	Selections/no
+	Selections/ESP SCALED
+	  "filename.out"
+	In-Out/return
+Top menu/simulate
+	Simulate/region I
+	filename
+	return
+	Simulate/log P
+	Selections/ESP Scaled
+	Simulate/return
+Top menu/simulate
+	Simulate/prepare
+		Prepare/charges
+			Charges/Q equilibrate
+				Q equilibrate/setup
+				  filename
+				  return
+				Q equilibrate/execute
+				Q equilibrate/execute
+				Q equilibrate/return
+			Charges/return
+		Prepare/return
+	Simulate/region I
+	filename
+	return
+	Simulate/log P
+	Selections/Qeq
+	Simulate/prepare
+		Prepare/charges
+			Charges/Gasteiger
+				Gasteiger/setup
+				  filename
+				  return
+				Gasteiger/execute
+				Gasteiger/return
+			Charges/return
+		Prepare/return
+	Simulate/region I
+	filename
+	return
+	Simulate/log P
+	Selections/Gasteiger
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

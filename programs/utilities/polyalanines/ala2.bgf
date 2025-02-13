@@ -1,0 +1,53 @@
+BIOGRF  321
+DESCRP tm2     
+REMARK tm2                                                         
+REMARK Created by griffith @ hive.wag.caltech.edu on 11/09/07   16:
+FORCEFIELD DREIDING
+REMARK : E =    0.000000 Gradient =   0.000000 cRMSD =   0.00
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+ATOM       1  N    ALA A    1   -0.66300  -0.42900   0.56900 N_R    3 0 -0.47000
+ATOM       2 HN    ALA A    1   -1.64472  -0.30684   0.42304 H___A  1 0  0.15500
+ATOM       3 HN    ALA A    1   -0.33310  -0.87982   1.39841 H___A  1 0  0.15500
+ATOM       4  CA   ALA A    1    0.28500   0.04900  -0.42500 C_3    4 0  0.07000
+ATOM       5 HCA   ALA A    1    0.07948  -0.45035  -1.37184 H_     1 0  0.09000
+ATOM       6  C    ALA A    1    1.70600  -0.23900  -0.00200 C_R    3 0  0.51000
+ATOM       7  O    ALA A    1    2.44300  -0.94100  -0.70900 O_2    1 2 -0.51000
+ATOM       8  CB   ALA A    1   -0.03900   1.55000  -0.65000 C_3    4 0 -0.27000
+ATOM       9 HCB   ALA A    1    0.06426   2.04616   0.21207 H_     1 0  0.09000
+ATOM      10 HCB   ALA A    1    0.58934   1.92839  -1.32972 H_     1 0  0.09000
+ATOM      11 HCB   ALA A    1   -0.97936   1.64260  -0.97733 H_     1 0  0.09000
+ATOM      12  N    ALA A    2    2.08900   0.29800   1.14700 N_R    3 0 -0.47000
+ATOM      13 HN    ALA A    2    1.44569   0.83378   1.63689 H___A  1 0  0.31000
+ATOM      14  CA   ALA A    2    3.43000   0.10400   1.67900 C_3    4 0  0.07000
+ATOM      15 HCA   ALA A    2    4.14705   0.55261   0.99148 H_     1 0  0.09000
+ATOM      16  C    ALA A    2    3.74000  -1.36400   1.84200 C_R    3 0  0.51000
+ATOM      17 HC    ALA A    2    3.04626  -1.97709   2.27008 H_     1 0  0.00000
+ATOM      18  O    ALA A    2    4.83800  -1.83200   1.45700 O_2    1 2 -0.51000
+ATOM      19  CB   ALA A    2    3.50400   0.93800   2.98600 C_3    4 0 -0.27000
+ATOM      20 HCB   ALA A    2    2.81161   0.61149   3.62941 H_     1 0  0.09000
+ATOM      21 HCB   ALA A    2    4.41153   0.83843   3.39401 H_     1 0  0.09000
+ATOM      22 HCB   ALA A    2    3.33654   1.90138   2.77660 H_     1 0  0.09000
+FORMAT CONECT (a6,12i6)
+CONECT     1     4     2     3
+CONECT     2     1
+CONECT     3     1
+CONECT     4     1     6     8     5
+CONECT     5     4
+CONECT     6     4     7    12
+CONECT     7     6
+CONECT     8     4     9    10    11
+CONECT     9     8
+CONECT    10     8
+CONECT    11     8
+CONECT    12     6    14    13
+CONECT    13    12
+CONECT    14    12    16    19    15
+CONECT    15    14
+CONECT    16    14    18    17
+CONECT    17    16
+CONECT    18    16
+CONECT    19    14    20    21    22
+CONECT    20    19
+CONECT    21    19
+CONECT    22    19
+END

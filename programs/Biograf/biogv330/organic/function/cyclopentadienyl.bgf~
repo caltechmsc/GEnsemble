@@ -1,0 +1,34 @@
+BIOGRF  332
+DESCRP Cp2TiH  
+REMARK from ti cp2                                                 
+REMARK Created by biograf @ sgi1 on 12/12/93   18:59:47            
+FORCEFIELD GENFF   
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,i2,i4,f10.5)
+HETATM     1 XX    ORG A    1    4.88887  -0.58478  -1.86914 H_     1 0  0.00000 0   0
+HETATM     2 C1    ORG A    1    3.98294  -2.77344  -1.60989 C_R    4 0  0.00000 0   0
+HETATM     3 H1C1  ORG A    1    3.64827  -3.29270  -2.44233 H_     1 0  0.00000 0   0
+HETATM     4 C2    ORG A    1    3.22233  -1.92485  -0.81841 C_R    4 0  0.00000 0   0
+HETATM     5 H1C2  ORG A    1    2.22003  -1.69884  -0.95599 H_     1 0  0.00000 0   0
+HETATM     6 C3    ORG A    1    4.03860  -1.43215   0.18955 C_R    4 0  0.00000 0   0
+HETATM     7 H2C3  ORG A    1    3.75286  -0.77347   0.93730 H_     1 0  0.00000 0   0
+HETATM     8 C4    ORG A    1    5.30404  -1.97578   0.02073 C_R    4 0  0.00000 0   0
+HETATM     9 H2C4  ORG A    1    6.12991  -1.79440   0.62045 H_     1 0  0.00000 0   0
+HETATM    10 C5    ORG A    1    5.26967  -2.80462  -1.09157 C_R    4 0  0.00000 0   0
+HETATM    11 H1C5  ORG A    1    6.06550  -3.35115  -1.46913 H_     1 0  0.00000 0   0
+HETATM    12 Cp    ORG A    1    4.36369  -2.18217  -0.66189 Cp     6 0  0.00000 0   0
+FORMAT CONECT (a6,14i6)
+FORMAT ORDER (a6,i6,13f6.3)
+CONECT     1    12
+CONECT     2     4    10     3
+CONECT     3     2
+CONECT     4     2     6     5
+CONECT     5     4
+CONECT     6     4     8     7
+CONECT     7     6
+CONECT     8     6    10     9
+CONECT     9     8
+CONECT    10     8     2    11
+CONECT    11    10
+CONECT    12     1
+CNTMAS    12     5     2     4     6     8    10
+END

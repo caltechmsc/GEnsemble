@@ -1,0 +1,70 @@
+beginmacro
+%
+%  Energy_out.macro
+%
+%	This is a simple macro which shows how one might read in
+%	a bgf file by using a prompt in the text window.  The energy
+%	information is then written to a file called energy.out.
+%
+%	The macro can be run by typing:  @energy_out_n.macro at the
+%	function prompt in command mode or upon startup by typing: 
+%	energy_out_n.macro, after the startup alias.
+%
+%	No command line arguments are used.
+%
+out_file	= energy.out
+%
+Top menu/in-out
+	In-Out/read bgf
+		  ${prompt}
+		In-Out/return
+%
+	openw(${out_file},err=error)
+	blank		= " "
+%
+%	Write out column labels
+%
+	write(${out_file},err=error,fmt=[a21])\
+		"One energy output for:"
+	write(${out_file},err=error,fmt=[a5,a80]) ${blank},\
+		${FIRSTFILE}
+	write(energy.out,err=error,fmt=[a1])
+	write(energy.out,err=error,fmt=[a10,2a10]) File,\
+		Total E,RMS Force
+%
+Top menu/simulate
+	"dummy"
+	" "
+	 Simulate/energy
+		Simulate/setup eex
+		  ${LASTGROUP}
+		  return
+		  ${LASTGROUP}
+		  return
+		  ${LASTGROUP}
+		  return
+		Simulate/mechanics
+			Mechanics/one energy
+%
+			tot_energy	= inq(energy_total)
+			rms_force	= inq(energy_rms_force)
+%
+			write(energy.out,err=error,fmt=[a9,2f9.4])\
+				${LASTFILE},${tot_energy},${rms_force}
+%
+			Mechanics/return
+		 Simulate/return
+	Simulate/return
+%
+	close(${out_file},err=error)
+	go to end
+%
+error:
+	echo Error in energy_out_n.macro.
+	go to end
+%
+end:
+%
+quit
+%
+endmacro

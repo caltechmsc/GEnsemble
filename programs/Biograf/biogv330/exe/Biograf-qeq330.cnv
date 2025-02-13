@@ -1,0 +1,425 @@
+C***********************************************************************
+C***  This force field implementation was made by BioDesign, Inc.
+C***  This file may not be redistributed (whether or not it has been
+C***  modified) without the written permission of BioDesign.
+C***  This notice must appear in all copies of this file.
+C***********************************************************************
+C
+C  Conversion table for nucleic acids and amino acids to the Dreiding 
+C  atom types.  6/2/85
+C
+C  Record format is 1X,A3, 1X,A7, 1X,A7, 1X,I2, 1X,I2, 1X,F8.4 and
+C  corresponds to:
+C
+C  RES OLDTYP NEWTYP MB NL CHARGE
+C
+C  where RES    = residue name
+C        OLDTYP = old atom type (type on input data file)
+C        NEWTYP = new atom type (type used in calculations)
+C        MB     = maximum number of covalent connections (for building)
+C        NL     = number of lone pairs at MB (for H-bond acceptors)
+C        CHARGE = charge on atom (used in electrostatic calculation)
+C
+C***********************************************************************
+C  Amino acid conversions to Dreiding atom types QEQ charges (bdo)
+*
+*
+ ALA  N      N_R      3  0  -0.48
+ ALA HN      H___A    1  0   0.26
+ ALA  CA     C_3      4  0   0.05
+ ALA HCA     H_       1  0   0.17
+ ALA  C      C_R      3  0   0.47
+ ALA  O      O_2      1  2  -0.47
+ ALA  CB     C_3      4  0  -0.36
+ ALA HCB     H_       1  0   0.12
+*
+* QEQ Neutralized Arg (bdo)
+*
+ ARG  N      N_R      3  0  -0.48   
+ ARG HN      H___A    1  0   0.26
+ ARG  CA     C_3      4  0   0.05
+ ARG HCA     H_       1  0   0.17
+ ARG  C      C_R      3  0   0.47
+ ARG  O      O_2      1  2  -0.47
+ ARG  CB     C_3      4  0  -0.26
+ ARG  CG     C_3      4  0  -0.25
+ ARG  CD     C_3      4  0  -0.14
+ ARG  NE     N_R      3  0  -0.48
+ ARG HNE     H___A    1  0   0.23
+ ARG  HE     H___A    1  0   0.23
+ ARG  CZ     C_R      3  0   0.40
+ ARG  NH1    N_R      3  0  -0.63
+ ARG  NH2    N_R      3  0  -0.63
+ ARG HCB     H_       1  0   0.14
+ ARG HCG     H_       1  0   0.14
+ ARG HCD     H_       1  0   0.14
+ ARG HNH1    H___A    1  0   0.23
+ ARG HNH2    H___A    1  0   0.23
+*
+ ASN  N      N_R      3  0  -0.48
+ ASN HN      H___A    1  0   0.26
+ ASN  CA     C_3      4  0   0.05
+ ASN HCA     H_       1  0   0.17
+ ASN  C      C_R      3  0   0.47
+ ASN  O      O_2      1  2  -0.47
+ ASN  CB     C_3      4  0  -0.17
+ ASN  CG     C_R      3  0   0.47
+ ASN  OD1    O_2      1  2  -0.38
+ ASN  ND2    N_R      3  0  -0.62
+ ASN HCB     H_       1  0   0.12
+ ASN HND2    H___A    1  0   0.23
+*
+* QEQ Neutralized Asp (bdo)
+*
+ ASP  N      N_R      3  0  -0.48
+ ASP HN      H___A    1  0   0.26
+ ASP  CA     C_3      4  0   0.05
+ ASP HCA     H_       1  0   0.17
+ ASP  C      C_R      3  0   0.47
+ ASP  O      O_2      1  2  -0.47
+ ASP  CB     C_3      4  0  -0.18  
+ ASP  CG     C_R      3  0   0.70
+ ASP  OD1    O_2      1  2  -0.40
+ ASP  OD2    O_2      1  2  -0.40
+ ASP  HCB    H_       1  0   0.14
+*
+ CYS  N      N_R      3  0  -0.48
+ CYS HN      H___A    1  0   0.26
+ CYS  CA     C_3      4  0   0.05
+ CYS HCA     H_       1  0   0.17
+ CYS  C      C_R      3  0   0.47
+ CYS  O      O_2      1  2  -0.47
+ CYS  CB     C_3      4  0  -0.15
+ CYS  SG     S_3      2  2  -0.33
+ CYS HCB     H_       1  0   0.14
+ CYS HSG     H___A    1  0   0.20
+*
+* Cys Disulfide bridge case
+*
+ CYX  N      N_R      3  0  -0.48
+ CYX HN      H___A    1  0   0.26
+ CYX  CA     C_3      4  0   0.05
+ CYX HCA     H_       1  0   0.17
+ CYX  C      C_R      3  0   0.47
+ CYX  O      O_2      1  2  -0.47
+ CYX  CB     C_3      4  0  -0.08
+ CYX  SG     S_3      2  2  -0.20
+ CYX HCB     H_       1  0   0.14
+*
+* QEQ Neutralized Glu (bdo)
+*       
+ GLU  N      N_R      3  0  -0.48
+ GLU HN      H___A    1  0   0.26
+ GLU  CA     C_3      4  0   0.05
+ GLU HCA     H_       1  0   0.17
+ GLU  C      C_R      3  0   0.47
+ GLU  O      O_2      1  2  -0.47
+ GLU  CB     C_3      4  0  -0.26
+ GLU  CG     C_3      4  0  -0.20
+ GLU  CD     C_R      3  0   0.70
+ GLU  OE1    O_2      1  2  -0.40
+ GLU  OE2    O_2      1  2  -0.40
+ GLU HCB     H_       1  0   0.14
+ GLU HCG     H_       1  0   0.14
+*
+ GLN  N      N_R      3  0  -0.48
+ GLN HN      H___A    1  0   0.26
+ GLN  CA     C_3      4  0   0.05
+ GLN HCA     H_       1  0   0.17
+ GLN  C      C_2      3  0   0.47
+ GLN  O      O_2      1  2  -0.47
+ GLN  CB     C_3      4  0  -0.25
+ GLN HCB     H_       1  0   0.14
+ GLN  CG     C_3      4  0  -0.18
+ GLN  CD     C_R      3  0   0.49
+ GLN  OE1    O_2      1  2  -0.44
+ GLN  NE2    N_R      3  0  -0.60  
+ GLN HCG     H_       1  0   0.12 
+ GLN HNE2    H___A    1  0   0.23
+*
+ GLY  N      N_R      3  0  -0.48
+ GLY HN      H___A    1  0   0.26
+ GLY  CA     C_3      4  0   0.05
+ GLY HCA     H_       1  0   0.085
+ GLY  C      C_R      3  0   0.47
+ GLY  O      O_2      1  2  -0.47
+*
+* QEQ N-delta protonated Histidine - bgf default (jaw readjusted)
+*
+ HIS  N      N_R      3  0  -0.48
+ HIS HN      H___A    1  0   0.26
+ HIS  CA     C_3      4  0   0.05
+ HIS HCA     H_       1  0   0.17
+ HIS  C      C_R      3  0   0.47
+ HIS  O      O_2      1  2  -0.47
+ HIS  CB     C_3      4  0  -0.28
+ HIS HCB     H_       1  0   0.14
+ HIS  CG     C_R      3  0   0.14  
+ HIS  ND1    N_R      3  0  -0.52
+ HIS HND1    H___A    1  0   0.24
+ HIS  CD2    C_R      3  0   0.09
+ HIS HCD2    H_       1  0   0.09
+ HIS  CE1    C_R      3  0   0.16
+ HIS HCE1    H_       1  0   0.12
+ HIS  NE2    N_R      2  1  -0.32
+*
+* QEQ N-epsilon protonated Histidine - (jaw readjusted)
+*
+ HSD  N      N_R      3  0  -0.48
+ HSD HN      H___A    1  0   0.26
+ HSD  CA     C_3      4  0   0.05
+ HSD HCA     H_       1  0   0.17
+ HSD  C      C_R      3  0   0.47
+ HSD  O      O_2      1  2  -0.47
+ HSD  CB     C_3      4  0  -0.28
+ HSD HCB     H_       1  0   0.14
+ HSD  CG     C_R      3  0   0.19
+ HSD HCG     H_       1  0   0.00
+ HSD  ND1    N_R      2  1  -0.31
+ HSD  CD2    C_R      3  0   0.03 
+ HSD HCD2    H_       1  0   0.10 
+ HSD  CE1    C_R      3  0   0.17
+ HSD HCE1    H_       1  0   0.12
+ HSD  NE2    N_R      3  0  -0.54
+ HSD HNE2    H___A    1  0   0.24  
+*
+* QEQ Histidine protonated on N-delta & N-epsilon-net 0.0-(jaw readjusted)
+ HSP  N      N_R      3  0  -0.48
+ HSP HN      H___A    1  0   0.26
+ HSP  CA     C_3      4  0   0.05
+ HSP HCA     H_       1  0   0.17
+ HSP  C      C_R      3  0   0.47
+ HSP  O      O_2      1  2  -0.47
+ HSP  CB     C_3      4  0  -0.26
+ HSP HCB     H_       1  0   0.13
+ HSP  CG     C_R      3  0   0.17
+ HSP  ND1    N_R      3  0  -0.52
+ HSP HND1    H___A    1  0   0.23 
+ HSP HD1     H___A    1  0   0.23
+ HSP  CD2    C_R      3  0   0.07
+ HSP HCD2    H_       1  0   0.09
+ HSP  CE1    C_R      3  0   0.13
+ HSP HCE1    H_       1  0   0.12
+ HSP  NE2    N_R      3  0  -0.52
+ HSP HNE2    H___A    1  0   0.23
+*
+ ILE  N      N_R      3  0  -0.48
+ ILE HN      H___A    1  0   0.26
+ ILE  CA     C_3      4  0   0.05
+ ILE HCA     H_       1  0   0.17
+ ILE  C      C_R      3  0   0.47
+ ILE  O      O_2      1  2  -0.47
+ ILE  CB     C_3      4  0  -0.15
+ ILE  CG1    C_3      4  0  -0.27
+ ILE  CG2    C_3      4  0  -0.40
+ ILE  CD1    C_3      4  0  -0.42
+ ILE HCB     H_       1  0   0.15
+ ILE HCG1    H_       1  0   0.14
+ ILE HCG2    H_       1  0   0.13
+ ILE HCD1    H_       1  0   0.14
+*
+ LEU  N      N_R      3  0  -0.48
+ LEU HN      H___A    1  0   0.26
+ LEU  CA     C_3      4  0   0.05
+ LEU HCA     H_       1  0   0.17
+ LEU  C      C_R      3  0   0.47
+ LEU  O      O_2      1  2  -0.47
+ LEU  CB     C_3      4  0  -0.25
+ LEU  CG     C_3      4  0  -0.16
+ LEU  CD1    C_3      4  0  -0.40
+ LEU  CD2    C_3      4  0  -0.40
+ LEU HCB     H_       1  0   0.14
+ LEU HCG     H_       1  0   0.15
+ LEU HCD1    H_       1  0   0.13
+ LEU HCD2    H_       1  0   0.13
+*
+* QEQ neutralized Lysine (bdo)
+*
+ LYS  N      N_R      3  0  -0.48
+ LYS HN      H___A    1  0   0.26
+ LYS  CA     C_3      4  0   0.05
+ LYS HCA     H_       1  0   0.17
+ LYS  C      C_R      3  0   0.47
+ LYS  O      O_2      1  2  -0.47
+ LYS  CB     C_3      4  0  -0.27
+ LYS  CG     C_3      4  0  -0.25
+ LYS  CD     C_3      4  0  -0.24
+ LYS  CE     C_3      4  0  -0.24
+ LYS  NZ     N_3      4  0  -0.84
+ LYS HCB     H_       1  0   0.14
+ LYS HCG     H_       1  0   0.14
+ LYS HCD     H_       1  0   0.14
+ LYS HCE     H_       1  0   0.14
+ LYS HNZ     H___A    1  0   0.24
+*
+ MET  N      N_R      3  0  -0.48
+ MET HN      H___A    1  0   0.26
+ MET  CA     C_3      4  0   0.05
+ MET HCA     H_       1  0   0.17
+ MET  C      C_R      3  0   0.47
+ MET  O      O_2      1  2  -0.47
+ MET  CB     C_3      4  0  -0.24
+ MET  CG     C_3      4  0  -0.11
+ MET  SD     S_3      2  0  -0.32
+ MET  CE     C_3      4  0  -0.22
+ MET HCB     H_       1  0   0.12
+ MET HCG     H_       1  0   0.13
+ MET HCE     H_       1  0   0.13
+*
+ PHE  N      N_R      3  0  -0.48
+ PHE HN      H___A    1  0   0.26
+ PHE  CA     C_3      4  0   0.05
+ PHE HCA     H_       1  0   0.17
+ PHE  C      C_R      3  0   0.47
+ PHE  O      O_2      1  2  -0.47
+ PHE  CB     C_3      4  0  -0.24
+ PHE  CG     C_R      3  0   0.00
+ PHE  CD1    C_R      3  0  -0.10
+ PHE  CD2    C_R      3  0  -0.10
+ PHE  CE1    C_R      3  0  -0.10
+ PHE  CE2    C_R      3  0  -0.10
+ PHE  CZ     C_R      3  0  -0.10
+ PHE HCB     H_       1  0   0.12
+ PHE HCD1    H_       1  0   0.10
+ PHE HCD2    H_       1  0   0.10
+ PHE HCE1    H_       1  0   0.10
+ PHE HCE2    H_       1  0   0.10
+ PHE HCZ     H_       1  0   0.10
+*
+ PRO  N      N_R      3  0  -0.22 
+ PRO  CA     C_3      4  0   0.05
+ PRO HCA     H_       1  0   0.17
+ PRO  C      C_2      3  0   0.47
+ PRO  O      O_2      1  2  -0.47
+ PRO  CB     C_3      4  0  -0.24
+ PRO  CG     C_3      4  0  -0.24
+ PRO  CD     C_3      4  0  -0.24
+ PRO HCB     H_       1  0   0.12
+ PRO HCG     H_       1  0   0.12
+ PRO HCD     H_       1  0   0.12
+*
+ SER  N      N_R      3  0  -0.48
+ SER HN      H___A    1  0   0.26
+ SER  CA     C_3      4  0   0.05
+ SER HCA     H_       1  0   0.17
+ SER  C      C_R      3  0   0.47
+ SER  O      O_2      1  2  -0.47
+ SER  CB     C_3      4  0  -0.01
+ SER  OG     O_3      2  2  -0.61 
+ SER HOG     H___A    1  0   0.36
+ SER HCB     H_       1  0   0.13
+*
+ THR  N      N_R      3  0  -0.48
+ THR HN      H___A    1  0   0.26
+ THR  CA     C_3      4  0   0.05
+ THR HCA     H_       1  0   0.17
+ THR  C      C_R      3  0   0.47
+ THR  O      O_2      1  2  -0.47
+ THR  CB     C_3      4  0   0.11
+ THR  OG1    O_3      2  2  -0.62
+ THR  CG2    C_3      4  0  -0.37
+ THR HCB     H_       1  0   0.15
+ THR HOG1    H___A    1  0   0.34
+ THR HCG2    H_       1  0   0.13
+ *
+ TRP  N      N_R      3  0  -0.48
+ TRP HN      H___A    1  0   0.26
+ TRP  CA     C_3      4  0   0.05
+ TRP HCA     H_       1  0   0.17
+ TRP  C      C_R      3  0   0.47
+ TRP  O      O_2      1  2  -0.47
+ TRP  CB     C_3      4  0  -0.28
+ TRP  CG     C_R      3  0   0.03
+ TRP  CD1    C_R      3  0   0.03
+ TRP  CD2    C_R      3  0   0.08
+ TRP  NE1    N_R      3  0  -0.54
+ TRP HNE1    H___A    1  0   0.26
+ TRP  CE2    C_R      3  0   0.15
+ TRP  CE3    C_R      3  0  -0.12
+ TRP  CZ2    C_R      3  0  -0.09
+ TRP  CZ3    C_R      3  0  -0.10
+ TRP  CH2    C_R      3  0  -0.12
+ TRP HCB     H_       1  0   0.10
+ TRP HCD1    H_       1  0   0.10
+ TRP HNE1    H___A    1  0   0.26
+ TRP HCE3    H_       1  0   0.10
+ TRP HCZ2    H_       1  0   0.10
+ TRP HCZ3    H_       1  0   0.10
+ TRP HCH2    H_       1  0   0.10
+*
+ TYR  N      N_R      3  0  -0.48
+ TYR HN      H___A    1  0   0.26
+ TYR  CA     C_3      4  0   0.05
+ TYR HCA     H_       1  0   0.17
+ TYR  C      C_R      3  0   0.47
+ TYR  O      O_2      1  2  -0.47
+ TYR  CB     C_3      4  0  -0.24
+ TYR  CG     C_R      3  0   0.04
+ TYR  CD1    C_R      3  0  -0.10
+ TYR  CD2    C_R      3  0  -0.10
+ TYR  CE1    C_R      3  0  -0.10
+ TYR  CE2    C_R      3  0  -0.10
+ TYR  CZ     C_R      3  0   0.31
+ TYR  OH     O_R      2  2  -0.69
+ TYR HOH     H___A    1  0   0.34
+ TYR HCB     H_       1  0   0.12
+ TYR HCD1    H_       1  0   0.10
+ TYR HCD2    H_       1  0   0.10
+ TYR HCE1    H_       1  0   0.10
+ TYR HCE2    H_       1  0   0.10
+*
+ VAL  N      N_R      3  0  -0.48
+ VAL HN      H___A    1  0   0.26
+ VAL  CA     C_3      4  0   0.05
+ VAL HCA     H_       1  0   0.17
+ VAL  C      C_R      3  0   0.47
+ VAL  O      O_2      1  2  -0.47
+ VAL  CB     C_3      4  0  -0.18
+ VAL  CG1    C_3      4  0  -0.36
+ VAL  CG2    C_3      4  0  -0.36
+ VAL HCB     H_       1  0   0.18
+ VAL HCG1    H_       1  0   0.12
+ VAL HCG2    H_       1  0   0.12
+*
+ ADP  PB     P_4      4  0   0.80428 
+ ADP  O1B    O_3      2  2  -0.38498 
+ ADP  O2B    O_3      2  2  -0.33742 
+ ADP  O3B    O_2      1  2  -0.39541 
+ ADP  PA     P_4      4  0   0.76059 
+ ADP  O1A    O_3      2  2  -0.39489 
+ ADP  O2A    O_2      1  2  -0.42317 
+ ADP  O3A    O_3      2  2  -0.33518 
+ ADP  O5*    O_3      2  2  -0.43069 
+ ADP  C5*    C_3      4  0   0.08340 
+ ADP HC5*    H_       1  0   0.15552 
+ ADP HC5*    H_       1  0   0.10194 
+ ADP  C4*    C_3      4  0   0.12534 
+ ADP HC4*    H_       1  0   0.18613 
+ ADP  O4*    O_3      2  2  -0.59308 
+ ADP  C3*    C_3      4  0   0.16526 
+ ADP HC3*    H_       1  0   0.10549 
+ ADP  O3*    O_3      2  2  -0.69303 
+ ADP HO3*    H___A    1  0   0.38172 
+ ADP  C2*    C_3      4  0   0.07668 
+ ADP HC2*    H_       1  0   0.11058 
+ ADP  O2*    O_3      2  2  -0.73311 
+ ADP HO2*    H___A    1  0   0.30881 
+ ADP  C1*    C_3      4  0   0.22286 
+ ADP HC1*    H_       1  0   0.15630 
+ ADP  N9     N_R      2  1  -0.38210 
+ ADP  C8     C_R      3  0   0.14870 
+ ADP HC8     H_       1  0   0.11149 
+ ADP  N7     N_R      2  1  -0.39630 
+ ADP  C5     C_R      3  0   0.22618 
+ ADP  C6     C_R      3  0   0.27419 
+ ADP  N6     N_R2     3  0  -0.69021 
+ ADP HN6     H___A    1  0   0.24401 
+ ADP  HN6    H___A    1  0   0.23482 
+ ADP   N1    N_R      2  1  -0.36276 
+ ADP   C2    C_R      3  0   0.12596 
+ ADP  HC2    H_       1  0   0.10825 
+ ADP   N3    N_R      2  1  -0.39417 
+ ADP   C4    C_R      3  0   0.30023 
+  MG  MG     Mg      -6  3   0.42774 
+*
+

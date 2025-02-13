@@ -1,0 +1,19 @@
+BIOGRF  160
+DESCRP GLN     
+REMARK Created by srl @ sun4 on  1/28/89   14:18:19                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  CB   GLN      1   -0.63900  -0.48800   0.29400 C_32   4 0  0.04200
+ATOM       2  CG   GLN      1    0.38800   0.10800  -0.69400 C_32   4 0 -0.01600
+ATOM       3  CD   GLN      1   -0.08200   0.21400  -2.04900 C_R    3 0  0.36100
+ATOM       4  OE1  GLN      1   -0.11700  -0.76300  -2.78500 O_2    1 2 -0.37000
+ATOM       5  NE2  GLN      1   -0.46900   1.34500  -2.51500 N_R2   3 0  0.01000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2
+CONECT     2     1     3
+CONECT     3     2     4     5
+ORDER      3     0     2     0
+CONECT     4     3
+ORDER      4     2
+CONECT     5     3
+END

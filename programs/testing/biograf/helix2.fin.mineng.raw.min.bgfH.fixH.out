@@ -1,0 +1,135 @@
+Incorrectly built binary which accesses errno or h_errno directly. Needs to be fixed.
+
+
+
+
+                        VERSION 3.21                     
+                                                           
+
+
+
+
+                   Version 3.21 of 04/30/93
+               Last linked at 00:41:06 06/26/03
+
+
+                                                                
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+
+  READING DEFAULTS FILE...
+  UNIT 27 FILE: /home/ravi/GEnsemble/programs/Biograf/batbio.def
+  !
+  ! Startup defaults for BioDesign BIOGRAF
+  !
+  ! File: ${HOME}/bsgidre.def
+  !
+  PROGRAM    BIOGRAF
+  L_SGI      YES
+  TERMINAL   SGI
+  L_BATCH    YES
+ lbatch  T
+
+  READING ATOM DATA FILE...
+  UNIT 24 FILE: /home/ravi/GEnsemble/programs/Biograf/biogv330/exe/atom330.atm
+  Charge Equilibration charges from: A. K. Rappe' and W. A. Goddard, III         
+  changes on 24 july, 1992:                                                      
+    electronegativity and hardness of transition metals                          
+      based on positive ions (before neutrals were used, see atomneu300.atm)     
+    restrict Be,B,C,N columns to charge.ge.-1                                    
+    correction in values for H                                                   
+  Masses: 1987 atomic weights (1986 CODATA) Handbook of Chemistry and Physics    
+    changed from early data: 2/feb/1992                                          
+
+  READING PARAMETER FILE...
+  UNIT 21 FILE: /home/ravi/GEnsemble/programs/Biograf/biogv330/exe/Biograf330.par
+
+  INPUT FORCE FIELD IS DREIDING
+
+  Special force field parameter options used with this .par input :
+  LBOND      T         T >> use bond terms
+  LANGLE     T         T >> use angle terms
+  ANGX 2 K   F         T >> use true force constants for cosine ang-str cross terms
+  ANGANGINV  F         T >> use angle-angle inversion terms
+  LINVERSN   T         T >> use inversion terms
+  ALL INVER  F         T >> use only one inversion term per center
+  BNDXANG    F         T >> use bond cross angle terms
+  ANGXANG    F         T >> use angle cross angle terms
+  LTORSION   T         T >> use torsion terms
+  BNDBNDTOR  F         T >> allow coupling of the 1-2 and 3-4 bonds of torsions
+  ANGANGTOR  F         T >> allow coupling of the 1-2-3 and 2-3-4 angles of torsions
+  LPITWIST   F         T >> use pi twist terms
+  TORS SCAL  T         T >> will renormalize torsions (not allow SNGTOR)
+  ALL TORSN  F         T >> use only one torsion term per central bond
+  ETOR SCAL     0.4000 exocyclic scaling factor
+  TORANGSW   F         T >> switch torsion barrier off as angle becomes linear
+  LNONBOND   T         T >> use nonbond terms
+  RNB GEOMN  T         T >> use geom mean for nonbond cross terms
+  NBEXBND    T         T >> exclude 1-2 terms from nonbonds
+  NBEXANG    T         T >> exclude 1-3 terms from nonbonds
+  SCAL NB14     1.0000 factor scale 1-4 nonbonds (1.0 >> full value)
+  SHRINK CH  F         T >>  allow shrunk CH bonds for
+  LCOULMB    T         T >> use Coulomb terms
+  R*EPS      F         T >> use shielded Coulomb 1/eps*R**2
+  DIELCTRIC  2.5
+  LHBOND     T         T >> use hb interactions
+  ATM DEFLT  H_        default atom for FF
+  MASSZER    F         T >> use zero mass option
+  POLYENE    F         T >> use polyene option
+  USRENERGY  F         T >> use user energy expression
+  CURRENT FORCE FIELD DOES NOT HAVE A MATCH FOR  H_   ADD TO *.PAR AND REREAD *.BGF
+  The default FF type has been changed to C_3  
+  Of  62 force field types added
+      50 have added hydrogen types defined and
+      20 involve implicit hydrogens
+
+  The new force field has the following types:
+        63 Atoms
+      1832 Bonds
+        60 Angles
+        17 Inversions          0 angle-angles         0 bond-cross-angles
+      5772 Torsions with   11548 Torsion terms
+         0 pi twists
+         1 Hydrogen Bond pairs
+         0 Special off-diagonal nonbond pair types
+  
+
+  READING CONVERSION TABLE...
+  UNIT 22 FILE: /home/ravi/GEnsemble/programs/Biograf/biogv330/exe/Biograf330.cnv
+  Checking for initialization file...
+
+  READING INITIALIZATION FILE...
+  UNIT 98 FILE: fixH.macro
+  Pick the file type to be input:
+  Choose the file to be input
+ helix2.fin.mineng.raw.min.bgf
+  Working...
+  DESCRP :  helix2.fin.mineng.min.bgf
+  REMARK :  MFTA /home/adam/test_opthelix/mfta
+  REMARK :  TM2 69 101
+  Pick files to be reconnected :
+  Calculating connectivities for file helix2.f
+  Recalculating primitives...
+  Recalculating groups...
+  Pick the file to be operated on
+  Generating hydrogen positions...
+  Working...
+  Optimizing hydrogen positions...
+  EEXATM found     1 atoms with mass differing by more than  0.0001 from standard
+  The worst case is atom:   490 with FF C_R   input mass=  11.00306
+                                           expected mass=  12.01100
+  1 hydrogens added
+  Recreating primitives...
+  Pick the file type to be output:
+  Enter a name for the output file
+ helix2.fin.mineng.raw.min.bgfH
+  Enter REMARKs for the output file
+  
+  Working...
+
+           FILE helix2.fin.mineng.raw.min.bgfH ALREADY EXISTS - WILL RENAME.
+ OK

@@ -1,0 +1,19 @@
+BIOGRF  321
+DESCRP DMF     
+REMARK Created by tc @ tahir on  4/30/93   23:41:04                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5,f10.5)
+HETATM     1 C1    DMF      1   -0.20500  -1.44900   0.15500 C_R1   3 0  0.00000
+HETATM     2 H3C1  DMF      1   -0.63821  -2.25704  -0.70144 O_2    1 2  0.00000
+HETATM     3 H1C1  DMF      1   -0.02691  -0.12038  -0.00978 N_R    3 0  0.00000
+HETATM     4 HH1C1 DMF      1    0.47542   0.61465   1.08396 C_33   4 0  0.00000
+HETATM     5 HH1C1 DMF      1   -0.30852   0.58910  -1.20659 C_33   4 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+ORDER      1     1     2
+CONECT     2     1
+ORDER      2     2
+CONECT     3     1     5     4
+CONECT     4     3
+CONECT     5     3
+END

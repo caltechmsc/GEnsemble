@@ -1,0 +1,22 @@
+BIOGRF  160
+DESCRP formamid
+REMARK with gasteiger charges                                      
+REMARK Created by slh @ tms2r on 10/06/89   15:39:31               
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 C1    ORG B    1    0.59223   0.47342   0.09770 C_2    3 0  0.20405
+HETATM     2 HC1   ORG B    1    0.92543  -0.06139  -0.66592 H_     1 0  0.12971
+HETATM     3 O1    ORG B    1    0.52122  -0.04987   1.26362 N_R    3 0 -0.05465
+HETATM     4 HO1   ORG B    1    0.78536  -0.94248   1.39487 H___A  1 0  0.00000
+HETATM     5 HO1   ORG B    1    0.20479   0.45848   1.98814 H___A  1 0  0.00000
+HETATM     6 O2    ORG B    1    0.24909   1.63177  -0.07241 O_2    1 2 -0.27912
+FORMAT CONECT (a6,12i6)
+CONECT     1     6     3     2
+ORDER      1     2     1     1
+CONECT     2     1
+CONECT     3     1     5     4
+CONECT     4     3
+CONECT     5     3
+CONECT     6     1
+ORDER      6     2
+END

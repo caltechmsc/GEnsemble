@@ -1,0 +1,75 @@
+beginmacro
+%
+% link date    : 08:43:46 2/20/92
+%
+%
+nfilz = 0
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  force.bgf
+	In-Out/return
+Top menu/utilities
+	Utilities/user
+		User/energy utilities
+		Energy utils/External force
+%
+%  Display coordinate axes
+%
+		external force/Define axes
+%
+%  Input direction components for force
+%  These values will be normalized to 1
+%
+		external force/  fz
+		  "-1"
+%
+%  Input the magnitude of the field strength in kcal/mol/A
+%
+		external force/field strength
+		  "5"
+%
+%  Input the starting number of the active atom set
+%
+		external force/astart
+%		  ${strt}
+		  "39"
+%
+%  Input the ending number of the active atom set
+%
+		external force/astop
+%		  ${stop}
+		  "76"
+%
+%  Show the force vector
+%
+		external force/display f
+pause
+		external force/return
+		Energy utils/return
+		User/return
+	Utilities/return
+%
+%  Energy expression is now setup
+%
+Top menu/simulate
+	Simulate/setup eex
+	chain1
+	chain2
+	return
+	return
+	chain1
+	chain2
+	return
+%
+%  Do 500 steps of simple dynamics
+%
+	Simulate/mechanics
+		Mechanics/# of steps
+		  "500"
+		Mechanics/simple dynamics
+		Mechanics/return
+	Simulate/return
+echo End of demo
+quit
+endmacro

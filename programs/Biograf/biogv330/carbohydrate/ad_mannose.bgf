@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_MANN 
+REMARK Created by slm @ tms2r on  1/25/90   17:49:32               
+REMARK alpha-D-Mannose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  MAN      1    1.17822   0.28350  -0.93435 O_3    2 2  0.00000
+HETATM     2  C1*  MAN      1    1.78785  -0.30490   0.22622 C_3    4 0  0.00000
+HETATM     3 HC1*  MAN      1    2.76525   0.16806   0.34453 H_     1 0  0.00000
+HETATM     4  O1*  MAN      1    2.07121  -1.68589  -0.00223 O_3    2 2  0.00000
+HETATM     5  HO1* MAN      1    2.52664  -2.05927   0.78100 H___A  1 0  0.00000
+HETATM     6  C2*  MAN      1    0.94209  -0.07222   1.50827 C_3    4 0  0.00000
+HETATM     7 HC2*  MAN      1    1.35354  -0.68460   2.31525 H_     1 0  0.00000
+HETATM     8  O2*  MAN      1    1.08791   1.28780   1.93783 O_3    2 2  0.00000
+HETATM     9  HO2* MAN      1    0.59074   1.42172   2.77172 H___A  1 0  0.00000
+HETATM    10  C3*  MAN      1   -0.54117  -0.48645   1.27922 C_3    4 0  0.00000
+HETATM    11 HC3*  MAN      1   -0.55052  -1.56741   1.11788 H_     1 0  0.00000
+HETATM    12  O3*  MAN      1   -1.33754  -0.27854   2.45300 O_3    2 2  0.00000
+HETATM    13  HO3* MAN      1   -2.24421  -0.61598   2.29667 H___A  1 0  0.00000
+HETATM    14  C4*  MAN      1   -1.12826   0.19112   0.00586 C_3    4 0  0.00000
+HETATM    15 HC4*  MAN      1   -1.21320   1.26320   0.19694 H_     1 0  0.00000
+HETATM    16  O4*  MAN      1   -2.44788  -0.28275  -0.28303 O_3    2 2  0.00000
+HETATM    17  HO4* MAN      1   -2.78894   0.18112  -1.07587 H___A  1 0  0.00000
+HETATM    18  C5*  MAN      1   -0.19865  -0.02720  -1.22725 C_3    4 0  0.00000
+HETATM    19 HC5*  MAN      1   -0.23076  -1.08786  -1.49218 H_     1 0  0.00000
+HETATM    20  C6*  MAN      1   -0.61855   0.74456  -2.50548 C_3    4 0  0.00000
+HETATM    21 HC6*  MAN      1   -1.61068   0.41989  -2.82256 H_     1 0  0.00000
+HETATM    22 HC6*  MAN      1    0.07403   0.50812  -3.31549 H_     1 0  0.00000
+HETATM    23  O6*  MAN      1   -0.64764   2.16241  -2.35825 O_3    2 2  0.00000
+HETATM    24  HO6* MAN      1    0.24344   2.48258  -2.10551 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

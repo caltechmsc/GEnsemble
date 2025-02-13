@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_PSIC 
+REMARK Created by slm @ tms2r on  1/25/90   17:49:49               
+REMARK alpha-D-Psicose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  PSI      1    0.26127  -0.52741  -1.12122 O_3    2 2  0.00000
+HETATM     2  C2*  PSI      1    0.95133  -0.73464   0.11662 C_3    4 0  0.00000
+HETATM     3  C1*  PSI      1    2.25597   0.10665   0.18352 C_3    4 0  0.00000
+HETATM     4 HC1*  PSI      1    2.95502  -0.21548  -0.59190 H_     1 0  0.00000
+HETATM     5 HC1*  PSI      1    2.73682  -0.04379   1.15188 H_     1 0  0.00000
+HETATM     6  C3*  PSI      1   -0.08974  -0.38838   1.21616 C_3    4 0  0.00000
+HETATM     7 HC3*  PSI      1   -0.05694   0.68692   1.40549 H_     1 0  0.00000
+HETATM     8  O3*  PSI      1    0.11634  -0.97714   2.50589 O_3    2 2  0.00000
+HETATM     9 HO3*  PSI      1   -0.59868  -0.69328   3.11292 H___A  1 0  0.00000
+HETATM    10  C4*  PSI      1   -1.44989  -0.66522   0.54067 C_3    4 0  0.00000
+HETATM    11 HC4*  PSI      1   -2.20952   0.00305   0.95249 H_     1 0  0.00000
+HETATM    12  O4*  PSI      1   -1.94271  -2.00116   0.69513 O_3    2 2  0.00000
+HETATM    13 HO4*  PSI      1   -2.10394  -2.18227   1.64459 H___A  1 0  0.00000
+HETATM    14  C5*  PSI      1   -1.14937  -0.33516  -0.94212 C_3    4 0  0.00000
+HETATM    15 HC5*  PSI      1   -1.67102  -1.02447  -1.61257 H_     1 0  0.00000
+HETATM    16  C6*  PSI      1   -1.56510   1.10593  -1.32661 C_3    4 0  0.00000
+HETATM    17 HC6*  PSI      1   -1.01794   1.83325  -0.72456 H_     1 0  0.00000
+HETATM    18 HC6*  PSI      1   -2.63115   1.23619  -1.13533 H_     1 0  0.00000
+HETATM    19  O6*  PSI      1   -1.33983   1.40394  -2.70167 O_3    2 2  0.00000
+HETATM    20 HO6*  PSI      1   -1.62141   2.32416  -2.88723 H___A  1 0  0.00000
+HETATM    21  O1*  PSI      1    2.07535   1.51071   0.01020 O_3    2 2  0.00000
+HETATM    22 HO1*  PSI      1    2.94162   1.96290   0.08386 H___A  1 0  0.00000
+HETATM    23  O2*  PSI      1    1.31641  -2.12096   0.09891 O_3    2 2  0.00000
+HETATM    24 HO2*  PSI      1    1.91242  -2.29188  -0.66013 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    14
+CONECT     2     1     3     6    23
+CONECT     3     2    21     4     5
+CONECT     4     3
+CONECT     5     3
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14     1    16    10    15
+CONECT    15    14
+CONECT    16    14    19    17    18
+CONECT    17    16
+CONECT    18    16
+CONECT    19    16    20
+CONECT    20    19
+CONECT    21     3    22
+CONECT    22    21
+CONECT    23     2    24
+CONECT    24    23
+END

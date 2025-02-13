@@ -1,0 +1,21 @@
+# Forcefield File
+ff                  FF/dreiding-0.3.par
+
+# SCREAM Directory
+scream_dir          scream2
+
+# PYTHON
+python_executable   thirdparty/python-2.4.2/bin/python
+
+# MPSim Directory
+mpsim_data          mpsim/mpsimdata
+mpsim_executable    mpsim/mpsim
+
+# runMPSim utility
+runmpsim            utilities/runMPSim.pl
+
+# PlayWithBGF
+pwb                 utilities/playWithBGF/playWithBGF
+
+# QUEUE
+queuetype        pbs       # Cluster Queue Type (sge or pbs)

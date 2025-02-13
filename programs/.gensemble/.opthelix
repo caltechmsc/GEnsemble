@@ -1,0 +1,63 @@
+#######################
+# Version Information #
+#######################
+version 1.1
+
+#########################
+# Directory Information #
+#########################
+# General location of user directories
+user_home           ~
+
+# General location of user temp directory
+user_temp           /temp1/
+
+# Forcefield File
+ff                  FF/dreiding-0.3.par
+
+# SCREAM Directory
+scream_dir          scream2
+python_executable   thirdparty/python-2.4.2/bin/python
+
+# Polyalanines Directory
+polyalanines_dir    utilities/polyalanines
+
+# MPSim Directory
+mpsim_data          mpsim/mpsimdata
+mpsim_executable    mpsim/mpsim
+
+####################
+# Default Settings #
+####################
+dynsteps         1000000   # Number of steps of equilibration dynamics
+                           # (1000000 steps * 2 fs) = 2 ns
+dyntimestep      2         # Timestep for equilibration dynamics (in fs)
+dynsnapint       5000      # Number of steps between snapshots (5000 * 2 fs = 10 ps)
+dyntemp          300       # Temperature of the equilibration dynamics (in K)
+dynresidues      PST       # Residues to be present during dynamics (in addition to
+                           # alanine and glycine).  Proline will be present, but by
+                           # including it here, it will be re-Screamed before dynamics
+ignorepct        25        # Do not use this percentage of the results from the beginning
+                           # of the equilibration dynamics (25 % of 2 ns = 0.5 ns)
+alaninecap       1         # Cap helices with alanines (1 = on, 0 = off)
+caplength        8         # Maximum number of alanines in the cap
+staticcaps       0         # Caps are a fixed length, regardless of proline positions
+                           # (1 = fixed length, 0 = dynamic length based on prolines)
+backboneminrms   0.5       # RMS Force threshold for backbone minimization
+backboneminsteps 1000      # Max steps for backbone minimization
+warmup           1         # Perform warmup dynamics (1 = on, 0 = off)
+warmupstart      50        # Starting temperature (in K) for warmup
+warmupinterval   50        # Temperature increment (in K) for warmup
+warmupsteps      5000      # Number of steps per temperature in warmup (5000 * 2 fs = 10 ps)
+warmuptimestep   2         # Timestep for warmup dynamics
+finalminimize    1         # Perform final minimization (1 = on, 0 = off)
+finalminrms      0.5       # RMS Force threshold for backbone minimization
+finalminsteps    100       # Max steps for backbone minimization
+qsub             0         # Submit job to the queue (1 = on, 0 = off)
+                           # Note that if runparallel = 1, the job must be run on the queue
+                           # regardless of the qsub value
+queuetype        pbs       # Cluster Queue Type (sge or pbs)
+runlocal         1         # Run in the current directory (1 = current, 0 = temp space)
+runparallel      1         # Run jobs for each helix in parallel (1 = parallel, 0 = serial)
+raw              pred      # Set of Raw TMs to use: pred, man, none
+cap              pred      # Set of Cap TMs to use: pred, man

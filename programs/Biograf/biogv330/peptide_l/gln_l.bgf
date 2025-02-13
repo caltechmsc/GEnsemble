@@ -1,0 +1,37 @@
+BIOGRF  160
+DESCRP GLN-L   
+REMARK Created by srl @ sun4 on  1/28/89   13:11:42                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  N    GLN      1    0.28600   2.88700  -0.63100 N_R    3 0 -0.08000
+ATOM       2 HN    GLN      1   -0.45900   3.45700  -0.68500 H___A  1 0  0.00000
+ATOM       3  CA   GLN      1    0.26100   1.65100  -1.26500 C_31   4 0  0.06500
+ATOM       4  C    GLN      1    1.34600   0.74600  -0.95400 C_2    3 0  0.35000
+ATOM       5  O    GLN      1    1.08100  -0.31700  -0.41100 O_2    1 2 -0.36200
+ATOM       6  CB   GLN      1   -0.15500   1.73500  -2.75100 C_32   4 0  0.04200
+ATOM       7  CG   GLN      1    0.87200   2.33100  -3.73900 C_32   4 0 -0.01600
+ATOM       8  CD   GLN      1    0.40200   2.43700  -5.09400 C_R    3 0  0.36100
+ATOM       9  OE1  GLN      1    0.36700   1.46000  -5.83000 O_2    1 2 -0.37000
+ATOM      10  NE2  GLN      1    0.01500   3.56800  -5.56000 N_R    3 0  0.01000
+ATOM      11 HNE1  GLN      1    0.03600   4.33400  -5.01400 H___A  1 0  0.00000
+ATOM      12 HNE2  GLN      1   -0.28900   3.63200  -6.44700 H___A  1 0  0.00000
+ATOM      13  OXT  GLN      1    2.52500   0.97900  -1.20400 O_2    1 2 -0.56000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     4     6
+CONECT     4     3     5    13
+ORDER      4     0     2     0
+CONECT     5     4
+ORDER      5     2
+CONECT     6     3     7
+CONECT     7     6     8
+CONECT     8     7     9    10
+ORDER      8     0     2     0
+CONECT     9     8
+ORDER      9     2
+CONECT    10     8    12    11
+CONECT    11    10
+CONECT    12    10
+CONECT    13     4
+END

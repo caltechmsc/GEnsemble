@@ -1,0 +1,29 @@
+beginmacro
+%
+% version      : 3.00
+% version date : 15:03:28 3/3/92
+% link date    : 13:24:30 3/9/92
+%
+% Macro created on  3/10/92   13:42:52
+%
+Top menu/in-out
+	In-Out/read bgf
+	  "cram_lin.bgf"
+% 	cram_lin.bgf
+	In-Out/read NMR
+	  "cram20.nmr"
+% 	cram20.nmr
+	In-Out/return
+Top menu/simulate
+	  "cram20.trj"
+	  " "
+	Simulate/defaults
+		Defaults/NMR cycle
+		  "60"
+		Defaults/return
+	Simulate/scheme 1
+	Simulate/return
+Top menu/exit
+  "OK"
+%
+endmacro

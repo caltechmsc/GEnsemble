@@ -1,0 +1,225 @@
+beginmacro
+%
+%
+%  This macro generates a grid of solvent A,
+%  randomly removes input percentage of A molecules,
+%  then adds B molecules in the holes.
+%  The mixed solvent builder will function best if the
+%  larger solvent molecule is used as solvent A, as the
+%  grid is determined by this solvent.
+%
+line1 = "Enter the name of the first solvent."
+line2 = "Enter the name of the second solvent."
+line3 = "Enter the % composition for the first solvent."
+line5 = "Enter the solvent grid spacing."
+line6 = "Enter the solvent outer cutoff distance."
+out = display_info(This is the mixed solvent builder)
+%
+%  Get the solute filename
+%
+echo Enter the input filename (default is mixtest.bgf)
+TOP:
+infil = ${prompt}
+%
+%  Does input file exist?
+%
+if( ${infil} = NULL )then
+  infil = mixtest
+else
+  open( ${infil}.bgf, err=EROR )
+  close( ${infil}.bgf, err=EROR )
+endif
+goto NEXT
+EROR:
+echo File does not exist, please reenter the file name
+goto TOP
+NEXT:
+%
+%  Read in file
+%
+Top menu/in-out
+	In-Out/read
+	  File types/BioDesign
+	  ${infil}
+	In-Out/return
+%
+%  Get solvent info
+%
+S1:
+out = display_info(${line1})
+echo ${line1}
+solv1 = ${prompt}
+if( ${solv1} = NULL )goto S1
+%
+C:
+out = display_info(${line3})
+echo ${line3}
+comp1 = ${prompt}
+if( ${comp1} = NULL )goto C
+%
+S2:
+out = display_info(${line2})
+echo ${line2}
+solv2 = ${prompt}
+if( ${solv2} = NULL )goto S2
+%
+GR1:
+out = display_info(${line5})
+echo ${line5}
+grd = ${prompt}
+if( ${grd} = NULL )goto GR1
+%
+GR2:
+out = display_info(${line6})
+echo ${line6}
+cutof = ${prompt}
+if( ${cutof} = NULL )goto GR2
+out = display_logo()
+%
+%  Build solvent grid with solvent 1
+%
+Top menu/build
+	Build/solvate
+		  ${FIRSTGROUP}
+		  return
+		  Files/new file
+		  ${solv1}
+		Solvate/solvent
+		  Selections/${solv1}
+		Solvate/grid type
+		  cubic
+		Solvate/grid spac
+		  ${grd}
+		Solvate/outer cutoff
+		  ${cutof}
+		Solvate/execute
+		Solvate/return
+	Build/return
+zoom -100
+%
+%  Calculate the number of atoms in solvent 1
+%
+LAST = file_stop(${solv1})
+FIRST = file_start(${solv1})
+SOL = ${FIRST} - 1
+LOOP:
+SOL = ${SOL} + 1
+LIST = atom_reference(${SOL})
+if ( ${LIST}[4] = rnum/1 )then
+  goto LOOP
+endif
+SOL = ${SOL} - ${FIRST}
+echo The number of atoms in the solvent is ${SOL}
+%
+%  Calculate the number of solvent 1 molecules in the grid
+%
+SOLNUM = ${LAST} - ${FIRST}
+SOLNUM = ${SOLNUM} / ${SOL}
+SOLNUM = ${SOLNUM} + 1
+SOLNUM = fix( ${SOLNUM} )
+echo The number of solvent molecules is ${SOLNUM}
+comp2 = 100 - ${comp1}
+%
+%  Calculate the number of solvent 1 molecules to delete
+%
+SOLDEL = ${SOLNUM} * ${comp2}
+SOLDEL = ${SOLDEL} / 100
+SOLDEL = fix( ${SOLDEL} )
+echo Deleting ${SOLDEL} solvent molecules
+%
+%  Open a file to record deleted solvent positions
+%
+openw(temp.list,err=EROR)
+write(temp.list,err=EROR)${SOLNUM}
+close(temp.list,err=EROR)
+openw(temp.list,err=EROR)
+open(temp.list,err=EROR)
+Top menu/build
+	Build/organic
+	  ${solv1}
+	Organic/edit
+%
+%  Solvent 1 delete loop
+%
+		do i = 1 , ${SOLDEL}
+		Edit/select
+		  Selections/range
+		 AGAIN: 
+		  FLAG = 0
+%
+%  Generate random solvent number
+%
+		  ZROCHK:
+		  random = ran(${i})
+		  random = ${SOLNUM} * ${random}
+		  random = fix(${random})
+%
+%  Check for zero
+%
+		  if( ${random} = 0 )goto ZROCHK
+%
+%  Check to see if it has already been deleted
+%
+		  if( ${i} <> 1 )then
+		    rewind(temp.list,err=EROR)
+		    im1 = ${i} - 1
+		    do j = 1, ${im1}
+			read(temp.list,err=EROR)delnum
+			if( ${random} = ${delnum} )then
+			  FLAG = 1
+			endif
+		    enddo
+		  endif
+		  if( ${FLAG} = 1 )then
+		    goto AGAIN
+		  endif
+		  write(temp.list,err=EROR)${random}
+		  delatm = atom_number(file/${solv1},rnum/${random})
+		  anum/${delatm}
+		  .
+		  Selections/execute
+		  Edit/delete
+		enddo
+		Edit/return
+	Organic/return
+%
+%  Fill in deleted solvent1 positions with solvent2
+%  using same grid variables as solvent1
+%
+	Build/solvate
+		  ${FIRSTGROUP}
+		  return
+		  ${FIRSTGROUP}
+		  ${solv1}
+		  return
+		  Files/new file
+		  ${solv2}
+		Solvate/solvent
+		  Selections/${solv2}
+		Solvate/execute
+		Solvate/return
+	Build/return
+Display
+  ${FIRSTGROUP}
+  return
+%
+%  Get output filename
+%
+out = display_info(Enter output filename for solvent system)
+outfil = ${prompt}
+In-Out
+	In-Out/write
+	  File types/BioDesign
+	  ${FIRSTFILE}
+	  ${solv1}
+	  ${solv2}
+	  return
+	  ${outfil}
+	  " "
+	In-Out/return
+quit
+%
+EROR:
+echo File read/write problem
+quit
+endmacro

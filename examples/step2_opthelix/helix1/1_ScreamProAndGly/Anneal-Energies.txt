@@ -1,0 +1,1 @@
+After annealing G20_A (totE, EL, vdw, hb, coulomb):  -1.313  -1.313   0.000   0.000   0.000

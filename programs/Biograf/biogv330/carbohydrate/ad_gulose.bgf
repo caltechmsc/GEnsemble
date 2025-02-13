@@ -1,0 +1,56 @@
+BIOGRF  160
+DESCRP AD_GUL  
+REMARK Created by slm @ tms2r on  1/25/90   17:48:41               
+REMARK alpha-D-Gulose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1  O5*  GUL      1    1.15182   0.30782  -0.90901 O_3    2 2  0.00000
+HETATM     2  C1*  GUL      1    1.76499  -0.32370   0.22721 C_3    4 0  0.00000
+HETATM     3 HC1*  GUL      1    2.71484   0.19070   0.38486 H_     1 0  0.00000
+HETATM     4  O1*  GUL      1    2.09842  -1.67616  -0.09436 O_3    2 2  0.00000
+HETATM     5  HO1* GUL      1    2.56627  -2.08590   0.66297 H___A  1 0  0.00000
+HETATM     6  C2*  GUL      1    0.90435  -0.14261   1.50963 C_3    4 0  0.00000
+HETATM     7 HC2*  GUL      1    0.92395   0.92570   1.73784 H_     1 0  0.00000
+HETATM     8  O2*  GUL      1    1.48286  -0.74511   2.67192 O_3    2 2  0.00000
+HETATM     9  HO2* GUL      1    0.94661  -0.51459   3.45929 H___A  1 0  0.00000
+HETATM    10  C3*  GUL      1   -0.59173  -0.51732   1.29556 C_3    4 0  0.00000
+HETATM    11 HC3*  GUL      1   -1.15932  -0.18664   2.16961 H_     1 0  0.00000
+HETATM    12  O3*  GUL      1   -0.81376  -1.92942   1.21166 O_3    2 2  0.00000
+HETATM    13  HO3* GUL      1   -1.77327  -2.10491   1.11599 H___A  1 0  0.00000
+HETATM    14  C4*  GUL      1   -1.15668   0.18892   0.03011 C_3    4 0  0.00000
+HETATM    15 HC4*  GUL      1   -2.13812  -0.22530  -0.21479 H_     1 0  0.00000
+HETATM    16  O4*  GUL      1   -1.37685   1.57805   0.26954 O_3    2 2  0.00000
+HETATM    17  HO4* GUL      1   -1.17209   1.96689  -0.60479 H___A  1 0  0.00000
+HETATM    18  C5*  GUL      1   -0.22604   0.00325  -1.20785 C_3    4 0  0.00000
+HETATM    19 HC5*  GUL      1   -0.26463  -1.05752  -1.46787 H_     1 0  0.00000
+HETATM    20  C6*  GUL      1   -0.67468   0.74145  -2.49896 C_3    4 0  0.00000
+HETATM    21 HC6*  GUL      1   -1.70416   0.46342  -2.72908 H_     1 0  0.00000
+HETATM    22 HC6*  GUL      1   -0.05008   0.41506  -3.33226 H_     1 0  0.00000
+HETATM    23  O6*  GUL      1   -0.60903   2.16856  -2.44386 O_3    2 2  0.00000
+HETATM    24  HO6* GUL      1    0.31291   2.44691  -2.26299 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2    18
+CONECT     2     1     4     6     3
+CONECT     3     2
+CONECT     4     2     5
+CONECT     5     4
+CONECT     6     2     8    10     7
+CONECT     7     6
+CONECT     8     6     9
+CONECT     9     8
+CONECT    10     6    12    14    11
+CONECT    11    10
+CONECT    12    10    13
+CONECT    13    12
+CONECT    14    10    16    18    15
+CONECT    15    14
+CONECT    16    14    17
+CONECT    17    16
+CONECT    18     1    14    20    19
+CONECT    19    18
+CONECT    20    18    23    21    22
+CONECT    21    20
+CONECT    22    20
+CONECT    23    20    24
+CONECT    24    23
+END

@@ -1,0 +1,32 @@
+beginmacro
+%
+%  Run_extract.macro
+%
+%	This macro is an example of one way that you might call the macro,
+%	extract.macro, to extract conformations from a trajectory file.  Four
+%	arguments may be supplied, the trajectory file name, the time of the
+%	first conformation desired, the number conformations, and the spacing
+%	between conformations.  The last two arguments are optional.
+%
+entry-level
+Top menu/in-out
+	 In-Out/read
+	 File types/BioDesign
+	  "/usr/msi/biogv320/data/leuenk1.bgf"
+	 In-Out/return
+%
+%		If the following line is used, three conformations spaced .1 ps
+%		apart, starting at .3 ps will be extracted.
+	@extract.macro leuenk1.trj .3 3 .1
+%		Any of the next three calling lines would have the same effect,
+%		extracting a single conformation at .2 ps.
+%	@extract.macro leuenk1.trj .2 1 .1
+%	@extract.macro leuenk1.trj .2
+%	@extract.macro leuenk1.trj .2 3
+%		The following calling line would extract two conformations
+%		spaced .2 ps apart.
+%	@extract.macro leuenk1.trj .2 2 .2
+%
+quit
+%
+endmacro

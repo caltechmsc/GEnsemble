@@ -1,0 +1,40 @@
+beginmacro
+%
+% version      : 2.21
+% version date : 09:35:40 11/29/90
+% link date    : 14:33:57 2/26/92
+%
+% Macro created on  2/26/92   17:33:33
+%
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "therm.bgf"
+% 	/usr/msi/biogv320/data/therm.bgf
+	In-Out/read
+	File types/BioDesign
+	  "cltxray.bgf"
+% 	/usr/msi/biogv320/data/cltxray.bgf
+	In-Out/read
+	File types/group
+	  "therm.grp"
+% 	/usr/msi/biogv320/data/therm.grp
+	In-Out/read
+	File types/dot
+	Selections/yes
+	add group
+	  "SURFACE"
+	Selections/no
+	Selections/no
+	  "thermcav.dot"
+% 	/usr/msi/biogv320/data/thermcav.dot
+	In-Out/return
+Top menu/visualize
+	Visualize/change colors
+	SURFACE
+	Colors/cyan
+	Colors/return
+	Visualize/return
+menu
+%
+endmacro

@@ -1,0 +1,11 @@
+BIOGRF  160
+DESCRP CYS     
+REMARK Created by srl @ sun4 on  1/28/89   14:18:17                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  CB   CYS      1   -0.24900   0.83000  -1.25400 C_32   4 0  0.04000
+ATOM       2  SG   CYS      1   -0.03900  -0.40900  -2.54500 S_31   2 2 -0.05000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2
+CONECT     2     1
+END

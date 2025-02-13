@@ -1,0 +1,671 @@
+C
+C  Conversion table for amino acids to the CHARMM
+C  atom types.  10/31/88
+C  based on charmm19 protein topology file
+C**********************************************************************
+C*** copyright Martin Karplus 
+C*** distribution of this file outside BioDesign premises may result 
+C*** in grave legal consequences; handle with utmost care
+C**********************************************************************
+C  Record format is 1X,A3, 1X,A7, 1X,A7, 1X,I2, 1X,I2, 1X,F8.4 and
+C  corresponds to:
+C
+C RES OLDTYP- NEWTYP- MB- NL- CHARGE----
+C
+C  where RES    = residue name
+C        OLDTYP = old atom type (type on input data file)
+C        NEWTYP = new atom type (type used in calculations)
+C        MB     = maximum number of covalent connections (for building)
+C        NL     = number of lone pairs at MB (for H-bond acceptors)
+C        CHARGE = charge on atom (used in electrostatic calculation)
+C
+C    * Six different types of Histidine (HIS,HSD,HSP,HIE,HIP,HID) shown
+C      in this file. Some of them differ only in their names. Others have
+C      differences in the position for protonation: TO BE IMPLEMENTED
+C
+*
+*Amino acid conversions to CHARMM atom types 
+*
+*  Common hydrogens in amino acids.
+*
+ ***  HN     H___C    1  0   0.0000   
+ ***  H      H___B    1  0   0.0000   
+ ***  #H     H___C    1  0   0.0000   
+ ***  #D     H___C    1  0   0.0000   
+ ***  HA     H_       1  0   0.0000   
+ ***  DA     H_       1  0   0.0000   
+ *** #HB     H_       1  0   0.0000   
+ *** #DB     H_       1  0   0.0000   
+ *** HB1     H_       1  0   0.0000   
+ *** HB2     H_       1  0   0.0000   
+ *** HB3     H_       1  0   0.0000   
+*
+*RESIDUE  ALA
+ ALA  N      N_2_H    3  0  -0.3500   
+ ALA  H      H___B    0  0   0.2500   
+ ALA  CA     C_31     4  0   0.1000   
+ ALA  CB     C_33     4  0   0.0000   
+ ALA  C      C_2      3  0   0.5500   
+ ALA  O      O_2_T    1  2  -0.5500   
+*
+*RESIDUE  ARG
+ ARG  N      N_2_H    3  0  -0.3500   
+ ARG  H      H___B    0  0   0.2500   
+ ARG  CA     C_31     4  0   0.1000   
+ ARG  CB     C_32     4  0   0.0000   
+ ARG  CG     C_32     4  0   0.0000   
+ ARG  CD     C_32     4  0   0.1000   
+ ARG  NE     N_2_H    3  0  -0.4000   
+ ARG  HE     H___B    0  0   0.3000   
+ ARG  CZ     C_2      3  0   0.5000   
+ ARG  NH1    N_2_G    3  0  -0.4500   
+ ARG HH11    H___C    1  0   0.3500   
+ ARG HH12    H___C    0  0   0.3500   
+ ARG  NH2    N_2_G    3  0  -0.4500   
+ ARG HH21    H___C    0  0   0.3500   
+ ARG HH22    H___C    0  0   0.3500   
+ ARG  C      C_2      3  0   0.5500   
+ ARG  O      O_2_T    1  2  -0.5500   
+ ARG #HG     H_       1  0   0.0000  
+ ARG #DG     H_       1  0   0.0000  
+ ARG HG1     H_       1  0   0.0000  
+ ARG HG2     H_       1  0   0.0000  
+ ARG #HD     H_       1  0   0.0000  
+ ARG #DD     H_       1  0   0.0000  
+ ARG HD1     H_       1  0   0.0000  
+ ARG HD2     H_       1  0   0.0000  
+ ARG #HE     H___C    1  0   0.0000  
+ ARG #DE     H___C    1  0   0.0000  
+ ARG HNE     H___C    1  0   0.0000  
+ ARG  HZ     H_       1  0   0.0000  
+ ARG  DZ     H_       1  0   0.0000  
+ ARG #HH1    H___C    1  0   0.0000  
+ ARG #DH1    H___C    1  0   0.0000  
+ ARG HN11    H___C    1  0   0.0000  
+ ARG HN12    H___C    1  0   0.0000  
+ ARG #HH2    H___C    1  0   0.0000  
+ ARG #DH2    H___C    1  0   0.0000  
+ ARG HN21    H___C    1  0   0.0000  
+ ARG HN22    H___C    1  0   0.0000  
+*
+*RESIDUE  ASN
+ ASN  N      N_2_H    3  0  -0.3500   
+ ASN  H      H___B    0  0   0.2500   
+ ASN  CA     C_31     4  0   0.1000   
+ ASN  CB     C_32     4  0   0.0000   
+ ASN  CG     C_2      4  0   0.5500   
+ ASN  OD1    O_2_T    1  2  -0.5500   
+ ASN  ND2    N_2_B    3  0  -0.6000   
+ ASN HD21    H___B    1  0   0.3000   
+ ASN HD22    H___B    1  0   0.3000   
+ ASN  C      C_2      3  0   0.5500   
+ ASN  O      O_2_T    1  2  -0.5500   
+ ASN  HG     H_       1  0   0.0000  
+ ASN  DG     H_       1  0   0.0000  
+ ASN #HD2    H___C    1  0   0.0000  
+ ASN #DD2    H___C    1  0   0.0000  
+ ASN HND1    H___C    1  0   0.0000  
+ ASN HND2    H___C    1  0   0.0000  
+*
+*RESIDUE  ASP
+ ASP  N      N_2_H    3  0  -0.3500   
+ ASP  H      H___B    0  0   0.2500   
+ ASP  CA     C_31     4  0   0.1000   
+ ASP  CB     C_32     4  0  -0.1600   
+ ASP  CG     C_2      4  0   0.3600   
+ ASP  OD1    O_2_C    1  2  -0.6000   
+ ASP  OD2    O_2_C    1  2  -0.6000   
+ ASP  C      C_2      3  0   0.5500   
+ ASP  O      O_2_T    1  2  -0.5500   
+ ASP  HG     H_       1  0   0.0000  
+ ASP  DG     H_       1  0   0.0000  
+ ASP HD1     H___C    1  0   0.0000  
+ ASP DD1     H___C    1  0   0.0000  
+ ASP HD2     H___C    1  0   0.0000  
+ ASP DD2     H___C    1  0   0.0000  
+*
+*RESIDUE  CYS
+ CYS  N      N_2_H    3  0  -0.3500   
+ CYS  H      H___B    0  0   0.2500   
+ CYS  CA     C_31     4  0   0.1000   
+ CYS  CB     C_32     4  0   0.1900   
+ CYS  SG     S_3HL    2  2  -0.1900   
+ CYS  C      C_2      3  0   0.5500   
+ CYS  O      O_2_T    1  2  -0.5500   
+ CYS  HG     H___C    1  0   0.0000  
+ CYS HSG     H___C    1  0   0.0000  
+*CYS  LP1    ?????    0  0   0.0000  
+*CYS  LP2    ?????    0  0   0.0000  
+*
+*RESIDUE  GLN
+ GLN  N      N_2_H    3  0  -0.3500   
+ GLN  H      H___B    0  0   0.2500   
+ GLN  CA     C_31     4  0   0.1000   
+ GLN  CB     C_32     4  0   0.0000   
+ GLN  CG     C_32     4  0   0.0000   
+ GLN  CD     C_2      3  0   0.5500   
+ GLN  OE1    O_2_T    1  2  -0.5500   
+ GLN  NE2    N_2_B    3  0  -0.6000   
+ GLN HE21    H___B    1  0   0.3000   
+ GLN HE22    H___B    1  0   0.3000   
+ GLN  C      C_2      3  0   0.5500   
+ GLN  O      O_2_T    1  2  -0.5500   
+ GLN #HG     H_       1  0   0.0000  
+ GLN #DG     H_       1  0   0.0000  
+ GLN HG1     H_       1  0   0.0000  
+ GLN HG2     H_       1  0   0.0000  
+ GLN  HD     H_       1  0   0.0000  
+ GLN  DD     H_       1  0   0.0000  
+ GLN #HE2    H___C    1  0   0.0000  
+ GLN #DE2    H___C    1  0   0.0000  
+ GLN HNE1    H___C    1  0   0.0000  
+ GLN HNE2    H___C    1  0   0.0000  
+*
+*RESIDUE  GLU
+ GLU  N      N_2_H    3  0  -0.3500   
+ GLU  H      H___B    0  0   0.2500   
+ GLU  CA     C_31     4  0   0.1000   
+ GLU  CB     C_32     4  0   0.0000   
+ GLU  CG     C_32     4  0  -0.1600   
+ GLU  CD     C_2      3  0   0.3600   
+ GLU  OE1    O_2_C    1  2  -0.6000   
+ GLU  OE2    O_2_C    1  2  -0.6000   
+ GLU  C      C_2      3  0   0.5500   
+ GLU  O      O_2_T    1  2  -0.5500   
+ GLU #HG     H_       1  0   0.0000  
+ GLU #DG     H_       1  0   0.0000  
+ GLU HG1     H_       1  0   0.0000  
+ GLU HG2     H_       1  0   0.0000  
+ GLU  HD     H_       1  0   0.0000  
+ GLU  DD     H_       1  0   0.0000  
+ GLU HE1     H___C    1  0   0.0000  
+ GLU DE1     H___C    1  0   0.0000  
+ GLU HE2     H___C    1  0   0.0000  
+ GLU DE2     H___C    1  0   0.0000  
+*
+*RESIDUE  GLY
+ GLY  N      N_2_H    3  0  -0.3500   
+ GLY  H      H___B    0  0   0.2500   
+ GLY  CA     C_32     4  0   0.1000   
+ GLY  C      C_2      3  0   0.5500   
+ GLY  O      O_2_T    1  2  -0.5500   
+ GLY #HA     H_       1  0   0.0000  
+ GLY #DA     H_       1  0   0.0000  
+ GLY HA1     H_       1  0   0.0000  
+ GLY HA2     H_       1  0   0.0000  
+*
+*RESIDUE  HIS
+ HIS  N      N_2_H    3  0  -0.3500   
+ HIS  H      H___B    0  0   0.2500   
+ HIS  CA     C_31     4  0   0.1000   
+ HIS  CB     C_32     4  0   0.0000   
+ HIS  CG     C_2      3  0   0.1000   
+ HIS  ND1    N_2_H    3  0  -0.4000   
+ HIS HD1     H___B    0  0   0.3000   
+ HIS  CD2    C_R1     3  0   0.1000   
+ HIS  NE2    N_R      2  1  -0.4000   
+ HIS  CE1    C_R1     3  0   0.3000   
+ HIS  C      C_2      3  0   0.5500   
+ HIS  O      O_2_T    1  2  -0.5500   
+ HIS DD1     H___C    1  0   0.0000  
+ HIS HND     H___C    1  0   0.0000  
+ HIS HD2     H_       1  0   0.0000  
+ HIS DD2     H_       1  0   0.0000  
+ HIS  HD     H_       1  0   0.0000  
+ HIS HE1     H_       1  0   0.0000  
+ HIS DE1     H_       1  0   0.0000  
+ HIS  HE     H_       1  0   0.0000  
+ HIS HE2     H___C    1  0   0.0000  
+ HIS DE2     H___C    1  0   0.0000  
+ HIS HNE     H___C    1  0   0.0000  
+*
+*RESIDUE  HSD
+ HSD  N      N_2_H    3  0  -0.3500   
+ HSD  H      H___B    0  0   0.2500   
+ HSD  CA     C_31     4  0   0.1000   
+ HSD  CB     C_32     4  0   0.0000   
+ HSD  CG     C_2      3  0   0.1000   
+ HSD  ND1    N_R      2  1  -0.4000   
+ HSD  CE1    C_R1     3  0   0.3000   
+ HSD  CD2    C_R1     3  0   0.1000   
+ HSD  NE2    N_2_H    3  0  -0.4000   
+ HSD HE2     H___B    0  0   0.3000   
+ HSD  C      C_2      3  0   0.5500   
+ HSD  O      O_2_T    1  2  -0.5500   
+ HSD HD2     H_       1  0   0.0000  
+ HSD DD2     H_       1  0   0.0000  
+ HSD  HD     H_       1  0   0.0000  
+ HSD HE1     H_       1  0   0.0000  
+ HSD DE1     H_       1  0   0.0000  
+ HSD  HE     H_       1  0   0.0000  
+ HSD DE2     H___C    1  0   0.0000  
+ HSD HNE     H___C    1  0   0.0000  
+*
+*RESIDUE  HSC
+ HSC  N      N_2_H    0  0  -0.3500   
+ HSC  H      H___B    0  0   0.2500   
+ HSC  CA     C_31     0  0   0.1000   
+ HSC  CB     C_32     0  0   0.1000   
+ HSC  CG     C_2      0  0   0.1500   
+ HSC  CD2    C_R1     0  0   0.2000   
+ HSC  ND1    N_2_H    0  0  -0.3000   
+ HSC HD1     H___B    0  0   0.3500   
+ HSC  CE1    C_R1     0  0   0.4500   
+ HSC  NE2    N_2_H    0  0  -0.3000   
+ HSC HE2     H___B    0  0   0.3500   
+ HSC  C      C_2      0  0   0.5500   
+ HSC  O      O_2_T    0  0  -0.5500   
+*
+*RESIDUE  ILE
+ ILE  N      N_2_H    3  0  -0.3500   
+ ILE  H      H___B    0  0   0.2500   
+ ILE  CA     C_31     4  0   0.1000   
+ ILE  CB     C_31     4  0   0.0000   
+ ILE  CG2    C_33     4  0   0.0000   
+ ILE  CG1    C_32     4  0   0.0000   
+ ILE  CD     C_33     4  0   0.0000   
+ ILE  C      C_2      3  0   0.5500   
+ ILE  O      O_2_T    1  2  -0.5500   
+ ILE  CD1    C_33     0  0   0.0000  
+ ILE  HB     H_       1  0   0.0000  
+ ILE  DB     H_       1  0   0.0000  
+ ILE #HG1    H_       1  0   0.0000  
+ ILE #DG1    H_       1  0   0.0000  
+ ILE HG4     H_       1  0   0.0000  
+ ILE HG5     H_       1  0   0.0000  
+ ILE #HG2    H_       1  0   0.0000  
+ ILE #DG2    H_       1  0   0.0000  
+ ILE HG1     H_       1  0   0.0000  
+ ILE HG2     H_       1  0   0.0000  
+ ILE HG3     H_       1  0   0.0000  
+ ILE #HD1    H_       1  0   0.0000  
+ ILE #DD1    H_       1  0   0.0000  
+ ILE HD1     H_       1  0   0.0000  
+ ILE HD2     H_       1  0   0.0000  
+ ILE HD3     H_       1  0   0.0000  
+*
+*RESIDUE  LEU
+ LEU  N      N_2_H    3  0  -0.3500   
+ LEU  H      H___B    0  0   0.2500   
+ LEU  CA     C_31     4  0   0.1000   
+ LEU  CB     C_32     4  0   0.0000   
+ LEU  CG     C_31     4  0   0.0000   
+ LEU  CD1    C_33     4  0   0.0000   
+ LEU  CD2    C_33     4  0   0.0000   
+ LEU  C      C_2      3  0   0.5500   
+ LEU  O      O_2_T    1  2  -0.5500   
+ LEU  HG     H_       1  0   0.0000  
+ LEU  DG     H_       1  0   0.0000  
+ LEU #HD1    H_       1  0   0.0000  
+ LEU #DD1    H_       1  0   0.0000  
+ LEU HD1     H_       1  0   0.0000  
+ LEU HD2     H_       1  0   0.0000  
+ LEU HD3     H_       1  0   0.0000  
+ LEU #HD2    H_       1  0   0.0000  
+ LEU #DD2    H_       1  0   0.0000  
+ LEU HD4     H_       1  0   0.0000  
+ LEU HD5     H_       1  0   0.0000  
+ LEU HD6     H_       1  0   0.0000  
+*
+*RESIDUE  LYS
+ LYS  N      N_2_H    3  0  -0.3500   
+ LYS  H      H___B    0  0   0.2500   
+ LYS  CA     C_31     4  0   0.1000   
+ LYS  CB     C_32     4  0   0.0000   
+ LYS  CG     C_32     4  0   0.0000   
+ LYS  CD     C_32     4  0   0.0000   
+ LYS  CE     C_32     4  0   0.2500   
+ LYS  NZ     N_3_T    4  0  -0.3000   
+ LYS HZ1     H___C    1  0   0.3500   
+ LYS HZ2     H___C    1  0   0.3500   
+ LYS HZ3     H___C    1  0   0.3500   
+ LYS  C      C_2      3  0   0.5500   
+ LYS  O      O_2_T    1  2  -0.5500   
+ LYS #HG     H_       1  0   0.0000  
+ LYS #DG     H_       1  0   0.0000  
+ LYS HG1     H_       1  0   0.0000  
+ LYS HG2     H_       1  0   0.0000  
+ LYS #HD     H_       1  0   0.0000  
+ LYS #DD     H_       1  0   0.0000  
+ LYS HD1     H_       1  0   0.0000  
+ LYS HD2     H_       1  0   0.0000  
+ LYS #HE     H_       1  0   0.0000  
+ LYS #DE     H_       1  0   0.0000  
+ LYS HE1     H_       1  0   0.0000  
+ LYS HE2     H_       1  0   0.0000  
+ LYS #HZ     H___C    1  0   0.0000  
+ LYS #DZ     H___C    1  0   0.0000  
+ LYS HNZ1    H___C    1  0   0.0000  
+ LYS HNZ2    H___C    1  0   0.0000  
+ LYS HNZ3    H___C    1  0   0.0000  
+*
+*RESIDUE  MET
+ MET  N      N_2_H    3  0  -0.3500   
+ MET  H      H___B    0  0   0.2500   
+ MET  CA     C_31     4  0   0.1000   
+ MET  CB     C_32     4  0   0.0000   
+ MET  CG     C_32     4  0   0.0600   
+ MET  SD     S_3_L    2  2  -0.1200   
+ MET  CE     C_33     4  0   0.0600   
+ MET  C      C_2      3  0   0.5500   
+ MET  O      O_2_T    1  2  -0.5500   
+ MET #HG     H_       1  0   0.0000  
+ MET #DG     H_       1  0   0.0000  
+ MET HG1     H_       1  0   0.0000  
+ MET HG2     H_       1  0   0.0000  
+*MET  LP1    ?????    0  0   0.0000  
+*MET  LP2    ?????    0  0   0.0000  
+ MET #HE     H_       1  0   0.0000  
+ MET #DE     H_       1  0   0.0000  
+ MET HE1     H_       1  0   0.0000  
+ MET HE2     H_       1  0   0.0000  
+ MET HE3     H_       1  0   0.0000  
+*
+*RESIDUE  PEN
+ PEN  N      N_2_H    0  0  -0.3500   
+ PEN  H      H___B    0  0   0.2500   
+ PEN  CA     C_31     0  0   0.1000   
+ PEN  CB     C_3      0  0   0.1900   
+ PEN  CG1    C_33     0  0   0.0000   
+ PEN  CG2    C_33     0  0   0.0000   
+ PEN  SG     S_3HL    0  0  -0.1900   
+ PEN  C      C_2      0  0   0.5500   
+ PEN  O      O_2_T    0  0  -0.5500   
+*
+*RESIDUE  PHE
+ PHE  N      N_2_H    3  0  -0.3500   
+ PHE  H      H___B    0  0   0.2500   
+ PHE  CA     C_31     4  0   0.1000   
+ PHE  CB     C_32     4  0   0.0000   
+ PHE  CG     C_2      3  0   0.0000   
+ PHE  CD1    C_R1     3  0   0.0000   
+ PHE  CD2    C_R1     3  0   0.0000   
+ PHE  CE1    C_R1     3  0   0.0000   
+ PHE  CE2    C_R1     3  0   0.0000   
+ PHE  CZ     C_R1     3  0   0.0000   
+ PHE  C      C_2      3  0   0.5500   
+ PHE  O      O_2_T    1  2  -0.5500   
+ PHE HD1     H_       1  0   0.0000  
+ PHE DD1     H_       1  0   0.0000  
+ PHE HD2     H_       1  0   0.0000  
+ PHE DD2     H_       1  0   0.0000  
+ PHE HE1     H_       1  0   0.0000  
+ PHE DE1     H_       1  0   0.0000  
+ PHE HE2     H_       1  0   0.0000  
+ PHE DE2     H_       1  0   0.0000  
+ PHE  HZ     H_       1  0   0.0000  
+ PHE  DZ     H_       1  0   0.0000  
+ PHE HZ1     H_       1  0   0.0000  
+*
+*RESIDUE  PRO
+ PRO  N      N_2_Z    3  0  -0.2000   
+ PRO  CD     C_32     4  0   0.1000   
+ PRO  CA     C_31     4  0   0.1000   
+ PRO  CB     C_32     4  0   0.0000   
+ PRO  CG     C_32     4  0   0.0000   
+ PRO  C      C_2      3  0   0.5500   
+ PRO  O      O_2_T    1  2  -0.5500   
+ PRO #HG     H_       1  0   0.0000  
+ PRO #DG     H_       1  0   0.0000  
+ PRO HG1     H_       1  0   0.0000  
+ PRO HG2     H_       1  0   0.0000  
+ PRO #HD     H_       1  0   0.0000  
+ PRO #DD     H_       1  0   0.0000  
+ PRO HD1     H_       1  0   0.0000  
+ PRO HD2     H_       1  0   0.0000  
+*
+*RESIDUE  SER
+ SER  N      N_2_H    3  0  -0.3500   
+ SER  H      H___B    0  0   0.2500   
+ SER  CA     C_31     4  0   0.1000   
+ SER  CB     C_32     4  0   0.2500   
+ SER  OG     O_3_H    2  2  -0.6500   
+ SER  HG     H___B    1  0   0.4000   
+ SER  C      C_2      3  0   0.5500   
+ SER  O      O_2_T    1  2  -0.5500   
+ SER  DG     H___C    1  0   0.0000  
+ SER HOG     H___C    1  0   0.0000  
+*
+*RESIDUE  THR
+ THR  N      N_2_H    3  0  -0.3500   
+ THR  H      H___B    0  0   0.2500   
+ THR  CA     C_31     4  0   0.1000   
+ THR  CB     C_31     4  0   0.2500   
+ THR  OG1    O_3_H    2  2  -0.6500   
+ THR HG1     H___B    1  0   0.4000   
+ THR  CG2    C_33     4  0   0.0000   
+ THR  C      C_2      3  0   0.5500   
+ THR  O      O_2_T    1  2  -0.5500   
+ THR  HB     H_       1  0   0.0000  
+ THR #HG1    H___C    1  0   0.0000  
+ THR #DG1    H___C    1  0   0.0000  
+ THR HOG     H___C    1  0   0.0000  
+ THR #HG2    H_       1  0   0.0000  
+ THR #DG2    H_       1  0   0.0000  
+ THR HG2     H_       1  0   0.0000  
+ THR HG3     H_       1  0   0.0000  
+*
+*RESIDUE  TRP
+ TRP  N      N_2_H    3  0  -0.3500   
+ TRP  H      H___B    0  0   0.2500   
+ TRP  CA     C_31     4  0   0.1000   
+ TRP  CB     C_32     4  0   0.0000   
+ TRP  CG     C_2      3  0  -0.0300   
+ TRP  CD2    C_2      3  0   0.1000   
+ TRP  CE2    C_2      3  0  -0.0400   
+ TRP  CE3    C_R1     3  0  -0.0300   
+ TRP  CD1    C_R1     3  0   0.0600   
+ TRP  NE1    N_2_H    3  0  -0.3600   
+ TRP HE1     H___B    1  0   0.3000   
+ TRP  CZ2    C_R1     3  0   0.0000   
+ TRP  CZ3    C_R1     3  0   0.0000   
+ TRP  CH2    C_R1     3  0   0.0000   
+ TRP  C      C_2      3  0   0.5500   
+ TRP  O      O_2_T    1  2  -0.5500   
+ TRP #HD1    H_       1  0   0.0000  
+ TRP #DD1    H_       1  0   0.0000  
+ TRP  HD     H_       1  0   0.0000  
+ TRP #HE1    H___C    1  0   0.0000  
+ TRP #DE1    H___C    1  0   0.0000  
+ TRP HNE     H___C    1  0   0.0000  
+ TRP #HE3    H_       1  0   0.0000  
+ TRP #DE3    H_       1  0   0.0000  
+ TRP  HE     H_       1  0   0.0000  
+ TRP #HZ2    H_       1  0   0.0000  
+ TRP #DZ2    H_       1  0   0.0000  
+ TRP HZ1     H_       1  0   0.0000  
+ TRP #HZ3    H_       1  0   0.0000  
+ TRP #DZ3    H_       1  0   0.0000  
+ TRP HZ2     H_       1  0   0.0000  
+ TRP #HH2    H_       1  0   0.0000  
+ TRP #DH2    H_       1  0   0.0000  
+ TRP  HH     H_       1  0   0.0000  
+*
+*RESIDUE  TYR
+ TYR  N      N_2_H    3  0  -0.3500   
+ TYR  H      H___B    0  0   0.2500   
+ TYR  CA     C_31     4  0   0.1000   
+ TYR  CB     C_32     4  0   0.0000   
+ TYR  CG     C_2      3  0   0.0000   
+ TYR  CD1    C_R1     3  0   0.0000   
+ TYR  CE1    C_R1     3  0   0.0000   
+ TYR  CD2    C_R1     3  0   0.0000   
+ TYR  CE2    C_R1     3  0   0.0000   
+ TYR  CZ     C_2      3  0   0.2500   
+ TYR  OH     O_3_H    2  2  -0.6500   
+ TYR  HH     H___B    1  0   0.4000   
+ TYR  C      C_2      3  0   0.5500   
+ TYR  O      O_2_T    1  2  -0.5500   
+ TYR HD1     H_       1  0   0.0000  
+ TYR DD1     H_       1  0   0.0000  
+ TYR HD2     H_       1  0   0.0000  
+ TYR DD2     H_       1  0   0.0000  
+ TYR HE1     H_       1  0   0.0000  
+ TYR DE1     H_       1  0   0.0000  
+ TYR HE2     H_       1  0   0.0000  
+ TYR DE2     H_       1  0   0.0000  
+ TYR  DH     H___C    1  0   0.0000  
+ TYR HOH     H___C    1  0   0.0000  
+*
+*RESIDUE  VAL
+ VAL  N      N_2_H    3  0  -0.3500   
+ VAL  H      H___B    0  0   0.2500   
+ VAL  CA     C_31     4  0   0.1000   
+ VAL  CB     C_31     4  0   0.0000   
+ VAL  CG1    C_33     4  0   0.0000   
+ VAL  CG2    C_33     4  0   0.0000   
+ VAL  C      C_2      3  0   0.5500   
+ VAL  O      O_2_T    1  2  -0.5500   
+ VAL  HB     H_       1  0   0.0000  
+ VAL #HG1    H_       1  0   0.0000  
+ VAL #DG1    H_       1  0   0.0000  
+ VAL HG1     H_       1  0   0.0000  
+ VAL HG2     H_       1  0   0.0000  
+ VAL HG3     H_       1  0   0.0000  
+ VAL #HG2    H_       1  0   0.0000  
+ VAL #DG2    H_       1  0   0.0000  
+ VAL HG4     H_       1  0   0.0000  
+ VAL HG5     H_       1  0   0.0000  
+ VAL HG6     H_       1  0   0.0000  
+*
+*RESIDUE  HEM
+ HEM  FE     Fe      -6  0   0.2400   
+ HEM  NA     N_R_P    2  1  -0.1800   
+ HEM  NB     N_R_P    2  1  -0.1800   
+ HEM  NC     N_R_P    2  1  -0.1800   
+ HEM  ND     N_R_P    2  1  -0.1800   
+ HEM  C1A    C_2      3  0   0.0300   
+ HEM  CHA    C_R1     3  0   0.0400   
+ HEM  C4D    C_2      3  0   0.0200   
+ HEM  C1B    C_2      3  0   0.0300   
+ HEM  CHB    C_R1     3  0   0.0400   
+ HEM  C4A    C_2      3  0   0.0200   
+ HEM  C1C    C_2      3  0   0.0300   
+ HEM  CHC    C_R1     3  0   0.0400   
+ HEM  C4B    C_2      3  0   0.0200   
+ HEM  C1D    C_2      3  0   0.0300   
+ HEM  CHD    C_R1     3  0   0.0400   
+ HEM  C4C    C_2      3  0   0.0200   
+ HEM  C2A    C_2      3  0  -0.0200   
+ HEM  CAA    C_32     4  0   0.0400   
+ HEM  C3A    C_2      3  0   0.0200   
+ HEM  CMA    C_33     4  0  -0.0400   
+ HEM  CBA    C_32     3  0  -0.1000   
+ HEM  CGA    C_2      3  0   0.3000   
+ HEM  O1A    O_2_C    1  2  -0.5000   
+ HEM  O2A    O_2_C    1  2  -0.5000   
+ HEM  C2B    C_2      3  0   0.0200   
+ HEM  CMB    C_33     4  0  -0.0400   
+ HEM  C3B    C_2      3  0  -0.0500   
+ HEM  CAB    C_R1     3  0   0.0300   
+ HEM  CBB    C_32     4  0  -0.1000   
+ HEM  C2C    C_2      3  0   0.0200   
+ HEM  CMC    C_33     4  0  -0.0400   
+ HEM  C3C    C_2      3  0  -0.0500   
+ HEM  CAC    C_R1     3  0   0.0300   
+ HEM  CBC    C_32     4  0  -0.1000   
+ HEM  C2D    C_2      3  0   0.0200   
+ HEM  CMD    C_33     4  0  -0.0400   
+ HEM  C3D    C_2      3  0  -0.0200   
+ HEM  CAD    C_32     4  0   0.0400   
+ HEM  CBD    C_32     4  0  -0.1000   
+ HEM  CGD    C_2      3  0   0.3000   
+ HEM  O1D    O_2_C    1  2  -0.5000   
+ HEM  O2D    O_2_C    1  2  -0.5000   
+ HEM  N A    N_R_P    2  1  -0.1800  
+ HEM  N B    N_R_P    2  1  -0.1800  
+ HEM  N C    N_R_P    2  1  -0.1800  
+ HEM  N D    N_R_P    2  1  -0.1800  
+ HEM  OH2    O_H_2    2  2   0.0000  
+*
+*RESIDUE  ACE
+ ACE  CH3    C_33     4  0   0.0000   
+ ACE  C      C_2      3  0   0.5500   
+ ACE  O      O_2_T    1  2  -0.5500   
+ ACE  C3     C_33     4  0   0.0000  
+ ACE  CD3    C_33     4  0   0.0000  
+ ACE  H1     H_       1  0   0.0000  
+ ACE  H2     H_       1  0   0.0000  
+ ACE  H3     H_       1  0   0.0000  
+*
+*RESIDUE  FOR
+ FOR  HA     H_       1  0   0.0000   
+ FOR  C      C_2      3  0   0.5500   
+ FOR  O      O_2_T    1  2  -0.5500   
+ FOR  N      N_2_B    2  1  -0.6000   
+ FOR  H1     H___B    1  0   0.3000   
+ FOR  H2     H___B    1  0   0.3000   
+*
+*RESIDUE  AMN
+ AMN  CL     C_33     4  0   0.0000   
+ AMN  C      C_2      3  0   0.5500   
+ AMN  O      O_2_T    1  2  -0.5500   
+*
+*RESIDUE  CBX
+ CBX  N      N_3_T    4  0  -0.2000   
+ CBX  H      H___B    1  0   0.2500   
+ CBX  CA     C_31     4  0   0.2500   
+ CBX HT1     H___C    1  0   0.3500   
+ CBX HT2     H___C    1  0   0.3500   
+ CBX  N      N_3_T    4  0  -0.2000   
+ CBX HT3     H___C    1  0   0.3500   
+ CBX  CA     C_31     4  0   0.2500   
+ CBX HT1     H___C    1  0   0.3500   
+ CBX HT2     H___C    1  0   0.3500   
+ CBX  N      N_3_T    4  0  -0.2000   
+ CBX HT3     H___C    1  0   0.3500   
+ CBX  CA     C_31     4  0   0.2500   
+ CBX HT1     H___C    1  0   0.3500   
+ CBX HT2     H___C    1  0   0.3500   
+ CBX  N      N_3_T    4  0  -0.2000   
+ CBX  CD     C_32     4  0   0.2500   
+ CBX  CA     C_31     4  0   0.2500   
+ CBX  C      C_2      3  0   0.1400   
+ CBX  OT1    O_2_C    1  2  -0.5700   
+ CBX  OT2    O_2_C    1  2  -0.5700   
+ CBX  CH3    C_31     4  0   0.0000  
+ CBX  C3     C_31     4  0   0.0000  
+*
+*RESIDUE  O2
+*  O2  O1     OM       0  0   0.0210   
+*  O2  O2     OM       0  0  -0.0210   
+*
+*RESIDUE  CO
+*  CO  C      CM       0  0   0.0210   
+*  CO  O      OM       0  0  -0.0210   
+*
+*RESIDUE  ETH
+ ETH  C2     C_33     4  0   0.0000   
+ ETH  C1     C_32     4  0   0.2500   
+ ETH  O      O_3_H    2  2  -0.6500   
+ ETH  H      H___B    1  0   0.4000   
+*
+*RESIDUE  ST2
+ ST2  OX2    O_3_W    2  2   0.0000   
+ ST2 HX1     H___B    1  0   0.2400   
+ ST2 HX2     H___B    1  0   0.2400   
+* ST2  LX1    LP       0  0  -0.2400   
+* ST2  LX2    LP       0  0  -0.2400   
+*
+*RESIDUE  TIP3
+* TIP3  OH2    OT       0  0  -0.8340   
+* TIP3  H1     HT       0  0   0.4170   
+* TIP3  H2     HT       0  0   0.4170   
+*
+*RESIDUE  OH2
+ OH2  OH2    O_3_W    2  2  -0.8340   
+ OH2  H1     H___C    1  0   0.4170   
+ OH2  H2     H___C    1  0   0.4170   
+*
+*RESIDUE  SO4
+ SO4  S      S_3_L    2  2   0.0000   
+ SO4  O1     O_2_C    1  2  -0.5000   
+ SO4  O2     O_2_C    1  2  -0.5000   
+ SO4  O3     O_2_C    1  2  -0.5000   
+ SO4  O4     O_2_C    1  2  -0.5000   
+*
+*RESIDUE  COH
+ COH  C      C_33     4  0   0.2500   
+ COH  O      O_3_H    2  2  -0.6500   
+ COH  H      H___B    1  0   0.4000   
+

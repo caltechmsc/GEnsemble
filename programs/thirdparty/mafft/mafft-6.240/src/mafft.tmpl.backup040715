@@ -1,0 +1,800 @@
+#! /bin/sh
+export version="version 4.00 (2004/07/10)"
+export LANG=C
+export os=`uname`
+progname=`basename $0`
+if [ `echo $os | grep -i cygwin` ]; then
+#	outputcommand=" sed s/$/\\r/ "
+	outputcommand=" cat "
+	export os="cygwin"
+elif [ `echo $os | grep -i darwin` ]; then
+	outputcommand=" tr '\n' '\r' "
+	export os="darwin"
+else
+	outputcommand=" cat "
+	export os="unix"
+fi
+
+if [ $MAFFT_BINARIES ]; then
+	export prefix=$MAFFT_BINARIES
+else
+	export prefix=_PREFIX
+fi
+if [ ! -x $prefix/sextet5 ]; then
+	echo 'correctly installed?' > /dev/tty
+	er=1
+fi
+
+if [ $# -gt 0 ]; then
+	defaultiterate=0
+	defaultcycle=2
+	defaultmodel=" -b 62 "
+	defaultgop="1.85"
+	defaultaof="0.085"
+	model=$defaultmodel
+	gop=$defaultgop
+	aof=$defaultaof
+	cycle=$defaultcycle
+	iterate=$defaultiterate
+	seqtype="  "
+	param_it=" -x "
+	quiet=0
+	rough=0
+	param_fft=" -F "
+if [ $progname = "fftns" ]; then
+	cycle=2
+elif [ $progname = "fftnsi" ]; then
+	iterate=2
+elif [ $progname = "fftnsrough" ]; then
+	rough=1
+elif [ $progname = "nwns" ]; then
+	param_fft=" "
+elif [ $progname = "nwnsi" ]; then
+	param_fft=" "
+	iterate=2
+elif [ $progname = "nwnsrough" ]; then
+	param_fft=" "
+	rough=1
+fi
+	
+	er=0;
+	while [ $# -gt 1 ];
+	do
+		if [ $1 = "--rough" ]; then 
+			rough=1
+		elif [ $1 = "--nuc" ]; then 
+			seqtype=" -D "
+		elif [ $1 = "--amino" ]; then 
+			seqtype=" -P "
+		elif [ $1 = "--nofft" ]; then 
+			param_fft="  "
+		elif [ $1 = "--quiet" ]; then 
+			quiet=1
+		elif [ $1 = "--nj" ]; then 
+			param_it=" -n "
+		elif [ $1 = "--maxiterate" ]; then 
+			shift   
+			iterate=`expr $1 - 0`
+		elif [ $1 = "--retree" ]; then 
+			shift   
+			cycle=`expr $1 - 0`          || er=1
+		elif [ $1 = "--jtt" ]; then 
+			shift   
+			model=" -j "$1
+		elif [ $1 = "--bl" ]; then 
+			shift   
+			model=" -b "$1
+		elif [ $1 = "--op" ]; then 
+			shift   
+			gop=$1
+		elif [ $1 = "--ep" ]; then 
+			shift   
+			aof=$1
+		else
+			echo "Unknown option: " $1 > /dev/tty
+			er=1;
+		fi
+		shift   
+	done;
+	if [ $1 = "-" ]; then
+		infile="/dev/stdin"
+	else
+		infile=$1
+	fi
+	
+	#TMPFILE=`mktemp  -d ${tempfoo}.XXXXXXX` || exit 1
+	TMPFILE=/tmp/`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+	umask 077
+	mkdir  $TMPFILE  || er=1
+	trap "rm -r $TMPFILE; exit 1" 2
+	if [ $# -eq 1 ]; then
+		tr "\r" "\n" < $infile > $TMPFILE/infile || er=1
+	else
+		er=1
+	fi
+	
+	if [ $er -eq 1 ]; then
+		rm -r $TMPFILE
+		echo "" > /dev/tty
+		echo "MAFFT" $version
+		echo "" > /dev/tty
+		echo "Usage: `basename $0` [options] inputfile > outputfile" > /dev/tty
+		echo "" > /dev/tty
+		echo "       Input format: fasta format" > /dev/tty
+		echo "" > /dev/tty
+		echo "       Options: " > /dev/tty
+		echo "         --op # :            Gap opening penalty, default=$defaultgop " > /dev/tty
+		echo "         --ep # :            Offset (works like gep extension penalty), default=$defaultaof " > /dev/tty
+		echo "         --bl # or --jtt # : Scoring matrix, default=BLOSUM62" > /dev/tty
+	    echo "                             Alternatives are BLOSUM (--bl) 30, 45, 62, 80, and JTT (--jtt) # PAM. " > /dev/tty
+		echo "         --nuc or --amino  : Sequence type. default=automatic" > /dev/tty
+		echo "         --retree # :        Number of tree re-building in progressive method " > /dev/tty
+		echo "                             (see the paper for detail), default=$defaultcycle " > /dev/tty
+		echo "         --maxiterate # :    Maximum number of iterative refinement, default=$defaultiterate " > /dev/tty
+		echo "         --nj :              Tree dependent iterative refinement is performed on an NJ tree," > /dev/tty
+		echo "                             default=UPG tree" > /dev/tty
+		echo "         --rough :           Rough alignment (for large dataset)" > /dev/tty
+		echo "         --nofft :           FFT is disabled." > /dev/tty
+		echo "         --quiet :           Do not report progress." > /dev/tty
+		echo ""  > /dev/tty
+		echo "       Reference: " > /dev/tty
+		echo "         K. Katoh, K. Misawa, K. Kuma and T. Miyata (2002)"   > /dev/tty
+	    echo "         Nucleic Acids Research 30: 3059-3066."               > /dev/tty
+	    echo "         http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/" > /dev/tty
+		echo ""  > /dev/tty
+		exit 1; 
+	fi
+	
+	(
+	cd $TMPFILE;
+	if [ $rough -gt 0 ]; then
+		$prefix/splitseq infile 500
+		for spfile in sp-[0-9]*[0-9]
+		do
+			echo $spfile > /dev/tty
+			nseq=`grep -c '^[>|=]' $spfile`
+			echo $nseq > /dev/tty
+			if [ $nseq -eq 1 ]; then
+				cp $spfile $spfile.aln
+			else
+				$prefix/sextet5 $seqtype < $spfile > /dev/null  2>&1      || exit 1
+				$prefix/tbfast $seqtype $model -f "-"$gop  -h "-"$aof  $param_fft  -Ax < $spfile  > /dev/null  2>&1 || exit 1
+				cat pre > $spfile.aln
+			fi
+		done
+		ngroup=0
+		for alfile in sp-[0-9]*[0-9].aln
+		do
+			ngroup=`expr $ngroup + 1`
+			echo $alfile > /dev/tty
+			if [ $ngroup -eq 1 ]; then
+				cp $alfile alall
+			else
+				$prefix/galn -A alall $alfile > altmp
+				mv altmp alall
+			fi
+		done
+		cat alall
+	else
+		if [ $quiet -gt 0 ]; then
+			$prefix/sextet5 $seqtype < infile > /dev/null  2>&1      || exit 1
+			$prefix/tbfast $seqtype $model -f "-"$gop  -h "-"$aof  $param_fft    -Ax < infile   > /dev/null 2>&1 || exit 1
+			while [ $cycle -gt 1 ]
+			do
+				$prefix/tbfast $seqtype $model  -f "-"$gop  -h "-"$aof  $param_fft   -JAx < pre > /dev/null 2>&1 || exit 1
+				cycle=`expr $cycle - 1`
+			done
+			if [ $iterate -gt 0 ]; then
+			    $prefix/dndpre       < pre     > /dev/null 2>&1 || exit 1
+				$prefix/dvtditr $seqtype $model -f "-"$gop -h "-"$aof -At -c -I $iterate $param_it < pre     > /dev/null 2>&1 || exit 1
+			fi
+		else
+			$prefix/sextet5 $seqtype < infile > /dev/null       || exit 1
+			$prefix/tbfast $seqtype $model -f "-"$gop  -h "-"$aof  $param_fft   -Ax < infile   > /dev/null || exit 1
+			while [ $cycle -gt 1 ]
+			do
+				$prefix/tbfast $seqtype $model  -f "-"$gop  -h "-"$aof $param_fft  -JAx < pre > /dev/null || exit 1
+				cycle=`expr $cycle - 1`
+			done
+			if [ $iterate -gt 0 ]; then
+			    $prefix/dndpre       < pre     >& /dev/null || exit 1
+				$prefix/dvtditr $seqtype $model -f "-"$gop -h "-"$aof -At -c -I $iterate $param_it < pre     > /dev/null || exit 1
+			fi
+		fi
+#		cat  < pre             || exit 1
+		$outputcommand < pre   || exit 1
+	fi
+	exit 0;
+	)
+	rm -r $TMPFILE
+	exit 0;
+fi
+
+
+if [ `echo $os | grep -i darwin` ]; then
+	prog="awk"
+else
+	prog="";
+	which gawk > /dev/null 2>&1 && prog="gawk";
+	if [ "$prog" = ""  ] ; then
+		which nawk > /dev/null 2>&1  && prog="nawk";
+	fi
+	if [ "$prog" = ""  ] ; then
+		which awk > /dev/null 2>&1 && prog="awk";
+	fi
+	echo "prog = " $prog
+fi
+
+#TMPDIR=/tmp/`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+TMPDIR=./`basename $0`.`whoami`.$$.`date +%y%m%d%H%M%S`
+export TMPDIR 
+ORIDIR=`pwd`
+export ORIDIR
+umask 077
+mkdir  $TMPDIR  || exit 1
+trap "rm -r $TMPDIR; exit 1" 2
+#echo "$ORIDIR -> $TMPDIR"
+
+(
+cd $TMPDIR
+
+$prog '
+BEGIN {
+	prefix = ENVIRON["prefix"];
+	tmpdir = ENVIRON["TMPDIR"];
+	oridir = ENVIRON["ORIDIR"];
+	version = ENVIRON["version"];
+	os = ENVIRON["os"];
+	while( 1 )
+	{
+		printf( "\n" ) > "/dev/tty";
+		printf( "----------------------------------------------------------------\n" ) > "/dev/tty";
+		printf( "\n" )                                                                 > "/dev/tty";
+		printf( "   MAFFT %s\n", version )                                             > "/dev/tty";
+		printf( "\n" )                                                                 > "/dev/tty";
+		printf( "        K. Katoh, K. Misawa, K. Kuma and T. Miyata (2002)\n" )        > "/dev/tty";
+		printf( "        Nucleic Acids Research 30: 3059-3066.\n" )                    > "/dev/tty";
+		printf( "        http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/\n" )  > "/dev/tty";
+		printf( "----------------------------------------------------------------\n" ) > "/dev/tty";
+		printf( "\n" );
+	
+		if( os == "cygwin" )
+	#		outputcommand = " sed 's/$/\\r/' "
+			outputcommand = " cat "
+		else if( os == "darwin" )
+			outputcommand = " tr \\n \\r "
+		else
+			outputcommand = " cat "
+	
+		while( 1 )
+		{
+			printf( "Input file ? (fasta format)\n@ " ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" )
+			if( res == 0 || NF == 0 )
+				continue;
+			infile = sprintf( "%s/%s", oridir, $1 );
+	
+			close( infile );
+			res = getline < infile;
+			if( res == -1 )
+				printf( "%s: No such file.\n\n", infile );
+			else if( res == 0 )
+			{
+				printf( "%s: Empty.\n", infile );
+				close( infile );
+			}
+			else
+			{
+				printf( "OK. infile = %s\n\n", infile );
+				close( infile );
+				break;
+			}
+		}
+		nseq = 0;
+		while( getline < infile > 0 )
+		{
+			gsub( "\r", "\n" )
+			if( /^=|^\>/ ) nseq ++;
+			print > "infile";
+		}
+		printf( "# of sequences = %d\n", nseq ) > "/dev/tty"
+	
+		while( 1 )
+		{
+			printf( "\n" ) > "/dev/tty";
+			printf( "Output file ?\n@ " ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" );
+			if( res == 0 || NF == 0 )
+				continue;
+			else
+			{
+				outfile = sprintf( "%s/%s", oridir, $1 );
+				printf( "OK. outfile = %s\n\n", outfile );
+				break;
+			}
+		}
+	
+		if( nseq <= 70 ) defa = 4
+		else if( nseq <= 1000 ) defa = 2
+		else defa = 10
+	
+		while( 1 )
+		{
+			printf( "Strategy ?\n" ) > "/dev/tty";
+			printf( " 1. FFT-NS-1\n" ) > "/dev/tty";
+			printf( " 2. FFT-NS-2\n" ) > "/dev/tty";
+			printf( " 3. FFT-NS-3\n" ) > "/dev/tty";
+			printf( " 4. FFT-NS-i\n" ) > "/dev/tty";
+			printf( " 5. NW-NS-1\n" )  > "/dev/tty";
+			printf( " 6. NW-NS-2\n" )  > "/dev/tty";
+			printf( " 7. NW-NS-3\n" )  > "/dev/tty";
+			printf( " 8. NW-NS-i\n" )  > "/dev/tty";
+			printf( " 9. NW-AP-2\n" )  > "/dev/tty";
+			printf( "10. FFT-NS-ROUGH (# of sequences > 1,000)\n" ) > "/dev/tty";
+			printf( "11. NW-NS-ROUGH  (# of sequences > 1,000)\n" ) > "/dev/tty";
+			printf( "@ [%d] ", defa ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" );
+			if( res == 0 )
+				continue;
+			strategy = 0 + $1;
+			if( strategy == 0 )
+				strategy = defa;
+			if( strategy < 1 || 11 < strategy )
+				printf( "\n" );
+			else
+			{
+				printf( "OK. %d\n\n", strategy );
+				break;
+			}
+		}
+	
+		if( strategy == 4 || strategy == 8 )
+		{
+			while( 1 )
+			{
+				defa = 2;
+				printf( "Number of iterations?\n" ) > "/dev/tty";
+				printf( "@ [%d] ", defa ) > "/dev/tty";
+				res = getline < "/dev/tty";
+				close( "/dev/tty" );
+				if( res == 0 )
+					continue;
+				niterate = 0 + $1;
+				if( niterate == 0 )
+					niterate = defa;
+				if( niterate < 1 || 1000 < niterate )
+					printf( "\n" );
+				else
+				{
+					printf( "OK. %d\n\n", niterate );
+					break;
+				}
+			}
+		}
+	
+		defa = 3;
+		while( 1 )
+		{
+			printf( "Scoring matrix? (ignored when DNA sequence is input.)\n" ) > "/dev/tty";
+			printf( " 1. BLOSUM 30\n" ) > "/dev/tty";
+			printf( " 2. BLOSUM 45\n" ) > "/dev/tty";
+			printf( " 3. BLOSUM 62\n" ) > "/dev/tty";
+			printf( " 4. BLOSUM 80\n" ) > "/dev/tty";
+			printf( " 5. JTT 200\n" ) > "/dev/tty";
+			printf( " 6. JTT 100\n" ) > "/dev/tty";
+			printf( "@ [%d] ", defa ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" );
+			if( res == 0 )
+				continue;
+			scoringmatrix = 0 + $1;
+			if( scoringmatrix == 0 )
+				scoringmatrix = defa;
+			if( scoringmatrix < 1 || 6 < scoringmatrix )
+				printf( "\n" );
+			else
+			{
+				printf( "OK. %d\n\n", scoringmatrix );
+				break;
+			}
+		}
+		if( scoringmatrix == 1 )
+			scoringparam = " -b 30 ";
+		else if( scoringmatrix == 2 )
+			scoringparam = " -b 45 ";
+		else if( scoringmatrix == 3 )
+			scoringparam = " -b 62 ";
+		else if( scoringmatrix == 4 )
+			scoringparam = " -b 80 ";
+		else if( scoringmatrix == 5 )
+			scoringparam = " -j 200 ";
+		else if( scoringmatrix == 6 )
+			scoringparam = " -j 100 ";
+	
+		while( 1 )
+		{
+			penalty = 1.85;
+			offset = 0.085;
+			printf( "Parameters?\n", penalty, offset ) > "/dev/tty";
+			printf( "@ [%5.3f (gap opening penalty),  %5.3f (offset, works like gap extension penalty)] ", penalty, offset ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" );
+			if( res == 0 )
+				continue;
+			if( NF == 2 )
+			{
+				penalty = 0.0 + $1;
+				offset = 0.0 + $2;
+				break;
+			}
+			else if( NF == 0 )
+				break;
+		}
+		printf( "OK. %5.3f %5.3f\n\n", penalty, offset );
+	
+		penal_op = sprintf( " %s -f -%f -h -%f ", scoringparam, penalty, offset );
+	
+	
+		printf( "input    = %s\n", infile );
+		printf( "output   = %s\n", outfile );
+		printf( "Penal_op = %s\n", penal_op );
+		printf( "Strategy = %d\n", strategy );
+		printf( "Niterate = %d\n", niterate );
+		printf( "\n" );
+	
+	
+		while( 1 )
+		{
+			go = 0;
+			printf( "OK?\n" );
+			printf( "@ [Y] " ) > "/dev/tty";
+			res = getline < "/dev/tty";
+			close( "/dev/tty" );
+			if( res == 0 )
+				continue;
+			else if( NF == 0 || $0 ~ /^[Yy]/ )
+			{
+				go=1;
+				break;
+			}
+			else
+				break;
+		}
+		if( go ) break;
+		printf( "\n" );
+		printf( "\n" );
+	}
+
+	if( strategy == 1 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast %s -FAx < infile; %s < pre > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 2 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast %s -FAx < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx %s < pre; %s < pre > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 3 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx %s < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx %s < pre > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx %s < pre; %s < pre  > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 4 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in sextet5\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -FAx %s < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JFAx %s < pre > /dev/null ", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dndpre < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dndpre\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dvtditr -xAt -I %d %s < pre; %s < pre > \"%s\"", prefix, niterate, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dvtditr\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	if( strategy == 5 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax %s < infile; %s < pre > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 6 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax %s < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx %s < pre; %s < pre > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 7 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast %s -Ax < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx %s < pre > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx %s < pre; %s < pre > \"%s\"", prefix, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 8 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in sextet5\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax %s < infile > /dev/null", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx %s < pre > /dev/null ", prefix, penal_op );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dndpre < pre > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dndpre\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/dvtditr -xAt -I %d %s < pre; %s < pre > \"%s\"", prefix, niterate, penal_op, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in dvtditr\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+
+	else if( strategy == 9 )
+	{
+		command = sprintf( "%s/sextet5 < infile > /dev/null", prefix );
+		res = system( command );
+		if( res )
+		{
+			print "res = " res;
+			printf( "Error in %s\n", command ) > "/dev/tty";
+			exit( 1 );
+		}
+
+		command = sprintf( "%s/tbfast -Ax -h -0.82 -f %f < infile > /dev/null", prefix, -penalty );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+		command = sprintf( "%s/tbfast -JAx -h -0.820 -f %f < pre; %s < pre > \"%s\"", prefix, -penalty, outputcommand, outfile );
+		res = system( command );
+		if( res )
+		{
+			printf( "Error in tbfast\n" ) > "/dev/tty";
+			exit( 1 );
+		}
+	}
+	else if( strategy == 10 || strategy == 11 )
+	{
+		if( strategy == 10 ) fftoption = "-FA"
+		else                 fftoption = "-A"
+		command = sprintf( "%s/splitseq infile 500", prefix );
+		res = system( command );
+
+		getline < "sp-count"
+		ngroup = 0 + $1
+
+		for( i=1; i<=ngroup; i++ )
+		{
+			printf( "Aligning group %d\n", i );
+			spfile = sprintf( "sp-%d", i );
+			alfile = sprintf( "al-%d", i );
+			system( "grep \"^[>|=]\" " spfile " | wc > seq-count" );
+			close( "seq-count" );
+			getline < "seq-count";
+			nseq = 0+$1
+			printf( "nseq = %d\n", nseq );
+			if( nseq == 1 )
+			{
+				system( "cp " spfile " " alfile );
+				break;
+			}
+			command = sprintf( "%s/sextet5 < " spfile " > /dev/null 2>&1", prefix );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in %s\n", command ) > "/dev/tty";
+				exit( 1 );
+			}
+	
+			command = sprintf( "%s/tbfast %s %s -x < " spfile " > /dev/null 2>&1; cat pre > \"%s\"", prefix, penal_op, fftoption, alfile );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in tbfast\n" ) > "/dev/tty";
+				exit( 1 );
+			}
+		}
+		if( ngroup == 1 )
+		{
+			command = sprintf( "%s <  %s > \"%s\"", outputcommand, alfile, outfile );
+			system( command );
+		}
+		system( "cp al-1 alall" );
+		for( i=2; i<=ngroup; i++ )
+		{
+			command =  sprintf( "%s/galn -A alall al-%d > altmp", prefix, i );
+			res = system( command );
+			if( res )
+			{
+				printf( "Error in galn\n" ) > "/dev/tty";
+				exit( 1 );
+			}
+			system( "mv altmp alall" );
+		}
+		command = sprintf( "%s < alall > \"%s\"", outputcommand, outfile );
+		system( command );
+	}
+}
+'
+)
+
+rm -r $TMPDIR

@@ -1,0 +1,46 @@
+BIOGRF  160
+DESCRP BD_2DRIB
+REMARK Created by slm @ tms2r on  1/25/90   17:45:37               
+REMARK beta-2-Deoxy-D-ribose
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+ATOM       1  O5*  RIB      1   -0.80756   1.96835  -2.51637 O_3    2 2  0.00000
+ATOM       2 HO5*  RIB      1    0.13314   1.84942  -2.76411 H___A  1 0  0.00000
+ATOM       3  C5*  RIB      1   -1.01086   1.50555  -1.18388 C_3    4 0  0.00000
+ATOM       4 HC5*  RIB      1   -2.06427   1.65831  -0.94347 H_     1 0  0.00000
+ATOM       5 HC5*  RIB      1   -0.41195   2.12131  -0.51025 H_     1 0  0.00000
+ATOM       6  C4*  RIB      1   -0.65312   0.01068  -1.00127 C_3    4 0  0.00000
+ATOM       7 HC4*  RIB      1   -1.19022  -0.56371  -1.76182 H_     1 0  0.00000
+ATOM       8  O4*  RIB      1    0.75087  -0.19718  -1.20118 O_3    2 2  0.00000
+ATOM       9  C3*  RIB      1   -0.98486  -0.50899   0.41979 C_3    4 0  0.00000
+ATOM      10 HC3*  RIB      1   -1.64482   0.17353   0.95935 H_     1 0  0.00000
+ATOM      11  O3*  RIB      1   -1.62257  -1.78827   0.40395 O_3    2 2  0.00000
+ATOM      12 HO3*  RIB      1   -1.05253  -2.43142  -0.06702 H___A  1 0  0.00000
+ATOM      13  C2*  RIB      1    0.38450  -0.55733   1.11448 C_3    4 0  0.00000
+ATOM      14 HC2*  RIB      1    0.46501  -1.36042   1.85120 H_     1 0  0.00000
+ATOM      15 HC2*  RIB      1    0.56497   0.39657   1.61754 H_     1 0  0.00000
+ATOM      16  C1*  RIB      1    1.36348  -0.77103  -0.04974 C_3    4 0  0.00000
+ATOM      17 HC1*  RIB      1    1.50337  -1.83982  -0.22329 H_     1 0  0.00000
+ATOM      18  O1*  RIB      1    2.63750  -0.17514   0.17003 O_3    2 2  0.00000
+ATOM      19 HO1*  RIB      1    2.52555   0.78568   0.32786 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     6     4     5
+CONECT     4     3
+CONECT     5     3
+CONECT     6     3     8     9     7
+CONECT     7     6
+CONECT     8     6    16
+CONECT     9     6    11    13    10
+CONECT    10     9
+CONECT    11     9    12
+CONECT    12    11
+CONECT    13     9    16    15    14
+CONECT    14    13
+CONECT    15    13
+CONECT    16     8    13    18    17
+CONECT    17    16
+CONECT    18    16    19
+CONECT    19    18
+END

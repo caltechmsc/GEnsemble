@@ -1,0 +1,73 @@
+beginmacro
+%
+%  Del_methyl_h.macro
+%
+%	This macro deletes all of the methyl hydrogen atoms on a
+%	polypropylene polymer built using define/repeat functions of the
+%	polymer builder.  It changes the methyl carbon atom types to C_33.
+%
+%	It operates on a file that is already active in the program and uses
+%	a command line argument to indicate the correct file.
+%
+%	Command line argument:
+%
+file_name	= ${input1}
+%
+% get the starting and atom numbers of the polymer chain and 
+% determine their residue numbers to use in the do loop below
+%
+%	Determine the starting and ending residue numbers for use in loop
+%
+first_atom	= file_start(${file_name})
+echo ${first_atom}
+last_atom	= file_stop(${file_name})
+echo ${last_atom}
+%
+first_res	= inq(residue_number,${first_atom})
+last_res	= inq(residue_number,${last_atom})
+%
+%	Save current position in menu
+%
+save
+entry-level
+Top menu/build
+        Build/organic
+                Files/${LASTFILE}
+	Organic/edit
+                Edit/select
+		    Selections/continuous
+                Edit/delete
+%
+%	This loop deletes the methyl hydrogens (those with atom labels,
+%	H1C3, H2C3, and H3C3) on every residue.
+%
+  		    do resnum = ${first_res}, ${last_res}
+			rnum/${resnum},anam/H1C3
+		  	rnum/${resnum},anam/H2C3
+		  	rnum/${resnum},anam/H3C3
+		    enddo
+		Edit/return
+	Organic/edit id
+		Edit id/atom type
+		  C_33
+%
+%	This loop changes the atom types of the methyl carbons on every
+%	residue to C_33.  In this case, auto type would be much faster, but
+%	this method may be more useful in other cases.
+%
+		  do resnum = ${first_res}, ${last_res}
+			rnum/${resnum},anam/C3
+		  enddo
+%
+		  .
+                  Selections/return
+		Edit id/return
+	Organic/return
+%
+%	Return to previous program menu
+%
+restore
+%
+quit
+%
+endmacro

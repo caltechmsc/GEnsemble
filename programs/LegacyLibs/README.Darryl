@@ -1,0 +1,25 @@
+
+02/05/2014
+Created this directory ( /project/Biogroup/Software/GEnsemble/programs/LegacyLibs )
+and copied following from hive:
+
+hive% ls -l /usr/lib/libstdc++-libc6.1-1.so.2 /usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+lrwxrwxrwx  1 root root 30 Aug  9  2007 /usr/lib/libstdc++-libc6.1-1.so.2 -> libstdc++-2-libc6.1-1-2.9.0.so
+-rwxr-xr-x  1 root root 258288 Feb 21  2005 /usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+
+This is needed to run /project/Biogroup/Software/GEnsemble/programs/utilities/bgf_match
+on atom & ion (running CentOS 6.x), because;
+   hive% rpm -qf /usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+   compat-libstdc++-296-2.96-132.7.2
+but that is no longer available in CentOS6 repos.
+
+To use this directory, add the following into your PBS script:
+
+   if !($?LIBRARY_PATH) then
+       setenv LIBRARY_PATH /project/Biogroup/Software/GEnsemble/programs/LegacyLibs
+   else
+       setenv LIBRARY_PATH /project/Biogroup/Software/GEnsemble/programs/LegacyLibs:${LIBRARY_PATH}
+   endif
+
+
+

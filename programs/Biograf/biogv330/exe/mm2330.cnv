@@ -1,0 +1,29 @@
+C***********************************************************************
+C***  This force field implementation was made by BioDesign, Inc.
+C***  This file may not be redistributed (whether or not it has been
+C***  modified) without the written permission of BioDesign.
+C***  This notice must appear in all copies of this file.
+C***********************************************************************
+C
+C  Conversion table MM2 -- 3/7/87 -- BDO
+C
+C  Record format is 1X,A3, 1X,A7, 1X,A7, 1X,I2, 1X,I2, 1X,F8.4 and
+C  corresponds to:
+C
+C
+C  where RES    = residue name
+C        OLDTYP = old atom type (type on input data file)
+C        NEWTYP = new atom type (type used in calculations)
+C        MB     = maximum number of covalent connections (for building)
+C        NL     = number of lone pairs at MB (for H-bond acceptors)
+C        CHARGE = charge on atom (used in electrostatic calculation)
+C
+C***********************************************************************
+*
+C  MM2 atom type conversion to MM2 atom types
+*RES OLDTYP* NEWTYP* MB NL CHARGE**
+ *** H__C    H__C     1  0   0.0000 
+ *** HC_3    H__C     1  0   0.0000 
+ *** HC_3_4  H__C     1  0   0.0000
+ *** C_3     C_3      4  0   0.0000
+ *** C_3_4   C_3_4    4  0   0.0000

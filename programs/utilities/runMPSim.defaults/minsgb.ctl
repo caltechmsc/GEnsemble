@@ -1,0 +1,31 @@
+# minimize under SGB solvation
+PROJECT           DUMMY_minsgb
+FF                /ul/caglar/common/ff/dreidii322-mpsim.par
+BBOX               -180 180 -180 180 -180 180
+STRUCTURE         DUMMY.bgf
+NB_METHOD          CMM
+CMM_EXPANSION      CENTROID
+LEVEL              4
+NB_UPDATE_FREQ     5
+CELL_REALLOC_FREQ  5
+LOAD_BAL_FREQ      10
+#FIXED              1-100
+SGBSOLV            Yes
+SGBEPSIN           2.0
+SGBEPSOUT          80.37
+SGBFUPDATE         50
+MIN_RMS_DESIRED  0.2
+MIN_MAX_STEPS   1000 
+FINAL_BGF
+ACTION           MINIMIZE
+MIN_METHOD             CONJUGATE_WAG
+#MIN_METHOD       CONJUGATE_BDO
+#MIN_METHOD             STEEPEST_WAG
+#MIN_METHOD            FLETCHER-POWELL
+#MIN_METHOD            CONJUGATE_GAO
+#MIN_METHOD            STEEPEST_GAO
+SETUP_EEX
+DO
+#FINAL_ENER
+INFO
+EXIT

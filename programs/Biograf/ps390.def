@@ -1,0 +1,9 @@
+!
+! Startup defaults for BioDesign BIOGRAF
+!
+! File: /biograf/b390.def
+!
+PROGRAM    BIOGRAF
+INTERFACE  ETHERNET
+NODENAME   ps390
+L_PS390    YES

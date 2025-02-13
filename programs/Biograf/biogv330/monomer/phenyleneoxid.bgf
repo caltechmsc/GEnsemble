@@ -1,0 +1,39 @@
+BIOGRF  160
+DESCRP phenylen
+REMARK Created by srl @ iris on 12/11/89   11:56:40                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 HH    PHE A    1    0.90700   0.02600  -2.56500 O_3    2 2  0.00000
+HETATM     2 C1    PHE A    1    0.45700   0.02000  -1.28700 C_R    3 0  0.00000
+HETATM     3 HX    PHE A    1    1.79400   0.44100  -2.59700 H___A  1 0  0.00000
+HETATM     4 C2    PHE A    1    1.32000   0.37700  -0.22900 C_R    3 0  0.00000
+HETATM     5 HC2   PHE A    1    2.29000   0.64500  -0.41200 H_     1 0  0.00000
+HETATM     6 C3    PHE A    1    0.85200   0.36700   1.09800 C_R    3 0  0.00000
+HETATM     7 HC3   PHE A    1    1.47800   0.62600   1.86200 H_     1 0  0.00000
+HETATM     8 TT    PHE A    1   -0.47800   0.00100   1.37400 C_R    3 0  0.00000
+HETATM     9 C5    PHE A    1   -1.34200  -0.35400   0.32200 C_R    3 0  0.00000
+HETATM    10 HC5   PHE A    1   -2.30700  -0.61900   0.52300 H_     1 0  0.00000
+HETATM    11 C6    PHE A    1   -0.87700  -0.34500  -1.00700 C_R    3 0  0.00000
+HETATM    12 HC6   PHE A    1   -1.51800  -0.60600  -1.75900 H_     1 0  0.00000
+HETATM    13 TX    PHE A    1   -0.81700  -0.00600   2.33700 H_     1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     2     3
+CONECT     2     4    11     1
+ORDER      2     1     2     1
+CONECT     3     1
+CONECT     4     2     6     5
+ORDER      4     1     2     1
+CONECT     5     4
+CONECT     6     8     4     7
+ORDER      6     1     2     1
+CONECT     7     6
+CONECT     8     6     9    13
+ORDER      8     1     2     1
+CONECT     9     8    11    10
+ORDER      9     2     1     1
+CONECT    10     9
+CONECT    11     9     2    12
+ORDER     11     1     2     1
+CONECT    12    11
+CONECT    13     8
+END

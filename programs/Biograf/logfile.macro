@@ -1,0 +1,16 @@
+beginmacro
+%
+% version      : 3.21
+% version date : 21:49:53 04/30/93
+% link date    : 00:41:06 06/26/03
+%
+% Macro created on  1/11/06   11:10:48
+%
+Top menu/exit
+  "yes"
+Top menu/exit
+  "ok"
+Top menu/exit
+  "OK"
+%
+endmacro

@@ -1,0 +1,12 @@
+/wag			:	/biograf/biogv217/remakes/wag
+makefile		:	/wag
+new objects		:	/wag
+new includes		:	/wag
+new source (Iris)	:	/wag
+new source (VAX)	:	/biograf/biogv217/remakes/vax
+libraries		:	/biograf/biogv216/library
+include			:	/biograf/biogv216/source/include
+
+modified source (VAX version) : /biograf/biogv217/remakes/vax
+modified source (Iris version): /biograf/biogv217/remakes/wag
+modified objects	      : /biograf/biog

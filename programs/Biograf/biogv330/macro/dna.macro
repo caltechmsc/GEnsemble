@@ -1,0 +1,22 @@
+beginmacro
+%
+% version      : 2.21
+% version date : 09:35:40 11/29/90
+% link date    : 18:51:01 2/25/92
+%
+% Macro created on  2/26/92    0:10:31
+%
+% /usr/people/bdo/standard.def
+Top menu/in-out
+	In-Out/read
+	File types/BioDesign
+	  "dna.bgf"
+% 	/usr/msi/biogv320/data/dna.bgf
+	In-Out/read
+	File types/group
+	  "dna.grp"
+% 	/usr/msi/biogv320/data/dna.grp
+	In-Out/return
+menu
+%
+endmacro

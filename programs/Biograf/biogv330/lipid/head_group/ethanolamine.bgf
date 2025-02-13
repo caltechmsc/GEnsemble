@@ -1,0 +1,23 @@
+BIOGRF  160
+DESCRP ETHANOLA
+REMARK Created by pws @ sun4 on  1/24/89   19:35:32                
+FORCEFIELD DREIDING
+FORMAT ATOM   (a6,1x,i5,1x,a5,1x,a3,1x,a1,1x,a5,3f10.5,1x,a5,i3,i2,1x,f8.5)
+HETATM     1 O1    LIP      1   -0.89100   1.62000  -1.49400 O_3    2 2  0.00000
+HETATM     2 XX    LIP      1   -0.31000   2.36900  -1.24900 H___A  1 0  0.00000
+HETATM     3 C1    LIP      1   -0.27600   0.40200  -1.10100 C_32   4 0  0.00000
+HETATM     4 C2    LIP      1   -0.22800   0.34000   0.42600 C_32   4 0  0.00000
+HETATM     5 N1    LIP      1    0.33100  -0.95600   0.79600 N_3    3 1  0.00000
+HETATM     6 H3N1  LIP      1   -0.14500  -1.30800   1.62600 H___A  1 0  0.00000
+HETATM     7 H2N1  LIP      1    1.33200  -0.87100   0.98200 H___A  1 0  0.00000
+HETATM     8 H1N1  LIP      1    0.18700  -1.59600   0.01400 H___A  1 0  0.00000
+FORMAT CONECT (a6,12i6)
+CONECT     1     3     2
+CONECT     2     1
+CONECT     3     1     4
+CONECT     4     3     5
+CONECT     5     4     8     7     6
+CONECT     6     5
+CONECT     7     5
+CONECT     8     5
+END

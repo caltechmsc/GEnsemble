@@ -1,0 +1,4456 @@
+stty: standard input: Inappropriate ioctl for device
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Copyright (C) G.Vriend 1987-2006
+This is WHAT IF version 20051228-2357
+ 
+ 
+ 
+ 
+ 
+          Starting  W H A T  I F
+ 
+ 
+          Please wait a moment
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+HELP   INFO   SHELL  GENMEN END    $..  %..  !.. SCRIPT - MainMenu
+DOLOG  NOLOG  GO   FULLSTOP LISTA  LISTR  HISTOR GETMOL -
+GRAFIC GRATWO GRAEXT COLOUR PLOTIT USEGRA ITMADM LABEL  -
+SOUP   3SSP   ACCESS ANACON BUILD  CHECK  CHIANG CLUFAM -
+DGLOOP DIGIT  DOSELF DRUG   DSSP   ELECTR EXTRA  HBONDS -
+HSSP   MAP    MODIFY NEURAL NMR    NOTES  OTHER  PROTON -
+QUALTY REFINE SCAN3D SCNSTS SEARCH SELECT SEQ3D  SETPAR -
+SETVDW SHOENT SPCIAL SUPPOS SYMTRY TABLES WALIGN        -
+WATER  XRAY                                             -
+ANATRA TRAMOV GRID                                      -
+---------------------------------------------------------
+************************************************************
+This version of WHAT IF is more than two years old.
+Please consider applying for an update.
+************************************************************
+Present date: 2016-09-27
+WHAT IF date: 20051228-2357
+WHAT IF> Give the name of the coordinate file : Give the set-name (beta1_tm45interfaceOPM.addH.pdb) : sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+------------------------------------------------------------------------
+# 1 # Error: Cell contains short vector
+=======================================
+The unit cell in the CRYST1 card of the PDB file contains
+vectors with lengths smaller than 1.54 Angstrom.
+
+Possible cause: Probably one or more of the values is mistyped, or the
+CRYST1 card does not conform to the FORMAT given in the PDB
+specification.
+
+ 
+ The CRYST1 cell dimensions
+    A    =   0.000  B   =   0.000  C    =   0.000
+    Alpha=  90.000  Beta=  90.000  Gamma=  90.000
+------------------------------------------------------------------------
+     1 -   10   LEU SER GLN GLN TRP  GLU ALA GLY MET SER
+    11 -   20   LEU LEU MET ALA LEU  VAL VAL LEU LEU ILE
+    21 -   30   VAL ALA GLY ASN VAL  LEU VAL ILE ALA ALA
+    31 -   40   ILE GLY SER THR GLN  ARG LEU GLN THR LEU
+    41 -   50   THR ASN LEU PHE ILE  THR SER LEU ALA CYS
+    51 -   60   ALA ASP LEU VAL VAL  GLY LEU LEU VAL VAL
+    61 -   70   PRO PHE GLY ALA THR  LEU VAL VAL ARG GLY
+    71 -   80   THR TRP LEU TRP GLY  SER PHE LEU CYS GLU
+    81 -   90   LEU TRP THR SER LEU  ASP VAL LEU CYS VAL
+    91 -  100   THR ALA SER ILE GLU  THR LEU CYS VAL ILE
+   101 -  110   ALA ILE ASP ARG TYR  LEU ALA ILE THR SER
+   111 -  120   PRO PHE ARG TYR GLN  SER LEU MET THR ARG
+   121 -  130   ALA ARG ALA LYS VAL  ILE ILE CYS THR VAL
+   131 -  140   TRP ALA ILE SER ALA  LEU VAL SER PHE LEU
+   141 -  150   PRO ILE MET MET HIS  TRP TRP ARG ASP GLU
+   151 -  160   ASP PRO GLN ALA LEU  LYS CYS TYR GLN ASP
+   161 -  170   PRO GLY CYS CYS ASP  PHE VAL THR ASN ARG
+   171 -  180   ALA TYR ALA ILE ALA  SER SER ILE ILE SER
+   181 -  190   PHE TYR ILE PRO LEU  LEU ILE MET ILE PHE
+   191 -  200   VAL ALA LEU ARG VAL  TYR ARG GLU ALA LYS
+   201 -  210   GLU GLN VAL MET LEU  MET ARG GLU HIS LYS
+   211 -  220   ALA LEU LYS THR LEU  GLY ILE ILE MET GLY
+   221 -  230   VAL PHE THR LEU CYS  TRP LEU PRO PHE PHE
+   231 -  240   LEU VAL ASN ILE VAL  ASN VAL PHE ASN ARG
+   241 -  250   ASP LEU VAL PRO ASP  TRP LEU PHE VAL ALA
+   251 -  260   PHE ASN TRP LEU GLY  TYR ALA ASN SER ALA
+   261 -  270   MET ASN PRO ILE ILE  TYR CYS ARG SER PRO
+   271 -  280   ASP PHE ARG LYS ALA  PHE LYS ARG LEU LEU
+   281 -  290   SER GLN GLN TRP GLU  ALA GLY MET SER LEU
+   291 -  300   LEU MET ALA LEU VAL  VAL LEU LEU ILE VAL
+   301 -  310   ALA GLY ASN VAL LEU  VAL ILE ALA ALA ILE
+   311 -  320   GLY SER THR GLN ARG  LEU GLN THR LEU THR
+   321 -  330   ASN LEU PHE ILE THR  SER LEU ALA CYS ALA
+   331 -  340   ASP LEU VAL VAL GLY  LEU LEU VAL VAL PRO
+   341 -  350   PHE GLY ALA THR LEU  VAL VAL ARG GLY THR
+   351 -  360   TRP LEU TRP GLY SER  PHE LEU CYS GLU LEU
+   361 -  370   TRP THR SER LEU ASP  VAL LEU CYS VAL THR
+   371 -  380   ALA SER ILE GLU THR  LEU CYS VAL ILE ALA
+   381 -  390   ILE ASP ARG TYR LEU  ALA ILE THR SER PRO
+   391 -  400   PHE ARG TYR GLN SER  LEU MET THR ARG ALA
+   401 -  410   ARG ALA LYS VAL ILE  ILE CYS THR VAL TRP
+   411 -  420   ALA ILE SER ALA LEU  VAL SER PHE LEU PRO
+   421 -  430   ILE MET MET HIS TRP  TRP ARG ASP GLU ASP
+   431 -  440   PRO GLN ALA LEU LYS  CYS TYR GLN ASP PRO
+   441 -  450   GLY CYS CYS ASP PHE  VAL THR ASN ARG ALA
+   451 -  460   TYR ALA ILE ALA SER  SER ILE ILE SER PHE
+   461 -  470   TYR ILE PRO LEU LEU  ILE MET ILE PHE VAL
+   471 -  480   ALA LEU ARG VAL TYR  ARG GLU ALA LYS GLU
+   481 -  490   GLN ILE VAL MET LEU  MET ARG GLU HIS LYS
+   491 -  500   ALA LEU LYS THR LEU  GLY ILE ILE MET GLY
+   501 -  510   VAL PHE THR LEU CYS  TRP LEU PRO PHE PHE
+   511 -  520   LEU VAL ASN ILE VAL  ASN VAL PHE ASN ARG
+   521 -  530   ASP LEU VAL PRO ASP  TRP LEU PHE VAL ALA
+   531 -  540   PHE ASN TRP LEU GLY  TYR ALA ASN SER ALA
+   541 -  550   MET ASN PRO ILE ILE  TYR CYS ARG SER PRO
+   551 -  559   ASP PHE ARG LYS ALA  PHE LYS ARG LEU
+Hydrogens/deuteriums skipped in protein: 4597
+------------------------------------------------------------------------
+# 2 # Note: This is NOT an alpha-carbon-only structure
+======================================================
+At least some amino acids were observed that contained more atoms
+than just an alpha-carbon.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 3 # Note: No strange inter-chain connections detected
+=======================================================
+No covalent bonds have been detected between molecules with
+non-identical chain identifiers.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 4 # Note: No strange inter-chain connections could be corrected
+=================================================================
+Either there were no strange inter-chain conections, or they were too
+strange for WHAT IF to correct.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 5 # Note: No duplicate atom names
+===================================
+All atom names seem adequately unique.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 6 # Note: No alternate atom problems detected
+===============================================
+Either this structure does not contain alternate atoms, or they are all
+correct, or the errors have remained unnoticed.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 7 # Note: In all cases the primary aternate atom was used
+===========================================================
+WHAT IF saw no need to make any alternate atom corrections.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 8 # Note: No overlapping non-alternates detected
+==================================================
+Either this structure does not contain overlapping non-alternate atoms,
+or they are all correct, or the errors have remained unnoticed.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 9 # Note: No residues detected inside ligands
+===============================================
+Either this structure does not contain ligands with amino acid groups
+in it, or their naming is proper (enough).
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 10 # Note: No attached groups interfere with hydrogen bond calculations
+=========================================================================
+It seems there are no sugars, lipids, etc., bound (very close) to
+atoms that otherwise could form hydrogen bonds.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 11 # Note: No C-terminal nitrogen detected
+============================================
+It is becoming habit to indicate that a residue is not the true C-terminus
+by including only the backbone N of the next residue. This has not been
+observed in this PDB file.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 12 # Note: All residues have a complete backbone.
+===================================================
+No residues have missing backbone atoms.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 13 # Note: No probable atoms with zero occupancy detected.
+============================================================
+Either there are no atoms with zero occupancy, or they are not present in
+the file, or their positions are sufficiently improbable to warrant a
+zero occupancy.
+------------------------------------------------------------------------
+ 
+Content of the SOUP. See the writeup for an explanation.
+ 
+ Molecule      Range              Type              Set name
+     1    1 (   36)  202 (  237)A Protein           beta1_tm45interfa...
+     2  203 (  280)  279 (  356)A Protein           beta1_tm45interfa...
+     3  280 (   36)  482 (  238)B Protein           beta1_tm45interfa...
+     4  483 (  280)  559 (  356)B Protein           beta1_tm45interfa...
+------------------------------------------------------------------------
+# 14 # Note: Content of the PDB file as interpreted by WHAT IF
+==============================================================
+Content of the PDB file as interpreted by WHAT IF
+WHAT IF has read your PDB file, and stored it internally in
+what is called 'the soup'. The content of this soup is listed here.
+An extensive explanation of all frequently used WHAT IF output formats
+can be found at http://swift.cmbi.ru.nl/. Look under output formats.
+ 
+     1     1 (   36)   202 (  237) A Protein             beta1_tm45interfa...
+     2   203 (  280)   279 (  356) A Protein             beta1_tm45interfa...
+     3   280 (   36)   482 (  238) B Protein             beta1_tm45interfa...
+     4   483 (  280)   559 (  356) B Protein             beta1_tm45interfa...
+------------------------------------------------------------------------
+Colouring scheme used :
+ 
+ H : 30
+ 3 : 50
+ S : 130
+ T : 290
+ C : 260
+------------------------------------------------------------------------
+# 15 # Note: Ramachandran plot
+==============================
+In this Ramachandran plot X-signs represent glycines, squares represent
+prolines and small plus-signs represent the other residues. If too many
+plus-signs fall outside the contoured areas then the molecule is poorly
+refined (or worse).
+
+In a colour picture, the residues that are part of a helix are
+shown in blue, strand residues in red.  "Allowed" regions for
+helical residues are drawn in blue, for strand residues in red, and
+for all other residues in green.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: A
+------------------------------------------------------------------------
+Colouring scheme used :
+ 
+ H : 30
+ 3 : 50
+ S : 130
+ T : 290
+ C : 260
+------------------------------------------------------------------------
+# 16 # Note: Ramachandran plot
+==============================
+
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 17 # Note: Secondary structure
+================================
+This is the secondary structure according to DSSP. Only helix (H),
+overwound or 3/10-helix (3), strand (S), turn (T) and coil (blank)
+are shown. [REF]. All DSSP related information can be found at
+http://swift.cmbi.ru.nl/gv/dssp/.
+This is not really a structure validation option, but a very scattered
+secondary structure (i.e. many strands of only a few residues length,
+many Ts inside helices, etc) tends to indicate a poor structure.
+ 
+ Secondary structure assignment
+                     10        20        30        40        50        60
+                      |         |         |         |         |         |
+    1 -  60  LSQQWEAGMSLLMALVVLLIVAGNVLVIAAIGSTQRLQTLTNLFITSLACADLVVGLLVV
+    1 -  60   HHHHHTHHHHHHHHHHHHHHHHHHHHHHHHHT TTT T333THHHHHHHHHHHHTTTHH
+                     70        80        90       100       110       120
+                      |         |         |         |         |         |
+   61 - 120  PFGATLVVRGTWLWGSFLCELWTSLDVLCVTASIETLCVIAIDRYLAITSPFRYQSLMTR
+   61 - 120  HHHHHHHHTTT  T HHHHHHHHHHHHHHHHHHHHHHHHHHHHTTTTTTT TTHHHHT T
+                    130       140       150       160       170       180
+                      |         |         |         |         |         |
+  121 - 180  ARAKVIICTVWAISALVSFLPIMMHWWRDEDPQALKCYQDPGCCDFVTNRAYAIASSIIS
+  121 - 180  THHHHHHHHHHHHHHHHHHHHHHTTTT   THHHHHHHHTTT       TTHHHHHHHHH
+                    190       200
+                      |         |
+  181 - 202  FYIPLLIMIFVALRVYREAKEQ
+  181 - 202  THHHHHHHHHHHHHHHHHTT
+                  210       220       230       240       250       260
+                    |         |         |         |         |         |
+  203 - 262  VMLMREHKALKTLGIIMGVFTLCWLPFFLVNIVNVFNRDLVPDWLFVAFNWLGYANSAMN
+  203 - 262     HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH TTTT HHHHHHHHHHHHHHHHHT
+                  270
+                    |
+  263 - 279  PIIYCRSPDFRKAFKRL
+  263 - 279  333333 HHHHHHHH
+           280       290       300       310       320       330
+             |         |         |         |         |         |
+  280 - 339  LSQQWEAGMSLLMALVVLLIVAGNVLVIAAIGSTQRLQTLTNLFITSLACADLVVGLLVV
+  280 - 339   HHHHHTHHHHHHHHHHHHHHHHHHHHHHHHHT TTT T333THHHHHHHHHHHHTTTHH
+           340       350       360       370       380       390
+             |         |         |         |         |         |
+  340 - 399  PFGATLVVRGTWLWGSFLCELWTSLDVLCVTASIETLCVIAIDRYLAITSPFRYQSLMTR
+  340 - 399  HHHHHHHHTTT  T HHHHHHHHHHHHHHHHHHHHHHHHHHHHTTTTTTT TTHHHHT T
+           400       410       420       430       440       450
+             |         |         |         |         |         |
+  400 - 459  ARAKVIICTVWAISALVSFLPIMMHWWRDEDPQALKCYQDPGCCDFVTNRAYAIASSIIS
+  400 - 459  THHHHHHHHHHHHHHHHHHHHHHTTTT   THHHHHHHHTTT       TTHHHHHHHHH
+           460       470       480
+             |         |         |
+  460 - 482  FYIPLLIMIFVALRVYREAKEQI
+  460 - 482  THHHHHHHHHHHHHHHHHTTTT
+                  490       500       510       520       530       540
+                    |         |         |         |         |         |
+  483 - 542  VMLMREHKALKTLGIIMGVFTLCWLPFFLVNIVNVFNRDLVPDWLFVAFNWLGYANSAMN
+  483 - 542     HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH TTTT HHHHHHHHHHHHHHHHHT
+                  550
+                    |
+  543 - 559  PIIYCRSPDFRKAFKRL
+  543 - 559  333333 HHHHHHHH
+ 
+ 
+ 
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 18 # Error: Missing unit cell information
+===========================================
+No SCALE matrix is given in the PDB file.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Note: Since neither a valid SCALE matrix, nor a valid CRYST1 card were
+found, SYMMETRY will be unavailable for this molecule.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 19 # Note: No rounded coordinates detected
+============================================
+No significant rounding of atom coordinates has been detected.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 20 # Note: No missing atoms detected
+======================================
+All expected atoms are present.
+------------------------------------------------------------------------
+No O2 found for residue 202
+No O2 found for residue 279
+No O2 found for residue 482
+No O2 found for residue 559
+------------------------------------------------------------------------
+# 21 # Warning: C-terminal oxygen atoms missing
+===============================================
+The C-atoms listed in the table below belong to a C-terminal residue
+in a protein chain, but the C-terminal oxygen ("O2" or "OXT") that it
+should be bound to was not found.
+ 
+ 202 GLN  ( 237 ) A    C
+ 279 LEU  ( 356 ) A    C
+ 482 ILE  ( 238 ) B    C
+ 559 LEU  ( 356 ) B    C
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 22 # Note: No extra C-terminal groups found
+=============================================
+No C-terminal groups are present for non C-terminal residues.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 23 # Note: Weights checked OK
+===============================
+All atomic occupancy factors ('weights') fall in the 0.0--1.0 range.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 24 # Warning: Normal distribution of occupancy values
+=======================================================
+
+The distribution of the occupancy values in this file seems 'normal'.
+
+Be aware that this evaluation is merely the result of comparing this
+file with about 500 well-refined high-resolution files in the PDB. If
+this file has much higher or much lower resolution than the PDB files
+used in WHAT IF's trainig set, non-normal values might very well be
+perfectly fine, or normal values might actually be not so normal...
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 25 # Note: All occupancies seem to add up to 1.0.
+===================================================
+In principle, the occupancy of all alternates of one atom should add up till
+1.0. A valid exception is the missing atom (i.e. an atom not seen in the
+electron density) that is allowed to have a 0.0 occupancy.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 26 # Warning: Average B-factor problem
+========================================
+The average B-factor for all buried protein atoms normally lies between
+10--20. Values around 3--5 are expected for X-ray studies performed
+at liquid nitrogen temperature.
+
+Because of the extreme value for the average B-factor, no further analysis
+of the B-factors is performed.
+ 
+Average B-factor for buried atoms : 54.920
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 27 # Note: B-factor plot
+==========================
+The average atomic B-factor per residue is plotted as function of
+the residue number.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: A
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 28 # Note: B-factor plot
+==========================
+
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 29 # Note: Valine nomenclature OK
+===================================
+No errors were detected in valine nomenclature.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 30 # Note: Threonine nomenclature OK
+======================================
+No errors were detected in threonine nomenclature.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 31 # Note: Isoleucine nomenclature OK
+=======================================
+No errors were detected in isoleucine nomenclature.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 32 # Note: Leucine nomenclature OK
+====================================
+No errors were detected in leucine nomenclature.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 33 # Warning: Arginine nomenclature problem
+=============================================
+The arginine residues listed in the table below have their N-H-1
+and N-H-2 swapped.
+ 
+ 170 ARG  ( 205 ) A
+ 268 ARG  ( 345 ) A
+ 449 ARG  ( 205 ) B
+ 548 ARG  ( 345 ) B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 34 # Warning: Tyrosine convention problem
+===========================================
+The tyrosine residues listed in the table below have their chi-2
+not between -90.0 and 90.0
+ 
+ 114 TYR  ( 149 ) A
+ 172 TYR  ( 207 ) A
+ 196 TYR  ( 231 ) A
+ 393 TYR  ( 149 ) B
+ 451 TYR  ( 207 ) B
+ 475 TYR  ( 231 ) B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 35 # Warning: Phenylalanine convention problem
+================================================
+The phenylalanine residues listed in the table below have their
+chi-2 not between -90.0 and 90.0.
+ 
+  44 PHE  (  79 ) A
+ 139 PHE  ( 174 ) A
+ 181 PHE  ( 216 ) A
+ 190 PHE  ( 225 ) A
+ 222 PHE  ( 299 ) A
+ 238 PHE  ( 315 ) A
+ 323 PHE  (  79 ) B
+ 418 PHE  ( 174 ) B
+ 460 PHE  ( 216 ) B
+ 469 PHE  ( 225 ) B
+ 502 PHE  ( 299 ) B
+ 518 PHE  ( 315 ) B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 36 # Warning: Aspartic acid convention problem
+================================================
+The aspartic acid residues listed in the table below have their
+chi-2 not between -90.0 and 90.0, or their proton on OD1 instead of
+OD2.
+ 
+ 151 ASP  ( 186 ) A
+ 241 ASP  ( 318 ) A
+ 430 ASP  ( 186 ) B
+ 521 ASP  ( 318 ) B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 37 # Warning: Glutamic acid convention problem
+================================================
+The glutamic acid residues listed in the table below have their
+chi-3 outside the -90.0 to 90.0 range, or their proton on OE1 instead
+of OE2.
+ 
+ 150 GLU  ( 185 ) A
+ 201 GLU  ( 236 ) A
+ 429 GLU  ( 185 ) B
+ 480 GLU  ( 236 ) B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 38 # Note: Heavy atom naming OK
+=================================
+No errors were detected in the atom names for non-hydrogen atoms.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 39 # Note: Chain names are OK
+===============================
+All chain names assigned to polymer molecules are unique, and all
+residue numbers are strictly increasing within each chain.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 40 # Warning: Unusual bond lengths
+====================================
+The bond lengths listed in the table below were found to deviate
+more than 4 sigma from standard bond lengths (both standard values
+and sigma for amino acid residues have been taken from Engh and
+Huber [REF], for DNA they were taken from Parkinson et al [REF]). In
+the table below for each unusual bond the bond length and the
+number of standard deviations it differs from the normal value is
+given.
+
+Atom names starting with "-" belong to the previous residue in the
+chain. If the second atom name is "--SS", the disulphide bridge has
+a deviating length.
+ 
+ 209 HIS  ( 286 ) A      ND1  CE1   1.376   4.4
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 41 # Warning: Low bond length variability
+===========================================
+Bond lengths were found to deviate less than normal from the mean
+Engh and Huber [REF] and/or Parkinson et al [REF] standard bond
+lengths. The RMS Z-score given below is expected to be around 1.0
+for a normally restrained data set. The fact that it is lower than
+0.667 in this structure might indicate that too-strong constraints
+have been used in the refinement. This can only be a problem
+for high resolution X-ray structures.
+ 
+ RMS Z-score for bond lengths: 0.313
+ RMS-deviation in bond distances: 0.007
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 42 # Note: No bond length directionality
+==========================================
+Comparison of bond distances with Engh and Huber [REF] standard
+values for protein residues and Parkinson et al [REF] values for
+DNA/RNA does not show significant systematic deviations.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 43 # Warning: Unusual bond angles
+===================================
+The bond angles listed in the table below were found to deviate
+more than 4 sigma from standard bond angles (both standard values
+and sigma for protein residues have been taken from Engh and Huber
+[REF], for DNA/RNA from Parkinson et al [REF]).  In the table below
+for each strange angle the bond angle and the number of standard
+deviations it differs from the standard values is given. Please
+note that disulphide bridges are neglected. Atoms starting with "-"
+belong to the previous residue in the sequence.
+ 
+ 209 HIS  ( 286 ) A      CB   CG   ND1 130.817   6.1
+ 209 HIS  ( 286 ) A      CB   CG   CD2 122.817  -4.8
+ 489 HIS  ( 286 ) B      CB   CG   ND1 131.228   6.4
+ 489 HIS  ( 286 ) B      CB   CG   CD2 122.410  -5.1
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 44 # Warning: Low bond angle variability
+==========================================
+Bond angles were found to deviate less than normal from the
+standard bond angles (normal values for protein residues were taken
+from Engh and Huber [REF], for DNA/RNA from Parkinson et al
+[REF]). The RMS Z-score given below is expected to be around 1.0
+for a normally restrained data set. More common values are around
+1.55. The fact that it is lower than 0.667 in this structure might
+indicate that too-strong constraints have been used in the
+refinement. This can only be a problem for high resolution X-ray
+structures.
+ 
+ RMS Z-score for bond angles: 0.556
+ RMS-deviation in bond angles: 1.212
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 45 # Note: Chirality OK
+=========================
+All protein atoms have proper chirality.
+------------------------------------------------------------------------
+The average deviation= 0.741
+------------------------------------------------------------------------
+# 46 # Note: Improper dihedral angle distribution OK
+====================================================
+The RMS Z-score for all improper dihedrals in the structure is within
+normal ranges.
+ 
+ Improper dihedral RMS Z-score : 0.633
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 47 # Note: Side chain planarity OK
+====================================
+All of the side chains of residues that have a planar group are
+planar within expected RMS deviations.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 48 # Note: Atoms connected to aromatic rings OK
+=================================================
+All of the atoms that are connected to planar aromatic rings in side
+chains of amino-acid residues are in the plane within expected RMS
+deviations.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Since there is no DNA and no protein with hydrogens, no uncalibrated
+planarity check was performed.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 49 # Note: PRO puckering amplitude OK
+=======================================
+Puckering amplitudes for all PRO residues are within normal ranges.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 50 # Warning: Unusual PRO puckering phases
+============================================
+The proline residues listed in the table below have a puckering phase
+that is not expected to occur in protein structures. Puckering
+parameters were calculated by the method of Cremer and Pople
+[REF]. Normal PRO rings approximately show a so-called envelope
+conformation with the C-gamma atom above the plane of the ring
+(phi=+72 degrees), or a half-chair conformation with C-gamma below
+and C-beta above the plane of the ring (phi=-90 degrees). If phi
+deviates strongly from these values, this is indicative of a very
+strange conformation for a PRO residue, and definitely requires a
+manual check of the data. Be aware that this is a warning with a low
+confidence level.
+See: Who checks the checkers? Four validation tools applied to eight
+atomic resolution structures. K.Wilson, C.Sander, R.W.W.Hooft, G.Vriend,
+et al. J.Mol.Biol. (1998) 276,417-436.
+
+ 
+ 111 PRO  ( 146 ) A   12.6 half-chair N/C-delta (18 degrees)
+ 390 PRO  ( 146 ) B   15.4 half-chair N/C-delta (18 degrees)
+ 524 PRO  ( 321 ) B  101.8 envelop C-beta (108 degrees)
+------------------------------------------------------------------------
+You will see two tables.
+
+The first table gives a per-residue Z-score.  These scores give an
+impression of how ``normal'' the torsion angles in protein residues
+are. All torsion angles except omega are used for calculating a
+`normality' score. Average values and standard deviations were
+obtained from the residues in the WHAT IF database. These are used
+to calculate Z-scores.  A residue with a Z-score of below -2.0 is
+poor, and a score of less than -3.0 is worrying.  For such residues
+more than one torsion angle is in a highly unlikely position.
+
+The second table will list all residues with strange backbone angles.
+An explanation of why the residue was listed is also included.
+
+------------------------------------------------------------------------
+# 51 # Warning: Torsion angle evaluation shows unusual residues
+===============================================================
+The residues listed in the table below contain bad or abnormal
+torsion angles.
+
+These scores give an impression of how ``normal'' the torsion
+angles in protein residues are. All torsion angles except omega are
+used for calculating a `normality' score. Average values and
+standard deviations were obtained from the residues in the WHAT IF
+database. These are used to calculate Z-scores.  A residue with a
+Z-score of below -2.0 is poor, and a score of less than -3.0 is
+worrying.  For such residues more than one torsion angle is in a
+highly unlikely position.
+ 
+ 178 ILE  ( 213 ) A -2.4734
+ 457 ILE  ( 213 ) B -2.4268
+  65 THR  ( 100 ) A -2.3240
+ 344 THR  ( 100 ) B -2.2778
+ 373 ILE  ( 129 ) B -2.1930
+  94 ILE  ( 129 ) A -2.1914
+ 392 ARG  ( 148 ) B -2.1144
+ 113 ARG  ( 148 ) A -2.0850
+  25 VAL  (  60 ) A -2.0774
+ 318 THR  (  74 ) B -2.0616
+  39 THR  (  74 ) A -2.0616
+ 304 VAL  (  60 ) B -2.0476
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 52 # Warning: Backbone torsion angle evaluation shows unusual conformations
+=============================================================================
+The residues listed in the table below have abnormal backbone torsion
+angles.
+
+Residues with ``forbidden'' phi-psi combinations are listed, as
+well as residues with unusual omega angles (deviating by more than
+3 sigma from the normal value). Please note that it is normal if
+about 5 percent of the residues is listed here as having unusual
+phi-psi combinations.
+ 
+  64 ALA  (  99 ) A omega poor
+  73 LEU  ( 108 ) A omega poor
+ 104 ARG  ( 139 ) A omega poor
+ 131 TRP  ( 166 ) A omega poor
+ 181 PHE  ( 216 ) A omega poor
+ 230 PHE  ( 307 ) A omega poor
+ 343 ALA  (  99 ) B omega poor
+ 352 LEU  ( 108 ) B omega poor
+ 383 ARG  ( 139 ) B omega poor
+ 410 TRP  ( 166 ) B omega poor
+ 460 PHE  ( 216 ) B omega poor
+ 510 PHE  ( 307 ) B omega poor
+------------------------------------------------------------------------
+Loading Database angle values
+Loading database file
+Loading database file
+ Ramachandran Z-score : -5.408
+------------------------------------------------------------------------
+# 53 # Error: Ramachandran Z-score very low
+===========================================
+The score expressing how well the backbone conformations of all residues
+are corresponding to the known allowed areas in the Ramachandran plot is
+very low.
+ 
+ Ramachandran Z-score : -5.408
+------------------------------------------------------------------------
+Omega average and std. deviation= 179.068 5.589
+------------------------------------------------------------------------
+# 54 # Note: Omega angle restraint OK
+=====================================
+The omega angles for trans-peptide bonds in a structure is
+expected to give a gaussian distribution with the average around
++178 degrees, and a standard deviation around 5.5. In the current
+structure the standard deviation agrees with this expectation.
+ 
+ Standard deviation of omega values : 5.589
+------------------------------------------------------------------------
+Loading Database angle values
+Loading database file
+Loading database file
+ chi-1/chi-2 correlation Z-score : -4.423
+------------------------------------------------------------------------
+# 55 # Error: chi-1/chi-2 angle correlation Z-score very low
+============================================================
+The score expressing how well the chi-1/chi-2 angles of all residues
+are corresponding to the populated areas in the database is
+very low.
+ 
+ chi-1/chi-2 correlation Z-score : -4.423
+------------------------------------------------------------------------
+**********************************************************************
+***                                                                ***
+***  Backbone oxygen position evaluation.                          ***
+***                                                                ***
+**********************************************************************
+For each of the residues in the structure, a search was performed
+to find 5-residue stretches in the WHAT IF database with
+superposable C-alpha coordinates.
+
+In the following table the RMS distance between the backbone oxygen
+positions of these matching structures in the database and the
+position of the backbone oxygen atom in the current residue is
+given.  If the number is larger than 2.0 most matching backbone
+fragments in the database have the peptide plane flipped. This
+means you should have a look whether your data can support that
+alternative as well. It is "normal" that some glycine residues show
+up in this list, but they are still worth checking!
+ 
+In this check, values are considered POOR if larger than 2.000
+In this check, values are considered BAD if larger than 3.000
+ 
+
+You will now see the table appear during the calculation. At the end
+a summary of the results will be presented.
+
+ 
+   3 GLN  (  38  ) A    0.47 80
+   4 GLN  (  39  ) A    0.75 80
+   5 TRP  (  40  ) A    0.29 80
+   6 GLU  (  41  ) A    0.36 18
+   7 ALA  (  42  ) A          5
+Not enough hits for : 8
+   8 GLY  (  43  ) A          2
+Not enough hits for : 9
+   9 MET  (  44  ) A          1
+  10 SER  (  45  ) A    0.57 12
+  11 LEU  (  46  ) A    0.32 80
+  12 LEU  (  47  ) A    0.32 80
+  13 MET  (  48  ) A    0.27 80
+  14 ALA  (  49  ) A    0.29 80
+  15 LEU  (  50  ) A    0.24 80
+  16 VAL  (  51  ) A    0.22 80
+  17 VAL  (  52  ) A    0.18 80
+  18 LEU  (  53  ) A    0.24 80
+  19 LEU  (  54  ) A    0.47 80
+  20 ILE  (  55  ) A    0.73 33
+  21 VAL  (  56  ) A    0.51 25
+  22 ALA  (  57  ) A    0.98 80
+  23 GLY  (  58  ) A    0.65 64
+  24 ASN  (  59  ) A    0.29 80
+  25 VAL  (  60  ) A    0.59 80
+  26 LEU  (  61  ) A    0.36 80
+  27 VAL  (  62  ) A    0.18 80
+  28 ILE  (  63  ) A    0.20 80
+  29 ALA  (  64  ) A    0.44 80
+  30 ALA  (  65  ) A    0.58 80
+  31 ILE  (  66  ) A    0.65 80
+  32 GLY  (  67  ) A    0.49 80
+  33 SER  (  68  ) A    0.67 21
+  34 THR  (  69  ) A          9
+Not enough hits for : 35
+  35 GLN  (  70  ) A          1
+  36 ARG  (  71  ) A    0.60 80
+  37 LEU  (  72  ) A    0.57 54
+Not enough hits for : 38
+  38 GLN  (  73  ) A          2
+  39 THR  (  74  ) A          7
+  40 LEU  (  75  ) A    0.74 26
+  41 THR  (  76  ) A    0.70 79
+  42 ASN  (  77  ) A    0.59 27
+  43 LEU  (  78  ) A    0.43 80
+  44 PHE  (  79  ) A    0.67 80
+  45 ILE  (  80  ) A    0.74 43
+  46 THR  (  81  ) A    0.25 80
+  47 SER  (  82  ) A    0.30 80
+  48 LEU  (  83  ) A    0.33 80
+  49 ALA  (  84  ) A    0.28 80
+  50 CYS  (  85  ) A    0.48 80
+  51 ALA  (  86  ) A    0.46 80
+  52 ASP  (  87  ) A    0.30 80
+  53 LEU  (  88  ) A    0.47 80
+  54 VAL  (  89  ) A    0.25 80
+  55 VAL  (  90  ) A    0.18 80
+  56 GLY  (  91  ) A    1.55 28
+  57 LEU  (  92  ) A    0.63 10
+  58 LEU  (  93  ) A          5
+Not enough hits for : 59
+  59 VAL  (  94  ) A          4
+  60 VAL  (  95  ) A          8
+  61 PRO  (  96  ) A          8
+  62 PHE  (  97  ) A    0.17 80
+  63 GLY  (  98  ) A    0.67 73
+  64 ALA  (  99  ) A    1.16 80
+  65 THR  ( 100  ) A    0.48 24
+  66 LEU  ( 101  ) A    0.62 80
+  67 VAL  ( 102  ) A    0.27 80
+  68 VAL  ( 103  ) A    0.49 23
+  69 ARG  ( 104  ) A          6
+  70 GLY  ( 105  ) A    0.67 29
+  71 THR  ( 106  ) A          7
+  72 TRP  ( 107  ) A          6
+Not enough hits for : 73
+  73 LEU  ( 108  ) A          2
+Not enough hits for : 74
+  74 TRP  ( 109  ) A          1
+  75 GLY  ( 110  ) A    0.69 28
+  76 SER  ( 111  ) A    0.47 32
+  77 PHE  ( 112  ) A    0.28 80
+  78 LEU  ( 113  ) A    0.29 10
+  79 CYS  ( 114  ) A    0.33 80
+  80 GLU  ( 115  ) A    0.45 80
+  81 LEU  ( 116  ) A    0.52 80
+  82 TRP  ( 117  ) A    0.27 80
+  83 THR  ( 118  ) A    0.33 80
+  84 SER  ( 119  ) A    0.65 80
+  85 LEU  ( 120  ) A    0.19 80
+  86 ASP  ( 121  ) A    0.74 80
+  87 VAL  ( 122  ) A    0.20 80
+  88 LEU  ( 123  ) A    0.52 72
+  89 CYS  ( 124  ) A    0.45 80
+  90 VAL  ( 125  ) A    0.41 80
+  91 THR  ( 126  ) A    0.35 80
+  92 ALA  ( 127  ) A    0.24 80
+  93 SER  ( 128  ) A    0.64 78
+  94 ILE  ( 129  ) A    0.64 80
+  95 GLU  ( 130  ) A    0.33 80
+  96 THR  ( 131  ) A    0.25 80
+  97 LEU  ( 132  ) A    0.43 80
+  98 CYS  ( 133  ) A    0.30 80
+  99 VAL  ( 134  ) A    0.21 80
+ 100 ILE  ( 135  ) A    0.24 80
+ 101 ALA  ( 136  ) A    0.51 80
+ 102 ILE  ( 137  ) A    0.74 80
+ 103 ASP  ( 138  ) A    0.79 80
+ 104 ARG  ( 139  ) A    0.69 10
+ 105 TYR  ( 140  ) A    0.43 80
+ 106 LEU  ( 141  ) A    1.05 80
+ 107 ALA  ( 142  ) A    1.38 80
+Not enough hits for : 108
+ 108 ILE  ( 143  ) A          2
+Not enough hits for : 109
+ 109 THR  ( 144  ) A          0
+ 110 SER  ( 145  ) A    1.03 14
+ 111 PRO  ( 146  ) A          9
+ 112 PHE  ( 147  ) A    0.44 15
+ 113 ARG  ( 148  ) A    0.48 44
+ 114 TYR  ( 149  ) A          7
+ 115 GLN  ( 150  ) A    0.38 80
+ 116 SER  ( 151  ) A    0.79 18
+ 117 LEU  ( 152  ) A    1.27 16
+Not enough hits for : 118
+ 118 MET  ( 153  ) A          0
+ 119 THR  ( 154  ) A          7
+ 120 ARG  ( 155  ) A    0.83 15
+ 121 ALA  ( 156  ) A    0.34 36
+ 122 ARG  ( 157  ) A    0.45 28
+ 123 ALA  ( 158  ) A    0.39 40
+ 124 LYS  ( 159  ) A    0.52 74
+ 125 VAL  ( 160  ) A    0.16 80
+ 126 ILE  ( 161  ) A    0.19 80
+ 127 ILE  ( 162  ) A    0.14 80
+ 128 CYS  ( 163  ) A    0.19 80
+ 129 THR  ( 164  ) A    0.28 80
+ 130 VAL  ( 165  ) A    0.58 80
+ 131 TRP  ( 166  ) A    0.95 80
+ 132 ALA  ( 167  ) A    0.43 80
+ 133 ILE  ( 168  ) A    0.26 15
+ 134 SER  ( 169  ) A    0.31 80
+ 135 ALA  ( 170  ) A    0.22 80
+ 136 LEU  ( 171  ) A    0.62 80
+ 137 VAL  ( 172  ) A    0.34 45
+ 138 SER  ( 173  ) A    0.84 48
+ 139 PHE  ( 174  ) A          9
+ 140 LEU  ( 175  ) A          7
+ 141 PRO  ( 176  ) A    0.51 80
+ 142 ILE  ( 177  ) A    0.20 80
+ 143 MET  ( 178  ) A    0.64 80
+Not enough hits for : 144
+ 144 MET  ( 179  ) A          2
+Not enough hits for : 145
+ 145 HIS  ( 180  ) A          1
+Not enough hits for : 146
+ 146 TRP  ( 181  ) A          0
+Not enough hits for : 147
+ 147 TRP  ( 182  ) A          2
+ 148 ARG  ( 183  ) A          8
+ 149 ASP  ( 184  ) A    0.47 34
+Not enough hits for : 150
+ 150 GLU  ( 185  ) A          1
+ 151 ASP  ( 186  ) A    0.39 30
+ 152 PRO  ( 187  ) A    0.43 80
+ 153 GLN  ( 188  ) A    0.45 67
+ 154 ALA  ( 189  ) A    0.26 13
+ 155 LEU  ( 190  ) A    0.46 80
+ 156 LYS  ( 191  ) A    0.34 80
+ 157 CYS  ( 192  ) A    0.71 80
+ 158 TYR  ( 193  ) A    0.52 80
+ 159 GLN  ( 194  ) A          9
+ 160 ASP  ( 195  ) A    0.28 17
+ 161 PRO  ( 196  ) A    0.42 80
+ 162 GLY  ( 197  ) A    0.57 25
+Not enough hits for : 163
+ 163 CYS  ( 198  ) A          1
+Not enough hits for : 164
+ 164 CYS  ( 199  ) A          1
+Not enough hits for : 165
+ 165 ASP  ( 200  ) A          1
+Not enough hits for : 166
+ 166 PHE  ( 201  ) A          0
+ 167 VAL  ( 202  ) A    0.67 61
+ 168 THR  ( 203  ) A    0.61 38
+ 169 ASN  ( 204  ) A    0.44 11
+ 170 ARG  ( 205  ) A    0.78 13
+ 171 ALA  ( 206  ) A    0.50 37
+ 172 TYR  ( 207  ) A    0.38 39
+ 173 ALA  ( 208  ) A    1.83 80
+ 174 ILE  ( 209  ) A    0.44 25
+ 175 ALA  ( 210  ) A    0.60 80
+ 176 SER  ( 211  ) A    0.58 80
+ 177 SER  ( 212  ) A    0.31 80
+ 178 ILE  ( 213  ) A    0.55 55
+ 179 ILE  ( 214  ) A    0.74 25
+Not enough hits for : 180
+ 180 SER  ( 215  ) A          4
+Not enough hits for : 181
+ 181 PHE  ( 216  ) A          1
+Not enough hits for : 182
+ 182 TYR  ( 217  ) A          0
+ 183 ILE  ( 218  ) A          9
+ 184 PRO  ( 219  ) A    0.27 80
+ 185 LEU  ( 220  ) A    0.51 80
+ 186 LEU  ( 221  ) A    0.39 80
+ 187 ILE  ( 222  ) A    0.31 80
+ 188 MET  ( 223  ) A    0.65 33
+ 189 ILE  ( 224  ) A    0.19 80
+ 190 PHE  ( 225  ) A    0.35 80
+ 191 VAL  ( 226  ) A    0.46 80
+ 192 ALA  ( 227  ) A    0.54 80
+ 193 LEU  ( 228  ) A    0.68 80
+ 194 ARG  ( 229  ) A    0.23 80
+ 195 VAL  ( 230  ) A    0.19 80
+ 196 TYR  ( 231  ) A    1.01 80
+ 197 ARG  ( 232  ) A    0.20 80
+ 198 GLU  ( 233  ) A    0.31 80
+ 199 ALA  ( 234  ) A    0.49 80
+ 200 LYS  ( 235  ) A    0.78 42
+Not enough hits for : 205
+ 205 LEU  ( 282  ) A          2
+ 206 MET  ( 283  ) A          9
+ 207 ARG  ( 284  ) A    0.34 80
+ 208 GLU  ( 285  ) A    0.33 80
+ 209 HIS  ( 286  ) A    0.23 80
+ 210 LYS  ( 287  ) A    0.43 80
+ 211 ALA  ( 288  ) A    0.70 80
+ 212 LEU  ( 289  ) A    0.44 80
+ 213 LYS  ( 290  ) A    0.54 80
+ 214 THR  ( 291  ) A    0.75 80
+ 215 LEU  ( 292  ) A    0.20 80
+ 216 GLY  ( 293  ) A    0.53 80
+ 217 ILE  ( 294  ) A    0.69 25
+ 218 ILE  ( 295  ) A    0.23 80
+ 219 MET  ( 296  ) A    0.30 80
+ 220 GLY  ( 297  ) A    0.53 80
+ 221 VAL  ( 298  ) A    0.16 80
+ 222 PHE  ( 299  ) A    0.45 80
+ 223 THR  ( 300  ) A    0.28 80
+ 224 LEU  ( 301  ) A    0.59 80
+Not enough hits for : 225
+ 225 CYS  ( 302  ) A          3
+Not enough hits for : 226
+ 226 TRP  ( 303  ) A          1
+ 227 LEU  ( 304  ) A    0.23 18
+ 228 PRO  ( 305  ) A    0.46 80
+ 229 PHE  ( 306  ) A    0.39 36
+ 230 PHE  ( 307  ) A    1.17 80
+ 231 LEU  ( 308  ) A    0.30 80
+ 232 VAL  ( 309  ) A    0.90 22
+ 233 ASN  ( 310  ) A    0.52 33
+ 234 ILE  ( 311  ) A    0.21 80
+ 235 VAL  ( 312  ) A    0.40 24
+ 236 ASN  ( 313  ) A    0.47 80
+ 237 VAL  ( 314  ) A    0.32 29
+ 238 PHE  ( 315  ) A          7
+ 239 ASN  ( 316  ) A          5
+Not enough hits for : 240
+ 240 ARG  ( 317  ) A          1
+Not enough hits for : 241
+ 241 ASP  ( 318  ) A          4
+ 242 LEU  ( 319  ) A          6
+Not enough hits for : 243
+ 243 VAL  ( 320  ) A          1
+ 244 PRO  ( 321  ) A    0.49 70
+ 245 ASP  ( 322  ) A    0.55 11
+Not enough hits for : 246
+ 246 TRP  ( 323  ) A          4
+ 247 LEU  ( 324  ) A    0.36 80
+ 248 PHE  ( 325  ) A    0.81 80
+ 249 VAL  ( 326  ) A    0.31 80
+ 250 ALA  ( 327  ) A    0.38 80
+ 251 PHE  ( 328  ) A    0.28 80
+ 252 ASN  ( 329  ) A    0.55 80
+ 253 TRP  ( 330  ) A    0.44 80
+ 254 LEU  ( 331  ) A    0.34 80
+ 255 GLY  ( 332  ) A    0.40 80
+ 256 TYR  ( 333  ) A          9
+ 257 ALA  ( 334  ) A    0.35 44
+ 258 ASN  ( 335  ) A    0.92 17
+ 259 SER  ( 336  ) A    0.35 80
+ 260 ALA  ( 337  ) A    0.50 80
+ 261 MET  ( 338  ) A    0.45 14
+Not enough hits for : 262
+ 262 ASN  ( 339  ) A          0
+ 263 PRO  ( 340  ) A    0.41 49
+ 264 ILE  ( 341  ) A    0.95 41
+ 265 ILE  ( 342  ) A    0.63 27
+Not enough hits for : 266
+ 266 TYR  ( 343  ) A          4
+Not enough hits for : 267
+ 267 CYS  ( 344  ) A          3
+ 268 ARG  ( 345  ) A    0.48 11
+ 269 SER  ( 346  ) A    0.56 15
+ 270 PRO  ( 347  ) A    0.46 80
+ 271 ASP  ( 348  ) A    0.46 80
+ 272 PHE  ( 349  ) A    0.35 34
+ 273 ARG  ( 350  ) A    0.51 35
+ 274 LYS  ( 351  ) A    0.43 80
+ 275 ALA  ( 352  ) A    0.68 80
+ 276 PHE  ( 353  ) A    0.46 74
+ 277 LYS  ( 354  ) A    0.86 80
+ 282 GLN  (  38  ) B    0.46 80
+ 283 GLN  (  39  ) B    0.75 80
+ 284 TRP  (  40  ) B    0.26 80
+ 285 GLU  (  41  ) B    0.35 16
+ 286 ALA  (  42  ) B          5
+Not enough hits for : 287
+ 287 GLY  (  43  ) B          2
+Not enough hits for : 288
+ 288 MET  (  44  ) B          1
+ 289 SER  (  45  ) B    0.57 10
+ 290 LEU  (  46  ) B    0.34 80
+ 291 LEU  (  47  ) B    0.31 80
+ 292 MET  (  48  ) B    0.26 80
+ 293 ALA  (  49  ) B    0.29 80
+ 294 LEU  (  50  ) B    0.24 80
+ 295 VAL  (  51  ) B    0.21 80
+ 296 VAL  (  52  ) B    0.17 80
+ 297 LEU  (  53  ) B    0.21 80
+ 298 LEU  (  54  ) B    0.46 80
+ 299 ILE  (  55  ) B    0.74 33
+ 300 VAL  (  56  ) B    0.49 26
+ 301 ALA  (  57  ) B    0.97 80
+ 302 GLY  (  58  ) B    0.60 63
+ 303 ASN  (  59  ) B    0.29 80
+ 304 VAL  (  60  ) B    0.57 80
+ 305 LEU  (  61  ) B    0.35 80
+ 306 VAL  (  62  ) B    0.22 80
+ 307 ILE  (  63  ) B    0.22 80
+ 308 ALA  (  64  ) B    0.44 80
+ 309 ALA  (  65  ) B    0.58 80
+ 310 ILE  (  66  ) B    0.69 80
+ 311 GLY  (  67  ) B    0.51 80
+ 312 SER  (  68  ) B    0.66 21
+ 313 THR  (  69  ) B          9
+Not enough hits for : 314
+ 314 GLN  (  70  ) B          1
+ 315 ARG  (  71  ) B    0.60 80
+ 316 LEU  (  72  ) B    0.56 54
+Not enough hits for : 317
+ 317 GLN  (  73  ) B          2
+ 318 THR  (  74  ) B          7
+ 319 LEU  (  75  ) B    0.74 26
+ 320 THR  (  76  ) B    0.66 78
+ 321 ASN  (  77  ) B    0.58 25
+ 322 LEU  (  78  ) B    0.43 80
+ 323 PHE  (  79  ) B    0.67 80
+ 324 ILE  (  80  ) B    0.73 54
+ 325 THR  (  81  ) B    0.30 80
+ 326 SER  (  82  ) B    0.38 80
+ 327 LEU  (  83  ) B    0.32 80
+ 328 ALA  (  84  ) B    0.28 80
+ 329 CYS  (  85  ) B    0.45 80
+ 330 ALA  (  86  ) B    0.44 80
+ 331 ASP  (  87  ) B    0.30 80
+ 332 LEU  (  88  ) B    0.46 80
+ 333 VAL  (  89  ) B    0.29 80
+ 334 VAL  (  90  ) B    0.21 80
+ 335 GLY  (  91  ) B    1.58 23
+ 336 LEU  (  92  ) B    0.63 10
+Not enough hits for : 337
+ 337 LEU  (  93  ) B          3
+Not enough hits for : 338
+ 338 VAL  (  94  ) B          4
+ 339 VAL  (  95  ) B          8
+ 340 PRO  (  96  ) B          5
+ 341 PHE  (  97  ) B    0.18 60
+ 342 GLY  (  98  ) B    0.66 71
+ 343 ALA  (  99  ) B    1.15 80
+ 344 THR  ( 100  ) B    0.49 23
+ 345 LEU  ( 101  ) B    0.62 80
+ 346 VAL  ( 102  ) B    0.27 80
+ 347 VAL  ( 103  ) B    0.50 21
+ 348 ARG  ( 104  ) B          6
+ 349 GLY  ( 105  ) B    0.68 28
+ 350 THR  ( 106  ) B          6
+ 351 TRP  ( 107  ) B          6
+Not enough hits for : 352
+ 352 LEU  ( 108  ) B          2
+Not enough hits for : 353
+ 353 TRP  ( 109  ) B          1
+ 354 GLY  ( 110  ) B    0.68 26
+ 355 SER  ( 111  ) B    0.44 35
+ 356 PHE  ( 112  ) B    0.28 80
+ 357 LEU  ( 113  ) B          8
+ 358 CYS  ( 114  ) B    0.32 80
+ 359 GLU  ( 115  ) B    0.45 80
+ 360 LEU  ( 116  ) B    0.54 80
+ 361 TRP  ( 117  ) B    0.27 80
+ 362 THR  ( 118  ) B    0.32 80
+ 363 SER  ( 119  ) B    0.63 80
+ 364 LEU  ( 120  ) B    0.16 80
+ 365 ASP  ( 121  ) B    0.75 80
+ 366 VAL  ( 122  ) B    0.20 80
+ 367 LEU  ( 123  ) B    0.48 77
+ 368 CYS  ( 124  ) B    0.43 80
+ 369 VAL  ( 125  ) B    0.37 80
+ 370 THR  ( 126  ) B    0.36 80
+ 371 ALA  ( 127  ) B    0.25 80
+ 372 SER  ( 128  ) B    0.63 77
+ 373 ILE  ( 129  ) B    0.62 80
+ 374 GLU  ( 130  ) B    0.30 80
+ 375 THR  ( 131  ) B    0.26 80
+ 376 LEU  ( 132  ) B    0.40 80
+ 377 CYS  ( 133  ) B    0.32 80
+ 378 VAL  ( 134  ) B    0.21 80
+ 379 ILE  ( 135  ) B    0.25 80
+ 380 ALA  ( 136  ) B    0.50 80
+ 381 ILE  ( 137  ) B    0.73 80
+ 382 ASP  ( 138  ) B    0.77 80
+ 383 ARG  ( 139  ) B    0.71 10
+ 384 TYR  ( 140  ) B    0.43 80
+ 385 LEU  ( 141  ) B    1.07 80
+ 386 ALA  ( 142  ) B    1.41 80
+Not enough hits for : 387
+ 387 ILE  ( 143  ) B          2
+Not enough hits for : 388
+ 388 THR  ( 144  ) B          0
+ 389 SER  ( 145  ) B    1.02 14
+ 390 PRO  ( 146  ) B    0.76 10
+ 391 PHE  ( 147  ) B    0.43 16
+ 392 ARG  ( 148  ) B    0.47 44
+ 393 TYR  ( 149  ) B          6
+ 394 GLN  ( 150  ) B    0.36 80
+ 395 SER  ( 151  ) B    0.80 18
+ 396 LEU  ( 152  ) B    1.28 16
+Not enough hits for : 397
+ 397 MET  ( 153  ) B          0
+ 398 THR  ( 154  ) B          7
+ 399 ARG  ( 155  ) B    0.80 16
+ 400 ALA  ( 156  ) B    0.36 34
+ 401 ARG  ( 157  ) B    0.45 25
+ 402 ALA  ( 158  ) B    0.39 39
+ 403 LYS  ( 159  ) B    0.54 74
+ 404 VAL  ( 160  ) B    0.16 80
+ 405 ILE  ( 161  ) B    0.19 80
+ 406 ILE  ( 162  ) B    0.15 80
+ 407 CYS  ( 163  ) B    0.19 80
+ 408 THR  ( 164  ) B    0.28 80
+ 409 VAL  ( 165  ) B    0.57 80
+ 410 TRP  ( 166  ) B    1.11 80
+ 411 ALA  ( 167  ) B    0.44 80
+ 412 ILE  ( 168  ) B    0.27 29
+ 413 SER  ( 169  ) B    0.33 80
+ 414 ALA  ( 170  ) B    0.21 80
+ 415 LEU  ( 171  ) B    0.60 80
+ 416 VAL  ( 172  ) B    0.33 43
+ 417 SER  ( 173  ) B    0.87 39
+ 418 PHE  ( 174  ) B    0.39 10
+ 419 LEU  ( 175  ) B          6
+ 420 PRO  ( 176  ) B    0.52 80
+ 421 ILE  ( 177  ) B    0.19 80
+ 422 MET  ( 178  ) B    0.62 80
+Not enough hits for : 423
+ 423 MET  ( 179  ) B          3
+Not enough hits for : 424
+ 424 HIS  ( 180  ) B          1
+Not enough hits for : 425
+ 425 TRP  ( 181  ) B          0
+Not enough hits for : 426
+ 426 TRP  ( 182  ) B          2
+ 427 ARG  ( 183  ) B          7
+ 428 ASP  ( 184  ) B    0.47 34
+Not enough hits for : 429
+ 429 GLU  ( 185  ) B          1
+ 430 ASP  ( 186  ) B    0.39 31
+ 431 PRO  ( 187  ) B    0.44 80
+ 432 GLN  ( 188  ) B    0.47 74
+ 433 ALA  ( 189  ) B    0.26 15
+ 434 LEU  ( 190  ) B    0.47 80
+ 435 LYS  ( 191  ) B    0.33 80
+ 436 CYS  ( 192  ) B    0.70 80
+ 437 TYR  ( 193  ) B    0.50 80
+ 438 GLN  ( 194  ) B          7
+ 439 ASP  ( 195  ) B    0.29 17
+ 440 PRO  ( 196  ) B    0.43 80
+ 441 GLY  ( 197  ) B    0.57 25
+Not enough hits for : 442
+ 442 CYS  ( 198  ) B          1
+Not enough hits for : 443
+ 443 CYS  ( 199  ) B          1
+Not enough hits for : 444
+ 444 ASP  ( 200  ) B          1
+Not enough hits for : 445
+ 445 PHE  ( 201  ) B          0
+ 446 VAL  ( 202  ) B    0.68 67
+ 447 THR  ( 203  ) B    0.61 39
+ 448 ASN  ( 204  ) B    0.44 12
+ 449 ARG  ( 205  ) B    0.76 13
+ 450 ALA  ( 206  ) B    0.49 43
+ 451 TYR  ( 207  ) B    0.38 38
+ 452 ALA  ( 208  ) B    1.82 80
+ 453 ILE  ( 209  ) B    0.40 27
+ 454 ALA  ( 210  ) B    0.58 80
+ 455 SER  ( 211  ) B    0.60 80
+ 456 SER  ( 212  ) B    0.31 80
+ 457 ILE  ( 213  ) B    0.51 56
+ 458 ILE  ( 214  ) B    0.77 24
+Not enough hits for : 459
+ 459 SER  ( 215  ) B          4
+Not enough hits for : 460
+ 460 PHE  ( 216  ) B          1
+Not enough hits for : 461
+ 461 TYR  ( 217  ) B          0
+ 462 ILE  ( 218  ) B          8
+ 463 PRO  ( 219  ) B    0.26 80
+ 464 LEU  ( 220  ) B    0.49 80
+ 465 LEU  ( 221  ) B    0.41 80
+ 466 ILE  ( 222  ) B    0.31 80
+ 467 MET  ( 223  ) B    0.64 29
+ 468 ILE  ( 224  ) B    0.19 80
+ 469 PHE  ( 225  ) B    0.30 80
+ 470 VAL  ( 226  ) B    0.45 80
+ 471 ALA  ( 227  ) B    0.56 80
+ 472 LEU  ( 228  ) B    0.68 80
+ 473 ARG  ( 229  ) B    0.23 80
+ 474 VAL  ( 230  ) B    0.18 80
+ 475 TYR  ( 231  ) B    1.01 80
+ 476 ARG  ( 232  ) B    0.20 80
+ 477 GLU  ( 233  ) B    0.32 80
+ 478 ALA  ( 234  ) B    0.50 80
+ 479 LYS  ( 235  ) B    0.76 41
+ 480 GLU  ( 236  ) B    0.30 21
+Not enough hits for : 485
+ 485 LEU  ( 282  ) B          2
+ 486 MET  ( 283  ) B          9
+ 487 ARG  ( 284  ) B    0.34 80
+ 488 GLU  ( 285  ) B    0.34 80
+ 489 HIS  ( 286  ) B    0.23 80
+ 490 LYS  ( 287  ) B    0.43 80
+ 491 ALA  ( 288  ) B    0.68 80
+ 492 LEU  ( 289  ) B    0.45 80
+ 493 LYS  ( 290  ) B    0.54 80
+ 494 THR  ( 291  ) B    0.75 80
+ 495 LEU  ( 292  ) B    0.20 80
+ 496 GLY  ( 293  ) B    0.51 80
+ 497 ILE  ( 294  ) B    0.69 25
+ 498 ILE  ( 295  ) B    0.24 80
+ 499 MET  ( 296  ) B    0.31 80
+ 500 GLY  ( 297  ) B    0.54 80
+ 501 VAL  ( 298  ) B    0.15 80
+ 502 PHE  ( 299  ) B    0.45 80
+ 503 THR  ( 300  ) B    0.26 80
+ 504 LEU  ( 301  ) B    0.59 80
+Not enough hits for : 505
+ 505 CYS  ( 302  ) B          3
+Not enough hits for : 506
+ 506 TRP  ( 303  ) B          1
+ 507 LEU  ( 304  ) B    0.22 18
+ 508 PRO  ( 305  ) B    0.47 80
+ 509 PHE  ( 306  ) B    0.40 34
+ 510 PHE  ( 307  ) B    1.17 80
+ 511 LEU  ( 308  ) B    0.30 80
+ 512 VAL  ( 309  ) B    0.93 21
+ 513 ASN  ( 310  ) B    0.51 32
+ 514 ILE  ( 311  ) B    0.21 80
+ 515 VAL  ( 312  ) B    0.40 24
+ 516 ASN  ( 313  ) B    0.47 80
+ 517 VAL  ( 314  ) B    0.31 27
+ 518 PHE  ( 315  ) B          7
+ 519 ASN  ( 316  ) B          5
+Not enough hits for : 520
+ 520 ARG  ( 317  ) B          1
+Not enough hits for : 521
+ 521 ASP  ( 318  ) B          4
+ 522 LEU  ( 319  ) B          6
+Not enough hits for : 523
+ 523 VAL  ( 320  ) B          2
+ 524 PRO  ( 321  ) B    0.48 69
+ 525 ASP  ( 322  ) B    0.54 11
+ 526 TRP  ( 323  ) B          6
+ 527 LEU  ( 324  ) B    0.36 80
+ 528 PHE  ( 325  ) B    0.82 80
+ 529 VAL  ( 326  ) B    0.32 80
+ 530 ALA  ( 327  ) B    0.39 80
+ 531 PHE  ( 328  ) B    0.28 80
+ 532 ASN  ( 329  ) B    0.49 80
+ 533 TRP  ( 330  ) B    0.46 80
+ 534 LEU  ( 331  ) B    0.34 80
+ 535 GLY  ( 332  ) B    0.40 80
+ 536 TYR  ( 333  ) B    0.56 10
+ 537 ALA  ( 334  ) B    0.34 47
+ 538 ASN  ( 335  ) B    0.91 18
+ 539 SER  ( 336  ) B    0.36 80
+ 540 ALA  ( 337  ) B    0.52 80
+ 541 MET  ( 338  ) B    0.45 12
+Not enough hits for : 542
+ 542 ASN  ( 339  ) B          0
+ 543 PRO  ( 340  ) B    0.38 48
+ 544 ILE  ( 341  ) B    0.97 41
+ 545 ILE  ( 342  ) B    0.62 28
+Not enough hits for : 546
+ 546 TYR  ( 343  ) B          4
+Not enough hits for : 547
+ 547 CYS  ( 344  ) B          3
+ 548 ARG  ( 345  ) B    0.48 11
+ 549 SER  ( 346  ) B    0.56 15
+ 550 PRO  ( 347  ) B    0.45 80
+ 551 ASP  ( 348  ) B    0.46 80
+ 552 PHE  ( 349  ) B    0.35 32
+ 553 ARG  ( 350  ) B    0.51 36
+ 554 LYS  ( 351  ) B    0.45 80
+ 555 ALA  ( 352  ) B    0.68 80
+ 556 PHE  ( 353  ) B    0.46 69
+ 557 LYS  ( 354  ) B    0.86 80
+------------------------------------------------------------------------
+# 56 # Warning: Backbone oxygen evaluation
+==========================================
+The residues listed in the table below have an unusual backbone
+oxygen position.
+
+For each of the residues in the structure, a search was performed
+to find 5-residue stretches in the WHAT IF database with
+superposable C-alpha coordinates, and some constraints on the
+neighboring backbone oxygens.
+
+In the following table the RMS distance between the backbone oxygen
+positions of these matching structures in the database and the
+position of the backbone oxygen atom in the current residue is
+given.  If this number is larger than 1.5 a significant number of
+structures in the database show an alternative position for the
+backbone oxygen.  If the number is larger than 2.0 most matching
+backbone fragments in the database have the peptide plane
+flipped. A manual check needs to be performed to assess whether the
+experimental data can support that alternative as well. The number
+in the last column is the number of database hits (maximum 80) used
+in the calculation. It is "normal" that some glycine residues show
+up in this list, but they are still worth checking!
+ 
+ 173 ALA  ( 208 ) A  1.83   80
+ 452 ALA  ( 208 ) B  1.82   80
+ 335 GLY  (  91 ) B  1.58   23
+  56 GLY  (  91 ) A  1.55   28
+------------------------------------------------------------------------
+**********************************************************************
+***                                                                ***
+***  Position specific rotamer distribution                        ***
+***                                                                ***
+**********************************************************************
+This option determines for every residue the position specific
+rotamer distribution. Thereafter it will be determined if the
+actual residue in the molecule has the most preferred rotamer or
+not. If the actual rotamer is the preferred one, the score is
+1.0. If the actual rotamer is unique, the score is 0.0. If there
+are two preferred rotamers, with a population distribution of 3:2
+and your rotamer sits in the lesser populated rotamer, the score
+will be 0.66. No value will be given if insufficient hits are
+found in the database.
+ 
+In this check, values are considered POOR if smaller than 0.400
+In this check, values are considered BAD if smaller than 0.200
+ 
+
+You will now see the table appear during the calculation. At the end
+a summary of the results will be presented.
+
+ 
+   3 GLN  (  38  ) A     0.59    80
+   4 GLN  (  39  ) A     0.62    80
+   5 TRP  (  40  ) A     0.61    80
+   6 GLU  (  41  ) A     0.78    18
+   7 ALA  (  42  ) A              5
+   8 GLY  (  43  ) A             36
+   9 MET  (  44  ) A              1
+  10 SER  (  45  ) A     0.75    12
+  11 LEU  (  46  ) A     0.60    80
+  12 LEU  (  47  ) A     0.65    80
+  13 MET  (  48  ) A     0.68    80
+  14 ALA  (  49  ) A             80
+  15 LEU  (  50  ) A     0.64    80
+  16 VAL  (  51  ) A     0.96    80
+  17 VAL  (  52  ) A     1.00    80
+  18 LEU  (  53  ) A     0.65    80
+  19 LEU  (  54  ) A     0.60    80
+  20 ILE  (  55  ) A     0.91    33
+  21 VAL  (  56  ) A     0.88    25
+  22 ALA  (  57  ) A             80
+  23 GLY  (  58  ) A             64
+  24 ASN  (  59  ) A     0.76    80
+  25 VAL  (  60  ) A     0.94    80
+  26 LEU  (  61  ) A     0.62    80
+  27 VAL  (  62  ) A     1.00    80
+  28 ILE  (  63  ) A     0.98    80
+  29 ALA  (  64  ) A             80
+  30 ALA  (  65  ) A             80
+  31 ILE  (  66  ) A     0.95    80
+  32 GLY  (  67  ) A             80
+  33 SER  (  68  ) A     0.57    21
+  34 THR  (  69  ) A              9
+  35 GLN  (  70  ) A     0.54    13
+  36 ARG  (  71  ) A     0.46    80
+  37 LEU  (  72  ) A     0.94    54
+  38 GLN  (  73  ) A              2
+  39 THR  (  74  ) A              7
+  40 LEU  (  75  ) A     0.54    26
+  41 THR  (  76  ) A     0.54    79
+  42 ASN  (  77  ) A     0.81    27
+  43 LEU  (  78  ) A     0.76    80
+  44 PHE  (  79  ) A     0.57    80
+  45 ILE  (  80  ) A     1.00    43
+  46 THR  (  81  ) A     0.95    80
+  47 SER  (  82  ) A     0.43    80
+  48 LEU  (  83  ) A     0.64    80
+  49 ALA  (  84  ) A             80
+  50 CYS  (  85  ) A     0.73    80
+  51 ALA  (  86  ) A             80
+  52 ASP  (  87  ) A     0.77    80
+  53 LEU  (  88  ) A     0.62    80
+  54 VAL  (  89  ) A     0.96    80
+  55 VAL  (  90  ) A     1.00    80
+  56 GLY  (  91  ) A             28
+  57 LEU  (  92  ) A             10
+  58 LEU  (  93  ) A              5
+  59 VAL  (  94  ) A     0.77    26
+  60 VAL  (  95  ) A              8
+  61 PRO  (  96  ) A              8
+  62 PHE  (  97  ) A     0.52    80
+  63 GLY  (  98  ) A             73
+  64 ALA  (  99  ) A             80
+  65 THR  ( 100  ) A     0.50    24
+  66 LEU  ( 101  ) A     0.70    80
+  67 VAL  ( 102  ) A     0.93    80
+  68 VAL  ( 103  ) A     0.87    23
+  69 ARG  ( 104  ) A              6
+  70 GLY  ( 105  ) A             29
+  71 THR  ( 106  ) A              7
+  72 TRP  ( 107  ) A              6
+  73 LEU  ( 108  ) A              8
+  74 TRP  ( 109  ) A              2
+  75 GLY  ( 110  ) A             28
+  76 SER  ( 111  ) A     0.66    32
+  77 PHE  ( 112  ) A     0.74    80
+  78 LEU  ( 113  ) A             10
+  79 CYS  ( 114  ) A     0.57    80
+  80 GLU  ( 115  ) A     0.59    80
+  81 LEU  ( 116  ) A     0.64    80
+  82 TRP  ( 117  ) A     0.59    80
+  83 THR  ( 118  ) A     0.85    80
+  84 SER  ( 119  ) A     0.45    80
+  85 LEU  ( 120  ) A     0.64    80
+  86 ASP  ( 121  ) A     0.81    80
+  87 VAL  ( 122  ) A     0.98    80
+  88 LEU  ( 123  ) A     0.78    72
+  89 CYS  ( 124  ) A     0.65    80
+  90 VAL  ( 125  ) A     0.98    80
+  91 THR  ( 126  ) A     0.80    80
+  92 ALA  ( 127  ) A             80
+  93 SER  ( 128  ) A     0.35    78
+  94 ILE  ( 129  ) A     0.89    80
+  95 GLU  ( 130  ) A     0.55    80
+  96 THR  ( 131  ) A     0.86    80
+  97 LEU  ( 132  ) A     0.64    80
+  98 CYS  ( 133  ) A     0.66    80
+  99 VAL  ( 134  ) A     0.99    80
+ 100 ILE  ( 135  ) A     0.96    80
+ 101 ALA  ( 136  ) A             80
+ 102 ILE  ( 137  ) A     0.96    80
+ 103 ASP  ( 138  ) A     0.74    80
+ 104 ARG  ( 139  ) A             10
+ 105 TYR  ( 140  ) A     0.64    80
+ 106 LEU  ( 141  ) A     0.66    80
+ 107 ALA  ( 142  ) A             80
+ 108 ILE  ( 143  ) A     0.93    15
+ 109 THR  ( 144  ) A              6
+ 110 SER  ( 145  ) A     0.57    14
+ 111 PRO  ( 146  ) A              9
+ 112 PHE  ( 147  ) A     0.53    15
+ 113 ARG  ( 148  ) A     0.86    44
+ 114 TYR  ( 149  ) A              7
+ 115 GLN  ( 150  ) A     0.64    80
+ 116 SER  ( 151  ) A     0.83    18
+ 117 LEU  ( 152  ) A     1.00    16
+ 118 MET  ( 153  ) A              0
+ 119 THR  ( 154  ) A              7
+ 120 ARG  ( 155  ) A     0.47    15
+ 121 ALA  ( 156  ) A             36
+ 122 ARG  ( 157  ) A     0.50    28
+ 123 ALA  ( 158  ) A             40
+ 124 LYS  ( 159  ) A     0.51    74
+ 125 VAL  ( 160  ) A     0.99    80
+ 126 ILE  ( 161  ) A     0.95    80
+ 127 ILE  ( 162  ) A     0.95    80
+ 128 CYS  ( 163  ) A     0.62    80
+ 129 THR  ( 164  ) A     0.91    80
+ 130 VAL  ( 165  ) A     0.96    80
+ 131 TRP  ( 166  ) A     0.56    80
+ 132 ALA  ( 167  ) A             80
+ 133 ILE  ( 168  ) A     0.93    15
+ 134 SER  ( 169  ) A     0.41    80
+ 135 ALA  ( 170  ) A             80
+ 136 LEU  ( 171  ) A     0.65    80
+ 137 VAL  ( 172  ) A     0.89    45
+ 138 SER  ( 173  ) A     0.48    48
+ 139 PHE  ( 174  ) A              9
+ 140 LEU  ( 175  ) A              7
+ 141 PRO  ( 176  ) A             80
+ 142 ILE  ( 177  ) A     0.93    80
+ 143 MET  ( 178  ) A     0.65    80
+ 144 MET  ( 179  ) A              3
+ 145 HIS  ( 180  ) A              3
+ 146 TRP  ( 181  ) A              0
+ 147 TRP  ( 182  ) A     0.50    16
+ 148 ARG  ( 183  ) A              8
+ 149 ASP  ( 184  ) A     0.85    34
+ 150 GLU  ( 185  ) A              2
+ 151 ASP  ( 186  ) A     0.70    30
+ 152 PRO  ( 187  ) A             80
+ 153 GLN  ( 188  ) A     0.58    67
+ 154 ALA  ( 189  ) A             13
+ 155 LEU  ( 190  ) A     0.85    80
+ 156 LYS  ( 191  ) A     0.60    80
+ 157 CYS  ( 192  ) A     0.60    80
+ 158 TYR  ( 193  ) A     0.65    80
+ 159 GLN  ( 194  ) A              9
+ 160 ASP  ( 195  ) A     1.00    17
+ 161 PRO  ( 196  ) A             80
+ 162 GLY  ( 197  ) A             25
+ 163 CYS  ( 198  ) A              1
+ 164 CYS  ( 199  ) A              4
+ 165 ASP  ( 200  ) A     0.45    11
+ 166 PHE  ( 201  ) A              2
+ 167 VAL  ( 202  ) A     0.97    61
+ 168 THR  ( 203  ) A     0.50    38
+ 169 ASN  ( 204  ) A     0.64    11
+ 170 ARG  ( 205  ) A     0.62    13
+ 171 ALA  ( 206  ) A             37
+ 172 TYR  ( 207  ) A     0.50    39
+ 173 ALA  ( 208  ) A             80
+ 174 ILE  ( 209  ) A     0.96    25
+ 175 ALA  ( 210  ) A             80
+ 176 SER  ( 211  ) A     0.52    80
+ 177 SER  ( 212  ) A     0.40    80
+ 178 ILE  ( 213  ) A     0.96    55
+ 179 ILE  ( 214  ) A     0.92    25
+ 180 SER  ( 215  ) A     0.60    15
+ 181 PHE  ( 216  ) A              3
+ 182 TYR  ( 217  ) A              1
+ 183 ILE  ( 218  ) A              9
+ 184 PRO  ( 219  ) A             80
+ 185 LEU  ( 220  ) A     0.64    80
+ 186 LEU  ( 221  ) A     0.64    80
+ 187 ILE  ( 222  ) A     0.96    80
+ 188 MET  ( 223  ) A     0.64    33
+ 189 ILE  ( 224  ) A     0.95    80
+ 190 PHE  ( 225  ) A     0.57    80
+ 191 VAL  ( 226  ) A     1.00    80
+ 192 ALA  ( 227  ) A             80
+ 193 LEU  ( 228  ) A     0.61    80
+ 194 ARG  ( 229  ) A     0.52    80
+ 195 VAL  ( 230  ) A     0.96    80
+ 196 TYR  ( 231  ) A     0.49    80
+ 197 ARG  ( 232  ) A     0.56    80
+ 198 GLU  ( 233  ) A     0.50    80
+ 199 ALA  ( 234  ) A             80
+ 200 LYS  ( 235  ) A     0.76    42
+ 205 LEU  ( 282  ) A              3
+ 206 MET  ( 283  ) A              9
+ 207 ARG  ( 284  ) A     0.61    80
+ 208 GLU  ( 285  ) A     0.57    80
+ 209 HIS  ( 286  ) A     0.50    80
+ 210 LYS  ( 287  ) A     0.66    80
+ 211 ALA  ( 288  ) A             80
+ 212 LEU  ( 289  ) A     0.68    80
+ 213 LYS  ( 290  ) A     0.51    80
+ 214 THR  ( 291  ) A     0.88    80
+ 215 LEU  ( 292  ) A     0.62    80
+ 216 GLY  ( 293  ) A             80
+ 217 ILE  ( 294  ) A     0.64    25
+ 218 ILE  ( 295  ) A     0.95    80
+ 219 MET  ( 296  ) A     0.66    80
+ 220 GLY  ( 297  ) A             80
+ 221 VAL  ( 298  ) A     0.95    80
+ 222 PHE  ( 299  ) A     0.69    80
+ 223 THR  ( 300  ) A     0.82    80
+ 224 LEU  ( 301  ) A     0.64    80
+ 225 CYS  ( 302  ) A             10
+ 226 TRP  ( 303  ) A              8
+ 227 LEU  ( 304  ) A     0.56    18
+ 228 PRO  ( 305  ) A             80
+ 229 PHE  ( 306  ) A     0.58    36
+ 230 PHE  ( 307  ) A     0.82    80
+ 231 LEU  ( 308  ) A     0.73    80
+ 232 VAL  ( 309  ) A     0.77    22
+ 233 ASN  ( 310  ) A     0.45    33
+ 234 ILE  ( 311  ) A     0.95    80
+ 235 VAL  ( 312  ) A     0.87    24
+ 236 ASN  ( 313  ) A     0.77    80
+ 237 VAL  ( 314  ) A     0.97    29
+ 238 PHE  ( 315  ) A              7
+ 239 ASN  ( 316  ) A           sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+   5
+ 240 ARG  ( 317  ) A     0.62    13
+ 241 ASP  ( 318  ) A     0.64    14
+ 242 LEU  ( 319  ) A              6
+ 243 VAL  ( 320  ) A     1.00    12
+ 244 PRO  ( 321  ) A             70
+ 245 ASP  ( 322  ) A     0.64    11
+ 246 TRP  ( 323  ) A     0.38    39
+ 247 LEU  ( 324  ) A     0.81    80
+ 248 PHE  ( 325  ) A     0.74    80
+ 249 VAL  ( 326  ) A     0.98    80
+ 250 ALA  ( 327  ) A             80
+ 251 PHE  ( 328  ) A     0.64    80
+ 252 ASN  ( 329  ) A     0.80    80
+ 253 TRP  ( 330  ) A     0.56    80
+ 254 LEU  ( 331  ) A     0.61    80
+ 255 GLY  ( 332  ) A             80
+ 256 TYR  ( 333  ) A              9
+ 257 ALA  ( 334  ) A             44
+ 258 ASN  ( 335  ) A     0.71    17
+ 259 SER  ( 336  ) A     0.40    80
+ 260 ALA  ( 337  ) A             80
+ 261 MET  ( 338  ) A     0.79    14
+ 262 ASN  ( 339  ) A             10
+ 263 PRO  ( 340  ) A             49
+ 264 ILE  ( 341  ) A     0.71    41
+ 265 ILE  ( 342  ) A     0.56    27
+ 266 TYR  ( 343  ) A     0.67    12
+ 267 CYS  ( 344  ) A              6
+ 268 ARG  ( 345  ) A     0.73    11
+ 269 SER  ( 346  ) A     0.87    15
+ 270 PRO  ( 347  ) A             80
+ 271 ASP  ( 348  ) A     0.75    80
+ 272 PHE  ( 349  ) A     0.62    34
+ 273 ARG  ( 350  ) A     0.57    35
+ 274 LYS  ( 351  ) A     0.61    80
+ 275 ALA  ( 352  ) A             80
+ 276 PHE  ( 353  ) A     0.65    74
+ 277 LYS  ( 354  ) A     0.56    80
+ 282 GLN  (  38  ) B     0.57    80
+ 283 GLN  (  39  ) B     0.62    80
+ 284 TRP  (  40  ) B     0.61    80
+ 285 GLU  (  41  ) B     0.75    16
+ 286 ALA  (  42  ) B              5
+ 287 GLY  (  43  ) B             39
+ 288 MET  (  44  ) B              1
+ 289 SER  (  45  ) B             10
+ 290 LEU  (  46  ) B     0.59    80
+ 291 LEU  (  47  ) B     0.65    80
+ 292 MET  (  48  ) B     0.69    80
+ 293 ALA  (  49  ) B             80
+ 294 LEU  (  50  ) B     0.62    80
+ 295 VAL  (  51  ) B     0.98    80
+ 296 VAL  (  52  ) B     1.00    80
+ 297 LEU  (  53  ) B     0.65    80
+ 298 LEU  (  54  ) B     0.60    80
+ 299 ILE  (  55  ) B     0.91    33
+ 300 VAL  (  56  ) B     0.85    26
+ 301 ALA  (  57  ) B             80
+ 302 GLY  (  58  ) B             63
+ 303 ASN  (  59  ) B     0.77    80
+ 304 VAL  (  60  ) B     0.94    80
+ 305 LEU  (  61  ) B     0.62    80
+ 306 VAL  (  62  ) B     0.99    80
+ 307 ILE  (  63  ) B     0.99    80
+ 308 ALA  (  64  ) B             80
+ 309 ALA  (  65  ) B             80
+ 310 ILE  (  66  ) B     0.98    80
+ 311 GLY  (  67  ) B             80
+ 312 SER  (  68  ) B     0.57    21
+ 313 THR  (  69  ) B              9
+ 314 GLN  (  70  ) B     0.54    13
+ 315 ARG  (  71  ) B     0.47    80
+ 316 LEU  (  72  ) B     0.94    54
+ 317 GLN  (  73  ) B              2
+ 318 THR  (  74  ) B              7
+ 319 LEU  (  75  ) B     0.54    26
+ 320 THR  (  76  ) B     0.55    78
+ 321 ASN  (  77  ) B     0.84    25
+ 322 LEU  (  78  ) B     0.81    80
+ 323 PHE  (  79  ) B     0.64    80
+ 324 ILE  (  80  ) B     0.96    54
+ 325 THR  (  81  ) B     0.93    80
+ 326 SER  (  82  ) B     0.44    80
+ 327 LEU  (  83  ) B     0.62    80
+ 328 ALA  (  84  ) B             80
+ 329 CYS  (  85  ) B     0.73    80
+ 330 ALA  (  86  ) B             80
+ 331 ASP  (  87  ) B     0.77    80
+ 332 LEU  (  88  ) B     0.62    80
+ 333 VAL  (  89  ) B     0.95    80
+ 334 VAL  (  90  ) B     1.00    80
+ 335 GLY  (  91  ) B             23
+ 336 LEU  (  92  ) B             10
+ 337 LEU  (  93  ) B     0.77    13
+ 338 VAL  (  94  ) B     0.77    26
+ 339 VAL  (  95  ) B              8
+ 340 PRO  (  96  ) B              5
+ 341 PHE  (  97  ) B     0.53    60
+ 342 GLY  (  98  ) B             71
+ 343 ALA  (  99  ) B             80
+ 344 THR  ( 100  ) B     0.48    23
+ 345 LEU  ( 101  ) B     0.69    80
+ 346 VAL  ( 102  ) B     0.94    80
+ 347 VAL  ( 103  ) B     0.86    21
+ 348 ARG  ( 104  ) B              6
+ 349 GLY  ( 105  ) B             28
+ 350 THR  ( 106  ) B              6
+ 351 TRP  ( 107  ) B              6
+ 352 LEU  ( 108  ) B              8
+ 353 TRP  ( 109  ) B              2
+ 354 GLY  ( 110  ) B             26
+ 355 SER  ( 111  ) B     0.60    35
+ 356 PHE  ( 112  ) B     0.75    80
+ 357 LEU  ( 113  ) B              8
+ 358 CYS  ( 114  ) B     0.59    80
+ 359 GLU  ( 115  ) B     0.59    80
+ 360 LEU  ( 116  ) B     0.64    80
+ 361 TRP  ( 117  ) B     0.59    80
+ 362 THR  ( 118  ) B     0.85    80
+ 363 SER  ( 119  ) B     0.46    80
+ 364 LEU  ( 120  ) B     0.61    80
+ 365 ASP  ( 121  ) B     0.82    80
+ 366 VAL  ( 122  ) B     0.98    80
+ 367 LEU  ( 123  ) B     0.79    77
+ 368 CYS  ( 124  ) B     0.65    80
+ 369 VAL  ( 125  ) B     0.98    80
+ 370 THR  ( 126  ) B     0.80    80
+ 371 ALA  ( 127  ) B             80
+ 372 SER  ( 128  ) B     0.34    77
+ 373 ILE  ( 129  ) B     0.89    80
+ 374 GLU  ( 130  ) B     0.56    80
+ 375 THR  ( 131  ) B     0.86    80
+ 376 LEU  ( 132  ) B     0.65    80
+ 377 CYS  ( 133  ) B     0.66    80
+ 378 VAL  ( 134  ) B     0.99    80
+ 379 ILE  ( 135  ) B     0.96    80
+ 380 ALA  ( 136  ) B             80
+ 381 ILE  ( 137  ) B     0.95    80
+ 382 ASP  ( 138  ) B     0.74    80
+ 383 ARG  ( 139  ) B             10
+ 384 TYR  ( 140  ) B     0.65    80
+ 385 LEU  ( 141  ) B     0.64    80
+ 386 ALA  ( 142  ) B             80
+ 387 ILE  ( 143  ) B     0.93    15
+ 388 THR  ( 144  ) B              6
+ 389 SER  ( 145  ) B     0.57    14
+ 390 PRO  ( 146  ) B             10
+ 391 PHE  ( 147  ) B     0.50    16
+ 392 ARG  ( 148  ) B     0.86    44
+ 393 TYR  ( 149  ) B              6
+ 394 GLN  ( 150  ) B     0.61    80
+ 395 SER  ( 151  ) B     0.83    18
+ 396 LEU  ( 152  ) B     1.00    16
+ 397 MET  ( 153  ) B              0
+ 398 THR  ( 154  ) B              7
+ 399 ARG  ( 155  ) B     0.50    16
+ 400 ALA  ( 156  ) B             34
+ 401 ARG  ( 157  ) B     0.48    25
+ 402 ALA  ( 158  ) B             39
+ 403 LYS  ( 159  ) B     0.51    74
+ 404 VAL  ( 160  ) B     0.99    80
+ 405 ILE  ( 161  ) B     0.94    80
+ 406 ILE  ( 162  ) B     0.95    80
+ 407 CYS  ( 163  ) B     0.62    80
+ 408 THR  ( 164  ) B     0.91    80
+ 409 VAL  ( 165  ) B     0.96    80
+ 410 TRP  ( 166  ) B     0.52    80
+ 411 ALA  ( 167  ) B             80
+ 412 ILE  ( 168  ) B     0.97    29
+ 413 SER  ( 169  ) B     0.41    80
+ 414 ALA  ( 170  ) B             80
+ 415 LEU  ( 171  ) B     0.66    80
+ 416 VAL  ( 172  ) B     0.91    43
+ 417 SER  ( 173  ) B     0.46    39
+ 418 PHE  ( 174  ) B             10
+ 419 LEU  ( 175  ) B              6
+ 420 PRO  ( 176  ) B             80
+ 421 ILE  ( 177  ) B     0.93    80
+ 422 MET  ( 178  ) B     0.65    80
+ 423 MET  ( 179  ) B              4
+ 424 HIS  ( 180  ) B              3
+ 425 TRP  ( 181  ) B              0
+ 426 TRP  ( 182  ) B     0.53    17
+ 427 ARG  ( 183  ) B              7
+ 428 ASP  ( 184  ) B     0.85    34
+ 429 GLU  ( 185  ) B              2
+ 430 ASP  ( 186  ) B     0.71    31
+ 431 PRO  ( 187  ) B             80
+ 432 GLN  ( 188  ) B     0.55    74
+ 433 ALA  ( 189  ) B             15
+ 434 LEU  ( 190  ) B     0.80    80
+ 435 LYS  ( 191  ) B     0.61    80
+ 436 CYS  ( 192  ) B     0.60    80
+ 437 TYR  ( 193  ) B     0.65    80
+ 438 GLN  ( 194  ) B              7
+ 439 ASP  ( 195  ) B     1.00    17
+ 440 PRO  ( 196  ) B             80
+ 441 GLY  ( 197  ) B             25
+ 442 CYS  ( 198  ) B              1
+ 443 CYS  ( 199  ) B              4
+ 444 ASP  ( 200  ) B     0.46    13
+ 445 PHE  ( 201  ) B              2
+ 446 VAL  ( 202  ) B     0.96    67
+ 447 THR  ( 203  ) B     0.49    39
+ 448 ASN  ( 204  ) B     0.58    12
+ 449 ARG  ( 205  ) B     0.62    13
+ 450 ALA  ( 206  ) B             43
+ 451 TYR  ( 207  ) B     0.49    38
+ 452 ALA  ( 208  ) B             80
+ 453 ILE  ( 209  ) B     0.96    27
+ 454 ALA  ( 210  ) B             80
+ 455 SER  ( 211  ) B     0.50    80
+ 456 SER  ( 212  ) B     0.40    80
+ 457 ILE  ( 213  ) B     0.96    56
+ 458 ILE  ( 214  ) B     0.92    24
+ 459 SER  ( 215  ) B     0.57    14
+ 460 PHE  ( 216  ) B              3
+ 461 TYR  ( 217  ) B              1
+ 462 ILE  ( 218  ) B              8
+ 463 PRO  ( 219  ) B             80
+ 464 LEU  ( 220  ) B     0.64    80
+ 465 LEU  ( 221  ) B     0.62    80
+ 466 ILE  ( 222  ) B     0.96    80
+ 467 MET  ( 223  ) B     0.62    29
+ 468 ILE  ( 224  ) B     0.95    80
+ 469 PHE  ( 225  ) B     0.60    80
+ 470 VAL  ( 226  ) B     1.00    80
+ 471 ALA  ( 227  ) B             80
+ 472 LEU  ( 228  ) B     0.65    80
+ 473 ARG  ( 229  ) B     0.52    80
+ 474 VAL  ( 230  ) B     0.96    80
+ 475 TYR  ( 231  ) B     0.50    80
+ 476 ARG  ( 232  ) B     0.57    80
+ 477 GLU  ( 233  ) B     0.49    80
+ 478 ALA  ( 234  ) B             80
+ 479 LYS  ( 235  ) B     0.76    41
+ 480 GLU  ( 236  ) B     0.57    21
+ 485 LEU  ( 282  ) B              3
+ 486 MET  ( 283  ) B              9
+ 487 ARG  ( 284  ) B     0.62    80
+ 488 GLU  ( 285  ) B     0.55    80
+ 489 HIS  ( 286  ) B     0.50    80
+ 490 LYS  ( 287  ) B     0.68    80
+ 491 ALA  ( 288  ) B             80
+ 492 LEU  ( 289  ) B     0.68    80
+ 493 LYS  ( 290  ) B     0.52    80
+ 494 THR  ( 291  ) B     0.89    80
+ 495 LEU  ( 292  ) B     0.62    80
+ 496 GLY  ( 293  ) B             80
+ 497 ILE  ( 294  ) B     0.64    25
+ 498 ILE  ( 295  ) B     0.96    80
+ 499 MET  ( 296  ) B     0.65    80
+ 500 GLY  ( 297  ) B             80
+ 501 VAL  ( 298  ) B     0.95    80
+ 502 PHE  ( 299  ) B     0.68    80
+ 503 THR  ( 300  ) B     0.85    80
+ 504 LEU  ( 301  ) B     0.64    80
+ 505 CYS  ( 302  ) B             10
+ 506 TRP  ( 303  ) B              8
+ 507 LEU  ( 304  ) B     0.56    18
+ 508 PRO  ( 305  ) B             80
+ 509 PHE  ( 306  ) B     0.59    34
+ 510 PHE  ( 307  ) B     0.84    80
+ 511 LEU  ( 308  ) B     0.74    80
+ 512 VAL  ( 309  ) B     0.76    21
+ 513 ASN  ( 310  ) B     0.44    32
+ 514 ILE  ( 311  ) B     0.95    80
+ 515 VAL  ( 312  ) B     0.87    24
+ 516 ASN  ( 313  ) B     0.77    80
+ 517 VAL  ( 314  ) B     0.96    27
+ 518 PHE  ( 315  ) B              7
+ 519 ASN  ( 316  ) B              5
+ 520 ARG  ( 317  ) B     0.58    12
+ 521 ASP  ( 318  ) B     0.64    14
+ 522 LEU  ( 319  ) B              6
+ 523 VAL  ( 320  ) B     0.92    13
+ 524 PRO  ( 321  ) B             69
+ 525 ASP  ( 322  ) B     0.64    11
+ 526 TRP  ( 323  ) B              6
+ 527 LEU  ( 324  ) B     0.79    80
+ 528 PHE  ( 325  ) B     0.73    80
+ 529 VAL  ( 326  ) B     0.98    80
+ 530 ALA  ( 327  ) B             80
+ 531 PHE  ( 328  ) B     0.64    80
+ 532 ASN  ( 329  ) B     0.77    80
+ 533 TRP  ( 330  ) B     0.57    80
+ 534 LEU  ( 331  ) B     0.62    80
+ 535 GLY  ( 332  ) B             80
+ 536 TYR  ( 333  ) B             10
+ 537 ALA  ( 334  ) B             47
+ 538 ASN  ( 335  ) B     0.72    18
+ 539 SER  ( 336  ) B     0.40    80
+ 540 ALA  ( 337  ) B             80
+ 541 MET  ( 338  ) B     0.75    12
+ 542 ASN  ( 339  ) B             10
+ 543 PRO  ( 340  ) B             48
+ 544 ILE  ( 341  ) B     0.71    41
+ 545 ILE  ( 342  ) B     0.54    28
+ 546 TYR  ( 343  ) B     0.67    12
+ 547 CYS  ( 344  ) B              6
+ 548 ARG  ( 345  ) B     0.73    11
+ 549 SER  ( 346  ) B     0.87    15
+ 550 PRO  ( 347  ) B             80
+ 551 ASP  ( 348  ) B     0.74    80
+ 552 PHE  ( 349  ) B     0.62    32
+ 553 ARG  ( 350  ) B     0.58    36
+ 554 LYS  ( 351  ) B     0.61    80
+ 555 ALA  ( 352  ) B             80
+ 556 PHE  ( 353  ) B     0.67    69
+ 557 LYS  ( 354  ) B     0.56    80
+------------------------------------------------------------------------
+# 57 # Warning: Unusual rotamers
+================================
+The residues listed in the table below have a rotamer that is not
+seen very often in the database of solved protein structures.  This
+option determines for every residue the position specific chi-1
+rotamer distribution.  Thereafter it verified whether the actual
+residue in the molecule has the most preferred rotamer or not. If
+the actual rotamer is the preferred one, the score is 1.0. If the
+actual rotamer is unique, the score is 0.0. If there are two
+preferred rotamers, with a population distribution of 3:2 and your
+rotamer sits in the lesser populated rotamer, the score will be
+0.667. No value will be given if insufficient hits are found in the
+database.
+
+It is not necessarily an error if a few residues have rotamer
+values below 0.3, but careful inspection of all residues with these
+low values could be worth it.
+ 
+ 372 SER  ( 128 ) B   0.34
+  93 SER  ( 128 ) A   0.35
+ 246 TRP  ( 323 ) A   0.38
+------------------------------------------------------------------------
+   3 GLN  (  38  ) A           80     0.406
+   4 GLN  (  39  ) A           80     0.406
+   5 TRP  (  40  ) A           80     0.544
+   6 GLU  (  41  ) A           18    -2.307
+   7 ALA  (  42  ) A            5    -0.361
+   8 GLY  (  43  ) A           36    -1.291
+   9 MET  (  44  ) A            1    -5.351
+  10 SER  (  45  ) A           12    -1.043
+  11 LEU  (  46  ) A           80     0.409
+  12 LEU  (  47  ) A           80     0.409
+  13 MET  (  48  ) A           80     0.429
+  14 ALA  (  49  ) A           80     0.336
+  15 LEU  (  50  ) A           80     0.409
+  16 VAL  (  51  ) A           80     0.428
+  17 VAL  (  52  ) A           80     0.428
+  18 LEU  (  53  ) A           80     0.409
+  19 LEU  (  54  ) A           80     0.409
+  20 ILE  (  55  ) A           33    -0.749
+  21 VAL  (  56  ) A           25    -1.159
+  22 ALA  (  57  ) A           80     0.336
+  23 GLY  (  58  ) A           64    -0.151
+  24 ASN  (  59  ) A           80     0.500
+  25 VAL  (  60  ) A           80     0.428
+  26 LEU  (  61  ) A           80     0.409
+  27 VAL  (  62  ) A           80     0.428
+  28 ILE  (  63  ) A           80     0.391
+  29 ALA  (  64  ) A           80     0.336
+  30 ALA  (  65  ) A           80     0.336
+  31 ILE  (  66  ) A           80     0.391
+  32 GLY  (  67  ) A           80     0.577
+  33 SER  (  68  ) A           21     0.541
+  34 THR  (  69  ) A            9    -0.227
+  35 GLN  (  70  ) A           13     0.353
+  36 ARG  (  71  ) A           80     1.356
+  37 LEU  (  72  ) A           54     0.688
+  38 GLN  (  73  ) A            2    -1.953
+  39 THR  (  74  ) A            7    -0.079
+  40 LEU  (  75  ) A           26    -1.074
+  41 THR  (  76  ) A           79    -0.124
+  42 ASN  (  77  ) A           27    -0.518
+  43 LEU  (  78  ) A           80     1.156
+  44 PHE  (  79  ) A           80     0.474
+  45 ILE  (  80  ) A           43    -0.721
+  46 THR  (  81  ) A           80     0.488
+  47 SER  (  82  ) A           80     0.469
+  48 LEU  (  83  ) A           80     0.409
+  49 ALA  (  84  ) A           80     0.336
+  50 CYS  (  85  ) A           80     0.507
+  51 ALA  (  86  ) A           80     0.336
+  52 ASP  (  87  ) A           80     0.438
+  53 LEU  (  88  ) A           80     0.409
+  54 VAL  (  89  ) A           80     0.428
+  55 VAL  (  90  ) A           80     0.428
+  56 GLY  (  91  ) A           28    -0.064
+  57 LEU  (  92  ) A           10     0.313
+  58 LEU  (  93  ) A            5     0.228
+  59 VAL  (  94  ) A           26    -1.740
+  60 VAL  (  95  ) A            8    -1.077
+  61 PRO  (  96  ) A            8    -2.244
+  62 PHE  (  97  ) A           80     0.474
+  63 GLY  (  98  ) A           73    -0.153
+  64 ALA  (  99  ) A           80     0.336
+  65 THR  ( 100  ) A           24    -0.498
+  66 LEU  ( 101  ) A           80     0.409
+  67 VAL  ( 102  ) A           80     0.428
+  68 VAL  ( 103  ) A           23    -1.699
+  69 ARG  ( 104  ) A            6     0.560
+  70 GLY  ( 105  ) A           29     0.241
+  71 THR  ( 106  ) A            7    -0.291
+  72 TRP  ( 107  ) A            6     0.616
+  73 LEU  ( 108  ) A            8    -0.071
+  74 TRP  ( 109  ) A            2    -1.266
+  75 GLY  ( 110  ) A           28    -0.018
+  76 SER  ( 111  ) A           32    -0.519
+  77 PHE  ( 112  ) A           80     0.474
+  78 LEU  ( 113  ) A           10    -1.546
+  79 CYS  ( 114  ) A           80     0.507
+  80 GLU  ( 115  ) A           80     0.377
+  81 LEU  ( 116  ) A           80     0.409
+  82 TRP  ( 117  ) A           80     0.544
+  83 THR  ( 118  ) A           80     0.488
+  84 SER  ( 119  ) A           80     0.469
+  85 LEU  ( 120  ) A           80     0.409
+  86 ASP  ( 121  ) A           80     0.438
+  87 VAL  ( 122  ) A           80     0.428
+  88 LEU  ( 123  ) A           72    -0.928
+  89 CYS  ( 124  ) A           80     0.507
+  90 VAL  ( 125  ) A           80     0.428
+  91 THR  ( 126  ) A           80     0.488
+  92 ALA  ( 127  ) A           80     0.336
+  93 SER  ( 128  ) A           78    -0.315
+  94 ILE  ( 129  ) A           80     0.391
+  95 GLU  ( 130  ) A           80     0.377
+  96 THR  ( 131  ) A           80     0.488
+  97 LEU  ( 132  ) A           80     0.409
+  98 CYS  ( 133  ) A           80     0.507
+  99 VAL  ( 134  ) A           80     0.428
+ 100 ILE  ( 135  ) A           80     0.391
+ 101 ALA  ( 136  ) A           80     0.336
+ 102 ILE  ( 137  ) A           80     0.391
+ 103 ASP  ( 138  ) A           80     0.438
+ 104 ARG  ( 139  ) A           10     0.664
+ 105 TYR  ( 140  ) A           80     1.402
+ 106 LEU  ( 141  ) A           80     1.156
+ 107 ALA  ( 142  ) A           80     1.193
+ 108 ILE  ( 143  ) A           15    -0.019
+ 109 THR  ( 144  ) A            6    -0.110
+ 110 SER  ( 145  ) A           14     0.113
+ 111 PRO  ( 146  ) A            9    -0.673
+ 112 PHE  ( 147  ) A           15     0.877
+ 113 ARG  ( 148  ) A           44     0.921
+ 114 TYR  ( 149  ) A            7    -1.175
+ 115 GLN  ( 150  ) A           80     0.406
+ 116 SER  ( 151  ) A           18    -0.639
+ 117 LEU  ( 152  ) A           16    -2.377
+ 118 MET  ( 153  ) A            0    -1.368
+ 119 THR  ( 154  ) A            7    -0.209
+ 120 ARG  ( 155  ) A           15     0.368
+ 121 ALA  ( 156  ) A           36     0.121
+ 122 ARG  ( 157  ) A           28    -1.581
+ 123 ALA  ( 158  ) A           40    -0.974
+ 124 LYS  ( 159  ) A           74    -0.775
+ 125 VAL  ( 160  ) A           80     0.428
+ 126 ILE  ( 161  ) A           80     0.391
+ 127 ILE  ( 162  ) A           80     0.391
+ 128 CYS  ( 163  ) A           80     0.507
+ 129 THR  ( 164  ) A           80     0.488
+ 130 VAL  ( 165  ) A           80     0.428
+ 131 TRP  ( 166  ) A           80     0.544
+ 132 ALA  ( 167  ) A           80     0.336
+ 133 ILE  ( 168  ) A           15    -0.741
+ 134 SER  ( 169  ) A           80     0.469
+ 135 ALA  ( 170  ) A           80     0.336
+ 136 LEU  ( 171  ) A           80     0.409
+ 137 VAL  ( 172  ) A           45    -0.545
+ 138 SER  ( 173  ) A           48    -0.472
+ 139 PHE  ( 174  ) A            9    -1.832
+ 140 LEU  ( 175  ) A            7    -1.193
+ 141 PRO  ( 176  ) A           80     0.455
+ 142 ILE  ( 177  ) A           80     0.391
+ 143 MET  ( 178  ) A           80     0.429
+ 144 MET  ( 179  ) A            3     0.696
+ 145 HIS  ( 180  ) A            3    -0.087
+ 146 TRP  ( 181  ) A            0    -1.266
+ 147 TRP  ( 182  ) A           16     0.893
+ 148 ARG  ( 183  ) A            8     0.075
+ 149 ASP  ( 184  ) A           34     0.194
+ 150 GLU  ( 185  ) A            2    -2.364
+ 151 ASP  ( 186  ) A           30     0.430
+ 152 PRO  ( 187  ) A           80     0.455
+ 153 GLN  ( 188  ) A           67    -0.947
+ 154 ALA  ( 189  ) A           13    -2.134
+ 155 LEU  ( 190  ) A           80     0.409
+ 156 LYS  ( 191  ) A           80     0.404
+ 157 CYS  ( 192  ) A           80     0.507
+ 158 TYR  ( 193  ) A           80     0.559
+ 159 GLN  ( 194  ) A            9    -1.966
+ 160 ASP  ( 195  ) A           17     0.511
+ 161 PRO  ( 196  ) A           80     0.887
+ 162 GLY  ( 197  ) A           25     0.283
+ 163 CYS  ( 198  ) A            1    -1.353
+ 164 CYS  ( 199  ) A            4     0.197
+ 165 ASP  ( 200  ) A           11    -0.404
+ 166 PHE  ( 201  ) A            2    -1.887
+ 167 VAL  ( 202  ) A           61     0.024
+ 168 THR  ( 203  ) A           38     0.229
+ 169 ASN  ( 204  ) A           11     0.712
+ 170 ARG  ( 205  ) A           13     0.308
+ 171 ALA  ( 206  ) A           37     0.450
+ 172 TYR  ( 207  ) A           39    -0.687
+ 173 ALA  ( 208  ) A           80     0.336
+ 174 ILE  ( 209  ) A           25    -0.793
+ 175 ALA  ( 210  ) A           80     0.336
+ 176 SER  ( 211  ) A           80     0.469
+ 177 SER  ( 212  ) A           80     0.469
+ 178 ILE  ( 213  ) A           55    -1.010
+ 179 ILE  ( 214  ) A           25    -0.199
+ 180 SER  ( 215  ) A           15    -1.541
+ 181 PHE  ( 216  ) A            3     0.213
+ 182 TYR  ( 217  ) A            1    -5.790
+ 183 ILE  ( 218  ) A            9    -1.203
+ 184 PRO  ( 219  ) A           80     0.455
+ 185 LEU  ( 220  ) A           80     0.409
+ 186 LEU  ( 221  ) A           80     0.409
+ 187 ILE  ( 222  ) A           80     0.391
+ 188 MET  ( 223  ) A           33    -0.300
+ 189 ILE  ( 224  ) A           80     0.391
+ 190 PHE  ( 225  ) A           80     0.474
+ 191 VAL  ( 226  ) A           80     0.428
+ 192 ALA  ( 227  ) A           80     0.336
+ 193 LEU  ( 228  ) A           80     0.409
+ 194 ARG  ( 229  ) A           80     0.427
+ 195 VAL  ( 230  ) A           80     0.428
+ 196 TYR  ( 231  ) A           80     0.559
+ 197 ARG  ( 232  ) A           80     0.427
+ 198 GLU  ( 233  ) A           80     0.377
+ 199 ALA  ( 234  ) A           80     1.193
+ 200 LYS  ( 235  ) A           42     0.689
+ 205 LEU  ( 282  ) A            3    -1.037
+ 206 MET  ( 283  ) A            9    -0.842
+ 207 ARG  ( 284  ) A           80     0.427
+ 208 GLU  ( 285  ) A           80     0.377
+ 209 HIS  ( 286  ) A           80     0.572
+ 210 LYS  ( 287  ) A           80     0.404
+ 211 ALA  ( 288  ) A           80     0.336
+ 212 LEU  ( 289  ) A           80     0.409
+ 213 LYS  ( 290  ) A           80     0.404
+ 214 THR  ( 291  ) A           80     0.488
+ 215 LEU  ( 292  ) A           80     0.409
+ 216 GLY  ( 293  ) A           80     0.577
+ 217 ILE  ( 294  ) A           25    -0.717
+ 218 ILE  ( 295  ) A           80     0.391
+ 219 MET  ( 296  ) A           80     0.429
+ 220 GLY  ( 297  ) A           80     0.577
+ 221 VAL  ( 298  ) A           80     0.428
+ 222 PHE  ( 299  ) A           80     0.474
+ 223 THR  ( 300  ) A           80     0.488
+ 224 LEU  ( 301  ) A           80     0.409
+ 225 CYS  ( 302  ) A           10    -0.388
+ 226 TRP  ( 303  ) A            8    -0.620
+ 227 LEU  ( 304  ) A           18    -0.752
+ 228 PRO  ( 305  ) A           80     0.455
+ 229 PHE  ( 306  ) A           36    -0.303
+ 230 PHE  ( 307  ) A           80     0.474
+ 231 LEU  ( 308  ) A           80     0.409
+ 232 VAL  ( 309  ) A           22    -0.859
+ 233 ASN  ( 310  ) A           33    -0.241
+ 234 ILE  ( 311  ) A           80     0.391
+ 235 VAL  ( 312  ) A           24    -1.129
+ 236 ASN  ( 313  ) A           80     0.500
+ 237 VAL  ( 314  ) A           29    -0.840
+ 238 PHE  ( 315  ) A            7    -1.885
+ 239 ASN  ( 316  ) A            5     0.215
+ 240 ARG  ( 317  ) A           13     0.310
+ 241 ASP  ( 318  ) A           14     0.045
+ 242 LEU  ( 319  ) A            6    -0.459
+ 243 VAL  ( 320  ) A           12     0.111
+ 244 PRO  ( 321  ) A           70    -0.094
+ 245 ASP  ( 322  ) A           11    -1.812
+ 246 TRP  ( 323  ) A           39    -0.347
+ 247 LEU  ( 324  ) A           80     0.409
+ 248 PHE  ( 325  ) A           80     0.474
+ 249 VAL  ( 326  ) A           80     0.428
+ 250 ALA  ( 327  ) A           80     0.336
+ 251 PHE  ( 328  ) A           80     0.474
+ 252 ASN  ( 329  ) A           80     0.500
+ 253 TRP  ( 330  ) A           80     0.544
+ 254 LEU  ( 331  ) A           80     0.409
+ 255 GLY  ( 332  ) A           80     0.577
+ 256 TYR  ( 333  ) A            9    -0.730
+ 257 ALA  ( 334  ) A           44    -1.029
+ 258 ASN  ( 335  ) A           17    -0.320
+ 259 SER  ( 336  ) A           80     0.469
+ 260 ALA  ( 337  ) A           80     0.336
+ 261 MET  ( 338  ) A           14    -0.800
+ 262 ASN  ( 339  ) A           10     0.046
+ 263 PRO  ( 340  ) A           49    -0.801
+ 264 ILE  ( 341  ) A           41    -0.817
+ 265 ILE  ( 342  ) A           27    -0.871
+ 266 TYR  ( 343  ) A           12    -1.233
+ 267 CYS  ( 344  ) A            6    -0.655
+ 268 ARG  ( 345  ) A           11    -1.554
+ 269 SER  ( 346  ) A           15     0.419
+ 270 PRO  ( 347  ) A           80     0.455
+ 271 ASP  ( 348  ) A           80     0.438
+ 272 PHE  ( 349  ) A           34    -0.500
+ 273 ARG  ( 350  ) A           35    -0.582
+ 274 LYS  ( 351  ) A           80     0.404
+ 275 ALA  ( 352  ) A           80     0.336
+ 276 PHE  ( 353  ) A           74    -0.618
+ 277 LYS  ( 354  ) A           80     0.404
+ 282 GLN  (  38  ) B           80     0.406
+ 283 GLN  (  39  ) B           80     0.406
+ 284 TRP  (  40  ) B           80     0.544
+ 285 GLU  (  41  ) B           16    -2.306
+ 286 ALA  (  42  ) B            5    -0.356
+ 287 GLY  (  43  ) B           39    -1.276
+ 288 MET  (  44  ) B            1    -5.351
+ 289 SER  (  45  ) B           10    -1.043
+ 290 LEU  (  46  ) B           80     0.409
+ 291 LEU  (  47  ) B           80     0.409
+ 292 MET  (  48  ) B           80     0.429
+ 293 ALA  (  49  ) B           80     0.336
+ 294 LEU  (  50  ) B           80     0.409
+ 295 VAL  (  51  ) B           80     0.428
+ 296 VAL  (  52  ) B           80     0.428
+ 297 LEU  (  53  ) B           80     0.409
+ 298 LEU  (  54  ) B           80     0.409
+ 299 ILE  (  55  ) B           33    -0.729
+ 300 VAL  (  56  ) B           26    -1.163
+ 301 ALA  (  57  ) B           80     0.336
+ 302 GLY  (  58  ) B           63    -0.188
+ 303 ASN  (  59  ) B           80     0.500
+ 304 VAL  (  60  ) B           80     0.428
+ 305 LEU  (  61  ) B           80     0.409
+ 306 VAL  (  62  ) B           80     0.428
+ 307 ILE  (  63  ) B           80     0.391
+ 308 ALA  (  64  ) B           80     0.336
+ 309 ALA  (  65  ) B           80     0.336
+ 310 ILE  (  66  ) B           80     0.391
+ 311 GLY  (  67  ) B           80     0.577
+ 312 SER  (  68  ) B           21     0.518
+ 313 THR  (  69  ) B            9    -0.232
+ 314 GLN  (  70  ) B           13     0.350
+ 315 ARG  (  71  ) B           80     1.356
+ 316 LEU  (  72  ) B           54     0.697
+ 317 GLN  (  73  ) B            2    -1.953
+ 318 THR  (  74  ) B            7    -0.087
+ 319 LEU  (  75  ) B           26    -1.107
+ 320 THR  (  76  ) B           78    -0.153
+ 321 ASN  (  77  ) B           25    -0.531
+ 322 LEU  (  78  ) B           80     1.156
+ 323 PHE  (  79  ) B           80     0.474
+ 324 ILE  (  80  ) B           54    -0.707
+ 325 THR  (  81  ) B           80     0.488
+ 326 SER  (  82  ) B           80     0.469
+ 327 LEU  (  83  ) B           80     0.409
+ 328 ALA  (  84  ) B           80     0.336
+ 329 CYS  (  85  ) B           80     0.507
+ 330 ALA  (  86  ) B           80     0.336
+ 331 ASP  (  87  ) B           80     0.438
+ 332 LEU  (  88  ) B           80     0.409
+ 333 VAL  (  89  ) B           80     0.428
+ 334 VAL  (  90  ) B           80     0.428
+ 335 GLY  (  91  ) B           23    -0.095
+ 336 LEU  (  92  ) B           10     0.297
+ 337 LEU  (  93  ) B           13     0.223
+ 338 VAL  (  94  ) B           26    -1.761
+ 339 VAL  (  95  ) B            8    -1.078
+ 340 PRO  (  96  ) B            5    -2.633
+ 341 PHE  (  97  ) B           60    -0.819
+ 342 GLY  (  98  ) B           71    -0.188
+ 343 ALA  (  99  ) B           80     0.336
+ 344 THR  ( 100  ) B           23    -0.513
+ 345 LEU  ( 101  ) B           80     0.409
+ 346 VAL  ( 102  ) B           80     0.428
+ 347 VAL  ( 103  ) B           21    -1.718
+ 348 ARG  ( 104  ) B            6     0.548
+ 349 GLY  ( 105  ) B           28     0.235
+ 350 THR  ( 106  ) B            6    -0.303
+ 351 TRP  ( 107  ) B            6     0.611
+ 352 LEU  ( 108  ) B            8    -0.069
+ 353 TRP  ( 109  ) B            2    -1.266
+ 354 GLY  ( 110  ) B           26    -0.019
+ 355 SER  ( 111  ) B           35    -0.510
+ 356 PHE  ( 112  ) B           80     0.474
+ 357 LEU  ( 113  ) B            8    -1.598
+ 358 CYS  ( 114  ) B           80     0.507
+ 359 GLU  ( 115  ) B           80     0.377
+ 360 LEU  ( 116  ) B           80     0.409
+ 361 TRP  ( 117  ) B           80     0.544
+ 362 THR  ( 118  ) B           80     0.488
+ 363 SER  ( 119  ) B           80     0.469
+ 364 LEU  ( 120  ) B           80     0.409
+ 365 ASP  ( 121  ) B           80     0.438
+ 366 VAL  ( 122  ) B           80     0.428
+ 367 LEU  ( 123  ) B           77    -0.882
+ 368 CYS  ( 124  ) B           80     0.507
+ 369 VAL  ( 125  ) B           80     0.428
+ 370 THR  ( 126  ) B           80     0.488
+ 371 ALA  ( 127  ) B           80     0.336
+ 372 SER  ( 128  ) B           77    -0.335
+ 373 ILE  ( 129  ) B           80     0.391
+ 374 GLU  ( 130  ) B           80     0.377
+ 375 THR  ( 131  ) B           80     0.488
+ 376 LEU  ( 132  ) B           80     0.409
+ 377 CYS  ( 133  ) B           80     0.507
+ 378 VAL  ( 134  ) B           80     0.428
+ 379 ILE  ( 135  ) B           80     0.391
+ 380 ALA  ( 136  ) B           80     0.336
+ 381 ILE  ( 137  ) B           80     0.391
+ 382 ASP  ( 138  ) B           80     0.438
+ 383 ARG  ( 139  ) B           10     0.655
+ 384 TYR  ( 140  ) B           80     1.402
+ 385 LEU  ( 141  ) B           80     1.156
+ 386 ALA  ( 142  ) B           80     1.193
+ 387 ILE  ( 143  ) B           15    -0.021
+ 388 THR  ( 144  ) B            6    -0.112
+ 389 SER  ( 145  ) B           14     0.116
+ 390 PRO  ( 146  ) B           10    -0.668
+ 391 PHE  ( 147  ) B           16     0.877
+ 392 ARG  ( 148  ) B           44     0.909
+ 393 TYR  ( 149  ) B            6    -1.179
+ 394 GLN  ( 150  ) B           80     0.406
+ 395 SER  ( 151  ) B           18    -0.632
+ 396 LEU  ( 152  ) B           16    -2.379
+ 397 MET  ( 153  ) B            0    -1.368
+ 398 THR  ( 154  ) B            7    -0.203
+ 399 ARG  ( 155  ) B           16     0.366
+ 400 ALA  ( 156  ) B           34     0.111
+ 401 ARG  ( 157  ) B           25    -1.609
+ 402 ALA  ( 158  ) B           39    -1.004
+ 403 LYS  ( 159  ) B           74    -0.770
+ 404 VAL  ( 160  ) B           80     0.428
+ 405 ILE  ( 161  ) B           80     0.391
+ 406 ILE  ( 162  ) B           80     0.391
+ 407 CYS  ( 163  ) B           80     0.507
+ 408 THR  ( 164  ) B           80     0.488
+ 409 VAL  ( 165  ) B           80     0.428
+ 410 TRP  ( 166  ) B           80     0.544
+ 411 ALA  ( 167  ) B           80     0.336
+ 412 ILE  ( 168  ) B           29    -0.587
+ 413 SER  ( 169  ) B           80     0.469
+ 414 ALA  ( 170  ) B           80     0.336
+ 415 LEU  ( 171  ) B           80     0.409
+ 416 VAL  ( 172  ) B           43    -0.507
+ 417 SER  ( 173  ) B           39    -0.452
+ 418 PHE  ( 174  ) B           10    -1.847
+ 419 LEU  ( 175  ) B            6    -1.149
+ 420 PRO  ( 176  ) B           80     0.455
+ 421 ILE  ( 177  ) B           80     0.391
+ 422 MET  ( 178  ) B           80     0.429
+ 423 MET  ( 179  ) B            4     0.718
+ 424 HIS  ( 180  ) B            3    -0.076
+ 425 TRP  ( 181  ) B            0    -1.266
+ 426 TRP  ( 182  ) B           17     0.911
+ 427 ARG  ( 183  ) B            7     0.065
+ 428 ASP  ( 184  ) B           34     0.196
+ 429 GLU  ( 185  ) B            2    -2.364
+ 430 ASP  ( 186  ) B           31     0.431
+ 431 PRO  ( 187  ) B           80     0.455
+ 432 GLN  ( 188  ) B           74    -0.885
+ 433 ALA  ( 189  ) B           15    -2.116
+ 434 LEU  ( 190  ) B           80     0.409
+ 435 LYS  ( 191  ) B           80     0.404
+ 436 CYS  ( 192  ) B           80     0.507
+ 437 TYR  ( 193  ) B           80     0.559
+ 438 GLN  ( 194  ) B            7    -2.176
+ 439 ASP  ( 195  ) B           17     0.510
+ 440 PRO  ( 196  ) B           80     0.887
+ 441 GLY  ( 197  ) B           25     0.291
+ 442 CYS  ( 198  ) B            1    -1.353
+ 443 CYS  ( 199  ) B            4     0.192
+ 444 ASP  ( 200  ) B           13    -0.390
+ 445 PHE  ( 201  ) B            2    -1.887
+ 446 VAL  ( 202  ) B           67     0.036
+ 447 THR  ( 203  ) B           39     0.200
+ 448 ASN  ( 204  ) B           12     0.718
+ 449 ARG  ( 205  ) B           13     0.304
+ 450 ALA  ( 206  ) B           43     0.455
+ 451 TYR  ( 207  ) B           38    -0.664
+ 452 ALA  ( 208  ) B           80     0.336
+ 453 ILE  ( 209  ) B           27    -0.749
+ 454 ALA  ( 210  ) B           80     0.336
+ 455 SER  ( 211  ) B           80     0.469
+ 456 SER  ( 212  ) B           80     0.469
+ 457 ILE  ( 213  ) B           56    -1.005
+ 458 ILE  ( 214  ) B           24    -0.198
+ 459 SER  ( 215  ) B           14    -1.545
+ 460 PHE  ( 216  ) B            3     0.206
+ 461 TYR  ( 217  ) B            1    -5.790
+ 462 ILE  ( 218  ) B            8    -1.205
+ 463 PRO  ( 219  ) B           80     0.455
+ 464 LEU  ( 220  ) B           80     0.409
+ 465 LEU  ( 221  ) B           80     0.409
+ 466 ILE  ( 222  ) B           80     0.391
+ 467 MET  ( 223  ) B           29    -0.314
+ 468 ILE  ( 224  ) B           80     0.391
+ 469 PHE  ( 225  ) B           80     0.474
+ 470 VAL  ( 226  ) B           80     0.428
+ 471 ALA  ( 227  ) B           80     0.336
+ 472 LEU  ( 228  ) B           80     0.409
+ 473 ARG  ( 229  ) B           80     0.427
+ 474 VAL  ( 230  ) B           80     0.428
+ 475 TYR  ( 231  ) B           80     0.559
+ 476 ARG  ( 232  ) B           80     0.427
+ 477 GLU  ( 233  ) B           80     0.377
+ 478 ALA  ( 234  ) B           80     1.193
+ 479 LYS  ( 235  ) B           41     0.654
+ 480 GLU  ( 236  ) B           21     0.466
+ 485 LEU  ( 282  ) B            3    -1.045
+ 486 MET  ( 283  ) B            9    -0.807
+ 487 ARG  ( 284  ) B           80     0.427
+ 488 GLU  ( 285  ) B           80     0.377
+ 489 HIS  ( 286  ) B           80     0.572
+ 490 LYS  ( 287  ) B           80     0.404
+ 491 ALA  ( 288  ) B           80     0.336
+ 492 LEU  ( 289  ) B           80     0.409
+ 493 LYS  ( 290  ) B           80     0.404
+ 494 THR  ( 291  ) B           80     0.488
+ 495 LEU  ( 292  ) B           80     0.409
+ 496 GLY  ( 293  ) B           80     0.577
+ 497 ILE  ( 294  ) B           25    -0.729
+ 498 ILE  ( 295  ) B           80     0.391
+ 499 MET  ( 296  ) B           80     0.429
+ 500 GLY  ( 297  ) B           80     0.577
+ 501 VAL  ( 298  ) B           80     0.428
+ 502 PHE  ( 299  ) B           80     0.474
+ 503 THR  ( 300  ) B           80     0.488
+ 504 LEU  ( 301  ) B           80     0.409
+ 505 CYS  ( 302  ) B           10    -0.402
+ 506 TRP  ( 303  ) B            8    -0.614
+ 507 LEU  ( 304  ) B           18    -0.750
+ 508 PRO  ( 305  ) B           80     0.455
+ 509 PHE  ( 306  ) B           34    -0.308
+ 510 PHE  ( 307  ) B           80     0.474
+ 511 LEU  ( 308  ) B           80     0.409
+ 512 VAL  ( 309  ) B           21    -0.876
+ 513 ASN  ( 310  ) B           32    -0.229
+ 514 ILE  ( 311  ) B           80     0.391
+ 515 VAL  ( 312  ) B           24    -1.169
+ 516 ASN  ( 313  ) B           80     0.500
+ 517 VAL  ( 314  ) B           27    -0.837
+ 518 PHE  ( 315  ) B            7    -1.883
+ 519 ASN  ( 316  ) B            5     0.210
+ 520 ARG  ( 317  ) B           12     0.303
+ 521 ASP  ( 318  ) B           14     0.031
+ 522 LEU  ( 319  ) B            6    -0.462
+ 523 VAL  ( 320  ) B           13     0.115
+ 524 PRO  ( 321  ) B           69    -0.052
+ 525 ASP  ( 322  ) B           11    -1.765
+ 526 TRP  ( 323  ) B            6    -0.370
+ 527 LEU  ( 324  ) B           80     0.409
+ 528 PHE  ( 325  ) B           80     0.474
+ 529 VAL  ( 326  ) B           80     0.428
+ 530 ALA  ( 327  ) B           80     0.336
+ 531 PHE  ( 328  ) B           80     0.474
+ 532 ASN  ( 329  ) B           80     0.500
+ 533 TRP  ( 330  ) B           80     0.544
+ 534 LEU  ( 331  ) B           80     0.409
+ 535 GLY  ( 332  ) B           80     0.577
+ 536 TYR  ( 333  ) B           10    -0.741
+ 537 ALA  ( 334  ) B           47    -1.023
+ 538 ASN  ( 335  ) B           18    -0.291
+ 539 SER  ( 336  ) B           80     0.469
+ 540 ALA  ( 337  ) B           80     0.336
+ 541 MET  ( 338  ) B           12    -0.781
+ 542 ASN  ( 339  ) B           10     0.041
+ 543 PRO  ( 340  ) B           48    -0.743
+ 544 ILE  ( 341  ) B           41    -0.827
+ 545 ILE  ( 342  ) B           28    -0.880
+ 546 TYR  ( 343  ) B           12    -1.240
+ 547 CYS  ( 344  ) B            6    -0.662
+ 548 ARG  ( 345  ) B           11    -1.567
+ 549 SER  ( 346  ) B           15     0.416
+ 550 PRO  ( 347  ) B           80     0.455
+ 551 ASP  ( 348  ) B           80     0.438
+ 552 PHE  ( 349  ) B           32    -0.490
+ 553 ARG  ( 350  ) B           36    -0.561
+ 554 LYS  ( 351  ) B           80     0.404
+ 555 ALA  ( 352  ) B           80     0.336
+ 556 PHE  ( 353  ) B           69    -0.619
+ 557 LYS  ( 354  ) B           80     0.404
+------------------------------------------------------------------------
+# 58 # Warning: Unusual backbone conformations
+==============================================
+For the residues listed in the table below, the backbone formed by
+itself and two neighboring residues on either side is in a
+conformation that is not seen very often in the database of solved
+protein structures.  The number given in the table is the number of
+similar backbone conformations in the database with the same amino
+acid in the center.
+
+For this check, backbone conformations are compared with database
+structures using C-alpha superpositions with some restraints on the
+backbone oxygen positions.
+
+A residue mentioned in the table can be part of a strange loop, or
+there might be something wrong with it or its directly surrounding
+residues. There are a few of these in every protein, but in any
+case it is worth looking at!
+ 
+ 118 MET  ( 153 ) A  0
+ 146 TRP  ( 181 ) A  0
+ 201 GLU  ( 236 ) A  0
+ 202 GLN  ( 237 ) A  0
+ 203 VAL  ( 280 ) A  0
+ 204 MET  ( 281 ) A  0
+ 278 ARG  ( 355 ) A  0
+ 279 LEU  ( 356 ) A  0
+ 280 LEU  (  36 ) B  0
+ 281 SER  (  37 ) B  0
+ 397 MET  ( 153 ) B  0
+ 425 TRP  ( 181 ) B  0
+ 481 GLN  ( 237 ) B  0
+ 482 ILE  ( 238 ) B  0
+ 483 VAL  ( 280 ) B  0
+ 484 MET  ( 281 ) B  0
+   9 MET  (  44 ) A  1
+ 163 CYS  ( 198 ) A  1
+ 182 TYR  ( 217 ) A  1
+ 288 MET  (  44 ) B  1
+ 442 CYS  ( 198 ) B  1
+ 461 TYR  ( 217 ) B  1
+  38 GLN  (  73 ) A  2
+  74 TRP  ( 109 ) A  2
+ 150 GLU  ( 185 ) A  2
+ 166 PHE  ( 201 ) A  2
+ 317 GLN  (  73 ) B  2
+ 353 TRP  ( 109 ) B  2
+ 429 GLU  ( 185 ) B  2
+ 445 PHE  ( 201 ) B  2
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 59 # Note: Backbone conformation Z-score OK
+=============================================
+The backbone conformation analysis gives a score that is normal
+for well refined protein structures.
+ 
+ Backbone conformation Z-score : -0.433
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 60 # Error: Abnormally short interatomic distances
+====================================================
+The pairs of atoms listed in the table below have an unusually
+short distance.
+
+The contact distances of all atom pairs have been checked. Two
+atoms are said to `bump' if they are closer than the sum of their
+Van der Waals radii minus 0.40 Angstrom. For hydrogen bonded pairs
+a tolerance of 0.55 Angstrom is used.  The first number in the
+table tells you how much shorter that specific contact is than the
+acceptable limit. The second distance is the distance between the
+centers of the two atoms. Although we believe that two water atoms
+at 2.4 A distance are too close, we only report water pairs that are
+closer than this rather short distance.
+
+The last text-item on each line represents the status of the atom
+pair.  The text `INTRA' means that the bump is between atoms that
+are explicitly listed in the PDB file. `INTER' means it is an
+inter-symmetry bump. If the final column contains the text 'HB',
+the bump criterium was relaxed because there could be a hydrogen
+bond. Similarly relaxed criteria are used for 1--3 and 1--4
+interactions (listed as 'B2' and 'B3', respectively). If the last
+column is 'BF', the sum of the B-factors of the atoms is higher
+than 80, which makes the appearance of the bump somewhat less
+severe because the atoms probably aren't there anyway.
+
+Bumps between atoms for which the sum of their occupancies is lower
+than one are not reported. In any case, each bump is listed in only
+one direction.
+ 
+ 125 VAL  ( 160 ) A    CG1   --  126 ILE  ( 161 ) A    N       0.337   2.763 INTRA
+ 147 TRP  ( 182 ) A    C     --  169 ASN  ( 204 ) A    ND2     0.336   2.764 INTRA
+ 404 VAL  ( 160 ) B    CG1   --  405 ILE  ( 161 ) B    N       0.334   2.766 INTRA
+ 146 TRP  ( 181 ) A    O     --  169 ASN  ( 204 ) A    ND2     0.315   2.235 INTRA HB
+ 178 ILE  ( 213 ) A    CG2   --  179 ILE  ( 214 ) A    N       0.309   2.791 INTRA
+ 426 TRP  ( 182 ) B    C     --  448 ASN  ( 204 ) B    ND2     0.305   2.795 INTRA
+ 457 ILE  ( 213 ) B    CG2   --  458 ILE  ( 214 ) B    N       0.304   2.796 INTRA
+ 481 GLN  ( 237 ) B    CG    --  482 ILE  ( 238 ) B    N       0.290   2.810 INTRA BF
+ 113 ARG  ( 148 ) A    CB    --  392 ARG  ( 148 ) B    NE      0.286   2.814 INTRA BF
+ 113 ARG  ( 148 ) A    NE    --  392 ARG  ( 148 ) B    NE      0.281   2.719 INTRA BF
+ 170 ARG  ( 205 ) A    CG    --  171 ALA  ( 206 ) A    N       0.274   2.826 INTRA BF
+ 449 ARG  ( 205 ) B    CG    --  450 ALA  ( 206 ) B    N       0.273   2.827 INTRA BF
+ 113 ARG  ( 148 ) A    NH1   --  389 SER  ( 145 ) B    CB      0.268   2.832 INTRA BF
+ 442 CYS  ( 198 ) B    SG    --  444 ASP  ( 200 ) B    CB      0.260   3.140 INTRA BF
+ 163 CYS  ( 198 ) A    SG    --  165 ASP  ( 200 ) A    CB      0.257   3.143 INTRA BF
+ 425 TRP  ( 181 ) B    O     --  448 ASN  ( 204 ) B    ND2     0.250   2.300 INTRA HB
+ 110 SER  ( 145 ) A    CB    --  392 ARG  ( 148 ) B    NH1     0.248   2.852 INTRA BF
+ 113 ARG  ( 148 ) A    NE    --  392 ARG  ( 148 ) B    CB      0.247   2.853 INTRA BF
+ 223 THR  ( 300 ) A    O     --  227 LEU  ( 304 ) A    CB      0.232   2.568 INTRA BF
+ 503 THR  ( 300 ) B    O     --  507 LEU  ( 304 ) B    CB      0.222   2.578 INTRA BF
+ 113 ARG  ( 148 ) A    O     --  114 TYR  ( 149 ) A    C       0.220   2.580 INTRA BF
+ 119 THR  ( 154 ) A    C     --  121 ALA  ( 156 ) A    N       0.217   2.683 INTRA BF
+ 392 ARG  ( 148 ) B    O     --  393 TYR  ( 149 ) B    C       0.214   2.586 INTRA BF
+ 398 THR  ( 154 ) B    C     --  400 ALA  ( 156 ) B    N       0.210   2.690 INTRA BF
+  64 ALA  (  99 ) A    O     --   67 VAL  ( 102 ) A    N       0.207   2.343 INTRA HB
+And so on for a total of   265 lines.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 61 # Warning: Inside/Outside residue distribution unusual
+===========================================================
+The distribution of residue types over the inside and the outside of the
+protein is unusual. Normal values for the RMS Z-score below are between
+0.84 and 1.16. The fact that it is higher in this structure could be
+caused by transmembrane helices, by the fact that it is part of a
+multimeric active unit, or by mistraced segments in the density.
+ 
+inside/outside RMS Z-score : 1.207
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 62 # Note: Inside/Outside RMS Z-score plot
+============================================
+The Inside/Outside distribution normality RMS Z-score over a 15
+residue window is plotted as function of the residue number. High
+areas in the plot (above 1.5) indicate unusual inside/outside
+patterns.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: A
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 63 # Note: Inside/Outside RMS Z-score plot
+============================================
+
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: B
+------------------------------------------------------------------------
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+For efficiency reasons the residues will be scored alphabetically
+ 
+ 
+ 
+ 
+ 
+ Checking all: ALA   N     H
+ Checking all: ALA   CA    H
+ Checking all: ALA   C     H
+ Checking all: ALA   O     H
+ Checking all: ALA   CB    H
+ Checking all: CYS   N     H
+ Checking all: CYS   CA    H
+ Checking all: CYS   C     H
+ Checking all: CYS   O     H
+ Checking all: CYS   CB    H
+ Checking all: CYS   SG    H
+ Checking all: ASP   N     H
+ Checking all: ASP   CA    H
+ Checking all: ASP   C     H
+ Checking all: ASP   O     H
+ Checking all: ASP   CB    H
+ Checking all: ASP   CG    H
+ Checking all: ASP   OD1   H
+ Checking all: ASP   OD2   H
+ Checking all: GLU   N     H
+ Checking all: GLU   CA    H
+ Checking all: GLU   C     H
+ Checking all: GLU   O     H
+ Checking all: GLU   CB    H
+ Checking all: GLU   CG    H
+ Checking all: GLU   CD    H
+ Checking all: GLU   OE1   H
+ Checking all: GLU   OE2   H
+ Checking all: PHE   N     H
+ Checking all: PHE   CA    H
+ Checking all: PHE   C     H
+ Checking all: PHE   O     H
+ Checking all: PHE   CB    H
+ Checking all: PHE   CG    H
+ Checking all: PHE   CD1   H
+ Checking all: PHE   CD2   H
+ Checking all: PHE   CE1   H
+ Checking all: PHE   CE2   H
+ Checking all: PHE   CZ    H
+ Checking all: GLY   N     H
+ Checking all: GLY   CA    H
+ Checking all: GLY   C     H
+ Checking all: GLY   O     H
+ Checking all: HIS   N     H
+ Checking all: HIS   CA    H
+ Checking all: HIS   C     H
+ Checking all: HIS   O     H
+ Checking all: HIS   CB    H
+ Checking all: HIS   CG    H
+ Checking all: HIS   ND1   H
+ Checking all: HIS   CD2   H
+ Checking all: HIS   CE1   H
+ Checking all: HIS   NE2   H
+ Checking all: ILE   N     H
+ Checking all: ILE   CA    H
+ Checking all: ILE   C     H
+ Checking all: ILE   O     H
+ Checking all: ILE   CB    H
+ Checking all: ILE   CG1   H
+ Checking all: ILE   CG2   H
+ Checking all: ILE   CD1   H
+ Checking all: LYS   N     H
+ Checking all: LYS   CA    H
+ Checking all: LYS   C     H
+ Checking all: LYS   O     H
+ Checking all: LYS   CB    H
+ Checking all: LYS   CG    H
+ Checking all: LYS   CD    H
+ Checking all: LYS   CE    H
+ Checking all: LYS   NZ    H
+ Checking all: LEU   N     H
+ Checking all: LEU   CA    H
+ Checking all: LEU   C     H
+ Checking all: LEU   O     H
+ Checking all: LEU   CB    H
+ Checking all: LEU   CG    H
+ Checking all: LEU   CD1   H
+ Checking all: LEU   CD2   H
+ Checking all: MET   N     H
+ Checking all: MET   CA    H
+ Checking all: MET   C     H
+ Checking all: MET   O     H
+ Checking all: MET   CB    H
+ Checking all: MET   CG    H
+ Checking all: MET   SD    H
+ Checking all: MET   CE    H
+ Checking all: ASN   N     H
+ Checking all: ASN   CA    H
+ Checking all: ASN   C     H
+ Checking all: ASN   O     H
+ Checking all: ASN   CB    H
+ Checking all: ASN   CG    H
+ Checking all: ASN   OD1   H
+ Checking all: ASN   ND2   H
+ Checking all: PRO   N     H
+ Checking all: PRO   CA    H
+ Checking all: PRO   C     H
+ Checking all: PRO   O     H
+ Checking all: PRO   CB    H
+ Checking all: PRO   CG    H
+ Checking all: PRO   CD    H
+ Checking all: GLN   N     H
+ Checking all: GLN   CA    H
+ Checking all: GLN   C     H
+ Checking all: GLN   O     H
+ Checking all: GLN   CB    H
+ Checking all: GLN   CG    H
+ Checking all: GLN   CD    H
+ Checking all: GLN   OE1   H
+ Checking all: GLN   NE2   H
+ Checking all: ARG   N     H
+ Checking all: ARG   CA    H
+ Checking all: ARG   C     H
+ Checking all: ARG   O     H
+ Checking all: ARG   CB    H
+ Checking all: ARG   CG    H
+ Checking all: ARG   CD    H
+ Checking all: ARG   NE    H
+ Checking all: ARG   CZ    H
+ Checking all: ARG   NH1   H
+ Checking all: ARG   NH2   H
+ Checking all: SER   N     H
+ Checking all: SER   CA    H
+ Checking all: SER   C     H
+ Checking all: SER   O     H
+ Checking all: SER   CB    H
+ Checking all: SER   OG    H
+ Checking all: THR   N     H
+ Checking all: THR   CA    H
+ Checking all: THR   C     H
+ Checking all: THR   O     H
+ Checking all: THR   CB    H
+ Checking all: THR   OG1   H
+ Checking all: THR   CG2   H
+ Checking all: VAL   N     H
+ Checking all: VAL   CA    H
+ Checking all: VAL   C     H
+ Checking all: VAL   O     H
+ Checking all: VAL   CB    H
+ Checking all: VAL   CG1   H
+ Checking all: VAL   CG2   H
+ Checking all: TRP   N     H
+ Checking all: TRP   CA    H
+ Checking all: TRP   C     H
+ Checking all: TRP   O     H
+ Checking all: TRP   CB    H
+ Checking all: TRP   CG    H
+ Checking all: TRP   CD1   H
+ Checking all: TRP   CD2   H
+ Checking all: TRP   NE1   H
+ Checking all: TRP   CE2   H
+ Checking all: TRP   CE3   H
+ Checking all: TRP   CZ2   H
+ Checking all: TRP   CZ3   H
+ Checking all: TRP   CH2   H
+ Checking all: TYR   N     H
+ Checking all: TYR   CA    H
+ Checking all: TYR   C     H
+ Checking all: TYR   O     H
+ Checking all: TYR   CB    H
+ Checking all: TYR   CG    H
+ Checking all: TYR   CD1   H
+ Checking all: TYR   CD2   H
+ Checking all: TYR   CE1   H
+ Checking all: TYR   CE2   H
+ Checking all: TYR   CZ    H
+ Checking all: TYR   OH    H
+ Checking all: ALA   N     S
+ Checking all: ALA   CA    S
+ Checking all: ALA   C     S
+ Checking all: ALA   O     S
+ Checking all: ALA   CB    S
+ Checking all: CYS   N     S
+ Checking all: CYS   CA    S
+ Checking all: CYS   C     S
+ Checking all: CYS   O     S
+ Checking all: CYS   CB    S
+ Checking all: CYS   SG    S
+ Checking all: ASP   N     S
+ Checking all: ASP   CA    S
+ Checking all: ASP   C     S
+ Checking all: ASP   O     S
+ Checking all: ASP   CB    S
+ Checking all: ASP   CG    S
+ Checking all: ASP   OD1   S
+ Checking all: ASP   OD2   S
+ Checking all: GLU   N     S
+ Checking all: GLU   CA    S
+ Checking all: GLU   C     S
+ Checking all: GLU   O     S
+ Checking all: GLU   CB    S
+ Checking all: GLU   CG    S
+ Checking all: GLU   CD    S
+ Checking all: GLU   OE1   S
+ Checking all: GLU   OE2   S
+ Checking all: PHE   N     S
+ Checking all: PHE   CA    S
+ Checking all: PHE   C     S
+ Checking all: PHE   O     S
+ Checking all: PHE   CB    S
+ Checking all: PHE   CG    S
+ Checking all: PHE   CD1   S
+ Checking all: PHE   CD2   S
+ Checking all: PHE   CE1   S
+ Checking all: PHE   CE2   S
+ Checking all: PHE   CZ    S
+ Checking all: GLY   N     S
+ Checking all: GLY   CA    S
+ Checking all: GLY   C     S
+ Checking all: GLY   O     S
+ Checking all: HIS   N     S
+ Checking all: HIS   CA    S
+ Checking all: HIS   C     S
+ Checking all: HIS   O     S
+ Checking all: HIS   CB    S
+ Checking all: HIS   CG    S
+ Checking all: HIS   ND1   S
+ Checking all: HIS   CD2   S
+ Checking all: HIS   CE1   S
+ Checking all: HIS   NE2   S
+ Checking all: ILE   N     S
+ Checking all: ILE   CA    S
+ Checking all: ILE   C     S
+ Checking all: ILE   O     S
+ Checking all: ILE   CB    S
+ Checking all: ILE   CG1   S
+ Checking all: ILE   CG2   S
+ Checking all: ILE   CD1   S
+ Checking all: LYS   N     S
+ Checking all: LYS   CA    S
+ Checking all: LYS   C     S
+ Checking all: LYS   O     S
+ Checking all: LYS   CB    S
+ Checking all: LYS   CG    S
+ Checking all: LYS   CD    S
+ Checking all: LYS   CE    S
+ Checking all: LYS   NZ    S
+ Checking all: LEU   N     S
+ Checking all: LEU   CA    S
+ Checking all: LEU   C     S
+ Checking all: LEU   O     S
+ Checking all: LEU   CB    S
+ Checking all: LEU   CG    S
+ Checking all: LEU   CD1   S
+ Checking all: LEU   CD2   S
+ Checking all: MET   N     S
+ Checking all: MET   CA    S
+ Checking all: MET   C     S
+ Checking all: MET   O     S
+ Checking all: MET   CB    S
+ Checking all: MET   CG    S
+ Checking all: MET   SD    S
+ Checking all: MET   CE    S
+ Checking all: ASN   N     S
+ Checking all: ASN   CA    S
+ Checking all: ASN   C     S
+ Checking all: ASN   O     S
+ Checking all: ASN   CB    S
+ Checking all: ASN   CG    S
+ Checking all: ASN   OD1   S
+ Checking all: ASN   ND2   S
+ Checking all: PRO   N     S
+ Checking all: PRO   CA    S
+ Checking all: PRO   C     S
+ Checking all: PRO   O     S
+ Checking all: PRO   CB    S
+ Checking all: PRO   CG    S
+ Checking all: PRO   CD    S
+ Checking all: GLN   N     S
+ Checking all: GLN   CA    S
+ Checking all: GLN   C     S
+ Checking all: GLN   O     S
+ Checking all: GLN   CB    S
+ Checking all: GLN   CG    S
+ Checking all: GLN   CD    S
+ Checking all: GLN   OE1   S
+ Checking all: GLN   NE2   S
+ Checking all: ARG   N     S
+ Checking all: ARG   CA    S
+ Checking all: ARG   C     S
+ Checking all: ARG   O     S
+ Checking all: ARG   CB    S
+ Checking all: ARG   CG    S
+ Checking all: ARG   CD    S
+ Checking all: ARG   NE    S
+ Checking all: ARG   CZ    S
+ Checking all: ARG   NH1   S
+ Checking all: ARG   NH2   S
+ Checking all: SER   N     S
+ Checking all: SER   CA    S
+ Checking all: SER   C     S
+ Checking all: SER   O     S
+ Checking all: SER   CB    S
+ Checking all: SER   OG    S
+ Checking all: THR   N     S
+ Checking all: THR   CA    S
+ Checking all: THR   C     S
+ Checking all: THR   O     S
+ Checking all: THR   CB    S
+ Checking all: THR   OG1   S
+ Checking all: THR   CG2   S
+ Checking all: VAL   N     S
+ Checking all: VAL   CA    S
+ Checking all: VAL   C     S
+ Checking all: VAL   O     S
+ Checking all: VAL   CB    S
+ Checking all: VAL   CG1   S
+ Checking all: VAL   CG2   S
+ Checking all: TRP   N     S
+ Checking all: TRP   CA    S
+ Checking all: TRP   C     S
+ Checking all: TRP   O     S
+ Checking all: TRP   CB    S
+ Checking all: TRP   CG    S
+ Checking all: TRP   CD1   S
+ Checking all: TRP   CD2   S
+ Checking all: TRP   NE1   S
+ Checking all: TRP   CE2   S
+ Checking all: TRP   CE3   S
+ Checking all: TRP   CZ2   S
+ Checking all: TRP   CZ3   S
+ Checking all: TRP   CH2   S
+ Checking all: TYR   N     S
+ Checking all: TYR   CA    S
+ Checking all: TYR   C     S
+ Checking all: TYR   O     S
+ Checking all: TYR   CB    S
+ Checking all: TYR   CG    S
+ Checking all: TYR   CD1   S
+ Checking all: TYR   CD2   S
+ Checking all: TYR   CE1   S
+ Checking all: TYR   CE2   S
+ Checking all: TYR   CZ    S
+ Checking all: TYR   OH    S
+    1  LEU  (  36) :  -1.455
+    2  SER  (  37) :   1.013
+    3  GLN  (  38) :  -1.303
+    4  GLN  (  39) :  -2.821
+    5  TRP  (  40) :  -3.428
+    6  GLU  (  41) :  -4.155
+    7  ALA  (  42) :   0.208
+    8  GLY  (  43) :  -3.458
+    9  MET  (  44) :  -0.543
+   10  SER  (  45) :   1.135
+   11  LEU  (  46) :  -0.167
+   12  LEU  (  47) :   1.276
+   13  MET  (  48) :   1.680
+   14  ALA  (  49) :   1.612
+   15  LEU  (  50) :   1.207
+   16  VAL  (  51) :   1.051
+   17  VAL  (  52) :   0.894
+   18  LEU  (  53) :  -0.514
+   19  LEU  (  54) :  -2.329
+   20  ILE  (  55) :  -1.195
+   21  VAL  (  56) :  -2.387
+   22  ALA  (  57) :  -0.841
+   23  GLY  (  58) :   1.285
+   24  ASN  (  59) :   1.109
+   25  VAL  (  60) :  -0.697
+   26  LEU  (  61) :   0.972
+   27  VAL  (  62) :   0.815
+   28  ILE  (  63) :   0.744
+   29  ALA  (  64) :  -0.695
+   30  ALA  (  65) :  -2.137
+   31  ILE  (  66) :  -0.836
+   32  GLY  (  67) :  -2.920
+   33  SER  (  68) :  -2.328
+   34  THR  (  69) :   1.136
+   35  GLN  (  70) :  -3.257
+   36  ARG  (  71) :  -4.514
+   37  LEU  (  72) :   0.704
+   38  GLN  (  73) :  -2.874
+   39  THR  (  74) :   1.687
+   40  LEU  (  75) :  -1.017
+   41  THR  (  76) :  -0.823
+   42  ASN  (  77) :  -1.519
+   43  LEU  (  78) :   0.511
+   44  PHE  (  79) :   0.299
+   45  ILE  (  80) :   0.156
+   46  THR  (  81) :   0.193
+   47  SER  (  82) :   0.449
+   48  LEU  (  83) :   0.685
+   49  ALA  (  84) :   0.919
+   50  CYS  (  85) :   1.000
+   51  ALA  (  86) :   1.294
+   52  ASP  (  87) :   0.407
+   53  LEU  (  88) :  -0.881
+   54  VAL  (  89) :  -0.992
+   55  VAL  (  90) :  -0.222
+   56  GLY  (  91) :  -0.697
+   57  LEU  (  92) :  -1.224
+   58  LEU  (  93) :  -1.252
+   59  VAL  (  94) :  -2.409
+   60  VAL  (  95) :  -0.311
+   61  PRO  (  96) :  -3.147
+   62  PHE  (  97) :  -0.353
+   63  GLY  (  98) :  -2.645
+   64  ALA  (  99) :  -2.186
+   65  THR  ( 100) :  -1.159
+   66  LEU  ( 101) :  -2.614
+   67  VAL  ( 102) :  -2.036
+   68  VAL  ( 103) :  -3.286
+   69  ARG  ( 104) :  -4.863
+   70  GLY  ( 105) :  -2.515
+   71  THR  ( 106) :  -1.103
+   72  TRP  ( 107) :  -1.291
+   73  LEU  ( 108) :  -5.810
+   74  TRP  ( 109) :  -2.729
+   75  GLY  ( 110) :   3.103
+   76  SER  ( 111) :  -0.877
+   77  PHE  ( 112) :  -0.579
+   78  LEU  ( 113) :   0.852
+   79  CYS  ( 114) :   0.694
+   80  GLU  ( 115) :   0.783
+   81  LEU  ( 116) :   1.312
+   82  TRP  ( 117) :   1.384
+   83  THR  ( 118) :   0.591
+   84  SER  ( 119) :   0.082
+   85  LEU  ( 120) :   0.080
+   86  ASP  ( 121) :  -2.423
+   87  VAL  ( 122) :  -0.139
+   88  LEU  ( 123) :   0.739
+   89  CYS  ( 124) :   0.237
+   90  VAL  ( 125) :   1.118
+   91  THR  ( 126) :   0.416
+   92  ALA  ( 127) :  -0.302
+   93  SER  ( 128) :   0.162
+   94  ILE  ( 129) :  -0.302
+   95  GLU  ( 130) :   1.481
+   96  THR  ( 131) :   1.041
+   97  LEU  ( 132) :   1.113
+   98  CYS  ( 133) :   0.660
+   99  VAL  ( 134) :   1.105
+  100  ILE  ( 135) :   0.917
+  101  ALA  ( 136) :  -0.991
+  102  ILE  ( 137) :  -1.659
+  103  ASP  ( 138) :  -1.762
+  104  ARG  ( 139) :  -1.800
+  105  TYR  ( 140) :   0.257
+  106  LEU  ( 141) :  -0.873
+  107  ALA  ( 142) :  -1.630
+  108  ILE  ( 143) :  -1.553
+  109  THR  ( 144) :  -2.962
+  110  SER  ( 145) :   0.469
+  111  PRO  ( 146) :   0.979
+  112  PHE  ( 147) :  -4.641
+  113  ARG  ( 148) :  -1.961
+  114  TYR  ( 149) :  -1.478
+  115  GLN  ( 150) :  -2.978
+  116  SER  ( 151) :  -3.988
+  117  LEU  ( 152) :  -3.757
+  118  MET  ( 153) :  -1.272
+  119  THR  ( 154) :   0.084
+  120  ARG  ( 155) :  -5.169
+  121  ALA  ( 156) :   0.001
+  122  ARG  ( 157) :  -1.223
+  123  ALA  ( 158) :   0.340
+  124  LYS  ( 159) :   2.098
+  125  VAL  ( 160) :   0.409
+  126  ILE  ( 161) :   0.991
+  127  ILE  ( 162) :   1.038
+  128  CYS  ( 163) :   1.256
+  129  THR  ( 164) :   0.370
+  130  VAL  ( 165) :   0.253
+  131  TRP  ( 166) :  -3.042
+  132  ALA  ( 167) :   0.368
+  133  ILE  ( 168) :   1.956
+  134  SER  ( 169) :   0.263
+  135  ALA  ( 170) :  -0.141
+  136  LEU  ( 171) :  -0.543
+  137  VAL  ( 172) :  -1.938
+  138  SER  ( 173) :  -2.492
+  139  PHE  ( 174) :  -3.306
+  140  LEU  ( 175) :   0.224
+  141  PRO  ( 176) :  -1.462
+  142  ILE  ( 177) :  -0.580
+  143  MET  ( 178) :  -2.994
+  144  MET  ( 179) :  -4.343
+  145  HIS  ( 180) :  -1.931
+  146  TRP  ( 181) :  -3.718
+  147  TRP  ( 182) :   0.286
+  148  ARG  ( 183) :  -3.881
+  149  ASP  ( 184) :  -0.432
+  150  GLU  ( 185) :  -4.829
+  151  ASP  ( 186) :   3.142
+  152  PRO  ( 187) :  -0.585
+  153  GLN  ( 188) :  -2.622
+  154  ALA  ( 189) :   0.226
+  155  LEU  ( 190) :   0.990
+  156  LYS  ( 191) :   1.065
+  157  CYS  ( 192) :  -1.515
+  158  TYR  ( 193) :  -2.620
+  159  GLN  ( 194) :  -5.585
+  160  ASP  ( 195) :  -1.603
+  161  PRO  ( 196) :   0.417
+  162  GLY  ( 197) :   0.056
+  163  CYS  ( 198) :  -2.290
+  164  CYS  ( 199) :  -1.828
+  165  ASP  ( 200) :  -2.716
+  166  PHE  ( 201) :  -2.954
+  167  VAL  ( 202) :  -3.024
+  168  THR  ( 203) :  -1.055
+  169  ASN  ( 204) :   3.997
+  170  ARG  ( 205) :  -1.052
+  171  ALA  ( 206) :  -0.155
+  172  TYR  ( 207) :  -0.350
+  173  ALA  ( 208) :  -3.012
+  174  ILE  ( 209) :   0.786
+  175  ALA  ( 210) :   0.361
+  176  SER  ( 211) :  -0.998
+  177  SER  ( 212) :  -0.285
+  178  ILE  ( 213) :  -1.353
+  179  ILE  ( 214) :  -2.199
+  180  SER  ( 215) :  -4.190
+  181  PHE  ( 216) :   0.938
+  182  TYR  ( 217) :  -1.337
+  183  ILE  ( 218) :   0.185
+  184  PRO  ( 219) :   0.772
+  185  LEU  ( 220) :   1.425
+  186  LEU  ( 221) :   0.420
+  187  ILE  ( 222) :   1.001
+  188  MET  ( 223) :  -0.845
+  189  ILE  ( 224) :   0.366
+  190  PHE  ( 225) :  -0.279
+  191  VAL  ( 226) :  -0.287
+  192  ALA  ( 227) :  -0.010
+  193  LEU  ( 228) :   1.312
+  194  ARG  ( 229) :   0.799
+  195  VAL  ( 230) :   1.274
+  196  TYR  ( 231) :  -2.646
+  197  ARG  ( 232) :   0.180
+  198  GLU  ( 233) :  -0.457
+  199  ALA  ( 234) :   0.449
+  200  LYS  ( 235) :  -1.509
+  201  GLU  ( 236) :  -3.935
+  202  GLN  ( 237) :  -6.125
+  203  VAL  ( 280) :  -3.487
+  204  MET  ( 281) :  -6.069
+  205  LEU  ( 282) :  -0.993
+  206  MET  ( 283) :  -0.315
+  207  ARG  ( 284) :   0.747
+  208  GLU  ( 285) :   0.196
+  209  HIS  ( 286) :   0.356
+  210  LYS  ( 287) :  -1.006
+  211  ALA  ( 288) :  -1.243
+  212  LEU  ( 289) :  -0.271
+  213  LYS  ( 290) :  -0.009
+  214  THR  ( 291) :  -2.303
+  215  LEU  ( 292) :   0.735
+  216  GLY  ( 293) :  -1.160
+  217  ILE  ( 294) :  -0.903
+  218  ILE  ( 295) :  -0.723
+  219  MET  ( 296) :   0.659
+  220  GLY  ( 297) :   0.698
+  221  VAL  ( 298) :   0.467
+  222  PHE  ( 299) :   1.090
+  223  THR  ( 300) :  -0.294
+  224  LEU  ( 301) :  -2.870
+  225  CYS  ( 302) :  -2.357
+  226  TRP  ( 303) :  -3.996
+  227  LEU  ( 304) :   0.991
+  228  PRO  ( 305) :  -2.037
+  229  PHE  ( 306) :   0.873
+  230  PHE  ( 307) :  -2.716
+  231  LEU  ( 308) :   0.096
+  232  VAL  ( 309) :  -1.105
+  233  ASN  ( 310) :  -1.347
+  234  ILE  ( 311) :   0.501
+  235  VAL  ( 312) :  -0.582
+  236  ASN  ( 313) :  -3.484
+  237  VAL  ( 314) :  -2.697
+  238  PHE  ( 315) :  -4.826
+  239  ASN  ( 316) :   0.940
+  240  ARG  ( 317) :  -0.796
+  241  ASP  ( 318) :  -1.948
+  242  LEU  ( 319) :  -4.210
+  243  VAL  ( 320) :  -0.644
+  244  PRO  ( 321) :   0.421
+  245  ASP  ( 322) :  -1.353
+  246  TRP  ( 323) :  -0.840
+  247  LEU  ( 324) :  -0.030
+  248  PHE  ( 325) :  -3.364
+  249  VAL  ( 326) :   0.941
+  250  ALA  ( 327) :   0.620
+  251  PHE  ( 328) :  -1.381
+  252  ASN  ( 329) :  -1.746
+  253  TRP  ( 330) :  -2.799
+  254  LEU  ( 331) :  -0.420
+  255  GLY  ( 332) :  -1.425
+  256  TYR  ( 333) :  -1.313
+  257  ALA  ( 334) :  -1.022
+  258  ASN  ( 335) :  -1.856
+  259  SER  ( 336) :  -0.812
+  260  ALA  ( 337) :  -1.498
+  261  MET  ( 338) :  -2.314
+  262  ASN  ( 339) :   1.820
+  263  PRO  ( 340) :  -0.943
+  264  ILE  ( 341) :  -2.226
+  265  ILE  ( 342) :  -1.571
+  266  TYR  ( 343) :  -1.470
+  267  CYS  ( 344) :  -1.850
+  268  ARG  ( 345) :  -5.783
+  269  SER  ( 346) :   3.273
+  270  PRO  ( 347) :  -0.326
+  271  ASP  ( 348) :  -2.175
+  272  PHE  ( 349) :   0.402
+  273  ARG  ( 350) :   0.504
+  274  LYS  ( 351) :   0.099
+  275  ALA  ( 352) :  -0.579
+  276  PHE  ( 353) :  -1.181
+  277  LYS  ( 354) :  -1.927
+  278  ARG  ( 355) :  -6.861
+  279  LEU  ( 356) :  -3.198
+  280  LEU  (  36) :  -1.575
+  281  SER  (  37) :   1.015
+  282  GLN  (  38) :  -1.288
+  283  GLN  (  39) :  -2.901
+  284  TRP  (  40) :  -3.559
+  285  GLU  (  41) :  -4.161
+  286  ALA  (  42) :   0.305
+  287  GLY  (  43) :  -3.452
+  288  MET  (  44) :  -0.541
+  289  SER  (  45) :   1.130
+  290  LEU  (  46) :  -0.342
+  291  LEU  (  47) :   1.378
+  292  MET  (  48) :   1.746
+  293  ALA  (  49) :   1.611
+  294  LEU  (  50) :   1.282
+  295  VAL  (  51) :   1.009
+  296  VAL  (  52) :   1.001
+  297  LEU  (  53) :  -0.512
+  298  LEU  (  54) :  -2.339
+  299  ILE  (  55) :  -1.183
+  300  VAL  (  56) :  -2.387
+  301  ALA  (  57) :  -0.887
+  302  GLY  (  58) :   1.249
+  303  ASN  (  59) :   1.125
+  304  VAL  (  60) :  -0.657
+  305  LEU  (  61) :   1.002
+  306  VAL  (  62) :   0.805
+  307  ILE  (  63) :   0.652
+  308  ALA  (  64) :  -0.710
+  309  ALA  (  65) :  -2.144
+  310  ILE  (  66) :  -0.847
+  311  GLY  (  67) :  -2.941
+  312  SER  (  68) :  -2.297
+  313  THR  (  69) :   1.125
+  314  GLN  (  70) :  -3.236
+  315  ARG  (  71) :  -4.514
+  316  LEU  (  72) :   0.760
+  317  GLN  (  73) :  -2.894
+  318  THR  (  74) :   1.575
+  319  LEU  (  75) :  -1.079
+  320  THR  (  76) :  -0.911
+  321  ASN  (  77) :  -1.596
+  322  LEU  (  78) :   0.536
+  323  PHE  (  79) :   0.392
+  324  ILE  (  80) :   0.205
+  325  THR  (  81) :   0.211
+  326  SER  (  82) :   0.405
+  327  LEU  (  83) :   0.645
+  328  ALA  (  84) :   0.909
+  329  CYS  (  85) :   1.162
+  330  ALA  (  86) :   1.349
+  331  ASP  (  87) :   0.338
+  332  LEU  (  88) :  -0.829
+  333  VAL  (  89) :  -1.023
+  334  VAL  (  90) :  -0.176
+  335  GLY  (  91) :  -0.727
+  336  LEU  (  92) :  -1.094
+  337  LEU  (  93) :  -1.028
+  338  VAL  (  94) :  -2.365
+  339  VAL  (  95) :  -0.308
+  340  PRO  (  96) :  -3.170
+  341  PHE  (  97) :  -0.444
+  342  GLY  (  98) :  -2.664
+  343  ALA  (  99) :  -2.192
+  344  THR  ( 100) :  -1.140
+  345  LEU  ( 101) :  -2.627
+  346  VAL  ( 102) :  -1.998
+  347  VAL  ( 103) :  -3.287
+  348  ARG  ( 104) :  -4.899
+  349  GLY  ( 105) :  -2.538
+  350  THR  ( 106) :  -1.099
+  351  TRP  ( 107) :  -1.331
+  352  LEU  ( 108) :  -5.822
+  353  TRP  ( 109) :  -2.665
+  354  GLY  ( 110) :   3.197
+  355  SER  ( 111) :  -0.959
+  356  PHE  ( 112) :  -0.548
+  357  LEU  ( 113) :   0.896
+  358  CYS  ( 114) :   0.700
+  359  GLU  ( 115) :   0.833
+  360  LEU  ( 116) :   1.066
+  361  TRP  ( 117) :   1.518
+  362  THR  ( 118) :   0.577
+  363  SER  ( 119) :   0.153
+  364  LEU  ( 120) :   0.254
+  365  ASP  ( 121) :  -2.392
+  366  VAL  ( 122) :  -0.097
+  367  LEU  ( 123) :   0.730
+  368  CYS  ( 124) :   0.361
+  369  VAL  ( 125) :   1.124
+  370  THR  ( 126) :   0.386
+  371  ALA  ( 127) :  -0.303
+  372  SER  ( 128) :   0.122
+  373  ILE  ( 129) :  -0.156
+  374  GLU  ( 130) :   1.317
+  375  THR  ( 131) :   1.059
+  376  LEU  ( 132) :   1.128
+  377  CYS  ( 133) :   0.601
+  378  VAL  ( 134) :   1.049
+  379  ILE  ( 135) :   0.931
+  380  ALA  ( 136) :  -0.959
+  381  ILE  ( 137) :  -1.661
+  382  ASP  ( 138) :  -1.758
+  383  ARG  ( 139) :  -1.817
+  384  TYR  ( 140) :   0.336
+  385  LEU  ( 141) :  -0.866
+  386  ALA  ( 142) :  -1.580
+  387  ILE  ( 143) :  -1.465
+  388  THR  ( 144) :  -2.929
+  389  SER  ( 145) :   0.688
+  390  PRO  ( 146) :   0.985
+  391  PHE  ( 147) :  -4.549
+  392  ARG  ( 148) :  -2.018
+  393  TYR  ( 149) :  -1.500
+  394  GLN  ( 150) :  -2.973
+  395  SER  ( 151) :  -3.937
+  396  LEU  ( 152) :  -3.768
+  397  MET  ( 153) :  -1.367
+  398  THR  ( 154) :   0.063
+  399  ARG  ( 155) :  -5.199
+  400  ALA  ( 156) :  -0.050
+  401  ARG  ( 157) :  -1.166
+  402  ALA  ( 158) :   0.338
+  403  LYS  ( 159) :   2.087
+  404  VAL  ( 160) :   0.405
+  405  ILE  ( 161) :   0.967
+  406  ILE  ( 162) :   1.036
+  407  CYS  ( 163) :   1.231
+  408  THR  ( 164) :   0.335
+  409  VAL  ( 165) :   0.335
+  410  TRP  ( 166) :  -3.082
+  411  ALA  ( 167) :   0.285
+  412  ILE  ( 168) :   1.788
+  413  SER  ( 169) :   0.154
+  414  ALA  ( 170) :  -0.262
+  415  LEU  ( 171) :  -0.660
+  416  VAL  ( 172) :  -1.973
+  417  SER  ( 173) :  -2.489
+  418  PHE  ( 174) :  -3.186
+  419  LEU  ( 175) :   0.258
+  420  PRO  ( 176) :  -1.318
+  sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+sh: /exec/whatif/whatif6.0/bin/scatter/scatter: No such file or directory
+cat: SCATTER.fig: No such file or directory
+421  ILE  ( 177) :  -0.612
+  422  MET  ( 178) :  -2.980
+  423  MET  ( 179) :  -4.312
+  424  HIS  ( 180) :  -2.181
+  425  TRP  ( 181) :  -3.683
+  426  TRP  ( 182) :   0.310
+  427  ARG  ( 183) :  -3.851
+  428  ASP  ( 184) :  -0.307
+  429  GLU  ( 185) :  -4.798
+  430  ASP  ( 186) :   3.087
+  431  PRO  ( 187) :  -0.728
+  432  GLN  ( 188) :  -2.764
+  433  ALA  ( 189) :   0.275
+  434  LEU  ( 190) :   1.030
+  435  LYS  ( 191) :   1.091
+  436  CYS  ( 192) :  -1.493
+  437  TYR  ( 193) :  -2.483
+  438  GLN  ( 194) :  -5.581
+  439  ASP  ( 195) :  -1.557
+  440  PRO  ( 196) :   0.357
+  441  GLY  ( 197) :  -0.024
+  442  CYS  ( 198) :  -2.172
+  443  CYS  ( 199) :  -1.966
+  444  ASP  ( 200) :  -2.692
+  445  PHE  ( 201) :  -2.977
+  446  VAL  ( 202) :  -3.024
+  447  THR  ( 203) :  -1.059
+  448  ASN  ( 204) :   4.092
+  449  ARG  ( 205) :  -1.124
+  450  ALA  ( 206) :  -0.210
+  451  TYR  ( 207) :  -0.353
+  452  ALA  ( 208) :  -2.926
+  453  ILE  ( 209) :   0.701
+  454  ALA  ( 210) :   0.394
+  455  SER  ( 211) :  -1.039
+  456  SER  ( 212) :  -0.286
+  457  ILE  ( 213) :  -1.363
+  458  ILE  ( 214) :  -2.197
+  459  SER  ( 215) :  -4.195
+  460  PHE  ( 216) :   0.788
+  461  TYR  ( 217) :  -1.386
+  462  ILE  ( 218) :   0.138
+  463  PRO  ( 219) :   0.801
+  464  LEU  ( 220) :   1.399
+  465  LEU  ( 221) :   0.351
+  466  ILE  ( 222) :   0.991
+  467  MET  ( 223) :  -0.806
+  468  ILE  ( 224) :   0.318
+  469  PHE  ( 225) :  -0.373
+  470  VAL  ( 226) :  -0.282
+  471  ALA  ( 227) :  -0.020
+  472  LEU  ( 228) :   1.276
+  473  ARG  ( 229) :   0.690
+  474  VAL  ( 230) :   1.284
+  475  TYR  ( 231) :  -2.645
+  476  ARG  ( 232) :   0.113
+  477  GLU  ( 233) :  -0.464
+  478  ALA  ( 234) :   0.533
+  479  LYS  ( 235) :  -0.365
+  480  GLU  ( 236) :  -0.150
+  481  GLN  ( 237) :  -5.823
+  482  ILE  ( 238) :  -4.801
+  483  VAL  ( 280) :  -3.491
+  484  MET  ( 281) :  -6.129
+  485  LEU  ( 282) :  -1.031
+  486  MET  ( 283) :  -0.242
+  487  ARG  ( 284) :   0.744
+  488  GLU  ( 285) :   0.171
+  489  HIS  ( 286) :   0.503
+  490  LYS  ( 287) :  -0.947
+  491  ALA  ( 288) :  -1.249
+  492  LEU  ( 289) :  -0.287
+  493  LYS  ( 290) :   0.003
+  494  THR  ( 291) :  -2.263
+  495  LEU  ( 292) :   0.803
+  496  GLY  ( 293) :  -1.146
+  497  ILE  ( 294) :  -0.914
+  498  ILE  ( 295) :  -0.751
+  499  MET  ( 296) :   0.670
+  500  GLY  ( 297) :   0.642
+  501  VAL  ( 298) :   0.525
+  502  PHE  ( 299) :   1.089
+  503  THR  ( 300) :  -0.284
+  504  LEU  ( 301) :  -2.868
+  505  CYS  ( 302) :  -2.387
+  506  TRP  ( 303) :  -3.987
+  507  LEU  ( 304) :   0.968
+  508  PRO  ( 305) :  -2.125
+  509  PHE  ( 306) :   0.828
+  510  PHE  ( 307) :  -2.769
+  511  LEU  ( 308) :   0.051
+  512  VAL  ( 309) :  -1.157
+  513  ASN  ( 310) :  -1.482
+  514  ILE  ( 311) :   0.595
+  515  VAL  ( 312) :  -0.587
+  516  ASN  ( 313) :  -3.479
+  517  VAL  ( 314) :  -2.631
+  518  PHE  ( 315) :  -4.826
+  519  ASN  ( 316) :   0.978
+  520  ARG  ( 317) :  -0.730
+  521  ASP  ( 318) :  -1.862
+  522  LEU  ( 319) :  -4.201
+  523  VAL  ( 320) :  -0.552
+  524  PRO  ( 321) :   0.457
+  525  ASP  ( 322) :  -1.355
+  526  TRP  ( 323) :  -0.869
+  527  LEU  ( 324) :  -0.016
+  528  PHE  ( 325) :  -3.362
+  529  VAL  ( 326) :   0.916
+  530  ALA  ( 327) :   0.650
+  531  PHE  ( 328) :  -1.412
+  532  ASN  ( 329) :  -1.445
+  533  TRP  ( 330) :  -2.823
+  534  LEU  ( 331) :  -0.531
+  535  GLY  ( 332) :  -1.552
+  536  TYR  ( 333) :  -1.241
+  537  ALA  ( 334) :  -1.066
+  538  ASN  ( 335) :  -1.736
+  539  SER  ( 336) :  -0.755
+  540  ALA  ( 337) :  -1.584
+  541  MET  ( 338) :  -2.350
+  542  ASN  ( 339) :   1.831
+  543  PRO  ( 340) :  -0.899
+  544  ILE  ( 341) :  -2.232
+  545  ILE  ( 342) :  -1.561
+  546  TYR  ( 343) :  -1.498
+  547  CYS  ( 344) :  -1.845
+  548  ARG  ( 345) :  -5.782
+  549  SER  ( 346) :   3.225
+  550  PRO  ( 347) :  -0.154
+  551  ASP  ( 348) :  -2.148
+  552  PHE  ( 349) :   0.347
+  553  ARG  ( 350) :   0.496
+  554  LYS  ( 351) :   0.019
+  555  ALA  ( 352) :  -0.593
+  556  PHE  ( 353) :  -1.113
+  557  LYS  ( 354) :  -1.955
+  558  ARG  ( 355) :  -6.881
+  559  LEU  ( 356) :  -3.174
+------------------------------------------------------------------------
+# 64 # Warning: Abnormal packing environment for some residues
+==============================================================
+The residues listed in the table below have an unusual packing
+environment.
+
+The packing environment of the residues is compared with the
+average packing environment for all residues of the same type in
+good PDB files.  A low packing score can indicate one of several
+things: Poor packing, misthreading of the sequence through the
+density, crystal contacts, contacts with a co-factor, or the
+residue is part of the active site. It is not uncommon to see a few
+of these, but in any case this requires further inspection of the
+residue.
+ 
+ 558 ARG  ( 355 ) B  -6.88
+ 278 ARG  ( 355 ) A  -6.86
+ 484 MET  ( 281 ) B  -6.13
+ 204 MET  ( 281 ) A  -6.07
+ 481 GLN  ( 237 ) B  -5.82
+ 352 LEU  ( 108 ) B  -5.82
+  73 LEU  ( 108 ) A  -5.81
+ 268 ARG  ( 345 ) A  -5.78
+ 548 ARG  ( 345 ) B  -5.78
+ 159 GLN  ( 194 ) A  -5.58
+ 438 GLN  ( 194 ) B  -5.58
+ 399 ARG  ( 155 ) B  -5.20
+ 120 ARG  ( 155 ) A  -5.17
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 65 # Note: No series of residues with bad packing environment
+===============================================================
+There are no stretches of three or more residues each having a quality
+control score worse than -4.0.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 66 # Note: Structural average packing environment OK
+======================================================
+The structural average quality control value is within normal ranges.
+ 
+ 
+Average for range    1 - 559 :  -1.004
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 67 # Note: Quality value plot
+===============================
+The quality value smoothed over a 10 residue window is plotted as
+function of the residue number. Low areas in the plot (below
+-2.0) indicate "unusual" packing.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: A
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 68 # Note: Quality value plot
+===============================
+The quality value smoothed over a 10 residue window is plotted as
+function of the residue number. Low areas in the plot (below
+-2.0) indicate "unusual" packing.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: B
+------------------------------------------------------------------------
+Fragment number 1
+Fragment number 2
+Fragment number 3
+Fragment number 4
+Fragment number 5
+Fragment number 6
+Fragment number 7
+Fragment number 8
+Fragment number 9
+Fragment number 10
+Fragment number 11
+Fragment number 12
+Fragment number 13
+Fragment number 14
+Fragment number 15
+Fragment number 16
+Fragment number 17
+Fragment number 18
+Fragment number 19
+Fragment number 20
+Fragment number 21
+Fragment number 22
+Fragment number 23
+Fragment number 24
+Fragment number 25
+Fragment number 26
+Fragment number 27
+Fragment number 28
+Fragment number 29
+Fragment number 30
+Fragment number 31
+Fragment number 32
+Fragment number 33
+Fragment number 34
+Fragment number 35
+Fragment number 36
+Fragment number 37
+Fragment number 38
+Fragment number 39
+Fragment number 40
+Fragment number 41
+Fragment number 42
+Fragment number 43
+Fragment number 44
+Fragment number 45
+Fragment number 46
+Fragment number 47
+Fragment number 48
+Fragment number 49
+Fragment number 50
+Fragment number 51
+Fragment number 52
+Fragment number 53
+Fragment number 54
+Fragment number 55
+Fragment number 56
+Fragment number 57
+Fragment number 58
+Fragment number 59
+Fragment number 60
+Fragment number 61
+Fragment number 62
+Fragment number 63
+Fragment number 64
+Fragment number 65
+Fragment number 66
+Fragment number 67
+Fragment number 68
+Fragment number 69
+Fragment number 70
+Fragment number 71
+Fragment number 72
+Fragment number 73
+Fragment number 74
+Fragment number 75
+Fragment number 76
+Fragment number 77
+----Residue-------      State    AllAll    BB-BB    BB-SC    SC-BB    SC-SC
+---------------------------------------------------------------------------
+   1 LEU  (  36  ) A      2      -0.703   -0.295    0.314   -1.376   -0.761
+   2 SER  (  37  ) A      2      -0.025    0.190    0.021   -1.231   -0.788
+   3 GLN  (  38  ) A      2      -0.683   -0.156    0.268   -0.846   -0.828
+   4 GLN  (  39  ) A      2       1.384    1.348   -0.637    1.247    0.218
+   5 TRP  (  40  ) A      2      -1.072   -0.334   -1.644   -1.367   -1.363
+   6 GLU  (  41  ) A      2      -0.784   -0.537   -1.650    0.206   -0.258
+   7 ALA  (  42  ) A      2      -1.007   -0.883   -0.776    0.000    0.000
+   8 GLY  (  43  ) A      2      -0.911   -0.684   -1.288    0.000    0.000
+   9 MET  (  44  ) A      2       0.126   -0.058    1.704   -1.150    0.328
+  10 SER  (  45  ) A      2       1.479    1.407    0.889    0.910    0.192
+  11 LEU  (  46  ) A      2      -0.737    0.725   -1.164   -1.051   -1.971
+  12 LEU  (  47  ) A      2       1.591    1.286    1.467   -0.431    2.960
+  13 MET  (  48  ) A      2       0.323    0.509   -0.382    1.140   -0.661
+  14 ALA  (  49  ) A      2       1.519    1.747    0.156    0.000    0.000
+  15 LEU  (  50  ) A      2      -0.081   -0.275    0.192   -0.210    0.437
+  16 VAL  (  51  ) A      2       1.585    1.626    2.256    0.020    0.255
+  17 VAL  (  52  ) A      2       1.221    0.677    1.337    1.624    0.790
+  18 LEU  (  53  ) A      2       0.820    1.999   -0.208   -0.061   -1.276
+  19 LEU  (  54  ) A      2      -0.102    0.642   -1.258   -0.443    0.178
+  20 ILE  (  55  ) A      2      -1.006   -0.286   -1.702   -0.228   -1.716
+  21 VAL  (  56  ) A      2       0.041   -0.248    0.001    0.424    0.627
+  22 ALA  (  57  ) A      2      -0.308   -0.437    0.110    0.000    0.000
+  23 GLY  (  58  ) A      2       1.675    1.387    1.595    0.000    0.000
+  24 ASN  (  59  ) A      2       0.407   -0.079    1.322    0.676   -0.269
+  25 VAL  (  60  ) A      2       0.568    0.808    1.129   -0.738   -0.203
+  26 LEU  (  61  ) A      2       0.240    0.012   -0.086    0.266    0.645
+  27 VAL  (  62  ) A      2       0.298    0.522    0.356   -0.248   -0.034
+  28 ILE  (  63  ) A      2       1.746    1.376    0.575    2.089    0.726
+  29 ALA  (  64  ) A      2       0.434    0.668   -0.282    0.000    0.000
+  30 ALA  (  65  ) A      2       0.161    0.487   -0.494    0.000    0.000
+  31 ILE  (  66  ) A      2       0.082   -0.360   -0.167    0.882   -0.271
+  32 GLY  (  67  ) A      2      -0.689   -0.764    0.000    0.000    0.000
+  33 SER  (  68  ) A      2      -1.000   -1.027   -0.819    0.672   -0.866
+  34 THR  (  69  ) A      3      -1.118    0.030   -1.626   -0.303   -2.022
+  35 GLN  (  70  ) A      2      -1.057   -0.929    1.032   -1.007   -1.196
+  36 ARG  (  71  ) A      3      -1.350   -0.477   -1.038   -0.220   -1.541
+  37 LEU  (  72  ) A      3      -1.241   -0.538   -1.439    0.826   -1.605
+  38 GLN  (  73  ) A      2      -1.151   -1.860   -0.797    0.929   -1.047
+  39 THR  (  74  ) A      3      -0.407    0.288   -1.136    0.091   -1.137
+  40 LEU  (  75  ) A      2      -1.647   -1.395   -0.553   -1.548   -0.901
+  41 THR  (  76  ) A      3      -0.931   -1.002   -1.116   -1.665    2.306
+  42 ASN  (  77  ) A      2      -0.328   -0.517    0.358   -0.404   -0.015
+  43 LEU  (  78  ) A      2      -0.439   -0.045    0.274   -0.970   -0.605
+  44 PHE  (  79  ) A      2      -0.179   -0.044    0.074   -0.564   -0.150
+  45 ILE  (  80  ) A      2      -0.222    0.095   -0.107   -0.367   -0.392
+  46 THR  (  81  ) A      2       0.099   -0.016    0.070   -0.067    1.185
+  47 SER  (  82  ) A      2       0.005    0.623   -1.115   -0.970    0.609
+  48 LEU  (  83  ) A      2      -0.522    1.317   -1.851   -1.110   -1.065
+  49 ALA  (  84  ) A      2       0.550    0.759   -0.071    0.000    0.000
+  50 CYS  (  85  ) A      2       1.873    1.544    1.843    0.320   -0.190
+  51 ALA  (  86  ) A      2      -0.301   -0.101   -0.522    0.000    0.000
+  52 ASP  (  87  ) A      2      -0.228    0.253   -0.429    0.392   -1.366
+  53 LEU  (  88  ) A      2       0.169    0.337    0.266   -0.675    0.664
+  54 VAL  (  89  ) A      2       0.508    0.571    0.360    0.340    0.164
+  55 VAL  (  90  ) A      2       0.609    0.718    0.211    0.566    0.116
+  56 GLY  (  91  ) A      2      -0.925   -1.396    0.458    0.000    0.000
+  57 LEU  (  92  ) A      2       0.108   -0.371    0.048   -0.167    2.776
+  58 LEU  (  93  ) A      2      -1.017   -1.405    0.171   -1.281    0.531
+  59 VAL  (  94  ) A      2      -1.113   -0.367   -1.404   -1.261   -1.331
+  60 VAL  (  95  ) A      2      -0.581   -0.438   -1.103   -0.078   -0.232
+  61 PRO  (  96  ) A      2      -1.593   -0.319   -1.623   -1.716   -1.888
+  62 PHE  (  97  ) A      3       1.079    0.923   -0.388    0.257    1.250
+  63 GLY  (  98  ) A      2      -1.088   -1.036   -0.733    0.000    0.000
+  64 ALA  (  99  ) A      2      -0.744   -1.277    0.830    0.000    0.000
+  65 THR  ( 100  ) A      2      -0.680   -0.514   -0.583   -0.871   -0.301
+  66 LEU  ( 101  ) A      2      -1.903   -1.064   -1.731   -1.285   -2.002
+  67 VAL  ( 102  ) A      2      -0.805   -1.027   -0.479   -0.797    1.207
+  68 VAL  ( 103  ) A      2      -1.036   -1.058   -0.800   -0.396   -1.173
+  69 ARG  ( 104  ) A      2      -1.282   -1.629   -0.252   -1.563    0.991
+  70 GLY  ( 105  ) A      3      -0.530    0.111   -1.592    0.000    0.000
+  71 THR  ( 106  ) A      3      -0.525   -0.063   -0.750   -0.295   -1.221
+  72 TRP  ( 107  ) A      3      -1.890    0.045   -2.368   -0.535   -2.505
+  73 LEU  ( 108  ) A      3      -1.995   -0.836   -2.081   -0.532   -1.804
+  74 TRP  ( 109  ) A      3      -0.478   -1.047   -0.970   -0.603    0.787
+  75 GLY  ( 110  ) A      3      -0.080    0.143   -0.419    0.000    0.000
+  76 SER  ( 111  ) A      2      -1.105   -0.951   -0.693   -0.711   -1.563
+  77 PHE  ( 112  ) A      2      -0.088    0.176    0.948   -1.177   -0.394
+  78 LEU  ( 113  ) A      2       0.280    0.485    0.888   -0.830    0.418
+  79 CYS  ( 114  ) A      2      -0.575   -0.083   -0.423   -1.031   -1.161
+  80 GLU  ( 115  ) A      2      -0.055    0.557   -0.242    0.080   -0.992
+  81 LEU  ( 116  ) A      2       1.312    1.021    3.032   -0.473    0.844
+  82 TRP  ( 117  ) A      2      -0.237    0.114   -0.066    0.058   -1.111
+  83 THR  ( 118  ) A      2      -0.071    0.488   -0.063   -1.169   -0.662
+  84 SER  ( 119  ) A      2       1.681    1.308    1.251    1.888    0.901
+  85 LEU  ( 120  ) A      2       0.988    0.244    2.096   -0.023    1.590
+  86 ASP  ( 121  ) A      2      -1.735   -1.043   -1.735   -1.415   -1.443
+  87 VAL  ( 122  ) A      2       0.033    0.426   -0.114   -0.153   -0.907
+  88 LEU  ( 123  ) A      2       0.517    1.305   -1.234    0.106    0.155
+  89 CYS  ( 124  ) A      2      -0.276    0.460   -2.015    0.648   -1.099
+  90 VAL  ( 125  ) A      2      -0.665   -0.036   -1.323   -0.576   -0.860
+  91 THR  ( 126  ) A      2      -0.244    0.249   -1.329    0.119   -0.645
+  92 ALA  ( 127  ) A      2      -0.021    0.470   -0.889    0.000    0.000
+  93 SER  ( 128  ) A      2       0.669    0.207    1.485   -0.187    1.204
+  94 ILE  ( 129  ) A      2      -0.428   -0.294    1.476   -1.432   -0.315
+  95 GLU  ( 130  ) A      2      -0.543   -0.355   -0.499    0.261   -1.051
+  96 THR  ( 131  ) A      2       1.183    1.106    1.453    0.100    1.262
+  97 LEU  ( 132  ) A      2       1.211    0.213    0.691    1.121    1.787
+  98 CYS  ( 133  ) A      2       0.829    1.276   -0.918    0.128    0.323
+  99 VAL  ( 134  ) A      2       0.481    0.518    0.670   -0.427    0.934
+ 100 ILE  ( 135  ) A      2       0.066    0.577   -0.170   -0.818    0.702
+ 101 ALA  ( 136  ) A      2      -0.721   -0.203   -1.322    0.000    0.000
+ 102 ILE  ( 137  ) A      2      -0.609   -0.137   -0.266   -1.183   -0.531
+ 103 ASP  ( 138  ) A      2      -1.342   -0.622   -1.277   -1.343   -1.259
+ 104 ARG  ( 139  ) A      2      -1.075   -0.755   -1.114   -0.791   -0.487
+ 105 TYR  ( 140  ) A      2      -0.368    0.033    0.310   -0.788   -1.388
+ 106 LEU  ( 141  ) A      2      -1.510   -1.163   -1.113   -1.104   -0.983
+ 107 ALA  ( 142  ) A      2      -2.140   -1.898   -1.606    0.000    0.000
+ 108 ILE  ( 143  ) A      3      -0.564    0.146   -1.388    0.713   -0.929
+ 109 THR  ( 144  ) A      2      -1.324   -1.301   -0.917   -1.115   -0.601
+ 110 SER  ( 145  ) A      3      -1.069   -0.123   -1.528   -0.869   -0.908
+ 111 PRO  ( 146  ) A      2      -1.303   -0.857   -1.350   -0.926   -1.857
+ 112 PHE  ( 147  ) A      3      -1.891   -1.013   -1.570   -1.309   -1.137
+ 113 ARG  ( 148  ) A      2      -2.263   -1.202   -2.190   -1.092   -1.984
+ 114 TYR  ( 149  ) A      2      -0.965   -0.482   -1.453   -0.261   -1.429
+ 115 GLN  ( 150  ) A      3      -1.226   -0.457   -1.453   -0.103   -0.419
+ 116 SER  ( 151  ) A      2      -1.136   -0.989   -0.599   -1.134   -0.645
+ 117 LEU  ( 152  ) A      2      -1.738   -1.667   -0.472   -1.784   -0.572
+ 118 MET  ( 153  ) A      3       0.365    0.021    0.158   -0.032    0.661
+ 119 THR  ( 154  ) A      3       0.243    0.619    0.101   -0.159   -0.291
+ 120 ARG  ( 155  ) A      3       0.063    0.213   -0.055   -0.227    0.130
+ 121 ALA  ( 156  ) A      3      -0.084    0.797   -0.750    0.000    0.000
+ 122 ARG  ( 157  ) A      2      -1.401   -0.695   -1.088   -0.975   -1.572
+ 123 ALA  ( 158  ) A      2      -0.303   -0.893    0.893    0.000    0.000
+ 124 LYS  ( 159  ) A      2       1.082    0.175    2.605    0.148    1.368
+ 125 VAL  ( 160  ) A      2      -0.045    0.283    0.911   -1.247   -0.871
+ 126 ILE  ( 161  ) A      2       0.686    1.077    0.614   -0.082   -0.210
+ 127 ILE  ( 162  ) A      2       0.162    0.919    0.017   -0.590   -0.271
+ 128 CYS  ( 163  ) A      2      -0.683    0.674   -2.327   -0.677   -2.052
+ 129 THR  ( 164  ) A      2       1.485    1.536    1.573    0.252    2.771
+ 130 VAL  ( 165  ) A      2      -0.527   -0.499   -0.320   -0.156   -0.847
+ 131 TRP  ( 166  ) A      2      -0.972   -0.539   -1.565   -0.519   -1.092
+ 132 ALA  ( 167  ) A      2       1.243    1.845   -0.410    0.000    0.000
+ 133 ILE  ( 168  ) A      2       1.806    1.436    1.140    2.092    0.748
+ 134 SER  ( 169  ) A      2       0.635    0.492    0.298    1.114    0.199
+ 135 ALA  ( 170  ) A      2       0.945    0.871    0.726    0.000    0.000
+ 136 LEU  ( 171  ) A      2       0.604    1.306    0.211   -0.167   -0.855
+ 137 VAL  ( 172  ) A      2      -0.698   -0.505   -1.063   -0.256   -0.574
+ 138 SER  ( 173  ) A      2      -1.114   -0.810   -1.029   -0.581   -1.519
+ 139 PHE  ( 174  ) A      2       0.059    0.161    0.264   -0.364   -0.068
+ 140 LEU  ( 175  ) A      2       0.202    0.346   -0.076   -0.669    1.418
+ 141 PRO  ( 176  ) A      3      -0.185    0.488   -0.022    0.133   -0.901
+ 142 ILE  ( 177  ) A      2      -1.692   -1.361   -1.799   -1.048   -1.305
+ 143 MET  ( 178  ) A      2      -0.785   -0.511   -1.194    0.006   -0.405
+ 144 MET  ( 179  ) A      2      -1.168   -0.900   -1.093   -0.739   -0.962
+ 145 HIS  ( 180  ) A      3       0.090    0.178    0.344    0.168   -0.348
+ 146 TRP  ( 181  ) A      3      -0.488   -0.063   -0.551   -0.002   -0.939
+ 147 TRP  ( 182  ) A      3      -0.195   -0.018   -0.721   -0.802    0.714
+ 148 ARG  ( 183  ) A      3      -1.301   -0.418   -0.342   -0.515   -1.703
+ 149 ASP  ( 184  ) A      3      -0.556    0.105   -0.932    0.945   -1.315
+ 150 GLU  ( 185  ) A      3      -1.128   -0.377   -0.855   -0.718   -0.881
+ 151 ASP  ( 186  ) A      3      -0.161    1.764   -0.900   -0.461   -1.719
+ 152 PRO  ( 187  ) A      2       0.234   -0.038    0.007    1.083   -0.075
+ 153 GLN  ( 188  ) A      2      -1.926   -1.191   -0.469   -1.047   -1.459
+ 154 ALA  ( 189  ) A      2      -0.896   -0.800   -0.661    0.000    0.000
+ 155 LEU  ( 190  ) A      2      -0.259    0.653    0.131   -0.898   -1.254
+ 156 LYS  ( 191  ) A      2       2.315    1.884    1.291    2.404   -1.104
+ 157 CYS  ( 192  ) A      2      -0.867   -0.385   -0.911   -1.037   -0.607
+ 158 TYR  ( 193  ) A      2      -0.768   -0.305   -1.758    0.014   -1.037
+ 159 GLN  ( 194  ) A      2       0.592   -0.219   -0.869    1.066    0.550
+ 160 ASP  ( 195  ) A      3      -0.557    0.614   -1.665    0.632   -1.045
+ 161 PRO  ( 196  ) A      3      -1.002   -0.082   -1.088    0.535   -1.751
+ 162 GLY  ( 197  ) A      3      -1.105   -0.574   -1.165    0.000    0.000
+ 163 CYS  ( 198  ) A      3      -0.409   -0.096   -0.667   -0.328   -0.848
+ 164 CYS  ( 199  ) A      3       0.017    0.154    0.034    0.067   -0.532
+ 165 ASP  ( 200  ) A      3      -1.439   -0.862   -0.967   -0.760   -0.925
+ 166 PHE  ( 201  ) A      3      -2.242   -1.194   -1.780   -1.079   -0.747
+ 167 VAL  ( 202  ) A      3      -0.924   -0.718   -0.896    0.665   -1.101
+ 168 THR  ( 203  ) A      3      -0.782   -0.344   -1.289   -0.307   -0.619
+ 169 ASN  ( 204  ) A      3      -1.312    0.880   -2.736    0.296   -2.884
+ 170 ARG  ( 205  ) A      3      -0.373    0.840   -0.141   -0.788   -1.141
+ 171 ALA  ( 206  ) A      2      -0.434   -0.628    0.183    0.000    0.000
+ 172 TYR  ( 207  ) A      2      -0.622    0.251   -1.722    0.070   -1.677
+ 173 ALA  ( 208  ) A      2      -1.992   -1.623   -1.753    0.000    0.000
+ 174 ILE  ( 209  ) A      2       1.155    0.830    0.550    1.754    0.245
+ 175 ALA  ( 210  ) A      2       0.426    0.319    0.509    0.000    0.000
+ 176 SER  ( 211  ) A      2      -0.248   -0.082   -0.297   -0.511   -0.816
+ 177 SER  ( 212  ) A      2      -0.754   -0.360   -1.183   -0.356   -0.971
+ 178 ILE  ( 213  ) A      2       0.085    0.558   -0.010   -0.208   -0.683
+ 179 ILE  ( 214  ) A      2      -0.779   -0.818   -0.300   -0.628   -0.488
+ 180 SER  ( 215  ) A      2      -2.160   -1.889   -1.687   -1.127   -1.633
+ 181 PHE  ( 216  ) A      2      -0.551   -0.677    0.303   -0.345   -0.673
+ 182 TYR  ( 217  ) A      2       0.039    0.270    0.226   -0.287   -0.544
+ 183 ILE  ( 218  ) A      2       0.507    0.793    1.790   -1.079    0.113
+ 184 PRO  ( 219  ) A      2       0.563    0.349    0.981    0.369    0.222
+ 185 LEU  ( 220  ) A      2       1.012    1.026    1.370   -1.126    1.813
+ 186 LEU  ( 221  ) A      2       0.948    0.976    0.176    0.714   -0.234
+ 187 ILE  ( 222  ) A      2       1.101    1.232    0.575    0.844    0.376
+ 188 MET  ( 223  ) A      2      -0.422    0.175   -0.247   -1.052   -0.322
+ 189 ILE  ( 224  ) A      2       0.596    0.704    0.601   -0.036    0.562
+ 190 PHE  ( 225  ) A      2       0.851    1.472    0.419    0.161   -0.331
+ 191 VAL  ( 226  ) A      2       0.505    0.852   -0.623    0.985   -0.218
+ 192 ALA  ( 227  ) A      2       0.382    0.616   -0.207    0.000    0.000
+ 193 LEU  ( 228  ) A      2       1.201    1.698   -0.270    1.336   -0.836
+ 194 ARG  ( 229  ) A      2       0.090    0.561    0.234   -1.153    0.087
+ 195 VAL  ( 230  ) A      2      -0.305    0.603   -1.333   -0.486   -0.815
+ 196 TYR  ( 231  ) A      2      -0.136    0.148   -1.087    1.390   -1.185
+ 197 ARG  ( 232  ) A      2       1.301    1.927    1.067   -0.108   -1.033
+ 198 GLU  ( 233  ) A      2      -0.688    0.367   -0.844   -0.944   -1.006
+ 199 ALA  ( 234  ) A      2      -0.665   -0.546   -0.649    0.000    0.000
+ 200 LYS  ( 235  ) A      2      -0.913   -0.634   -1.309    0.096   -1.991
+ 201 GLU  ( 236  ) A      2      -1.690   -1.265   -1.096   -0.912   -0.935
+ 202 GLN  ( 237  ) A      3      -0.058   -0.260   -1.242    0.823    1.262
+ 203 VAL  ( 280  ) A      3      -2.524   -0.804   -1.890   -0.884   -1.958
+ 204 MET  ( 281  ) A      3      -2.898   -1.313   -1.905   -1.247   -1.968
+ 205 LEU  ( 282  ) A      2      -1.755   -1.073   -0.721   -1.581   -1.622
+ 206 MET  ( 283  ) A      2      -1.227   -0.384   -1.037   -1.463   -1.527
+ 207 ARG  ( 284  ) A      2      -0.989   -0.089   -1.016   -1.312   -1.188
+ 208 GLU  ( 285  ) A      2      -0.505    0.298   -1.096   -0.431   -0.975
+ 209 HIS  ( 286  ) A      2       1.078    1.201    0.027    1.824   -0.611
+ 210 LYS  ( 287  ) A      2      -0.210    0.510   -0.639   -0.586   -1.226
+ 211 ALA  ( 288  ) A      2      -0.081    0.133   -0.581    0.000    0.000
+ 212 LEU  ( 289  ) A      2      -1.475   -0.153   -0.914   -1.788   -1.802
+ 213 LYS  ( 290  ) A      2       0.495    0.797    0.511   -0.192   -0.945
+ 214 THR  ( 291  ) A      2       0.254   -0.185    0.817    0.355    0.802
+ 215 LEU  ( 292  ) A      2       0.657    0.510    1.428   -0.054    0.184
+ 216 GLY  ( 293  ) A      2      -0.119   -0.113   -0.079    0.000    0.000
+ 217 ILE  ( 294  ) A      2       0.259    0.211   -0.102    0.109    0.687
+ 218 ILE  ( 295  ) A      2      -0.064    0.204    0.561   -0.786    0.119
+ 219 MET  ( 296  ) A      2       1.453    0.281    2.318    0.627    1.472
+ 220 GLY  ( 297  ) A      2       1.487    1.280    1.760    0.000    0.000
+ 221 VAL  ( 298  ) A      2       0.314    0.747    1.103   -1.440    0.008
+ 222 PHE  ( 299  ) A      2      -0.064    0.098   -1.078    0.327    0.259
+ 223 THR  ( 300  ) A      2       0.378    0.228    0.287    0.525    0.515
+ 224 LEU  ( 301  ) A      2      -0.006    0.142   -0.394    1.110   -1.696
+ 225 CYS  ( 302  ) A      2      -0.507   -0.298   -1.008    0.140   -0.336
+ 226 TRP  ( 303  ) A      2      -0.158   -0.372   -0.114   -0.159    0.480
+ 227 LEU  ( 304  ) A      2       1.061    0.552    1.924   -0.020    1.347
+ 228 PRO  ( 305  ) A      2      -0.842   -1.124    0.065   -1.019    0.374
+ 229 PHE  ( 306  ) A      2      -0.933   -0.232   -0.154   -1.074   -1.803
+ 230 PHE  ( 307  ) A      2      -1.379   -1.435   -0.709   -0.881   -0.883
+ 231 LEU  ( 308  ) A      2       1.745    0.638    1.308    1.398    3.065
+ 232 VAL  ( 309  ) A      2      -0.160   -0.655   -0.170    0.607    0.550
+ 233 ASN  ( 310  ) A      2      -0.944   -0.418   -1.069   -0.914   -1.408
+ 234 ILE  ( 311  ) A      2      -0.428   -0.109   -0.178   -0.410   -0.811
+ 235 VAL  ( 312  ) A      2      -0.143    0.017   -0.550   -0.054    0.011
+ 236 ASN  ( 313  ) A      2      -1.122   -0.894   -0.788   -1.132   -0.521
+ 237 VAL  ( 314  ) A      2      -1.142   -1.243   -1.292   -0.175   -0.208
+ 238 PHE  ( 315  ) A      2      -1.045   -0.665   -1.359   -0.863   -0.974
+ 239 ASN  ( 316  ) A      3       0.587    0.644   -0.449    0.368    1.057
+ 240 ARG  ( 317  ) A      2      -1.212   -1.099    0.333   -1.273   -1.569
+ 241 ASP  ( 318  ) A      3      -0.698    0.289   -0.631   -0.885   -0.989
+ 242 LEU  ( 319  ) A      3       0.244    1.304   -1.132   -0.140    0.047
+ 243 VAL  ( 320  ) A      3      -0.917   -0.620   -1.736    0.462   -0.334
+ 244 PRO  ( 321  ) A      3      -0.101    1.342   -1.039   -0.033   -0.459
+ 245 ASP  ( 322  ) A      3       0.017    2.006   -0.828   -0.462   -0.857
+ 246 TRP  ( 323  ) A      2      -1.179   -0.338   -0.276   -1.979   -2.424
+ 247 LEU  ( 324  ) A      2      -0.049    0.194    0.747   -0.954    0.000
+ 248 PHE  ( 325  ) A      3      -1.595   -0.102   -1.247   -0.932   -1.480
+ 249 VAL  ( 326  ) A      2       0.146    0.680   -0.976    0.422   -0.521
+ 250 ALA  ( 327  ) A      2      -0.150   -0.038   -0.366    0.000    0.000
+ 251 PHE  ( 328  ) A      2       0.693    0.418    0.335    1.294    0.266
+ 252 ASN  ( 329  ) A      2      -0.282    0.234   -0.312   -1.067   -0.266
+ 253 TRP  ( 330  ) A      2      -0.082    0.545   -1.026    0.053   -1.145
+ 254 LEU  ( 331  ) A      2      -0.158    0.588   -0.946   -0.670    0.072
+ 255 GLY  ( 332  ) A      2      -1.153   -1.016   -0.952    0.000    0.000
+ 256 TYR  ( 333  ) A      2      -1.182   -0.965   -0.810   -1.503   -0.430
+ 257 ALA  ( 334  ) A      2      -0.161   -0.341    0.355    0.000    0.000
+ 258 ASN  ( 335  ) A      2      -0.636   -0.390    0.155   -0.963   -1.171
+ 259 SER  ( 336  ) A      2      -0.787   -1.154    0.735   -0.969   -0.396
+ 260 ALA  ( 337  ) A      2      -1.325   -1.641   -0.159    0.000    0.000
+ 261 MET  ( 338  ) A      2       1.417    0.984    1.142    1.276    0.328
+ 262 ASN  ( 339  ) A      2      -0.478   -1.004    0.288   -0.261    0.902
+ 263 PRO  ( 340  ) A      3      -0.857   -0.081   -1.102    0.727   -1.406
+ 264 ILE  ( 341  ) A      2      -0.985   -1.084   -0.581   -0.357   -0.962
+ 265 ILE  ( 342  ) A      2      -1.672   -1.796   -1.270   -1.186   -0.743
+ 266 TYR  ( 343  ) A      2      -0.579   -0.586   -0.762   -0.662    0.375
+ 267 CYS  ( 344  ) A      3      -1.941   -1.294   -2.158   -1.615   -2.776
+ 268 ARG  ( 345  ) A      3       0.213   -0.928   -1.347    1.364    1.026
+ 269 SER  ( 346  ) A      3      -0.350    0.661   -1.329   -0.394   -1.177
+ 270 PRO  ( 347  ) A      2      -0.159   -0.485   -0.783    1.210   -0.286
+ 271 ASP  ( 348  ) A      2      -0.517   -0.504    0.090   -1.101    0.639
+ 272 PHE  ( 349  ) A      2      -0.440    0.190   -0.922    0.193   -1.216
+ 273 ARG  ( 350  ) A      2       0.868    1.341    0.319    0.056   -0.600
+ 274 LYS  ( 351  ) A      2       0.012    0.703   -0.332   -0.229   -1.175
+ 275 ALA  ( 352  ) A      2      -0.007    0.161   -0.303    0.000    0.000
+ 276 PHE  ( 353  ) A      2       0.836    0.599    0.806    0.983    0.500
+ 277 LYS  ( 354  ) A      2      -1.465   -0.856   -0.832   -1.356   -1.195
+ 278 ARG  ( 355  ) A      2      -1.281   -1.029   -1.217   -0.668   -1.894
+ 279 LEU  ( 356  ) A      3       1.496    0.684   -1.652    3.908    0.714
+ 280 LEU  (  36  ) B      3      -0.239    0.362   -0.435   -0.582   -0.662
+ 281 SER  (  37  ) B      2      -0.033    0.182    0.015   -1.224   -0.801
+ 282 GLN  (  38  ) B      2      -0.682   -0.156    0.268   -0.846   -0.823
+ 283 GLN  (  39  ) B      2       1.321    1.285   -0.637    1.176    0.302
+ 284 TRP  (  40  ) B      2      -1.101   -0.363   -1.696   -1.364   -1.370
+ 285 GLU  (  41  ) B      2      -0.782   -0.497   -1.656    0.188   -0.292
+ 286 ALA  (  42  ) B      2      -1.042   -0.928   -0.776    0.000    0.000
+ 287 GLY  (  43  ) B      2      -0.888   -0.658   -1.290    0.000    0.000
+ 288 MET  (  44  ) B      2       0.077   -0.053    1.675   -1.195    0.200
+ 289 SER  (  45  ) B      2       1.364    1.352    0.788    0.647    0.127
+ 290 LEU  (  46  ) B      2      -0.757    0.715   -1.164   -1.091   -1.971
+ 291 LEU  (  47  ) B      2       1.626    1.333    1.535   -0.475    2.953
+ 292 MET  (  48  ) B      2       0.308    0.503   -0.381    1.108   -0.678
+ 293 ALA  (  49  ) B      2       1.480    1.697    0.163    0.000    0.000
+ 294 LEU  (  50  ) B      2      -0.080   -0.273    0.203   -0.218    0.437
+ 295 VAL  (  51  ) B      2       1.603    1.636    2.255    0.069    0.253
+ 296 VAL  (  52  ) B      2       1.182    0.802    1.212    1.402    0.484
+ 297 LEU  (  53  ) B      2       0.899    2.042   -0.068   -0.043   -1.276
+ 298 LEU  (  54  ) B      2      -0.123    0.570   -1.239   -0.420    0.194
+ 299 ILE  (  55  ) B      2      -1.044   -0.377   -1.692   -0.241   -1.704
+ 300 VAL  (  56  ) B      2       0.089   -0.221    0.041    0.447    0.751
+ 301 ALA  (  57  ) B      2      -0.307   -0.418    0.068    0.000    0.000
+ 302 GLY  (  58  ) B      2       1.671    1.385    1.587    0.000    0.000
+ 303 ASN  (  59  ) B      2       0.388   -0.140    1.338    0.704   -0.231
+ 304 VAL  (  60  ) B      2       0.569    0.849    1.049   -0.752   -0.146
+ 305 LEU  (  61  ) B      2       0.219    0.017   -0.098    0.290    0.528
+ 306 VAL  (  62  ) B      2       0.290    0.513    0.363   -0.253   -0.057
+ 307 ILE  (  63  ) B      2       1.742    1.374    0.574    2.108    0.677
+ 308 ALA  (  64  ) B      2       0.457    0.638   -0.141    0.000    0.000
+ 309 ALA  (  65  ) B      2       0.057    0.390   -0.564    0.000    0.000
+ 310 ILE  (  66  ) B      2       0.045   -0.448   -0.221    0.903   -0.255
+ 311 GLY  (  67  ) B      2       0.001   -0.481   -0.007    0.000    0.000
+ 312 SER  (  68  ) B      2      -0.967   -1.027   -0.818    0.941   -0.857
+ 313 THR  (  69  ) B      3      -1.112    0.039   -1.619   -0.339   -1.996
+ 314 GLN  (  70  ) B      2      -1.044   -0.932    1.040   -1.009   -1.130
+ 315 ARG  (  71  ) B      3      -1.360   -0.471   -1.072   -0.220   -1.541
+ 316 LEU  (  72  ) B      3      -1.287   -0.569   -1.455    0.795   -1.637
+ 317 GLN  (  73  ) B      2      -1.148   -1.862   -0.762    0.915   -1.053
+ 318 THR  (  74  ) B      3      -0.427    0.278   -1.176    0.116   -1.169
+ 319 LEU  (  75  ) B      2      -1.653   -1.436   -0.556   -1.499   -0.905
+ 320 THR  (  76  ) B      3      -0.973   -1.011   -1.106   -1.792    2.264
+ 321 ASN  (  77  ) B      2      -0.198   -0.365    0.439   -0.151   -0.058
+ 322 LEU  (  78  ) B      2      -0.441   -0.032    0.245   -0.953   -0.644
+ 323 PHE  (  79  ) B      2      -0.139   -0.043    0.115   -0.439   -0.151
+ 324 ILE  (  80  ) B      2      -0.157    0.103    0.248   -0.404   -0.398
+ 325 THR  (  81  ) B      2       0.090   -0.032    0.060   -0.038    1.144
+ 326 SER  (  82  ) B      2      -0.070    0.522   -1.112   -0.973    0.550
+ 327 LEU  (  83  ) B      2      -0.526    1.301   -1.847   -1.056   -1.115
+ 328 ALA  (  84  ) B      2       0.570    0.758   -0.021    0.000    0.000
+ 329 CYS  (  85  ) B      2       1.799    1.576    1.745    0.029   -0.207
+ 330 ALA  (  86  ) B      2      -0.270   -0.050   -0.541    0.000    0.000
+ 331 ASP  (  87  ) B      2      -0.225    0.237   -0.433    0.436   -1.366
+ 332 LEU  (  88  ) B      2       0.187    0.336    0.292   -0.662    0.696
+ 333 VAL  (  89  ) B      2       0.538    0.613    0.375    0.338    0.188
+ 334 VAL  (  90  ) B      2       0.601    0.726    0.190    0.569    0.062
+ 335 GLY  (  91  ) B      2      -0.940   -1.402    0.431    0.000    0.000
+ 336 LEU  (  92  ) B      2       0.110   -0.356    0.042   -0.187    2.776
+ 337 LEU  (  93  ) B      2      -0.246   -0.809    0.704   -0.815    2.810
+ 338 VAL  (  94  ) B      2      -1.074   -0.302   -1.421   -1.227   -1.327
+ 339 VAL  (  95  ) B      2      -0.582   -0.440   -1.080   -0.099   -0.234
+ 340 PRO  (  96  ) B      2      -1.592   -0.318   -1.606   -1.713   -1.913
+ 341 PHE  (  97  ) B      3       0.945    0.829   -0.357    0.252    1.067
+ 342 GLY  (  98  ) B      2      -1.107   -1.064   -0.726    0.000    0.000
+ 343 ALA  (  99  ) B      2      -0.780   -1.314    0.816    0.000    0.000
+ 344 THR  ( 100  ) B      2      -0.532   -0.422   -0.333   -0.825   -0.154
+ 345 LEU  ( 101  ) B      2      -1.606   -0.922   -1.385   -1.083   -1.941
+ 346 VAL  ( 102  ) B      2      -0.767   -0.979   -0.477   -0.788    1.277
+ 347 VAL  ( 103  ) B      2      -1.053   -1.090   -0.803   -0.394   -1.171
+ 348 ARG  ( 104  ) B      2      -1.308   -1.642   -0.296   -1.552    0.947
+ 349 GLY  ( 105  ) B      3      -0.509    0.131   -1.584    0.000    0.000
+ 350 THR  ( 106  ) B      3      -0.537   -0.080   -0.748   -0.278   -1.264
+ 351 TRP  ( 107  ) B      3      -1.908    0.112   -2.460   -0.556   -2.529
+ 352 LEU  ( 108  ) B      3      -2.002   -0.820   -2.094   -0.535   -1.826
+ 353 TRP  ( 109  ) B      3      -0.528   -1.047   -1.033   -0.616    0.705
+ 354 GLY  ( 110  ) B      3      -0.087    0.101   -0.358    0.000    0.000
+ 355 SER  ( 111  ) B      2      -1.076   -0.931   -0.641   -0.733   -1.493
+ 356 PHE  ( 112  ) B      2      -0.095    0.164    0.926   -1.177   -0.370
+ 357 LEU  ( 113  ) B      2       0.284    0.452    0.908   -0.812    0.470
+ 358 CYS  ( 114  ) B      2      -0.633   -0.125   -0.505   -1.076   -1.161
+ 359 GLU  ( 115  ) B      2      -0.061    0.565   -0.270    0.073   -0.997
+ 360 LEU  ( 116  ) B      2       1.286    0.981    3.073   -0.519    0.850
+ 361 TRP  ( 117  ) B      2       0.186    0.246    0.601    0.241   -0.559
+ 362 THR  ( 118  ) B      2      -0.083    0.491   -0.062   -1.203   -0.715
+ 363 SER  ( 119  ) B      2       1.724    1.298    1.213    2.194    1.006
+ 364 LEU  ( 120  ) B      2       1.041    0.273    2.180   -0.013    1.648
+ 365 ASP  ( 121  ) B      2      -1.727   -1.024   -1.723   -1.421   -1.456
+ 366 VAL  ( 122  ) B      2       0.062    0.440   -0.092   -0.089   -0.917
+ 367 LEU  ( 123  ) B      2       0.530    1.330   -1.181    0.083    0.133
+ 368 CYS  ( 124  ) B      2      -0.266    0.508   -2.039    0.597   -1.113
+ 369 VAL  ( 125  ) B      2      -0.581    0.035   -1.228   -0.529   -0.802
+ 370 THR  ( 126  ) B      2      -0.174    0.317   -1.319    0.125   -0.435
+ 371 ALA  ( 127  ) B      2       0.004    0.483   -0.853    0.000    0.000
+ 372 SER  ( 128  ) B      2       0.632    0.193    1.485   -0.388    1.269
+ 373 ILE  ( 129  ) B      2      -0.429   -0.268    1.445   -1.460   -0.291
+ 374 GLU  ( 130  ) B      2      -0.527   -0.392   -0.485    0.298   -0.986
+ 375 THR  ( 131  ) B      2       1.179    1.112    1.427    0.122    1.216
+ 376 LEU  ( 132  ) B      2       1.209    0.248    0.704    1.108    1.727
+ 377 CYS  ( 133  ) B      2       0.784    1.229   -0.934    0.109    0.334
+ 378 VAL  ( 134  ) B      2       0.377    0.464    0.725   -0.519    0.486
+ 379 ILE  ( 135  ) B      2       0.043    0.564   -0.182   -0.855    0.701
+ 380 ALA  ( 136  ) B      2      -0.700   -0.180   -1.314    0.000    0.000
+ 381 ILE  ( 137  ) B      2      -0.604   -0.120   -0.266   -1.199   -0.520
+ 382 ASP  ( 138  ) B      2      -1.353   -0.638   -1.268   -1.348   -1.272
+ 383 ARG  ( 139  ) B      2      -1.170   -0.888   -1.107   -0.894   -0.495
+ 384 TYR  ( 140  ) B      2      -0.332    0.059    0.321   -0.729   -1.357
+ 385 LEU  ( 141  ) B      2      -1.474   -1.111   -1.109   -1.107   -0.945
+ 386 ALA  ( 142  ) B      2      -2.115   -1.852   -1.632    0.000    0.000
+ 387 ILE  ( 143  ) B      2      -1.106   -0.992   -1.167   -0.357   -0.966
+ 388 THR  ( 144  ) B      2      -1.329   -1.302   -0.937   -1.115   -0.607
+ 389 SER  ( 145  ) B      3      -1.100   -0.126   -1.567   -0.840   -1.004
+ 390 PRO  ( 146  ) B      2      -1.309   -0.876   -1.350   -0.910   -1.857
+ 391 PHE  ( 147  ) B      3      -1.948   -1.013   -1.619   -1.342   -1.170
+ 392 ARG  ( 148  ) B      2      -2.261   -1.171   -2.261   -1.062   -2.002
+ 393 TYR  ( 149  ) B      2      -0.946   -0.444   -1.451   -0.284   -1.432
+ 394 GLN  ( 150  ) B      3      -1.264   -0.506   -1.463   -0.153   -0.398
+ 395 SER  ( 151  ) B      2      -1.139   -0.989   -0.604   -1.133   -0.682
+ 396 LEU  ( 152  ) B      2      -1.739   -1.668   -0.475   -1.780   -0.580
+ 397 MET  ( 153  ) B      3      -0.761   -0.336   -0.156   -0.730   -0.643
+ 398 THR  ( 154  ) B      3       0.242    0.629    0.083   -0.146   -0.291
+ 399 ARG  ( 155  ) B      3       0.092    0.251   -0.078   -0.230    0.166
+ 400 ALA  ( 156  ) B      3      -0.088    0.791   -0.750    0.000    0.000
+ 401 ARG  ( 157  ) B      2      -1.418   -0.695   -1.088   -0.981   -1.623
+ 402 ALA  ( 158  ) B      2      -0.297   -0.881    0.886    0.000    0.000
+ 403 LYS  ( 159  ) B      2       1.079    0.174    2.596    0.131    1.399
+ 404 VAL  ( 160  ) B      2      -0.015    0.317    0.911   -1.213   -0.872
+ 405 ILE  ( 161  ) B      2       0.726    1.082    0.586   -0.009   -0.135
+ 406 ILE  ( 162  ) B      2       0.169    0.894   -0.011   -0.594   -0.157
+ 407 CYS  ( 163  ) B      2      -0.633    0.739   -2.309   -0.723   -2.035
+ 408 THR  ( 164  ) B      2       1.000    1.198    0.824    0.028    0.766
+ 409 VAL  ( 165  ) B      2      -0.517   -0.446   -0.310   -0.221   -0.867
+ 410 TRP  ( 166  ) B      2      -1.079   -0.687   -1.575   -0.549   -1.112
+ 411 ALA  ( 167  ) B      2       1.196    1.782   -0.409    0.000    0.000
+ 412 ILE  ( 168  ) B      2       1.807    1.408    1.173    2.132    0.717
+ 413 SER  ( 169  ) B      2       0.638    0.486    0.262    1.217    0.209
+ 414 ALA  ( 170  ) B      2       0.973    0.877    0.799    0.000    0.000
+ 415 LEU  ( 171  ) B      2       0.561    1.291    0.127   -0.191   -0.845
+ 416 VAL  ( 172  ) B      2      -0.678   -0.517   -1.058   -0.150   -0.582
+ 417 SER  ( 173  ) B      2      -1.119   -0.849   -0.986   -0.557   -1.472
+ 418 PHE  ( 174  ) B      2       0.100    0.220    0.282   -0.297   -0.124
+ 419 LEU  ( 175  ) B      2       0.194    0.333   -0.078   -0.703    1.512
+ 420 PRO  ( 176  ) B      3      -0.233    0.406   -0.082    0.133   -0.888
+ 421 ILE  ( 177  ) B      2      -1.613   -1.294   -1.801   -0.960   -1.235
+ 422 MET  ( 178  ) B      2      -0.848   -0.542   -1.206   -0.085   -0.442
+ 423 MET  ( 179  ) B      2      -1.168   -0.907   -1.092   -0.703   -0.987
+ 424 HIS  ( 180  ) B      3       0.038    0.148    0.282    0.177   -0.396
+ 425 TRP  ( 181  ) B      3      -0.503   -0.034   -0.647    0.008   -0.944
+ 426 TRP  ( 182  ) B      3      -0.148   -0.030   -0.758   -0.740    0.804
+ 427 ARG  ( 183  ) B      3      -1.316   -0.444   -0.315   -0.540   -1.713
+ 428 ASP  ( 184  ) B      3      -0.567    0.103   -0.962    0.976   -1.335
+ 429 GLU  ( 185  ) B      3      -1.109   -0.341   -0.850   -0.718   -0.873
+ 430 ASP  ( 186  ) B      3      -0.193    1.735   -0.938   -0.464   -1.719
+ 431 PRO  ( 187  ) B      2       0.223   -0.038    0.063    1.046   -0.167
+ 432 GLN  ( 188  ) B      2      -1.946   -1.194   -0.528   -1.050   -1.459
+ 433 ALA  ( 189  ) B      2      -0.868   -0.786   -0.620    0.000    0.000
+ 434 LEU  ( 190  ) B      2      -0.265    0.679    0.129   -0.932   -1.279
+ 435 LYS  ( 191  ) B      2       2.336    1.895    1.301    2.417   -1.051
+ 436 CYS  ( 192  ) B      2      -0.862   -0.386   -0.912   -1.022   -0.587
+ 437 TYR  ( 193  ) B      2      -0.760   -0.290   -1.758    0.006   -1.030
+ 438 GLN  ( 194  ) B      2       0.642   -0.178   -0.869    1.086    0.561
+ 439 ASP  ( 195  ) B      3      -0.557    0.598   -1.656    0.645   -1.041
+ 440 PRO  ( 196  ) B      3      -1.001   -0.089   -1.035    0.478   -1.750
+ 441 GLY  ( 197  ) B      3      -1.088   -0.570   -1.141    0.000    0.000
+ 442 CYS  ( 198  ) B      3      -0.423   -0.136   -0.656   -0.341   -0.807
+ 443 CYS  ( 199  ) B      3       0.047    0.154    0.020    0.135   -0.447
+ 444 ASP  ( 200  ) B      3      -1.441   -0.851   -0.984   -0.760   -0.927
+ 445 PHE  ( 201  ) B      3      -2.247   -1.195   -1.814   -1.094   -0.716
+ 446 VAL  ( 202  ) B      3      -0.904   -0.740   -0.865    0.721   -1.073
+ 447 THR  ( 203  ) B      3      -0.804   -0.369   -1.296   -0.357   -0.614
+ 448 ASN  ( 204  ) B      3      -1.340    0.799   -2.702    0.292   -2.871
+ 449 ARG  ( 205  ) B      3      -0.493    0.671   -0.162   -0.791   -1.207
+ 450 ALA  ( 206  ) B      2      -0.428   -0.634    0.218    0.000    0.000
+ 451 TYR  ( 207  ) B      2      -0.611    0.242   -1.700    0.079   -1.636
+ 452 ALA  ( 208  ) B      2      -1.983   -1.618   -1.743    0.000    0.000
+ 453 ILE  ( 209  ) B      2       1.112    0.789    0.558    1.676    0.249
+ 454 ALA  ( 210  ) B      2       0.428    0.322    0.509    0.000    0.000
+ 455 SER  ( 211  ) B      2      -0.427   -0.070   -0.826   -0.487   -1.362
+ 456 SER  ( 212  ) B      2      -0.777   -0.372   -1.223   -0.406   -0.924
+ 457 ILE  ( 213  ) B      2       0.083    0.545   -0.042   -0.193   -0.642
+ 458 ILE  ( 214  ) B      2      -0.787   -0.800   -0.302   -0.657   -0.528
+ 459 SER  ( 215  ) B      2      -2.132   -1.888   -1.656   -1.014   -1.639
+ 460 PHE  ( 216  ) B      2      -0.508   -0.623    0.332   -0.378   -0.620
+ 461 TYR  ( 217  ) B      2       0.033    0.243    0.190   -0.291   -0.443
+ 462 ILE  ( 218  ) B      2       0.511    0.790    1.772   -1.089    0.179
+ 463 PRO  ( 219  ) B      2       0.749    0.356    1.002    0.499    0.910
+ 464 LEU  ( 220  ) B      2       1.016    1.022    1.332   -1.093    1.824
+ 465 LEU  ( 221  ) B      2       0.897    1.239    0.178    0.581   -0.455
+ 466 ILE  ( 222  ) B      2       1.119    1.248    0.575    0.847    0.418
+ 467 MET  ( 223  ) B      2      -0.403    0.242   -0.236   -0.962   -0.432
+ 468 ILE  ( 224  ) B      2       0.605    0.702    0.600   -0.014    0.580
+ 469 PHE  ( 225  ) B      2       0.790    1.417    0.371    0.108   -0.368
+ 470 VAL  ( 226  ) B      2       0.501    0.825   -0.622    1.026   -0.218
+ 471 ALA  ( 227  ) B      2       0.373    0.595   -0.190    0.000    0.000
+ 472 LEU  ( 228  ) B      2       1.216    1.718   -0.270    1.347   -0.839
+ 473 ARG  ( 229  ) B      2       0.093    0.544    0.232   -1.116    0.099
+ 474 VAL  ( 230  ) B      2      -0.257    0.650   -1.295   -0.422   -0.829
+ 475 TYR  ( 231  ) B      2      -0.131    0.158   -1.086    1.381   -1.183
+ 476 ARG  ( 232  ) B      2       1.226    1.832    1.018   -0.109   -1.062
+ 477 GLU  ( 233  ) B      2      -0.667    0.366   -0.844   -0.907   -0.978
+ 478 ALA  ( 234  ) B      2      -0.646   -0.526   -0.641    0.000    0.000
+ 479 LYS  ( 235  ) B      2      -0.594   -0.285   -1.073    0.142   -1.920
+ 480 GLU  ( 236  ) B      2      -1.182   -0.722   -1.139   -0.647   -1.014
+ 481 GLN  ( 237  ) B      3      -2.354   -1.137   -2.352   -0.782   -1.075
+ 482 ILE  ( 238  ) B      3      -1.842   -0.382   -1.624   -0.197   -1.282
+ 483 VAL  ( 280  ) B      3      -2.524   -0.804   -1.890   -0.884   -1.958
+ 484 MET  ( 281  ) B      3      -2.912   -1.314   -1.936   -1.248   -1.973
+ 485 LEU  ( 282  ) B      2      -1.740   -1.072   -0.678   -1.577   -1.631
+ 486 MET  ( 283  ) B      2      -1.223   -0.399   -1.010   -1.475   -1.493
+ 487 ARG  ( 284  ) B      2      -1.015   -0.113   -1.016   -1.352   -1.187
+ 488 GLU  ( 285  ) B      2      -0.494    0.340   -1.093   -0.471   -0.972
+ 489 HIS  ( 286  ) B      2       1.052    1.169   -0.019    1.836   -0.592
+ 490 LYS  ( 287  ) B      2      -0.193    0.536   -0.639   -0.592   -1.224
+ 491 ALA  ( 288  ) B      2      -0.013    0.203   -0.545    0.000    0.000
+ 492 LEU  ( 289  ) B      2      -1.477   -0.186   -0.923   -1.748   -1.794
+ 493 LYS  ( 290  ) B      2       0.513    0.790    0.579   -0.180   -0.908
+ 494 THR  ( 291  ) B      2       0.056   -0.325    0.655    0.201    0.756
+ 495 LEU  ( 292  ) B      2       0.647    0.485    1.371    0.004    0.175
+ 496 GLY  ( 293  ) B      2      -0.107   -0.094   -0.087    0.000    0.000
+ 497 ILE  ( 294  ) B      2       0.258    0.212   -0.102    0.109    0.676
+ 498 ILE  ( 295  ) B      2      -0.084    0.205    0.558   -0.868    0.163
+ 499 MET  ( 296  ) B      2       1.513    0.290    2.273    0.702    1.576
+ 500 GLY  ( 297  ) B      2       1.512    1.297    1.804    0.000    0.000
+ 501 VAL  ( 298  ) B      2       0.323    0.761    1.119   -1.426   -0.029
+ 502 PHE  ( 299  ) B      2      -0.048    0.131   -1.088    0.319    0.271
+ 503 THR  ( 300  ) B      2       0.409    0.264    0.328    0.557    0.434
+ 504 LEU  ( 301  ) B      2       0.054    0.147   -0.345    1.231   -1.704
+ 505 CYS  ( 302  ) B      2      -0.705   -0.349   -1.074   -0.278   -0.871
+ 506 TRP  ( 303  ) B      2      -0.165   -0.389   -0.152   -0.186    0.545
+ 507 LEU  ( 304  ) B      2       1.066    0.537    1.928    0.018    1.345
+ 508 PRO  ( 305  ) B      2      -0.887   -1.134   -0.035   -1.046    0.364
+ 509 PHE  ( 306  ) B      2      -0.917   -0.209   -0.155   -1.069   -1.791
+ 510 PHE  ( 307  ) B      2      -1.359   -1.408   -0.659   -0.888   -0.900
+ 511 LEU  ( 308  ) B      2       1.771    0.679    1.299    1.405    3.046
+ 512 VAL  ( 309  ) B      2      -0.172   -0.662   -0.143    0.555    0.536
+ 513 ASN  ( 310  ) B      2      -0.954   -0.436   -1.066   -0.918   -1.396
+ 514 ILE  ( 311  ) B      2       0.117    0.176    0.228   -0.022   -0.102
+ 515 VAL  ( 312  ) B      2      -0.150   -0.014   -0.559    0.003    0.004
+ 516 ASN  ( 313  ) B      2      -1.140   -0.904   -0.841   -1.137   -0.517
+ 517 VAL  ( 314  ) B      2      -1.133   -1.231   -1.287   -0.173   -0.208
+ 518 PHE  ( 315  ) B      2      -1.015   -0.632   -1.364   -0.812   -0.969
+ 519 ASN  ( 316  ) B      3       0.622    0.700   -0.445    0.368    1.057
+ 520 ARG  ( 317  ) B      2      -1.212   -1.101    0.333   -1.271   -1.566
+ 521 ASP  ( 318  ) B      3      -0.709    0.261   -0.634   -0.885   -0.989
+ 522 LEU  ( 319  ) B      3       0.277    1.291   -1.060   -0.140    0.039
+ 523 VAL  ( 320  ) B      3      -0.918   -0.555   -1.872    0.503   -0.333
+ 524 PRO  ( 321  ) B      3      -0.079    1.377   -1.039   -0.045   -0.429
+ 525 ASP  ( 322  ) B      3      -0.708    1.183   -1.193   -0.457   -1.176
+ 526 TRP  ( 323  ) B      2      -1.179   -0.338   -0.280   -1.975   -2.424
+ 527 LEU  ( 324  ) B      2       0.141    0.432    0.944   -0.788   -0.266
+ 528 PHE  ( 325  ) B      3      -1.575   -0.128   -1.200   -0.936   -1.453
+ 529 VAL  ( 326  ) B      2       0.114    0.631   -0.976    0.416   -0.552
+ 530 ALA  ( 327  ) B      2      -0.168   -0.040   -0.415    0.000    0.000
+ 531 PHE  ( 328  ) B      2       0.719    0.440    0.298    1.355    0.303
+ 532 ASN  ( 329  ) B      2      -0.218    0.267   -0.135   -1.040   -0.281
+ 533 TRP  ( 330  ) B      2      -0.121    0.483   -1.021    0.059   -1.153
+ 534 LEU  ( 331  ) B      2      -0.174    0.591   -0.946   -0.716    0.066
+ 535 GLY  ( 332  ) B      2      -1.126   -0.992   -0.928    0.000    0.000
+ 536 TYR  ( 333  ) B      2      -1.190   -1.000   -0.774   -1.498   -0.418
+ 537 ALA  ( 334  ) B      2      -0.161   -0.344    0.361    0.000    0.000
+ 538 ASN  ( 335  ) B      2      -0.642   -0.371    0.142   -0.982   -1.231
+ 539 SER  ( 336  ) B      2      -0.785   -1.133    0.712   -0.968   -0.450
+ 540 ALA  ( 337  ) B      2      -1.295   -1.601   -0.159    0.000    0.000
+ 541 MET  ( 338  ) B      2       1.443    1.030    1.147    1.262    0.329
+ 542 ASN  ( 339  ) B      2      -0.508   -1.027    0.275   -0.280    0.846
+ 543 PRO  ( 340  ) B      3      -0.877   -0.082   -1.103    0.672   -1.406
+ 544 ILE  ( 341  ) B      2      -0.993   -1.102   -0.579   -0.357   -0.960
+ 545 ILE  ( 342  ) B      2      -1.655   -1.750   -1.320   -1.174   -0.727
+ 546 TYR  ( 343  ) B      2      -0.587   -0.571   -0.774   -0.645    0.292
+ 547 CYS  ( 344  ) B      3      -1.917   -1.272   -2.088   -1.615   -2.799
+ 548 ARG  ( 345  ) B      3       0.242   -0.934   -1.324    1.381    1.052
+ 549 SER  ( 346  ) B      3      -0.346    0.655   -1.319   -0.362   -1.180
+ 550 PRO  ( 347  ) B      2      -0.132   -0.426   -0.780    1.210   -0.286
+ 551 ASP  ( 348  ) B      3       0.769    0.382   -0.312    0.452    1.572
+ 552 PHE  ( 349  ) B      2      -0.407    0.244   -0.944    0.252   -1.227
+ 553 ARG  ( 350  ) B      2       0.877    1.379    0.272    0.061   -0.608
+ 554 LYS  ( 351  ) B      2       0.593    0.908    0.205    0.152   -0.853
+ 555 ALA  ( 352  ) B      2      -0.032    0.130   -0.306    0.000    0.000
+ 556 PHE  ( 353  ) B      2       0.918    0.741    0.833    0.982    0.501
+ 557 LYS  ( 354  ) B      2      -1.467   -0.858   -0.832   -1.358   -1.193
+ 558 ARG  ( 355  ) B      2      -1.314   -1.056   -1.217   -0.718   -1.894
+ 559 LEU  ( 356  ) B      2      -0.855   -1.052   -1.300    0.337    0.785
+============================================================
+ All   contacts    : Average = -0.322 Z-score =  -2.16
+ BB-BB contacts    : Average = -0.004 Z-score =  -0.16
+ BB-SC contacts    : Average = -0.355 Z-score =  -2.34
+ SC-BB contacts    : Average = -0.301 Z-score =  -1.89
+ SC-SC contacts    : Average = -0.520 Z-score =  -3.00
+============================================================
+------------------------------------------------------------------------
+# 69 # Warning: Low packing Z-score for some residues
+=====================================================
+The residues listed in the table below have an unusual packing
+environment according to the 2nd generation quality check. The score
+listed in the table is a packing normality Z-score: positive means
+better than average, negative means worse than average. Only residues
+scoring less than -2.50 are listed here. These are the "unusual"
+residues in the structure, so it will be interesting to take a
+special look at them.
+ 
+ 484 MET  ( 281 ) B  -2.91
+ 204 MET  ( 281 ) A  -2.90
+ 203 VAL  ( 280 ) A  -2.52
+ 483 VAL  ( 280 ) B  -2.52
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 70 # Warning: Abnormal packing Z-score for sequential residues
+================================================================
+A stretch of at least four sequential residues with a 2nd
+generation packing Z-score below -1.75 was found. This could
+indicate that these residues are part of a strange loop or that the
+residues in this range are incomplete, but it might also be an
+indication of misthreading.
+
+The table below lists the first and last residue in each stretch found,
+as well as the average residue Z-score of the series.
+ 
+ 202 GLN  ( 237 ) A     ---  205 LEU  ( 282 ) A      -1.81
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 71 # Note: Structural average packing Z-score OK
+==================================================
+The structural average for the second generation quality control
+value is within normal ranges.
+ 
+ All   contacts    : Average = -0.322 Z-score =  -2.16
+ BB-BB contacts    : Average = -0.004 Z-score =  -0.16
+ BB-SC contacts    : Average = -0.355 Z-score =  -2.34
+ SC-BB contacts    : Average = -0.301 Z-score =  -1.89
+ SC-SC contacts    : Average = -0.520 Z-score =  -3.00
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 72 # Note: Second generation quality Z-score plot
+===================================================
+The second generation quality Z-score smoothed over a 10 residue window
+is plotted as function of the residue number. Low areas in the plot (below
+-1.3) indicate "unusual" packing.
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: A
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 73 # Note: Second generation quality Z-score plot
+===================================================
+
+ 
+In the TeX file, a plot has been inserted here
+ 
+ Chain identifier: B
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Since there are no waters, the water check has been skipped.
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+# 74 # Note: Summary report for users of a structure
+====================================================
+This is an overall summary of the quality of the structure as
+compared with current reliable structures. This summary is most
+useful for biologists seeking a good structure to use for modelling
+calculations.
+
+The second part of the table mostly gives an impression of how well
+the model conforms to common refinement constraint values. The
+first part of the table shows a number of constraint-independent
+quality indicators.
+ 
+ Structure Z-scores, positive is better than average:
+  1st generation packing quality :  -1.259
+  2nd generation packing quality :  -2.156
+  Ramachandran plot appearance   :  -5.408 (bad)
+  chi-1/chi-2 rotamer normality  :  -4.423 (bad)
+  Backbone conformation          :  -0.433
+ 
+ RMS Z-scores, should be close to 1.0:
+  Bond lengths                   :   0.313 (tight)
+  Bond angles                    :   0.556 (tight)
+  Omega angle restraints         :   1.016
+  Side chain planarity           :   0.210 (tight)
+  Improper dihedral distribution :   0.633
+  Inside/Outside distribution    :   1.207 (unusual)
+------------------------------------------------------------------------
+WHAT IF> Do you really want to stop execution Y/N ? STOP Normal end of WHAT IF.            statement executed
+ 
+ 
+A crow was sitting on a tree, doing nothing all day. A small rabbit
+saw the crow, and asked him, "Can I also sit like you and do nothing all
+day long?" The crow answered: "Sure, why not." So, the rabbit sat on the
+ground below the crow, and rested. All of a sudden, a fox appeared, jumped
+on the rabbit and ate it. Moral of the story: To be sitting and doing
+nothing, you must be sitting very, very high up.
+ 
+ 
+ 
+ 
+ 
+ 

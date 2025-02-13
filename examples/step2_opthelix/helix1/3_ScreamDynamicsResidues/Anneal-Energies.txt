@@ -1,0 +1,3 @@
+After annealing S8_A (totE, EL, vdw, hb, coulomb):  -8.630  -8.175   0.000   0.000  -0.455
+After annealing S13_A (totE, EL, vdw, hb, coulomb):  -8.630  -8.175   0.000   0.000  -0.455
+After annealing T28_A (totE, EL, vdw, hb, coulomb):  -8.630  -8.175   0.000   0.000  -0.455

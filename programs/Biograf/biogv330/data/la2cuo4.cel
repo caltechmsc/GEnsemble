@@ -1,0 +1,15 @@
+UNIT
+  132
+>>> CRYSTAL STRUCTURE FOR LA(2)CUO(4) <<<
+  Unit cell parameters FORMAT(6F10.6)
+  Atom data FORMAT(A7,1X,A5,1X,3F10.6,I5,2F10.6)
+  Atom force fields are not currently used.
+  Choose atom labels from conversion table or beginning with atomic symbol.
+*
+La2CuO4
+Fmmm
+  5.3635    5.4095   13.171    90.0      90.0      90.0
+La      La      0.0       0.0       0.3621      2  0.25    360.0
+Cu      Cu      0.0       0.0       0.0         3  0.50    120.0
+O1      O_2     0.0       0.0       0.1823      4  0.25    180.0
+O2      O_2     0.25      0.25      0.0         6  0.25    180.0

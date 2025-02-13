@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Threading support</TITLE>
+<META NAME="description" CONTENT="Threading support">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+
+<BODY bgcolor=#ffffff>
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html320"
+  HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html318"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html312"
+  HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html321"
+  HREF="node14.html">Interactive demos with IPython</A>
+<B> Up:</B> <A NAME="tex2html319"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html313"
+  HREF="node12.html">IPython as a system</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A NAME="tex2html322"
+  HREF="node13.html#SECTION000131000000000000000">Tk issues</A>
+<LI><A NAME="tex2html323"
+  HREF="node13.html#SECTION000132000000000000000">Signals and Threads</A>
+<LI><A NAME="tex2html324"
+  HREF="node13.html#SECTION000133000000000000000">I/O pitfalls</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H1><A NAME="SECTION000130000000000000000"></A><A NAME="sec:Threading-support"></A>
+<BR>
+Threading support
+</H1>
+
+<P>
+<SPAN  CLASS="textbf">WARNING:</SPAN> The threading support is still somewhat experimental, and it
+has only seen reasonable testing under Linux. Threaded code is particularly tricky
+to debug, and it tends to show extremely platform-dependent behavior. Since I only
+have access to Linux machines, I will have to rely on user's experiences and assistance
+for this area of IPython to improve under other platforms.
+
+<P>
+IPython, via the <TT>-gthread</TT> , <TT>-qthread</TT> and <TT>-wthread</TT> options
+(described in Sec.&nbsp;<A HREF="node5.html#sec:threading-opts">5.1</A>), can run in multithreaded mode to
+support pyGTK, Qt and WXPython applications respectively. These GUI toolkits need
+to control the python main loop of execution, so under a normal Python interpreter,
+starting a pyGTK, Qt or WXPython application will immediately freeze the shell. 
+
+<P>
+IPython, with one of these options (you can only use one at a time), separates
+the graphical loop and IPython's code execution run into different threads. This
+allows you to test interactively (with <TT>%run</TT>, for example) your GUI code
+without blocking.
+
+<P>
+A nice mini-tutorial on using IPython along with the Qt Designer application is
+available at the SciPy wiki: <TT><A NAME="tex2html20"
+  HREF="http://www.scipy.org/wikis/topical_software/QtWithIPythonAndDesigner">http://www.scipy.org/wikis/topical_software/QtWithIPythonAndDesigner</A></TT>.
+
+<P>
+
+<H2><A NAME="SECTION000131000000000000000">
+Tk issues</A>
+</H2>
+
+<P>
+As indicated in Sec.&nbsp;<A HREF="node5.html#sec:threading-opts">5.1</A>, a special <TT>-tk</TT> option
+is provided to try and allow Tk graphical applications to coexist interactively
+with WX, Qt or GTK ones. Whether this works at all, however, is very platform and
+configuration dependent. Please experiment with simple test cases before committing
+to using this combination of Tk and GTK/Qt/WX threading in a production environment.
+
+<P>
+
+<H2><A NAME="SECTION000132000000000000000">
+Signals and Threads</A>
+</H2>
+
+<P>
+When any of the thread systems (GTK, Qt or WX) are active, either directly or via
+<TT>-pylab</TT> with a threaded backend, it is impossible to interrupt long-running
+Python code via <TT>Ctrl-C</TT>. IPython can not pass the KeyboardInterrupt exception
+(or the underlying <TT>SIGINT</TT>) across threads, so any long-running process
+started from IPython will run to completion, or will have to be killed via an external
+(OS-based) mechanism.
+
+<P>
+To the best of my knowledge, this limitation is imposed by the Python interpreter
+itself, and it comes from the difficulty of writing portable signal/threaded code.
+If any user is an expert on this topic and can suggest a better solution, I would
+love to hear about it. In the IPython sources, look at the <TT>Shell.py</TT> module,
+and in particular at the <TT>runcode()</TT> method. 
+
+<P>
+
+<H2><A NAME="SECTION000133000000000000000">
+I/O pitfalls</A>
+</H2>
+
+<P>
+Be mindful that the Python interpreter switches between threads every <SPAN CLASS="MATH"><IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img5.png"
+ ALT="$N$"></SPAN> bytecodes,
+where the default value as of Python&nbsp;2.3 is <SPAN CLASS="MATH"><IMG
+ WIDTH="74" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$N=100.$"></SPAN> This value can be read by
+using the <TT>sys.getcheckinterval()</TT> function, and it can be reset via <TT>sys.setcheckinterval(<SPAN  CLASS="textit">N</SPAN>)</TT>.
+This switching of threads can cause subtly confusing effects if one of your threads
+is doing file I/O. In text mode, most systems only flush file buffers when they
+encounter a <TT>`&#92;n'</TT>. An instruction as simple as&nbsp;
+<BR><TT>&nbsp;&nbsp;print &gt;&gt; filehandle, ``hello world''</TT>
+<BR>
+actually consists of several bytecodes, so it is possible that the newline does
+not reach your file before the next thread switch. Similarly, if you are writing
+to a file in binary mode, the file won't be flushed until the buffer fills, and
+your other thread may see apparently truncated files. 
+
+<P>
+For this reason, if you are using IPython's thread support and have (for example)
+a GUI application which will read data generated by files written to from the IPython
+thread, the safest approach is to open all of your files in unbuffered mode (the
+third argument to the <TT>file/open</TT> function is the buffering value):
+<BR><TT>&nbsp;&nbsp;filehandle = open(filename,mode,0)</TT>
+
+<P>
+This is obviously a brute force way of avoiding race conditions with the file buffering.
+If you want to do it cleanly, and you have a resource which is being shared by
+the interactive IPython loop and your GUI thread, you should really handle it with
+thread locking and syncrhonization properties. The Python documentation discusses
+these.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html320"
+  HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html318"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html312"
+  HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html321"
+  HREF="node14.html">Interactive demos with IPython</A>
+<B> Up:</B> <A NAME="tex2html319"
+  HREF="manual.html">IPython An enhanced Interactive</A>
+<B> Previous:</B> <A NAME="tex2html313"
+  HREF="node12.html">IPython as a system</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Fernando Perez
+2006-06-06
+</ADDRESS>
+</BODY>
+</HTML>
