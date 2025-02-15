@@ -198,6 +198,17 @@ if ($jobmode eq 'serial') {
             close PBS;
             system("ssh $machine 'cd $curdir; qsub $runfile.pbs'");
 #	    sleep 5; # ADAM
+        } elsif ($queuetype eq "sbatch") {
+            my $sbatch = "#!/bin/bash\n".
+            "#SBATCH --job-name=BiHelix_${helix_i}-${helix_j}\n".
+            "#SBATCH --output=BiHelix_${helix_i}-${helix_j}.out\n".
+            "#SBATCH --error=BiHelix_${helix_i}-${helix_j}.err\n".
+            "#SBATCH --time=48:00:00\n".
+            "$run_command\n";
+            open SBATCH, ">$runfile.sbatch";
+            print SBATCH "$sbatch";
+            close SBATCH;
+            system("ssh $machine 'cd $curdir; sbatch $runfile.sbatch'");
         }
         print "$helix_i $helix_j pair rotscream job submitted on $machine.\n";
     }
