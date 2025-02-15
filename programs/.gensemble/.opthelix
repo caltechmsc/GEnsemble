@@ -56,7 +56,7 @@ finalminsteps    100       # Max steps for backbone minimization
 qsub             0         # Submit job to the queue (1 = on, 0 = off)
                            # Note that if runparallel = 1, the job must be run on the queue
                            # regardless of the qsub value
-queuetype        pbs       # Cluster Queue Type (sge or pbs)
+queuetype        sbatch    # Cluster Queue Type (sge or pbs or sbatch)
 runlocal         1         # Run in the current directory (1 = current, 0 = temp space)
 runparallel      1         # Run jobs for each helix in parallel (1 = parallel, 0 = serial)
 raw              pred      # Set of Raw TMs to use: pred, man, none
