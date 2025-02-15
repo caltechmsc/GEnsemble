@@ -33,7 +33,7 @@ libwww_dir          thirdparty/libwww/
 # Default Settings #
 ####################
 qsub             1             # PredicTM Submit to Queue (1 = on, 0 = off)
-queuetype        pbs           # Cluster Queue Type (sge or pbs)
+queuetype        sbatch        # Cluster Queue Type (sge or pbs or sbatch)
 scale            octanol       # PredicTM Hydrophobicity Scale (recognized keyword or full filename path)
 avgwins          7-21          # PredicTM Set of windows to average over (range is odd numbers 1 to 31)
                                #    Example: 7-21           (note that ranges MUST be low to high)
