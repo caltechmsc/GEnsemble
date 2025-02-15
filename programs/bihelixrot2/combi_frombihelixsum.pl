@@ -188,29 +188,43 @@ for ($nec=$ecriteria;$nec<=$ecriteria;$nec++) {
 	    } else {
 		$runfile = "run_combihelix";
 		if ($queuetype eq "sge") {
-		    $subcommand = "$subcommand -j \$JOB_ID.\$HOST";
-		    my $sge = "\#!/bin/csh\n".
-			"#\$ -N $protprefix\n".
-			"#\$ -j y\n".
-			"$subcommand\n";
-		    open SGE, ">$runfile.sge";
-		    print SGE "$sge";
-		    close SGE;
-		    system("ssh $machine cd $curdir; qsub -cwd $runfile.sge");
-		} elsif ($queuetype eq "pbs") {
-		    $subcommand = "$subcommand -j \$PBS_JOBID";
-		    my $pbs = "#PBS -l nodes=1,walltime=01:00:00\n".
-			"#PBS -q workq\n".
-			"#PBS -j oe\n".
-			"#PBS -N $protprefix\n".
-			"#!/bin/csh\n".
-			"cd \$PBS_O_WORKDIR\n".
-			"$subcommand\n";
-		    open PBS, ">$runfile.pbs";
-		    print PBS "$pbs";
-		    close PBS;
-		    system("ssh $machine 'cd $curdir; qsub $runfile.pbs'");
-		}
+            $subcommand = "$subcommand -j \$JOB_ID.\$HOST";
+            my $sge = "\#!/bin/csh\n".
+                "#\$ -N $protprefix\n".
+                "#\$ -j y\n".
+                "$subcommand\n";
+            open SGE, ">$runfile.sge";
+            print SGE "$sge";
+            close SGE;
+            system("ssh $machine 'cd $curdir; qsub -cwd $runfile.sge'");
+
+        } elsif ($queuetype eq "pbs") {
+            $subcommand = "$subcommand -j \$PBS_JOBID";
+            my $pbs = "#PBS -l nodes=1,walltime=01:00:00\n".
+                "#PBS -q workq\n".
+                "#PBS -j oe\n".
+                "#PBS -N $protprefix\n".
+                "#!/bin/csh\n".
+                "cd \$PBS_O_WORKDIR\n".
+                "$subcommand\n";
+            open PBS, ">$runfile.pbs";
+            print PBS "$pbs";
+            close PBS;
+            system("ssh $machine 'cd $curdir; qsub $runfile.pbs'");
+
+        } elsif ($queuetype eq "sbatch") {
+            $subcommand = "$subcommand -j \$SLURM_JOB_ID";
+            my $sbatch = "#!/bin/bash\n".
+                "#SBATCH --job-name=$protprefix\n".
+                "#SBATCH --output=$protprefix.out\n".
+                "#SBATCH --error=$protprefix.err\n".
+                "#SBATCH --time=01:00:00\n".
+                "$subcommand\n";
+            open SBATCH, ">$runfile.sbatch";
+            print SBATCH "$sbatch";
+            close SBATCH;
+            system("ssh $machine 'cd $curdir; sbatch $runfile.sbatch'");
+        }
 		print "$protprefix combihelix job submitted on $machine.\n";
 		my $wait = 1;
 		while ($wait) {

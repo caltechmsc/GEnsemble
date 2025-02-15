@@ -18,4 +18,4 @@ runmpsim            utilities/runMPSim.pl
 pwb                 utilities/playWithBGF/playWithBGF
 
 # QUEUE
-queuetype        pbs       # Cluster Queue Type (sge or pbs)
+queuetype        sbatch       # Cluster Queue Type (sge or pbs or sbatch)

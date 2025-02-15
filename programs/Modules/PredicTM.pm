@@ -553,8 +553,8 @@ sub checkInput {
 	    "         :: Use \"PredicTM.pl -h\" for help.\n\n";
     }
 
-    if (($queuetype !~ /^sge$/) && ($queuetype !~ /^pbs$/)) {
-	die "PredicTM :: Queue type must be either \"sge\" or \"pbs\".  You provided ::\n".
+    if (($queuetype !~ /^sge$/) && ($queuetype !~ /^pbs$/) && ($queuetype !~ /^sbatch$/)){
+	die "PredicTM :: Queue type must be either \"sge\" or \"pbs\" or \"sbatch\".  You provided ::\n".
 	    "         :: $queuetype.  Use \"PredicTM.pl -h\" for help.\n\n";
     }
 
@@ -591,100 +591,114 @@ sub checkInput {
 sub qsub {
     my $cwd = cwd;
     my $queuestring = "cd ${cwd}\n${Bin}/PredicTM.pl";
+
     if ($fta) {
-	$queuestring .= " -f $fta";
+        $queuestring .= " -f $fta";
     } elsif ($pir) {
-	$queuestring .= " -p $pir";
+        $queuestring .= " -p $pir";
     } elsif ($accession) {
-	$queuestring .= " -a $accession";
+        $queuestring .= " -a $accession";
     } elsif ($blastfasta) {
-	$queuestring .= " --fasta $blastfasta";
+        $queuestring .= " --fasta $blastfasta";
     } elsif ($raw) {
-	$queuestring .= " -r $raw";
+        $queuestring .= " -r $raw";
     }
 
     $queuestring .=
-	" --scale $scale".
-	" --avgwins '$avgwins'".
-	" --minhelix $minhelix".
-	" --maxhelix $maxhelix".
-	" --minloop $minloop".
-	" --maxcap $maxcap".
-	" --maxext $maxext".
-	" --ntermbreakers '$ntermbreakers'".
-	" --ctermbreakers '$ctermbreakers'".
-	" --baseline $baseline".
-	" --protdb $protdb".
-	" --ethreshold $ethreshold".
-	" --sequences $sequences".
-	" --compiter $compiter".
-	" --maxseqs $maxseqs";
+        " --scale $scale".
+        " --avgwins '$avgwins'".
+        " --minhelix $minhelix".
+        " --maxhelix $maxhelix".
+        " --minloop $minloop".
+        " --maxcap $maxcap".
+        " --maxext $maxext".
+        " --ntermbreakers '$ntermbreakers'".
+        " --ctermbreakers '$ctermbreakers'".
+        " --baseline $baseline".
+        " --protdb $protdb".
+        " --ethreshold $ethreshold".
+        " --sequences $sequences".
+        " --compiter $compiter".
+        " --maxseqs $maxseqs";
 
     if ($name) {
-	$queuestring .= " --name $name";
+        $queuestring .= " --name $name";
     } elsif ($prefix) {
-	$queuestring .= " --prefix $prefix";
+        $queuestring .= " --prefix $prefix";
     }
-    
+
     if ($complete) {
-	$queuestring .= " --complete";
-    } elsif (!$complete) {
-	$queuestring .= " --nocomplete";
+        $queuestring .= " --complete";
+    } else {
+        $queuestring .= " --nocomplete";
     }
     if ($flagnongpcr) {
-	$queuestring .= " --flagnongpcr";
-    } elsif (!$flagnongpcr) {
-	$queuestring .= " --noflagnongpcr";
+        $queuestring .= " --flagnongpcr";
+    } else {
+        $queuestring .= " --noflagnongpcr";
     }
     if ($filter) {
-	$queuestring .= " --filter";
-    } elsif (!$filter) {
-	$queuestring .= " --nofilter";
+        $queuestring .= " --filter";
+    } else {
+        $queuestring .= " --nofilter";
     }
     if ($trembl) {
-	$queuestring .= " --trembl";
-    } elsif (!$trembl) {
-	$queuestring .= " --notrembl";
+        $queuestring .= " --trembl";
+    } else {
+        $queuestring .= " --notrembl";
     }
     if ($cutnongpcr) {
-	$queuestring .= " --cutnongpcr";
-    } elsif (!$cutnongpcr) {
-	$queuestring .= " --nocutnongpcr";
+        $queuestring .= " --cutnongpcr";
+    } else {
+        $queuestring .= " --nocutnongpcr";
     }
     if ($clustal) {
-	$queuestring .= " --clustal";
-    } elsif (!$clustal) {
-	$queuestring .= " --noclustal";
+        $queuestring .= " --clustal";
+    } else {
+        $queuestring .= " --noclustal";
     }
     if ($quiet) {
-	$queuestring .= " --quiet";
+        $queuestring .= " --quiet";
     }
 
     my $hostname = `hostname`; chomp $hostname;
     print "PredicTM is re-submitting itself to the queue on $hostname.\n\n";
 
     if ($queuetype eq "sge") {
-	my $sge = "\#!/bin/csh\n".
-	    "#\$ -N PredicTM\n".
-	    "#\$ -j y\n".
-	    "$queuestring --noqsub\n";
-	open SGE, ">predictm.sge";
-	print SGE "$sge";
-	close SGE;
-	system("qsub -cwd predictm.sge");
+        my $sge = "\#!/bin/csh\n".
+            "#\$ -N PredicTM\n".
+            "#\$ -j y\n".
+            "$queuestring --noqsub\n";
+        open SGE, ">predictm.sge";
+        print SGE "$sge";
+        close SGE;
+        system("qsub -cwd predictm.sge");
 
     } elsif ($queuetype eq "pbs") {
-	my $pbs = "#PBS -l nodes=1:ppn=1,pvmem=4GB,walltime=48:00:00\n".
-	    "#PBS -q workq\n".
-	    "#PBS -j oe\n".
-	    "#PBS -N PredicTM\n".
-	    "#PBS -m e\n".
-	    "#!/bin/csh\n".
-	    "$queuestring --noqsub\n";
-	open PBS, ">predictm.pbs";
-	print PBS "$pbs";
-	close PBS;
-	system("qsub predictm.pbs");
+        my $pbs = "#PBS -l nodes=1:ppn=1,pvmem=4GB,walltime=48:00:00\n".
+            "#PBS -q workq\n".
+            "#PBS -j oe\n".
+            "#PBS -N PredicTM\n".
+            "#PBS -m e\n".
+            "#!/bin/csh\n".
+            "$queuestring --noqsub\n";
+        open PBS, ">predictm.pbs";
+        print PBS "$pbs";
+        close PBS;
+        system("qsub predictm.pbs");
+
+    } elsif ($queuetype eq "sbatch") {
+        my $sbatch = "#!/bin/bash\n".
+            "#SBATCH --job-name=PredicTM\n".
+            "#SBATCH --output=PredicTM.out\n".
+            "#SBATCH --error=PredicTM.err\n".
+            "#SBATCH --time=48:00:00\n".
+            "#SBATCH --mem=4GB\n".
+            "$queuestring --noqsub\n";
+        open SBATCH, ">predictm.sbatch";
+        print SBATCH "$sbatch";
+        close SBATCH;
+        system("sbatch predictm.sbatch");
     }
 
     exit;
