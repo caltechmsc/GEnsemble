@@ -323,27 +323,40 @@ sub qsub {
     print "OptHelix is re-submitting itself to the queue on $host.\n\n";
 
     if ($queuetype eq "sge") {
-	my $sge = "\#!/bin/csh\n".
-	    "#\$ -N OptHelix\n".
-	    "#\$ -j y\n".
-	    "$queuestring\n";
-	open SGE, ">opthelix.sge";
-	print SGE "$sge";
-	close SGE;
-	system("ssh $host 'cd $cwd ; qsub -cwd opthelix.sge'");
+        my $sge = "\#!/bin/csh\n".
+            "#\$ -N OptHelix\n".
+            "#\$ -j y\n".
+            "$queuestring\n";
+        open SGE, ">opthelix.sge";
+        print SGE "$sge";
+        close SGE;
+        system("ssh $host 'cd $cwd ; qsub -cwd opthelix.sge'");
 
     } elsif ($queuetype eq "pbs") {
-	my $pbs = "#PBS -l nodes=1,walltime=48:00:00\n".
-	    "#PBS -q workq\n".
-	    "#PBS -j oe\n".
-	    "#PBS -N OptHelix\n".
-	    "#PBS -m e\n".
-	    "#!/bin/csh\n".
-	    "$queuestring\n";
-	open PBS, ">opthelix.pbs";
-	print PBS "$pbs";
-	close PBS;
-	system("ssh $host 'cd $cwd ; qsub opthelix.pbs'");
+        my $pbs = "#PBS -l nodes=1,walltime=48:00:00\n".
+            "#PBS -q workq\n".
+            "#PBS -j oe\n".
+            "#PBS -N OptHelix\n".
+            "#PBS -m e\n".
+            "#!/bin/csh\n".
+            "$queuestring\n";
+        open PBS, ">opthelix.pbs";
+        print PBS "$pbs";
+        close PBS;
+        system("ssh $host 'cd $cwd ; qsub opthelix.pbs'");
+
+    } elsif ($queuetype eq "sbatch") {
+        my $sbatch = "#!/bin/bash\n".
+            "#SBATCH --job-name=OptHelix\n".
+            "#SBATCH --output=OptHelix.out\n".
+            "#SBATCH --error=OptHelix.err\n".
+            "#SBATCH --time=48:00:00\n".
+            "#SBATCH --mem=4GB\n".
+            "$queuestring\n";
+        open SBATCH, ">opthelix.sbatch";
+        print SBATCH "$sbatch";
+        close SBATCH;
+        system("ssh $host 'cd $cwd ; sbatch opthelix.sbatch'");
     }
 
     exit;
